@@ -1,5 +1,12 @@
-body{
-		background-color:#f2f2;
-		
+@import 'slider.scss';
 
+body {
+    background-color: rgba(51, 85, 124, 0.667);
+    margin: 0;
+    padding-top: 30px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
 }

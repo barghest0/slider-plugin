@@ -44,12 +44,17 @@ module.exports = {
 		rules: [
 			{
 				//файлы
-				test: /\.(js|ts)$/,
+				test: /\.js$/,
 				//лоадеры (транспилируют файлы)
 				use: ["babel-loader"],
 				//исключения
 				exclude: "/node_modules/",
 			},
+				{
+        test: /\.ts$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
 
 			{
 				test: /\.(scss|css)$/,
@@ -72,6 +77,9 @@ module.exports = {
 			},
 		],
 	},
+	resolve: {
+    extensions: ['.ts', '.js'],
+  },
 	devServer: {
 		static: {
 			directory: "./dist",
@@ -85,7 +93,10 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			filename: `${PATHS.assets}css/[name].[fullhash].css`,
 		}),
-
+		new webpack.ProvidePlugin({
+				$:'jquery',
+				jQuery:'jquery'
+		}),
 		new HtmlWebpackPlugin({
 			template: `${PATHS.src}/demo/index.html`,
 			filename: `./index.html`,

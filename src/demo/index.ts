@@ -1,2 +1,5 @@
-import  '../Style/style.scss'
-console.log(123);
+import '../Style/style.scss'
+import Presenter from '../Presenter/Presenter'
+
+
+new Presenter('.slider')
