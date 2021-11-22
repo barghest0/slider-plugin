@@ -1,16 +1,14 @@
 import Thumb from './ViewElements/Thumb/Thumb'
+import Track from './ViewElements/Track/Track'
+import Observer from '../Observer/Observer'
 
-class View {
-	private sliderClass: string
-	private thumb: any
+class View extends Observer {
+	private thumb:any
+	private track:any
 	constructor(sliderClass: string) {
-		this.sliderClass = sliderClass
-		this.thumb = new Thumb(sliderClass)
-	}
-
-	private viewThumb() {
-		this.thumb.createThumb()
-		this.thumb.dragThumb()
+		super()
+		this.thumb = new Thumb(this)
+		this.track = new Track(this)
 	}
 
 

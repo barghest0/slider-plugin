@@ -1,7 +1,7 @@
 class Observer{
     private subscribers: any
-    constructor(subscribers:any) {
-		this.subscribers = {};
+    constructor(subscribers:any = {}) {
+		  this.subscribers = subscribers;
     }
     
     public subscribe(name:any,event:any){
@@ -23,3 +23,4 @@ class Observer{
         });
     }
 }
+export default Observer

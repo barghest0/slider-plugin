@@ -2,4 +2,10 @@ import '../Style/style.scss'
 import Presenter from '../Presenter/Presenter'
 
 
-new Presenter('.slider')
+const options ={
+    min:0,
+    max:100,
+    step:1
+}
+
+new Presenter('.slider',options)

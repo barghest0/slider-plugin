@@ -1,13 +1,8 @@
-class Thumb {
-	private parentElement:any
+class Track {
+    private parentElement:any
     constructor(parentElement:any) {
         this.parentElement = parentElement
-	}
+    }
+    }
 
-}
-
-
-
-
-
-export default Thumb
+export default Track
