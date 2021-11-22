@@ -1,6 +1,8 @@
+import View from "../../View"
+
 class Track {
-    private parentElement:any
-    constructor(parentElement:any) {
+    private parentElement:View
+    constructor(parentElement:View) {
         this.parentElement = parentElement
     }
     }

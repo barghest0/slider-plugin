@@ -1,24 +1,27 @@
+import { SubscribeEvent, ISubscribers } from "../utils/interfaces/interfaces";
+
 class Observer{
-    private subscribers: any
-    constructor(subscribers:any = {}) {
+    private subscribers: ISubscribers
+    constructor(subscribers:ISubscribers = {}) {
 		  this.subscribers = subscribers;
     }
     
-    public subscribe(name:any,event:any){
-        const eventInObject = this.subscribers[event]
+    public subscribe(name:string,event:SubscribeEvent){
+        const eventInObject = this.subscribers[name]
+
         if (eventInObject) {
-            event.push(event)
+            eventInObject.push(event)
           } else {
             this.subscribers[name] = [event]
           }
     }
 
-    public unsubscribe(name:any,event:any) {
-        this.subscribers[name].filter((subscriberFunc:any)=> event != subscriberFunc)
+    public unsubscribe(name:string,event:SubscribeEvent) {
+        this.subscribers[name].filter((subscriberFunc:SubscribeEvent)=> event != subscriberFunc)
     }
 
-    public notify(name:any, data?:any){
-        this.subscribers[name].forEach((subscriberFunc:any) => {
+    public notify(name:string, data?:{}){
+        this.subscribers[name].forEach((subscriberFunc:SubscribeEvent) => {
             subscriberFunc(data)
         });
     }

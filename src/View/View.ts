@@ -3,8 +3,8 @@ import Track from './ViewElements/Track/Track'
 import Observer from '../Observer/Observer'
 
 class View extends Observer {
-	private thumb:any
-	private track:any
+	private thumb:Thumb
+	private track:Track
 	constructor(sliderClass: string) {
 		super()
 		this.thumb = new Thumb(this)

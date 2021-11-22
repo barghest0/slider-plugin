@@ -4,20 +4,20 @@ import Model from "../Model/Model"
 
 class Presenter {
 
-	private model:any
-	private view:any
+	private model:Model
+	private view:View
 
-	constructor(sliderClass: any, params?: any) {
+	constructor(sliderClass: string, params?: {}) {
 		this.model = new Model(params)
 		this.view = new View(sliderClass)
 		this.init(this.model)
 	}
 
-	init(model:any){
+	init(model:Model){
 		this.createSlider(model)
 	}
 
-	private createSlider(model:any){
+	private createSlider(model:Model){
 		this.createThumb()
 		console.log(model);
 		

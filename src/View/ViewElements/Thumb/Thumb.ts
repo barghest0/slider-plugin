@@ -1,6 +1,8 @@
+import View from "../../View"
+
 class Thumb {
-	private parentElement:any
-    constructor(parentElement:any) {
+	private parentElement:View
+    constructor(parentElement:View) {
         this.parentElement = parentElement
 	}
 
