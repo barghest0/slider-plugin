@@ -3,14 +3,19 @@ import Track from './ViewElements/Track/Track'
 import Observer from '../Observer/Observer'
 
 class View extends Observer {
-	private thumb:Thumb
-	private track:Track
+	private thumbView:Thumb
+	private trackView:Track
+	public trackField:JQuery<HTMLElement>
 	constructor(sliderClass: string) {
 		super()
-		this.thumb = new Thumb(this)
-		this.track = new Track(this)
+		this.thumbView = new Thumb(this)
+		this.trackView = new Track(this)
+		this.trackField = $(sliderClass)
 	}
-
+		public createThumb() {
+		this.thumbView.createThumb()	
+	}	
+		
 
 }
 

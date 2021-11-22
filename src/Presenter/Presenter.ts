@@ -18,14 +18,10 @@ class Presenter {
 	}
 
 	private createSlider(model:Model){
-		this.createThumb()
-		console.log(model);
+		this.view.createThumb()
 		
 	}
 
-	private createThumb(){
-		console.log('Thumb created');
-	}
 }
 
 export default Presenter
