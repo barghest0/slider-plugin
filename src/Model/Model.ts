@@ -1,20 +1,19 @@
 import Observer from "../Observer/Observer";
+import { ISliderState } from "../utils/interfaces/interfaces";
 
 class Model extends Observer {
+	private state: ISliderState;
 
-    state:any
+	constructor(state: ISliderState) {
+		super();
+		this.state = this.setState(state);
+	}
 
-    constructor(state:any) {
-        super()
-        this.setState(state)
-    }
-
-    private setState(state:any){
-        const {min, max} = {min: state.min, max: state.max}
-        const step = state.step
-        this.state = {min,max,step}
-    }
-
+	private setState(state: ISliderState) {
+		const { min, max } = { min: state.min, max: state.max };
+		const step = state.step;
+		return { ...this.state, min, max, step };
+	}
 }
 
-export default Model
+export default Model;
