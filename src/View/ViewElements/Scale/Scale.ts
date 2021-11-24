@@ -7,7 +7,7 @@ class Scale {
 	}
 
 		public createScale() {
-				this.parentElement.trackField.append('<div class="slider__scale"></div>')	
+				this.parentElement.parent.append('<div class="slider__scale"></div>')	
 		}
 }
 

@@ -8,11 +8,26 @@ class Thumb {
 		this.thumb = $(".slider__thumb");
 	}
 	public createThumb() {
-		this.parentElement.trackField.append(
-			'<div class="slider__thumb"></div>'
-		);
+
+			this.parentElement.parent.append('<div class="slider__thumb"></div>')
+			
 	}
 
+	public dragThumb() {
+			this.parentElement.parent.on('click',(e:JQuery.ClickEvent)=>{
+					console.log(e.offsetX);
+					
+					$('.slider__thumb').css({left: e.offsetX})  
+						$('.slider__fill').css({width:e.offsetX})	
+			})
+		this.parentElement.parent.on(
+			"mousedown",
+			".slider__thumb",
+			(event: JQuery.MouseDownEvent) => {
+						
+			}
+		);
+	}
 }
 
 export default Thumb;
