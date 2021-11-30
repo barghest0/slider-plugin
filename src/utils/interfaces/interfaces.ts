@@ -10,4 +10,9 @@ interface ISliderState {
 	step: number;
 }
 
-export { SubscribeEvent, ISubscribers, ISliderState };
+interface IHorizontalSliderCoords {
+		left:number,
+		width:number
+}
+
+export { SubscribeEvent, ISubscribers, ISliderState, IHorizontalSliderCoords };

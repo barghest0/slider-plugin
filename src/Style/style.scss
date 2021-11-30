@@ -1,5 +1,7 @@
 @import 'slider.scss';
-
+*{
+		box-sizing:border-box;
+}
 body {
     background-color: rgba(51, 85, 124, 0.667);
     margin: 0;

@@ -4,6 +4,8 @@ import Observer from "../Observer/Observer";
 import Scale from "./ViewElements/Scale/Scale";
 import Fill from "./ViewElements/Fill/Fill";
 class View extends Observer {
+		public min:number;
+		public max:number;
 	public thumbView: Thumb;
 	public trackView: Track;
 	public scaleView: Scale;
@@ -16,6 +18,8 @@ class View extends Observer {
 		this.scaleView = new Scale(this);
 		this.fillView = new Fill(this);
 		this.parent = $(sliderClass);
+			this.min = 0;
+			this.max = 100;
 	}
 	public createViewSlider() {
 		this.trackView.createTrack();
