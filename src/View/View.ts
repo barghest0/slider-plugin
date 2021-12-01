@@ -3,15 +3,15 @@ import Track from "./ViewElements/Track/Track";
 import Observer from "../Observer/Observer";
 import Scale from "./ViewElements/Scale/Scale";
 import Fill from "./ViewElements/Fill/Fill";
+import { IEnds } from "../utils/interfaces/interfaces";
 class View extends Observer {
-	public min:number;
-	public max:number;
+	public ends:IEnds;
 	public thumbView: Thumb;
 	public trackView: Track;
 	public scaleView: Scale;
 	public fillView: Fill;
 	public parent: JQuery<HTMLElement>;
-
+	
 	constructor(sliderClass: string) {
 		super();
 		this.thumbView = new Thumb(this);
@@ -19,8 +19,8 @@ class View extends Observer {
 		this.scaleView = new Scale(this);
 		this.fillView = new Fill(this);
 		this.parent = $(sliderClass);
-		this.min = 0;
-		this.max = 100;
+		this.ends = {min:0,max:100}
+		
 	}
 	
 	public createViewSlider() {
@@ -33,6 +33,17 @@ class View extends Observer {
 	public updateViewSlider() {
 		this.thumbView.dragThumb();
 		this.trackView.clickTrack();
+	}
+
+
+	public setEnds({min,max}:IEnds){
+		this.ends ={min,max}
+	}
+
+	public setStep(this:View,step:number){
+		this.thumbView.step = step
+		this.thumbView.stepPercent = 100/step
+		this.thumbView.stepCount = (this.ends.max - this.ends.min)/step
 	}
 }
 

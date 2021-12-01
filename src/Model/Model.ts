@@ -1,9 +1,9 @@
 import Observer from "../Observer/Observer";
-import { IMinMax } from "../utils/interfaces/interfaces";
+import { IEnds } from "../utils/interfaces/interfaces";
 
 class Model extends Observer {
 	private sliderClass:string
-	private minMax: IMinMax;
+	private minMax: IEnds;
 	private step: number;
 
 	constructor(sliderClass:string) {
@@ -17,7 +17,7 @@ class Model extends Observer {
 		this.step = step
 	}
 
-	public setMinMax(this:Model,min:number,max:number){
+	public setEnds(this:Model,{min,max}:IEnds){
 		this.minMax = {min,max}
 	}
 

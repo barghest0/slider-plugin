@@ -16,7 +16,7 @@ class Presenter {
 	init(params:ISliderParams) {
 		this.createSlider(params)
 		.updateSlider()
-		.setMinMax(params)
+		.setEnds(params)
 		.setStep(params)
 	}
 
@@ -31,13 +31,16 @@ class Presenter {
 	}
 
 
-	private setMinMax({min,max}:ISliderParams):this {
-		this.model.setMinMax(min,max) 
+	private setEnds({min,max}:ISliderParams):this {
+		this.model.setEnds({min,max})
+		this.view.setEnds({min,max})
 		return this;
 	}
 
 	private setStep({step}:ISliderParams){
 		this.model.setStep(step)
+		this.view.setStep(step)
+		return this
 	}
 }
 

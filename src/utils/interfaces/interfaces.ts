@@ -4,7 +4,7 @@ interface ISubscribers {
 	[key: string]: SubscribeEvent[];
 }
 
-interface IMinMax {
+interface IEnds {
 	min: number;
 	max: number;
 }
@@ -20,4 +20,4 @@ interface ISliderParams {
 	step:number
 }
 
-export { SubscribeEvent, ISubscribers, IMinMax, IHorizontalSliderCoords,ISliderParams };
+export { SubscribeEvent, ISubscribers, IEnds, IHorizontalSliderCoords,ISliderParams };

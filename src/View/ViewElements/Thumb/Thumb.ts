@@ -5,11 +5,15 @@ import getCoords from "./utils/getCoords";
 class Thumb {
 	private parentElement: View;
 	private thumb: JQuery<HTMLElement>;
-	private step: number;
+	public step: number;
+	public stepPercent:number
+	public stepCount: number
 	constructor(parentElement: View) {
 		this.parentElement = parentElement;
 		this.thumb = $(".slider__thumb");
-		this.step = 10;
+		this.step = 1;
+		this.stepPercent = 1
+		this.stepCount = 1
 	}
 	public createThumb() {
 		this.parentElement.parent.append('<div class="slider__thumb"></div>');
@@ -25,15 +29,13 @@ class Thumb {
 						let left =((e.pageX - sliderCoords!.left) / sliderCoords.width)*100
 						if (left<0) left = 0 
 						if (left>100) left=100 
-						let stepCount =(this.parentElement.max - this.parentElement.min) / this.step	
-						let stepPercent = 100/stepCount
-						let stepLeft = Math.round(left/stepPercent)*stepPercent
+						let stepLeft = Math.round(left/this.stepPercent)*this.stepPercent
 						if (stepLeft < 0) stepLeft = 0
 						if (stepLeft > 100) stepLeft = 100
 						$(event.data.thumb).css({ left: stepLeft + '%' })
-									$(event.data.fill).css( {width:stepLeft + '%'})
-						let result = ((stepLeft / stepPercent) * this.step).toFixed()
-						
+						$(event.data.fill).css( {width:stepLeft + '%'})
+						let result = ((stepLeft / this.stepPercent) * this.step).toFixed()
+						console.log(result);
 				});
 			}
 		);
