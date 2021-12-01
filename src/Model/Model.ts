@@ -1,19 +1,26 @@
 import Observer from "../Observer/Observer";
-import { ISliderState } from "../utils/interfaces/interfaces";
+import { IMinMax } from "../utils/interfaces/interfaces";
 
 class Model extends Observer {
-	private state: ISliderState;
+	private sliderClass:string
+	private minMax: IMinMax;
+	private step: number;
 
-	constructor(state: ISliderState) {
+	constructor(sliderClass:string) {
 		super();
-		this.state = this.setState(state);
+		this.sliderClass = sliderClass;
+		this.step = 1
+		this.minMax = {min:1,max:100}
 	}
 
-	private setState(state: ISliderState) {
-		const { min, max } = { min: state.min, max: state.max };
-		const step = state.step;
-		return { ...this.state, min, max, step };
+	public setStep(this:Model,step:number){
+		this.step = step
 	}
+
+	public setMinMax(this:Model,min:number,max:number){
+		this.minMax = {min,max}
+	}
+
 }
 
 export default Model;

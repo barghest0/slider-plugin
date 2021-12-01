@@ -4,10 +4,9 @@ interface ISubscribers {
 	[key: string]: SubscribeEvent[];
 }
 
-interface ISliderState {
+interface IMinMax {
 	min: number;
 	max: number;
-	step: number;
 }
 
 interface IHorizontalSliderCoords {
@@ -15,4 +14,10 @@ interface IHorizontalSliderCoords {
 		width:number
 }
 
-export { SubscribeEvent, ISubscribers, ISliderState, IHorizontalSliderCoords };
+interface ISliderParams {
+	min:number,
+	max:number,
+	step:number
+}
+
+export { SubscribeEvent, ISubscribers, IMinMax, IHorizontalSliderCoords,ISliderParams };

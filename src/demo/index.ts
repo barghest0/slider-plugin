@@ -4,8 +4,8 @@ import Presenter from '../Presenter/Presenter'
 
 const options ={
     min:0,
-    max:100,
-    step:1
+    max:150,
+    step:10
 }
 
 new Presenter('.slider',options)

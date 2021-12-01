@@ -29,15 +29,15 @@ class Thumb {
 						let stepPercent = 100/stepCount
 						let stepLeft = Math.round(left/stepPercent)*stepPercent
 						if (stepLeft < 0) stepLeft = 0
-            if (stepLeft > 100) stepLeft = 100
-            $(event.data.thumb).css({ left: stepLeft + '%' })
-						$(event.data.fill).css( {width:stepLeft + '%'})
-            let result = ((stepLeft / stepPercent) * this.step).toFixed()
+						if (stepLeft > 100) stepLeft = 100
+						$(event.data.thumb).css({ left: stepLeft + '%' })
+									$(event.data.fill).css( {width:stepLeft + '%'})
+						let result = ((stepLeft / stepPercent) * this.step).toFixed()
 						
 				});
 			}
 		);
-
+		
 		$("body").on("mouseup", (event: JQuery.MouseUpEvent) => {
 			$("body").off("mousemove");
 		});
