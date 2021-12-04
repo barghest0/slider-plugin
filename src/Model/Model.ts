@@ -13,11 +13,11 @@ class Model extends Observer {
 		this.minMax = {min:1,max:100}
 	}
 
-	public setStep(this:Model,step:number){
+	public setStep(step:number){
 		this.step = step
 	}
 
-	public setEnds(this:Model,{min,max}:IEnds){
+	public setEnds({min,max}:IEnds){
 		this.minMax = {min,max}
 	}
 
