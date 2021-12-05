@@ -13,7 +13,7 @@ const changePosition = function (e: JQuery.MouseMoveEvent) {
 	$(".slider__thumb").css({ left: stepLeft + "%" })
 	$(".slider__fill").css({ width: stepLeft + "%" })
 	let result = ((stepLeft / thisThumb.stepPercent) * thisThumb.step).toFixed()
-	return result
+	console.log(result);
 }
 
 export default changePosition

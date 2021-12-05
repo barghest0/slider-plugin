@@ -13,10 +13,9 @@ class Thumb extends Observer {
 		super()
 		this.parentElement = parentElement
 		this.thumb = $(".slider__thumb")
-		this.step = 1
-		this.stepPercent = 1
-		this.stepCount = 1
-		// this.subscribe = ('notifySliderPosition',())
+		this.step = 0 
+		this.stepPercent = 0
+		this.stepCount = 0
 	}
 	
 	public createThumb() {
@@ -29,6 +28,7 @@ class Thumb extends Observer {
 			(event: JQuery.MouseDownEvent) => {
 				this.parentElement.horizontalSliderCoords = getCoords($('.slider__track'))
 				$("body").on("mousemove", { thisThumb: this, sliderCoords: this.parentElement.horizontalSliderCoords }, changePosition)
+					
 			}
 		)
 		$("body").on("mouseup", (event: JQuery.MouseUpEvent) => {
