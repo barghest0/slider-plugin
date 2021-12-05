@@ -47,8 +47,8 @@ class View extends Observer {
 		this.setStep(step);
 		this.ends = { min, max };
 		this.value = value;
-			this.width = width
-			this.height = height
+		this.width = width;
+		this.height = height;
 	}
 	public setStep(step: number) {
 		this.thumbView.step = step;

@@ -12,14 +12,18 @@ class Observer {
             eventInObject.push(event)
         } else {
             this.subscribers[name] = [event]
+						
         }
     }
 
     public unsubscribe(name: string, event: SubscribeEvent) {
+					
         this.subscribers[name].filter((subscriberFunc: SubscribeEvent) => event != subscriberFunc)
     }
-
-    public notify(name: string, args?: any) {
+		
+    public notify(name: string, ...args: any) {
+				
+					
         this.subscribers[name].forEach((subscriberFunc: SubscribeEvent) => {
             subscriberFunc(...args)
         })

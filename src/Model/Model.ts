@@ -27,11 +27,14 @@ class Model extends Observer {
 		this.minMax = { min, max };
 	}
 	public setValue(value: number) {
-		this, (value = value);
+		this.value = value
+			
 	}
-	public updateModel(...args: any) {
-		const {  value } = args;
-		this.value = value;
+	public updateModel(value: number) {
+			
+		this.setValue(value);
+			
+			
 	}
 	public getState() {
 		return {

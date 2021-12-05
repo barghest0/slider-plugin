@@ -16,43 +16,43 @@ class Presenter {
 
 	init(params: ISliderParams) {
 		this.createSlider()
-			.setModelState(params).setViewState()
+			.setModelState(params)
+			.setViewState()
 			.updateView()
-			.updateModel();
 	}
 
 	private createSlider(): this {
 		this.view.createViewSlider();
 		return this;
 	}
-		private setViewState(){
-				const state = this.model.getState()
-				this.view.setState(state)
-				return this;
-		}
+	private setViewState() {
+		const state = this.model.getState();
+		this.view.setState(state);
+		return this;
+	}
 
 	private updateView(): this {
 		this.view.updateViewSlider();
+			
 		return this;
 	}
 
-	private updateModel(): this {
-		this.model.updateModel(2, 3, 5);
-		return this;
+	private updateModel(value:number) {
+		this.model.updateModel(value);
+			
 	}
 
 	private setModelState(state: any) {
-		const { min, max, step, value, } = state;
+		const { min, max, step} = state;
 		this.model.setEnds({ min, max });
 		this.model.setStep(step);
-		this.model.setValue(value);
 		this.model.setSize({ height: 4, width: 200 });
 		return this;
 	}
 
 	private subscribe() {
-		this.view.subscribe("UpdateModelState", this.updateModel);
-		this.model.subscribe("UpdateView", this.updateView);
+		this.view.subscribe("UpdateModelState", this.updateModel.bind(this));
+		this.model.subscribe("UpdateView", this.updateView.bind(this));
 	}
 }
 
