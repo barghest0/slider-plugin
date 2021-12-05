@@ -9,15 +9,15 @@ interface IEnds {
 	max: number;
 }
 
-interface IHorizontalSliderCoords {
-		left:number,
-		width:number
+interface IThumbCoords {
+	x: number;
+	y: number;
 }
 
 interface ISliderParams {
-	min:number,
-	max:number,
-	step:number
+	min: number;
+	max: number;
+	step: number;
 }
 
-export { SubscribeEvent, ISubscribers, IEnds, IHorizontalSliderCoords,ISliderParams };
+export { SubscribeEvent, ISubscribers, IEnds, IThumbCoords, ISliderParams };

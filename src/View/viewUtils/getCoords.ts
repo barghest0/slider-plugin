@@ -1,10 +1,11 @@
-import { IHorizontalSliderCoords } from "./../../utils/interfaces/interfaces"
+import { IThumbCoords } from "./../../utils/interfaces/interfaces";
 
-const getCoords = (element: JQuery<HTMLElement>): IHorizontalSliderCoords => {
+const getCoords = (element: JQuery<HTMLElement>): IThumbCoords => {
+
 	return {
-		left: element.offset()!.left,
-		width: element.outerWidth()!,
-	}
-}
+		y: element.offset()!.top,
+		x: element.offset()!.left,
+	};
+};
 
-export default getCoords
+export default getCoords;

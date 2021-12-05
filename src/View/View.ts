@@ -3,15 +3,14 @@ import Track from "./ViewElements/Track/Track";
 import Observer from "../Observer/Observer";
 import Scale from "./ViewElements/Scale/Scale";
 import Fill from "./ViewElements/Fill/Fill";
-import { IEnds, IHorizontalSliderCoords } from "../utils/interfaces/interfaces";
-import getCoords from "./viewUtils/getCoords";
+import { IEnds, IThumbCoords } from "../utils/interfaces/interfaces";
 class View extends Observer {
 	public thumbView: Thumb;
 	public trackView: Track;
 	public scaleView: Scale;
 	public fillView: Fill;
 	public ends: IEnds;
-	public horizontalSliderCoords: IHorizontalSliderCoords;
+	public thumbCoords: IThumbCoords;
 	public value: number;
 	public width: number;
 	public height: number;
@@ -27,7 +26,7 @@ class View extends Observer {
 		this.value = 0;
 		this.width = 0;
 		this.height = 0;
-		this.horizontalSliderCoords = { left: 0, width: 0 };
+		this.thumbCoords = { x: 0, y: 0 };
 	}
 
 	public createViewSlider() {

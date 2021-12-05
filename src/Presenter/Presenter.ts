@@ -15,10 +15,7 @@ class Presenter {
 	}
 
 	init(params: ISliderParams) {
-		this.createSlider()
-			.setModelState(params)
-			.setViewState()
-			.updateView()
+		this.createSlider().setModelState(params).setViewState().updateView();
 	}
 
 	private createSlider(): this {
@@ -33,17 +30,17 @@ class Presenter {
 
 	private updateView(): this {
 		this.view.updateViewSlider();
-			
+
 		return this;
 	}
 
-	private updateModel(value:number) {
-		this.model.updateModel(value);
-			
+	private updateModel(...args: any) {
+		const [value, x, y] = args;
+		this.model.updateModel(value, x, y);
 	}
 
 	private setModelState(state: any) {
-		const { min, max, step} = state;
+		const { min, max, step } = state;
 		this.model.setEnds({ min, max });
 		this.model.setStep(step);
 		this.model.setSize({ height: 4, width: 200 });
