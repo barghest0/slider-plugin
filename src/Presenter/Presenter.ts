@@ -30,7 +30,7 @@ class Presenter {
 
 	private updateView(): this {
 		this.view.updateViewSlider();
-
+		
 		return this;
 	}
 

@@ -26,6 +26,7 @@ class Thumb extends Observer {
 		this.parentElement.parent.on(
 			"mousedown",
 			(event: JQuery.MouseDownEvent) => {
+
 				this.parentElement.thumbCoords = getCoords($(".slider__track"));
 				$("body").on(
 					"mousemove",
