@@ -28,9 +28,8 @@ class Presenter {
 		return this;
 	}
 
-	private updateView(): this {
+	private updateView(...args: any): this {
 		this.view.updateViewSlider();
-		
 		return this;
 	}
 
@@ -40,16 +39,17 @@ class Presenter {
 	}
 
 	private setModelState(state: any) {
-		const { min, max, step } = state;
+		const { min, max, step, value } = state;
 		this.model.setEnds({ min, max });
 		this.model.setStep(step);
 		this.model.setSize({ height: 4, width: 200 });
+		this.model.setValue(value);
 		return this;
 	}
 
 	private subscribe() {
 		this.view.subscribe("UpdateModelState", this.updateModel.bind(this));
-		this.model.subscribe("UpdateView", this.updateView.bind(this));
+		this.model.subscribe("UpdateView", this.setViewState.bind(this));
 	}
 }
 
