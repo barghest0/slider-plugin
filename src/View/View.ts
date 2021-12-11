@@ -4,6 +4,7 @@ import Observer from "../Observer/Observer";
 import Scale from "./ViewElements/Scale/Scale";
 import Fill from "./ViewElements/Fill/Fill";
 import { IEnds, IThumbCoords } from "../utils/interfaces/interfaces";
+import initialViewRender from "./viewUtils/initialViewRender";
 class View extends Observer {
 	public thumbView: Thumb;
 	public trackView: Track;
@@ -15,6 +16,7 @@ class View extends Observer {
 	public width: number;
 	public height: number;
 	public parent: JQuery<HTMLElement>;
+	private initialRender: () => void;
 	constructor(sliderClass: string) {
 		super();
 		this.thumbView = new Thumb(this);
@@ -27,34 +29,30 @@ class View extends Observer {
 		this.width = 0;
 		this.height = 0;
 		this.thumbCoords = { x: 0, y: 0 };
+		this.initialRender = initialViewRender.bind(this);
 	}
 
-	public createViewSlider() {
+	public createView() {
 		this.trackView.createTrack();
 		this.thumbView.createThumb();
 		this.scaleView.createScale();
 		this.fillView.createFill();
 	}
 
-	public updateViewSlider() {
-		this.thumbView.dragThumb();
-		this.trackView.clickTrack();
-	}
-
 	public setState(state: any) {
 		const { step, value, width, height } = state;
-		const { min, max } = state.minMax;
+		const { min, max } = state.ends;
 
 		this.ends = { min, max };
 		this.value = value;
 		this.width = width;
 		this.height = height;
 		this.setStep(step);
+		this.initialRender();
 	}
 	public setStep(step: number) {
 		this.thumbView.step = step;
 		this.thumbView.stepCount = (this.ends.max - this.ends.min) / step;
-
 		this.thumbView.stepPercent = 100 / this.thumbView.stepCount;
 	}
 }

@@ -3,7 +3,7 @@ import { IEnds } from "../utils/interfaces/interfaces";
 
 class Model extends Observer {
 	private sliderClass: string;
-	private minMax: IEnds;
+	private ends: IEnds;
 	private step: number;
 	private value: number;
 	private height: number;
@@ -14,7 +14,7 @@ class Model extends Observer {
 		super();
 		this.sliderClass = sliderClass;
 		this.step = 1;
-		this.minMax = { min: 1, max: 100 };
+		this.ends = { min: 1, max: 100 };
 		this.value = 0;
 		this.thumbX = 0;
 		this.thumbY = 0;
@@ -27,7 +27,7 @@ class Model extends Observer {
 	}
 
 	public setEnds({ min, max }: IEnds) {
-		this.minMax = { min, max };
+		this.ends = { min, max };
 	}
 	public setValue(value: number) {
 		this.value = value;
@@ -48,7 +48,7 @@ class Model extends Observer {
 
 	public getState() {
 		return {
-			minMax: this.minMax,
+			ends: this.ends,
 			step: this.step,
 			value: this.value,
 			width: this.width,

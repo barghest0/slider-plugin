@@ -3,7 +3,7 @@ import Presenter from "../Presenter/Presenter";
 
 const options = {
 	min: 0,
-	max: 150,
+	max: 200,
 	step: 10,
 	value: 75,
 };
