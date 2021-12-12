@@ -1,8 +1,6 @@
 import View from "../View";
 
 const initialViewRender = function (this: View) {
-	console.log(this);
-
 	$(".slider__thumb").css({
 		left: this.value / (this.ends.max / 100) + "%",
 	});

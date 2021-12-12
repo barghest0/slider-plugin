@@ -1,11 +1,11 @@
 import "../Style/style.scss";
 import Presenter from "../Presenter/Presenter";
 
-const options = {
+new Presenter(".slider", {
 	min: 0,
 	max: 200,
 	step: 10,
-	value: 75,
-};
-
-new Presenter(".slider", options);
+	value: 0,
+	isRange: true,
+	direction: "horizontal",
+});

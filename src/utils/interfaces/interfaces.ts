@@ -13,11 +13,22 @@ interface IThumbCoords {
 	x: number;
 	y: number;
 }
+type Direction = "vertical" | "horizontal";
 
 interface ISliderParams {
 	min: number;
 	max: number;
 	step: number;
+	value: number;
+	isRange: boolean;
+	direction: Direction;
 }
 
-export { SubscribeEvent, ISubscribers, IEnds, IThumbCoords, ISliderParams };
+export {
+	SubscribeEvent,
+	ISubscribers,
+	IEnds,
+	IThumbCoords,
+	ISliderParams,
+	Direction,
+};

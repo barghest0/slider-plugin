@@ -1,5 +1,5 @@
 import Observer from "../Observer/Observer";
-import { IEnds } from "../utils/interfaces/interfaces";
+import { Direction, IEnds } from "../utils/interfaces/interfaces";
 
 class Model extends Observer {
 	private sliderClass: string;
@@ -10,6 +10,8 @@ class Model extends Observer {
 	private width: number;
 	private thumbX: number;
 	private thumbY: number;
+	private isRange: boolean;
+	private direction: Direction;
 	constructor(sliderClass: string) {
 		super();
 		this.sliderClass = sliderClass;
@@ -20,6 +22,8 @@ class Model extends Observer {
 		this.thumbY = 0;
 		this.height = 0;
 		this.width = 0;
+		this.isRange = false;
+		this.direction = "horizontal";
 	}
 
 	public setStep(step: number) {
@@ -36,9 +40,15 @@ class Model extends Observer {
 		this.height = size.height;
 		this.width = size.width;
 	}
+	public setIsRange(isRange: boolean) {
+		this.isRange = isRange;
+	}
 	public setCoords({ x, y }: any) {
 		this.thumbX = x;
 		this.thumbY = y;
+	}
+	public setDirection(direction: Direction) {
+		this.direction = direction;
 	}
 	public updateModel(value: number, x: number, y: number) {
 		this.setValue(value);
@@ -55,6 +65,8 @@ class Model extends Observer {
 			height: this.height,
 			x: this.thumbX,
 			y: this.thumbY,
+			isRange: this.isRange,
+			direction: this.direction,
 		};
 	}
 }

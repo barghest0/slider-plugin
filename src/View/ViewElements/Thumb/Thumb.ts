@@ -18,15 +18,16 @@ class Thumb extends Observer {
 		this.stepCount = 0;
 	}
 
-	public createThumb() {
-		this.parentElement.parent.append('<div class="slider__thumb"></div>');
+	public createThumb(isRange: boolean) {
+		this.parentElement.parent.append(
+			'<div class="slider__thumb position-0"></div>'
+		);
 	}
 
 	public dragThumb() {
 		this.parentElement.parent.on(
 			"mousedown",
 			(event: JQuery.MouseDownEvent) => {
-
 				this.parentElement.thumbCoords = getCoords($(".slider__track"));
 				$("body").on(
 					"mousemove",

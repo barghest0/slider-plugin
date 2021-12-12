@@ -16,11 +16,11 @@ class Presenter {
 	}
 
 	init(params: ISliderParams) {
-		this.createSlider().setModelState(params).setViewState();
+		this.createSlider(params.isRange).setModelState(params).setViewState();
 	}
 
-	private createSlider(): this {
-		this.view.createView();
+	private createSlider(isRange: boolean): this {
+		this.view.createView(isRange);
 		return this;
 	}
 	private setViewState() {
@@ -35,11 +35,13 @@ class Presenter {
 	}
 
 	private setModelState(state: any) {
-		const { min, max, step, value } = state;
+		const { min, max, step, value, isRange, direction } = state;
 		this.model.setEnds({ min, max });
 		this.model.setStep(step);
 		this.model.setSize({ height: 4, width: 200 });
 		this.model.setValue(value);
+		this.model.setIsRange(isRange);
+		this.model.setDirection(direction);
 
 		return this;
 	}
