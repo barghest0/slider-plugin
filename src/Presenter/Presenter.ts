@@ -1,63 +1,66 @@
-import View from "../View/View";
-import Model from "../Model/Model";
-import { ISliderParams, ISliderState } from "../utils/interfaces/interfaces";
+import View from "../View/View"
+import Model from "../Model/Model"
+import { ISliderParams, ISliderState } from "../utils/interfaces/interfaces"
 
 class Presenter {
-	private model: Model;
-	private view: View;
-	private params: ISliderParams;
+	private model: Model
+	private view: View
+	private params: ISliderParams
+	private sliderClass: string
 	constructor(sliderClass: string, params: ISliderParams) {
-		this.model = new Model(sliderClass);
-		this.view = new View(sliderClass);
-		this.params = params;
-		this.init(params);
-		this.subscribe();
-		this.addListeners();
+		this.sliderClass = sliderClass
+		this.model = new Model(sliderClass)
+		this.view = new View(sliderClass)
+		this.params = params
+		this.init(params)
+		this.subscribe()
+		this.addListeners()
 	}
 
 	init(params: ISliderParams) {
-		this.setModelState(params).renderSlider().setViewState();
+		this.setModelState(params).setViewState().renderSlider(params)
 	}
 
 	private setModelState(state: ISliderParams) {
-		const { min, max, step, value, isRange, direction } = state;
-		this.model.setEnds({ min, max });
-		this.model.setStep(step);
-		this.model.setSize({ height: 4, width: 200 });
-		this.model.setValue(value);
-		this.model.setIsRange(isRange);
-		this.model.setDirection(direction);
+		const { min, max, step, value, isRange, direction } = state
 
-		return this;
+		const height = $(this.sliderClass).height()!
+		const width = $(this.sliderClass).width()!
+		this.model.setSize({ width: 4, height: 200 })
+		this.model.setEnds({ min, max })
+		this.model.setStep(step)
+		this.model.setValue(value)
+		this.model.setIsRange(isRange)
+		this.model.setDirection(direction)
+
+		return this
 	}
 
-	private renderSlider(): this {
+	private renderSlider(params: ISliderParams): this {
+		this.view.render(params)
+		return this
+	}
+
+	private setViewState(): this {
 		const state = this.model.getState()
-		this.view.render(state);
-		return this;
-	}
-	
-	private setViewState() {
-		const state = this.model.getState();
-		this.view.setState(state);
-		return this;
+		this.view.setState(state)
+
+		return this
 	}
 
 	private updateModel(...args: any) {
-		const [value, x, y] = args;
-		this.model.updateModel(value, x, y);
+		const [value, x, y] = args
+		this.model.updateModel(value, x, y)
 	}
-
-	
 
 	private subscribe() {
-		this.view.subscribe("UpdateModelState", this.updateModel.bind(this));
-		this.model.subscribe("UpdateView", this.setViewState.bind(this));
+		this.view.subscribe("UpdateModelState", this.updateModel.bind(this))
+		this.model.subscribe("UpdateView", this.setViewState.bind(this))
 	}
 	private addListeners() {
-		this.view.thumbView.dragThumb();
-		this.view.trackView.clickTrack();
+		this.view.thumbView.dragThumb()
+		this.view.trackView.clickTrack()
 	}
 }
 
-export default Presenter;
+export default Presenter
