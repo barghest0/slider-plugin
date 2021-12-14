@@ -3,7 +3,7 @@ import Track from "./ViewElements/Track/Track";
 import Observer from "../Observer/Observer";
 import Scale from "./ViewElements/Scale/Scale";
 import Fill from "./ViewElements/Fill/Fill";
-import { Direction, IEnds, ISliderParams, IThumbCoords } from "../utils/interfaces/interfaces";
+import { Direction, IEnds, ISliderParams, ISliderState, IThumbCoords } from "../utils/interfaces/interfaces";
 import initialViewRender from "./viewUtils/initialViewRender";
 class View extends Observer {
 	public thumbView: Thumb;
@@ -36,20 +36,21 @@ class View extends Observer {
 		this.initialRender = initialViewRender.bind(this);
 	}
 
-	public render(params:ISliderParams) {
-		this.createView(params)
-		
-
+	public render(state:ISliderState) {
+		this.createView(state)
+		.setState(state)
+		.initialRender();
 	}
 
-	public createView(params:ISliderParams){
-		this.trackView.createTrack(params.direction);
-		this.thumbView.createThumb(params.isRange, params.direction);
-		this.scaleView.createScale(params.direction);
-		this.fillView.createFill(params.direction);
+	public createView(state:ISliderState){
+		this.trackView.createTrack(state.direction);
+		this.thumbView.createThumb(state.isRange, state.direction);
+		this.scaleView.createScale(state.direction);
+		this.fillView.createFill(state.direction);
+		return this
 	}
 
-	public setState(state: any) {
+	public setState(state: ISliderState) {
 		const { step, value, width, height, isRange, direction } = state;
 		const { min, max } = state.ends;
 		this.ends = { min, max };
@@ -59,7 +60,7 @@ class View extends Observer {
 		this.setStep(step);
 		this.isRange = isRange;
 		this.direction = direction;
-		this.initialRender();
+		return this
 	}
 
 	public setStep(step: number) {

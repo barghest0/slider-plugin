@@ -20,12 +20,13 @@ const changePosition = function (e: JQuery.MouseMoveEvent) {
 		thisThumb.step
 	).toFixed();
 	$(".slider__thumb").css({
-		left: thisThumb.parentElement.ends.max / 100 + "%",
+		left: value / (thisThumb.parentElement.ends.max / 100)  + "%",
 	});
 	$(".slider__fill").css({
 		width: value / (thisThumb.parentElement.ends.max / 100) + "%",
 	});
 
+	
 	thisThumb.parentElement.notify(
 		"UpdateModelState",
 		Number(result),

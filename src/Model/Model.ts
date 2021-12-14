@@ -1,5 +1,5 @@
 import Observer from "../Observer/Observer";
-import { Direction, IEnds } from "../utils/interfaces/interfaces";
+import { Direction, IEnds, ISliderState, IThumbCoords, ISize } from "../utils/interfaces/interfaces";
 
 class Model extends Observer {
 	private sliderClass: string;
@@ -8,8 +8,7 @@ class Model extends Observer {
 	private value: number;
 	private height: number;
 	private width: number;
-	private thumbX: number;
-	private thumbY: number;
+	private thumbCoords: IThumbCoords;
 	private isRange: boolean;
 	private direction: Direction;
 	constructor(sliderClass: string) {
@@ -18,8 +17,7 @@ class Model extends Observer {
 		this.step = 1;
 		this.ends = { min: 1, max: 100 };
 		this.value = 0;
-		this.thumbX = 0;
-		this.thumbY = 0;
+		this.thumbCoords = {x:0,y:0}
 		this.height = 0;
 		this.width = 0;
 		this.isRange = false;
@@ -36,35 +34,34 @@ class Model extends Observer {
 	public setValue(value: number) {
 		this.value = value;
 	}
-	public setSize(size: any) {
-		this.height = size.height;
-		this.width = size.width;
+	public setSize({width,height}: ISize) {
+		this.height = height;
+		this.width = width;
 	}
 	public setIsRange(isRange: boolean) {
 		this.isRange = isRange;
 	}
-	public setCoords({ x, y }: any) {
-		this.thumbX = x;
-		this.thumbY = y;
+	public setCoords({ x, y }: IThumbCoords) {
+		this.thumbCoords = {x,y}
 	}
 	public setDirection(direction: Direction) {
 		this.direction = direction;
 	}
+	
 	public updateModel(value: number, x: number, y: number) {
 		this.setValue(value);
 		this.setCoords({ x, y });
 		this.notify("UpdateView");
 	}
 
-	public getState() {
+	public getState():ISliderState {
 		return {
 			ends: this.ends,
 			step: this.step,
 			value: this.value,
 			width: this.width,
 			height: this.height,
-			x: this.thumbX,
-			y: this.thumbY,
+			thumbCoords:this.thumbCoords,
 			isRange: this.isRange,
 			direction: this.direction,
 		};

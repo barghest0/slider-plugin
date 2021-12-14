@@ -1,6 +1,6 @@
 import View from "../View/View";
 import Model from "../Model/Model";
-import { ISliderParams } from "../utils/interfaces/interfaces";
+import { ISliderParams, ISliderState } from "../utils/interfaces/interfaces";
 
 class Presenter {
 	private model: Model;
@@ -16,13 +16,27 @@ class Presenter {
 	}
 
 	init(params: ISliderParams) {
-		this.renderSlider(params).setModelState(params).setViewState();
+		this.setModelState(params).renderSlider().setViewState();
 	}
 
-	private renderSlider(params:ISliderParams): this {
-		this.view.render(params);
+	private setModelState(state: ISliderParams) {
+		const { min, max, step, value, isRange, direction } = state;
+		this.model.setEnds({ min, max });
+		this.model.setStep(step);
+		this.model.setSize({ height: 4, width: 200 });
+		this.model.setValue(value);
+		this.model.setIsRange(isRange);
+		this.model.setDirection(direction);
+
 		return this;
 	}
+
+	private renderSlider(): this {
+		const state = this.model.getState()
+		this.view.render(state);
+		return this;
+	}
+	
 	private setViewState() {
 		const state = this.model.getState();
 		this.view.setState(state);
@@ -34,17 +48,7 @@ class Presenter {
 		this.model.updateModel(value, x, y);
 	}
 
-	private setModelState(state: any) {
-		const { min, max, step, value, isRange, direction } = state;
-		this.model.setEnds({ min, max });
-		this.model.setStep(step);
-		this.model.setSize({ height: 4, width: 200 });
-		this.model.setValue(value);
-		this.model.setIsRange(isRange);
-		this.model.setDirection(direction);
-
-		return this;
-	}
+	
 
 	private subscribe() {
 		this.view.subscribe("UpdateModelState", this.updateModel.bind(this));
