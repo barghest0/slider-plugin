@@ -3,7 +3,7 @@ import Track from "./ViewElements/Track/Track";
 import Observer from "../Observer/Observer";
 import Scale from "./ViewElements/Scale/Scale";
 import Fill from "./ViewElements/Fill/Fill";
-import { Direction, IEnds, IThumbCoords } from "../utils/interfaces/interfaces";
+import { Direction, IEnds, ISliderParams, IThumbCoords } from "../utils/interfaces/interfaces";
 import initialViewRender from "./viewUtils/initialViewRender";
 class View extends Observer {
 	public thumbView: Thumb;
@@ -17,7 +17,7 @@ class View extends Observer {
 	public height: number;
 	public parent: JQuery<HTMLElement>;
 	private isRange: boolean;
-	private direction: Direction;
+	public direction: Direction;
 	private initialRender: () => void;
 	constructor(sliderClass: string) {
 		super();
@@ -36,11 +36,17 @@ class View extends Observer {
 		this.initialRender = initialViewRender.bind(this);
 	}
 
-	public createView(isRange: boolean) {
-		this.trackView.createTrack();
-		this.thumbView.createThumb(isRange);
-		this.scaleView.createScale();
-		this.fillView.createFill();
+	public render(params:ISliderParams) {
+		this.createView(params)
+		
+
+	}
+
+	public createView(params:ISliderParams){
+		this.trackView.createTrack(params.direction);
+		this.thumbView.createThumb(params.isRange, params.direction);
+		this.scaleView.createScale(params.direction);
+		this.fillView.createFill(params.direction);
 	}
 
 	public setState(state: any) {
@@ -55,6 +61,7 @@ class View extends Observer {
 		this.direction = direction;
 		this.initialRender();
 	}
+
 	public setStep(step: number) {
 		this.thumbView.step = step;
 		this.thumbView.stepCount = (this.ends.max - this.ends.min) / step;

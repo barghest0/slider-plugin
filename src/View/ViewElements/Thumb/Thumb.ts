@@ -1,4 +1,5 @@
 import Observer from "../../../Observer/Observer";
+import { Direction } from "../../../utils/interfaces/interfaces";
 import View from "../../View";
 import getCoords from "../../viewUtils/getCoords";
 import changePosition from "./utils/changePosition";
@@ -18,9 +19,9 @@ class Thumb extends Observer {
 		this.stepCount = 0;
 	}
 
-	public createThumb(isRange: boolean) {
+	public createThumb(isRange: boolean,direction:Direction) {
 		this.parentElement.parent.append(
-			'<div class="slider__thumb position-0"></div>'
+			`<div class="slider__thumb position-0 slider__thumb-${direction}"></div>`
 		);
 	}
 

@@ -1,3 +1,4 @@
+import { Direction } from "../../../utils/interfaces/interfaces";
 import View from "../../View";
 
 class Track {
@@ -7,8 +8,8 @@ class Track {
 		this.parentElement = parentElement;
 		this.track = $(".slider__track");
 	}
-	public createTrack() {
-		this.parentElement.parent.append('<div class="slider__track"></div>');
+	public createTrack(direction:Direction) {
+		this.parentElement.parent.append(`<div class="slider__track slider__track-${direction}"></div>`);
 	}
 	public clickTrack() {
 		this.parentElement.parent.on(

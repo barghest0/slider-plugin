@@ -1,3 +1,4 @@
+import { Direction } from "../../../utils/interfaces/interfaces";
 import View from "../../View";
 
 class Scale {
@@ -6,8 +7,8 @@ class Scale {
 		this.parentElement = parentElement	
 	}
 
-		public createScale() {
-				this.parentElement.parent.append('<div class="slider__scale"></div>')	
+		public createScale(direction:Direction) {
+				this.parentElement.parent.append(`<div class="slider__scale slider__scale-${direction}"></div>`)	
 		}
 }
 

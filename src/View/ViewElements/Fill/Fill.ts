@@ -1,3 +1,4 @@
+import { Direction } from "../../../utils/interfaces/interfaces";
 import View from "../../View";
 
 class Fill {
@@ -8,8 +9,8 @@ class Fill {
 			this.fill = $('.slider__fill')
 	}
 
-	public createFill(){
-				this.parentElement.parent.append('<div class="slider__fill"></div>')
+	public createFill(direction:Direction){
+				this.parentElement.parent.append(`<div class="slider__fill slider__fill-${direction}"></div>`)
 		}
 }
 

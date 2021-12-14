@@ -16,11 +16,11 @@ class Presenter {
 	}
 
 	init(params: ISliderParams) {
-		this.createSlider(params.isRange).setModelState(params).setViewState();
+		this.renderSlider(params).setModelState(params).setViewState();
 	}
 
-	private createSlider(isRange: boolean): this {
-		this.view.createView(isRange);
+	private renderSlider(params:ISliderParams): this {
+		this.view.render(params);
 		return this;
 	}
 	private setViewState() {

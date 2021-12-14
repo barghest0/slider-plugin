@@ -5,7 +5,7 @@ new Presenter(".slider", {
 	min: 0,
 	max: 200,
 	step: 10,
-	value: 0,
+	value: 100,
 	isRange: true,
 	direction: "horizontal",
 });
