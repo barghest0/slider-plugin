@@ -26,7 +26,7 @@ class Presenter {
 
 		const height = $(this.sliderClass).height()!
 		const width = $(this.sliderClass).width()!
-		this.model.setSize({ width: 4, height: 200 })
+		this.model.setSize({ width: 200, height: 4 })
 		this.model.setEnds({ min, max })
 		this.model.setStep(step)
 		this.model.setValue(value)

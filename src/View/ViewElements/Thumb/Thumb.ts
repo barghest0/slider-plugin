@@ -20,14 +20,20 @@ class Thumb extends Observer {
 	}
 
 	public createThumb(isRange: boolean,direction:Direction) {
+		if (isRange) {
+			this.parentElement.parent.append(
+				`<div class="slider__thumb thumb-position-0 slider__thumb-${direction}"></div>`
+			);
+		}
 		this.parentElement.parent.append(
-			`<div class="slider__thumb position-0 slider__thumb-${direction}"></div>`
+			`<div class="slider__thumb thumb-position-1 slider__thumb-${direction}"></div>`
 		);
 	}
 
 	public dragThumb() {
 		this.parentElement.parent.on(
 			"mousedown",
+			'.thumb-position-1',
 			(event: JQuery.MouseDownEvent) => {
 				this.parentElement.thumbCoords = getCoords($(".slider__track"));
 				$("body").on(
@@ -35,6 +41,7 @@ class Thumb extends Observer {
 					{
 						thisThumb: this,
 						thumbCoords: this.parentElement.thumbCoords,
+						
 					},
 					changePosition
 				);
