@@ -6,6 +6,6 @@ new Presenter(".slider", {
 	max: 200,
 	step: 10,
 	value: 100,
-	isRange: false,
+	isRange: true,
 	direction: "vertical",
 })

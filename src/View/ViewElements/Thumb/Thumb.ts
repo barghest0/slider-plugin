@@ -5,7 +5,7 @@ import getCoords from "../../viewUtils/getCoords";
 import changePosition from "./utils/changePosition";
 
 class Thumb extends Observer {
-	private parentElement: View;
+	public parentElement: View;
 	private thumb: JQuery<HTMLElement>;
 	public step: number;
 	public stepPercent: number;
