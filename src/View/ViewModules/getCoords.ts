@@ -1,4 +1,4 @@
-import { IThumbCoords } from "./../../utils/interfaces/interfaces";
+import { IThumbCoords } from "../../Interfaces/interfaces";
 
 const getCoords = (element: JQuery<HTMLElement>): IThumbCoords => {
 

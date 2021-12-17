@@ -1,4 +1,4 @@
-import { IThumbCoords } from "../../../../utils/interfaces/interfaces";
+import { IThumbCoords } from "../../../../Interfaces/interfaces";
 import Thumb from "../Thumb";
 
 const changePosition = function (e: JQuery.MouseMoveEvent) {

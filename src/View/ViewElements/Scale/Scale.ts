@@ -1,4 +1,4 @@
-import { Direction } from "../../../utils/interfaces/interfaces";
+import { Direction } from "../../../Interfaces/interfaces";
 import View from "../../View";
 
 class Scale {

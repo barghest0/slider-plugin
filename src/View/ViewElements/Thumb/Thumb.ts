@@ -1,7 +1,7 @@
 import Observer from "../../../Observer/Observer";
-import { Direction } from "../../../utils/interfaces/interfaces";
+import { Direction } from "../../../Interfaces/interfaces";
 import View from "../../View";
-import getCoords from "../../viewUtils/getCoords";
+import getCoords from "../../ViewModules/getCoords";
 import changePosition from "./utils/changePosition";
 
 class Thumb extends Observer {
@@ -17,22 +17,13 @@ class Thumb extends Observer {
 		this.stepCount = 0;
 	}
 
-	public createThumb(isRange: boolean, direction: Direction) {
-		if (isRange) {
-			this.parentElement.parent.append(
-				`<div class="slider__thumb slider__thumb-0 slider__thumb-${direction}"></div>`
-			);
-		}
+	public createThumb(direction: Direction,stance:number) {
 		this.parentElement.parent.append(
-			`<div class="slider__thumb slider__thumb-${
-				isRange ? 1 : 0
-			} slider__thumb-${direction}"></div>`
+			`<div class="slider__thumb slider__thumb-${stance} slider__thumb-${direction}"></div>`
 		);
 	}
 
 	public dragThumb(position: number) {
-		console.log(position);
-
 		this.parentElement.parent.on(
 			"mousedown",
 			`.slider__thumb-${position}`,

@@ -1,4 +1,4 @@
-import { SubscribeEvent, ISubscribers } from "../utils/interfaces/interfaces"
+import { SubscribeEvent, ISubscribers } from "../Interfaces/interfaces"
 
 class Observer {
     private subscribers: ISubscribers

@@ -23,19 +23,21 @@ interface ISliderParams {
 	min: number
 	max: number
 	step: number
-	value: number
+	value: number | number[]
 	isRange: boolean
 	direction: Direction
 }
 //basic info about current and initial state of slider
-interface ISliderState {
+interface ISliderTrackState {
 	ends: IEnds
 	size: ISize
-	thumbCoords: IThumbCoords
-	step: number
-	value: number
 	isRange: boolean
 	direction: Direction
+}
+
+interface ISliderThumbState {
+	step: number,
+	value: number | number[]
 }
 
 export {
@@ -45,6 +47,7 @@ export {
 	IThumbCoords,
 	ISliderParams,
 	Direction,
-	ISliderState,
+	ISliderTrackState,
+	ISliderThumbState,
 	ISize
 }
