@@ -6,7 +6,7 @@ const webpack = require("webpack");
 const PATHS = {
 	src: path.join(__dirname, "./src"),
 	dist: path.join(__dirname, "./dist"),
-		assets: ("assets/")	
+	assets: "assets/",
 };
 
 module.exports = {
@@ -17,7 +17,7 @@ module.exports = {
 	},
 	//точка входа
 	entry: {
-		app: "./src/demo/index.ts",
+		app: "./src/Demo/index.ts",
 	},
 	//точка выхода
 	output: {
@@ -50,11 +50,11 @@ module.exports = {
 				//исключения
 				exclude: "/node_modules/",
 			},
-				{
-        test: /\.ts$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      },
+			{
+				test: /\.ts$/,
+				use: "ts-loader",
+				exclude: /node_modules/,
+			},
 
 			{
 				test: /\.(scss|css)$/,
@@ -78,8 +78,8 @@ module.exports = {
 		],
 	},
 	resolve: {
-    extensions: ['.ts', '.js'],
-  },
+		extensions: [".ts", ".js"],
+	},
 	devServer: {
 		static: {
 			directory: "./dist",
@@ -94,11 +94,11 @@ module.exports = {
 			filename: `${PATHS.assets}css/[name].[fullhash].css`,
 		}),
 		new webpack.ProvidePlugin({
-				$:'jquery',
-				jQuery:'jquery'
+			$: "jquery",
+			jQuery: "jquery",
 		}),
 		new HtmlWebpackPlugin({
-			template: `${PATHS.src}/demo/index.html`,
+			template: `${PATHS.src}/Demo/index.html`,
 			filename: `./index.html`,
 		}),
 	],

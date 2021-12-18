@@ -1,10 +1,7 @@
-import { IThumbCoords } from "../../../../Interfaces/interfaces";
-import Thumb from "../Thumb";
-
 const changePosition = function (e: JQuery.MouseMoveEvent) {
-	const { thumbCoords, thisThumb, position } = e.data;
-
-	let value = thisThumb.parentElement.value;
+	const { thisThumb, stance } = e.data;
+	const thumbCoords = thisThumb.coords;
+	let value = thisThumb.value;
 	let direction = thisThumb.parentElement.direction;
 
 	let left =
@@ -23,16 +20,13 @@ const changePosition = function (e: JQuery.MouseMoveEvent) {
 	let stepTop =
 		Math.round(top / thisThumb.stepPercent) * thisThumb.stepPercent;
 
-	let x = (stepLeft / 100) * thisThumb.parentElement.size.width;
-	let y = (stepLeft / 100) * thisThumb.parentElement.size.height;
-
 	let stepDirection = direction === "horizontal" ? stepLeft : stepTop;
 	let dragDirection = direction === "horizontal" ? "left" : "top";
 	let fillDirection = direction === "horizontal" ? "width" : "height";
 	let result =
 		(stepDirection / thisThumb.stepPercent) * thisThumb.step.toFixed();
 
-	$(`.slider__thumb-${position}`).css({
+	$(`.slider__thumb-${stance}`).css({
 		[dragDirection]: value / (thisThumb.parentElement.ends.max / 100) + "%",
 	});
 
@@ -40,7 +34,7 @@ const changePosition = function (e: JQuery.MouseMoveEvent) {
 		[fillDirection]: value / (thisThumb.parentElement.ends.max / 100) + "%",
 	});
 
-	thisThumb.parentElement.notify("UpdateModelState", Number(result), x, y);
+	thisThumb.notify("UpdateThumbModelState", Number(result), stance);
 };
 
 export default changePosition;
