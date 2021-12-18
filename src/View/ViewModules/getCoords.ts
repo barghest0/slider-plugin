@@ -1,11 +1,10 @@
-import { IThumbCoords } from "../../Interfaces/interfaces";
+import { ICoords } from "../../Interfaces/interfaces"
 
-const getCoords = (element: JQuery<HTMLElement>): IThumbCoords => {
-
+const getCoords = (thumb: JQuery<HTMLElement>): ICoords => {
 	return {
-		y: element.offset()!.top,
-		x: element.offset()!.left,
-	};
-};
+		x: thumb.position()!.left,
+		y: thumb.position()!.top,
+	}
+}
 
-export default getCoords;
+export default getCoords

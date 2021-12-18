@@ -8,17 +8,24 @@ const initialViewRender = function (
 ) {
 	let dragDirection = direction === "horizontal" ? "left" : "top";
 	let fillDirection = direction === "horizontal" ? "width" : "height";
+	let currentValue = Array.isArray(this.thumbView.value)
+		? this.thumbView.value[stance] / (this.ends.max / 100)
+		: this.thumbView.value / (this.ends.max / 100);
 
 	$(`.slider__thumb-${stance}`).css({
-		[dragDirection]: Array.isArray(this.thumbView.value)
-			? this.thumbView.value[stance] / (this.ends.max / 100) + "%"
-			: this.thumbView.value / (this.ends.max / 100) + "%",
+		[dragDirection]: currentValue + "%",
 	});
-	$(".slider__fill").css({
-		[fillDirection]: Array.isArray(this.thumbView.value)
-			? this.thumbView.value[stance] / (this.ends.max / 100) + "%"
-			: this.thumbView.value / (this.ends.max / 100) + "%",
-	});
+
+	if (this.isRange) {
+		$(".slider__fill").css({
+			//[dragDirection]: currentValue + "%",
+			[fillDirection]: currentValue + "%",
+		});
+	} else {
+		$(".slider__fill").css({
+			[fillDirection]: currentValue + "%",
+		});
+	}
 };
 
 export default initialViewRender;
