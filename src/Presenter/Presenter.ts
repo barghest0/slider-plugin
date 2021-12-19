@@ -3,7 +3,6 @@ import TrackModel from "../Model/TrackModel"
 import { Direction, ISliderParams } from "../Interfaces/interfaces"
 import ThumbModel from "../Model/ThumbModel"
 import Thumb from "../View/ViewElements/Thumb/Thumb"
-import { HighlightSpanKind } from "typescript"
 
 class Presenter {
 	private trackModel: TrackModel
@@ -38,7 +37,7 @@ class Presenter {
 	}: ISliderParams) {
 		const height = $(this.sliderClass).height()!
 		const width = $(this.sliderClass).width()!
-		this.trackModel.setSize({ width: 200, height: 4 })
+		this.trackModel.setSize({ width: 4, height: 200 })
 		this.trackModel.setEnds({ min, max })
 		this.trackModel.setIsRange(isRange)
 		this.trackModel.setDirection(direction)
@@ -71,7 +70,7 @@ class Presenter {
 			max
 		)
 		this.createThumbView(this.thumbStance)
-		this.setThumbViewStateAndRender(direction, this.thumbStance)
+		this.setThumbViewStateAndPlacement(direction, this.thumbStance)
 
 		if (isRange) {
 			this.thumbStance += 1
@@ -84,8 +83,10 @@ class Presenter {
 				max
 			)
 			this.createThumbView(this.thumbStance)
-			this.setThumbViewStateAndRender(direction, this.thumbStance)
+			this.setThumbViewStateAndPlacement(direction, this.thumbStance)
 		}
+
+		this.view.initialFillPlacement(direction)
 		return this
 	}
 
@@ -103,12 +104,12 @@ class Presenter {
 		this.thumbs[stance].setValue(value)
 		return this
 	}
-	private setThumbViewStateAndRender(direction: Direction, stance: number) {
+	private setThumbViewStateAndPlacement(direction: Direction, stance: number) {
 		const { step, stepCount, stepPercent, value } =
 			this.thumbs[stance].getState()
 		this.view.thumbView.setStep(step, stepPercent, stepCount)
 		this.view.thumbView.setValue(value)
-		this.view.render(direction, stance)
+		this.view.initialThumbsPlacement(direction, stance)
 		return this
 	}
 
@@ -144,6 +145,12 @@ class Presenter {
 	private updateThumbPosition(value: number) {
 		this.view.thumbView.setValue(value)
 	}
+
+	// private getRangeValues(): number[] {
+	// 	const result: number[] = []
+	// 	this.thumbs.forEach(thumb => result.push(thumb.getValue()))
+	// 	return result
+	// }
 
 	private subscribe() {
 		this.view.thumbView.subscribe(

@@ -37,7 +37,7 @@ interface ISliderTrackState {
 
 interface ISliderThumbState {
 	step: number
-	value: number | number[]
+	value: number
 	stepCount: number
 	stepPercent: number
 }

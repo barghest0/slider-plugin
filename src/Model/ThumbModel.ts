@@ -4,7 +4,7 @@ import { IEnds, ISliderThumbState } from "../Interfaces/interfaces"
 class ThumbModel extends Observer {
 	private sliderClass: string
 	private step: number
-	private value: number | number[]
+	private value: number
 	private stance: number
 	private stepCount: number
 	private stepPercent: number
@@ -35,6 +35,10 @@ class ThumbModel extends Observer {
 	public updateThumbModel(value: number) {
 		this.setValue(value)
 		this.notify("UpdateThumbPosition", this.value)
+	}
+
+	public getValue() {
+		return this.value
 	}
 
 	public getState(): ISliderThumbState {

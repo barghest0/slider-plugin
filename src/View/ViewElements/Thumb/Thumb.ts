@@ -12,7 +12,7 @@ class Thumb extends Observer {
 	public step: number
 	public stepPercent: number
 	public stepCount: number
-	public value: number | number[]
+	public value: number
 	constructor(parentElement: View) {
 		super()
 		this.parentElement = parentElement
@@ -32,7 +32,7 @@ class Thumb extends Observer {
 		this.stepPercent = stepPercent
 		this.stepCount = stepCount
 	}
-	public setValue(value: number | number[]) {
+	public setValue(value: number) {
 		this.value = value
 	}
 	public dragThumb(stance: number) {
