@@ -35,12 +35,14 @@ class Presenter {
 		isRange,
 		direction,
 	}: ISliderParams) {
-		const height = $(this.sliderClass).height()!
-		const width = $(this.sliderClass).width()!
-		this.trackModel.setSize({ width: 4, height: 200 })
+		const height = direction === "horizontal" ? 4 : 200
+		const width = direction === "horizontal" ? 200 : 4
+
+		this.trackModel.setSize({ width, height })
 		this.trackModel.setEnds({ min, max })
 		this.trackModel.setIsRange(isRange)
 		this.trackModel.setDirection(direction)
+
 		return this
 	}
 	private setTrackViewState() {
@@ -104,7 +106,10 @@ class Presenter {
 		this.thumbs[stance].setValue(value)
 		return this
 	}
-	private setThumbViewStateAndPlacement(direction: Direction, stance: number) {
+	private setThumbViewStateAndPlacement(
+		direction: Direction,
+		stance: number
+	) {
 		const { step, stepCount, stepPercent, value } =
 			this.thumbs[stance].getState()
 		this.view.thumbView.setStep(step, stepPercent, stepCount)
@@ -113,7 +118,7 @@ class Presenter {
 		return this
 	}
 
-	private setInitialFillPlacement(direction: Direction,) {
+	private setInitialFillPlacement(direction: Direction) {
 		$(document).ready(() => {
 			this.view.initialFillPlacement(direction)
 		})
@@ -140,8 +145,12 @@ class Presenter {
 
 	private addListeners(isRange: boolean) {
 		this.view.thumbView.dragThumb(0)
+		this.view.trackView.clickTrack(0)
+
 		if (isRange) {
 			this.view.thumbView.dragThumb(1)
+			this.view.trackView.clickTrack(1)
+
 		}
 	}
 	private updateThumbModelState(value: number, stance: number) {

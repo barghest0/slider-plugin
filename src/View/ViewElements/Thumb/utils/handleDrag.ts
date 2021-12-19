@@ -42,12 +42,12 @@ const changePosition = function (e: JQuery.MouseMoveEvent) {
 	let thumbOffset = parseInt($(`.slider__thumb-0`).css(dragDirection), 10)
 
 	if (thisThumb.parentElement.isRange) {
-		$(".slider__fill").css({
+		$(`.slider__fill-${direction}`).css({
 			[dragDirection]: thumbOffset + "px",
 			[fillDirection]: deltaWidth + "px",
 		})
 	} else {
-		$(".slider__fill").css({
+		$(`.slider__fill-${direction}`).css({
 			[fillDirection]:
 				value[stance] / (thisThumb.parentElement.ends.max / 100) + "%",
 		})

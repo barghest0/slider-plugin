@@ -1,11 +1,21 @@
-import "../Style/style.scss";
-import Presenter from "../Presenter/Presenter";
+import "../Style/style.scss"
+import Presenter from "../Presenter/Presenter"
 
-new Presenter(".slider", {
+new Presenter(".slider-1", {
 	min: 0,
 	max: 200,
 	step: 10,
 	value: [50, 150],
 	isRange: true,
-	direction: "vertical",
-});
+	direction: "horizontal",
+})
+
+
+// new Presenter(".slider-2", {
+// 	min: 0,
+// 	max: 200,
+// 	step: 10,
+// 	value: [10, 150],
+// 	isRange: true,
+// 	direction: "horizontal",
+// })

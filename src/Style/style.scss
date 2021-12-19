@@ -1,15 +1,29 @@
-@import "slider.scss";
+@import 'slider.scss';
 * {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 body {
-	background-color: rgba(51, 85, 124, 0.667);
-	margin: 0;
-	padding-top: 30px;
-	height: 1000px;
+    background-color: rgba(80, 80, 80, 0.667);
+    margin: 0;
+    padding-top: 30px;
+    height: 1000px;
+    color: #fff;
 }
 
 .container {
-	max-width: 1200px;
-	margin: 0 auto;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.title {
+    margin-bottom: 30px;
+}
+.slider {
+    margin-bottom: 30px;
+}
+.panel {
+    padding-top: 20px;
+    background-color: rgba(64, 72, 80, 0.667);
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgb(49, 49, 49);
 }
