@@ -86,7 +86,7 @@ class Presenter {
 			this.setThumbViewStateAndPlacement(direction, this.thumbStance)
 		}
 
-		this.view.initialFillPlacement(direction)
+		this.setInitialFillPlacement(direction)
 		return this
 	}
 
@@ -109,8 +109,14 @@ class Presenter {
 			this.thumbs[stance].getState()
 		this.view.thumbView.setStep(step, stepPercent, stepCount)
 		this.view.thumbView.setValue(value)
-		this.view.initialThumbsPlacement(direction, stance)
+		this.view.initialThumbPlacement(direction, stance)
 		return this
+	}
+
+	private setInitialFillPlacement(direction: Direction,) {
+		$(document).ready(() => {
+			this.view.initialFillPlacement(direction)
+		})
 	}
 
 	private createThumb(stance: number) {
@@ -139,11 +145,11 @@ class Presenter {
 		}
 	}
 	private updateThumbModelState(value: number, stance: number) {
-		this.thumbs[stance].updateThumbModel(value)
+		this.thumbs[stance].updateThumbModel(value, stance)
 	}
 
-	private updateThumbPosition(value: number) {
-		this.view.thumbView.setValue(value)
+	private updateThumbPosition(value: number, stance: number) {
+		this.view.thumbView.updateValue(value, stance)
 	}
 
 	// private getRangeValues(): number[] {

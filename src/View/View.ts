@@ -10,7 +10,7 @@ import {
 	ISize,
 	ISliderTrackState,
 } from "../Interfaces/interfaces"
-import initialThumbsPlacement from "./ViewModules/initialThumbsPlacement"
+import initialThumbPlacement from "./ViewModules/initialThumbPlacement"
 import initialFillPlacement from "./ViewModules/initialFillPlacement"
 import getCoords from './ViewModules/getCoords'
 
@@ -25,7 +25,7 @@ class View extends Observer {
 	public direction: Direction
 	public size: ISize
 	public coords: ICoords
-	public initialThumbsPlacement: (direction: Direction, stance: number) => void
+	public initialThumbPlacement: (direction: Direction, stance: number) => void
 	public initialFillPlacement: (direction: Direction) => void
 
 	constructor(sliderClass: string) {
@@ -40,7 +40,7 @@ class View extends Observer {
 		this.coords = { x: 0, y: 0 }
 		this.isRange = false
 		this.direction = "horizontal"
-		this.initialThumbsPlacement = initialThumbsPlacement.bind(this)
+		this.initialThumbPlacement = initialThumbPlacement.bind(this)
 		this.initialFillPlacement = initialFillPlacement.bind(this)
 
 	}

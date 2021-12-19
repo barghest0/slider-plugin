@@ -32,9 +32,9 @@ class ThumbModel extends Observer {
 		this.stance = stance
 	}
 
-	public updateThumbModel(value: number) {
+	public updateThumbModel(value: number, stance: number) {
 		this.setValue(value)
-		this.notify("UpdateThumbPosition", this.value)
+		this.notify("UpdateThumbPosition", this.value, stance)
 	}
 
 	public getValue() {

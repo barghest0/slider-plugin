@@ -12,14 +12,14 @@ class Thumb extends Observer {
 	public step: number
 	public stepPercent: number
 	public stepCount: number
-	public value: number
+	public value: number[]
 	constructor(parentElement: View) {
 		super()
 		this.parentElement = parentElement
 		this.step = 0
 		this.stepPercent = 0
 		this.stepCount = 0
-		this.value = 0
+		this.value = []
 	}
 
 	public createThumb(stance: number) {
@@ -33,14 +33,18 @@ class Thumb extends Observer {
 		this.stepCount = stepCount
 	}
 	public setValue(value: number) {
-		this.value = value
+		this.value.push(value)
+	}
+	public updateValue(value: number, stance: number) {
+		this.value[stance] = value
 	}
 	public dragThumb(stance: number) {
 		this.parentElement.parent.on(
 			"mousedown",
 			`.slider__thumb-${stance}`,
-
 			(event: JQuery.MouseDownEvent) => {
+				event.preventDefault()
+				event.stopPropagation()
 				$("body").on(
 					"mousemove",
 					{
