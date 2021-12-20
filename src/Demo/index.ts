@@ -1,5 +1,5 @@
-import "../Style/style.scss"
-import Presenter from "../Presenter/Presenter"
+import "../Style/style.scss";
+import Presenter from "../Presenter/Presenter";
 
 new Presenter(".slider-1", {
 	min: 0,
@@ -8,7 +8,7 @@ new Presenter(".slider-1", {
 	value: [50, 150],
 	isRange: true,
 	direction: "horizontal",
-})
+});
 
 
 // new Presenter(".slider-2", {

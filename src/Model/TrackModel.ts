@@ -1,39 +1,39 @@
-import Observer from "../Observer/Observer"
+import Observer from "../Observer/Observer";
 import {
 	Direction,
 	IEnds,
 	ISliderTrackState,
 	ISize,
-} from "../Interfaces/interfaces"
+} from "../Interfaces/interfaces";
 
 class TrackModel extends Observer {
-	private sliderClass: string
-	private isRange: boolean
-	private direction: Direction
-	private ends: IEnds
-	private size: ISize
+	private sliderClass: string;
+	private isRange: boolean;
+	private direction: Direction;
+	private ends: IEnds;
+	private size: ISize;
 	constructor(sliderClass: string) {
-		super()
-		this.sliderClass = sliderClass
-		this.ends = { min: 1, max: 100 }
-		this.size = { width: 200, height: 4 }
-		this.isRange = false
-		this.direction = "horizontal"
+		super();
+		this.sliderClass = sliderClass;
+		this.ends = { min: 1, max: 100 };
+		this.size = { width: 200, height: 4 };
+		this.isRange = false;
+		this.direction = "horizontal";
 	}
 
 	public setEnds({ min, max }: IEnds) {
-		this.ends = { min, max }
+		this.ends = { min, max };
 	}
 
 	public setSize({ width, height }: ISize) {
-		this.size = { width, height }
+		this.size = { width, height };
 	}
 	public setIsRange(isRange: boolean) {
-		this.isRange = isRange
+		this.isRange = isRange;
 	}
 
 	public setDirection(direction: Direction) {
-		this.direction = direction
+		this.direction = direction;
 	}
 
 	public getState(): ISliderTrackState {
@@ -42,8 +42,8 @@ class TrackModel extends Observer {
 			size: this.size,
 			isRange: this.isRange,
 			direction: this.direction,
-		}
+		};
 	}
 }
 
-export default TrackModel
+export default TrackModel;
