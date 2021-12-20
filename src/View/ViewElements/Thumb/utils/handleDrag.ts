@@ -31,7 +31,8 @@ const changePosition = function (e: JQuery.MouseMoveEvent) {
 	let result =
 		(stepDirection / thisThumb.stepPercent) * thisThumb.step.toFixed()
 
-
+	thisThumb.notify("UpdateThumbModelState", result, stance)
+	
 	$(`.slider__thumb-${stance}`).css({
 		[dragDirection]: value[stance] / (thisThumb.parentElement.ends.max / 100) + "%",
 	})
@@ -39,6 +40,7 @@ const changePosition = function (e: JQuery.MouseMoveEvent) {
 	let deltaWidth =
 		parseInt($(`.slider__thumb-1`).css(dragDirection), 10) -
 		parseInt($(`.slider__thumb-0`).css(dragDirection), 10)
+		
 	let thumbOffset = parseInt($(`.slider__thumb-0`).css(dragDirection), 10)
 
 	if (thisThumb.parentElement.isRange) {
@@ -53,7 +55,7 @@ const changePosition = function (e: JQuery.MouseMoveEvent) {
 		})
 	}
 
-	thisThumb.notify("UpdateThumbModelState", result, stance)
+	
 }
 
 export default changePosition

@@ -145,12 +145,9 @@ class Presenter {
 
 	private addListeners(isRange: boolean) {
 		this.view.thumbView.dragThumb(0)
-		this.view.trackView.clickTrack(0)
-
+		this.view.trackView.clickTrack()
 		if (isRange) {
 			this.view.thumbView.dragThumb(1)
-			this.view.trackView.clickTrack(1)
-
 		}
 	}
 	private updateThumbModelState(value: number, stance: number) {
@@ -172,12 +169,17 @@ class Presenter {
 			"UpdateThumbModelState",
 			this.updateThumbModelState.bind(this)
 		)
+		this.view.trackView.subscribe(
+			"UpdateThumbModelState",
+			this.updateThumbModelState.bind(this)
+		)
 		this.thumbs.forEach((thumb) =>
 			thumb.subscribe(
 				"UpdateThumbPosition",
 				this.updateThumbPosition.bind(this)
 			)
 		)
+		
 	}
 }
 

@@ -38,6 +38,7 @@ class Thumb extends Observer {
 	public updateValue(value: number, stance: number) {
 		this.value[stance] = value
 	}
+
 	public dragThumb(stance: number) {
 		this.parentElement.parent.on(
 			"mousedown",
