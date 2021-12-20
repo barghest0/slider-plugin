@@ -1,32 +1,32 @@
-import View from "../View/View"
-import TrackModel from "../Model/TrackModel"
-import { Direction, ISliderParams } from "../Interfaces/interfaces"
-import ThumbModel from "../Model/ThumbModel"
-import Thumb from "../View/ViewElements/Thumb/Thumb"
+import View from "../View/View";
+import TrackModel from "../Model/TrackModel";
+import { Direction, ISliderParams } from "../Interfaces/interfaces";
+import ThumbModel from "../Model/ThumbModel";
+import Thumb from "../View/ViewElements/Thumb/Thumb";
 
 class Presenter {
-	private trackModel: TrackModel
-	private view: View
-	private params: ISliderParams
-	private sliderClass: string
-	private thumbs: ThumbModel[]
-	private thumbStance: number
+	private trackModel: TrackModel;
+	private view: View;
+	private params: ISliderParams;
+	private sliderClass: string;
+	private thumbs: ThumbModel[];
+	private thumbStance: number;
 	constructor(sliderClass: string, params: ISliderParams) {
-		this.sliderClass = sliderClass
-		this.trackModel = new TrackModel(sliderClass)
-		this.view = new View(sliderClass)
-		this.thumbs = []
-		this.params = params
-		this.thumbStance = 0
-		this.init(params)
-		this.subscribe()
-		this.addListeners(params.isRange)
+		this.sliderClass = sliderClass;
+		this.trackModel = new TrackModel(sliderClass);
+		this.view = new View(sliderClass);
+		this.thumbs = [];
+		this.params = params;
+		this.thumbStance = 0;
+		this.init(params);
+		this.subscribe();
+		this.addListeners(params.isRange);
 	}
 
 	private init(params: ISliderParams) {
 		this.setTrackModelState(params)
 			.setTrackViewState()
-			.createSlider(params)
+			.createSlider(params);
 	}
 
 	private setTrackModelState({
@@ -35,19 +35,19 @@ class Presenter {
 		isRange,
 		direction,
 	}: ISliderParams) {
-		const height = direction === "horizontal" ? 4 : 200
-		const width = direction === "horizontal" ? 200 : 4
+		const height = direction === "horizontal" ? 4 : 200;
+		const width = direction === "horizontal" ? 200 : 4;
 
-		this.trackModel.setSize({ width, height })
-		this.trackModel.setEnds({ min, max })
-		this.trackModel.setIsRange(isRange)
-		this.trackModel.setDirection(direction)
+		this.trackModel.setSize({ width, height });
+		this.trackModel.setEnds({ min, max });
+		this.trackModel.setIsRange(isRange);
+		this.trackModel.setDirection(direction);
 
-		return this
+		return this;
 	}
 	private setTrackViewState() {
-		this.view.setState(this.trackModel.getState())
-		return this
+		this.view.setState(this.trackModel.getState());
+		return this;
 	}
 
 	public createSlider({
@@ -58,38 +58,38 @@ class Presenter {
 		max,
 		direction,
 	}: ISliderParams) {
-		$(this.sliderClass).addClass(`slider-${direction}`)
-		this.createTrackView(direction)
-		this.createScaleView(direction)
-		this.creteFillView(direction)
+		$(this.sliderClass).addClass(`slider-${direction}`);
+		this.createTrackView(direction);
+		this.createScaleView(direction);
+		this.creteFillView(direction);
 
-		this.createThumb(this.thumbStance)
+		this.createThumb(this.thumbStance);
 		this.setThumbModelState(
 			this.thumbStance,
 			step,
 			Array.isArray(value) ? value[0] : value,
 			min,
 			max
-		)
-		this.createThumbView(this.thumbStance)
-		this.setThumbViewStateAndPlacement(direction, this.thumbStance)
+		);
+		this.createThumbView(this.thumbStance);
+		this.setThumbViewStateAndPlacement(direction, this.thumbStance);
 
 		if (isRange) {
-			this.thumbStance += 1
-			this.createThumb(this.thumbStance)
+			this.thumbStance += 1;
+			this.createThumb(this.thumbStance);
 			this.setThumbModelState(
 				this.thumbStance,
 				step,
 				Array.isArray(value) ? value[1] : value,
 				min,
 				max
-			)
-			this.createThumbView(this.thumbStance)
-			this.setThumbViewStateAndPlacement(direction, this.thumbStance)
+			);
+			this.createThumbView(this.thumbStance);
+			this.setThumbViewStateAndPlacement(direction, this.thumbStance);
 		}
 
-		this.setInitialFillPlacement(direction)
-		return this
+		this.setInitialFillPlacement(direction);
+		return this;
 	}
 
 	private setThumbModelState(
@@ -100,62 +100,66 @@ class Presenter {
 		max: number
 	) {
 		this.thumbs.forEach((thumb) => {
-			thumb.setStep(step, { min, max })
-		})
-		this.thumbs[stance].setStance(stance)
-		this.thumbs[stance].setValue(value)
-		return this
+			thumb.setStep(step, { min, max });
+		});
+		this.thumbs[stance].setStance(stance);
+		this.thumbs[stance].setValue(value);
+		return this;
 	}
 	private setThumbViewStateAndPlacement(
 		direction: Direction,
 		stance: number
 	) {
 		const { step, stepCount, stepPercent, value } =
-			this.thumbs[stance].getState()
-		this.view.thumbView.setStep(step, stepPercent, stepCount)
-		this.view.thumbView.setValue(value)
-		this.view.initialThumbPlacement(direction, stance)
-		return this
+			this.thumbs[stance].getState();
+		this.view.thumbView.setStep(step, stepPercent, stepCount);
+		this.view.thumbView.setValue(value);
+		this.view.initialThumbPlacement(direction, stance);
+		return this;
 	}
 
 	private setInitialFillPlacement(direction: Direction) {
 		$(document).ready(() => {
-			this.view.initialFillPlacement(direction)
-		})
+			this.view.initialFillPlacement(direction);
+		});
 	}
 
 	private createThumb(stance: number) {
-		this.thumbs.push(new ThumbModel(this.sliderClass, stance))
+		this.thumbs.push(new ThumbModel(this.sliderClass, stance));
 	}
 
 	private createThumbView(stance: number) {
-		this.view.thumbView.createThumb(stance)
+		this.view.thumbView.createThumb(stance);
 	}
 
 	private createTrackView(direction: Direction) {
-		this.view.trackView.createTrack(direction)
+		this.view.trackView.createTrack(direction);
 	}
 	private createScaleView(direction: Direction) {
-		this.view.scaleView.createScale(direction)
+		this.view.scaleView.createScale(direction);
 	}
 
 	private creteFillView(direction: Direction) {
-		this.view.fillView.createFill(direction)
+		this.view.fillView.createFill(direction);
 	}
 
 	private addListeners(isRange: boolean) {
-		this.view.thumbView.dragThumb(0)
-		this.view.trackView.clickTrack()
+		this.view.thumbView.dragThumb(0);
+		this.view.trackView.clickTrack();
 		if (isRange) {
-			this.view.thumbView.dragThumb(1)
+			this.view.thumbView.dragThumb(1);
 		}
 	}
 	private updateThumbModelState(value: number, stance: number) {
-		this.thumbs[stance].updateThumbModel(value, stance)
+		this.thumbs[stance].updateThumbModel(value, stance);
 	}
 
 	private updateThumbPosition(value: number, stance: number) {
-		this.view.thumbView.updateValue(value, stance)
+		this.view.thumbView.updateValue(value, stance);
+		let width =
+			parseInt($(`.slider__thumb-1`).css("left"), 10) -
+			parseInt($(`.slider__thumb-0`).css("left"), 10);
+		this.view.fillView.updateWidth(width);
 	}
 
 	// private getRangeValues(): number[] {
@@ -168,19 +172,18 @@ class Presenter {
 		this.view.thumbView.subscribe(
 			"UpdateThumbModelState",
 			this.updateThumbModelState.bind(this)
-		)
+		);
 		this.view.trackView.subscribe(
 			"UpdateThumbModelState",
 			this.updateThumbModelState.bind(this)
-		)
+		);
 		this.thumbs.forEach((thumb) =>
 			thumb.subscribe(
 				"UpdateThumbPosition",
 				this.updateThumbPosition.bind(this)
 			)
-		)
-		
+		);
 	}
 }
 
-export default Presenter
+export default Presenter;
