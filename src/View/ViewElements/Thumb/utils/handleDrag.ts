@@ -34,28 +34,21 @@ const changePosition = function (e: JQuery.MouseMoveEvent) {
 	thisThumb.notify("UpdateThumbModelState", result, stance);
 
 	$(`.slider__thumb-${stance}`).css({
-		[dragDirection]: value[stance] / (thisThumb.parentElement.ends.max / 100) + "%",
+		[dragDirection]: value[stance] + "%",
 	});
 
-	let deltaWidth =
-		parseInt($(`.slider__thumb-1`).css(dragDirection), 10) -
-		parseInt($(`.slider__thumb-0`).css(dragDirection), 10);
-
-	let thumbOffset = parseInt($(`.slider__thumb-0`).css(dragDirection), 10);
+	thisThumb.notify("UpdateThumbModelState", result, stance);
 
 	if (thisThumb.parentElement.isRange) {
 		$(`.slider__fill-${direction}`).css({
-			[dragDirection]: thumbOffset + "px",
-			[fillDirection]: deltaWidth + "px",
+			[dragDirection]: thisThumb.parentElement.fillView.offset + "px",
+			[fillDirection]: thisThumb.parentElement.fillView.width + "px",
 		});
 	} else {
 		$(`.slider__fill-${direction}`).css({
-			[fillDirection]:
-				value[stance] / (thisThumb.parentElement.ends.max / 100) + "%",
+			[fillDirection]: value[stance] + "%",
 		});
 	}
-
-
 };
 
 export default changePosition;

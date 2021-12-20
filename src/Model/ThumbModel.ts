@@ -8,6 +8,7 @@ class ThumbModel extends Observer {
 	private stance: number;
 	private stepCount: number;
 	private stepPercent: number;
+	private valueInPercent: number;
 	constructor(sliderClass: string, stance: number) {
 		super();
 		this.sliderClass = sliderClass;
@@ -16,6 +17,7 @@ class ThumbModel extends Observer {
 		this.value = 0;
 		this.stepCount = 0;
 		this.stepPercent = 0;
+		this.valueInPercent = 0;
 	}
 
 	public setStep(step: number, ends: IEnds) {
@@ -27,14 +29,16 @@ class ThumbModel extends Observer {
 	public setValue(value: number) {
 		this.value = value;
 	}
-
+	public setValueInPercent(value: number, ends: IEnds) {
+		this.valueInPercent = value / (ends.max / 100);
+	}
 	public setStance(stance: number) {
 		this.stance = stance;
 	}
 
-	public updateThumbModel(value: number, stance: number) {
-		this.setValue(value);
-		this.notify("UpdateThumbPosition", this.value, stance);
+	public updateThumbModel(value: number, stance: number, ends: IEnds) {
+		this.setValueInPercent(value, ends);
+		this.notify("UpdateThumbPosition", this.valueInPercent, stance);
 	}
 
 	public getValue() {

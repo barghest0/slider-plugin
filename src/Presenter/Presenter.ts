@@ -151,7 +151,7 @@ class Presenter {
 		}
 	}
 	private updateThumbModelState(value: number, stance: number) {
-		this.thumbs[stance].updateThumbModel(value, stance);
+		this.thumbs[stance].updateThumbModel(value, stance, this.view.ends);
 	}
 
 	private updateThumbPosition(value: number, stance: number) {
@@ -160,6 +160,8 @@ class Presenter {
 			parseInt($(`.slider__thumb-1`).css("left"), 10) -
 			parseInt($(`.slider__thumb-0`).css("left"), 10);
 		this.view.fillView.updateWidth(width);
+		let offset = parseInt($(`.slider__thumb-0`).css("left"), 10);
+		this.view.fillView.updateOffset(offset);
 	}
 
 	// private getRangeValues(): number[] {
