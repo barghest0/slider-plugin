@@ -1,12 +1,14 @@
 import { Direction } from "../../../Interfaces/interfaces";
+import Observer from "../../../Observer/Observer";
 import View from "../../View";
 
-class Fill {
+class Fill extends Observer {
 	private parentElement: View;
 	private fill: JQuery<HTMLElement>;
 	private width: number;
 	private offset: number;
 	constructor(parentElement: View) {
+		super();
 		this.parentElement = parentElement;
 		this.fill = $(".slider__fill");
 		this.width = 100;
@@ -18,10 +20,10 @@ class Fill {
 			`<div class="slider__fill slider__fill-${direction}"></div>`
 		);
 	}
-	public updateWidth(width: number) {
+	public setWidth(width: number) {
 		this.width = width;
 	}
-	public updateOffset(offset: number) {
+	public setOffset(offset: number) {
 		this.offset = offset;
 	}
 }

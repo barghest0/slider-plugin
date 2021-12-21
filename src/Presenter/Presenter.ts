@@ -35,12 +35,14 @@ class Presenter {
 		isRange,
 		direction,
 	}: ISliderParams) {
-		const size =
-			direction === "horizontal"
-				? $(".slider").width()!
-				: $(".slider").height()!;
+		$(document).ready(() => {
+			const size =
+				direction === "horizontal"
+					? $(".slider").width()!
+					: $(".slider").height()!;
 
-		this.trackModel.setSize(size);
+			this.trackModel.setSize(size);
+		});
 		this.trackModel.setEnds({ min, max });
 		this.trackModel.setIsRange(isRange);
 		this.trackModel.setDirection(direction);
@@ -155,29 +157,19 @@ class Presenter {
 			this.view.thumbView.dragThumb(1);
 		}
 	}
-	private updateThumbModelState(
-		value: number,
-		stance: number,
-		coord: number
-	) {
-		this.thumbs[stance].updateThumbModel(
-			value,
-			stance,
-			this.view.ends,
-			coord
-		);
+	private updateThumbModelState(stance: number, coord: number) {
+		this.thumbs[stance].updateThumbModel(stance, this.view.size, coord);
 	}
 	private updateThumbPosition(value: number, offset: number, stance: number) {
 		this.view.thumbView.updateOffset(offset, stance);
-
 		this.view.thumbView.updateValue(value, stance);
 	}
 	private updateTrackModelState() {
 		this.trackModel.updateTrackFill();
 	}
-	private updateTrackFillPosition(offset: number, width: number) {
-		this.view.fillView.updateWidth(width);
-		this.view.fillView.updateOffset(offset);
+	private updateTrackFillPosition(width: number, offset: number) {
+		this.view.fillView.setWidth(width);
+		this.view.fillView.setOffset(offset);
 	}
 
 	// private getRangeValues(): number[] {

@@ -43,6 +43,8 @@ class TrackModel extends Observer {
 		this.fillOffset = parseInt($(`.slider__thumb-0`).css("left"), 10);
 	}
 	public updateTrackFill() {
+		console.log(this.fillOffset);
+
 		this.setFillSize();
 		this.setFillOffset();
 		this.notify("UpdateTrackFillPosition", this.fillSize, this.fillOffset);

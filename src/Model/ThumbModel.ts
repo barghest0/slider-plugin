@@ -31,29 +31,33 @@ class ThumbModel extends Observer {
 	public setValue(value: number) {
 		this.value = value;
 	}
+
 	public setStance(stance: number) {
 		this.stance = stance;
 	}
+
 	public setOffset(ends: IEnds) {
+		this.offset = this.value / (ends.max / 100);
+		this.setStepOffset();
+	}
+
+	public setStepOffset() {
 		this.stepOffset =
 			Math.round(this.offset / this.stepPercent) * this.stepPercent;
-		this.offset = this.value / (ends.max / 100);
 	}
+
 	public updateOffset(size: number, coord: number) {
 		this.offset = ((coord - $(".slider").position().left) / size) * 100;
-
-		this.stepOffset =
-			Math.round(this.offset / this.stepPercent) * this.stepPercent;
+		if (this.offset < 0) this.offset = 0;
+		if (this.offset > 100) this.offset = 100;
+		this.setStepOffset();
 	}
 
-	public updateThumbModel(
-		value: number,
-		stance: number,
-		ends: IEnds,
-		coord: number
-	) {
-		this.updateOffset(200, coord);
+	public updateThumbModel(stance: number, size: number, coord: number) {
+		this.updateOffset(size, coord);
+		const value = (this.stepOffset / this.stepPercent) * this.step;
 		this.setValue(value);
+
 		this.notify("UpdateThumbPosition", this.value, this.stepOffset, stance);
 	}
 
