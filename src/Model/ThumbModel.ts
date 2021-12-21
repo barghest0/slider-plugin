@@ -8,7 +8,8 @@ class ThumbModel extends Observer {
 	private stance: number;
 	private stepCount: number;
 	private stepPercent: number;
-	private valueInPercent: number;
+	private offset: number;
+	private stepOffset: number;
 	constructor(sliderClass: string, stance: number) {
 		super();
 		this.sliderClass = sliderClass;
@@ -17,7 +18,8 @@ class ThumbModel extends Observer {
 		this.value = 0;
 		this.stepCount = 0;
 		this.stepPercent = 0;
-		this.valueInPercent = 0;
+		this.offset = 0;
+		this.stepOffset = 0;
 	}
 
 	public setStep(step: number, ends: IEnds) {
@@ -29,16 +31,30 @@ class ThumbModel extends Observer {
 	public setValue(value: number) {
 		this.value = value;
 	}
-	public setValueInPercent(value: number, ends: IEnds) {
-		this.valueInPercent = value / (ends.max / 100);
-	}
 	public setStance(stance: number) {
 		this.stance = stance;
 	}
+	public setOffset(ends: IEnds) {
+		this.stepOffset =
+			Math.round(this.offset / this.stepPercent) * this.stepPercent;
+		this.offset = this.value / (ends.max / 100);
+	}
+	public updateOffset(size: number, coord: number) {
+		this.offset = ((coord - $(".slider").position().left) / size) * 100;
 
-	public updateThumbModel(value: number, stance: number, ends: IEnds) {
-		this.setValueInPercent(value, ends);
-		this.notify("UpdateThumbPosition", this.valueInPercent, stance);
+		this.stepOffset =
+			Math.round(this.offset / this.stepPercent) * this.stepPercent;
+	}
+
+	public updateThumbModel(
+		value: number,
+		stance: number,
+		ends: IEnds,
+		coord: number
+	) {
+		this.updateOffset(200, coord);
+		this.setValue(value);
+		this.notify("UpdateThumbPosition", this.value, this.stepOffset, stance);
 	}
 
 	public getValue() {
@@ -51,6 +67,8 @@ class ThumbModel extends Observer {
 			stepCount: this.stepCount,
 			stepPercent: this.stepPercent,
 			value: this.value,
+			offset: this.offset,
+			stepOffset: this.stepOffset,
 		};
 	}
 }

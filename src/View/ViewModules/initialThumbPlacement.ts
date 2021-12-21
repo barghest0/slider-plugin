@@ -9,8 +9,7 @@ const initialThumbPlacement = function (
 	let dragDirection = direction === "horizontal" ? "left" : "top";
 
 	$(`.slider__thumb-${stance}`).css({
-		[dragDirection]: `${this.thumbView.value[stance] / (this.ends.max / 100)
-			}%`,
+		[dragDirection]: `${this.thumbView.offset[stance]}%`,
 	});
 };
 

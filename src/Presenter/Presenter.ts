@@ -35,10 +35,12 @@ class Presenter {
 		isRange,
 		direction,
 	}: ISliderParams) {
-		const height = direction === "horizontal" ? 4 : 200;
-		const width = direction === "horizontal" ? 200 : 4;
+		const size =
+			direction === "horizontal"
+				? $(".slider").width()!
+				: $(".slider").height()!;
 
-		this.trackModel.setSize({ width, height });
+		this.trackModel.setSize(size);
 		this.trackModel.setEnds({ min, max });
 		this.trackModel.setIsRange(isRange);
 		this.trackModel.setDirection(direction);
@@ -104,16 +106,19 @@ class Presenter {
 		});
 		this.thumbs[stance].setStance(stance);
 		this.thumbs[stance].setValue(value);
+		this.thumbs[stance].setOffset({ min, max });
+
 		return this;
 	}
 	private setThumbViewStateAndPlacement(
 		direction: Direction,
 		stance: number
 	) {
-		const { step, stepCount, stepPercent, value } =
+		const { step, stepCount, stepPercent, value, offset } =
 			this.thumbs[stance].getState();
 		this.view.thumbView.setStep(step, stepPercent, stepCount);
 		this.view.thumbView.setValue(value);
+		this.view.thumbView.setOffset(offset);
 		this.view.initialThumbPlacement(direction, stance);
 		return this;
 	}
@@ -150,17 +155,28 @@ class Presenter {
 			this.view.thumbView.dragThumb(1);
 		}
 	}
-	private updateThumbModelState(value: number, stance: number) {
-		this.thumbs[stance].updateThumbModel(value, stance, this.view.ends);
+	private updateThumbModelState(
+		value: number,
+		stance: number,
+		coord: number
+	) {
+		this.thumbs[stance].updateThumbModel(
+			value,
+			stance,
+			this.view.ends,
+			coord
+		);
 	}
+	private updateThumbPosition(value: number, offset: number, stance: number) {
+		this.view.thumbView.updateOffset(offset, stance);
 
-	private updateThumbPosition(value: number, stance: number) {
 		this.view.thumbView.updateValue(value, stance);
-		let width =
-			parseInt($(`.slider__thumb-1`).css("left"), 10) -
-			parseInt($(`.slider__thumb-0`).css("left"), 10);
+	}
+	private updateTrackModelState() {
+		this.trackModel.updateTrackFill();
+	}
+	private updateTrackFillPosition(offset: number, width: number) {
 		this.view.fillView.updateWidth(width);
-		let offset = parseInt($(`.slider__thumb-0`).css("left"), 10);
 		this.view.fillView.updateOffset(offset);
 	}
 
@@ -176,8 +192,12 @@ class Presenter {
 			this.updateThumbModelState.bind(this)
 		);
 		this.view.trackView.subscribe(
-			"UpdateThumbModelState",
-			this.updateThumbModelState.bind(this)
+			"UpdateTrackModelState",
+			this.updateTrackModelState.bind(this)
+		);
+		this.trackModel.subscribe(
+			"UpdateTrackFillPosition",
+			this.updateTrackFillPosition.bind(this)
 		);
 		this.thumbs.forEach((thumb) =>
 			thumb.subscribe(

@@ -7,12 +7,11 @@ import {
 	Direction,
 	ICoords,
 	IEnds,
-	ISize,
 	ISliderTrackState,
 } from "../Interfaces/interfaces";
 import initialThumbPlacement from "./ViewModules/initialThumbPlacement";
 import initialFillPlacement from "./ViewModules/initialFillPlacement";
-import getCoords from './ViewModules/getCoords';
+import getCoords from "./ViewModules/getCoords";
 
 class View extends Observer {
 	public thumbView: Thumb;
@@ -23,9 +22,11 @@ class View extends Observer {
 	public parent: JQuery<HTMLElement>;
 	public isRange: boolean;
 	public direction: Direction;
-	public size: ISize;
-	public coords: ICoords;
-	public initialThumbPlacement: (direction: Direction, stance: number) => void;
+	public size: number;
+	public initialThumbPlacement: (
+		direction: Direction,
+		stance: number
+	) => void;
 	public initialFillPlacement: (direction: Direction) => void;
 
 	constructor(sliderClass: string) {
@@ -36,15 +37,12 @@ class View extends Observer {
 		this.fillView = new Fill(this);
 		this.parent = $(sliderClass);
 		this.ends = { min: 0, max: 0 };
-		this.size = { width: 0, height: 0 };
-		this.coords = { x: 0, y: 0 };
+		this.size = 200;
 		this.isRange = false;
 		this.direction = "horizontal";
 		this.initialThumbPlacement = initialThumbPlacement.bind(this);
 		this.initialFillPlacement = initialFillPlacement.bind(this);
-
 	}
-
 
 	public setState(state: ISliderTrackState) {
 		const { isRange, direction, ends, size } = state;

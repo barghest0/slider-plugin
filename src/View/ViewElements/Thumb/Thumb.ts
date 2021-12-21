@@ -1,8 +1,5 @@
 import Observer from "../../../Observer/Observer";
-import {
-	Direction,
-	ISliderThumbState,
-} from "../../../Interfaces/interfaces";
+import { Direction, ISliderThumbState } from "../../../Interfaces/interfaces";
 import View from "../../View";
 import getCoords from "../../ViewModules/getCoords";
 import handleDrag from "./utils/handleDrag";
@@ -13,6 +10,7 @@ class Thumb extends Observer {
 	public stepPercent: number;
 	public stepCount: number;
 	public value: number[];
+	public offset: number[];
 	constructor(parentElement: View) {
 		super();
 		this.parentElement = parentElement;
@@ -20,6 +18,7 @@ class Thumb extends Observer {
 		this.stepPercent = 0;
 		this.stepCount = 0;
 		this.value = [];
+		this.offset = [];
 	}
 
 	public createThumb(stance: number) {
@@ -35,6 +34,13 @@ class Thumb extends Observer {
 	public setValue(value: number) {
 		this.value.push(value);
 	}
+	public setOffset(offset: number) {
+		this.offset.push(offset);
+	}
+	public updateOffset(offset: number, stance: number) {
+		this.offset[stance] = offset;
+	}
+
 	public updateValue(value: number, stance: number) {
 		this.value[stance] = value;
 	}

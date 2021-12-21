@@ -18,12 +18,12 @@ const handleClick = function (e: JQuery.MouseDownEvent) {
 	let result =
 		(stepLeft / thisTrack.parentElement.thumbView.stepPercent) *
 		thisTrack.parentElement.thumbView.step.toFixed();
-	if (e.target.offsetLeft >= result) {
-		stance = 1;
-	} else {
+
+	if ("Заебало") {
 		stance = 0;
+	} else {
+		stance = 1;
 	}
-	console.log(e);
 
 	thisTrack.notify("UpdateThumbModelState", result, stance);
 	$(`.slider__thumb-${stance}`).css({

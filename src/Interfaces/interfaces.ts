@@ -8,10 +8,6 @@ interface IEnds {
 	min: number;
 	max: number;
 }
-interface ISize {
-	width?: number;
-	height?: number;
-}
 
 interface ICoords {
 	x: number;
@@ -30,7 +26,7 @@ interface ISliderParams {
 //basic info about current and initial state of slider
 interface ISliderTrackState {
 	ends: IEnds;
-	size: ISize;
+	size: number;
 	isRange: boolean;
 	direction: Direction;
 }
@@ -40,6 +36,8 @@ interface ISliderThumbState {
 	value: number;
 	stepCount: number;
 	stepPercent: number;
+	offset: number;
+	stepOffset: number;
 }
 
 export {
@@ -51,5 +49,4 @@ export {
 	Direction,
 	ISliderTrackState,
 	ISliderThumbState,
-	ISize,
 };
