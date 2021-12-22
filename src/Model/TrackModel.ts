@@ -1,5 +1,10 @@
 import Observer from "../Observer/Observer";
-import { Direction, IEnds, ISliderTrackState } from "../Interfaces/interfaces";
+import {
+	Direction,
+	IEnds,
+	ISliderFillState,
+	ISliderTrackState,
+} from "../Interfaces/interfaces";
 
 class TrackModel extends Observer {
 	private sliderClass: string;
@@ -68,6 +73,12 @@ class TrackModel extends Observer {
 			size: this.size,
 			isRange: this.isRange,
 			direction: this.direction,
+		};
+	}
+	public getFillState(): ISliderFillState {
+		return {
+			fillSize: this.fillSize,
+			fillOffset: this.fillOffset,
 		};
 	}
 }

@@ -7,6 +7,7 @@ import {
 	Direction,
 	ICoords,
 	IEnds,
+	ISliderFillState,
 	ISliderTrackState,
 } from "../Interfaces/interfaces";
 import initialThumbPlacement from "./ViewModules/initialThumbPlacement";
@@ -44,12 +45,15 @@ class View extends Observer {
 		this.initialFillPlacement = initialFillPlacement.bind(this);
 	}
 
-	public setState(state: ISliderTrackState) {
-		const { isRange, direction, ends, size } = state;
+	public setState({ isRange, direction, ends, size }: ISliderTrackState) {
 		this.ends = ends;
 		this.size = size;
 		this.isRange = isRange;
 		this.direction = direction;
+	}
+	public setFillState({ fillSize, fillOffset }: ISliderFillState) {
+		this.fillView.setSize(fillSize);
+		this.fillView.setOffset(fillOffset);
 	}
 }
 export default View;

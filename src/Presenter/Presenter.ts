@@ -92,7 +92,7 @@ class Presenter {
 			this.setThumbViewStateAndPlacement(direction, this.thumbStance);
 		}
 
-		this.setInitialFillPlacement(direction);
+		this.setTrackFillAndPlacement(direction);
 		return this;
 	}
 
@@ -125,8 +125,11 @@ class Presenter {
 		return this;
 	}
 
-	private setInitialFillPlacement(direction: Direction) {
+	private setTrackFillAndPlacement(direction: Direction) {
 		$(document).ready(() => {
+			this.trackModel.setFillSize(direction);
+			this.trackModel.setFillOffset(direction);
+			this.view.setFillState(this.trackModel.getFillState());
 			this.view.initialFillPlacement(direction);
 		});
 	}
@@ -174,7 +177,7 @@ class Presenter {
 		this.trackModel.updateTrackFill(this.view.direction);
 	}
 	private updateTrackFillPosition(width: number, offset: number) {
-		this.view.fillView.setWidth(width);
+		this.view.fillView.setSize(width);
 		this.view.fillView.setOffset(offset);
 	}
 

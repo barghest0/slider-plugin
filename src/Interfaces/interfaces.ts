@@ -39,7 +39,10 @@ interface ISliderThumbState {
 	offset: number;
 	stepOffset: number;
 }
-
+interface ISliderFillState {
+	fillOffset: number;
+	fillSize: number;
+}
 export {
 	SubscribeEvent,
 	ISubscribers,
@@ -49,4 +52,5 @@ export {
 	Direction,
 	ISliderTrackState,
 	ISliderThumbState,
+		ISliderFillState
 };

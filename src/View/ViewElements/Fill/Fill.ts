@@ -5,13 +5,13 @@ import View from "../../View";
 class Fill extends Observer {
 	private parentElement: View;
 	private fill: JQuery<HTMLElement>;
-	private width: number;
-	private offset: number;
+	public size: number;
+	public offset: number;
 	constructor(parentElement: View) {
 		super();
 		this.parentElement = parentElement;
 		this.fill = $(".slider__fill");
-		this.width = 100;
+		this.size = 0;
 		this.offset = 0;
 	}
 
@@ -20,8 +20,8 @@ class Fill extends Observer {
 			`<div class="slider__fill slider__fill-${direction}"></div>`
 		);
 	}
-	public setWidth(width: number) {
-		this.width = width;
+	public setSize(width: number) {
+		this.size = width;
 	}
 	public setOffset(offset: number) {
 		this.offset = offset;
