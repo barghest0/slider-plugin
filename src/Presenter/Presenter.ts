@@ -158,14 +158,20 @@ class Presenter {
 		}
 	}
 	private updateThumbModelState(stance: number, coord: number) {
-		this.thumbs[stance].updateThumbModel(stance, this.view.size, coord);
+		this.thumbs[stance].updateThumbModel(
+			stance,
+			this.view.size,
+			coord,
+			this.view.ends,
+			this.view.direction
+		);
 	}
 	private updateThumbPosition(value: number, offset: number, stance: number) {
 		this.view.thumbView.updateOffset(offset, stance);
 		this.view.thumbView.updateValue(value, stance);
 	}
 	private updateTrackModelState() {
-		this.trackModel.updateTrackFill();
+		this.trackModel.updateTrackFill(this.view.direction);
 	}
 	private updateTrackFillPosition(width: number, offset: number) {
 		this.view.fillView.setWidth(width);

@@ -1,5 +1,5 @@
 import Observer from "../Observer/Observer";
-import { IEnds, ISliderThumbState } from "../Interfaces/interfaces";
+import { Direction, IEnds, ISliderThumbState } from "../Interfaces/interfaces";
 
 class ThumbModel extends Observer {
 	private sliderClass: string;
@@ -10,6 +10,7 @@ class ThumbModel extends Observer {
 	private stepPercent: number;
 	private offset: number;
 	private stepOffset: number;
+	private cursorOffset: number;
 	constructor(sliderClass: string, stance: number) {
 		super();
 		this.sliderClass = sliderClass;
@@ -20,6 +21,7 @@ class ThumbModel extends Observer {
 		this.stepPercent = 0;
 		this.offset = 0;
 		this.stepOffset = 0;
+		this.cursorOffset = 0;
 	}
 
 	public setStep(step: number, ends: IEnds) {
@@ -38,27 +40,41 @@ class ThumbModel extends Observer {
 
 	public setOffset(ends: IEnds) {
 		this.offset = this.value / (ends.max / 100);
-		this.setStepOffset();
 	}
 
 	public setStepOffset() {
 		this.stepOffset =
-			Math.round(this.offset / this.stepPercent) * this.stepPercent;
+			Math.round(this.cursorOffset / this.stepPercent) * this.stepPercent;
+	}
+	public setCursorOffset(cursorOffset: number) {
+		this.cursorOffset = cursorOffset;
+		if (this.cursorOffset < 0) this.cursorOffset = 0;
+		if (this.cursorOffset > 100) this.cursorOffset = 100;
 	}
 
-	public updateOffset(size: number, coord: number) {
-		this.offset = ((coord - $(".slider").position().left) / size) * 100;
-		if (this.offset < 0) this.offset = 0;
-		if (this.offset > 100) this.offset = 100;
+	public updateThumbModel(
+		stance: number,
+		size: number,
+		coord: number,
+		ends: IEnds,
+		direction: Direction
+	) {
+		const cursor =
+			((coord -
+				(direction === "horizontal"
+					? $(".slider").position().left
+					: $(".slider").position().top)) /
+				size) *
+			100;
+
+		this.setCursorOffset(cursor);
 		this.setStepOffset();
-	}
 
-	public updateThumbModel(stance: number, size: number, coord: number) {
-		this.updateOffset(size, coord);
 		const value = (this.stepOffset / this.stepPercent) * this.step;
-		this.setValue(value);
 
-		this.notify("UpdateThumbPosition", this.value, this.stepOffset, stance);
+		this.setValue(value);
+		this.setOffset(ends);
+		this.notify("UpdateThumbPosition", this.value, this.offset, stance);
 	}
 
 	public getValue() {

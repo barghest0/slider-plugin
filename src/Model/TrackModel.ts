@@ -34,19 +34,32 @@ class TrackModel extends Observer {
 	public setDirection(direction: Direction) {
 		this.direction = direction;
 	}
-	public setFillSize() {
+	public setFillSize(direction: Direction) {
 		this.fillSize =
-			parseInt($(`.slider__thumb-1`).css("left"), 10) -
-			parseInt($(`.slider__thumb-0`).css("left"), 10);
+			parseInt(
+				$(`.slider__thumb-1`).css(
+					direction === "horizontal" ? "left" : "top"
+				),
+				10
+			) -
+			parseInt(
+				$(`.slider__thumb-0`).css(
+					direction === "horizontal" ? "left" : "top"
+				),
+				10
+			);
 	}
-	public setFillOffset() {
-		this.fillOffset = parseInt($(`.slider__thumb-0`).css("left"), 10);
+	public setFillOffset(direction: Direction) {
+		this.fillOffset = parseInt(
+			$(`.slider__thumb-0`).css(
+				direction === "horizontal" ? "left" : "top"
+			),
+			10
+		);
 	}
-	public updateTrackFill() {
-		console.log(this.fillOffset);
-
-		this.setFillSize();
-		this.setFillOffset();
+	public updateTrackFill(direction: Direction) {
+		this.setFillSize(direction);
+		this.setFillOffset(direction);
 		this.notify("UpdateTrackFillPosition", this.fillSize, this.fillOffset);
 	}
 	public getState(): ISliderTrackState {

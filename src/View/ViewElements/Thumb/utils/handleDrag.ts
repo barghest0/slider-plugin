@@ -2,17 +2,16 @@ const changePosition = function (e: JQuery.MouseMoveEvent) {
 	const { thisThumb, stance } = e.data;
 	let offset = thisThumb.offset;
 	let direction = thisThumb.parentElement.direction;
-
+	let cursorDirection = direction === "horizontal" ? e.pageX : e.pageY;
 	let dragDirection = direction === "horizontal" ? "left" : "top";
 	let fillDirection = direction === "horizontal" ? "width" : "height";
 
-	thisThumb.notify("UpdateThumbModelState", stance, e.pageX);
+	thisThumb.notify("UpdateThumbModelState", stance, cursorDirection);
 	thisThumb.parentElement.trackView.notify("UpdateTrackModelState");
+
 	$(`.slider__thumb-${stance}`).css({
 		[dragDirection]: offset[stance] + "%",
 	});
-
-	thisThumb.notify("UpdateThumbModelState", stance, e.pageX);
 
 	if (thisThumb.parentElement.isRange) {
 		$(`.slider__fill-${direction}`).css({
