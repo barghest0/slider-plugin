@@ -173,7 +173,7 @@ class Presenter {
 		this.view.thumbView.updateOffset(offset, stance);
 		this.view.thumbView.updateValue(value, stance);
 	}
-	private updateTrackModelState() {
+	private updateTrackFillModelState() {
 		this.trackModel.updateTrackFill(this.view.direction);
 	}
 	private updateTrackFillPosition(width: number, offset: number) {
@@ -194,7 +194,7 @@ class Presenter {
 		);
 		this.view.trackView.subscribe(
 			"UpdateTrackModelState",
-			this.updateTrackModelState.bind(this)
+			this.updateTrackFillModelState.bind(this)
 		);
 		this.trackModel.subscribe(
 			"UpdateTrackFillPosition",
