@@ -24,9 +24,11 @@ class Presenter {
 	}
 
 	private init(params: ISliderParams) {
-		this.setTrackModelState(params)
+		$(document).ready(() => {
+			this.setTrackModelState(params)
 			.setTrackViewState()
-			.createSlider(params);
+		});
+		this.createSlider(params);
 	}
 
 	private setTrackModelState({
@@ -35,22 +37,18 @@ class Presenter {
 		isRange,
 		direction,
 	}: ISliderParams) {
-		$(document).ready(() => {
-			const size =
-				direction === "horizontal"
-					? $(".slider").width()!
-					: $(".slider").height()!;
-
-			this.trackModel.setSize(size);
-		});
+		
+		const size = direction === "horizontal" ? $(".slider").width()! : $(".slider").height()!;
+		this.trackModel.setSize(size);
 		this.trackModel.setEnds({ min, max });
 		this.trackModel.setIsRange(isRange);
 		this.trackModel.setDirection(direction);
-
 		return this;
 	}
 	private setTrackViewState() {
-		this.view.setState(this.trackModel.getState());
+		
+			this.view.setState(this.trackModel.getState());
+		
 		return this;
 	}
 
@@ -64,7 +62,7 @@ class Presenter {
 	}: ISliderParams) {
 		$(this.sliderClass).addClass(`slider-${direction}`);
 		this.createTrackView(direction);
-		this.createScaleView(direction);
+		this.createScaleView(direction,step,max);
 		this.creteFillView(direction);
 
 		this.createThumb(this.thumbStance);
@@ -77,7 +75,7 @@ class Presenter {
 		);
 		this.createThumbView(this.thumbStance);
 		this.setThumbViewStateAndPlacement(direction, this.thumbStance);
-
+			
 		if (isRange) {
 			this.thumbStance += 1;
 			this.createThumb(this.thumbStance);
@@ -145,8 +143,11 @@ class Presenter {
 	private createTrackView(direction: Direction) {
 		this.view.trackView.createTrack(direction);
 	}
-	private createScaleView(direction: Direction) {
+	private createScaleView(direction: Direction,step:number,max:number) {
 		this.view.scaleView.createScale(direction);
+		this.view.scaleView.createScaleMarks(step,max);
+		this.view.scaleView.createScaleNumbers(step,max);
+
 	}
 
 	private creteFillView(direction: Direction) {
@@ -161,6 +162,7 @@ class Presenter {
 		}
 	}
 	private updateThumbModelState(stance: number, coord: number) {
+		
 		this.thumbs[stance].updateThumbModel(
 			stance,
 			this.view.size,

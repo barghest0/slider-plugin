@@ -7,7 +7,7 @@ new Presenter(".slider-1", {
 	step: 10,
 	value: [50, 150],
 	isRange: true,
-	direction: "vertical",
+	direction: "horizontal",
 });
 
 // new Presenter(".slider-2", {

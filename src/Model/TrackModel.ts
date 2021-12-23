@@ -31,6 +31,8 @@ class TrackModel extends Observer {
 
 	public setSize(size: number) {
 		this.size = size;
+
+		
 	}
 	public setIsRange(isRange: boolean) {
 		this.isRange = isRange;
