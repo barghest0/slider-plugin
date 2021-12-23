@@ -5,11 +5,9 @@ import Observer from "../../../Observer/Observer";
 
 class Track extends Observer {
 	private parentElement: View;
-	public track: JQuery<HTMLElement>;
 	constructor(parentElement: View) {
 		super();
 		this.parentElement = parentElement;
-		this.track = $(".slider__track");
 	}
 	public createTrack(direction: Direction) {
 		this.parentElement.parent.append(

@@ -46,15 +46,15 @@ class ThumbModel extends Observer {
 		this.stepOffset =
 			Math.round(this.cursorOffset / this.stepPercent) * this.stepPercent;
 	}
-	public setCursorOffset(coord: number,direction:Direction,size:number) {
-		this.cursorOffset = ((coord -
-			(direction === "horizontal"
-				? $(".slider").position().left
-				: $(".slider").position().top)) /
-			size) *
-		100;
+	public setCursorOffset(coord: number, direction: Direction, size: number) {
+		this.cursorOffset =
+			((coord -
+				(direction === "horizontal"
+					? $(".slider").position().left
+					: $(".slider").position().top)) /
+				size) *
+			100;
 
-			
 		if (this.cursorOffset < 0) this.cursorOffset = 0;
 		if (this.cursorOffset > 100) this.cursorOffset = 100;
 	}
@@ -66,7 +66,7 @@ class ThumbModel extends Observer {
 		ends: IEnds,
 		direction: Direction
 	) {
-		this.setCursorOffset(coord,direction,size);
+		this.setCursorOffset(coord, direction, size);
 		this.setStepOffset();
 
 		const value = (this.stepOffset / this.stepPercent) * this.step;
