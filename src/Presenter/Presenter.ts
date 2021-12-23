@@ -25,8 +25,7 @@ class Presenter {
 
 	private init(params: ISliderParams) {
 		$(document).ready(() => {
-			this.setTrackModelState(params)
-			.setTrackViewState()
+			this.setTrackModelState(params).setTrackViewState();
 		});
 		this.createSlider(params);
 	}
@@ -37,8 +36,10 @@ class Presenter {
 		isRange,
 		direction,
 	}: ISliderParams) {
-		
-		const size = direction === "horizontal" ? $(".slider").width()! : $(".slider").height()!;
+		const size =
+			direction === "horizontal"
+				? $(".slider").width()!
+				: $(".slider").height()!;
 		this.trackModel.setSize(size);
 		this.trackModel.setEnds({ min, max });
 		this.trackModel.setIsRange(isRange);
@@ -60,7 +61,7 @@ class Presenter {
 	}: ISliderParams) {
 		$(this.sliderClass).addClass(`slider-${direction}`);
 		this.createTrackView(direction);
-		this.createScaleView(direction,step,max,min);
+		this.createScaleView(direction, step, max, min);
 		this.creteFillView(direction);
 
 		this.createThumb(this.thumbStance);
@@ -73,7 +74,7 @@ class Presenter {
 		);
 		this.createThumbView(this.thumbStance);
 		this.setThumbViewStateAndPlacement(direction, this.thumbStance);
-			
+
 		if (isRange) {
 			this.thumbStance += 1;
 			this.createThumb(this.thumbStance);
@@ -141,11 +142,15 @@ class Presenter {
 	private createTrackView(direction: Direction) {
 		this.view.trackView.createTrack(direction);
 	}
-	private createScaleView(direction: Direction,step:number,max:number,min:number) {
+	private createScaleView(
+		direction: Direction,
+		step: number,
+		max: number,
+		min: number
+	) {
 		this.view.scaleView.createScale(direction);
-		this.view.scaleView.createScaleMarks(step,max,min);
-		this.view.scaleView.createScaleNumbers(step,max,min);
-
+		this.view.scaleView.createScaleMarks(step, max, min, direction);
+		this.view.scaleView.createScaleNumbers(step, max, min, direction);
 	}
 
 	private creteFillView(direction: Direction) {
@@ -160,7 +165,6 @@ class Presenter {
 		}
 	}
 	private updateThumbModelState(stance: number, coord: number) {
-		
 		this.thumbs[stance].updateThumbModel(
 			stance,
 			this.view.size,

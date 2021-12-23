@@ -1,84 +1,94 @@
 .slider {
-    width: 300px;
-    position: relative;
-    display: inline-block;
-    &-vertical {
-        height: 200px;
-        width: 20px;
-    }
-    &__track {
-        border: 1px solid #f2f2f2;
-        background-color: #fff;
-        width: 100%;
-        height: 4px;
-        border-radius: 50px;
-        position: absolute;
-        border-radius: 20px;
-        cursor: pointer;
-        &-vertical {
-            height: 100%;
-            width: 4px;
-        }
-    }
-    &__thumb {
-        display: inline-block;
-        cursor: pointer;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 15px;
-        height: 15px;
-        background-color: rgb(36, 36, 36);
-        border: 2px solid #fff;
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 20;
-        -webkit-user-select: none;
-        -webkit-user-drag: none;
-        -webkit-app-region: no-drag;
-    }
-    &__scale {
-        position: absolute;
-        width: 100%;
-        cursor: pointer;
-        top: 5px;
-        &-marks,
-        &-numbers{
-            position: relative;
-            height: 10px;
-            display: flex;
-            font-size: 12px;
-        }
-        &-mark{
-            position: absolute;
-            height: 10px;
-            width: 1px;
-            background-color: rgb(36, 36, 36);
+	width: 400px;
+	position: relative;
+	display: inline-block;
+	&-vertical {
+		height: 200px;
+	}
+	&__track {
+		border: 1px solid #f2f2f2;
+		background-color: #fff;
+		width: 100%;
+		height: 4px;
+		border-radius: 50px;
+		position: absolute;
+		border-radius: 20px;
+		cursor: pointer;
+		&-vertical {
+			height: 100%;
+			width: 4px;
+		}
+	}
+	&__thumb {
+		display: inline-block;
+		cursor: pointer;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 15px;
+		height: 15px;
+		background-color: rgb(36, 36, 36);
+		border: 2px solid #fff;
+		border-radius: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 20;
+		-webkit-user-select: none;
+		-webkit-user-drag: none;
+		-webkit-app-region: no-drag;
+	}
+	&__scale {
+		position: absolute;
+		width: 100%;
+		cursor: pointer;
+		top: 5px;
+		&-marks,
+		&-numbers {
+			//position: relative;
+			height: 10px;
+			display: flex;
+			font-size: 12px;
+		}
+		&-mark {
+			position: absolute;
+			height: 10px;
+			width: 1px;
+			background-color: rgb(36, 36, 36);
+			&_vertical {
+				height: 1px;
+				width: 10px;
+			}
+		}
+		&-number {
+			width: 25px;
+			height: 25px;
+			position: absolute;
+			display: flex;
+			justify-content: center;
+			&_vertical {
+				align-items: center;
+				justify-content: flex-start;
+				left: 15px;
+			}
+		}
 
-        }
-        &-number{
-            position: absolute;
-            
-        }
-
-        &-vertical {
-            height: 100%;
-            width: 2px;
-            right: 0;
-            top: 0;
-        }
-    }
-    &__fill {
-        z-index: 10;
-        position: absolute;
-        top: 0;
-        background-color: rgb(36, 36, 36);
-        height: 4px;
-        border-radius: 50px;
-        cursor: pointer;
-        &-vertical {
-            height: 100%;
-            width: 4px;
-        }
-    }
+		&_vertical {
+			height: 100%;
+			width: 2px;
+			left: 5px;
+			top: 0;
+		}
+	}
+	&__fill {
+		z-index: 10;
+		position: absolute;
+		top: 0;
+		background-color: rgb(36, 36, 36);
+		height: 4px;
+		border-radius: 50px;
+		cursor: pointer;
+		&-vertical {
+			height: 100%;
+			width: 4px;
+		}
+	}
 }
