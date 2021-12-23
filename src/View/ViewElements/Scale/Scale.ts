@@ -4,8 +4,8 @@ import createScaleMarks from "./utils/createScaleMarks";
 import createScaleNumbers from "./utils/createScaleNumbers";
 
 class Scale {
-	public createScaleMarks:(step:number,max:number)=>void
-	public createScaleNumbers:(step:number,max:number)=>void
+	public createScaleMarks:(step:number,max:number,min:number)=>void
+	public createScaleNumbers:(step:number,max:number,min:number)=>void
 	private parentElement: View;
 	constructor(parentElement: View) {
 		this.parentElement = parentElement;

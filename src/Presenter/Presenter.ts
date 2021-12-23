@@ -46,9 +46,7 @@ class Presenter {
 		return this;
 	}
 	private setTrackViewState() {
-		
-			this.view.setState(this.trackModel.getState());
-		
+		this.view.setState(this.trackModel.getState());
 		return this;
 	}
 
@@ -62,7 +60,7 @@ class Presenter {
 	}: ISliderParams) {
 		$(this.sliderClass).addClass(`slider-${direction}`);
 		this.createTrackView(direction);
-		this.createScaleView(direction,step,max);
+		this.createScaleView(direction,step,max,min);
 		this.creteFillView(direction);
 
 		this.createThumb(this.thumbStance);
@@ -143,10 +141,10 @@ class Presenter {
 	private createTrackView(direction: Direction) {
 		this.view.trackView.createTrack(direction);
 	}
-	private createScaleView(direction: Direction,step:number,max:number) {
+	private createScaleView(direction: Direction,step:number,max:number,min:number) {
 		this.view.scaleView.createScale(direction);
-		this.view.scaleView.createScaleMarks(step,max);
-		this.view.scaleView.createScaleNumbers(step,max);
+		this.view.scaleView.createScaleMarks(step,max,min);
+		this.view.scaleView.createScaleNumbers(step,max,min);
 
 	}
 
