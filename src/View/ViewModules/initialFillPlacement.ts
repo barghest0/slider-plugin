@@ -12,7 +12,7 @@ const initialFillPlacement = function (this: View, direction: Direction) {
 		});
 	} else {
 		$(`.slider__fill-${direction}`).css({
-			[fillDirection]: this.fillView.offset + "%",
+			[fillDirection]: this.fillView.size + "px",
 		});
 	}
 };

@@ -10,12 +10,13 @@ class PreviewSlider {
 	constructor(sliderClass: string, params: ISliderParams) {
 		this.sliderClass = sliderClass;
 		this.params = params;
-		this.panel = new Panel(params);
+		this.panel = new Panel(params, sliderClass);
 		this.slider = new Presenter(".slider", params);
 		this.initPanel(params, sliderClass);
 	}
 	private initPanel(params: ISliderParams, sliderClass: string) {
-		this.panel.initializeFormValues(params, sliderClass);
+		this.panel.initializeInputs(sliderClass);
+		this.panel.initializeFormValues(params);
 	}
 }
 export default PreviewSlider;

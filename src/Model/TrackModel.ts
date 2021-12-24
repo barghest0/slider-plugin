@@ -71,6 +71,8 @@ class TrackModel extends Observer {
 				),
 				10
 			);
+		} else {
+			this.fillOffset = 0;
 		}
 	}
 	public updateTrackFill(direction: Direction) {

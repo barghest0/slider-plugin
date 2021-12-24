@@ -10,8 +10,9 @@ const createScaleNumbers = (
 	$(".slider__scale").append(
 		`<div class="slider__scale-numbers slider__scale-numbers_${direction}"></div>`
 	);
-	for (let i = 0; i <= max; i += step * 4) {
+	for (let i = 0; i <= max; i += step * 2) {
 		const stepCount = (max - min) / i;
+
 		const stepPercent = 100 / stepCount;
 
 		const numbersDirection =

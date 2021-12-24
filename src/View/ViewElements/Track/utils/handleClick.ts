@@ -32,10 +32,6 @@ const handleClick = function (e: JQuery.MouseDownEvent) {
 		left: thisTrack.parentElement.fillView.offset + "px",
 	});
 
-	//  else {
-	//     $(`.slider__thumb-${stance}`).css({ top: cursorPosition.y })
-	//     $(`.slider__fill-${thisTrack.parentElement.direction}`).css({ height: cursorPosition.y })
-	// }
 };
 
 export default handleClick;
