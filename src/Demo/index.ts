@@ -7,7 +7,7 @@ new PreviewSlider(".slider-1", {
 	max: 200,
 	step: 10,
 	value: [0, 150],
-	isRange: false,
+	isRange: true,
 	direction: "horizontal",
 });
 

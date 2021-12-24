@@ -20,8 +20,8 @@ class Fill extends Observer {
 			`<div class="slider__fill slider__fill-${direction}"></div>`
 		);
 	}
-	public setSize(width: number) {
-		this.size = width;
+	public setSize(size: number) {
+		this.size = size;
 	}
 	public setOffset(offset: number) {
 		this.offset = offset;

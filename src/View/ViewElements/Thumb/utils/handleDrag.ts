@@ -7,7 +7,6 @@ const handleDrag = function (e: JQuery.MouseMoveEvent) {
 	let fillDirection = direction === "horizontal" ? "width" : "height";
 
 	thisThumb.notify("UpdateThumbModelState", stance, cursorDirection);
-	thisThumb.parentElement.trackView.notify("UpdateTrackModelState");
 
 	if (stance === 0) {
 		if (offset[0] + thisThumb.stepPercent >= offset[1]) {
@@ -25,6 +24,7 @@ const handleDrag = function (e: JQuery.MouseMoveEvent) {
 		[dragDirection]: offset[stance] + "%",
 	});
 
+	thisThumb.notify("UpdateThumbModelState", stance, cursorDirection);
 	thisThumb.parentElement.trackView.notify("UpdateTrackModelState");
 
 	if (thisThumb.parentElement.isRange) {

@@ -197,6 +197,10 @@ class Presenter {
 			this.updateThumbModelState.bind(this)
 		);
 		this.view.trackView.subscribe(
+			"UpdateThumbModelState",
+			this.updateThumbModelState.bind(this)
+		);
+		this.view.trackView.subscribe(
 			"UpdateTrackModelState",
 			this.updateTrackFillModelState.bind(this)
 		);

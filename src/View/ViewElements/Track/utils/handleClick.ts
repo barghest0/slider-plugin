@@ -3,37 +3,30 @@ import Track from "../Track";
 const handleClick = function (e: JQuery.MouseDownEvent) {
 	const { thisTrack } = e.data;
 	let stance;
-
-	let value = thisTrack.parentElement.thumbView.value;
-
-	let left =
-		((e.pageX - $(".slider").position().left) /
-			thisTrack.parentElement.size.width) *
+	let offset = thisTrack.parentElement.thumbView.offset;
+	let direction = thisTrack.parentElement.direction;
+	let cursorDirection = direction === "horizontal" ? e.pageX : e.pageY;
+	let cursorOffset =
+		((cursorDirection - $(".slider").position().left) /
+			thisTrack.parentElement.size) *
 		100;
 
-	let stepLeft =
-		Math.round(left / thisTrack.parentElement.thumbView.stepPercent) *
-		thisTrack.parentElement.thumbView.stepPercent;
-
-	let result =
-		(stepLeft / thisTrack.parentElement.thumbView.stepPercent) *
-		thisTrack.parentElement.thumbView.step.toFixed();
-
-	if ("Заебало") {
+	if (cursorOffset < offset[0]) {
 		stance = 0;
 	} else {
 		stance = 1;
 	}
+	thisTrack.notify("UpdateThumbModelState", stance, cursorDirection);
 
-	thisTrack.notify("UpdateThumbModelState", result, stance);
 	$(`.slider__thumb-${stance}`).css({
-		left: value[stance] + "%",
+		left: offset[stance] + "%",
 	});
 
-	thisTrack.notify("UpdateThumbModelState", result, stance);
+	thisTrack.notify("UpdateTrackModelState");
+	thisTrack.notify("UpdateThumbModelState", stance, cursorDirection);
 
 	$(`.slider__fill-${thisTrack.parentElement.direction}`).css({
-		width: thisTrack.parentElement.fillView.width + "px",
+		width: thisTrack.parentElement.fillView.size + "px",
 		left: thisTrack.parentElement.fillView.offset + "px",
 	});
 
