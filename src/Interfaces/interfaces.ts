@@ -52,5 +52,5 @@ export {
 	Direction,
 	ISliderTrackState,
 	ISliderThumbState,
-		ISliderFillState
+	ISliderFillState,
 };

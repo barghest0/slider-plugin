@@ -7,7 +7,10 @@ const handleClick = function (e: JQuery.MouseDownEvent) {
 	let direction = thisTrack.parentElement.direction;
 	let cursorDirection = direction === "horizontal" ? e.pageX : e.pageY;
 	let cursorOffset =
-		((cursorDirection - $(".slider").position().left) /
+		((cursorDirection -
+			(direction === "horizontal"
+				? $(".slider").position().left
+				: $(".slider").position().top)) /
 			thisTrack.parentElement.size) *
 		100;
 
@@ -16,14 +19,13 @@ const handleClick = function (e: JQuery.MouseDownEvent) {
 	} else {
 		stance = 1;
 	}
-	thisTrack.notify("UpdateThumbModelState", stance, cursorDirection);
+	thisTrack.notify("UpdateThumbModelState", stance, cursorOffset);
 
 	$(`.slider__thumb-${stance}`).css({
 		left: offset[stance] + "%",
 	});
 
 	thisTrack.notify("UpdateTrackModelState");
-	thisTrack.notify("UpdateThumbModelState", stance, cursorDirection);
 
 	$(`.slider__fill-${thisTrack.parentElement.direction}`).css({
 		width: thisTrack.parentElement.fillView.size + "px",

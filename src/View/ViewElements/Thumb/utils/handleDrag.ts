@@ -5,8 +5,15 @@ const handleDrag = function (e: JQuery.MouseMoveEvent) {
 	let cursorDirection = direction === "horizontal" ? e.pageX : e.pageY;
 	let dragDirection = direction === "horizontal" ? "left" : "top";
 	let fillDirection = direction === "horizontal" ? "width" : "height";
+	let cursorOffset =
+		((cursorDirection -
+			(direction === "horizontal"
+				? $(".slider").position().left
+				: $(".slider").position().top)) /
+			thisThumb.parentElement.size) *
+		100;
 
-	thisThumb.notify("UpdateThumbModelState", stance, cursorDirection);
+	thisThumb.notify("UpdateThumbModelState", stance, cursorOffset);
 
 	if (stance === 0) {
 		if (offset[0] + thisThumb.stepPercent >= offset[1]) {
@@ -24,7 +31,6 @@ const handleDrag = function (e: JQuery.MouseMoveEvent) {
 		[dragDirection]: offset[stance] + "%",
 	});
 
-	thisThumb.notify("UpdateThumbModelState", stance, cursorDirection);
 	thisThumb.parentElement.trackView.notify("UpdateTrackModelState");
 
 	if (thisThumb.parentElement.isRange) {

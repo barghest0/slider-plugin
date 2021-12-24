@@ -5,14 +5,12 @@ import Scale from "./ViewElements/Scale/Scale";
 import Fill from "./ViewElements/Fill/Fill";
 import {
 	Direction,
-	ICoords,
 	IEnds,
 	ISliderFillState,
 	ISliderTrackState,
 } from "../Interfaces/interfaces";
 import initialThumbPlacement from "./ViewModules/initialThumbPlacement";
 import initialFillPlacement from "./ViewModules/initialFillPlacement";
-import getCoords from "./ViewModules/getCoords";
 
 class View extends Observer {
 	public thumbView: Thumb;

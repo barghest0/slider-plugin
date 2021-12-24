@@ -164,13 +164,11 @@ class Presenter {
 			this.view.thumbView.dragThumb(1);
 		}
 	}
-	private updateThumbModelState(stance: number, coord: number) {
+	private updateThumbModelState(stance: number, cursorOffset: number) {
 		this.thumbs[stance].updateThumbModel(
 			stance,
-			this.view.size,
-			coord,
 			this.view.ends,
-			this.view.direction
+			cursorOffset
 		);
 	}
 	private updateThumbPosition(value: number, offset: number, stance: number) {
