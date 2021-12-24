@@ -31,8 +31,6 @@ class TrackModel extends Observer {
 
 	public setSize(size: number) {
 		this.size = size;
-
-		
 	}
 	public setIsRange(isRange: boolean) {
 		this.isRange = isRange;
@@ -42,27 +40,38 @@ class TrackModel extends Observer {
 		this.direction = direction;
 	}
 	public setFillSize(direction: Direction) {
-		this.fillSize =
-			parseInt(
-				$(`.slider__thumb-1`).css(
-					direction === "horizontal" ? "left" : "top"
-				),
-				10
-			) -
-			parseInt(
+		if (this.isRange) {
+			this.fillSize =
+				parseInt(
+					$(`.slider__thumb-1`).css(
+						direction === "horizontal" ? "left" : "top"
+					),
+					10
+				) -
+				parseInt(
+					$(`.slider__thumb-0`).css(
+						direction === "horizontal" ? "left" : "top"
+					),
+					10
+				);
+		} else {
+			this.fillSize = parseInt(
 				$(`.slider__thumb-0`).css(
 					direction === "horizontal" ? "left" : "top"
 				),
 				10
 			);
+		}
 	}
 	public setFillOffset(direction: Direction) {
-		this.fillOffset = parseInt(
-			$(`.slider__thumb-0`).css(
-				direction === "horizontal" ? "left" : "top"
-			),
-			10
-		);
+		if (this.isRange) {
+			this.fillOffset = parseInt(
+				$(`.slider__thumb-0`).css(
+					direction === "horizontal" ? "left" : "top"
+				),
+				10
+			);
+		}
 	}
 	public updateTrackFill(direction: Direction) {
 		this.setFillSize(direction);

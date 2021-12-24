@@ -7,8 +7,8 @@ new PreviewSlider(".slider-1", {
 	max: 200,
 	step: 10,
 	value: [0, 150],
-	isRange: true,
-	direction: "horizontal",
+	isRange: false,
+	direction: "vertical",
 });
 
 // new Presenter(".slider-2", {

@@ -18,5 +18,4 @@ class PreviewSlider {
 		this.panel.initializeFormValues(params, sliderClass);
 	}
 }
-
 export default PreviewSlider;

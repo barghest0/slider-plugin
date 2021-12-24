@@ -14,10 +14,10 @@ const handleClick = function (e: JQuery.MouseDownEvent) {
 			thisTrack.parentElement.size) *
 		100;
 
-	if (cursorOffset < offset[0]) {
-		stance = 0;
-	} else {
+	if (cursorOffset > offset[1] && thisTrack.parentElement.isRange) {
 		stance = 1;
+	} else {
+		stance = 0;
 	}
 	thisTrack.notify("UpdateThumbModelState", stance, cursorOffset);
 

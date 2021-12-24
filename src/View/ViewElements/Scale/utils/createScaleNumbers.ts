@@ -13,8 +13,11 @@ const createScaleNumbers = (
 	for (let i = 0; i <= max; i += step * 4) {
 		const stepCount = (max - min) / i;
 		const stepPercent = 100 / stepCount;
+
+		const numbersDirection =
+			direction === "horizontal" ? stepPercent : 100 - stepPercent;
 		$(".slider__scale-numbers").append(
-			`<div class="slider__scale-number slider__scale-number_${direction}" style="${offsetDirection}:calc(${stepPercent}% - 10px )">${i}</div>`
+			`<div class="slider__scale-number slider__scale-number_${direction}" style="${offsetDirection}:calc(${numbersDirection}% - 10px )">${i}</div>`
 		);
 	}
 };
