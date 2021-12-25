@@ -1,7 +1,6 @@
 import Observer from "../../../Observer/Observer";
 import { Direction, ISliderThumbState } from "../../../Interfaces/interfaces";
 import View from "../../View";
-import getCoords from "../../ViewModules/getCoords";
 import handleDrag from "./utils/handleDrag";
 
 class Thumb extends Observer {

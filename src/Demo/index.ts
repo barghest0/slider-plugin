@@ -5,12 +5,12 @@ import PreviewSlider from "./PriviewSlider";
 new PreviewSlider(".slider-1", {
 	min: 0,
 	max: 200,
-	step: 20,
-	value: [10, 150],
-	isRange: true,
+	step: 10,
+	value: [50, 150],
+	isRange: false,
 	direction: "horizontal",
 	hasFill: true,
-	hasTips: true
+	hasTips: true,
 });
 
 // new PreviewSlider(".slider-2", {

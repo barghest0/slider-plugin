@@ -34,6 +34,7 @@ const handleDrag = function (e: JQuery.MouseMoveEvent) {
 		[dragDirection]: offset[stance] + "%",
 	});
 
+	thisThumb.parentElement.tipView.updateTipsPosition(stance, dragDirection);
 	thisThumb.parentElement.trackView.notify("UpdateTrackModelState");
 
 	if (thisThumb.parentElement.isRange) {

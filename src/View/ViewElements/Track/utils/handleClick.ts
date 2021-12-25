@@ -6,6 +6,8 @@ const handleClick = function (e: JQuery.MouseDownEvent) {
 	let offset = thisTrack.parentElement.thumbView.offset;
 	let direction = thisTrack.parentElement.direction;
 	let cursorDirection = direction === "horizontal" ? e.pageX : e.pageY;
+
+	let dragDirection = direction === "horizontal" ? "left" : "top";
 	let cursorOffset =
 		((cursorDirection -
 			(direction === "horizontal"
@@ -19,19 +21,20 @@ const handleClick = function (e: JQuery.MouseDownEvent) {
 	} else {
 		stance = 0;
 	}
+
 	thisTrack.notify("UpdateThumbModelState", stance, cursorOffset);
 
 	$(`.slider__thumb-${stance}`).css({
 		left: offset[stance] + "%",
 	});
 
+	thisTrack.parentElement.tipView.updateTipsPosition(stance, dragDirection);
 	thisTrack.notify("UpdateTrackModelState");
 
 	$(`.slider__fill-${thisTrack.parentElement.direction}`).css({
 		width: thisTrack.parentElement.fillView.size + "px",
 		left: thisTrack.parentElement.fillView.offset + "px",
 	});
-
 };
 
 export default handleClick;

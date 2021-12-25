@@ -11,11 +11,14 @@ import {
 } from "../Interfaces/interfaces";
 import initialThumbPlacement from "./ViewModules/initialThumbPlacement";
 import initialFillPlacement from "./ViewModules/initialFillPlacement";
+import Tip from './ViewElements/Tip/Tip';
+import initialTipPlacement from './ViewModules/initialTipPlacement';
 
 class View extends Observer {
 	public thumbView: Thumb;
 	public trackView: Track;
 	public scaleView: Scale;
+	public tipView: Tip;
 	public fillView: Fill;
 	public ends: IEnds;
 	public parent: JQuery<HTMLElement>;
@@ -27,6 +30,8 @@ class View extends Observer {
 		stance: number
 	) => void;
 	public initialFillPlacement: (direction: Direction) => void;
+	public initialTipPlacement: (direction: Direction, stance: number) => void;
+
 
 	constructor(sliderClass: string) {
 		super();
@@ -34,6 +39,7 @@ class View extends Observer {
 		this.trackView = new Track(this);
 		this.scaleView = new Scale(this);
 		this.fillView = new Fill(this);
+		this.tipView = new Tip(this);
 		this.parent = $(sliderClass);
 		this.ends = { min: 0, max: 0 };
 		this.size = 200;
@@ -41,6 +47,9 @@ class View extends Observer {
 		this.direction = "horizontal";
 		this.initialThumbPlacement = initialThumbPlacement.bind(this);
 		this.initialFillPlacement = initialFillPlacement.bind(this);
+		this.initialTipPlacement = initialTipPlacement.bind(this);
+
+
 	}
 
 	public setState({ isRange, direction, ends, size }: ISliderTrackState) {
@@ -49,6 +58,7 @@ class View extends Observer {
 		this.isRange = isRange;
 		this.direction = direction;
 	}
+
 	public setFillState({ fillSize, fillOffset }: ISliderFillState) {
 		this.fillView.setSize(fillSize);
 		this.fillView.setOffset(fillOffset);

@@ -15,6 +15,7 @@ const initialThumbPlacement = function (
 	$(`.slider__thumb-${stance}`).css({
 		[dragDirection]: thumbsOffset + "%",
 	});
+
 };
 
 export default initialThumbPlacement;

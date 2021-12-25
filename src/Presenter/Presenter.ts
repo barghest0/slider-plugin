@@ -73,8 +73,9 @@ class Presenter {
 			max
 		);
 		this.createThumbView(this.thumbStance);
+		this.creteTipView(direction, this.thumbStance);
 		this.setThumbViewStateAndPlacement(direction, this.thumbStance);
-
+		this.setTipPlacement(direction, this.thumbStance);
 		if (isRange) {
 			this.thumbStance += 1;
 			this.createThumb(this.thumbStance);
@@ -86,7 +87,10 @@ class Presenter {
 				max
 			);
 			this.createThumbView(this.thumbStance);
+			this.creteTipView(direction, this.thumbStance);
 			this.setThumbViewStateAndPlacement(direction, this.thumbStance);
+			this.setTipPlacement(direction, this.thumbStance);
+
 		}
 
 		this.setTrackFillAndPlacement(direction);
@@ -131,6 +135,11 @@ class Presenter {
 		});
 	}
 
+
+	private setTipPlacement(direction: Direction, stance: number) {
+		this.view.initialTipPlacement(direction, stance);
+	}
+
 	private createThumb(stance: number) {
 		this.thumbs.push(new ThumbModel(this.sliderClass, stance));
 	}
@@ -142,6 +151,7 @@ class Presenter {
 	private createTrackView(direction: Direction) {
 		this.view.trackView.createTrack(direction);
 	}
+
 	private createScaleView(
 		direction: Direction,
 		step: number,
@@ -157,6 +167,11 @@ class Presenter {
 		this.view.fillView.createFill(direction);
 	}
 
+	private creteTipView(direction: Direction, stance: number) {
+		this.view.tipView.createTip(direction, stance);
+	}
+
+
 	private addListeners(isRange: boolean) {
 		this.view.thumbView.dragThumb(0);
 		this.view.trackView.clickTrack();
@@ -164,6 +179,7 @@ class Presenter {
 			this.view.thumbView.dragThumb(1);
 		}
 	}
+
 	private updateThumbModelState(stance: number, cursorOffset: number) {
 		this.thumbs[stance].updateThumbModel(
 			stance,
@@ -175,6 +191,7 @@ class Presenter {
 		this.view.thumbView.updateOffset(offset, stance);
 		this.view.thumbView.updateValue(value, stance);
 	}
+
 	private updateTrackFillModelState() {
 		this.trackModel.updateTrackFill(this.view.direction);
 	}

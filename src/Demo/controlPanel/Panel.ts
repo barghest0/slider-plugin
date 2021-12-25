@@ -2,8 +2,6 @@ import { ISliderParams } from "../../Interfaces/interfaces";
 import initializeFormValues from "./PanelModules/initializeFormValues";
 import initializeInputs from "./PanelModules/initializeInputs";
 class Panel {
-	public initializeFormValues: (params: ISliderParams) => void;
-	public initializeInputs: (sliderClass: string) => void;
 	public minValueInput: JQuery<HTMLElement> | null;
 	public maxValueInput: JQuery<HTMLElement> | null;
 	public firstValueInput: JQuery<HTMLElement> | null;
@@ -13,6 +11,8 @@ class Panel {
 	public isVertical: JQuery<HTMLElement> | null;
 	public hasTips: JQuery<HTMLElement> | null;
 	public hasFill: JQuery<HTMLElement> | null;
+	public initializeFormValues: (params: ISliderParams) => void;
+	public initializeInputs: (sliderClass: string) => void;
 	private params: ISliderParams;
 	private sliderClass: string;
 	constructor(params: ISliderParams, sliderClass: string) {
