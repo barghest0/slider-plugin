@@ -18,6 +18,13 @@ const initializeFormValues = function (this: Panel, params: ISliderParams) {
 	}
 
 	this.stepInput?.val(params.step);
+
+	this.isRange?.prop('checked', params.isRange);
+	this.isVertical?.prop('checked', params.direction === "vertical");
+	this.hasFill?.prop('checked', params.hasFill);
+	this.hasTips?.prop('checked', params.hasTips);
+
+
 };
 
 export default initializeFormValues;

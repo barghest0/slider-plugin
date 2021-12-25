@@ -12,66 +12,71 @@
 <body>
 	<div class="container">
 		<div class="examples row">
-			<div class="panel col-md-6">
+			<div class="panel col-md-12 d-flex flex-column align-items-center justify-content-center ">
 				<h2 class="title">Slider 1</h2>
-				<div id="slider-1" class="slider slider-1"></div>
+				<div id="slider-1" class="slider slider-1 "></div>
 				<div class="row wrap slider-1_panel">
-					<div class="mb-3 col-sm-6">
-						<label>Min Value</label>
-						<input type="number" class="form-control js-input__min-value" placeholder="" />
+					<div class="mb-3 col-sm-6 js-input">
+						<label class="d-block">
+							Min Value
+							<input type="number" class="form-control js-input__min-value" placeholder="" />
+						</label>
 					</div>
-					<div class="mb-3 col-sm-6">
-						<label>Max Value
+					<div class="mb-3 col-sm-6 js-input">
+						<label class="d-block">Max Value
 							<input type="number" class="form-control js-input__max-value" />
 						</label>
 					</div>
-					<div class="mb-3 col-sm-6">
-						<label>First Value
+					<div class="mb-3 col-sm-6 js-input">
+						<label class="d-block">First Value
 							<input type="number" class="form-control js-input__first-value" /></label>
 					</div>
-					<div class="mb-3 col-sm-6">
-						<label>Second Value
+					<div class="mb-3 col-sm-6 js-input">
+						<label class="d-block">Second Value
 							<input type="number" class="form-control js-input__second-value" />
 						</label>
 					</div>
 					<div class="mb-3 col-sm-6">
-						<label>Step
-							<input type="number" class="form-control js-input__step" />
+						<label class="d-block">Step
+							<input type="number" class="form-control js-input__step " />
 						</label>
+					</div>
+					<div class="mb-3 col-sm-6 row  align-items-center">
+						<div class="col-sm-3 ">
+							<div class="form-check js-checkbox">
+								<label class="form-check-label">
+									<input class="form-check-input js-checkbox__is-range" type="checkbox" value="" />
+									Is Range
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-3 ">
+							<div class="form-check js-checkbox">
+								<label class="form-check-label">
+									<input class="form-check-input js-checkbox__vertical" type="checkbox" value="" />
+									Vertical
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-3 ">
+							<div class="form-check js-checkbox">
+								<label class="form-check-label">
+									<input class="form-check-input js-checkbox__fill" type="checkbox" value="" />
+									Fill
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-3 ">
+							<div class="form-check js-checkbox">
+								<label class="form-check-label">
+									<input class="form-check-input js-checkbox__tips" type="checkbox" value="" />
+									Tips
+								</label>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-
-<!-- 
-			<div class="panel col-md-6">
-				<h2 class="title">Slider 2</h2>
-				<div id="slider-2" class="slider slider-2"></div>
-				<div class="row wrap slider-2_panel">
-					<div class="mb-3 col-sm-6">
-						<label>Min Value</label>
-						<input type="number" class="form-control js-input__min-value" placeholder="" />
-					</div>
-					<div class="mb-3 col-sm-6">
-						<label>Max Value
-							<input type="number" class="form-control js-input__max-value" />
-						</label>
-					</div>
-					<div class="mb-3 col-sm-6">
-						<label>First Value
-							<input type="number" class="form-control js-input__first-value" /></label>
-					</div>
-					<div class="mb-3 col-sm-6">
-						<label>Second Value
-							<input type="number" class="form-control js-input__second-value" />
-						</label>
-					</div>
-					<div class="mb-3 col-sm-6">
-						<label>Step
-							<input type="number" class="form-control js-input__step" />
-						</label>
-					</div>
-				</div>
-			</div> -->
 		</div>
 	</div>
 </body>

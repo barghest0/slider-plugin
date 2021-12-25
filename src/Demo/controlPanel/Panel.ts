@@ -9,6 +9,10 @@ class Panel {
 	public firstValueInput: JQuery<HTMLElement> | null;
 	public stepInput: JQuery<HTMLElement> | null;
 	public secondValueInput: JQuery<HTMLElement> | null;
+	public isRange: JQuery<HTMLElement> | null;
+	public isVertical: JQuery<HTMLElement> | null;
+	public hasTips: JQuery<HTMLElement> | null;
+	public hasFill: JQuery<HTMLElement> | null;
 	private params: ISliderParams;
 	private sliderClass: string;
 	constructor(params: ISliderParams, sliderClass: string) {
@@ -19,6 +23,10 @@ class Panel {
 		this.firstValueInput = null;
 		this.secondValueInput = null;
 		this.stepInput = null;
+		this.isRange = null;
+		this.isVertical = null;
+		this.hasTips = null;
+		this.hasFill = null;
 		this.initializeFormValues = initializeFormValues.bind(this);
 		this.initializeInputs = initializeInputs.bind(this);
 	}

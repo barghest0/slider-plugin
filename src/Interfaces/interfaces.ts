@@ -22,6 +22,8 @@ interface ISliderParams {
 	value: number | number[];
 	isRange: boolean;
 	direction: Direction;
+	hasFill: boolean,
+	hasTips: boolean;
 }
 //basic info about current and initial state of slider
 interface ISliderTrackState {

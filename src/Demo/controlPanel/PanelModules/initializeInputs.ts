@@ -7,5 +7,10 @@ const initializeInputs = function (this: Panel, sliderClass: string) {
 	this.firstValueInput = panel.find(".js-input__first-value");
 	this.secondValueInput = panel.find(".js-input__second-value");
 	this.stepInput = panel.find(".js-input__step");
+	this.isRange = panel.find('.js-checkbox__is-range');
+	this.isVertical = panel.find('.js-checkbox__vertical');
+	this.hasFill = panel.find('.js-checkbox__fill');
+	this.hasTips = panel.find('.js-checkbox__tips');
+
 };
 export default initializeInputs;

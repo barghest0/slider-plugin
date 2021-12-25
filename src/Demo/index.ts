@@ -9,6 +9,8 @@ new PreviewSlider(".slider-1", {
 	value: [10, 150],
 	isRange: true,
 	direction: "horizontal",
+	hasFill: true,
+	hasTips: true
 });
 
 // new PreviewSlider(".slider-2", {
