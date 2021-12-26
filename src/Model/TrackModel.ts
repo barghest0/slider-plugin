@@ -28,6 +28,7 @@ class TrackModel extends Observer {
 
 	public setEnds({ min, max }: IEnds) {
 		this.ends = { min, max };
+
 	}
 
 	public setSize(size: number) {
@@ -40,6 +41,7 @@ class TrackModel extends Observer {
 	public setDirection(direction: Direction) {
 		this.direction = direction;
 	}
+
 	public setFillSize(direction: Direction) {
 		if (this.isRange) {
 			this.fillSize =
@@ -64,6 +66,7 @@ class TrackModel extends Observer {
 			);
 		}
 	}
+
 	public setFillOffset(direction: Direction) {
 		if (this.isRange) {
 			this.fillOffset = parseInt(

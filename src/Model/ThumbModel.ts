@@ -1,5 +1,7 @@
 import Observer from "../Observer/Observer";
 import { Direction, IEnds, ISliderThumbState } from "../Interfaces/interfaces";
+import { timers } from 'jquery';
+import { textChangeRangeIsUnchanged } from 'typescript';
 
 class ThumbModel extends Observer {
 	private sliderClass: string;
@@ -27,6 +29,7 @@ class ThumbModel extends Observer {
 	public setStep(step: number, ends: IEnds) {
 		this.step = step;
 		this.stepCount = (ends.max - ends.min) / step;
+
 		this.stepPercent = 100 / this.stepCount;
 	}
 
@@ -38,8 +41,12 @@ class ThumbModel extends Observer {
 		this.stance = stance;
 	}
 
-	public setOffset(ends: IEnds) {
-		this.offset = this.value / (ends.max / 100);
+	public setOffset(ends: IEnds,) {
+
+		this.offset = this.value / (ends.max + Math.abs(ends.min)) * 100;
+
+
+
 	}
 
 	public setStepOffset() {
@@ -53,11 +60,11 @@ class ThumbModel extends Observer {
 		if (this.cursorOffset > 100) this.cursorOffset = 100;
 	}
 
-	public updateThumbModel(stance: number, ends: IEnds, cursorOffset: number) {
+	public updateThumbValue(stance: number, ends: IEnds, cursorOffset: number) {
 		this.setCursorOffset(cursorOffset);
 		this.setStepOffset();
 
-		const value = (this.stepOffset / this.stepPercent) * this.step;
+		const value = (this.stepOffset / this.stepPercent) * this.step + ends.min;
 
 		this.setValue(value);
 		this.setOffset(ends);

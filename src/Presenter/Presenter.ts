@@ -197,7 +197,7 @@ class Presenter {
 	}
 
 	private updateThumbModelValue(stance: number, cursorOffset: number) {
-		this.thumbs[stance].updateThumbModel(
+		this.thumbs[stance].updateThumbValue(
 			stance,
 			this.view.ends,
 			cursorOffset
