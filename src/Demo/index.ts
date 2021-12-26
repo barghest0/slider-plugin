@@ -3,10 +3,10 @@ import Presenter from "../Presenter/Presenter";
 import PreviewSlider from "./PriviewSlider";
 
 new PreviewSlider(".slider-1", {
-	min: -600,
-	max: 800,
+	min: -3,
+	max: 50,
 	step: 10,
-	value: [600, 800],
+	value: [5, 10],
 	isRange: true,
 	direction: "horizontal",
 	hasFill: true,

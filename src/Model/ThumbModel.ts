@@ -41,12 +41,12 @@ class ThumbModel extends Observer {
 		this.stance = stance;
 	}
 
-	public setOffset(ends: IEnds,) {
-
-		this.offset = this.value / (ends.max + Math.abs(ends.min)) * 100;
-
-
-
+	public setOffset(ends: IEnds) {
+		this.offset = (this.value - ends.min) / ((ends.max - ends.min) / 100);
+		if (this.offset > 100) {
+			this.offset = 100;
+			this.value = ends.max;
+		}
 	}
 
 	public setStepOffset() {
