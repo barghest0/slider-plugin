@@ -1,6 +1,8 @@
 import { ISliderParams } from "../../Interfaces/interfaces";
 import initializeFormValues from "./PanelModules/initializeFormValues";
 import initializeInputs from "./PanelModules/initializeInputs";
+import handleChangeFormValues from "./PanelModules/handleChangeFormValues";
+import PreviewSlider from "../PriviewSlider";
 class Panel {
 	public minValueInput: JQuery<HTMLElement> | null;
 	public maxValueInput: JQuery<HTMLElement> | null;
@@ -13,9 +15,17 @@ class Panel {
 	public hasFill: JQuery<HTMLElement> | null;
 	public initializeFormValues: (params: ISliderParams) => void;
 	public initializeInputs: (sliderClass: string) => void;
-	private params: ISliderParams;
+	public handleChangeFormValues: () => void;
+	public params: ISliderParams;
+	public parent: PreviewSlider;
 	private sliderClass: string;
-	constructor(params: ISliderParams, sliderClass: string) {
+
+	constructor(
+		params: ISliderParams,
+		sliderClass: string,
+		parent: PreviewSlider
+	) {
+		this.parent = parent;
 		this.params = params;
 		this.sliderClass = sliderClass;
 		this.minValueInput = null;
@@ -29,6 +39,7 @@ class Panel {
 		this.hasFill = null;
 		this.initializeFormValues = initializeFormValues.bind(this);
 		this.initializeInputs = initializeInputs.bind(this);
+		this.handleChangeFormValues = handleChangeFormValues.bind(this);
 	}
 }
 

@@ -3,6 +3,7 @@ import {
 	Direction,
 	IEnds,
 	ISliderFillState,
+	ISliderParams,
 	ISliderTrackState,
 } from "../Interfaces/interfaces";
 
@@ -75,6 +76,12 @@ class TrackModel extends Observer {
 			this.fillOffset = 0;
 		}
 	}
+
+	public updateTrack({ min }: ISliderParams) {
+		this.ends.min = min;
+		this.notify("UpdateTrackView");
+	}
+
 	public updateTrackFill(direction: Direction) {
 		this.setFillSize(direction);
 		this.setFillOffset(direction);

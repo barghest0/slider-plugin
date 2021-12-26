@@ -22,14 +22,14 @@ const handleClick = function (e: JQuery.MouseDownEvent) {
 		stance = 0;
 	}
 
-	thisTrack.notify("UpdateThumbModelState", stance, cursorOffset);
+	thisTrack.notify("UpdateThumbModelValue", stance, cursorOffset);
 
 	$(`.slider__thumb-${stance}`).css({
 		left: offset[stance] + "%",
 	});
 
 	thisTrack.parentElement.tipView.updateTipsPosition(stance, dragDirection);
-	thisTrack.notify("UpdateTrackModelState");
+	thisTrack.notify("UpdateTrackModelFill");
 
 	$(`.slider__fill-${thisTrack.parentElement.direction}`).css({
 		width: thisTrack.parentElement.fillView.size + "px",

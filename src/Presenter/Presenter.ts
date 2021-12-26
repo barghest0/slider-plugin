@@ -90,7 +90,6 @@ class Presenter {
 			this.creteTipView(direction, this.thumbStance);
 			this.setThumbViewStateAndPlacement(direction, this.thumbStance);
 			this.setTipPlacement(direction, this.thumbStance);
-
 		}
 
 		this.setTrackFillAndPlacement(direction);
@@ -135,7 +134,6 @@ class Presenter {
 		});
 	}
 
-
 	private setTipPlacement(direction: Direction, stance: number) {
 		this.view.initialTipPlacement(direction, stance);
 	}
@@ -171,7 +169,6 @@ class Presenter {
 		this.view.tipView.createTip(direction, stance);
 	}
 
-
 	private addListeners(isRange: boolean) {
 		this.view.thumbView.dragThumb(0);
 		this.view.trackView.clickTrack();
@@ -180,7 +177,26 @@ class Presenter {
 		}
 	}
 
-	private updateThumbModelState(stance: number, cursorOffset: number) {
+	private updateTrackModel(params: ISliderParams) {
+		this.trackModel.updateTrack(params);
+	}
+
+	private updateTrackView() {
+		const { ends, isRange, size, direction } = this.trackModel.getState();
+		this.view.setState({ ends, isRange, size, direction });
+	}
+
+
+	private updateTrackFillModelState() {
+		this.trackModel.updateTrackFill(this.view.direction);
+	}
+
+	private updateTrackFillPosition(width: number, offset: number) {
+		this.view.fillView.setSize(width);
+		this.view.fillView.setOffset(offset);
+	}
+
+	private updateThumbModelValue(stance: number, cursorOffset: number) {
 		this.thumbs[stance].updateThumbModel(
 			stance,
 			this.view.ends,
@@ -192,13 +208,7 @@ class Presenter {
 		this.view.thumbView.updateValue(value, stance);
 	}
 
-	private updateTrackFillModelState() {
-		this.trackModel.updateTrackFill(this.view.direction);
-	}
-	private updateTrackFillPosition(width: number, offset: number) {
-		this.view.fillView.setSize(width);
-		this.view.fillView.setOffset(offset);
-	}
+
 
 	// private getRangeValues(): number[] {
 	// 	const result: number[] = []
@@ -208,21 +218,35 @@ class Presenter {
 
 	private subscribe() {
 		this.view.thumbView.subscribe(
-			"UpdateThumbModelState",
-			this.updateThumbModelState.bind(this)
+			"UpdateThumbModelValue",
+			this.updateThumbModelValue.bind(this)
 		);
+
 		this.view.trackView.subscribe(
-			"UpdateThumbModelState",
-			this.updateThumbModelState.bind(this)
+			"UpdateThumbModelValue",
+			this.updateThumbModelValue.bind(this)
 		);
+
 		this.view.trackView.subscribe(
-			"UpdateTrackModelState",
+			"UpdateTrackModelFill",
 			this.updateTrackFillModelState.bind(this)
 		);
+
 		this.trackModel.subscribe(
 			"UpdateTrackFillPosition",
 			this.updateTrackFillPosition.bind(this)
 		);
+
+		this.trackModel.subscribe(
+			"UpdateTrackModel",
+			this.updateTrackModel.bind(this)
+		);
+
+		this.trackModel.subscribe(
+			"UpdateTrackView",
+			this.updateTrackView.bind(this)
+		);
+
 		this.thumbs.forEach((thumb) =>
 			thumb.subscribe(
 				"UpdateThumbPosition",

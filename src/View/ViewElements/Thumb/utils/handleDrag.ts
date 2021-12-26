@@ -16,7 +16,7 @@ const handleDrag = function (e: JQuery.MouseMoveEvent) {
 			thisThumb.parentElement.size) *
 		100;
 
-	thisThumb.notify("UpdateThumbModelState", stance, cursorOffset);
+	thisThumb.notify("UpdateThumbModelValue", stance, cursorOffset);
 
 	if (stance === 0) {
 		if (offset[0] + thisThumb.stepPercent >= offset[1]) {
@@ -35,7 +35,7 @@ const handleDrag = function (e: JQuery.MouseMoveEvent) {
 	});
 
 	thisThumb.parentElement.tipView.updateTipsPosition(stance, dragDirection);
-	thisThumb.parentElement.trackView.notify("UpdateTrackModelState");
+	thisThumb.parentElement.trackView.notify("UpdateTrackModelFill");
 
 	if (thisThumb.parentElement.isRange) {
 		$(`.slider__fill-${direction}`).css({

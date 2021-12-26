@@ -10,13 +10,17 @@ class PreviewSlider {
 	constructor(sliderClass: string, params: ISliderParams) {
 		this.sliderClass = sliderClass;
 		this.params = params;
-		this.panel = new Panel(params, sliderClass);
+		this.panel = new Panel(params, sliderClass, this);
 		this.slider = new Presenter(".slider", params);
 		this.initPanel(params, sliderClass);
+	}
+	public handleChangePanelParams(params: ISliderParams) {
+		// this.slider.updateTrackModel(params);
 	}
 	private initPanel(params: ISliderParams, sliderClass: string) {
 		this.panel.initializeInputs(sliderClass);
 		this.panel.initializeFormValues(params);
+		this.panel.handleChangeFormValues();
 	}
 }
 export default PreviewSlider;
