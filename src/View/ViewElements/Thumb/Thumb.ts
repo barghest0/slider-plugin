@@ -30,18 +30,11 @@ class Thumb extends Observer {
 		this.stepPercent = stepPercent;
 		this.stepCount = stepCount;
 	}
-	public setValue(value: number) {
-		this.value.push(value);
-	}
-	public setOffset(offset: number) {
-		this.offset.push(offset);
-	}
-	public updateOffset(offset: number, stance: number) {
-		this.offset[stance] = offset;
-	}
-
-	public updateValue(value: number, stance: number) {
+	public setValue(value: number, stance: number) {
 		this.value[stance] = value;
+	}
+	public setOffset(offset: number, stance: number) {
+		this.offset[stance] = offset;
 	}
 
 	public dragThumb(stance: number) {

@@ -16,10 +16,11 @@ interface ICoords {
 type Direction = "vertical" | "horizontal";
 //user params
 interface ISliderParams {
+	[index: string | number]: number | string | boolean | any;
 	min: number;
 	max: number;
 	step: number;
-	value: number | number[];
+	value: any;
 	isRange: boolean;
 	direction: Direction;
 	hasFill: boolean;

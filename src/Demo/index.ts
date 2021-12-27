@@ -1,13 +1,12 @@
 import "../Style/style.scss";
-import Presenter from "../Presenter/Presenter";
 import PreviewSlider from "./PriviewSlider";
 
 new PreviewSlider(".slider-1", {
-	min: -3,
-	max: 50,
-	step: 10,
-	value: [5, 10],
-	isRange: true,
+	min: -100,
+	max: 100,
+	step: 20,
+	value: [-50, 50],
+	isRange: false,
 	direction: "horizontal",
 	hasFill: true,
 	hasTips: true,

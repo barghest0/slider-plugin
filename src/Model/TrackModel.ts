@@ -28,7 +28,6 @@ class TrackModel extends Observer {
 
 	public setEnds({ min, max }: IEnds) {
 		this.ends = { min, max };
-
 	}
 
 	public setSize(size: number) {
@@ -78,11 +77,6 @@ class TrackModel extends Observer {
 		} else {
 			this.fillOffset = 0;
 		}
-	}
-
-	public updateTrack({ min }: ISliderParams) {
-		this.ends.min = min;
-		this.notify("UpdateTrackView");
 	}
 
 	public updateTrackFill(direction: Direction) {
