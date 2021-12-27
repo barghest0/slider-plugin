@@ -57,12 +57,13 @@ class TrackModel extends Observer {
 					10
 				);
 		} else {
-			this.fillSize = parseInt(
-				$(`.slider__thumb-0`).css(
-					direction === "horizontal" ? "left" : "top"
-				),
-				10
-			);
+			this.fillSize =
+				parseInt(
+					$(`.slider__thumb-0`).css(
+						direction === "horizontal" ? "left" : "top"
+					),
+					10
+				) ;
 		}
 	}
 

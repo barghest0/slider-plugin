@@ -20,13 +20,13 @@ class Presenter {
 		this.params = params;
 		this.thumbStance = 0;
 		this.init(params, "init");
-		this.addListeners(params.isRange);
 		this.clearHTML = clearHTML.bind(this);
 	}
 
 	public init(params: ISliderParams, mode: string) {
 		if (mode === "rebuild") {
 			this.params = params;
+			this.view.isRange = false;
 			this.clearHTML();
 			this.thumbStance = 0;
 			this.thumbs = [];
@@ -37,6 +37,7 @@ class Presenter {
 		});
 		this.createSlider(params);
 		this.subscribe();
+		this.addListeners(params.isRange);
 	}
 
 	private setTrackModelState({

@@ -5,8 +5,7 @@ const handleDrag = function (e: JQuery.MouseMoveEvent) {
 	let cursorDirection = direction === "horizontal" ? e.pageX : e.pageY;
 	let dragDirection = direction === "horizontal" ? "left" : "top";
 	let fillDirection = direction === "horizontal" ? "width" : "height";
-	let thumbsOffset =
-		direction === "horizontal" ? offset[stance] : 100 - offset[stance];
+	console.log(e);
 
 	let cursorOffset =
 		((cursorDirection -
@@ -44,7 +43,7 @@ const handleDrag = function (e: JQuery.MouseMoveEvent) {
 		});
 	} else {
 		$(`.slider__fill-${direction}`).css({
-			[fillDirection]: thumbsOffset + "%",
+			[fillDirection]: offset[stance] + "%",
 		});
 	}
 };
