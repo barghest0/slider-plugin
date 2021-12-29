@@ -5,7 +5,6 @@ const handleDrag = function (e: JQuery.MouseMoveEvent) {
 	let cursorDirection = direction === "horizontal" ? e.pageX : e.pageY;
 	let dragDirection = direction === "horizontal" ? "left" : "top";
 	let fillDirection = direction === "horizontal" ? "width" : "height";
-	console.log(e);
 
 	let cursorOffset =
 		((cursorDirection -

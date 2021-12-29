@@ -10,6 +10,7 @@ new PreviewSlider(".slider-1", {
 	direction: "horizontal",
 	hasFill: true,
 	hasTips: true,
+	hasScale: true,
 });
 
 // new PreviewSlider(".slider-2", {

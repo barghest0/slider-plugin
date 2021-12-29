@@ -45,6 +45,9 @@ class Presenter {
 		max,
 		isRange,
 		direction,
+		hasFill,
+		hasTips,
+		hasScale,
 	}: ISliderParams) {
 		const size =
 			direction === "horizontal"
@@ -54,6 +57,7 @@ class Presenter {
 		this.trackModel.setEnds({ min, max });
 		this.trackModel.setIsRange(isRange);
 		this.trackModel.setDirection(direction);
+		this.trackModel.setSupElements(hasFill, hasTips, hasScale);
 		return this;
 	}
 	private setTrackViewState() {
@@ -68,11 +72,14 @@ class Presenter {
 		min,
 		max,
 		direction,
+		hasScale,
+		hasTips,
+		hasFill,
 	}: ISliderParams) {
 		$(this.sliderClass).addClass(`slider-${direction}`);
 		this.createTrackView(direction);
-		this.createScaleView(direction, step, max, min);
-		this.creteFillView(direction);
+		this.createScaleView(direction, step, max, min, hasScale);
+		this.creteFillView(direction, hasFill);
 
 		this.createThumb(this.thumbStance);
 		this.setThumbModelState(
@@ -83,7 +90,7 @@ class Presenter {
 			max
 		);
 		this.createThumbView(this.thumbStance);
-		this.creteTipView(direction, this.thumbStance);
+		this.creteTipView(direction, this.thumbStance, hasTips);
 		this.setThumbViewStateAndPlacement(direction, this.thumbStance);
 		this.setTipPlacement(direction, this.thumbStance);
 		if (isRange) {
@@ -97,7 +104,7 @@ class Presenter {
 				max
 			);
 			this.createThumbView(this.thumbStance);
-			this.creteTipView(direction, this.thumbStance);
+			this.creteTipView(direction, this.thumbStance, hasTips);
 			this.setThumbViewStateAndPlacement(direction, this.thumbStance);
 			this.setTipPlacement(direction, this.thumbStance);
 		}
@@ -165,19 +172,24 @@ class Presenter {
 		direction: Direction,
 		step: number,
 		max: number,
-		min: number
+		min: number,
+		hasScale: boolean
 	) {
-		this.view.scaleView.createScale(direction);
+		this.view.scaleView.createScale(direction, hasScale);
 		this.view.scaleView.createScaleMarks(step, max, min, direction);
 		this.view.scaleView.createScaleNumbers(step, max, min, direction);
 	}
 
-	private creteFillView(direction: Direction) {
-		this.view.fillView.createFill(direction);
+	private creteFillView(direction: Direction, hasFill: boolean) {
+		this.view.fillView.createFill(direction, hasFill);
 	}
 
-	private creteTipView(direction: Direction, stance: number) {
-		this.view.tipView.createTip(direction, stance);
+	private creteTipView(
+		direction: Direction,
+		stance: number,
+		hasTips: boolean
+	) {
+		this.view.tipView.createTip(direction, stance, hasTips);
 	}
 
 	private addListeners(isRange: boolean) {

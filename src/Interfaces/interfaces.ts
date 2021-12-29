@@ -25,6 +25,7 @@ interface ISliderParams {
 	direction: Direction;
 	hasFill: boolean;
 	hasTips: boolean;
+	hasScale: boolean;
 }
 //basic info about current and initial state of slider
 interface ISliderTrackState {
@@ -32,6 +33,9 @@ interface ISliderTrackState {
 	size: number;
 	isRange: boolean;
 	direction: Direction;
+	hasFill: boolean;
+	hasTips: boolean;
+	hasScale: boolean;
 }
 
 interface ISliderThumbState {

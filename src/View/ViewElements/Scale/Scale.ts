@@ -23,10 +23,12 @@ class Scale {
 		this.createScaleNumbers = createScaleNumbers.bind(this);
 	}
 
-	public createScale(direction: Direction) {
-		this.parentElement.parent.append(
-			`<div class="slider__scale slider__scale_${direction}"></div>`
-		);
+	public createScale(direction: Direction, hasScale: boolean) {
+		if (hasScale) {
+			this.parentElement.parent.append(
+				`<div class="slider__scale slider__scale_${direction}"></div>`
+			);
+		}
 	}
 }
 

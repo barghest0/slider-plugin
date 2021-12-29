@@ -15,6 +15,9 @@ class TrackModel extends Observer {
 	private size: number;
 	private fillSize: number;
 	private fillOffset: number;
+	private hasFill: boolean;
+	private hasTips: boolean;
+	private hasScale: boolean;
 	constructor(sliderClass: string) {
 		super();
 		this.sliderClass = sliderClass;
@@ -24,6 +27,9 @@ class TrackModel extends Observer {
 		this.direction = "horizontal";
 		this.fillSize = 0;
 		this.fillOffset = 0;
+		this.hasFill = true;
+		this.hasTips = true;
+		this.hasScale = true;
 	}
 
 	public setEnds({ min, max }: IEnds) {
@@ -40,7 +46,15 @@ class TrackModel extends Observer {
 	public setDirection(direction: Direction) {
 		this.direction = direction;
 	}
-
+	public setSupElements(
+		hasFill: boolean,
+		hasTips: boolean,
+		hasScale: boolean
+	) {
+		this.hasScale = hasScale;
+		this.hasTips = hasTips;
+		this.hasFill = hasFill;
+	}
 	public setFillSize(direction: Direction) {
 		if (this.isRange) {
 			this.fillSize =
@@ -57,13 +71,12 @@ class TrackModel extends Observer {
 					10
 				);
 		} else {
-			this.fillSize =
-				parseInt(
-					$(`.slider__thumb-0`).css(
-						direction === "horizontal" ? "left" : "top"
-					),
-					10
-				) ;
+			this.fillSize = parseInt(
+				$(`.slider__thumb-0`).css(
+					direction === "horizontal" ? "left" : "top"
+				),
+				10
+			);
 		}
 	}
 
@@ -91,6 +104,9 @@ class TrackModel extends Observer {
 			size: this.size,
 			isRange: this.isRange,
 			direction: this.direction,
+			hasFill: this.hasFill,
+			hasTips: this.hasTips,
+			hasScale: this.hasScale,
 		};
 	}
 	public getFillState(): ISliderFillState {

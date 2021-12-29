@@ -11,8 +11,8 @@ import {
 } from "../Interfaces/interfaces";
 import initialThumbPlacement from "./ViewModules/initialThumbPlacement";
 import initialFillPlacement from "./ViewModules/initialFillPlacement";
-import Tip from './ViewElements/Tip/Tip';
-import initialTipPlacement from './ViewModules/initialTipPlacement';
+import Tip from "./ViewElements/Tip/Tip";
+import initialTipPlacement from "./ViewModules/initialTipPlacement";
 
 class View extends Observer {
 	public thumbView: Thumb;
@@ -25,13 +25,15 @@ class View extends Observer {
 	public isRange: boolean;
 	public direction: Direction;
 	public size: number;
+	public hasTips: boolean;
+	public hasFill: boolean;
+	public hasScale: boolean;
 	public initialThumbPlacement: (
 		direction: Direction,
 		stance: number
 	) => void;
 	public initialFillPlacement: (direction: Direction) => void;
 	public initialTipPlacement: (direction: Direction, stance: number) => void;
-
 
 	constructor(sliderClass: string) {
 		super();
@@ -45,18 +47,30 @@ class View extends Observer {
 		this.size = 200;
 		this.isRange = false;
 		this.direction = "horizontal";
+		this.hasFill = true;
+		this.hasTips = true;
+		this.hasScale = true;
 		this.initialThumbPlacement = initialThumbPlacement.bind(this);
 		this.initialFillPlacement = initialFillPlacement.bind(this);
 		this.initialTipPlacement = initialTipPlacement.bind(this);
-
-
 	}
 
-	public setState({ isRange, direction, ends, size }: ISliderTrackState) {
+	public setState({
+		isRange,
+		direction,
+		ends,
+		size,
+		hasTips,
+		hasScale,
+		hasFill,
+	}: ISliderTrackState) {
 		this.ends = ends;
 		this.size = size;
 		this.isRange = isRange;
 		this.direction = direction;
+		this.hasTips = hasTips;
+		this.hasFill = hasFill;
+		this.hasScale = hasScale;
 	}
 
 	public setFillState({ fillSize, fillOffset }: ISliderFillState) {

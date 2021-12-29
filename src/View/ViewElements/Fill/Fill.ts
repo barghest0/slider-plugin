@@ -15,10 +15,12 @@ class Fill extends Observer {
 		this.offset = 0;
 	}
 
-	public createFill(direction: Direction) {
-		this.parentElement.parent.append(
-			`<div class="slider__fill slider__fill-${direction}"></div>`
-		);
+	public createFill(direction: Direction,hasFill:boolean) {
+		if (hasFill) {
+			this.parentElement.parent.append(
+				`<div class="slider__fill slider__fill-${direction}"></div>`
+			);
+		}
 	}
 	public setSize(size: number) {
 		this.size = size;
