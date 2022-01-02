@@ -2,10 +2,10 @@ import "../Style/style.scss";
 import PreviewSlider from "./PriviewSlider";
 
 new PreviewSlider(".slider-1", {
-	min: -100,
-	max: 100,
-	step: 20,
-	value: [-50, 50],
+	min: -2,
+	max: 2,
+	step: 0.2,
+	value: [-1, 1],
 	isRange: false,
 	direction: "horizontal",
 	hasFill: true,
