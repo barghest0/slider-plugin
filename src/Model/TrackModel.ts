@@ -8,7 +8,7 @@ import {
 } from "../Interfaces/interfaces";
 
 class TrackModel extends Observer {
-	private sliderClass: string;
+	private rootClass: string;
 	private isRange: boolean;
 	private direction: Direction;
 	private ends: IEnds;
@@ -18,9 +18,9 @@ class TrackModel extends Observer {
 	private hasFill: boolean;
 	private hasTips: boolean;
 	private hasScale: boolean;
-	constructor(sliderClass: string) {
+	constructor(rootClass: string) {
 		super();
-		this.sliderClass = sliderClass;
+		this.rootClass = rootClass;
 		this.ends = { min: 1, max: 100 };
 		this.size = 200;
 		this.isRange = false;
@@ -59,20 +59,21 @@ class TrackModel extends Observer {
 		if (this.isRange) {
 			this.fillSize =
 				parseInt(
-					$(`.slider__thumb-1`).css(
+
+					$(`${this.rootClass} .slider__thumb-1`).css(
 						direction === "horizontal" ? "left" : "top"
 					),
 					10
 				) -
 				parseInt(
-					$(`.slider__thumb-0`).css(
+					$(`${this.rootClass} .slider__thumb-0`).css(
 						direction === "horizontal" ? "left" : "top"
 					),
 					10
 				);
 		} else {
 			this.fillSize = parseInt(
-				$(`.slider__thumb-0`).css(
+				$(`${this.rootClass} .slider__thumb-0`).css(
 					direction === "horizontal" ? "left" : "top"
 				),
 				10
@@ -83,7 +84,7 @@ class TrackModel extends Observer {
 	public setFillOffset(direction: Direction) {
 		if (this.isRange) {
 			this.fillOffset = parseInt(
-				$(`.slider__thumb-0`).css(
+				$(`${this.rootClass} .slider__thumb-0`).css(
 					direction === "horizontal" ? "left" : "top"
 				),
 				10

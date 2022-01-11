@@ -1,13 +1,15 @@
 import { Direction } from "../../../../Interfaces/interfaces";
+import Scale from '../Scale';
 
-const createScaleNumbers = (
+const createScaleNumbers = function (
+	this: Scale,
 	step: number,
 	max: number,
 	min: number,
 	direction: Direction
-) => {
+) {
 	const offsetDirection = direction === "horizontal" ? "left" : "top";
-	$(".slider__scale").append(
+	$(`${this.view.root} .slider__scale`).append(
 		`<div class="slider__scale-numbers slider__scale-numbers_${direction}"></div>`
 	);
 	// for (let i = 0; i <= max; i += step * 2) {

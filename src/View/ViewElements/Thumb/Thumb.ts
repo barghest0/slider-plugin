@@ -4,7 +4,7 @@ import View from "../../View";
 import handleDrag from "./utils/handleDrag";
 
 class Thumb extends Observer {
-	public parentElement: View;
+	public view: View;
 	public step: number;
 	public stepPercent: number;
 	public stepCount: number;
@@ -12,9 +12,9 @@ class Thumb extends Observer {
 	public offset: number[];
 	public isDecimal: boolean;
 	public decimalPlaces: number;
-	constructor(parentElement: View) {
+	constructor(view: View) {
 		super();
-		this.parentElement = parentElement;
+		this.view = view;
 		this.step = 0;
 		this.stepPercent = 0;
 		this.stepCount = 0;
@@ -25,7 +25,7 @@ class Thumb extends Observer {
 	}
 
 	public createThumb(stance: number) {
-		this.parentElement.parent.append(
+		$(this.view.root).append(
 			`<div class="slider__thumb slider__thumb-${stance}"></div>`
 		);
 	}
@@ -41,8 +41,6 @@ class Thumb extends Observer {
 		this.offset[stance] = offset;
 	}
 	public setIsDecimal(isDecimal: boolean, decimalPlaces: number) {
-		console.log(isDecimal);
-
 		if (isDecimal) {
 			this.decimalPlaces = decimalPlaces;
 		} else {
@@ -51,7 +49,7 @@ class Thumb extends Observer {
 	}
 
 	public dragThumb(stance: number) {
-		this.parentElement.parent.on(
+		$(this.view.root).on(
 			"mousedown",
 			`.slider__thumb-${stance}`,
 			(event: JQuery.MouseDownEvent) => {
@@ -70,10 +68,10 @@ class Thumb extends Observer {
 		$("body").on("mouseup", (event: JQuery.MouseUpEvent) => {
 			$("body").off("mousemove");
 		});
-		this.parentElement.parent.on(
+		$(this.view.root).on(
 			"mouseup",
 			(event: JQuery.MouseUpEvent) => {
-				this.parentElement.parent.off("mousemove");
+				$(this.view.root).off("mousemove");
 			}
 		);
 	}

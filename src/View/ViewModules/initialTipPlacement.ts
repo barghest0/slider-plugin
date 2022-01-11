@@ -12,10 +12,10 @@ const initialTipPlacement = function (
 			? this.thumbView.offset[stance]
 			: 100 - this.thumbView.offset[stance];
 
-	$(`.slider__tip-${stance}`).css({
+	$(`${this.root} .slider__tip-${stance}`).css({
 		[dragDirection]: thumbsOffset + "%",
 	});
-	$(`.slider__tip-${stance}`).html(
+	$(`${this.root} .slider__tip-${stance}`).html(
 		this.thumbView.value[stance].toFixed(this.thumbView.decimalPlaces)
 	);
 };

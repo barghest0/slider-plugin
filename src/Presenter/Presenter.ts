@@ -5,17 +5,17 @@ import ThumbModel from "../Model/ThumbModel";
 import clearHTML from "./PresenterModules/clearHTML";
 
 class Presenter {
-	public sliderClass: string;
+	public rootClass: string;
 	private trackModel: TrackModel;
 	private view: View;
 	private params: ISliderParams;
 	private thumbs: ThumbModel[];
 	private thumbStance: number;
 	private clearHTML: () => void;
-	constructor(sliderClass: string, params: ISliderParams) {
-		this.sliderClass = sliderClass;
-		this.trackModel = new TrackModel(sliderClass);
-		this.view = new View(sliderClass);
+	constructor(rootClass: string, params: ISliderParams) {
+		this.rootClass = rootClass;
+		this.trackModel = new TrackModel(rootClass);
+		this.view = new View(rootClass);
 		this.thumbs = [];
 		this.params = params;
 		this.thumbStance = 0;
@@ -51,8 +51,8 @@ class Presenter {
 	}: ISliderParams) {
 		const size =
 			direction === "horizontal"
-				? $(".slider").width()!
-				: $(".slider").height()!;
+				? $(this.rootClass).width()!
+				: $(this.rootClass).height()!;
 		this.trackModel.setSize(size);
 		this.trackModel.setEnds({ min, max });
 		this.trackModel.setIsRange(isRange);
@@ -78,7 +78,7 @@ class Presenter {
 		isDecimal,
 		decimalPlaces,
 	}: ISliderParams) {
-		$(this.sliderClass).addClass(`slider-${direction}`);
+		$(this.rootClass).addClass(`slider-${direction}`);
 		this.createTrackView(direction);
 		this.createScaleView(direction, step, max, min, hasScale);
 		this.creteFillView(direction, hasFill);
@@ -173,7 +173,7 @@ class Presenter {
 	}
 
 	private createThumb(stance: number) {
-		this.thumbs.push(new ThumbModel(this.sliderClass, stance));
+		this.thumbs.push(new ThumbModel(this.rootClass, stance));
 	}
 
 	private createThumbView(stance: number) {
@@ -238,11 +238,7 @@ class Presenter {
 		this.view.thumbView.setValue(value, stance);
 	}
 
-	// private getRangeValues(): number[] {
-	// 	const result: number[] = []
-	// 	this.thumbs.forEach(thumb => result.push(thumb.getValue()))
-	// 	return result
-	// }
+
 
 	private subscribe() {
 		this.view.thumbView.subscribe(

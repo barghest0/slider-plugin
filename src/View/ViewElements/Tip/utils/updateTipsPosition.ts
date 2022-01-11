@@ -6,14 +6,15 @@ const updateTipsPosition = function (
 	stance: number,
 	dragDirection: string
 ) {
-	$(`.slider__tip-${stance}`).css({
-		[dragDirection]: this.parentElement.thumbView.offset[stance] + "%",
-	});
-	console.log(this.parentElement.thumbView.decimalPlaces);
 
-	$(`.slider__tip-${stance}`).html(
-		this.parentElement.thumbView.value[stance].toFixed(
-			this.parentElement.thumbView.decimalPlaces
+	$(`${this.view.root} .slider__tip-${stance}`).css({
+		[dragDirection]: this.view.thumbView.offset[stance] + "%",
+	});
+
+
+	$(`${this.view.root} .slider__tip-${stance}`).html(
+		this.view.thumbView.value[stance].toFixed(
+			this.view.thumbView.decimalPlaces
 		)
 	);
 };

@@ -12,7 +12,7 @@ const initialThumbPlacement = function (
 			? this.thumbView.offset[stance]
 			: 100 - this.thumbView.offset[stance];
 
-	$(`.slider__thumb-${stance}`).css({
+	$(`${this.root} .slider__thumb-${stance}`).css({
 		[dragDirection]: thumbOffset + "%",
 	});
 };

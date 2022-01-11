@@ -15,11 +15,17 @@ new PreviewSlider(".slider-1", {
 	decimalPlaces: 1,
 });
 
-// new PreviewSlider(".slider-2", {
-// 	min: 0,
-// 	max: 200,
-// 	step: 20,
-// 	value: [10, 150],
-// 	isRange: true,
-// 	direction: "horizontal",
-// });
+
+new PreviewSlider(".slider-2", {
+	min: -6,
+	max: 6,
+	step: 0.7,
+	value: [-3, 3],
+	isRange: true,
+	direction: "horizontal",
+	hasFill: true,
+	hasTips: true,
+	hasScale: true,
+	isDecimal: true,
+	decimalPlaces: 1,
+});

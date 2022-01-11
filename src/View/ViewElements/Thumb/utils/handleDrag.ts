@@ -1,7 +1,7 @@
 const handleDrag = function (e: JQuery.MouseMoveEvent) {
 	const { thisThumb, stance } = e.data;
 	let offset = thisThumb.offset;
-	let direction = thisThumb.parentElement.direction;
+	let direction = thisThumb.view.direction;
 	let cursorDirection = direction === "horizontal" ? e.pageX : e.pageY;
 	let dragDirection = direction === "horizontal" ? "left" : "top";
 	let fillDirection = direction === "horizontal" ? "width" : "height";
@@ -9,9 +9,9 @@ const handleDrag = function (e: JQuery.MouseMoveEvent) {
 	let cursorOffset =
 		((cursorDirection -
 			(direction === "horizontal"
-				? $(".slider").position().left
-				: $(".slider").position().top)) /
-			thisThumb.parentElement.size) *
+				? $(thisThumb.view.root).position().left
+				: $(thisThumb.view.root).position().top)) /
+			thisThumb.view.size) *
 		100;
 
 	thisThumb.notify("UpdateThumbModelValue", stance, cursorOffset);
@@ -28,20 +28,20 @@ const handleDrag = function (e: JQuery.MouseMoveEvent) {
 		}
 	}
 
-	$(`.slider__thumb-${stance}`).css({
+	$(`${thisThumb.view.root} .slider__thumb-${stance}`).css({
 		[dragDirection]: offset[stance] + "%",
 	});
 
-	thisThumb.parentElement.tipView.updateTipsPosition(stance, dragDirection);
-	thisThumb.parentElement.trackView.notify("UpdateTrackModelFill");
+	thisThumb.view.tipView.updateTipsPosition(stance, dragDirection);
+	thisThumb.view.trackView.notify("UpdateTrackModelFill");
 
-	if (thisThumb.parentElement.isRange) {
-		$(`.slider__fill-${direction}`).css({
-			[dragDirection]: thisThumb.parentElement.fillView.offset + "px",
-			[fillDirection]: thisThumb.parentElement.fillView.size + "px",
+	if (thisThumb.view.isRange) {
+		$(`${thisThumb.view.root} .slider__fill-${direction}`).css({
+			[dragDirection]: thisThumb.view.fillView.offset + "px",
+			[fillDirection]: thisThumb.view.fillView.size + "px",
 		});
 	} else {
-		$(`.slider__fill-${direction}`).css({
+		$(`${thisThumb.view.root} .slider__fill-${direction}`).css({
 			[fillDirection]: offset[stance] + "%",
 		});
 	}

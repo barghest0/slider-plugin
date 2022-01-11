@@ -5,13 +5,14 @@ const initialFillPlacement = function (this: View, direction: Direction) {
 	let dragDirection = direction === "horizontal" ? "left" : "top";
 	let fillDirection = direction === "horizontal" ? "width" : "height";
 
+
 	if (this.isRange) {
-		$(`.slider__fill-${direction}`).css({
+		$(`${this.root} .slider__fill-${direction}`).css({
 			[dragDirection]: this.fillView.offset + "px",
 			[fillDirection]: this.fillView.size + "px",
 		});
 	} else {
-		$(`.slider__fill-${direction}`).css({
+		$(`${this.root} .slider__fill-${direction}`).css({
 			[fillDirection]: this.fillView.size + "px",
 		});
 	}

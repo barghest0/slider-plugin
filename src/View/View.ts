@@ -21,7 +21,7 @@ class View extends Observer {
 	public tipView: Tip;
 	public fillView: Fill;
 	public ends: IEnds;
-	public parent: JQuery<HTMLElement>;
+	public root: string;
 	public isRange: boolean;
 	public direction: Direction;
 	public size: number;
@@ -35,14 +35,14 @@ class View extends Observer {
 	public initialFillPlacement: (direction: Direction) => void;
 	public initialTipPlacement: (direction: Direction, stance: number) => void;
 
-	constructor(sliderClass: string) {
+	constructor(root: string) {
 		super();
 		this.thumbView = new Thumb(this);
 		this.trackView = new Track(this);
 		this.scaleView = new Scale(this);
 		this.fillView = new Fill(this);
 		this.tipView = new Tip(this);
-		this.parent = $(sliderClass);
+		this.root = root;
 		this.ends = { min: 0, max: 0 };
 		this.size = 200;
 		this.isRange = false;

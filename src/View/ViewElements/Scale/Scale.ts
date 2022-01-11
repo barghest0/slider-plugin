@@ -16,16 +16,17 @@ class Scale {
 		min: number,
 		direction: Direction
 	) => void;
-	private parentElement: View;
-	constructor(parentElement: View) {
-		this.parentElement = parentElement;
+	public view: View;
+
+	constructor(view: View) {
+		this.view = view;
 		this.createScaleMarks = createScaleMarks.bind(this);
 		this.createScaleNumbers = createScaleNumbers.bind(this);
 	}
 
 	public createScale(direction: Direction, hasScale: boolean) {
 		if (hasScale) {
-			this.parentElement.parent.append(
+			$(this.view.root).append(
 				`<div class="slider__scale slider__scale_${direction}"></div>`
 			);
 		}

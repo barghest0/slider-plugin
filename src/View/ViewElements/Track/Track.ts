@@ -4,23 +4,24 @@ import handleClick from "./utils/handleClick";
 import Observer from "../../../Observer/Observer";
 
 class Track extends Observer {
-	private parentElement: View;
-	constructor(parentElement: View) {
+	private view: View;
+	constructor(view: View) {
 		super();
-		this.parentElement = parentElement;
+		this.view = view;
 	}
 	public createTrack(direction: Direction) {
-		this.parentElement.parent.append(
+		$(this.view.root).append(
 			`<div class="slider__track slider__track-${direction}"></div>`
 		);
 	}
 
 	public clickTrack() {
-		this.parentElement.parent.on(
-			"mousedown",
-			{ thisTrack: this },
-			handleClick
-		);
+		$(this.view.root)
+			.on(
+				"mousedown",
+				{ thisTrack: this },
+				handleClick
+			);
 	}
 }
 

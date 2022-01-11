@@ -3,21 +3,21 @@ import Observer from "../../../Observer/Observer";
 import View from "../../View";
 
 class Fill extends Observer {
-	private parentElement: View;
+	private view: View;
 	private fill: JQuery<HTMLElement>;
 	public size: number;
 	public offset: number;
-	constructor(parentElement: View) {
+	constructor(view: View) {
 		super();
-		this.parentElement = parentElement;
+		this.view = view;
 		this.fill = $(".slider__fill");
 		this.size = 0;
 		this.offset = 0;
 	}
 
-	public createFill(direction: Direction,hasFill:boolean) {
+	public createFill(direction: Direction, hasFill: boolean) {
 		if (hasFill) {
-			this.parentElement.parent.append(
+			$(this.view.root).append(
 				`<div class="slider__fill slider__fill-${direction}"></div>`
 			);
 		}
