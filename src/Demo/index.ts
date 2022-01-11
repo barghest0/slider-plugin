@@ -11,6 +11,8 @@ new PreviewSlider(".slider-1", {
 	hasFill: true,
 	hasTips: true,
 	hasScale: true,
+	isDecimal: true,
+	decimalPlaces: 1,
 });
 
 // new PreviewSlider(".slider-2", {

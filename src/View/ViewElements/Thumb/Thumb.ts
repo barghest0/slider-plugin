@@ -10,6 +10,8 @@ class Thumb extends Observer {
 	public stepCount: number;
 	public value: number[];
 	public offset: number[];
+	public isDecimal: boolean;
+	public decimalPlaces: number;
 	constructor(parentElement: View) {
 		super();
 		this.parentElement = parentElement;
@@ -18,6 +20,8 @@ class Thumb extends Observer {
 		this.stepCount = 0;
 		this.value = [];
 		this.offset = [];
+		this.isDecimal = false;
+		this.decimalPlaces = 0;
 	}
 
 	public createThumb(stance: number) {
@@ -35,6 +39,15 @@ class Thumb extends Observer {
 	}
 	public setOffset(offset: number, stance: number) {
 		this.offset[stance] = offset;
+	}
+	public setIsDecimal(isDecimal: boolean, decimalPlaces: number) {
+		console.log(isDecimal);
+
+		if (isDecimal) {
+			this.decimalPlaces = decimalPlaces;
+		} else {
+			this.decimalPlaces = 0;
+		}
 	}
 
 	public dragThumb(stance: number) {

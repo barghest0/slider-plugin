@@ -13,6 +13,8 @@ class ThumbModel extends Observer {
 	private offset: number;
 	private stepOffset: number;
 	private cursorOffset: number;
+	private isDecimal: boolean;
+	private decimalPlaces: number;
 	constructor(sliderClass: string, stance: number) {
 		super();
 		this.sliderClass = sliderClass;
@@ -24,6 +26,8 @@ class ThumbModel extends Observer {
 		this.offset = 0;
 		this.stepOffset = 0;
 		this.cursorOffset = 0;
+		this.isDecimal = false;
+		this.decimalPlaces = 0;
 	}
 
 	public setStep(step: number, ends: IEnds) {
@@ -40,7 +44,10 @@ class ThumbModel extends Observer {
 	public setStance(stance: number) {
 		this.stance = stance;
 	}
-
+	public setIsDecimal(isDecimal: boolean, decimalPlaces: number) {
+		this.isDecimal = isDecimal;
+		this.decimalPlaces = decimalPlaces;
+	}
 	public setOffset(ends: IEnds) {
 		this.offset = (this.value - ends.min) / ((ends.max - ends.min) / 100);
 
@@ -68,7 +75,6 @@ class ThumbModel extends Observer {
 
 		const value =
 			(this.stepOffset / this.stepPercent) * this.step + ends.min;
-
 		this.setValue(value);
 		this.setOffset(ends);
 		this.notify("UpdateThumbPosition", this.value, this.offset, stance);
@@ -86,6 +92,8 @@ class ThumbModel extends Observer {
 			value: this.value,
 			offset: this.offset,
 			stepOffset: this.stepOffset,
+			isDecimal: this.isDecimal,
+			decimalPlaces: this.decimalPlaces,
 		};
 	}
 }

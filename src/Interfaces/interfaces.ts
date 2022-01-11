@@ -26,6 +26,8 @@ interface ISliderParams {
 	hasFill: boolean;
 	hasTips: boolean;
 	hasScale: boolean;
+	isDecimal: boolean;
+	decimalPlaces: number;
 }
 //basic info about current and initial state of slider
 interface ISliderTrackState {
@@ -41,6 +43,8 @@ interface ISliderTrackState {
 interface ISliderThumbState {
 	step: number;
 	value: number;
+	isDecimal: boolean;
+	decimalPlaces: number;
 	stepCount: number;
 	stepPercent: number;
 	offset: number;

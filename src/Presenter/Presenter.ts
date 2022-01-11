@@ -75,6 +75,8 @@ class Presenter {
 		hasScale,
 		hasTips,
 		hasFill,
+		isDecimal,
+		decimalPlaces,
 	}: ISliderParams) {
 		$(this.sliderClass).addClass(`slider-${direction}`);
 		this.createTrackView(direction);
@@ -87,7 +89,9 @@ class Presenter {
 			step,
 			Array.isArray(value) ? value[0] : value,
 			min,
-			max
+			max,
+			isDecimal,
+			decimalPlaces
 		);
 		this.createThumbView(this.thumbStance);
 		this.creteTipView(direction, this.thumbStance, hasTips);
@@ -101,7 +105,9 @@ class Presenter {
 				step,
 				Array.isArray(value) ? value[1] : value,
 				min,
-				max
+				max,
+				isDecimal,
+				decimalPlaces
 			);
 			this.createThumbView(this.thumbStance);
 			this.creteTipView(direction, this.thumbStance, hasTips);
@@ -118,7 +124,9 @@ class Presenter {
 		step: number,
 		value: number,
 		min: number,
-		max: number
+		max: number,
+		isDecimal: boolean,
+		decimalPlaces: number
 	) {
 		this.thumbs.forEach((thumb) => {
 			thumb.setStep(step, { min, max });
@@ -126,18 +134,26 @@ class Presenter {
 		this.thumbs[stance].setStance(stance);
 		this.thumbs[stance].setValue(value);
 		this.thumbs[stance].setOffset({ min, max });
-
+		this.thumbs[stance].setIsDecimal(isDecimal, decimalPlaces);
 		return this;
 	}
 	private setThumbViewStateAndPlacement(
 		direction: Direction,
 		stance: number
 	) {
-		const { step, stepCount, stepPercent, value, offset } =
-			this.thumbs[stance].getState();
+		const {
+			step,
+			stepCount,
+			stepPercent,
+			value,
+			offset,
+			isDecimal,
+			decimalPlaces,
+		} = this.thumbs[stance].getState();
 		this.view.thumbView.setStep(step, stepPercent, stepCount);
 		this.view.thumbView.setValue(value, stance);
 		this.view.thumbView.setOffset(offset, stance);
+		this.view.thumbView.setIsDecimal(isDecimal, decimalPlaces);
 		this.view.initialThumbPlacement(direction, stance);
 
 		return this;
