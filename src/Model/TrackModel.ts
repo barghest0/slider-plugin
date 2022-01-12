@@ -59,7 +59,6 @@ class TrackModel extends Observer {
 		if (this.isRange) {
 			this.fillSize =
 				parseInt(
-
 					$(`${this.root} .slider__thumb-1`).css(
 						direction === "horizontal" ? "left" : "top"
 					),
@@ -78,6 +77,8 @@ class TrackModel extends Observer {
 				),
 				10
 			);
+			console.log(this.fillSize);
+
 		}
 	}
 

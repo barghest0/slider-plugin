@@ -6,11 +6,15 @@ const updateTipsPosition = function (
 	stance: number,
 	dragDirection: string
 ) {
+	const direcion = this.view.direction;
+	const offset =
+		direcion === "horizontal"
+			? this.view.thumbView.offset[stance]
+			: 100 - this.view.thumbView.offset[stance];
 
 	$(`${this.view.root} .slider__tip-${stance}`).css({
-		[dragDirection]: this.view.thumbView.offset[stance] + "%",
+		[dragDirection]: offset + "%",
 	});
-
 
 	$(`${this.view.root} .slider__tip-${stance}`).html(
 		this.view.thumbView.value[stance].toFixed(

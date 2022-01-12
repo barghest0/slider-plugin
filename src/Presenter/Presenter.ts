@@ -3,7 +3,7 @@ import TrackModel from "../Model/TrackModel";
 import { Direction, ISliderParams } from "../Interfaces/interfaces";
 import ThumbModel from "../Model/ThumbModel";
 import clearHTML from "./PresenterModules/clearHTML";
-import removeListeners from './PresenterModules/removeListeners';
+import removeListeners from "./PresenterModules/removeListeners";
 
 class Presenter {
 	public root: string;
@@ -12,7 +12,7 @@ class Presenter {
 	private params: ISliderParams;
 	private thumbs: ThumbModel[];
 	private thumbStance: number;
-	private clearHTML: () => void;
+	private clearHTML: (direction: Direction) => void;
 	private removeListeners: () => void;
 	constructor(root: string, params: ISliderParams) {
 		this.root = root;
@@ -28,19 +28,22 @@ class Presenter {
 
 	public init(params: ISliderParams, mode: string) {
 		if (mode === "rebuild") {
+			console.log(this.params);
+
 			this.params = params;
 			this.view.isRange = false;
 			this.removeListeners();
-			this.clearHTML();
+
+			this.clearHTML(params.direction);
 			this.thumbStance = 0;
 			this.thumbs = [];
 		}
 		$(document).ready(() => {
 			this.setTrackModelState(params).setTrackViewState();
-			this.createSlider(params);
-			this.subscribe();
-			this.addListeners(params.isRange);
 		});
+		this.createSlider(params);
+		this.subscribe();
+		this.addListeners(params.isRange);
 	}
 
 	private setTrackModelState({
@@ -163,12 +166,12 @@ class Presenter {
 	}
 
 	private setTrackFillAndPlacement(direction: Direction) {
-
-		this.trackModel.setFillSize(direction);
-		this.trackModel.setFillOffset(direction);
-		this.view.setFillState(this.trackModel.getFillState());
-		this.view.initialFillPlacement(direction);
-
+		$(document).ready(() => {
+			this.trackModel.setFillSize(direction);
+			this.trackModel.setFillOffset(direction);
+			this.view.setFillState(this.trackModel.getFillState());
+			this.view.initialFillPlacement(direction);
+		});
 	}
 
 	private setTipPlacement(direction: Direction, stance: number) {
@@ -239,8 +242,6 @@ class Presenter {
 		this.view.thumbView.setOffset(offset, stance);
 		this.view.thumbView.setValue(value, stance);
 	}
-
-
 
 	private subscribe() {
 		this.view.thumbView.subscribe(

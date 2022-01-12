@@ -25,7 +25,7 @@ const handleClick = function (e: JQuery.MouseDownEvent) {
 	thisTrack.notify("UpdateThumbModelValue", stance, cursorOffset);
 
 	$(`${thisTrack.view.root} .slider__thumb-${stance}`).css({
-		[dragDirection]: offset[stance] + "%",
+		[dragDirection]: 100 - offset[stance] + "%",
 	});
 
 	thisTrack.view.tipView.updateTipsPosition(stance, dragDirection);
