@@ -29,3 +29,17 @@ new PreviewSlider(".slider-2", {
 	isDecimal: true,
 	decimalPlaces: 1,
 });
+
+new PreviewSlider(".slider-3", {
+	min: -100,
+	max: 100,
+	step: 10,
+	value: [-10, 10],
+	isRange: true,
+	direction: "vertical",
+	hasFill: false,
+	hasTips: true,
+	hasScale: true,
+	isDecimal: false,
+	decimalPlaces: 1,
+});

@@ -14,20 +14,20 @@ class Panel {
 	public hasTips: JQuery<HTMLElement> | null;
 	public hasFill: JQuery<HTMLElement> | null;
 	public initializeFormValues: (params: ISliderParams) => void;
-	public initializeInputs: (sliderClass: string) => void;
+	public initializeInputs: (root: string) => void;
 	public handleChangeFormValues: () => void;
 	public params: ISliderParams;
 	public parent: PreviewSlider;
-	private sliderClass: string;
+	public root: string;
 
 	constructor(
 		params: ISliderParams,
-		sliderClass: string,
+		root: string,
 		parent: PreviewSlider
 	) {
 		this.parent = parent;
 		this.params = params;
-		this.sliderClass = sliderClass;
+		this.root = root;
 		this.minValueInput = null;
 		this.maxValueInput = null;
 		this.firstValueInput = null;

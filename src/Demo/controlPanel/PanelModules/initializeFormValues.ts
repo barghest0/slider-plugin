@@ -3,7 +3,7 @@ import Panel from "../Panel";
 const initializeFormValues = function (this: Panel, params: ISliderParams) {
 	this.minValueInput?.val(params.min);
 	this.maxValueInput?.val(params.max);
-	
+
 	if (params.isRange) {
 		this.firstValueInput?.val(
 			Array.isArray(params.value) ? params.value[0] : ""
@@ -11,11 +11,13 @@ const initializeFormValues = function (this: Panel, params: ISliderParams) {
 		this.secondValueInput?.val(
 			Array.isArray(params.value) ? params.value[1] : ""
 		);
+		this.secondValueInput!.prop("disabled", false);
+
 	} else {
 		this.firstValueInput?.val(
 			Array.isArray(params.value) ? params.value[0] : params.value
 		);
-		this.secondValueInput!.attr("disabled", "disabled");
+		this.secondValueInput!.prop("disabled", true);
 	}
 
 	this.stepInput?.val(params.step);

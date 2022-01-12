@@ -1,8 +1,8 @@
 import Presenter from "../Presenter";
 
 const clearHTML = function (this: Presenter) {
-	const slider = $(`${this.rootClass}`);
-	slider.html("");
+	const slider = document.querySelector(this.root);
+	$(this.root).html("");
 };
 
 export default clearHTML;

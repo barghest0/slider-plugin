@@ -6,18 +6,18 @@ import Panel from "./controlPanel/Panel";
 class PreviewSlider extends Observer {
 	public panel: Panel;
 	public slider: Presenter;
-	private params: ISliderParams;
-	private rootClass: string;
-	constructor(rootClass: string, params: ISliderParams) {
+	public params: ISliderParams;
+	public root: string;
+	constructor(root: string, params: ISliderParams) {
 		super();
-		this.rootClass = rootClass;
+		this.root = root;
 		this.params = params;
-		this.panel = new Panel(params, rootClass, this);
-		this.slider = new Presenter(rootClass, params);
-		this.initPanel(params, rootClass);
+		this.panel = new Panel(params, root, this);
+		this.slider = new Presenter(root, params);
+		this.initPanel(params, root);
 	}
-	private initPanel(params: ISliderParams, rootClass: string) {
-		this.panel.initializeInputs(rootClass);
+	public initPanel(params: ISliderParams, root: string) {
+		this.panel.initializeInputs(root);
 		this.panel.initializeFormValues(params);
 		this.panel.handleChangeFormValues();
 	}

@@ -3,41 +3,44 @@ import TrackModel from "../Model/TrackModel";
 import { Direction, ISliderParams } from "../Interfaces/interfaces";
 import ThumbModel from "../Model/ThumbModel";
 import clearHTML from "./PresenterModules/clearHTML";
+import removeListeners from './PresenterModules/removeListeners';
 
 class Presenter {
-	public rootClass: string;
+	public root: string;
 	private trackModel: TrackModel;
 	private view: View;
 	private params: ISliderParams;
 	private thumbs: ThumbModel[];
 	private thumbStance: number;
 	private clearHTML: () => void;
-	constructor(rootClass: string, params: ISliderParams) {
-		this.rootClass = rootClass;
-		this.trackModel = new TrackModel(rootClass);
-		this.view = new View(rootClass);
+	private removeListeners: () => void;
+	constructor(root: string, params: ISliderParams) {
+		this.root = root;
+		this.trackModel = new TrackModel(root);
+		this.view = new View(root);
 		this.thumbs = [];
 		this.params = params;
 		this.thumbStance = 0;
 		this.init(params, "init");
 		this.clearHTML = clearHTML.bind(this);
+		this.removeListeners = removeListeners.bind(this);
 	}
 
 	public init(params: ISliderParams, mode: string) {
 		if (mode === "rebuild") {
 			this.params = params;
 			this.view.isRange = false;
+			this.removeListeners();
 			this.clearHTML();
 			this.thumbStance = 0;
 			this.thumbs = [];
 		}
-
 		$(document).ready(() => {
 			this.setTrackModelState(params).setTrackViewState();
+			this.createSlider(params);
+			this.subscribe();
+			this.addListeners(params.isRange);
 		});
-		this.createSlider(params);
-		this.subscribe();
-		this.addListeners(params.isRange);
 	}
 
 	private setTrackModelState({
@@ -51,8 +54,8 @@ class Presenter {
 	}: ISliderParams) {
 		const size =
 			direction === "horizontal"
-				? $(this.rootClass).width()!
-				: $(this.rootClass).height()!;
+				? $(this.root).width()!
+				: $(this.root).height()!;
 		this.trackModel.setSize(size);
 		this.trackModel.setEnds({ min, max });
 		this.trackModel.setIsRange(isRange);
@@ -78,7 +81,7 @@ class Presenter {
 		isDecimal,
 		decimalPlaces,
 	}: ISliderParams) {
-		$(this.rootClass).addClass(`slider-${direction}`);
+		$(this.root).addClass(`slider-${direction}`);
 		this.createTrackView(direction);
 		this.createScaleView(direction, step, max, min, hasScale);
 		this.creteFillView(direction, hasFill);
@@ -160,12 +163,12 @@ class Presenter {
 	}
 
 	private setTrackFillAndPlacement(direction: Direction) {
-		$(document).ready(() => {
-			this.trackModel.setFillSize(direction);
-			this.trackModel.setFillOffset(direction);
-			this.view.setFillState(this.trackModel.getFillState());
-			this.view.initialFillPlacement(direction);
-		});
+
+		this.trackModel.setFillSize(direction);
+		this.trackModel.setFillOffset(direction);
+		this.view.setFillState(this.trackModel.getFillState());
+		this.view.initialFillPlacement(direction);
+
 	}
 
 	private setTipPlacement(direction: Direction, stance: number) {
@@ -173,7 +176,7 @@ class Presenter {
 	}
 
 	private createThumb(stance: number) {
-		this.thumbs.push(new ThumbModel(this.rootClass, stance));
+		this.thumbs.push(new ThumbModel(this.root, stance));
 	}
 
 	private createThumbView(stance: number) {
@@ -211,7 +214,6 @@ class Presenter {
 	private addListeners(isRange: boolean) {
 		this.view.thumbView.dragThumb(0);
 		this.view.trackView.clickTrack();
-
 		if (isRange) {
 			this.view.thumbView.dragThumb(1);
 		}
