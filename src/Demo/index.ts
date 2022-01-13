@@ -5,7 +5,7 @@ new PreviewSlider(".slider-1", {
 	min: -2,
 	max: 2,
 	step: 0.4,
-	value: -1,
+	value: [-1, 1],
 	isRange: false,
 	direction: "horizontal",
 	hasFill: true,
