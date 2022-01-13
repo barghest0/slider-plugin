@@ -57,19 +57,24 @@ class TrackModel extends Observer {
 	}
 	public setFillSize(direction: Direction) {
 		if (this.isRange) {
-			this.fillSize =
-				parseInt(
-					$(`${this.root} .slider__thumb-1`).css(
-						direction === "horizontal" ? "left" : "top"
-					),
-					10
-				) -
-				parseInt(
-					$(`${this.root} .slider__thumb-0`).css(
-						direction === "horizontal" ? "left" : "top"
-					),
-					10
-				);
+			if (direction === "horizontal") {
+				this.fillSize =
+					parseInt(
+						$(`${this.root} .slider__thumb-1`).css("left"),
+						10
+					) -
+					parseInt(
+						$(`${this.root} .slider__thumb-0`).css("left"),
+						10
+					);
+			} else {
+				this.fillSize =
+					parseInt(
+						$(`${this.root} .slider__thumb-0`).css("top"),
+						10
+					) -
+					parseInt($(`${this.root} .slider__thumb-1`).css("top"), 10);
+			}
 		} else {
 			this.fillSize = parseInt(
 				$(`${this.root} .slider__thumb-0`).css(
@@ -77,19 +82,22 @@ class TrackModel extends Observer {
 				),
 				10
 			);
-			console.log(this.fillSize);
-
 		}
 	}
 
 	public setFillOffset(direction: Direction) {
 		if (this.isRange) {
-			this.fillOffset = parseInt(
-				$(`${this.root} .slider__thumb-0`).css(
-					direction === "horizontal" ? "left" : "top"
-				),
-				10
-			);
+			if (direction === "horizontal") {
+				this.fillOffset = parseInt(
+					$(`${this.root} .slider__thumb-0`).css("left"),
+					10
+				);
+			} else {
+				this.fillOffset = parseInt(
+					$(`${this.root} .slider__thumb-1`).css("top"),
+					10
+				);
+			}
 		} else {
 			this.fillOffset = 0;
 		}

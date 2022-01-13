@@ -11,11 +11,13 @@ const handleClick = function (e: JQuery.MouseDownEvent) {
 	let cursorOffset =
 		((cursorDirection -
 			(direction === "horizontal"
-				? $(".slider").position().left
-				: $(".slider").position().top)) /
+				? $(thisTrack.view.root).position().left
+				: $(thisTrack.view.root).position().top)) /
 			thisTrack.view.size) *
 		100;
-
+	if (direction === "vertical") {
+		cursorOffset = 100 - cursorOffset;
+	}
 	if (cursorOffset > offset[1] && thisTrack.view.isRange) {
 		stance = 1;
 	} else {
@@ -25,7 +27,10 @@ const handleClick = function (e: JQuery.MouseDownEvent) {
 	thisTrack.notify("UpdateThumbModelValue", stance, cursorOffset);
 
 	$(`${thisTrack.view.root} .slider__thumb-${stance}`).css({
-		[dragDirection]: 100 - offset[stance] + "%",
+		[dragDirection]:
+			(direction === "horizontal"
+				? offset[stance]
+				: 100 - offset[stance]) + "%",
 	});
 
 	thisTrack.view.tipView.updateTipsPosition(stance, dragDirection);

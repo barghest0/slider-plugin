@@ -14,11 +14,10 @@ const handleDrag = function (e: JQuery.MouseMoveEvent) {
 			thisThumb.view.size) *
 		100;
 
-
 	if (direction === "vertical") {
 		cursorOffset = 100 - cursorOffset;
 	}
-
+	console.log(thisThumb.value);
 
 	thisThumb.notify("UpdateThumbModelValue", stance, cursorOffset);
 
@@ -35,7 +34,10 @@ const handleDrag = function (e: JQuery.MouseMoveEvent) {
 	}
 
 	$(`${thisThumb.view.root} .slider__thumb-${stance}`).css({
-		[dragDirection]: (direction === "horizontal" ? offset[stance] : 100 - offset[stance]) + "%",
+		[dragDirection]:
+			(direction === "horizontal"
+				? offset[stance]
+				: 100 - offset[stance]) + "%",
 	});
 
 	thisThumb.view.tipView.updateTipsPosition(stance, dragDirection);

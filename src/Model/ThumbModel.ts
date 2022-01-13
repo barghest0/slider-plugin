@@ -75,6 +75,7 @@ class ThumbModel extends Observer {
 
 		const value =
 			(this.stepOffset / this.stepPercent) * this.step + ends.min;
+
 		this.setValue(value);
 		this.setOffset(ends);
 		this.notify("UpdateThumbPosition", this.value, this.offset, stance);

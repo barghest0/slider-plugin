@@ -15,7 +15,6 @@ new PreviewSlider(".slider-1", {
 	decimalPlaces: 1,
 });
 
-
 new PreviewSlider(".slider-2", {
 	min: -6,
 	max: 6,
@@ -34,7 +33,7 @@ new PreviewSlider(".slider-3", {
 	min: -100,
 	max: 100,
 	step: 10,
-	value: [-10, 10],
+	value: [-50, 10],
 	isRange: false,
 	direction: "vertical",
 	hasFill: true,
