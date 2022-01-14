@@ -9,15 +9,15 @@ import {
 
 class TrackModel extends Observer {
 	private root: string;
-	private isRange: boolean;
-	private direction: Direction;
-	private ends: IEnds;
-	private size: number;
-	private fillSize: number;
-	private fillOffset: number;
-	private hasFill: boolean;
-	private hasTips: boolean;
-	private hasScale: boolean;
+	public isRange: boolean;
+	public direction: Direction;
+	public ends: IEnds;
+	public size: number;
+	public fillSize: number;
+	public fillOffset: number;
+	public hasFill: boolean;
+	public hasTips: boolean;
+	public hasScale: boolean;
 	constructor(root: string) {
 		super();
 		this.root = root;

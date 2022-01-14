@@ -28,12 +28,9 @@ class Presenter {
 
 	public init(params: ISliderParams, mode: string) {
 		if (mode === "rebuild") {
-			console.log(this.params);
-
 			this.params = params;
 			this.view.isRange = false;
 			this.removeListeners();
-
 			this.clearHTML(params.direction);
 			this.thumbStance = 0;
 			this.thumbs = [];

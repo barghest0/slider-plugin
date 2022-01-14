@@ -1,11 +1,12 @@
 import { ISliderParams } from "../Interfaces/interfaces";
 import Observer from "../Observer/Observer";
 import Presenter from "../Presenter/Presenter";
+import Slider from "../Slider";
 import Panel from "./controlPanel/Panel";
 
 class PreviewSlider extends Observer {
 	public panel: Panel;
-	public slider: Presenter;
+	public slider: Slider;
 	public params: ISliderParams;
 	public root: string;
 	constructor(root: string, params: ISliderParams) {
@@ -13,7 +14,7 @@ class PreviewSlider extends Observer {
 		this.root = root;
 		this.params = params;
 		this.panel = new Panel(params, root, this);
-		this.slider = new Presenter(root, params);
+		this.slider = new Slider(root, params);
 		this.initPanel(params, root);
 	}
 	public initPanel(params: ISliderParams, root: string) {
