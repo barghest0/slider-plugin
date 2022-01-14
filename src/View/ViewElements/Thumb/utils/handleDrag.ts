@@ -44,12 +44,12 @@ const handleDrag = function (e: JQuery.MouseMoveEvent) {
 	thisThumb.view.trackView.notify("UpdateTrackModelFill");
 
 	if (thisThumb.view.isRange) {
-		$(`${thisThumb.view.root} .slider__fill-${direction}`).css({
+		$(`${thisThumb.view.root} .slider__fill_${direction}`).css({
 			[dragDirection]: thisThumb.view.fillView.offset + "px",
 			[fillDirection]: thisThumb.view.fillView.size + "px",
 		});
 	} else {
-		$(`${thisThumb.view.root} .slider__fill-${direction}`).css({
+		$(`${thisThumb.view.root} .slider__fill_${direction}`).css({
 			[fillDirection]: offset[stance] + "%",
 		});
 	}

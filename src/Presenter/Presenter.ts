@@ -81,7 +81,7 @@ class Presenter {
 		isDecimal,
 		decimalPlaces,
 	}: ISliderParams) {
-		$(this.root).addClass(`slider-${direction}`);
+		$(this.root).addClass(`slider_${direction}`);
 		this.createTrackView(direction);
 		this.createScaleView(direction, step, max, min, hasScale);
 		this.creteFillView(direction, hasFill);

@@ -11,7 +11,7 @@ class Track extends Observer {
 	}
 	public createTrack(direction: Direction) {
 		$(this.view.root).append(
-			`<div class="slider__track slider__track-${direction}"></div>`
+			`<div class="slider__track slider__track_${direction}"></div>`
 		);
 	}
 

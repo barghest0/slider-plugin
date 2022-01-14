@@ -30,6 +30,20 @@ new PreviewSlider(".slider-2", {
 });
 
 new PreviewSlider(".slider-3", {
+	min: -15000,
+	max: 15000,
+	step: 500,
+	value: [-3000, 3000],
+	isRange: true,
+	direction: "horizontal",
+	hasFill: true,
+	hasTips: true,
+	hasScale: true,
+	isDecimal: false,
+	decimalPlaces: 1,
+});
+
+new PreviewSlider(".slider-4", {
 	min: -100,
 	max: 100,
 	step: 10,
@@ -42,3 +56,6 @@ new PreviewSlider(".slider-3", {
 	isDecimal: false,
 	decimalPlaces: 1,
 });
+
+
+
