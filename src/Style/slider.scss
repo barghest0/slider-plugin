@@ -82,11 +82,8 @@
             }
         }
         &-number {
-            width: 25px;
-            height: 25px;
             position: absolute;
-            display: flex;
-            justify-content: center;
+
             &_vertical {
                 align-items: center;
                 justify-content: flex-start;

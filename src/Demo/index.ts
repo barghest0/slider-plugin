@@ -4,7 +4,7 @@ import PreviewSlider from "./PriviewSlider";
 new PreviewSlider(".slider-1", {
 	min: -2,
 	max: 2,
-	step: 0.4,
+	step: 0.5,
 	value: [-1, 1],
 	isRange: false,
 	direction: "horizontal",

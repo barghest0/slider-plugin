@@ -12,17 +12,15 @@ const createScaleNumbers = function (
 	$(`${this.view.root} .slider__scale`).append(
 		`<div class="slider__scale-numbers slider__scale-numbers_${direction}"></div>`
 	);
-	// for (let i = 0; i <= max; i += step * 2) {
-	// 	const stepCount = (max - min) / i;
 
-	// 	const stepPercent = 100 / stepCount;
-
-	// 	const numbersDirection =
-	// 		direction === "horizontal" ? stepPercent : 100 - stepPercent;
-	// 	$(".slider__scale-numbers").append(
-	// 		`<div class="slider__scale-number slider__scale-number_${direction}" style="${offsetDirection}:calc(${numbersDirection}% - 10px )">${i}</div>`
-	// 	);
-	// }
+	const sum = Math.abs(min) + Math.abs(max);
+	let offset = 0;
+	for (let i = min; i <= max; i += sum / 6) {
+		$(`${this.view.root} .slider__scale-numbers`).append(
+			`<div class="slider__scale-number slider__scale-number_${direction}" style="${offsetDirection}:${offset}px">${i.toFixed()}</div>`
+		);
+		offset += (400 / 6);
+	}
 };
 
 export default createScaleNumbers;
