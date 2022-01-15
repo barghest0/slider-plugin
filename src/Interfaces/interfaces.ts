@@ -9,10 +9,6 @@ interface IEnds {
 	max: number;
 }
 
-interface ICoords {
-	x: number;
-	y: number;
-}
 type Direction = "vertical" | "horizontal";
 //user params
 interface ISliderParams {
@@ -20,7 +16,7 @@ interface ISliderParams {
 	min: number;
 	max: number;
 	step: number;
-	value: any;
+	value: number[];
 	isRange: boolean;
 	direction: Direction;
 	hasFill: boolean;
@@ -58,7 +54,6 @@ export {
 	SubscribeEvent,
 	ISubscribers,
 	IEnds,
-	ICoords,
 	ISliderParams,
 	Direction,
 	ISliderTrackState,

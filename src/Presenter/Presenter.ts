@@ -194,6 +194,8 @@ class Presenter {
 		min: number,
 		hasScale: boolean
 	) {
+		console.log(min);
+
 		this.view.scaleView.createScale(direction, hasScale);
 		this.view.scaleView.createScaleMarks(step, max, min, direction);
 		this.view.scaleView.createScaleNumbers(step, max, min, direction);

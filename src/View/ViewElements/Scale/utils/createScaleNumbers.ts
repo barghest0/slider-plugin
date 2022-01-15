@@ -1,5 +1,5 @@
 import { Direction } from "../../../../Interfaces/interfaces";
-import Scale from '../Scale';
+import Scale from "../Scale";
 
 const createScaleNumbers = function (
 	this: Scale,
@@ -15,11 +15,14 @@ const createScaleNumbers = function (
 
 	const sum = Math.abs(min) + Math.abs(max);
 	let offset = 0;
-	for (let i = min; i <= max; i += sum / 6) {
+
+	for (let i = min; i <= max; i += sum / 3) {
 		$(`${this.view.root} .slider__scale-numbers`).append(
-			`<div class="slider__scale-number slider__scale-number_${direction}" style="${offsetDirection}:${offset}px">${i.toFixed()}</div>`
+			`<div class="slider__scale-number slider__scale-number_${direction}" style="${offsetDirection}:${offset}px">${i.toFixed(
+				1
+			)}</div>`
 		);
-		offset += (400 / 6);
+		offset += 400 / 3;
 	}
 };
 

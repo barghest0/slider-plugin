@@ -4,7 +4,7 @@ import { timers } from "jquery";
 import { textChangeRangeIsUnchanged } from "typescript";
 
 class ThumbModel extends Observer {
-	private sliderClass: string;
+	private root: string;
 	private step: number;
 	private value: number;
 	private stance: number;
@@ -15,9 +15,9 @@ class ThumbModel extends Observer {
 	private cursorOffset: number;
 	private isDecimal: boolean;
 	private decimalPlaces: number;
-	constructor(sliderClass: string, stance: number) {
+	constructor(root: string, stance: number) {
 		super();
-		this.sliderClass = sliderClass;
+		this.root = root;
 		this.stance = stance;
 		this.step = 1;
 		this.value = 0;

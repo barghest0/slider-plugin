@@ -1,5 +1,5 @@
 import { Direction } from "../../../../Interfaces/interfaces";
-import Scale from '../Scale';
+import Scale from "../Scale";
 
 const createScaleMarks = function (
 	this: Scale,
@@ -14,6 +14,7 @@ const createScaleMarks = function (
 	);
 
 	const sum = Math.abs(min) + Math.abs(max);
+
 	let offset = 0;
 	for (let i = min; i <= max; i += sum / 6) {
 		$(`${this.view.root} .slider__scale-marks`).append(
