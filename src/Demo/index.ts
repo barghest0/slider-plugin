@@ -2,10 +2,10 @@ import "../Style/style.scss";
 import PreviewSlider from "./PriviewSlider";
 
 new PreviewSlider(".slider-1", {
-	min: -2,
+	min: 0,
 	max: 2,
 	step: 0.5,
-	value: [-1, 1],
+	value: [0, 1],
 	isRange: false,
 	direction: "horizontal",
 	hasFill: true,
@@ -56,6 +56,3 @@ new PreviewSlider(".slider-4", {
 	isDecimal: false,
 	decimalPlaces: 1,
 });
-
-
-
