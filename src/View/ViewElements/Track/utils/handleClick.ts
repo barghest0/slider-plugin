@@ -35,11 +35,16 @@ const handleClick = function (e: JQuery.MouseDownEvent) {
 
 	thisTrack.view.tipView.updateTipsPosition(stance, dragDirection);
 	thisTrack.notify("UpdateTrackModelFill");
-
 	$(`${thisTrack.view.root} .slider__fill_${thisTrack.view.direction}`).css({
 		[fillDirection]: thisTrack.view.fillView.size + "px",
-		[dragDirection]: thisTrack.view.fillView.offset + "px",
 	});
+	if (thisTrack.view.isRange) {
+		$(
+			`${thisTrack.view.root} .slider__fill_${thisTrack.view.direction}`
+		).css({
+			[dragDirection]: thisTrack.view.fillView.offset + "px",
+		});
+	}
 };
 
 export default handleClick;

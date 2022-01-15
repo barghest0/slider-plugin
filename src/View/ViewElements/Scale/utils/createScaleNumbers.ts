@@ -24,7 +24,6 @@ const createScaleNumbers = function (
 
 	let multiplier = Math.max(Math.floor(lastIndex / delimiter), 1);
 	multiplier = multiplier < 15 ? Math.min(multiplier, delimiter) : multiplier;
-	console.log(multiplier);
 
 	const values = new Array(Math.ceil(length / multiplier))
 		.fill(null)
