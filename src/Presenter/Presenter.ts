@@ -29,6 +29,8 @@ class Presenter {
 	public init(params: ISliderParams, mode: string) {
 		if (mode === "rebuild") {
 			this.params = params;
+			console.log(params);
+
 			this.view.isRange = false;
 			this.removeListeners();
 			this.clearHTML(params.direction);

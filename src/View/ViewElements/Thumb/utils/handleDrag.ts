@@ -17,19 +17,19 @@ const handleDrag = function (e: JQuery.MouseMoveEvent) {
 	if (direction === "vertical") {
 		cursorOffset = 100 - cursorOffset;
 	}
-	console.log(thisThumb.value);
 
 	thisThumb.notify("UpdateThumbModelValue", stance, cursorOffset);
-
-	if (stance === 0) {
-		if (offset[0] + thisThumb.stepPercent >= offset[1]) {
-			offset[0] = offset[1] - thisThumb.stepPercent;
-			thisThumb.value[0] = thisThumb.value[1] - thisThumb.step;
-		}
-	} else {
-		if (offset[1] - thisThumb.stepPercent <= offset[0]) {
-			offset[1] = offset[0] + thisThumb.stepPercent;
-			thisThumb.value[1] = thisThumb.value[0] + thisThumb.step;
+	if (thisThumb.view.isRange) {
+		if (stance === 0) {
+			if (offset[0] + thisThumb.stepPercent >= offset[1]) {
+				offset[0] = offset[1] - thisThumb.stepPercent;
+				thisThumb.value[0] = thisThumb.value[1] - thisThumb.step;
+			}
+		} else {
+			if (offset[1] - thisThumb.stepPercent <= offset[0]) {
+				offset[1] = offset[0] + thisThumb.stepPercent;
+				thisThumb.value[1] = thisThumb.value[0] + thisThumb.step;
+			}
 		}
 	}
 
