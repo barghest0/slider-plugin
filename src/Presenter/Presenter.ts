@@ -196,7 +196,6 @@ class Presenter {
 	) {
 		this.view.scaleView.createScale(direction, hasScale);
 		this.view.scaleView.createScaleMarks(step, max, min, direction);
-		this.view.scaleView.createScaleNumbers(step, max, min, direction);
 	}
 
 	private creteFillView(direction: Direction, hasFill: boolean) {

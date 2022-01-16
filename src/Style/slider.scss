@@ -64,25 +64,23 @@
 		width: 100%;
 		cursor: pointer;
 		top: 5px;
-		&-marks,
-		&-numbers {
-			height: 10px;
-			display: flex;
-			font-size: 12px;
-		}
 		&-mark {
 			position: absolute;
 			height: 10px;
 			width: 1px;
 			background-color: rgb(36, 36, 36);
+			display: flex;
+			justify-content: center;
+			align-items: center;
 			&_vertical {
 				height: 1px;
 				width: 10px;
 			}
 		}
 		&-number {
-			position: absolute;
-
+			font-size: 12px;
+			position: relative;
+			top: 15px;
 			&_vertical {
 				align-items: center;
 				justify-content: flex-start;
