@@ -17,11 +17,8 @@ const initializeFormValues = function (this: Panel, params: ISliderParams) {
 			Array.isArray(params.value) ? params.value[0] : params.value
 		);
 		this.secondValueInput!.prop("disabled", true);
-		this.secondValueInput!.val('');
 	}
-
 	this.stepInput?.val(params.step);
-
 	this.isRange?.prop("checked", params.isRange);
 	this.isVertical?.prop("checked", params.direction === "vertical");
 	this.hasFill?.prop("checked", params.hasFill);

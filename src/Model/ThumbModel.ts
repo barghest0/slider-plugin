@@ -78,6 +78,7 @@ class ThumbModel extends Observer {
 
 		this.setValue(value);
 		this.setOffset(ends);
+		this.notify("UpdatePanelValues", value, stance);
 		this.notify("UpdateThumbPosition", this.value, this.offset, stance);
 	}
 

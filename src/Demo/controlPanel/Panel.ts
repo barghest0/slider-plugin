@@ -20,11 +20,7 @@ class Panel {
 	public parent: PreviewSlider;
 	public root: string;
 
-	constructor(
-		params: ISliderParams,
-		root: string,
-		parent: PreviewSlider
-	) {
+	constructor(params: ISliderParams, root: string, parent: PreviewSlider) {
 		this.parent = parent;
 		this.params = params;
 		this.root = root;

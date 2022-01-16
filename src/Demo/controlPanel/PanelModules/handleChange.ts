@@ -9,8 +9,7 @@ const handleChange = function (this: Panel, e: JQuery.ChangeEvent) {
 	else if (param === "direction")
 		this.params[param] = e.target.checked ? "vertical" : "horizontal";
 	else this.params[param] = value ? +value : e.target.checked;
-
-	this.parent.slider.presenter.init(this.params, "rebuild");
+	this.parent.init(this.params, "rebuild");
 	this.parent.panel.initializeFormValues(this.params);
 };
 export default handleChange;

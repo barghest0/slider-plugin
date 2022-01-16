@@ -10,5 +10,10 @@ class Slider {
 		this.params = params;
 		this.presenter = new Presenter(root, params);
 	}
+
+	public init(params: ISliderParams, mode: string) {
+
+		this.presenter.init(params, mode);
+	}
 }
 export default Slider;

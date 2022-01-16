@@ -7,10 +7,10 @@ import removeListeners from "./PresenterModules/removeListeners";
 
 class Presenter {
 	public root: string;
+	public thumbs: ThumbModel[];
 	private trackModel: TrackModel;
 	private view: View;
 	private params: ISliderParams;
-	private thumbs: ThumbModel[];
 	private thumbStance: number;
 	private clearHTML: (direction: Direction) => void;
 	private removeListeners: () => void;
@@ -29,8 +29,6 @@ class Presenter {
 	public init(params: ISliderParams, mode: string) {
 		if (mode === "rebuild") {
 			this.params = params;
-			console.log(params);
-
 			this.view.isRange = false;
 			this.removeListeners();
 			this.clearHTML(params.direction);
@@ -42,6 +40,7 @@ class Presenter {
 		});
 		this.createSlider(params);
 		this.subscribe();
+
 		this.addListeners(params.isRange);
 	}
 

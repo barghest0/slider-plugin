@@ -1,7 +1,7 @@
 import Track from "../Track";
 
 const handleClick = function (e: JQuery.MouseDownEvent) {
-	const { thisTrack } = e.data;
+	const { thisTrack } = e.data ;
 	let stance;
 	let offset = thisTrack.view.thumbView.offset;
 	let direction = thisTrack.view.direction;

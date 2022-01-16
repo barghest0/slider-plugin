@@ -1,7 +1,7 @@
 import Panel from "../Panel";
 
-const initializeInputs = function (this: Panel, sliderClass: string) {
-	const panel = $(`${sliderClass}__panel`);
+const initializeInputs = function (this: Panel, root?: string ) {
+	const panel = $(`${root}__panel`);
 	this.minValueInput = panel.find(".js-input__min-value");
 	this.maxValueInput = panel.find(".js-input__max-value");
 	this.firstValueInput = panel.find(".js-input__first-value");
