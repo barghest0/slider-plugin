@@ -30,12 +30,14 @@ class PreviewSlider extends Observer {
 	}
 	public updatePanelValues(value: number, stance: number) {
 		if (stance === 0) {
+			this.params.value[stance] = value;
 			this.panel.firstValueInput!.val(
-				value.toFixed(this.params.decimalPlaces)
+				this.params.value[stance].toFixed(this.params.decimalPlaces)
 			);
 		} else {
+			this.params.value[stance] = value;
 			this.panel.secondValueInput!.val(
-				value.toFixed(this.params.decimalPlaces)
+				this.params.value[stance].toFixed(this.params.decimalPlaces)
 			);
 		}
 	}
