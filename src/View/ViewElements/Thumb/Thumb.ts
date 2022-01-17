@@ -65,15 +65,38 @@ class Thumb extends Observer {
 				);
 			}
 		);
+
+		$(this.view.root).on(
+			"touchstart",
+			`.slider__thumb-${stance}`,
+			(event: JQuery.TouchStartEvent) => {
+				event.preventDefault();
+				event.stopPropagation();
+
+				$("body").on(
+					"touchmove",
+					{
+						thisThumb: this,
+						stance,
+					},
+					handleDrag
+				);
+			}
+		);
+	}
+	public dropThumb() {
 		$("body").on("mouseup", (event: JQuery.MouseUpEvent) => {
 			$("body").off("mousemove");
 		});
-		$(this.view.root).on(
-			"mouseup",
-			(event: JQuery.MouseUpEvent) => {
-				$(this.view.root).off("mousemove");
-			}
-		);
+		$(this.view.root).on("mouseup", (event: JQuery.MouseUpEvent) => {
+			$(this.view.root).off("mousemove");
+		});
+		$("body").on("touchend", (event: JQuery.TouchEndEvent) => {
+			$("body").off("touchmove");
+		});
+		$(this.view.root).on("touchend", (event: JQuery.TouchEndEvent) => {
+			$(this.view.root).off("touchmove");
+		});
 	}
 }
 

@@ -83,9 +83,11 @@ class Presenter {
 		decimalPlaces,
 	}: ISliderParams) {
 		$(this.root).addClass(`slider_${direction}`);
-		this.createTrackView(direction);
-		this.createScaleView(direction, step, max, min, hasScale);
-		this.creteFillView(direction, hasFill);
+		$(document).ready(() => {
+			this.createTrackView(direction);
+			this.createScaleView(direction, step, max, min, hasScale);
+			this.creteFillView(direction, hasFill);
+		});
 
 		this.createThumb(this.thumbStance);
 		this.setThumbModelState(
@@ -214,6 +216,7 @@ class Presenter {
 	private addListeners(isRange: boolean) {
 		this.view.thumbView.dragThumb(0);
 		this.view.trackView.clickTrack();
+		this.view.thumbView.dropThumb();
 		if (isRange) {
 			this.view.thumbView.dragThumb(1);
 		}

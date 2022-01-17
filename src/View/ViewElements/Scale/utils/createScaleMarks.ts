@@ -28,7 +28,7 @@ const createScaleMarks = function (
 			`<div class="slider__scale-number slider__scale-number_${direction}" >${values[i]}</div>`
 		);
 
-		offset += 400 / (values.length - 1);
+		offset += this.view.size / (values.length - 1);
 	}
 };
 

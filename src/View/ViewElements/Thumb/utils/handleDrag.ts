@@ -1,13 +1,16 @@
-const handleDrag = function (e: JQuery.MouseMoveEvent) {
+const handleDrag = function (e: JQuery.MouseMoveEvent | JQuery.TouchMoveEvent) {
 	const { thisThumb, stance } = e.data;
 	let offset = thisThumb.offset;
 	let direction = thisThumb.view.direction;
-	let cursorDirection = direction === "horizontal" ? e.pageX : e.pageY;
+	let cursorDirection =
+		direction === "horizontal"
+			? e.pageX || e.touches![0].pageX
+			: e.pageY || e.touches![0].pageY;
 	let dragDirection = direction === "horizontal" ? "left" : "top";
 	let fillDirection = direction === "horizontal" ? "width" : "height";
 
 	let cursorOffset =
-		((cursorDirection -
+		((cursorDirection! -
 			(direction === "horizontal"
 				? $(thisThumb.view.root).position().left
 				: $(thisThumb.view.root).position().top)) /
