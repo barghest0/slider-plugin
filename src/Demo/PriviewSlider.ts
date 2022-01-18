@@ -1,25 +1,26 @@
 import { createLogicalNot } from "typescript";
-import { ISliderParams } from "../Interfaces/interfaces";
+import { SliderParams, UserSliderParams } from "../Interfaces/interfaces";
 import Observer from "../Observer/Observer";
 import Presenter from "../Presenter/Presenter";
 import Slider from "../Slider";
 import Panel from "./controlPanel/Panel";
+import checkParams from "../Presenter/PresenterModules/checkParams";
 
 class PreviewSlider extends Observer {
 	public panel: Panel;
 	public slider: Slider;
-	public params: ISliderParams;
+	public params: SliderParams;
 	public root: string;
-	constructor(root: string, params: ISliderParams) {
+	constructor(root: string, params: UserSliderParams) {
 		super();
 		this.root = root;
-		this.params = params;
-		this.panel = new Panel(params, root, this);
-		this.slider = new Slider(root, params);
-		this.init(params, "init");
+		this.params = checkParams(params);
+		this.panel = new Panel(this.params, root, this);
+		this.slider = new Slider(root, this.params);
+		this.init(this.params, "init");
 		this.panel.handleChangeFormValues();
 	}
-	public init(params: ISliderParams, mode: string) {
+	public init(params: SliderParams, mode: string) {
 		if (mode === "rebuild") {
 			this.slider.init(params, mode);
 		}

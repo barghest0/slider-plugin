@@ -1,8 +1,8 @@
-import { SubscribeEvent, ISubscribers } from "../Interfaces/interfaces";
+import { SubscribeEvent, Subscribers } from "../Interfaces/interfaces";
 
 class Observer {
-    private subscribers: ISubscribers;
-    constructor(subscribers: ISubscribers = {}) {
+    private subscribers: Subscribers;
+    constructor(subscribers: Subscribers = {}) {
         this.subscribers = subscribers;
     }
 
@@ -19,7 +19,7 @@ class Observer {
         this.subscribers[name].filter((subscriberFunc: SubscribeEvent) => event != subscriberFunc);
     }
 
-    public notify(name: string, ...args: any) {
+    public notify(name: string, ...args: any[]) {
         this.subscribers[name].forEach((subscriberFunc: SubscribeEvent) => {
             subscriberFunc(...args);
         });

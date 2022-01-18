@@ -1,5 +1,5 @@
 import Observer from "../Observer/Observer";
-import { Direction, IEnds, ISliderThumbState } from "../Interfaces/interfaces";
+import { Direction, Ends, SliderThumbState } from "../Interfaces/interfaces";
 import { timers } from "jquery";
 import { textChangeRangeIsUnchanged } from "typescript";
 
@@ -30,7 +30,7 @@ class ThumbModel extends Observer {
 		this.decimalPlaces = 0;
 	}
 
-	public setStep(step: number, ends: IEnds) {
+	public setStep(step: number, ends: Ends) {
 		this.step = step;
 		this.stepCount = (ends.max - ends.min) / step;
 
@@ -48,7 +48,7 @@ class ThumbModel extends Observer {
 		this.isDecimal = isDecimal;
 		this.decimalPlaces = decimalPlaces;
 	}
-	public setOffset(ends: IEnds) {
+	public setOffset(ends: Ends) {
 		this.offset = (this.value - ends.min) / ((ends.max - ends.min) / 100);
 
 		if (this.offset > 100) {
@@ -69,7 +69,7 @@ class ThumbModel extends Observer {
 		this.cursorOffset = cursorOffset;
 	}
 
-	public updateThumbValue(stance: number, ends: IEnds, cursorOffset: number) {
+	public updateThumbValue(stance: number, ends: Ends, cursorOffset: number) {
 		this.setCursorOffset(cursorOffset);
 		this.setStepOffset();
 
@@ -86,7 +86,7 @@ class ThumbModel extends Observer {
 		return this.value;
 	}
 
-	public getState(): ISliderThumbState {
+	public getState(): SliderThumbState {
 		return {
 			step: this.step,
 			stepCount: this.stepCount,

@@ -1,18 +1,18 @@
-type SubscribeEvent = (...data: any) => void;
+type SubscribeEvent = (...data: any[]) => void;
 
-interface ISubscribers {
+interface Subscribers {
 	[key: string]: SubscribeEvent[];
 }
 
-interface IEnds {
+interface Ends {
 	min: number;
 	max: number;
 }
 
 type Direction = "vertical" | "horizontal";
 //user params
-interface ISliderParams {
-	[index: string | number]: number | string | boolean | any;
+interface SliderParams {
+	[index: string ]: number | string | boolean | any;
 	min: number;
 	max: number;
 	step: number;
@@ -25,9 +25,25 @@ interface ISliderParams {
 	isDecimal: boolean;
 	decimalPlaces: number;
 }
+
+
+interface UserSliderParams {
+	[index: string]: number | string | boolean | any;
+	min?: number;
+	max?: number;
+	step?: number;
+	value?: number[];
+	isRange?: boolean;
+	direction?: Direction;
+	hasFill?: boolean;
+	hasTips?: boolean;
+	hasScale?: boolean;
+	isDecimal?: boolean;
+	decimalPlaces?: number;
+}
 //basic info about current and initial state of slider
-interface ISliderTrackState {
-	ends: IEnds;
+interface SliderTrackState {
+	ends: Ends;
 	size: number;
 	isRange: boolean;
 	direction: Direction;
@@ -36,7 +52,7 @@ interface ISliderTrackState {
 	hasScale: boolean;
 }
 
-interface ISliderThumbState {
+interface SliderThumbState {
 	step: number;
 	value: number;
 	isDecimal: boolean;
@@ -46,17 +62,18 @@ interface ISliderThumbState {
 	offset: number;
 	stepOffset: number;
 }
-interface ISliderFillState {
+interface SliderFillState {
 	fillOffset: number;
 	fillSize: number;
 }
 export {
 	SubscribeEvent,
-	ISubscribers,
-	IEnds,
-	ISliderParams,
+	Subscribers,
+	Ends,
+	SliderParams,
+	UserSliderParams,
 	Direction,
-	ISliderTrackState,
-	ISliderThumbState,
-	ISliderFillState,
+	SliderTrackState,
+	SliderThumbState,
+	SliderFillState,
 };

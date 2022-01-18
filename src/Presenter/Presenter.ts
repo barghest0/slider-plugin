@@ -1,6 +1,6 @@
 import View from "../View/View";
 import TrackModel from "../Model/TrackModel";
-import { Direction, ISliderParams } from "../Interfaces/interfaces";
+import { Direction, SliderParams } from "../Interfaces/interfaces";
 import ThumbModel from "../Model/ThumbModel";
 import clearHTML from "./PresenterModules/clearHTML";
 import removeListeners from "./PresenterModules/removeListeners";
@@ -10,11 +10,11 @@ class Presenter {
 	public thumbs: ThumbModel[];
 	private trackModel: TrackModel;
 	private view: View;
-	private params: ISliderParams;
+	private params: SliderParams;
 	private thumbStance: number;
 	private clearHTML: (direction: Direction) => void;
 	private removeListeners: () => void;
-	constructor(root: string, params: ISliderParams) {
+	constructor(root: string, params: SliderParams) {
 		this.root = root;
 		this.trackModel = new TrackModel(root);
 		this.view = new View(root);
@@ -26,7 +26,7 @@ class Presenter {
 		this.removeListeners = removeListeners.bind(this);
 	}
 
-	public init(params: ISliderParams, mode: string) {
+	public init(params: SliderParams, mode: string) {
 		if (mode === "rebuild") {
 			this.params = params;
 			this.view.isRange = false;
@@ -52,7 +52,7 @@ class Presenter {
 		hasFill,
 		hasTips,
 		hasScale,
-	}: ISliderParams) {
+	}: SliderParams) {
 		const size =
 			direction === "horizontal"
 				? $(this.root).width()!
@@ -81,7 +81,7 @@ class Presenter {
 		hasFill,
 		isDecimal,
 		decimalPlaces,
-	}: ISliderParams) {
+	}: SliderParams) {
 		$(this.root).addClass(`slider_${direction}`);
 		$(this.root).parent().addClass(`slider-parent_${direction}`);
 

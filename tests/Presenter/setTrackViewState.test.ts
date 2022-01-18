@@ -1,4 +1,4 @@
-import { ISliderParams } from "../../src/Interfaces/interfaces";
+import { SliderParams } from "../../src/Interfaces/interfaces";
 import Slider from "../../src/Slider";
 
 beforeEach(() => {
@@ -6,7 +6,7 @@ beforeEach(() => {
 });
 
 describe("Presenter tests", () => {
-	const args: ISliderParams = {
+	const args: SliderParams = {
 		min: -2,
 		max: 2,
 		step: 0.4,

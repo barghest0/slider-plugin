@@ -1,4 +1,4 @@
-import { ISliderParams } from "../../Interfaces/interfaces";
+import { SliderParams } from "../../Interfaces/interfaces";
 import initializeFormValues from "./PanelModules/initializeFormValues";
 import initializeInputs from "./PanelModules/initializeInputs";
 import handleChangeFormValues from "./PanelModules/handleChangeFormValues";
@@ -13,14 +13,14 @@ class Panel {
 	public isVertical: JQuery<HTMLElement> | null;
 	public hasTips: JQuery<HTMLElement> | null;
 	public hasFill: JQuery<HTMLElement> | null;
-	public initializeFormValues: (params: ISliderParams) => void;
+	public initializeFormValues: (params: SliderParams) => void;
 	public initializeInputs: (root: string) => void;
 	public handleChangeFormValues: () => void;
-	public params: ISliderParams;
+	public params: SliderParams;
 	public parent: PreviewSlider;
 	public root: string;
 
-	constructor(params: ISliderParams, root: string, parent: PreviewSlider) {
+	constructor(params: SliderParams, root: string, parent: PreviewSlider) {
 		this.parent = parent;
 		this.params = params;
 		this.root = root;

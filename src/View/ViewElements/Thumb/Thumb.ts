@@ -1,5 +1,5 @@
 import Observer from "../../../Observer/Observer";
-import { Direction, ISliderThumbState } from "../../../Interfaces/interfaces";
+import { Direction, SliderThumbState } from "../../../Interfaces/interfaces";
 import View from "../../View";
 import handleDrag from "./utils/handleDrag";
 

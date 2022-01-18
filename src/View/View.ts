@@ -5,9 +5,9 @@ import Scale from "./ViewElements/Scale/Scale";
 import Fill from "./ViewElements/Fill/Fill";
 import {
 	Direction,
-	IEnds,
-	ISliderFillState,
-	ISliderTrackState,
+	Ends,
+	SliderFillState,
+	SliderTrackState,
 } from "../Interfaces/interfaces";
 import initialThumbPlacement from "./ViewModules/initialThumbPlacement";
 import initialFillPlacement from "./ViewModules/initialFillPlacement";
@@ -20,7 +20,7 @@ class View extends Observer {
 	public scaleView: Scale;
 	public tipView: Tip;
 	public fillView: Fill;
-	public ends: IEnds;
+	public ends: Ends;
 	public root: string;
 	public isRange: boolean;
 	public direction: Direction;
@@ -63,7 +63,7 @@ class View extends Observer {
 		hasTips,
 		hasScale,
 		hasFill,
-	}: ISliderTrackState) {
+	}: SliderTrackState) {
 		this.ends = ends;
 		this.size = size;
 		this.isRange = isRange;
@@ -73,7 +73,7 @@ class View extends Observer {
 		this.hasScale = hasScale;
 	}
 
-	public setFillState({ fillSize, fillOffset }: ISliderFillState) {
+	public setFillState({ fillSize, fillOffset }: SliderFillState) {
 		this.fillView.setSize(fillSize);
 		this.fillView.setOffset(fillOffset);
 	}

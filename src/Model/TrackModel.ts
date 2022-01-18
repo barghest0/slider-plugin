@@ -1,17 +1,17 @@
 import Observer from "../Observer/Observer";
 import {
 	Direction,
-	IEnds,
-	ISliderFillState,
-	ISliderParams,
-	ISliderTrackState,
+	Ends,
+	SliderFillState,
+	SliderParams,
+	SliderTrackState,
 } from "../Interfaces/interfaces";
 
 class TrackModel extends Observer {
 	private root: string;
 	public isRange: boolean;
 	public direction: Direction;
-	public ends: IEnds;
+	public ends: Ends;
 	public size: number;
 	public fillSize: number;
 	public fillOffset: number;
@@ -32,7 +32,7 @@ class TrackModel extends Observer {
 		this.hasScale = true;
 	}
 
-	public setEnds({ min, max }: IEnds) {
+	public setEnds({ min, max }: Ends) {
 		this.ends = { min, max };
 	}
 
@@ -101,7 +101,7 @@ class TrackModel extends Observer {
 		this.setFillOffset(direction);
 		this.notify("UpdateTrackFillPosition", this.fillSize, this.fillOffset);
 	}
-	public getState(): ISliderTrackState {
+	public getState(): SliderTrackState {
 		return {
 			ends: this.ends,
 			size: this.size,
@@ -112,7 +112,7 @@ class TrackModel extends Observer {
 			hasScale: this.hasScale,
 		};
 	}
-	public getFillState(): ISliderFillState {
+	public getFillState(): SliderFillState {
 		return {
 			fillSize: this.fillSize,
 			fillOffset: this.fillOffset,
