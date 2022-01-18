@@ -1,29 +1,29 @@
 import { SliderParams } from "../../../Interfaces/interfaces";
 import Panel from "../Panel";
 
-const initializeFormValues = function (this: Panel, params: SliderParams) {
-	this.minValueInput!.val(params.min);
-	this.maxValueInput!.val(params.max);
-
-	if (params.isRange) {
+const initializeFormValues = function (this: Panel, { min, max, value, isRange, step, direction, hasFill, hasTips, hasScale }: SliderParams) {
+	
+	this.minValueInput!.val(min);
+	this.maxValueInput!.val(max);
+	if (isRange) {
 		this.firstValueInput!.val(
-			Array.isArray(params.value) ? params.value[0] : ""
+			value[0]
 		);
 		this.secondValueInput!.val(
-			Array.isArray(params.value) ? params.value[1] : ""
+			value[1]
 		);
 		this.secondValueInput!.prop("disabled", false);
 	} else {
 		this.firstValueInput!.val(
-			Array.isArray(params.value) ? params.value[0] : params.value
+			value[0]
 		);
 		this.secondValueInput!.prop("disabled", true);
 	}
-	this.stepInput!.val(params.step);
-	this.isRange!.prop("checked", params.isRange);
-	this.isVertical!.prop("checked", params.direction === "vertical");
-	this.hasFill!.prop("checked", params.hasFill);
-	this.hasTips!.prop("checked", params.hasTips);
+	this.stepInput!.val(step);
+	this.isRange!.prop("checked", isRange);
+	this.isVertical!.prop("checked", direction === "vertical");
+	this.hasFill!.prop("checked", hasFill);
+	this.hasTips!.prop("checked", hasTips);
 };
 
 export default initializeFormValues;

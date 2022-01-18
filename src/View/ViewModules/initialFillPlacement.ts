@@ -5,6 +5,7 @@ const initialFillPlacement = function (this: View, direction: Direction) {
 	let dragDirection = direction === "horizontal" ? "left" : "top";
 	let fillDirection = direction === "horizontal" ? "width" : "height";
 
+
 	if (this.isRange) {
 		$(`${this.root} .slider__fill_${direction}`).css({
 			[dragDirection]: this.fillView.offset + "px",
@@ -12,7 +13,7 @@ const initialFillPlacement = function (this: View, direction: Direction) {
 		});
 	} else {
 		$(`${this.root} .slider__fill_${direction}`).css({
-			[fillDirection]: this.thumbView.offset[0] + "%",
+			[fillDirection]: this.fillView.size + "px",
 		});
 	}
 };

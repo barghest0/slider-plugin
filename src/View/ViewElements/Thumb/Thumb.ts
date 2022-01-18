@@ -34,12 +34,15 @@ class Thumb extends Observer {
 		this.stepPercent = stepPercent;
 		this.stepCount = stepCount;
 	}
+
 	public setValue(value: number, stance: number) {
 		this.value[stance] = value;
 	}
+
 	public setOffset(offset: number, stance: number) {
 		this.offset[stance] = offset;
 	}
+	
 	public setIsDecimal(isDecimal: boolean, decimalPlaces: number) {
 		if (isDecimal) {
 			this.decimalPlaces = decimalPlaces;

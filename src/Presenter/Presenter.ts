@@ -68,7 +68,7 @@ class Presenter {
 		this.view.setState(this.trackModel.getState());
 		return this;
 	}
-	
+
 	public createSlider({
 		isRange,
 		step,
@@ -76,16 +76,14 @@ class Presenter {
 		min,
 		max,
 		direction,
-		hasScale,
 		hasTips,
-		hasFill,
 		isDecimal,
 		decimalPlaces,
 	}: SliderParams) {
 		$(this.root).addClass(`slider_${direction}`);
 		$(this.root).parent().addClass(`slider-parent_${direction}`);
 
-		this.createSubViewsView(this.params)
+		this.createSubViewsView(this.params);
 
 		this.createThumb(this.thumbStance);
 		this.setThumbModelState(
@@ -154,6 +152,7 @@ class Presenter {
 			isDecimal,
 			decimalPlaces,
 		} = this.thumbs[stance].getState();
+		
 		this.view.thumbView.setStep(step, stepPercent, stepCount);
 		this.view.thumbView.setValue(value, stance);
 		this.view.thumbView.setOffset(offset, stance);
@@ -212,9 +211,9 @@ class Presenter {
 	}
 
 
-	private createSubViewsView(params:SliderParams){
+	private createSubViewsView(params: SliderParams) {
 		$(document).ready(() => {
-			const {direction,step,max,min,hasFill,hasScale} = params
+			const { direction, step, max, min, hasFill, hasScale } = params;
 			this.createTrackView(direction);
 			this.createScaleView(direction, step, max, min, hasScale);
 			this.creteFillView(direction, hasFill);

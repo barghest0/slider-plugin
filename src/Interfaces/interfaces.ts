@@ -12,7 +12,7 @@ interface Ends {
 type Direction = "vertical" | "horizontal";
 //user params
 interface SliderParams {
-	[index: string ]: number | string | boolean | any;
+	[index: string]: number | string | boolean | any;
 	min: number;
 	max: number;
 	step: number;
@@ -32,7 +32,7 @@ interface UserSliderParams {
 	min?: number;
 	max?: number;
 	step?: number;
-	value?: number[];
+	value?: number[] | number;
 	isRange?: boolean;
 	direction?: Direction;
 	hasFill?: boolean;

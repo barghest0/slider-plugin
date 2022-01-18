@@ -12,6 +12,8 @@ const initialTipPlacement = function (
 			? this.thumbView.offset[stance]
 			: 100 - this.thumbView.offset[stance];
 
+
+
 	$(`${this.root} .slider__tip-${stance}`).css({
 		[dragDirection]: thumbsOffset + "%",
 	});
