@@ -36,7 +36,7 @@ class Presenter {
 			this.thumbs = [];
 		}
 		$(document).ready(() => {
-			this.setTrackModelState(params).setTrackViewState();
+			this.setTrackModelState(params).setViewState();
 		});
 		this.createSlider(params);
 		this.subscribe();
@@ -61,14 +61,14 @@ class Presenter {
 		this.trackModel.setEnds({ min, max });
 		this.trackModel.setIsRange(isRange);
 		this.trackModel.setDirection(direction);
-		this.trackModel.setSupElements(hasFill, hasTips, hasScale);
+		this.trackModel.setSupViews(hasFill, hasTips, hasScale);
 		return this;
 	}
-	private setTrackViewState() {
+	private setViewState() {
 		this.view.setState(this.trackModel.getState());
 		return this;
 	}
-
+	
 	public createSlider({
 		isRange,
 		step,
@@ -85,11 +85,7 @@ class Presenter {
 		$(this.root).addClass(`slider_${direction}`);
 		$(this.root).parent().addClass(`slider-parent_${direction}`);
 
-		$(document).ready(() => {
-			this.createTrackView(direction);
-			this.createScaleView(direction, step, max, min, hasScale);
-			this.creteFillView(direction, hasFill);
-		});
+		this.createSubViewsView(this.params)
 
 		this.createThumb(this.thumbStance);
 		this.setThumbModelState(
@@ -213,6 +209,16 @@ class Presenter {
 		hasTips: boolean
 	) {
 		this.view.tipView.createTip(direction, stance, hasTips);
+	}
+
+
+	private createSubViewsView(params:SliderParams){
+		$(document).ready(() => {
+			const {direction,step,max,min,hasFill,hasScale} = params
+			this.createTrackView(direction);
+			this.createScaleView(direction, step, max, min, hasScale);
+			this.creteFillView(direction, hasFill);
+		});
 	}
 
 	private addListeners(isRange: boolean) {

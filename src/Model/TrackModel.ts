@@ -46,7 +46,7 @@ class TrackModel extends Observer {
 	public setDirection(direction: Direction) {
 		this.direction = direction;
 	}
-	public setSupElements(
+	public setSupViews(
 		hasFill: boolean,
 		hasTips: boolean,
 		hasScale: boolean

@@ -5,7 +5,7 @@ beforeEach(() => {
 	document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
 });
 
-describe("Presenter tests", () => {
+describe("if track view state correct", () => {
 	const args: SliderParams = {
 		min: -2,
 		max: 2,
@@ -19,8 +19,8 @@ describe("Presenter tests", () => {
 		isDecimal: true,
 		decimalPlaces: 1,
 	};
-	const slider = new Slider("slider-1", args);
-	test("correct set track view state", () => {
+	const slider = new Slider(".slider-1", args);
+	test("correct set isRange view param", () => {
 		slider.presenter["setTrackModelState"](args);
 		expect(slider.presenter["view"].isRange).toBe(false);
 	});

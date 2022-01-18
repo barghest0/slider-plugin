@@ -6,9 +6,9 @@ class Slider {
 	public presenter: Presenter;
 	private root: string;
 	private params: SliderParams;
-	constructor(root: string, params: SliderParams) {
+	constructor(root: string, params: UserSliderParams) {
 		this.root = root;
-		this.params = params;
+		this.params =checkParams(params);
 		this.presenter = new Presenter(root, checkParams(params));
 	}
 
