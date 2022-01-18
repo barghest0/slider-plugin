@@ -1,19 +1,15 @@
 import { Direction } from "../../../../Interfaces/interfaces";
 import Tip from "../Tip";
 
-const updateTipsPosition = function (
-	this: Tip,
-	stance: number,
-	dragDirection: string
-) {
-	const direcion = this.view.direction;
+const updateTipsPosition = function (this: Tip, stance: number) {
+	const direction = this.view.direction;
 	const offset =
-		direcion === "horizontal"
+		direction === "horizontal"
 			? this.view.thumbView.offset[stance]
 			: 100 - this.view.thumbView.offset[stance];
 
 	$(`${this.view.root} .slider__tip-${stance}`).css({
-		[dragDirection]: offset + "%",
+		[this.view.offsetDirection]: offset + "%",
 	});
 
 	$(`${this.view.root} .slider__tip-${stance}`).html(

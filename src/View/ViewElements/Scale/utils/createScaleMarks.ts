@@ -9,8 +9,6 @@ const createScaleMarks = function (
 	min: number,
 	direction: Direction
 ) {
-	const offsetDirection = direction === "horizontal" ? "left" : "top";
-
 	const values = prepareScaleData(min, max, step);
 	let offset = 0;
 	if (direction === "vertical") {
@@ -18,7 +16,7 @@ const createScaleMarks = function (
 	}
 	for (let i = 0; i < values.length; i++) {
 		$(`${this.view.root} .slider__scale`).append(
-			`<div class="slider__scale-mark slider__scale-mark_${direction}" style="${offsetDirection}:${offset}px"></div>`
+			`<div class="slider__scale-mark slider__scale-mark_${direction}" style="${this.view.offsetDirection}:${offset}px"></div>`
 		);
 		const parentElement = $(`${this.view.root} .slider__scale`).children(
 			".slider__scale-mark"

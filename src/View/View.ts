@@ -13,6 +13,7 @@ import initialThumbPlacement from "./ViewModules/initialThumbPlacement";
 import initialFillPlacement from "./ViewModules/initialFillPlacement";
 import Tip from "./ViewElements/Tip/Tip";
 import initialTipPlacement from "./ViewModules/initialTipPlacement";
+import prepareDirectionForInteraction from "./ViewModules/prepareDirectionForInteraction";
 
 class View extends Observer {
 	public thumbView: Thumb;
@@ -28,13 +29,15 @@ class View extends Observer {
 	public hasTips: boolean;
 	public hasFill: boolean;
 	public hasScale: boolean;
+	public offsetDirection: string;
+	public fillDirection: string;
 	public initialThumbPlacement: (
 		direction: Direction,
 		stance: number
 	) => void;
 	public initialFillPlacement: (direction: Direction) => void;
 	public initialTipPlacement: (direction: Direction, stance: number) => void;
-
+	public prepareDirectionForInteraction: (direction: Direction) => void;
 	constructor(root: string) {
 		super();
 		this.thumbView = new Thumb(this);
@@ -50,9 +53,13 @@ class View extends Observer {
 		this.hasFill = true;
 		this.hasTips = true;
 		this.hasScale = true;
+		this.offsetDirection = "left";
+		this.fillDirection = "width";
 		this.initialThumbPlacement = initialThumbPlacement.bind(this);
 		this.initialFillPlacement = initialFillPlacement.bind(this);
 		this.initialTipPlacement = initialTipPlacement.bind(this);
+		this.prepareDirectionForInteraction =
+			prepareDirectionForInteraction.bind(this);
 	}
 
 	public setState({
@@ -71,6 +78,7 @@ class View extends Observer {
 		this.hasTips = hasTips;
 		this.hasFill = hasFill;
 		this.hasScale = hasScale;
+		this.prepareDirectionForInteraction(direction);
 	}
 
 	public setFillState({ fillSize, fillOffset }: SliderFillState) {

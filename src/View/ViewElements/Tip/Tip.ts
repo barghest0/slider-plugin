@@ -4,7 +4,7 @@ import updateTipsPosition from "./utils/updateTipsPosition";
 
 class Tip {
 	public view: View;
-	public updateTipsPosition: (stance: number, dragDirection: Direction) => void;
+	public updateTipsPosition: (stance: number) => void;
 	constructor(view: View) {
 		this.view = view;
 		this.updateTipsPosition = updateTipsPosition.bind(this);

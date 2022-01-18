@@ -8,7 +8,7 @@ class Slider {
 	private params: SliderParams;
 	constructor(root: string, params: UserSliderParams) {
 		this.root = root;
-		this.params =checkParams(params);
+		this.params = checkParams(params);
 		this.presenter = new Presenter(root, checkParams(params));
 	}
 
