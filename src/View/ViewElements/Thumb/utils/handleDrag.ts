@@ -11,17 +11,15 @@ const handleDrag = function (e: JQuery.MouseMoveEvent | JQuery.TouchMoveEvent) {
 			: e.pageY || e.touches![0].pageY;
 
 
-	if (validateCollision(offset, stance)) {
+	if (validateCollision(thisThumb.value,offset, stance)) {
 		stance = reverseStance;
 	}
 
 	thisThumb.notify("UpdateThumbModelValue", stance, cursorCoordinate, direction, thisThumb.view.size);
 
-
 	$(`${thisThumb.view.root} .slider__thumb-${stance}`).css({
 		[thisThumb.view.offsetDirection]: offset[stance] + "%",
 	});
-
 
 	thisThumb.view.trackView.notify("UpdateTrackModelFill");
 

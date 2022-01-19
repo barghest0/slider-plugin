@@ -88,7 +88,6 @@ class ThumbModel extends Observer {
 			this.setCursorOffset(100 - this.calculateCursorOffset(cursorCoordinate, direction, size));
 		}
 		this.setStepOffset();
-		this.calculateValue(ends);
 		this.setValue(this.calculateValue(ends));
 		this.setOffset(this.calculateOffset(ends, direction));
 		this.endsValidation(ends, direction);
