@@ -2,6 +2,7 @@ import Observer from "../../../Observer/Observer";
 import { Direction, SliderThumbState } from "../../../Interfaces/interfaces";
 import View from "../../View";
 import handleDrag from "./utils/handleDrag";
+import prepareOffset from "../../../Model/ThumbModelModules/prepareOffset";
 
 class Thumb extends Observer {
 	public view: View;
@@ -42,7 +43,7 @@ class Thumb extends Observer {
 	public setOffset(offset: number, stance: number) {
 		this.offset[stance] = offset;
 	}
-	
+
 	public setIsDecimal(isDecimal: boolean, decimalPlaces: number) {
 		if (isDecimal) {
 			this.decimalPlaces = decimalPlaces;

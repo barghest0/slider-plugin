@@ -2,19 +2,22 @@ import Observer from "../Observer/Observer";
 import { Direction, Ends, SliderThumbState } from "../Interfaces/interfaces";
 import { timers } from "jquery";
 import { textChangeRangeIsUnchanged } from "typescript";
+import prepareOffset from './ThumbModelModules/prepareOffset';
+import endsValidation from './ThumbModelModules/endsValidation';
 
 class ThumbModel extends Observer {
 	private root: string;
-	private step: number;
+	private offset: number;
 	private value: number;
+	private step: number;
 	private stance: number;
 	private stepCount: number;
 	private stepPercent: number;
-	private offset: number;
 	private stepOffset: number;
 	private cursorOffset: number;
 	private isDecimal: boolean;
 	private decimalPlaces: number;
+	private endsValidation: (ends: Ends, direction: Direction) => void;
 	constructor(root: string, stance: number) {
 		super();
 		this.root = root;
@@ -28,13 +31,17 @@ class ThumbModel extends Observer {
 		this.cursorOffset = 0;
 		this.isDecimal = false;
 		this.decimalPlaces = 0;
+		this.endsValidation = endsValidation.bind(this);
 	}
 
 	public setStep(step: number, ends: Ends) {
 		this.step = step;
 		this.stepCount = (ends.max - ends.min) / step;
-
 		this.stepPercent = 100 / this.stepCount;
+	}
+
+	public calculateValue(ends: Ends) {
+		return (this.stepOffset / this.stepPercent) * this.step + ends.min;
 	}
 
 	public setValue(value: number) {
@@ -48,44 +55,53 @@ class ThumbModel extends Observer {
 		this.isDecimal = isDecimal;
 		this.decimalPlaces = decimalPlaces;
 	}
-	public setOffset(ends: Ends) {
-		this.offset = (this.value - ends.min) / ((ends.max - ends.min) / 100);
 
-		if (this.offset > 100) {
-			this.offset = 100;
-			this.value = ends.max;
-		}
-		if (this.offset < 0) {
-			this.offset = 0;
-			this.value = ends.min;
-		}
+	public calculateOffset(ends: Ends, direction: Direction) {
+		return prepareOffset((this.value - ends.min) / ((ends.max - ends.min) / 100), direction);
+	}
+
+	public setOffset(offset: number) {
+		this.offset = offset;
 	}
 
 	public setStepOffset() {
 		this.stepOffset =
 			Math.round(this.cursorOffset / this.stepPercent) * this.stepPercent;
 	}
+
+	public calculateCursorOffset(cursorCoordinate: number, direction: Direction, size: number) {
+		return ((cursorCoordinate! -
+			(direction === "horizontal"
+				? $(this.root).position().left
+				: $(this.root).position().top)) /
+			size) *
+			100;
+	}
 	public setCursorOffset(cursorOffset: number) {
 		this.cursorOffset = cursorOffset;
 	}
 
-	public updateThumbValue(stance: number, ends: Ends, cursorOffset: number) {
-		this.setCursorOffset(cursorOffset);
+	public updateThumbValue(stance: number, ends: Ends, cursorCoordinate: number, direction: Direction, size: number) {
+		if (direction === "horizontal") {
+			this.setCursorOffset(this.calculateCursorOffset(cursorCoordinate, direction, size));
+		} else {
+			this.setCursorOffset(100 - this.calculateCursorOffset(cursorCoordinate, direction, size));
+		}
 		this.setStepOffset();
-
-		const value =
-			(this.stepOffset / this.stepPercent) * this.step + ends.min;
-
-		this.setValue(value);
-		this.setOffset(ends);
-		this.notify("UpdatePanelValues", value, stance);
+		this.calculateValue(ends);
+		this.setValue(this.calculateValue(ends));
+		this.setOffset(this.calculateOffset(ends, direction));
+		this.endsValidation(ends, direction);
+		this.notify("UpdatePanelValues", this.value, stance);
 		this.notify("UpdateThumbPosition", this.value, this.offset, stance);
 	}
 
 	public getValue() {
 		return this.value;
 	}
-
+	public getOffset() {
+		return this.offset;
+	}
 	public getState(): SliderThumbState {
 		return {
 			step: this.step,

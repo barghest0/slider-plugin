@@ -51,50 +51,61 @@ class TrackModel extends Observer {
 		this.hasTips = hasTips;
 		this.hasFill = hasFill;
 	}
-	public setFillSize(direction: Direction) {
+
+	public calculateFillSize(direction: Direction) {
+		let fillSize = 0;
 		if (this.isRange) {
 			if (direction === "horizontal") {
-				this.fillSize =
-					parseInt($(`${this.root} .slider__thumb-1`).css("left")) -
+				fillSize += parseInt($(`${this.root} .slider__thumb-1`).css("left")) -
 					parseInt($(`${this.root} .slider__thumb-0`).css("left"));
 			} else {
-				this.fillSize =
-					parseInt($(`${this.root} .slider__thumb-0`).css("top")) -
+				fillSize += parseInt($(`${this.root} .slider__thumb-0`).css("top")) -
 					parseInt($(`${this.root} .slider__thumb-1`).css("top"));
 			}
 		} else {
-			this.fillSize = parseInt(
+			fillSize += parseInt(
 				$(`${this.root} .slider__thumb-0`).css(
 					direction === "horizontal" ? "left" : "bottom"
 				)
 			);
-			if (direction === "vertical") {
-				this.fillSize += 15;
-			}
 		}
+		if (direction === "vertical") {
+			fillSize += parseInt($(`${this.root} .slider__thumb-0`).css("height"));
+		}
+		return fillSize;
 	}
 
-	public setFillOffset(direction: Direction) {
+	public setFillSize(fillSize: number) {
+		this.fillSize = fillSize;
+	}
+
+	public calculateFillOffset(direction: Direction) {
 		if (this.isRange) {
 			if (direction === "horizontal") {
-				this.fillOffset = parseInt(
+				return parseInt(
 					$(`${this.root} .slider__thumb-0`).css("left"),
 					10
 				);
 			} else {
-				this.fillOffset = parseInt(
+				return parseInt(
 					$(`${this.root} .slider__thumb-1`).css("top"),
 					10
 				);
 			}
 		} else {
-			this.fillOffset = 0;
+			return 0;
 		}
 	}
 
+	public setFillOffset(fillOffset: number) {
+		this.fillOffset = fillOffset;
+
+	}
+
 	public updateTrackFill(direction: Direction) {
-		this.setFillSize(direction);
-		this.setFillOffset(direction);
+
+		this.setFillSize(this.calculateFillSize(direction));
+		this.setFillOffset(this.calculateFillOffset(direction));
 		this.notify("UpdateTrackFillPosition", this.fillSize, this.fillOffset);
 	}
 	public getState(): SliderTrackState {

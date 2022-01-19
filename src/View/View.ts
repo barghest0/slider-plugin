@@ -31,12 +31,9 @@ class View extends Observer {
 	public hasScale: boolean;
 	public offsetDirection: string;
 	public fillDirection: string;
-	public initialThumbPlacement: (
-		direction: Direction,
-		stance: number
-	) => void;
+	public initialThumbPlacement: (stance: number) => void;
 	public initialFillPlacement: (direction: Direction) => void;
-	public initialTipPlacement: (direction: Direction, stance: number) => void;
+	public initialTipPlacement: (stance: number) => void;
 	public prepareDirectionForInteraction: (direction: Direction) => void;
 	constructor(root: string) {
 		super();
@@ -78,7 +75,6 @@ class View extends Observer {
 		this.hasTips = hasTips;
 		this.hasFill = hasFill;
 		this.hasScale = hasScale;
-		this.prepareDirectionForInteraction(direction);
 	}
 
 	public setFillState({ fillSize, fillOffset }: SliderFillState) {
