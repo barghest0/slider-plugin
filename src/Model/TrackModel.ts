@@ -68,10 +68,11 @@ class TrackModel extends Observer {
 					direction === "horizontal" ? "left" : "bottom"
 				)
 			);
+			if (direction === "vertical") {
+				fillSize += parseInt($(`${this.root} .slider__thumb-0`).css("height"));
+			}
 		}
-		if (direction === "vertical") {
-			fillSize += parseInt($(`${this.root} .slider__thumb-0`).css("height"));
-		}
+
 		return fillSize;
 	}
 

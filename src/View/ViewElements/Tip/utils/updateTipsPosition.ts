@@ -1,8 +1,10 @@
 import Tip from "../Tip";
 
-const updateTipsPosition = function (this: Tip, stance: number) {
+const updateTipsPosition = function (this: Tip, stance: number, offset: number) {
+
+
 	$(`${this.view.root} .slider__tip-${stance}`).css({
-		[this.view.offsetDirection]: this.view.thumbView.offset[stance] + "%",
+		[this.view.offsetDirection]: offset + "%",
 	});
 
 	$(`${this.view.root} .slider__tip-${stance}`).html(

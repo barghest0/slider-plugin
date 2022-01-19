@@ -1,11 +1,13 @@
 import { Direction } from "../../../Interfaces/interfaces";
+import Observer from '../../../Observer/Observer';
 import View from "../../View";
 import updateTipsPosition from "./utils/updateTipsPosition";
 
-class Tip {
+class Tip extends Observer {
 	public view: View;
-	public updateTipsPosition: (stance: number) => void;
+	public updateTipsPosition: (stance: number,offset:number) => void;
 	constructor(view: View) {
+		super();
 		this.view = view;
 		this.updateTipsPosition = updateTipsPosition.bind(this);
 	}

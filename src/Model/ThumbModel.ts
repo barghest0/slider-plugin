@@ -94,6 +94,8 @@ class ThumbModel extends Observer {
 		this.endsValidation(ends, direction);
 		this.notify("UpdatePanelValues", this.value, stance);
 		this.notify("UpdateThumbPosition", this.value, this.offset, stance);
+		this.notify("UpdateTipPosition", stance, this.offset);
+
 	}
 
 	public getValue() {

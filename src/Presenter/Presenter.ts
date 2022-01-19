@@ -263,6 +263,10 @@ class Presenter {
 		this.view.thumbView.setValue(value, stance);
 	}
 
+	private updateTipPosition(stance: number, offset: number) {
+		this.view.tipView.updateTipsPosition(stance, offset);
+	}
+
 	private subscribe() {
 		this.view.thumbView.subscribe(
 			"UpdateThumbModelValue",
@@ -282,6 +286,13 @@ class Presenter {
 		this.trackModel.subscribe(
 			"UpdateTrackFillPosition",
 			this.updateTrackFillPosition.bind(this)
+		);
+
+		this.thumbs.forEach((thumb) =>
+			thumb.subscribe(
+				"UpdateTipPosition",
+				this.updateTipPosition.bind(this)
+			)
 		);
 
 		this.thumbs.forEach((thumb) =>
