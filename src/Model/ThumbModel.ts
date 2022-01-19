@@ -69,30 +69,26 @@ class ThumbModel extends Observer {
 			Math.round(this.cursorOffset / this.stepPercent) * this.stepPercent;
 	}
 
-	public calculateCursorOffset(cursorCoordinate: number, direction: Direction, size: number) {
-		return ((cursorCoordinate! -
-			(direction === "horizontal"
-				? $(this.root).position().left
-				: $(this.root).position().top)) /
-			size) *
-			100;
+	public calculateCursorOffset(cursorCoordinate: number, size: number) {
+		return cursorCoordinate / size * 100;
 	}
+
 	public setCursorOffset(cursorOffset: number) {
 		this.cursorOffset = cursorOffset;
 	}
 
 	public updateThumbValue(stance: number, ends: Ends, cursorCoordinate: number, direction: Direction, size: number) {
 		if (direction === "horizontal") {
-			this.setCursorOffset(this.calculateCursorOffset(cursorCoordinate, direction, size));
+			this.setCursorOffset(this.calculateCursorOffset(cursorCoordinate, size));
 		} else {
-			this.setCursorOffset(100 - this.calculateCursorOffset(cursorCoordinate, direction, size));
+			this.setCursorOffset(100 - this.calculateCursorOffset(cursorCoordinate, size));
 		}
 		this.setStepOffset();
 		this.setValue(this.calculateValue(ends));
 		this.setOffset(this.calculateOffset(ends, direction));
 		this.endsValidation(ends, direction);
 		this.notify("UpdatePanelValues", this.value, stance);
-		this.notify("UpdateThumbPosition", this.value, this.offset, stance);
+		this.notify("UpdateThumbPosition", this.value, this.offset, stance, this.cursorOffset);
 		this.notify("UpdateTipPosition", stance, this.offset);
 
 	}
@@ -103,6 +99,7 @@ class ThumbModel extends Observer {
 	public getOffset() {
 		return this.offset;
 	}
+
 	public getState(): SliderThumbState {
 		return {
 			step: this.step,

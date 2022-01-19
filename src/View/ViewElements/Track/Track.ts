@@ -4,7 +4,7 @@ import handleClick from "./utils/handleClick";
 import Observer from "../../../Observer/Observer";
 
 class Track extends Observer {
-	private view: View;
+	public view: View;
 	constructor(view: View) {
 		super();
 		this.view = view;
