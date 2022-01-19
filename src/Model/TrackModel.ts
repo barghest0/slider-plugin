@@ -104,11 +104,11 @@ class TrackModel extends Observer {
 	}
 
 	public updateTrackFill(direction: Direction) {
-
 		this.setFillSize(this.calculateFillSize(direction));
 		this.setFillOffset(this.calculateFillOffset(direction));
 		this.notify("UpdateTrackFillPosition", this.fillSize, this.fillOffset);
 	}
+
 	public getState(): SliderTrackState {
 		return {
 			ends: this.ends,
@@ -120,6 +120,7 @@ class TrackModel extends Observer {
 			hasScale: this.hasScale,
 		};
 	}
+	
 	public getFillState(): SliderFillState {
 		return {
 			fillSize: this.fillSize,
