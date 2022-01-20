@@ -12,6 +12,7 @@ const endsValidation = function (this: ThumbModel, ends: Ends, direction: Direct
         this.setOffset(0);
         this.setValue(direction === "horizontal" ? ends.min : ends.max);
     }
+    
 };
 
 export default endsValidation;
