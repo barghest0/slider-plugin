@@ -1,7 +1,7 @@
 import Observer from "../Observer/Observer";
 import { Direction, Ends, SliderThumbState } from "../Interfaces/interfaces";
-import prepareOffset from './ThumbModelModules/prepareOffset';
-import endsValidation from './ThumbModelModules/endsValidation';
+import prepareOffset from "./ThumbModelModules/prepareOffset";
+import endsValidation from "./ThumbModelModules/endsValidation";
 
 class ThumbModel extends Observer {
 	private root: string;
@@ -55,40 +55,64 @@ class ThumbModel extends Observer {
 	}
 
 	public calculateOffset(ends: Ends, direction: Direction) {
-		return prepareOffset((this.value - ends.min) / ((ends.max - ends.min) / 100), direction);
+		return prepareOffset(
+			(this.value - ends.min) / ((ends.max - ends.min) / 100),
+			direction
+		);
 	}
 
 	public setOffset(offset: number) {
 		this.offset = offset;
 	}
 
-	public setStepOffset() {
-		this.stepOffset =
-			Math.round(this.cursorOffset / this.stepPercent) * this.stepPercent;
+	public setStepOffset(stepOffset: number) {
+		this.stepOffset = stepOffset;
+	}
+	public calculateStepOffset(cursorOffset: number, stepPercent: number) {
+		return (
+			Math.round(this.cursorOffset / this.stepPercent) * this.stepPercent
+		);
 	}
 
 	public calculateCursorOffset(cursorCoordinate: number, size: number) {
-		return cursorCoordinate / size * 100;
+		return (cursorCoordinate / size) * 100;
 	}
 
 	public setCursorOffset(cursorOffset: number) {
 		this.cursorOffset = cursorOffset;
 	}
 
-	public updateThumbValue(stance: number, ends: Ends, cursorCoordinate: number, direction: Direction, size: number) {
+	public updateThumbValue(
+		stance: number,
+		ends: Ends,
+		cursorCoordinate: number,
+		direction: Direction,
+		size: number
+	) {
 		if (direction === "horizontal") {
-			this.setCursorOffset(this.calculateCursorOffset(cursorCoordinate, size));
+			this.setCursorOffset(
+				this.calculateCursorOffset(cursorCoordinate, size)
+			);
 		} else {
-			this.setCursorOffset(100 - this.calculateCursorOffset(cursorCoordinate, size));
+			this.setCursorOffset(
+				100 - this.calculateCursorOffset(cursorCoordinate, size)
+			);
 		}
-		this.setStepOffset();
+		this.setStepOffset(
+			this.calculateStepOffset(this.cursorOffset, this.stepPercent)
+		);
 		this.setValue(this.calculateValue(ends));
 		this.setOffset(this.calculateOffset(ends, direction));
 		this.endsValidation(ends, direction);
 		this.notify("UpdatePanelValues", this.value, stance);
-		this.notify("UpdateThumbView", this.value, this.offset, stance, this.cursorOffset);
+		this.notify(
+			"UpdateThumbView",
+			this.value,
+			this.offset,
+			stance,
+			this.cursorOffset
+		);
 		this.notify("UpdateTipView", stance, this.offset);
-
 	}
 
 	public getValue() {

@@ -5,7 +5,7 @@ beforeEach(() => {
 	document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
 });
 
-describe("if track view state correct", () => {
+describe("Presenter test", () => {
 	const args: SliderParams = {
 		min: -2,
 		max: 2,
