@@ -41,6 +41,7 @@ class PreviewSlider extends Observer {
 				this.params.value[stance].toFixed(this.params.decimalPlaces)
 			);
 		}
+		
 	}
 	private subscribePanel() {
 		this.slider.presenter.thumbs.forEach((item) => {

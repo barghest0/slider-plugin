@@ -22,7 +22,7 @@ class Presenter {
 	public updateThumbView:(value: number, offset: number, stance: number)=>void
 	public updateTipView:(value: number, offset: number, stance: number)=>void
 	public updateTrackFillView : (value: number, offset: number, stance: number)=>void
-	private params: SliderParams;
+	public params: SliderParams;
 	private thumbStance: number;
 	private clearHTML: (direction: Direction) => void;
 	private removeListeners: () => void;
@@ -59,6 +59,7 @@ class Presenter {
 		$(document).ready(() => {
 			this.setTrackModelState(params).setViewState();
 		});
+		
 
 		this.createRangeSlider(params);
 		this.addSliderClasses(params.direction);
@@ -156,7 +157,7 @@ class Presenter {
 		this.thumbs[stance].setIsDecimal(isDecimal, decimalPlaces);
 		return this;
 	}
-	
+
 	private setThumbViewStateAndPlacement(
 		stance: number,
 	) {

@@ -32,8 +32,7 @@ const checkParams = function (params: UserSliderParams): SliderParams {
 		value[1] = value[0];
 	}
 
-
-	return {
+	const checkedParams:SliderParams =  {
 		min,
 		max,
 		step,
@@ -46,6 +45,9 @@ const checkParams = function (params: UserSliderParams): SliderParams {
 		isDecimal,
 		decimalPlaces,
 	};
+
+	if (params.onChange) checkedParams.onChange = params.onChange;
+	return checkedParams
 };
 
 export default checkParams;

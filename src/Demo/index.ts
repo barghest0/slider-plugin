@@ -1,7 +1,7 @@
 import "../Style/style.scss";
 import PreviewSlider from "./PriviewSlider";
 
-new PreviewSlider(".slider-1", {});
+new PreviewSlider(".slider-1", {onChange:(params)=>console.log(params.value)});
 
 new PreviewSlider(".slider-2", {
 	min: -6,
@@ -29,6 +29,7 @@ new PreviewSlider(".slider-3", {
 	hasScale: true,
 	isDecimal: false,
 	decimalPlaces: 1,
+	
 });
 
 new PreviewSlider(".slider-4", {

@@ -24,6 +24,7 @@ interface SliderParams {
 	hasScale: boolean;
 	isDecimal: boolean;
 	decimalPlaces: number;
+	onChange?:(params:SliderParams)=>void
 }
 
 
@@ -40,6 +41,7 @@ interface UserSliderParams {
 	hasScale?: boolean;
 	isDecimal?: boolean;
 	decimalPlaces?: number;
+	onChange?:(params:SliderParams)=>void
 }
 //basic info about current and initial state of slider
 interface SliderTrackState {
