@@ -17,12 +17,12 @@ const handleClick = function (e: JQuery.MouseDownEvent) {
 	thisTrack.notify("UpdateTrackModelFill");
 
 	$(`${thisTrack.view.root} .slider__fill_${thisTrack.view.direction}`).css({
-		[thisTrack.view.fillDirection]: thisTrack.view.fillView.size + "px",
+		[thisTrack.view.fillDirection]: thisTrack.view.fillView.size + "%",
 	});
 	if (thisTrack.view.isRange) {
 		$(`${thisTrack.view.root} .slider__fill_${thisTrack.view.direction}`).css({
 			[thisTrack.view.offsetDirection]:
-				thisTrack.view.fillView.offset + "px",
+				thisTrack.view.fillView.offset + "%",
 		});
 	}
 };

@@ -25,12 +25,12 @@ const handleDrag = function (e: JQuery.MouseMoveEvent | JQuery.TouchMoveEvent) {
 	if (thisThumb.view.isRange) {
 		$(`${thisThumb.view.root} .slider__fill_${direction}`).css({
 			[thisThumb.view.offsetDirection]:
-				thisThumb.view.fillView.offset + "px",
-			[thisThumb.view.fillDirection]: thisThumb.view.fillView.size + "px",
+				thisThumb.view.fillView.offset + "%",
+			[thisThumb.view.fillDirection]: thisThumb.view.fillView.size + "%",
 		});
 	} else {
 		$(`${thisThumb.view.root} .slider__fill_${direction}`).css({
-			[thisThumb.view.fillDirection]: thisThumb.view.fillView.size + "px",
+			[thisThumb.view.fillDirection]: thisThumb.view.fillView.size + "%",
 		});
 	}
 };

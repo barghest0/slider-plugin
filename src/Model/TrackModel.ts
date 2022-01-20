@@ -73,7 +73,7 @@ class TrackModel extends Observer {
 			}
 		}
 
-		return fillSize;
+		return fillSize / this.size * 100;
 	}
 
 	public setFillSize(fillSize: number) {
@@ -81,21 +81,23 @@ class TrackModel extends Observer {
 	}
 
 	public calculateFillOffset(direction: Direction) {
+		let fillOffset = 0;
 		if (this.isRange) {
 			if (direction === "horizontal") {
-				return parseInt(
+				fillOffset += parseInt(
 					$(`${this.root} .slider__thumb-0`).css("left"),
 					10
 				);
 			} else {
-				return parseInt(
+				fillOffset += parseInt(
 					$(`${this.root} .slider__thumb-1`).css("top"),
 					10
 				);
 			}
 		} else {
-			return 0;
+			fillOffset = 0;
 		}
+		return fillOffset / this.size * 100;
 	}
 
 	public setFillOffset(fillOffset: number) {
@@ -112,7 +114,7 @@ class TrackModel extends Observer {
 	public prepareChooseStance(cursorCoordinate: number) {
 		const cursorOffset = cursorCoordinate / this.size * 100;
 		let stance = 0;
-		const chooseCorrectStance = cursorOffset > (this.fillSize / this.size * 100 / 2) + (this.fillOffset / this.size * 100);
+		const chooseCorrectStance = cursorOffset > (this.fillSize / 2) + (this.fillOffset);
 		if (chooseCorrectStance && this.isRange) stance = 1;
 		if (this.direction === "vertical") stance = +!stance;
 		this.notify("UpdateThumbModelValue", stance, cursorCoordinate, this.direction, this.size);

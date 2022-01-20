@@ -3,16 +3,16 @@ import View from "../View";
 
 const initialFillPlacement = function (this: View, direction: Direction) {
 
-	
+
 
 	if (this.isRange) {
 		$(`${this.root} .slider__fill_${direction}`).css({
-			[this.offsetDirection]: this.fillView.offset + "px",
-			[this.fillDirection]: this.fillView.size + "px",
+			[this.offsetDirection]: this.fillView.offset + "%",
+			[this.fillDirection]: this.fillView.size + "%",
 		});
 	} else {
 		$(`${this.root} .slider__fill_${direction}`).css({
-			[this.fillDirection]: this.fillView.size + "px",
+			[this.fillDirection]: this.fillView.size + "%",
 		});
 	}
 };
