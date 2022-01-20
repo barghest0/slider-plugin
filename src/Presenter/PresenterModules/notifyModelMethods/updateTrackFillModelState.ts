@@ -1,8 +1,11 @@
+import { Direction } from "../../../Interfaces/interfaces";
 import Presenter from "../../Presenter";
 
+const updateTrackFillModelState = function (
+	this: Presenter,
+	direction: Direction
+) {
+	this.trackModel.updateTrackFill(direction);
+};
 
-const updateTrackFillModelState = function(this:Presenter) {
-    this.trackModel.updateTrackFill(this.view.direction);
-}
-
-export default updateTrackFillModelState
+export default updateTrackFillModelState;

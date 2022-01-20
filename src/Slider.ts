@@ -10,6 +10,7 @@ class Slider {
 		this.root = root;
 		this.params = checkParams(params);
 		this.presenter = new Presenter(root, checkParams(params));
+		this.init(this.params, 'init');
 	}
 
 	public init(params: SliderParams, mode: string) {

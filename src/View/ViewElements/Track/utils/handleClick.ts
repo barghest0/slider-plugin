@@ -4,9 +4,12 @@ const handleClick = function (e: JQuery.MouseDownEvent) {
 	const { thisTrack } = e.data;
 	let offset = thisTrack.view.thumbView.offset;
 	let direction = thisTrack.view.direction;
-	let cursorCoordinate = direction === "horizontal" ? e.pageX - $(thisTrack.view.root).position().left : e.pageY - $(thisTrack.view.root).position().top;
+	let cursorCoordinate =
+		direction === "horizontal"
+			? e.pageX - $(thisTrack.view.root).position().left
+			: e.pageY - $(thisTrack.view.root).position().top;
 
-	thisTrack.notify("updateThumbModelBeforeTrackClick", cursorCoordinate);
+	thisTrack.notify("UpdateThumbModelBeforeTrackClick", cursorCoordinate);
 
 	let stance = thisTrack.view.thumbView.activeStance;
 
@@ -14,13 +17,15 @@ const handleClick = function (e: JQuery.MouseDownEvent) {
 		[thisTrack.view.offsetDirection]: offset[stance] + "%",
 	});
 
-	thisTrack.notify("UpdateTrackModelFill");
+	thisTrack.notify("UpdateTrackModelFill", direction);
 
 	$(`${thisTrack.view.root} .slider__fill_${thisTrack.view.direction}`).css({
 		[thisTrack.view.fillDirection]: thisTrack.view.fillView.size + "%",
 	});
 	if (thisTrack.view.isRange) {
-		$(`${thisTrack.view.root} .slider__fill_${thisTrack.view.direction}`).css({
+		$(
+			`${thisTrack.view.root} .slider__fill_${thisTrack.view.direction}`
+		).css({
 			[thisTrack.view.offsetDirection]:
 				thisTrack.view.fillView.offset + "%",
 		});

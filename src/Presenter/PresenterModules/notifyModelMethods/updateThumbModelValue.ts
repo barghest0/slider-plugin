@@ -2,7 +2,7 @@ import { Direction } from "../../../Interfaces/interfaces";
 import Presenter from "../../Presenter";
 
 
-const updateThumbModelValue = function(this:Presenter,stance: number, cursorCoordinate: number, direction: Direction, size: number) {
+const updateThumbModelValue = function (this: Presenter, stance: number, cursorCoordinate: number, direction: Direction, size: number) {
     this.thumbs[stance].updateThumbValue(
         stance,
         this.view.ends,
@@ -11,6 +11,6 @@ const updateThumbModelValue = function(this:Presenter,stance: number, cursorCoor
         size
     );
     this.view.thumbView.activeStance = stance;
-}
+};
 
-export default updateThumbModelValue
+export default updateThumbModelValue;

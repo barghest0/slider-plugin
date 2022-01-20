@@ -56,10 +56,12 @@ class TrackModel extends Observer {
 		let fillSize = 0;
 		if (this.isRange) {
 			if (direction === "horizontal") {
-				fillSize += parseInt($(`${this.root} .slider__thumb-1`).css("left")) -
+				fillSize +=
+					parseInt($(`${this.root} .slider__thumb-1`).css("left")) -
 					parseInt($(`${this.root} .slider__thumb-0`).css("left"));
 			} else {
-				fillSize += parseInt($(`${this.root} .slider__thumb-0`).css("top")) -
+				fillSize +=
+					parseInt($(`${this.root} .slider__thumb-0`).css("top")) -
 					parseInt($(`${this.root} .slider__thumb-1`).css("top"));
 			}
 		} else {
@@ -69,11 +71,13 @@ class TrackModel extends Observer {
 				)
 			);
 			if (direction === "vertical") {
-				fillSize += parseInt($(`${this.root} .slider__thumb-0`).css("height"));
+				fillSize += parseInt(
+					$(`${this.root} .slider__thumb-0`).css("height")
+				);
 			}
 		}
 
-		return fillSize / this.size * 100;
+		return (fillSize / this.size) * 100;
 	}
 
 	public setFillSize(fillSize: number) {
@@ -97,7 +101,7 @@ class TrackModel extends Observer {
 		} else {
 			fillOffset = 0;
 		}
-		return fillOffset / this.size * 100;
+		return (fillOffset / this.size) * 100;
 	}
 
 	public setFillOffset(fillOffset: number) {
@@ -110,16 +114,28 @@ class TrackModel extends Observer {
 		this.notify("UpdateTrackFillView", this.fillSize, this.fillOffset);
 	}
 
-
 	public prepareChooseStance(cursorCoordinate: number) {
-		const cursorOffset = cursorCoordinate / this.size * 100;
+		const cursorOffset = (cursorCoordinate / this.size) * 100;
 		let stance = 0;
-		const chooseCorrectStance = cursorOffset > (this.fillSize / 2) + (this.fillOffset);
-		if (chooseCorrectStance && this.isRange) stance = 1;
-		if (this.direction === "vertical") stance = +!stance;
-		this.notify("UpdateThumbModelValue", stance, cursorCoordinate, this.direction, this.size);
-	}
+		const chooseCorrectStance =
+			cursorOffset > this.fillSize / 2 + this.fillOffset;
 
+		if (chooseCorrectStance) stance = 1;
+
+		if (this.direction === "vertical") stance = +!stance;
+
+		if (!this.isRange) {
+			stance = 0;
+		}
+		
+		this.notify(
+			"UpdateThumbModelValue",
+			stance,
+			cursorCoordinate,
+			this.direction,
+			this.size
+		);
+	}
 
 	public getState(): SliderTrackState {
 		return {
@@ -132,7 +148,6 @@ class TrackModel extends Observer {
 			hasScale: this.hasScale,
 		};
 	}
-
 
 	public getFillState(): SliderFillState {
 		return {

@@ -22,7 +22,7 @@ class Presenter {
 		direction: Direction,
 		size: number
 	) => void;
-	public updateTrackFillModelState: () => void;
+	public updateTrackFillModelState: (direction: Direction) => void;
 	public updateThumbModelBeforeTrackClick: (cursorCoordinate: number) => void;
 	public updateThumbView: (
 		value: number,
@@ -61,7 +61,6 @@ class Presenter {
 		this.updateThumbView = updateThumbView.bind(this);
 		this.updateTipView = updateTipView.bind(this);
 		this.updateTrackFillView = updateTrackFillView.bind(this);
-		this.init(params, "init");
 	}
 
 	public init(params: SliderParams, mode: string) {
