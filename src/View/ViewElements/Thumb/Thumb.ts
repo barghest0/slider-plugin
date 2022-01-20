@@ -13,6 +13,8 @@ class Thumb extends Observer {
 	public offset: number[];
 	public isDecimal: boolean;
 	public decimalPlaces: number;
+	public cursorOffset: number;
+	public activeStance: number;
 	constructor(view: View) {
 		super();
 		this.view = view;
@@ -23,6 +25,8 @@ class Thumb extends Observer {
 		this.offset = [];
 		this.isDecimal = false;
 		this.decimalPlaces = 0;
+		this.cursorOffset = 0;
+		this.activeStance = 0;
 	}
 
 	public createThumb(stance: number) {
@@ -42,6 +46,10 @@ class Thumb extends Observer {
 
 	public setOffset(offset: number, stance: number) {
 		this.offset[stance] = offset;
+	}
+
+	public setCursorOffset(offset: number) {
+		this.cursorOffset = offset;
 	}
 
 	public setIsDecimal(isDecimal: boolean, decimalPlaces: number) {
@@ -88,6 +96,7 @@ class Thumb extends Observer {
 			}
 		);
 	}
+
 	public dropThumb() {
 		$("body").on("mouseup", (event: JQuery.MouseUpEvent) => {
 			$("body").off("mousemove");

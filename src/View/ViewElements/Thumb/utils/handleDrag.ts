@@ -7,11 +7,12 @@ const handleDrag = function (e: JQuery.MouseMoveEvent | JQuery.TouchMoveEvent) {
 	let reverseStance = +!stance;
 	let cursorCoordinate =
 		direction === "horizontal"
-			? e.pageX || e.touches![0].pageX
-			: e.pageY || e.touches![0].pageY;
+			? (e.pageX || e.touches![0].pageX) - $(thisThumb.view.root).position().left
+			: (e.pageY || e.touches![0].pageY) - $(thisThumb.view.root).position().top;
+	console.log(thisThumb.view.isRange);
 
 
-	if (validateCollision(thisThumb.value,offset, stance)) {
+	if (validateCollision(thisThumb.value, offset, stance) && thisThumb.view.isRange) {
 		stance = reverseStance;
 	}
 

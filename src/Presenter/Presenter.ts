@@ -256,6 +256,8 @@ class Presenter {
 			direction,
 			size
 		);
+		this.view.thumbView.activeStance = stance;
+		
 	}
 
 	private updateThumbPosition(value: number, offset: number, stance: number) {
@@ -267,25 +269,14 @@ class Presenter {
 		this.view.tipView.updateTipsPosition(stance, offset);
 	}
 
+	private clickTrack(cursorCoordinate: number) {
+		this.trackModel.prepareChooseStance(cursorCoordinate);
+	}
+
 	private subscribe() {
 		this.view.thumbView.subscribe(
 			"UpdateThumbModelValue",
 			this.updateThumbModelValue.bind(this)
-		);
-
-		this.view.trackView.subscribe(
-			"UpdateThumbModelValue",
-			this.updateThumbModelValue.bind(this)
-		);
-
-		this.view.trackView.subscribe(
-			"UpdateTrackModelFill",
-			this.updateTrackFillModelState.bind(this)
-		);
-
-		this.trackModel.subscribe(
-			"UpdateTrackFillPosition",
-			this.updateTrackFillPosition.bind(this)
 		);
 
 		this.thumbs.forEach((thumb) =>
@@ -300,6 +291,26 @@ class Presenter {
 				"UpdateThumbPosition",
 				this.updateThumbPosition.bind(this)
 			)
+		);
+
+		this.view.trackView.subscribe(
+			"UpdateThumbBeforeTrackClick",
+			this.clickTrack.bind(this)
+		);
+
+		this.trackModel.subscribe(
+			"UpdateThumbModelValue",
+			this.updateThumbModelValue.bind(this)
+		);
+
+		this.trackModel.subscribe(
+			"UpdateTrackFillPosition",
+			this.updateTrackFillPosition.bind(this)
+		);
+
+		this.view.trackView.subscribe(
+			"UpdateTrackModelFill",
+			this.updateTrackFillModelState.bind(this)
 		);
 	}
 }

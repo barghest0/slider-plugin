@@ -100,7 +100,6 @@ class TrackModel extends Observer {
 
 	public setFillOffset(fillOffset: number) {
 		this.fillOffset = fillOffset;
-
 	}
 
 	public updateTrackFill(direction: Direction) {
@@ -108,6 +107,17 @@ class TrackModel extends Observer {
 		this.setFillOffset(this.calculateFillOffset(direction));
 		this.notify("UpdateTrackFillPosition", this.fillSize, this.fillOffset);
 	}
+
+
+	public prepareChooseStance(cursorCoordinate: number) {
+		const cursorOffset = cursorCoordinate / this.size * 100;
+		let stance = 0;
+		const chooseCorrectStance = cursorOffset > (this.fillSize / this.size * 100 / 2) + (this.fillOffset / this.size * 100);
+		if (chooseCorrectStance && this.isRange) stance = 1;
+		if (this.direction === "vertical") stance = +!stance;
+		this.notify("UpdateThumbModelValue", stance, cursorCoordinate, this.direction, this.size);
+	}
+
 
 	public getState(): SliderTrackState {
 		return {
@@ -120,7 +130,8 @@ class TrackModel extends Observer {
 			hasScale: this.hasScale,
 		};
 	}
-	
+
+
 	public getFillState(): SliderFillState {
 		return {
 			fillSize: this.fillSize,
