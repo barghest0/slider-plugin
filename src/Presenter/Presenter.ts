@@ -4,17 +4,29 @@ import { Direction, SliderParams } from "../Interfaces/interfaces";
 import ThumbModel from "../Model/ThumbModel";
 import clearHTML from "./PresenterModules/clearHTML";
 import removeListeners from "./PresenterModules/removeListeners";
-import prepareOffset from '../Model/ThumbModelModules/prepareOffset';
-
+import subscribe from "./PresenterModules/subscribe";
+import updateThumbModelBeforeTrackClick from "./PresenterModules/notifyModelMethods/updateTumbModelBeforeTrackClick";
+import updateTrackFillModelState from "./PresenterModules/notifyModelMethods/updateTrackFillModelState";
+import updateThumbView from "./PresenterModules/notifyViewMethods/updateThumbView";
+import updateTipView from "./PresenterModules/notifyViewMethods/updateTipView";
+import updateTrackFillView from "./PresenterModules/notifyViewMethods/updateTrackFillView";
+import updateThumbModelValue from "./PresenterModules/notifyModelMethods/updateThumbModelValue";
 class Presenter {
 	public root: string;
+	public view: View;
 	public thumbs: ThumbModel[];
-	private trackModel: TrackModel;
-	private view: View;
+	public trackModel: TrackModel;
+	public updateThumbModelValue:(stance: number, cursorCoordinate: number, direction: Direction, size: number)=>void
+	public updateTrackFillModelState:()=>void
+	public updateThumbModelBeforeTrackClick:(cursorCoordinate:number)=>void
+	public updateThumbView:(value: number, offset: number, stance: number)=>void
+	public updateTipView:(value: number, offset: number, stance: number)=>void
+	public updateTrackFillView : (value: number, offset: number, stance: number)=>void
 	private params: SliderParams;
 	private thumbStance: number;
 	private clearHTML: (direction: Direction) => void;
 	private removeListeners: () => void;
+	private subscribe: ()=>void
 	constructor(root: string, params: SliderParams) {
 		this.root = root;
 		this.trackModel = new TrackModel(root);
@@ -22,10 +34,18 @@ class Presenter {
 		this.thumbs = [];
 		this.params = params;
 		this.thumbStance = 0;
-		this.init(params, "init");
 		this.clearHTML = clearHTML.bind(this);
 		this.removeListeners = removeListeners.bind(this);
+		this.subscribe = subscribe.bind(this)
+		this.updateThumbModelBeforeTrackClick = updateThumbModelBeforeTrackClick.bind(this)
+		this.updateThumbModelValue = updateThumbModelValue.bind(this)
+		this.updateTrackFillModelState = updateTrackFillModelState.bind(this)
+		this.updateThumbView = updateThumbView.bind(this)
+		this.updateTipView = updateTipView.bind(this)
+		this.updateTrackFillView = updateTrackFillView.bind(this)
+		this.init(params, "init");
 	}
+	
 
 	public init(params: SliderParams, mode: string) {
 		if (mode === "rebuild") {
@@ -40,10 +60,9 @@ class Presenter {
 			this.setTrackModelState(params).setViewState();
 		});
 
-		this.createSlider(params);
+		this.createRangeSlider(params);
 		this.addSliderClasses(params.direction);
 		this.subscribe();
-
 		this.addListeners(params.isRange);
 	}
 
@@ -79,7 +98,6 @@ class Presenter {
 	}
 
 	private createSlider({
-		isRange,
 		step,
 		value,
 		min,
@@ -88,47 +106,34 @@ class Presenter {
 		hasTips,
 		isDecimal,
 		decimalPlaces,
-	}: SliderParams) {
-		this.createSubViewsView(this.params);
-		this.createThumb(this.thumbStance);
+	}: SliderParams,stance:number){
+		this.createThumb(stance);
 		this.view.prepareDirectionForInteraction(direction);
-
 		this.setThumbModelState(
-			this.thumbStance,
+			stance,
 			step,
-			Array.isArray(value) ? value[0] : value,
+			Array.isArray(value) ? value[stance] : value,
 			min,
 			max,
 			isDecimal,
 			decimalPlaces,
 			direction
 		);
-		this.createThumbView(this.thumbStance);
-		this.creteTipView(direction, this.thumbStance, hasTips);
-		this.setThumbViewStateAndPlacement(this.thumbStance);
-		this.setTipPlacement(this.thumbStance);
+		this.createThumbView(stance);
+		this.creteTipView(direction, stance, hasTips);
+		this.setThumbViewStateAndPlacement(stance);
+		this.setTipPlacement(stance);
+	}
 
-		if (isRange) {
+	private createRangeSlider(params: SliderParams) {
+		this.createSlider(params,this.thumbStance)
+		this.createSubViewsView(this.params);
+		if (params.isRange) {
 			this.thumbStance += 1;
-			this.createThumb(this.thumbStance);
-			this.setThumbModelState(
-				this.thumbStance,
-				step,
-				Array.isArray(value) ? value[1] : value,
-				min,
-				max,
-				isDecimal,
-				decimalPlaces,
-				direction
-			);
-
-			this.createThumbView(this.thumbStance);
-			this.creteTipView(direction, this.thumbStance, hasTips);
-			this.setThumbViewStateAndPlacement(this.thumbStance);
-			this.setTipPlacement(this.thumbStance);
+			this.createSlider(params,this.thumbStance)
 		}
 
-		this.setTrackFillAndPlacement(direction);
+		this.setTrackFillAndPlacement(params.direction);
 		return this;
 	}
 
@@ -151,6 +156,7 @@ class Presenter {
 		this.thumbs[stance].setIsDecimal(isDecimal, decimalPlaces);
 		return this;
 	}
+	
 	private setThumbViewStateAndPlacement(
 		stance: number,
 	) {
@@ -237,81 +243,6 @@ class Presenter {
 		if (isRange) {
 			this.view.thumbView.dragThumb(1);
 		}
-	}
-
-	private updateTrackFillModelState() {
-		this.trackModel.updateTrackFill(this.view.direction);
-	}
-
-	private updateTrackFillPosition(size: number, offset: number) {
-		this.view.fillView.setSize(size);
-		this.view.fillView.setOffset(offset);
-	}
-
-	private updateThumbModelValue(stance: number, cursorCoordinate: number, direction: Direction, size: number) {
-		this.thumbs[stance].updateThumbValue(
-			stance,
-			this.view.ends,
-			cursorCoordinate,
-			direction,
-			size
-		);
-		this.view.thumbView.activeStance = stance;
-		
-	}
-
-	private updateThumbPosition(value: number, offset: number, stance: number) {
-		this.view.thumbView.setOffset(offset, stance);
-		this.view.thumbView.setValue(value, stance);
-	}
-
-	private updateTipPosition(stance: number, offset: number) {
-		this.view.tipView.updateTipsPosition(stance, offset);
-	}
-
-	private clickTrack(cursorCoordinate: number) {
-		this.trackModel.prepareChooseStance(cursorCoordinate);
-	}
-
-	private subscribe() {
-		this.view.thumbView.subscribe(
-			"UpdateThumbModelValue",
-			this.updateThumbModelValue.bind(this)
-		);
-
-		this.thumbs.forEach((thumb) =>
-			thumb.subscribe(
-				"UpdateTipPosition",
-				this.updateTipPosition.bind(this)
-			)
-		);
-
-		this.thumbs.forEach((thumb) =>
-			thumb.subscribe(
-				"UpdateThumbPosition",
-				this.updateThumbPosition.bind(this)
-			)
-		);
-
-		this.view.trackView.subscribe(
-			"UpdateThumbBeforeTrackClick",
-			this.clickTrack.bind(this)
-		);
-
-		this.trackModel.subscribe(
-			"UpdateThumbModelValue",
-			this.updateThumbModelValue.bind(this)
-		);
-
-		this.trackModel.subscribe(
-			"UpdateTrackFillPosition",
-			this.updateTrackFillPosition.bind(this)
-		);
-
-		this.view.trackView.subscribe(
-			"UpdateTrackModelFill",
-			this.updateTrackFillModelState.bind(this)
-		);
 	}
 }
 

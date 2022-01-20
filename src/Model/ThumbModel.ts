@@ -1,7 +1,5 @@
 import Observer from "../Observer/Observer";
 import { Direction, Ends, SliderThumbState } from "../Interfaces/interfaces";
-import { timers } from "jquery";
-import { textChangeRangeIsUnchanged } from "typescript";
 import prepareOffset from './ThumbModelModules/prepareOffset';
 import endsValidation from './ThumbModelModules/endsValidation';
 
@@ -88,8 +86,8 @@ class ThumbModel extends Observer {
 		this.setOffset(this.calculateOffset(ends, direction));
 		this.endsValidation(ends, direction);
 		this.notify("UpdatePanelValues", this.value, stance);
-		this.notify("UpdateThumbPosition", this.value, this.offset, stance, this.cursorOffset);
-		this.notify("UpdateTipPosition", stance, this.offset);
+		this.notify("UpdateThumbView", this.value, this.offset, stance, this.cursorOffset);
+		this.notify("UpdateTipView", stance, this.offset);
 
 	}
 

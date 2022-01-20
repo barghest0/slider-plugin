@@ -6,7 +6,7 @@ const handleClick = function (e: JQuery.MouseDownEvent) {
 	let direction = thisTrack.view.direction;
 	let cursorCoordinate = direction === "horizontal" ? e.pageX - $(thisTrack.view.root).position().left : e.pageY - $(thisTrack.view.root).position().top;
 
-	thisTrack.notify("UpdateThumbBeforeTrackClick", cursorCoordinate);
+	thisTrack.notify("updateThumbModelBeforeTrackClick", cursorCoordinate);
 
 	let stance = thisTrack.view.thumbView.activeStance;
 

@@ -35,7 +35,7 @@ new PreviewSlider(".slider-4", {
 	min: -100,
 	max: 100,
 	step: 10,
-	value: [-50, 10],
+	value: -50,
 	isRange: false,
 	direction: "vertical",
 	hasFill: true,
