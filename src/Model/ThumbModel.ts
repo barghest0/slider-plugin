@@ -16,6 +16,7 @@ class ThumbModel extends Observer {
 	private isDecimal: boolean;
 	private decimalPlaces: number;
 	private endsValidation: (ends: Ends, direction: Direction) => void;
+	private prepareOffset: (offset: number, direction: Direction) => number;
 	constructor(root: string, stance: number) {
 		super();
 		this.root = root;
@@ -30,6 +31,7 @@ class ThumbModel extends Observer {
 		this.isDecimal = false;
 		this.decimalPlaces = 0;
 		this.endsValidation = endsValidation.bind(this);
+		this.prepareOffset = prepareOffset.bind(this);
 	}
 
 	public setStep(step: number, ends: Ends) {
@@ -55,7 +57,7 @@ class ThumbModel extends Observer {
 	}
 
 	public calculateOffset(ends: Ends, direction: Direction) {
-		return prepareOffset(
+		return this.prepareOffset(
 			(this.value - ends.min) / ((ends.max - ends.min) / 100),
 			direction
 		);
@@ -70,7 +72,7 @@ class ThumbModel extends Observer {
 	}
 	public calculateStepOffset(cursorOffset: number, stepPercent: number) {
 		return (
-			Math.round(this.cursorOffset / this.stepPercent) * this.stepPercent
+			Math.round(cursorOffset / stepPercent) * stepPercent
 		);
 	}
 

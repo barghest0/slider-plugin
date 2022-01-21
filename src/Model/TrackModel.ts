@@ -46,6 +46,7 @@ class TrackModel extends Observer {
 	public setDirection(direction: Direction) {
 		this.direction = direction;
 	}
+	
 	public setSubViews(hasFill: boolean, hasTips: boolean, hasScale: boolean) {
 		this.hasScale = hasScale;
 		this.hasTips = hasTips;
@@ -127,7 +128,7 @@ class TrackModel extends Observer {
 		if (!this.isRange) {
 			stance = 0;
 		}
-		
+
 		this.notify(
 			"UpdateThumbModelValue",
 			stance,
@@ -149,10 +150,18 @@ class TrackModel extends Observer {
 		};
 	}
 
+	public getFillSize() {
+		return this.fillSize;
+	}
+
+	public getFillOffset() {
+		return this.fillOffset;
+	}
+
 	public getFillState(): SliderFillState {
 		return {
-			fillSize: this.fillSize,
-			fillOffset: this.fillOffset,
+			fillSize: this.getFillSize(),
+			fillOffset: this.getFillOffset(),
 		};
 	}
 }

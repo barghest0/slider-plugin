@@ -6,7 +6,7 @@ beforeEach(() => {
 
 describe("TrackModel test", () => {
 	const track = new TrackModel(".slider-1");
-	test("correct setEnds test", () => {
+	test("correct ends test", () => {
 		track.setEnds({ min: 0, max: 100 });
 		expect(track).toHaveProperty("ends", { min: 0, max: 100 });
 	});
