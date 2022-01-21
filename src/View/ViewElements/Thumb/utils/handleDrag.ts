@@ -12,10 +12,7 @@ const handleDrag = function (e: JQuery.MouseMoveEvent | JQuery.TouchMoveEvent) {
 			: (e.pageY || e.touches![0].pageY) -
 			  $(thisThumb.view.root).position().top;
 
-	if (
-		validateCollision(thisThumb.value, offset, stance) &&
-		thisThumb.view.isRange
-	) {
+	if (validateCollision.call(thisThumb, stance) && thisThumb.view.isRange) {
 		stance = reverseStance;
 	}
 

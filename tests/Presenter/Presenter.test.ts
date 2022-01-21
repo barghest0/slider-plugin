@@ -7,12 +7,13 @@ import Slider from "../../src/Slider";
 
 describe("Presenter test", () => {
 	document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
+	const root = ".slider-1";
 	const params: SliderParams = checkParams({
 		isRange: false,
 		direction: "vertical",
 		value: 0,
 	});
-	const slider = new Slider(".slider-1", params);
+	const slider = new Slider(root, params);
 
 	test("constructor test", () => {
 		expect(slider.presenter).toHaveProperty("trackModel");

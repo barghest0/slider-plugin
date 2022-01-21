@@ -6,7 +6,7 @@
 	"scripts": {
 		"test": "jest",
 		"test:w": "jest --watch",
-		"test:c": "jest --coverage",
+		"test:c": " jest --coverage --coverageReporters='json-summary'",
 		"dev": "webpack serve --config webpack.dev.js",
 		"build": "webpack --config ./webpack.prod.js"
 	},
