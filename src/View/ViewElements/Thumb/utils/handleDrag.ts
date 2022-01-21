@@ -1,46 +1,23 @@
+import calculateCursorCoordinate from '../../../ViewModules/calculateCursorCoordinate';
+import updateFill from '../../Fill/utils/updateFill';
+import Thumb from '../Thumb';
+import updateThumbPosition from './updateThumbPosition';
 import validateCollision from "./validateCollision";
-
 const handleDrag = function (e: JQuery.MouseMoveEvent | JQuery.TouchMoveEvent) {
-	let { thisThumb, stance } = e.data;
+	let { thisThumb, stance } = e.data as { thisThumb: Thumb, stance: number; };
 	let offset = thisThumb.offset;
 	let direction = thisThumb.view.direction;
-	let reverseStance = +!stance;
-	let cursorCoordinate =
-		direction === "horizontal"
-			? (e.pageX || e.touches![0].pageX) -
-			  $(thisThumb.view.root).position().left
-			: (e.pageY || e.touches![0].pageY) -
-			  $(thisThumb.view.root).position().top;
+	let cursorCoordinate = calculateCursorCoordinate(e, direction, thisThumb.view.root);
+	stance = thisThumb.view.isRange ? validateCollision.call(thisThumb, stance) : stance;
 
-	if (validateCollision.call(thisThumb, stance) && thisThumb.view.isRange) {
-		stance = reverseStance;
-	}
+	thisThumb.notify("UpdateThumbModel", stance, cursorCoordinate, direction, thisThumb.view.size);
 
-	thisThumb.notify(
-		"UpdateThumbModelValue",
-		stance,
-		cursorCoordinate,
-		direction,
-		thisThumb.view.size
-	);
+	updateThumbPosition.call(thisThumb, stance, offset);
 
-	$(`${thisThumb.view.root} .slider__thumb-${stance}`).css({
-		[thisThumb.view.offsetDirection]: offset[stance] + "%",
-	});
+	updateFill.call(thisThumb.view.fillView, direction);
 
-	thisThumb.view.trackView.notify("UpdateTrackModelFill", direction);
+	updateFill.call(thisThumb.view.fillView, direction);
 
-	if (thisThumb.view.isRange) {
-		$(`${thisThumb.view.root} .slider__fill_${direction}`).css({
-			[thisThumb.view.offsetDirection]:
-				thisThumb.view.fillView.offset + "%",
-			[thisThumb.view.fillDirection]: thisThumb.view.fillView.size + "%",
-		});
-	} else {
-		$(`${thisThumb.view.root} .slider__fill_${direction}`).css({
-			[thisThumb.view.fillDirection]: thisThumb.view.fillView.size + "%",
-		});
-	}
 };
 
 export default handleDrag;

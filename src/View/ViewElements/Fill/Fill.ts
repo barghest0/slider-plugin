@@ -3,7 +3,7 @@ import Observer from "../../../Observer/Observer";
 import View from "../../View";
 
 class Fill extends Observer {
-	private view: View;
+	public view: View;
 	public size: number;
 	public offset: number;
 	constructor(view: View) {

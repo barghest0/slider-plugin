@@ -40,7 +40,7 @@ class ThumbModel extends Observer {
 		this.stepPercent = 100 / this.stepCount;
 	}
 
-	public calculateValue(ends: Ends) {
+	private calculateValue(ends: Ends) {
 		return (this.stepOffset / this.stepPercent) * this.step + ends.min;
 	}
 
@@ -70,13 +70,13 @@ class ThumbModel extends Observer {
 	public setStepOffset(stepOffset: number) {
 		this.stepOffset = stepOffset;
 	}
-	public calculateStepOffset(cursorOffset: number, stepPercent: number) {
+	private calculateStepOffset(cursorOffset: number, stepPercent: number) {
 		return (
 			Math.round(cursorOffset / stepPercent) * stepPercent
 		);
 	}
 
-	public calculateCursorOffset(cursorCoordinate: number, size: number) {
+	private calculateCursorOffset(cursorCoordinate: number, size: number) {
 		return (cursorCoordinate / size) * 100;
 	}
 

@@ -6,23 +6,24 @@ import clearHTML from "./PresenterModules/clearHTML";
 import removeListeners from "./PresenterModules/removeListeners";
 import subscribe from "./PresenterModules/subscribe";
 import updateThumbModelBeforeTrackClick from "./PresenterModules/notifyModelMethods/updateTumbModelBeforeTrackClick";
-import updateTrackFillModelState from "./PresenterModules/notifyModelMethods/updateTrackFillModelState";
+import updateTrackFillModel from "./PresenterModules/notifyModelMethods/updateTrackFillModel";
 import updateThumbView from "./PresenterModules/notifyViewMethods/updateThumbView";
 import updateTipView from "./PresenterModules/notifyViewMethods/updateTipView";
 import updateTrackFillView from "./PresenterModules/notifyViewMethods/updateTrackFillView";
-import updateThumbModelValue from "./PresenterModules/notifyModelMethods/updateThumbModelValue";
+import updateThumbModel from "./PresenterModules/notifyModelMethods/updateThumbModel";
+import addListeners from './PresenterModules/notifyViewMethods/addListeners';
 class Presenter {
 	public root: string;
 	public view: View;
 	public thumbs: ThumbModel[];
 	public trackModel: TrackModel;
-	public updateThumbModelValue: (
+	public updateThumbModel: (
 		stance: number,
 		cursorCoordinate: number,
 		direction: Direction,
 		size: number
 	) => void;
-	public updateTrackFillModelState: (direction: Direction) => void;
+	public updateTrackFillModel: (direction: Direction) => void;
 	public updateThumbModelBeforeTrackClick: (cursorCoordinate: number) => void;
 	public updateThumbView: (
 		value: number,
@@ -43,6 +44,7 @@ class Presenter {
 	private thumbStance: number;
 	private clearHTML: (direction: Direction) => void;
 	private removeListeners: () => void;
+	private addListeners: (isRange: boolean) => void;
 	private subscribe: () => void;
 	constructor(root: string, params: SliderParams) {
 		this.root = root;
@@ -56,10 +58,11 @@ class Presenter {
 		this.subscribe = subscribe.bind(this);
 		this.updateThumbModelBeforeTrackClick =
 			updateThumbModelBeforeTrackClick.bind(this);
-		this.updateThumbModelValue = updateThumbModelValue.bind(this);
-		this.updateTrackFillModelState = updateTrackFillModelState.bind(this);
+		this.updateThumbModel = updateThumbModel.bind(this);
+		this.updateTrackFillModel = updateTrackFillModel.bind(this);
 		this.updateThumbView = updateThumbView.bind(this);
 		this.updateTipView = updateTipView.bind(this);
+		this.addListeners = addListeners.bind(this);
 		this.updateTrackFillView = updateTrackFillView.bind(this);
 	}
 
@@ -258,14 +261,7 @@ class Presenter {
 		});
 	}
 
-	private addListeners(isRange: boolean) {
-		this.view.thumbView.dragThumb(0);
-		this.view.trackView.clickTrack();
-		this.view.thumbView.dropThumb();
-		if (isRange) {
-			this.view.thumbView.dragThumb(1);
-		}
-	}
+
 }
 
 export default Presenter;

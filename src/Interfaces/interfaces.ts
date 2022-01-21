@@ -10,9 +10,9 @@ interface Ends {
 }
 
 type Direction = "vertical" | "horizontal";
-//user params
+type onChange = (params: SliderParams) => void;
 interface SliderParams {
-	[index: string]: number | string | boolean | any;
+	[index: string]: number | number[] | string | boolean | onChange | undefined | any;
 	min: number;
 	max: number;
 	step: number;
@@ -24,12 +24,11 @@ interface SliderParams {
 	hasScale: boolean;
 	isDecimal: boolean;
 	decimalPlaces: number;
-	onChange?:(params:SliderParams)=>void
+	onChange?: (params: SliderParams) => void;
 }
 
-
 interface UserSliderParams {
-	[index: string]: number | string | boolean | any;
+	[index: string]: number | number[] | string | boolean | onChange | undefined;
 	min?: number;
 	max?: number;
 	step?: number;
@@ -41,9 +40,9 @@ interface UserSliderParams {
 	hasScale?: boolean;
 	isDecimal?: boolean;
 	decimalPlaces?: number;
-	onChange?:(params:SliderParams)=>void
+	onChange?: (params: SliderParams) => void;
 }
-//basic info about current and initial state of slider
+
 interface SliderTrackState {
 	ends: Ends;
 	size: number;

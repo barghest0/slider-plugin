@@ -2,7 +2,7 @@ import { SliderParams } from "../../Interfaces/interfaces";
 import initializeFormValues from "./PanelModules/initializeFormValues";
 import initializeInputs from "./PanelModules/initializeInputs";
 import handleChangeFormValues from "./PanelModules/handleChangeFormValues";
-import PreviewSlider from "../PriviewSlider";
+import PreviewSlider from "../PreviewSlider";
 class Panel {
 	public minValueInput: JQuery<HTMLElement> | null;
 	public maxValueInput: JQuery<HTMLElement> | null;

@@ -2,16 +2,17 @@ import Presenter from "../Presenter";
 
 const subscribe = function (this: Presenter) {
 	this.view.thumbView.subscribe(
-		"UpdateThumbModelValue",
-		this.updateThumbModelValue.bind(this)
+		"UpdateThumbModel",
+		this.updateThumbModel.bind(this)
 	);
+
 	this.view.trackView.subscribe(
 		"UpdateThumbModelBeforeTrackClick",
 		this.updateThumbModelBeforeTrackClick.bind(this)
 	);
 	this.view.trackView.subscribe(
 		"UpdateTrackModelFill",
-		this.updateTrackFillModelState.bind(this)
+		this.updateTrackFillModel.bind(this)
 	);
 
 	this.thumbs.forEach((thumb) =>
@@ -21,9 +22,10 @@ const subscribe = function (this: Presenter) {
 	this.thumbs.forEach((thumb) =>
 		thumb.subscribe("UpdateThumbView", this.updateThumbView.bind(this))
 	);
+
 	this.trackModel.subscribe(
-		"UpdateThumbModelValue",
-		this.updateThumbModelValue.bind(this)
+		"UpdateThumbModel",
+		this.updateThumbModel.bind(this)
 	);
 
 	this.trackModel.subscribe(

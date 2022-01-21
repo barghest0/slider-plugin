@@ -46,7 +46,7 @@ class TrackModel extends Observer {
 	public setDirection(direction: Direction) {
 		this.direction = direction;
 	}
-	
+
 	public setSubViews(hasFill: boolean, hasTips: boolean, hasScale: boolean) {
 		this.hasScale = hasScale;
 		this.hasTips = hasTips;
@@ -77,7 +77,6 @@ class TrackModel extends Observer {
 				);
 			}
 		}
-
 		return (fillSize / this.size) * 100;
 	}
 
@@ -130,7 +129,7 @@ class TrackModel extends Observer {
 		}
 
 		this.notify(
-			"UpdateThumbModelValue",
+			"UpdateThumbModel",
 			stance,
 			cursorCoordinate,
 			this.direction,

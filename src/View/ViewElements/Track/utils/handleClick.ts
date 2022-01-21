@@ -1,35 +1,25 @@
+import calculateCursorCoordinate from '../../../ViewModules/calculateCursorCoordinate';
+import updateFill from '../../Fill/utils/updateFill';
+import updateThumbPosition from '../../Thumb/utils/updateThumbPosition';
 import Track from "../Track";
 
-const handleClick = function (e: JQuery.MouseDownEvent) {
+const handleClick = function (e: JQuery.MouseDownEvent | JQuery.TouchMoveEvent) {
 	const { thisTrack } = e.data;
 	let offset = thisTrack.view.thumbView.offset;
 	let direction = thisTrack.view.direction;
-	let cursorCoordinate =
-		direction === "horizontal"
-			? e.pageX - $(thisTrack.view.root).position().left
-			: e.pageY - $(thisTrack.view.root).position().top;
+	let stance = 0;
+	let cursorCoordinate = calculateCursorCoordinate(e, direction, thisTrack.view.root);
 
-	thisTrack.notify("UpdateThumbModelBeforeTrackClick", cursorCoordinate);
+	thisTrack.view.trackView.notify("UpdateThumbModelBeforeTrackClick", cursorCoordinate);
 
-	let stance = thisTrack.view.thumbView.activeStance;
-
-	$(`${thisTrack.view.root} .slider__thumb-${stance}`).css({
-		[thisTrack.view.offsetDirection]: offset[stance] + "%",
-	});
+	stance = thisTrack.view.thumbView.activeStance;
+	
+	updateThumbPosition.call(thisTrack, stance, offset);
 
 	thisTrack.notify("UpdateTrackModelFill", direction);
 
-	$(`${thisTrack.view.root} .slider__fill_${thisTrack.view.direction}`).css({
-		[thisTrack.view.fillDirection]: thisTrack.view.fillView.size + "%",
-	});
-	if (thisTrack.view.isRange) {
-		$(
-			`${thisTrack.view.root} .slider__fill_${thisTrack.view.direction}`
-		).css({
-			[thisTrack.view.offsetDirection]:
-				thisTrack.view.fillView.offset + "%",
-		});
-	}
+	updateFill.call(thisTrack.view.fillView, direction);
+
 };
 
 export default handleClick;

@@ -1,15 +1,12 @@
 import View from "../View";
+import updateTipsPosition from '../ViewElements/Tip/utils/updateTipsPosition';
 
 const initialTipPlacement = function (
 	this: View,
 	stance: number
 ) {
-	$(`${this.root} .slider__tip-${stance}`).css({
-		[this.offsetDirection]: this.thumbView.offset[stance] + "%",
-	});
-	$(`${this.root} .slider__tip-${stance}`).html(
-		this.thumbView.value[stance].toFixed(this.thumbView.decimalPlaces)
-	);
+	updateTipsPosition.call(this.tipView, stance, this.thumbView.offset[stance]);
+
 };
 
 export default initialTipPlacement;

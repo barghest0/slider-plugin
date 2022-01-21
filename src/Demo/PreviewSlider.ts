@@ -1,9 +1,7 @@
-import { createLogicalNot } from "typescript";
 import { SliderParams, UserSliderParams } from "../Interfaces/interfaces";
 import Observer from "../Observer/Observer";
-import Presenter from "../Presenter/Presenter";
 import Slider from "../Slider";
-import Panel from "./controlPanel/Panel";
+import Panel from "./Panel/Panel";
 import checkParams from "../Presenter/PresenterModules/checkParams";
 
 class PreviewSlider extends Observer {
@@ -41,7 +39,7 @@ class PreviewSlider extends Observer {
 				this.params.value[stance].toFixed(this.params.decimalPlaces)
 			);
 		}
-		
+
 	}
 	private subscribePanel() {
 		this.slider.presenter.thumbs.forEach((item) => {

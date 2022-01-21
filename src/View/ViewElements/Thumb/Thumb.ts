@@ -79,7 +79,6 @@ class Thumb extends Observer {
 			(event: JQuery.TouchStartEvent) => {
 				event.preventDefault();
 				event.stopPropagation();
-
 				$("body").on(
 					"touchmove",
 					{
