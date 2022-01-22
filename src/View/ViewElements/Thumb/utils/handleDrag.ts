@@ -14,7 +14,7 @@ const handleDrag = function (e: JQuery.MouseMoveEvent | JQuery.TouchMoveEvent) {
 
 	updateThumbPosition.call(thisThumb, stance, offset);
 
-	updateFill.call(thisThumb.view.fillView, direction);
+	thisThumb.view.trackView.notify("UpdateTrackModelFill", direction);
 
 	updateFill.call(thisThumb.view.fillView, direction);
 

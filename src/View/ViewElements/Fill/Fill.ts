@@ -16,7 +16,7 @@ class Fill extends Observer {
 	public createFill(direction: Direction, hasFill: boolean) {
 		if (hasFill) {
 			$(this.view.root).append(
-				`<div class="slider__fill slider__fill_${direction}"></div>`
+				`<div class="slider__fill slider__fill_${direction}" data-testid="test-fill"></div>`
 			);
 		}
 	}
