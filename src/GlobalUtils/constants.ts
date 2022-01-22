@@ -1,3 +1,5 @@
+import {SliderParams} from "./interfaces";
+
 const DEFAULT_SLIDER_PARAMS = {
     min: 0,
     max: 100,

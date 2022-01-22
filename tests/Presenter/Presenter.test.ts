@@ -1,11 +1,9 @@
-import { waitFor } from '@testing-library/dom';
-import {
-	SliderParams,
-} from "../../src/Interfaces/interfaces";
-import Presenter from '../../src/Presenter/Presenter';
+import { waitFor } from "@testing-library/dom";
+import { DEFAULT_SLIDER_PARAMS } from "../../src/GlobalUtils/constants";
+import { SliderParams } from "../../src/GlobalUtils/interfaces";
+import Presenter from "../../src/Presenter/Presenter";
 import checkParams from "../../src/Presenter/PresenterModules/checkParams";
 import Slider from "../../src/Slider";
-
 
 describe("Presenter test", () => {
 	document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
@@ -16,7 +14,7 @@ describe("Presenter test", () => {
 		value: 10,
 	});
 	const presenter = new Presenter(root, params);
-	presenter.init(params, 'init');
+	presenter.init(params, "init");
 	test("constructor test", () => {
 		expect(presenter).toHaveProperty("view");
 	});
@@ -41,19 +39,117 @@ describe("Presenter test", () => {
 
 	test("correct update thumb model", async () => {
 		waitFor(() => {
-			presenter.view.thumbView.notify("UpdateThumbModel", 0, 80, 'horizontal');
+			presenter.view.thumbView.notify(
+				"UpdateThumbModel",
+				0,
+				80,
+				"horizontal"
+			);
 			expect(presenter.thumbs[0].getOffset()).toBe(80);
+			expect(presenter.view.thumbView.getOffset()).toBe(80);
+			expect(presenter.view.thumbView.activeStance).toBe(0);
 		});
 	});
+
+	test("correct update thumb model before track click", async () => {
+		waitFor(() => {
+			presenter.view.thumbView.notify(
+				"UpdateThumbModelBeforeTrackClick",
+				80
+			);
+		});
+	});
+
+	test("correct update track fill model", async () => {
+		waitFor(() => {
+			presenter.view.thumbView.notify(
+				"UpdateTrackFillModel",
+				"horizontal"
+			);
+			expect(presenter.trackModel.getFillSize()).toBe(10);
+			expect(presenter.trackModel.getFillOffset()).toBe(10);
+		});
+	});
+
 	test("correct update thumb view", async () => {
 		waitFor(() => {
 			presenter.thumbs[0].notify("UpdateThumbView", 100, 50, 0);
-			presenter.thumbs[1].notify("UpdateThumbView", 150, 70, 1);
 			expect(presenter.view.thumbView.value[0]).toBe(100);
 			expect(presenter.view.thumbView.value[1]).toBe(150);
+			expect(presenter.view.thumbView.activeStance).toBe(0);
+
+			presenter.thumbs[1].notify("UpdateThumbView", 150, 70, 1);
+			expect(presenter.view.thumbView.activeStance).toBe(1);
 			expect(presenter.view.thumbView.offset[0]).toBe(50);
 			expect(presenter.view.thumbView.offset[1]).toBe(70);
-
 		});
+	});
+
+	test("correct update tip view", async () => {
+		waitFor(() => {
+			presenter.thumbs[0].notify("UpdateTipView", 50, 0);
+			presenter.thumbs[1].notify("UpdateTipView", 100, 1);
+			expect(presenter.view.tipView.getOffset()[0]).toBe(100);
+			expect(presenter.view.tipView.getOffset()[1]).toBe(150);
+		});
+	});
+
+	test("correct update track fill view", async () => {
+		waitFor(() => {
+			presenter.trackModel.notify(
+				"UpdateTrackFillView",
+				100,
+				10,
+				"horizontal"
+			);
+			expect(presenter.view.fillView.getSize()).toBe(100);
+			expect(presenter.view.fillView.getOffset()).toBe(10);
+		});
+	});
+
+	test("correct check value params", () => {
+		expect(checkParams({})).toEqual(DEFAULT_SLIDER_PARAMS);
+		const correctParams: SliderParams = JSON.parse(JSON.stringify(DEFAULT_SLIDER_PARAMS));
+
+		correctParams.value = [50];
+		expect(checkParams({ value: 50 })).toEqual(correctParams);
+
+		correctParams.value = [50, 50];
+		correctParams.isRange = true;
+		expect(checkParams({ value: [50, 50], isRange: false })).toEqual(
+			correctParams
+		);
+		correctParams.value = [100, 100];
+		correctParams.isRange = true;
+		expect(checkParams({ value: [100, 50] })).toEqual(correctParams);
+
+		correctParams.value = [50, 50];
+		correctParams.isRange = true;
+		expect(checkParams({ value: 50, isRange: true })).toEqual(
+			correctParams
+		);
+	});
+
+	test("correct check params min max restrictions", () => {
+		const correctParams: SliderParams = JSON.parse(JSON.stringify(DEFAULT_SLIDER_PARAMS));
+		correctParams.value = [0, 100];
+		correctParams.max = 100;
+		correctParams.isRange = true;
+		expect(checkParams({ value: [0, 200], max: 100 })).toEqual(
+			correctParams
+		);
+
+		correctParams.value = [50, 100];
+		correctParams.min = 50;
+		expect(checkParams({ value: [0, 100], min: 50 })).toEqual(
+			correctParams
+		);
+	});
+
+	test("correct check onChange param", () => {
+		const correctParams: SliderParams = JSON.parse(JSON.stringify(DEFAULT_SLIDER_PARAMS));
+		const fn = jest.fn();
+		correctParams.onChange = fn;
+		expect(checkParams({ onChange: fn })).toEqual(correctParams);
 	});
 });
