@@ -1,4 +1,4 @@
-import { SliderParams, UserSliderParams } from "../../Interfaces/interfaces";
+import { SliderParams, UserSliderParams } from "../../GlobalUtils/interfaces";
 
 const checkParams = function (params: UserSliderParams): SliderParams {
 	let {
@@ -15,15 +15,13 @@ const checkParams = function (params: UserSliderParams): SliderParams {
 		decimalPlaces = 0,
 	} = params;
 
-	if (!Array.isArray(value)) {
-		value = [value];
-	}
+	if (Array.isArray(value)) isRange = true;
+	if (!Array.isArray(value)) value = [value];
 
 	if (value[0] < min) value[0] = min;
 	if (value[1] > max) value[1] = max;
 
 	if (isRange && value.length === 1) value.push(value[0]);
-
 
 	if (value[0] > value[1]) {
 		value[1] = value[0];

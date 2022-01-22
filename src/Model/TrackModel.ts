@@ -5,7 +5,7 @@ import {
 	SliderFillState,
 	SliderParams,
 	SliderTrackState,
-} from "../Interfaces/interfaces";
+} from "../GlobalUtils/interfaces";
 
 class TrackModel extends Observer {
 	private root: string;

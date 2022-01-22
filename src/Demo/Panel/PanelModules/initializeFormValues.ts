@@ -1,4 +1,4 @@
-import { SliderParams } from "../../../Interfaces/interfaces";
+import { SliderParams } from "../../../GlobalUtils/interfaces";
 import Panel from "../Panel";
 
 const initializeFormValues = function (this: Panel, { min, max, value, isRange, step, direction, hasFill, hasTips, hasScale }: SliderParams) {

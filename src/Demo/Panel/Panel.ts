@@ -1,4 +1,4 @@
-import { SliderParams } from "../../Interfaces/interfaces";
+import { SliderParams } from "../../GlobalUtils/interfaces";
 import initializeFormValues from "./PanelModules/initializeFormValues";
 import initializeInputs from "./PanelModules/initializeInputs";
 import handleChangeFormValues from "./PanelModules/handleChangeFormValues";

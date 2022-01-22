@@ -1,4 +1,4 @@
-import { Direction } from '../../Interfaces/interfaces';
+import { Direction } from '../../GlobalUtils/interfaces';
 
 const calculateCursorCoordinate = function (e: JQuery.MouseMoveEvent | JQuery.TouchMoveEvent | JQuery.MouseDownEvent, direction: Direction, root: string, size: number) {
     if (direction === "horizontal") {

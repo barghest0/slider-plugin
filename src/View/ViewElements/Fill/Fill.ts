@@ -1,13 +1,13 @@
-import { Direction } from "../../../Interfaces/interfaces";
+import { Direction } from "../../../GlobalUtils/interfaces";
 import Observer from "../../../Observer/Observer";
 import View from "../../View";
 import updateFill from './utils/updateFill';
 
 class Fill extends Observer {
 	public view: View;
-	public size: number;
-	public offset: number;
 	public updateFill: (direction: Direction) => void;
+	private size: number;
+	private offset: number;
 	constructor(view: View) {
 		super();
 		this.view = view;
@@ -28,6 +28,13 @@ class Fill extends Observer {
 	}
 	public setOffset(offset: number) {
 		this.offset = offset;
+	}
+
+	public getSize() {
+		return this.size;
+	}
+	public getOffset() {
+		return this.offset;
 	}
 }
 

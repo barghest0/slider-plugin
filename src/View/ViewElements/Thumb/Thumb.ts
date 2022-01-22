@@ -1,5 +1,5 @@
 import Observer from "../../../Observer/Observer";
-import { Direction, SliderThumbState } from "../../../Interfaces/interfaces";
+import { Direction, SliderThumbState } from "../../../GlobalUtils/interfaces";
 import View from "../../View";
 import handleDrag from "./utils/handleDrag";
 import prepareOffset from "../../../Model/ThumbModelModules/prepareOffset";
@@ -44,7 +44,7 @@ class Thumb extends Observer {
 			`<div class="slider__thumb slider__thumb-${stance} data-testid="test-thumb-${stance}""></div>`
 		);
 	}
-	
+
 	public setStep(step: number, stepPercent: number, stepCount: number) {
 		this.step = step;
 		this.stepPercent = stepPercent;
@@ -66,6 +66,11 @@ class Thumb extends Observer {
 			this.decimalPlaces = 0;
 		}
 	}
+
+	public getOffset() {
+		return this.offset;
+	}
+
 }
 
 export default Thumb;

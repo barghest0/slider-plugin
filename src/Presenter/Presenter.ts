@@ -1,11 +1,11 @@
 import View from "../View/View";
 import TrackModel from "../Model/TrackModel";
-import { Direction, SliderParams } from "../Interfaces/interfaces";
+import { Direction, SliderParams } from "../GlobalUtils/interfaces";
 import ThumbModel from "../Model/ThumbModel";
 import clearHTML from "./PresenterModules/clearHTML";
 import removeListeners from "./PresenterModules/removeListeners";
 import subscribe from "./PresenterModules/subscribe";
-import updateThumbModelBeforeTrackClick from "./PresenterModules/notifyModelMethods/updateTumbModelBeforeTrackClick";
+import updateThumbModelBeforeTrackClick from "./PresenterModules/notifyModelMethods/updateThumbModelBeforeTrackClick";
 import updateTrackFillModel from "./PresenterModules/notifyModelMethods/updateTrackFillModel";
 import updateThumbView from "./PresenterModules/notifyViewMethods/updateThumbView";
 import updateTipView from "./PresenterModules/notifyViewMethods/updateTipView";

@@ -1,4 +1,4 @@
-import { Direction } from '../../../../Interfaces/interfaces';
+import { Direction } from '../../../../GlobalUtils/interfaces';
 import Fill from '../Fill';
 
 
@@ -7,12 +7,12 @@ const updateFill = function (this: Fill, direction: Direction) {
     if (this.view.isRange) {
         $(`${this.view.root} .slider__fill_${direction}`).css({
             [this.view.offsetDirection]:
-                this.offset + "%",
-            [this.view.fillDirection]: this.size + "%",
+                this.getOffset() + "%",
+            [this.view.fillDirection]: this.getSize() + "%",
         });
     } else {
         $(`${this.view.root} .slider__fill_${direction}`).css({
-            [this.view.fillDirection]: this.size + "%",
+            [this.view.fillDirection]: this.getSize() + "%",
         });
     }
 };

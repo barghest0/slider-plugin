@@ -1,4 +1,4 @@
-import { Direction } from "../../Interfaces/interfaces";
+import { Direction } from "../../GlobalUtils/interfaces";
 import View from "../View";
 import updateThumbPosition from '../ViewElements/Thumb/utils/updateThumbPosition';
 

@@ -1,4 +1,4 @@
-import { Direction } from "../../Interfaces/interfaces";
+import { Direction } from "../../GlobalUtils/interfaces";
 
 const prepareOffset = function (offset: number, direction: Direction) {
 	return direction === "horizontal" ? offset : 100 - offset;

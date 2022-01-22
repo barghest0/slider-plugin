@@ -1,4 +1,4 @@
-import { Direction, Ends } from '../../Interfaces/interfaces';
+import { Direction, Ends } from '../../GlobalUtils/interfaces';
 import ThumbModel from '../ThumbModel';
 
 

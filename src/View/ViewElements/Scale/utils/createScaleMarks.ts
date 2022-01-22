@@ -1,4 +1,4 @@
-import { Direction } from "../../../../Interfaces/interfaces";
+import { Direction } from "../../../../GlobalUtils/interfaces";
 import Scale from "../Scale";
 import { prepareScaleData } from "./prepareScaleData";
 

@@ -8,7 +8,7 @@ import {
 	Ends,
 	SliderFillState,
 	SliderTrackState,
-} from "../Interfaces/interfaces";
+} from "../GlobalUtils/interfaces";
 import initialThumbPlacement from "./ViewModules/initialThumbPlacement";
 import initialFillPlacement from "./ViewModules/initialFillPlacement";
 import Tip from "./ViewElements/Tip/Tip";
