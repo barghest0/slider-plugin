@@ -31,9 +31,9 @@ class View extends Observer {
 	public hasScale: boolean;
 	public offsetDirection: string;
 	public fillDirection: string;
-	public initialThumbPlacement: (stance: number) => void;
+	public initialThumbPlacement: (offset: number, stance: number) => void;
 	public initialFillPlacement: (direction: Direction) => void;
-	public initialTipPlacement: (stance: number) => void;
+	public initialTipPlacement: (offset: number, stance: number) => void;
 	public prepareDirectionForInteraction: (direction: Direction) => void;
 	constructor(root: string) {
 		super();

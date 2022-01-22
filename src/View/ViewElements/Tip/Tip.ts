@@ -5,7 +5,7 @@ import updateTipsPosition from "./utils/updateTipsPosition";
 
 class Tip extends Observer {
 	public view: View;
-	public updateTipsPosition: (stance: number,offset:number) => void;
+	public updateTipsPosition: (offset: number, stance: number) => void;
 	constructor(view: View) {
 		super();
 		this.view = view;

@@ -3,6 +3,10 @@ import { Direction, SliderThumbState } from "../../../Interfaces/interfaces";
 import View from "../../View";
 import handleDrag from "./utils/handleDrag";
 import prepareOffset from "../../../Model/ThumbModelModules/prepareOffset";
+import updateThumbPosition from './utils/updateThumbPosition';
+import validateCollision from './utils/validateCollision';
+import dragThumb from './utils/dragThumb';
+import dropThumb from './utils/dropThumb';
 
 class Thumb extends Observer {
 	public view: View;
@@ -14,6 +18,10 @@ class Thumb extends Observer {
 	public isDecimal: boolean;
 	public decimalPlaces: number;
 	public activeStance: number;
+	public updateThumbPosition: (offset: number, stance: number) => void;
+	public validateCollision: (stance: number) => number;
+	public dragThumb: (stance: number) => void;
+	public dropThumb: () => void;
 	constructor(view: View) {
 		super();
 		this.view = view;
@@ -25,11 +33,15 @@ class Thumb extends Observer {
 		this.isDecimal = false;
 		this.decimalPlaces = 0;
 		this.activeStance = 0;
+		this.updateThumbPosition = updateThumbPosition.bind(this);
+		this.validateCollision = validateCollision.bind(this);
+		this.dragThumb = dragThumb.bind(this);
+		this.dropThumb = dropThumb.bind(this);
 	}
 
 	public createThumb(stance: number) {
 		$(this.view.root).append(
-			`<div class="slider__thumb slider__thumb-${stance}"></div>`
+			`<div class="slider__thumb slider__thumb-${stance} data-testid="test-thumb-${stance}""></div>`
 		);
 	}
 	public setStep(step: number, stepPercent: number, stepCount: number) {
@@ -46,7 +58,6 @@ class Thumb extends Observer {
 		this.offset[stance] = offset;
 	}
 
-
 	public setIsDecimal(isDecimal: boolean, decimalPlaces: number) {
 		if (isDecimal) {
 			this.decimalPlaces = decimalPlaces;
@@ -55,56 +66,8 @@ class Thumb extends Observer {
 		}
 	}
 
-	public dragThumb(stance: number) {
-		$(this.view.root).on(
-			"mousedown",
-			`.slider__thumb-${stance}`,
-			(event: JQuery.MouseDownEvent) => {
-				event.preventDefault();
-				event.stopPropagation();
-				$("body").on(
-					"mousemove",
-					{
-						thisThumb: this,
-						stance,
-					},
-					handleDrag
-				);
-			}
-		);
 
-		$(this.view.root).on(
-			"touchstart",
-			`.slider__thumb-${stance}`,
-			(event: JQuery.TouchStartEvent) => {
-				event.preventDefault();
-				event.stopPropagation();
-				$("body").on(
-					"touchmove",
-					{
-						thisThumb: this,
-						stance,
-					},
-					handleDrag
-				);
-			}
-		);
-	}
 
-	public dropThumb() {
-		$("body").on("mouseup", (event: JQuery.MouseUpEvent) => {
-			$("body").off("mousemove");
-		});
-		$(this.view.root).on("mouseup", (event: JQuery.MouseUpEvent) => {
-			$(this.view.root).off("mousemove");
-		});
-		$("body").on("touchend", (event: JQuery.TouchEndEvent) => {
-			$("body").off("touchmove");
-		});
-		$(this.view.root).on("touchend", (event: JQuery.TouchEndEvent) => {
-			$(this.view.root).off("touchmove");
-		});
-	}
 }
 
 export default Thumb;

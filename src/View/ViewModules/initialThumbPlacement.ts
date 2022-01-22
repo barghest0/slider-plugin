@@ -4,9 +4,10 @@ import updateThumbPosition from '../ViewElements/Thumb/utils/updateThumbPosition
 
 const initialThumbPlacement = function (
 	this: View,
+	offset: number,
 	stance: number
 ) {
-	updateThumbPosition.call(this.thumbView, stance, this.thumbView.offset);
+	this.thumbView.updateThumbPosition(offset, stance);
 };
 
 export default initialThumbPlacement;

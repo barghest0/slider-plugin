@@ -36,9 +36,9 @@ class Presenter {
 		stance: number
 	) => void;
 	public updateTrackFillView: (
-		value: number,
+		size: number,
 		offset: number,
-		stance: number
+		direction: Direction
 	) => void;
 	public params: SliderParams;
 	private thumbStance: number;
@@ -130,25 +130,26 @@ class Presenter {
 	) {
 		this.createThumb(stance);
 		this.view.prepareDirectionForInteraction(direction);
-		this.setThumbModelState(stance,step,Array.isArray(value) ? value[stance] : value,min,max,isDecimal,decimalPlaces,direction);
+		this.setThumbModelState(stance, step, Array.isArray(value) ? value[stance] : value, min, max, isDecimal, decimalPlaces, direction);
 		this.createThumbView(stance);
 		this.creteTipView(direction, stance, hasTips);
-		this.setThumbView(stance)
+		this.setThumbView(stance);
 		this.setThumbPlacement(stance);
 		this.setTipPlacement(stance);
 	}
 
 	private createRangeSlider(params: SliderParams) {
+		
 		this.createSubViewsView(this.params);
 		this.createSlider(params, this.thumbStance);
-		
+
 		if (params.isRange) {
 			this.thumbStance += 1;
 			this.createSlider(params, this.thumbStance);
 		}
 
-		this.setTrackFillModel(params.direction)
-		this.setTrackFillView()
+		this.setTrackFillModel(params.direction);
+		this.setTrackFillView();
 		this.setTrackFillPlacement(params.direction);
 		return this;
 	}
@@ -176,19 +177,20 @@ class Presenter {
 	}
 
 
-	private setThumbView(stance:number){
-		const { step, stepCount, stepPercent, value, offset, isDecimal, decimalPlaces} = this.thumbs[stance].getState();
+	private setThumbView(stance: number) {
+		const { step, stepCount, stepPercent, value, offset, isDecimal, decimalPlaces } = this.thumbs[stance].getState();
 		this.view.thumbView.setStep(step, stepPercent, stepCount);
 		this.view.thumbView.setValue(value, stance);
 		this.view.thumbView.setOffset(offset, stance);
 		this.view.thumbView.setIsDecimal(isDecimal, decimalPlaces);
 	}
 
-	private setThumbPlacement(stance:number){
-		this.view.initialThumbPlacement(stance);
+	private setThumbPlacement(stance: number) {
+		const { offset } = this.thumbs[stance].getState();
+		this.view.initialThumbPlacement(offset, stance);
 	}
 
-	private setTrackFillModel(direction:Direction){
+	private setTrackFillModel(direction: Direction) {
 		$(document).ready(() => {
 			this.trackModel.setFillSize(
 				this.trackModel.calculateFillSize(direction)
@@ -199,7 +201,7 @@ class Presenter {
 		});
 	}
 
-	private setTrackFillView(){
+	private setTrackFillView() {
 		$(document).ready(() => {
 			this.view.setFillState(this.trackModel.getFillState());
 		});
@@ -212,7 +214,8 @@ class Presenter {
 	}
 
 	private setTipPlacement(stance: number) {
-		this.view.initialTipPlacement(stance);
+		const { offset } = this.thumbs[stance].getState();
+		this.view.initialTipPlacement(offset, stance);
 	}
 
 	private createThumb(stance: number) {
@@ -227,7 +230,7 @@ class Presenter {
 		this.view.trackView.createTrack(direction);
 	}
 
-	private createScaleView(direction: Direction,step: number,max: number,min: number,hasScale: boolean) {
+	private createScaleView(direction: Direction, step: number, max: number, min: number, hasScale: boolean) {
 		this.view.scaleView.createScale(direction, hasScale);
 		this.view.scaleView.createScaleMarks(step, max, min, direction);
 	}

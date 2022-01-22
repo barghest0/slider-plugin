@@ -111,7 +111,7 @@ class TrackModel extends Observer {
 	public updateTrackFill(direction: Direction) {
 		this.setFillSize(this.calculateFillSize(direction));
 		this.setFillOffset(this.calculateFillOffset(direction));
-		this.notify("UpdateTrackFillView", this.fillSize, this.fillOffset);
+		this.notify("UpdateTrackFillView", this.fillSize, this.fillOffset, direction);
 	}
 
 	public prepareChooseStance(cursorCoordinate: number) {

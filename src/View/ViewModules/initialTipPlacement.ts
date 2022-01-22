@@ -3,9 +3,10 @@ import updateTipsPosition from '../ViewElements/Tip/utils/updateTipsPosition';
 
 const initialTipPlacement = function (
 	this: View,
-	stance: number
+	stance: number,
+	offset: number
 ) {
-	updateTipsPosition.call(this.tipView, stance, this.thumbView.offset[stance]);
+	this.tipView.updateTipsPosition(offset, stance);
 
 };
 
