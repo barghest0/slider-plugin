@@ -2,13 +2,12 @@ import { Direction } from "../../../Interfaces/interfaces";
 import Presenter from "../../Presenter";
 
 
-const updateThumbModel = function (this: Presenter, stance: number, cursorCoordinate: number, direction: Direction, size: number) {
+const updateThumbModel = function (this: Presenter, stance: number, cursorOffset: number, direction: Direction) {
     this.thumbs[stance].updateThumbValue(
         stance,
         this.view.ends,
-        cursorCoordinate,
+        cursorOffset,
         direction,
-        size
     );
     this.view.thumbView.activeStance = stance;
 };

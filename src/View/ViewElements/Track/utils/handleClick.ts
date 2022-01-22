@@ -6,12 +6,13 @@ import Track from "../Track";
 const handleClick = function (
 	e: JQuery.MouseDownEvent | JQuery.TouchMoveEvent
 ) {
-	const { thisTrack } = e.data;
+	const { thisTrack } = e.data as { thisTrack: Track; };
 	let direction = thisTrack.view.direction;
 	let cursorCoordinate = calculateCursorCoordinate(
 		e,
 		direction,
-		thisTrack.view.root
+		thisTrack.view.root,
+		thisTrack.view.size
 	);
 	thisTrack.view.trackView.notify("UpdateThumbModelBeforeTrackClick", cursorCoordinate);
 	thisTrack.notify("UpdateTrackModelFill", direction);

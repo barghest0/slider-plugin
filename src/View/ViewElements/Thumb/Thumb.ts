@@ -44,6 +44,7 @@ class Thumb extends Observer {
 			`<div class="slider__thumb slider__thumb-${stance} data-testid="test-thumb-${stance}""></div>`
 		);
 	}
+	
 	public setStep(step: number, stepPercent: number, stepCount: number) {
 		this.step = step;
 		this.stepPercent = stepPercent;
@@ -65,9 +66,6 @@ class Thumb extends Observer {
 			this.decimalPlaces = 0;
 		}
 	}
-
-
-
 }
 
 export default Thumb;

@@ -114,8 +114,7 @@ class TrackModel extends Observer {
 		this.notify("UpdateTrackFillView", this.fillSize, this.fillOffset, direction);
 	}
 
-	public prepareChooseStance(cursorCoordinate: number) {
-		const cursorOffset = (cursorCoordinate / this.size) * 100;
+	public prepareChooseStance(cursorOffset: number) {
 		let stance = 0;
 		const chooseCorrectStance =
 			cursorOffset > this.fillSize / 2 + this.fillOffset;
@@ -131,7 +130,7 @@ class TrackModel extends Observer {
 		this.notify(
 			"UpdateThumbModel",
 			stance,
-			cursorCoordinate,
+			cursorOffset,
 			this.direction,
 			this.size
 		);

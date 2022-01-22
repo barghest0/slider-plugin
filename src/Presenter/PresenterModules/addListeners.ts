@@ -1,4 +1,4 @@
-import Presenter from '../../Presenter';
+import Presenter from '../Presenter';
 
 const addListeners = function (this:Presenter,isRange: boolean) {
     this.view.thumbView.dragThumb(0);

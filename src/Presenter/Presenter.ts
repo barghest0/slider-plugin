@@ -11,7 +11,7 @@ import updateThumbView from "./PresenterModules/notifyViewMethods/updateThumbVie
 import updateTipView from "./PresenterModules/notifyViewMethods/updateTipView";
 import updateTrackFillView from "./PresenterModules/notifyViewMethods/updateTrackFillView";
 import updateThumbModel from "./PresenterModules/notifyModelMethods/updateThumbModel";
-import addListeners from './PresenterModules/notifyViewMethods/addListeners';
+import addListeners from './PresenterModules/addListeners';
 class Presenter {
 	public root: string;
 	public view: View;
@@ -19,12 +19,11 @@ class Presenter {
 	public trackModel: TrackModel;
 	public updateThumbModel: (
 		stance: number,
-		cursorCoordinate: number,
+		cursorOffset: number,
 		direction: Direction,
-		size: number
 	) => void;
 	public updateTrackFillModel: (direction: Direction) => void;
-	public updateThumbModelBeforeTrackClick: (cursorCoordinate: number) => void;
+	public updateThumbModelBeforeTrackClick: (cursorOffset: number) => void;
 	public updateThumbView: (
 		value: number,
 		offset: number,
@@ -139,7 +138,7 @@ class Presenter {
 	}
 
 	private createRangeSlider(params: SliderParams) {
-		
+
 		this.createSubViewsView(this.params);
 		this.createSlider(params, this.thumbStance);
 

@@ -12,8 +12,7 @@ describe("View test", () => {
 	test("constructor test", () => {
 		expect(slider['params']).toEqual(checkParams({}));
 	});
+
 	
-	
-    
 	
 });

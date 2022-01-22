@@ -29,4 +29,5 @@ describe("View test", () => {
 		});
 		expect(view.fillView).toHaveProperty("size", 50);
 	});
+
 });

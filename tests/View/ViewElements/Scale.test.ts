@@ -1,3 +1,4 @@
+import { screen, waitFor } from '@testing-library/dom';
 import View from "../../../src/View/View";
 import Scale from "../../../src/View/ViewElements/Scale/Scale";
 import { prepareScaleData } from "../../../src/View/ViewElements/Scale/utils/prepareScaleData";
@@ -9,6 +10,15 @@ describe("Scale test", () => {
 	const scale = new Scale(view);
 	test("constructor test", () => {
 		expect(view.root).toBe(root);
+	});
+
+	test("correct append scale to DOM test", async () => {
+		scale.createScale('horizontal', true);
+		waitFor(() => {
+			const DOMScale = screen.getByTestId('test-scale');
+			expect(DOMScale).toBeInTheDocument();
+		});
+
 	});
 	test("correct prepare scale data test", () => {
 		expect(prepareScaleData(0, 100, 10)).toEqual([0, 20, 40, 60, 80, 100]);

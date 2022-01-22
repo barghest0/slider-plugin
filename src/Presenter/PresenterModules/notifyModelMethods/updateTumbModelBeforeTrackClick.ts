@@ -1,7 +1,7 @@
 import Presenter from "../../Presenter";
 
-const updateThumbModelBeforeTrackClick = function(this:Presenter, cursorCoordinate: number) {
-    this.trackModel.prepareChooseStance(cursorCoordinate);
-}
+const updateThumbModelBeforeTrackClick = function (this: Presenter, cursorOffset: number) {
+    this.trackModel.prepareChooseStance(cursorOffset);
+};
 
-export default updateThumbModelBeforeTrackClick
+export default updateThumbModelBeforeTrackClick;

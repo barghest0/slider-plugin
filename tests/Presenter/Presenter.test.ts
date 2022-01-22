@@ -1,9 +1,11 @@
+import { waitFor } from '@testing-library/dom';
 import {
 	SliderParams,
-	UserSliderParams,
 } from "../../src/Interfaces/interfaces";
+import Presenter from '../../src/Presenter/Presenter';
 import checkParams from "../../src/Presenter/PresenterModules/checkParams";
 import Slider from "../../src/Slider";
+
 
 describe("Presenter test", () => {
 	document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
@@ -11,26 +13,47 @@ describe("Presenter test", () => {
 	const params: SliderParams = checkParams({
 		isRange: false,
 		direction: "vertical",
-		value: 0,
+		value: 10,
 	});
-	const slider = new Slider(root, params);
-
+	const presenter = new Presenter(root, params);
+	presenter.init(params, 'init');
 	test("constructor test", () => {
-		expect(slider.presenter).toHaveProperty("trackModel");
+		expect(presenter).toHaveProperty("view");
 	});
 
 	test("correct set model param", () => {
-		slider.presenter["setTrackModelState"](params);
-		expect(slider.presenter["trackModel"].isRange).toBe(false);
+		presenter["setTrackModelState"](params);
+		expect(presenter["trackModel"].isRange).toBe(false);
 	});
+
 	test("correct set view param", () => {
-		slider.presenter["setViewState"]();
-		expect(slider.presenter["view"].isRange).toBe(false);
+		presenter["setViewState"]();
+		expect(presenter["view"].isRange).toBe(false);
 	});
+
 	test("correct set class test", () => {
-		expect($(slider.presenter.root).hasClass("slider_vertical")).toBe(true);
+		expect($(presenter.root).hasClass("slider_vertical")).toBe(true);
 	});
+
 	test("correct set thumb view test", () => {
-		expect(slider.presenter["view"].thumbView.value[0]).toBe(0);
+		expect(presenter["view"].thumbView.value[0]).toBe(10);
+	});
+
+	test("correct update thumb model", async () => {
+		waitFor(() => {
+			presenter.view.thumbView.notify("UpdateThumbModel", 0, 80, 'horizontal');
+			expect(presenter.thumbs[0].getOffset()).toBe(80);
+		});
+	});
+	test("correct update thumb view", async () => {
+		waitFor(() => {
+			presenter.thumbs[0].notify("UpdateThumbView", 100, 50, 0);
+			presenter.thumbs[1].notify("UpdateThumbView", 150, 70, 1);
+			expect(presenter.view.thumbView.value[0]).toBe(100);
+			expect(presenter.view.thumbView.value[1]).toBe(150);
+			expect(presenter.view.thumbView.offset[0]).toBe(50);
+			expect(presenter.view.thumbView.offset[1]).toBe(70);
+
+		});
 	});
 });

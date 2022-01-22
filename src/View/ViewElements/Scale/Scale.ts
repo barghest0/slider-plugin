@@ -19,7 +19,7 @@ class Scale {
 	public createScale(direction: Direction, hasScale: boolean) {
 		if (hasScale) {
 			$(this.view.root).append(
-				`<div class="slider__scale slider__scale_${direction}"></div>`
+				`<div class="slider__scale slider__scale_${direction}"  data-testid="test-scale"></div>`
 			);
 		}
 	}

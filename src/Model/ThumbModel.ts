@@ -76,9 +76,6 @@ class ThumbModel extends Observer {
 		);
 	}
 
-	private calculateCursorOffset(cursorCoordinate: number, size: number) {
-		return (cursorCoordinate / size) * 100;
-	}
 
 	public setCursorOffset(cursorOffset: number) {
 		this.cursorOffset = cursorOffset;
@@ -87,22 +84,13 @@ class ThumbModel extends Observer {
 	public updateThumbValue(
 		stance: number,
 		ends: Ends,
-		cursorCoordinate: number,
+		cursorOffset: number,
 		direction: Direction,
-		size: number
 	) {
-		if (direction === "horizontal") {
-			this.setCursorOffset(
-				this.calculateCursorOffset(cursorCoordinate, size)
-			);
-		} else {
-			this.setCursorOffset(
-				100 - this.calculateCursorOffset(cursorCoordinate, size)
-			);
-		}
-		this.setStepOffset(
-			this.calculateStepOffset(this.cursorOffset, this.stepPercent)
-		);
+		if (direction === "horizontal") this.setCursorOffset(cursorOffset);
+		else this.setCursorOffset(100 - cursorOffset);
+
+		this.setStepOffset(this.calculateStepOffset(this.cursorOffset, this.stepPercent));
 		this.setValue(this.calculateValue(ends));
 		this.setOffset(this.calculateOffset(ends, direction));
 		this.endsValidation(ends, direction);

@@ -20,19 +20,16 @@ const checkParams = function (params: UserSliderParams): SliderParams {
 	}
 
 	if (value[0] < min) value[0] = min;
-	else if (value[1] > max) value[1] = max;
+	if (value[1] > max) value[1] = max;
 
-	if (isRange) {
-		if (value.length === 1) {
-			value.push(value[0]);
-		}
-	}
+	if (isRange && value.length === 1) value.push(value[0]);
+
 
 	if (value[0] > value[1]) {
 		value[1] = value[0];
 	}
 
-	const checkedParams:SliderParams =  {
+	const checkedParams: SliderParams = {
 		min,
 		max,
 		step,
@@ -47,7 +44,7 @@ const checkParams = function (params: UserSliderParams): SliderParams {
 	};
 
 	if (params.onChange) checkedParams.onChange = params.onChange;
-	return checkedParams
+	return checkedParams;
 };
 
 export default checkParams;

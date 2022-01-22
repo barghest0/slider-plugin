@@ -1,13 +1,15 @@
 import View from "../../../src/View/View";
 import Fill from "../../../src/View/ViewElements/Fill/Fill";
 import updateFill from "../../../src/View/ViewElements/Fill/utils/updateFill";
-import {screen, waitFor} from '@testing-library/dom'
+import { screen, waitFor } from '@testing-library/dom';
+
 describe("Fill test", () => {
 	document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
 	const root = ".slider-1";
 	const view = new View(root);
-	const thumb = view.thumbView
+	const thumb = view.thumbView;
 	const fill = new Fill(view);
+
 	test("constructor test", () => {
 		expect(view.root).toBe(root);
 	});
@@ -22,24 +24,41 @@ describe("Fill test", () => {
 	});
 
 	test("correct updateFill with single thumb test", async () => {
-		fill.createFill('horizontal',true)
-		thumb.setOffset(50,0)
-		updateFill.call(fill,'horizontal')
-		waitFor(()=>{
-			const DOMFill = screen.getByTestId('test-fill')
-			expect(DOMFill).toHaveStyle('width:50%')
-		})
+		fill.createFill('horizontal', true);
+		thumb.setOffset(50, 0);
+		fill.updateFill('horizontal');
+		waitFor(() => {
+			const DOMFill = screen.getByTestId('test-fill');
+			expect(DOMFill).toHaveStyle('width:50%');
+		});
 	});
+
 	test("correct updateFill with range  test", async () => {
-		fill.createFill('horizontal',true)
-		view.isRange = true
-		thumb.setOffset(50,0)
-		thumb.setOffset(100,1)
-		updateFill.call(fill,'horizontal')
-		waitFor(()=>{
-			const DOMFill = screen.getByTestId('test-fill')
-			expect(DOMFill).toHaveStyle('width:50%')
-		})
+		fill.createFill('horizontal', true);
+		view.isRange = true;
+		thumb.setOffset(50, 0);
+		thumb.setOffset(100, 1);
+		fill.updateFill('horizontal');
+		waitFor(() => {
+			const DOMFill = screen.getByTestId('test-fill');
+			expect(DOMFill).toHaveStyle('width:50%');
+		});
 	});
-	
+
+
+	test("correct initial fill placement test", async () => {
+		view.thumbView.setOffset(10, 0);
+		view.initialFillPlacement('horizontal');
+		waitFor(() => {
+			const DOMFill = screen.getByTestId('test-fill');
+			expect(DOMFill).toHaveStyle('width:10%');
+		});
+		view.thumbView.setOffset(50, 1);
+		view.initialFillPlacement('horizontal');
+		waitFor(() => {
+			const DOMFill = screen.getByTestId('test-fill');
+			expect(DOMFill).toHaveStyle('width:40%');
+		});
+	});
+
 });
