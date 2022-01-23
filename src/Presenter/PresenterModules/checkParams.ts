@@ -15,19 +15,18 @@ const checkParams = function (params: UserSliderParams): SliderParams {
 		decimalPlaces = 0,
 	} = params;
 
-
 	if (!Array.isArray(value)) value = [value];
 
 	if (value[0] < min) value[0] = min;
-	if (value[1] > max) value[1] = max;
+	if (value[0] > max) value[0] = max;
 
-	if (isRange && value.length === 1) value.push(value[0]);
-	if (value.length === 2) isRange = true;
+	if (value[1] > max) value[1] = max;
+	if (value[1] < min) value[1] = min;
 
 	if (value[0] > value[1]) {
 		value[1] = value[0];
 	}
-
+	if (isRange && value.length === 1) value.push(value[0]);
 
 	const checkedParams: SliderParams = {
 		min,

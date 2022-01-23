@@ -52,14 +52,11 @@ describe("Presenter test", () => {
 	});
 
 	test("correct update thumb model before track click", async () => {
-		waitFor(() => {
-
-		});
+		waitFor(() => {});
 	});
 
 	test("correct update track fill model", async () => {
-		waitFor(() => {
-		});
+		waitFor(() => {});
 	});
 
 	test("correct update thumb view", async () => {
@@ -100,19 +97,18 @@ describe("Presenter test", () => {
 
 	test("correct check value params", () => {
 		expect(checkParams({})).toEqual(DEFAULT_SLIDER_PARAMS);
-		const correctParams: SliderParams = JSON.parse(JSON.stringify(DEFAULT_SLIDER_PARAMS));
+		const correctParams: SliderParams = JSON.parse(
+			JSON.stringify(DEFAULT_SLIDER_PARAMS)
+		);
 
 		correctParams.value = [50];
 		expect(checkParams({ value: 50 })).toEqual(correctParams);
 
-		correctParams.value = [50, 50];
-		correctParams.isRange = true;
-		expect(checkParams({ value: [50, 50], isRange: false })).toEqual(
-			correctParams
-		);
 		correctParams.value = [100, 100];
 		correctParams.isRange = true;
-		expect(checkParams({ value: [100, 50] })).toEqual(correctParams);
+		expect(checkParams({ value: [100, 50], isRange: true })).toEqual(
+			correctParams
+		);
 
 		correctParams.value = [50, 50];
 		correctParams.isRange = true;
@@ -122,33 +118,37 @@ describe("Presenter test", () => {
 	});
 
 	test("correct check params min max restrictions", () => {
-		const correctParams: SliderParams = JSON.parse(JSON.stringify(DEFAULT_SLIDER_PARAMS));
+		const correctParams: SliderParams = JSON.parse(
+			JSON.stringify(DEFAULT_SLIDER_PARAMS)
+		);
 		correctParams.value = [0, 100];
 		correctParams.max = 100;
 		correctParams.isRange = true;
-		expect(checkParams({ value: [0, 200], max: 100 })).toEqual(
-			correctParams
-		);
+		expect(
+			checkParams({ value: [0, 200], max: 100, isRange: true })
+		).toEqual(correctParams);
 
 		correctParams.value = [50, 100];
 		correctParams.min = 50;
-		expect(checkParams({ value: [0, 100], min: 50 })).toEqual(
-			correctParams
-		);
+		correctParams.isRange = true;
+		expect(
+			checkParams({ value: [0, 100], min: 50, isRange: true })
+		).toEqual(correctParams);
 	});
 
 	test("correct check onChange param", () => {
-		const correctParams: SliderParams = JSON.parse(JSON.stringify(DEFAULT_SLIDER_PARAMS));
+		const correctParams: SliderParams = JSON.parse(
+			JSON.stringify(DEFAULT_SLIDER_PARAMS)
+		);
 		const fn = jest.fn();
 		correctParams.onChange = fn;
 		expect(checkParams({ onChange: fn })).toEqual(correctParams);
 	});
 
 	test("correct clear HTML", () => {
-		presenter['clearHTML']('horizontal');
+		presenter["clearHTML"]("horizontal");
 		expect($(presenter.root).hasClass("slider_vertical")).toBe(false);
-		presenter['clearHTML']('vertical');
+		presenter["clearHTML"]("vertical");
 		expect($(presenter.root).hasClass("slider_horizontal")).toBe(false);
 	});
-
 });

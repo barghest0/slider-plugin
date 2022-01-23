@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1642942869566" clover="3.2.0">
-  <project timestamp="1642942869566" name="All files">
-    <metrics statements="1407" coveredstatements="1274" conditionals="155" coveredconditionals="145" methods="112" coveredmethods="99" elements="1674" coveredelements="1518" complexity="0" loc="1407" ncloc="1407" packages="21" files="40" classes="40"/>
+<coverage generated="1642949289122" clover="3.2.0">
+  <project timestamp="1642949289122" name="All files">
+    <metrics statements="1406" coveredstatements="1273" conditionals="156" coveredconditionals="144" methods="112" coveredmethods="99" elements="1674" coveredelements="1516" complexity="0" loc="1406" ncloc="1406" packages="21" files="40" classes="40"/>
     <package name="src">
       <metrics statements="20" coveredstatements="20" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
       <file name="Slider.ts" path="/srv/http/MetaLampSliderPlugin/src/Slider.ts">
@@ -690,7 +690,7 @@
       </file>
     </package>
     <package name="src.Presenter.PresenterModules">
-      <metrics statements="121" coveredstatements="119" conditionals="17" coveredconditionals="17" methods="5" coveredmethods="4"/>
+      <metrics statements="120" coveredstatements="118" conditionals="18" coveredconditionals="16" methods="5" coveredmethods="4"/>
       <file name="addListeners.ts" path="/srv/http/MetaLampSliderPlugin/src/Presenter/PresenterModules/addListeners.ts">
         <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
@@ -707,58 +707,57 @@
         <line num="12" count="1" type="stmt"/>
       </file>
       <file name="checkParams.ts" path="/srv/http/MetaLampSliderPlugin/src/Presenter/PresenterModules/checkParams.ts">
-        <metrics statements="51" coveredstatements="51" conditionals="9" coveredconditionals="9" methods="1" coveredmethods="1"/>
+        <metrics statements="50" coveredstatements="50" conditionals="10" coveredconditionals="8" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="4" count="13" type="stmt"/>
-        <line num="5" count="13" type="stmt"/>
-        <line num="6" count="13" type="stmt"/>
-        <line num="7" count="13" type="stmt"/>
-        <line num="8" count="13" type="stmt"/>
-        <line num="9" count="13" type="stmt"/>
-        <line num="10" count="13" type="stmt"/>
-        <line num="11" count="13" type="stmt"/>
-        <line num="12" count="13" type="stmt"/>
-        <line num="13" count="13" type="stmt"/>
-        <line num="14" count="13" type="stmt"/>
-        <line num="15" count="13" type="stmt"/>
-        <line num="16" count="13" type="stmt"/>
-        <line num="17" count="13" type="stmt"/>
-        <line num="18" count="13" type="stmt"/>
-        <line num="19" count="13" type="cond" truecount="1" falsecount="0"/>
-        <line num="20" count="13" type="stmt"/>
-        <line num="21" count="13" type="cond" truecount="1" falsecount="0"/>
-        <line num="22" count="13" type="cond" truecount="1" falsecount="0"/>
-        <line num="23" count="13" type="stmt"/>
-        <line num="24" count="13" type="cond" truecount="2" falsecount="0"/>
-        <line num="25" count="13" type="cond" truecount="1" falsecount="0"/>
-        <line num="26" count="13" type="stmt"/>
-        <line num="27" count="13" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="5" count="12" type="stmt"/>
+        <line num="6" count="12" type="stmt"/>
+        <line num="7" count="12" type="stmt"/>
+        <line num="8" count="12" type="stmt"/>
+        <line num="9" count="12" type="stmt"/>
+        <line num="10" count="12" type="stmt"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="12" count="12" type="stmt"/>
+        <line num="13" count="12" type="stmt"/>
+        <line num="14" count="12" type="stmt"/>
+        <line num="15" count="12" type="stmt"/>
+        <line num="16" count="12" type="stmt"/>
+        <line num="17" count="12" type="stmt"/>
+        <line num="18" count="12" type="cond" truecount="1" falsecount="0"/>
+        <line num="19" count="12" type="stmt"/>
+        <line num="20" count="12" type="cond" truecount="1" falsecount="0"/>
+        <line num="21" count="12" type="cond" truecount="0" falsecount="1"/>
+        <line num="22" count="12" type="stmt"/>
+        <line num="23" count="12" type="cond" truecount="1" falsecount="0"/>
+        <line num="24" count="12" type="cond" truecount="0" falsecount="1"/>
+        <line num="25" count="12" type="stmt"/>
+        <line num="26" count="12" type="cond" truecount="1" falsecount="0"/>
+        <line num="27" count="1" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
-        <line num="30" count="13" type="stmt"/>
-        <line num="31" count="13" type="stmt"/>
-        <line num="32" count="13" type="stmt"/>
-        <line num="33" count="13" type="stmt"/>
-        <line num="34" count="13" type="stmt"/>
-        <line num="35" count="13" type="stmt"/>
-        <line num="36" count="13" type="stmt"/>
-        <line num="37" count="13" type="stmt"/>
-        <line num="38" count="13" type="stmt"/>
-        <line num="39" count="13" type="stmt"/>
-        <line num="40" count="13" type="stmt"/>
-        <line num="41" count="13" type="stmt"/>
-        <line num="42" count="13" type="stmt"/>
-        <line num="43" count="13" type="stmt"/>
-        <line num="44" count="13" type="stmt"/>
-        <line num="45" count="13" type="stmt"/>
-        <line num="46" count="13" type="cond" truecount="1" falsecount="0"/>
-        <line num="47" count="13" type="stmt"/>
-        <line num="48" count="13" type="stmt"/>
-        <line num="49" count="13" type="stmt"/>
+        <line num="29" count="12" type="cond" truecount="2" falsecount="0"/>
+        <line num="30" count="12" type="stmt"/>
+        <line num="31" count="12" type="stmt"/>
+        <line num="32" count="12" type="stmt"/>
+        <line num="33" count="12" type="stmt"/>
+        <line num="34" count="12" type="stmt"/>
+        <line num="35" count="12" type="stmt"/>
+        <line num="36" count="12" type="stmt"/>
+        <line num="37" count="12" type="stmt"/>
+        <line num="38" count="12" type="stmt"/>
+        <line num="39" count="12" type="stmt"/>
+        <line num="40" count="12" type="stmt"/>
+        <line num="41" count="12" type="stmt"/>
+        <line num="42" count="12" type="stmt"/>
+        <line num="43" count="12" type="stmt"/>
+        <line num="44" count="12" type="stmt"/>
+        <line num="45" count="12" type="cond" truecount="1" falsecount="0"/>
+        <line num="46" count="12" type="stmt"/>
+        <line num="47" count="12" type="stmt"/>
+        <line num="48" count="12" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
         <line num="50" count="1" type="stmt"/>
-        <line num="51" count="1" type="stmt"/>
       </file>
       <file name="clearHTML.ts" path="/srv/http/MetaLampSliderPlugin/src/Presenter/PresenterModules/clearHTML.ts">
         <metrics statements="12" coveredstatements="12" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>

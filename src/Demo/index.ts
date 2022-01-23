@@ -1,14 +1,16 @@
 import "../Style/style.scss";
 import PreviewSlider from "./PreviewSlider";
 
-new PreviewSlider(".slider-1", { onChange: (params) => console.log(params.value) });
+new PreviewSlider(".slider-1", {
+	onChange: (params) => console.log(params.value),
+});
 
 new PreviewSlider(".slider-2", {
 	min: -6,
 	max: 6,
 	step: 3,
 	value: [-3, 3],
-	isRange: true,
+	isRange: false,
 	direction: "horizontal",
 	hasFill: true,
 	hasTips: true,
@@ -29,7 +31,6 @@ new PreviewSlider(".slider-3", {
 	hasScale: true,
 	isDecimal: false,
 	decimalPlaces: 1,
-
 });
 
 new PreviewSlider(".slider-4", {
