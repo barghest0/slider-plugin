@@ -1,3 +1,4 @@
+import { waitFor } from '@testing-library/dom';
 import View from "../../src/View/View";
 
 beforeEach(() => {
@@ -5,9 +6,10 @@ beforeEach(() => {
 });
 
 describe("View test", () => {
-	const view = new View(".slider-1");
+	const root = '.slider-1';
+	const view = new View(root);
 	test("constructor test", () => {
-		expect(view.root).toBe(".slider-1");
+		expect(view.root).toBe(root);
 	});
 	test("setState test", () => {
 		view.setState({
@@ -28,6 +30,16 @@ describe("View test", () => {
 			fillOffset: 50,
 		});
 		expect(view.fillView).toHaveProperty("size", 50);
+	});
+
+	test("correct calculate cursor coordinate test", async () => {
+
+		$(root).position().left = 0;
+		expect(view.calculateCursorCoordinate(200, 'horizontal', root, 200)).toBe(100);
+
+		$(root).position().top = 0;
+		expect(view.calculateCursorCoordinate(200, 'vertical', root, 200)).toBe(100);
+
 	});
 
 });

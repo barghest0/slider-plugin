@@ -14,7 +14,7 @@ import initialFillPlacement from "./ViewModules/initialFillPlacement";
 import Tip from "./ViewElements/Tip/Tip";
 import initialTipPlacement from "./ViewModules/initialTipPlacement";
 import prepareDirectionForInteraction from "./ViewModules/prepareDirectionForInteraction";
-
+import calculateCursorCoordinate from './ViewModules/calculateCursorCoordinate';
 class View extends Observer {
 	public thumbView: Thumb;
 	public trackView: Track;
@@ -35,6 +35,7 @@ class View extends Observer {
 	public initialFillPlacement: (direction: Direction) => void;
 	public initialTipPlacement: (offset: number, stance: number) => void;
 	public prepareDirectionForInteraction: (direction: Direction) => void;
+	public calculateCursorCoordinate: (coord: number, direction: Direction, root: string, size: number) => number;
 	constructor(root: string) {
 		super();
 		this.thumbView = new Thumb(this);
@@ -57,6 +58,7 @@ class View extends Observer {
 		this.initialTipPlacement = initialTipPlacement.bind(this);
 		this.prepareDirectionForInteraction =
 			prepareDirectionForInteraction.bind(this);
+		this.calculateCursorCoordinate = calculateCursorCoordinate.bind(this);
 	}
 
 	public setState({

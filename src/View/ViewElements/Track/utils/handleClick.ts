@@ -1,6 +1,4 @@
 import calculateCursorCoordinate from "../../../ViewModules/calculateCursorCoordinate";
-import updateFill from "../../Fill/utils/updateFill";
-import updateThumbPosition from "../../Thumb/utils/updateThumbPosition";
 import Track from "../Track";
 
 const handleClick = function (
@@ -8,8 +6,9 @@ const handleClick = function (
 ) {
 	const { thisTrack } = e.data as { thisTrack: Track; };
 	let direction = thisTrack.view.direction;
-	let cursorCoordinate = calculateCursorCoordinate(
-		e,
+	let coord = direction === "horizontal" ? (e.pageX || e.touches![0].pageX) : (e.pageY || e.touches![0].pageY);
+	let cursorCoordinate = thisTrack.view.calculateCursorCoordinate(
+		coord,
 		direction,
 		thisTrack.view.root,
 		thisTrack.view.size

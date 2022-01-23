@@ -9,7 +9,7 @@ describe("Presenter test", () => {
 	document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
 	const root = ".slider-1";
 	const params: SliderParams = checkParams({
-		isRange: false,
+		isRange: true,
 		direction: "vertical",
 		value: 10,
 	});
@@ -21,12 +21,12 @@ describe("Presenter test", () => {
 
 	test("correct set model param", () => {
 		presenter["setTrackModelState"](params);
-		expect(presenter["trackModel"].isRange).toBe(false);
+		expect(presenter["trackModel"].isRange).toBe(true);
 	});
 
 	test("correct set view param", () => {
 		presenter["setViewState"]();
-		expect(presenter["view"].isRange).toBe(false);
+		expect(presenter["view"].isRange).toBe(true);
 	});
 
 	test("correct set class test", () => {
@@ -53,21 +53,12 @@ describe("Presenter test", () => {
 
 	test("correct update thumb model before track click", async () => {
 		waitFor(() => {
-			presenter.view.thumbView.notify(
-				"UpdateThumbModelBeforeTrackClick",
-				80
-			);
+
 		});
 	});
 
 	test("correct update track fill model", async () => {
 		waitFor(() => {
-			presenter.view.thumbView.notify(
-				"UpdateTrackFillModel",
-				"horizontal"
-			);
-			expect(presenter.trackModel.getFillSize()).toBe(10);
-			expect(presenter.trackModel.getFillOffset()).toBe(10);
 		});
 	});
 
@@ -152,4 +143,12 @@ describe("Presenter test", () => {
 		correctParams.onChange = fn;
 		expect(checkParams({ onChange: fn })).toEqual(correctParams);
 	});
+
+	test("correct clear HTML", () => {
+		presenter['clearHTML']('horizontal');
+		expect($(presenter.root).hasClass("slider_vertical")).toBe(false);
+		presenter['clearHTML']('vertical');
+		expect($(presenter.root).hasClass("slider_horizontal")).toBe(false);
+	});
+
 });

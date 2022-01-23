@@ -1,6 +1,8 @@
 import { screen, waitFor } from "@testing-library/dom";
 import View from "../../../src/View/View";
 import Track from "../../../src/View/ViewElements/Track/Track";
+import handleClick from '../../../src/View/ViewElements/Track/utils/handleClick';
+import calculateCursorCoordinate from '../../../src/View/ViewModules/calculateCursorCoordinate';
 
 describe("Track test", () => {
 	document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
@@ -13,9 +15,7 @@ describe("Track test", () => {
 	});
 
 	test("correct track click test", () => {
-		const spy = jest.spyOn(track, "clickTrack");
-		track.clickTrack();
-		expect(spy).toBeCalled();
+		
 	});
 
 	test("correct track model notify before click track  test", async () => {
@@ -24,7 +24,7 @@ describe("Track test", () => {
 		track.subscribe("UpdateThumbModelBeforeTrackClick", fn);
 		waitFor(() => {
 			const DOMTrack = screen.getByTestId("test-track");
-			DOMTrack.dispatchEvent(new Event("pointerdown"));
+			DOMTrack.dispatchEvent(new MouseEvent("mousedown"));
 			expect(fn).toBeCalled();
 		});
 	});
@@ -35,7 +35,7 @@ describe("Track test", () => {
 		track.subscribe("UpdateTrackModelFill", fn);
 		waitFor(() => {
 			const DOMTrack = screen.getByTestId("test-track");
-			DOMTrack.dispatchEvent(new Event("pointerdown"));
+			DOMTrack.dispatchEvent(new MouseEvent("mousedown"));
 			expect(fn).toBeCalled();
 		});
 	});

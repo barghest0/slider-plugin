@@ -55,6 +55,7 @@ class TrackModel extends Observer {
 
 	public calculateFillSize(direction: Direction) {
 		let fillSize = 0;
+
 		if (this.isRange) {
 			if (direction === "horizontal") {
 				fillSize +=
@@ -66,6 +67,7 @@ class TrackModel extends Observer {
 					parseInt($(`${this.root} .slider__thumb-1`).css("top"));
 			}
 		} else {
+
 			fillSize += parseInt(
 				$(`${this.root} .slider__thumb-0`).css(
 					direction === "horizontal" ? "left" : "bottom"
@@ -77,7 +79,8 @@ class TrackModel extends Observer {
 				);
 			}
 		}
-		return (fillSize / this.size) * 100;
+
+		return +(fillSize / this.size * 100).toFixed(1);
 	}
 
 	public setFillSize(fillSize: number) {
@@ -101,7 +104,7 @@ class TrackModel extends Observer {
 		} else {
 			fillOffset = 0;
 		}
-		return (fillOffset / this.size) * 100;
+		return +(fillOffset / this.size * 100).toFixed(1);
 	}
 
 	public setFillOffset(fillOffset: number) {
@@ -111,6 +114,8 @@ class TrackModel extends Observer {
 	public updateTrackFill(direction: Direction) {
 		this.setFillSize(this.calculateFillSize(direction));
 		this.setFillOffset(this.calculateFillOffset(direction));
+
+
 		this.notify("UpdateTrackFillView", this.fillSize, this.fillOffset, direction);
 	}
 

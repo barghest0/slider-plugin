@@ -56,34 +56,34 @@ describe("Thumb test", () => {
 		expect(thumb.validateCollision(1)).toBe(0);
 	});
 
-	test("correct drag thumb test", () => {
-		const spy = jest.spyOn(thumb, "dragThumb");
-		thumb.dragThumb(0);
-		expect(spy).toBeCalled();
-	});
+	// test("correct drag thumb test", async () => {
+
+	// });
+
+
 
 	test("correct thumb model notify before drag thumb test", async () => {
-		const fn = jest.fn;
+		const fn = jest.fn();
 		thumb.createThumb(0);
 		thumb.subscribe("UpdateThumbModel", fn);
 		waitFor(() => {
 			const DOMThumb = screen.getByTestId("test-thumb");
-			DOMThumb.dispatchEvent(new Event("pointerdown"));
-			document.dispatchEvent(new Event("pointermove"));
-			document.dispatchEvent(new Event("pointerup"));
+			DOMThumb.dispatchEvent(new MouseEvent("mousedown"));
+			document.dispatchEvent(new MouseEvent("mousemove"));
+			document.dispatchEvent(new MouseEvent("mouseup"));
 			expect(fn).toBeCalled();
 		});
 	});
 
 	test("correct track model notify before drag thumb test", async () => {
-		const fn = jest.fn;
+		const fn = jest.fn();
 		thumb.createThumb(0);
 		thumb.subscribe("UpdateTrackFillModel", fn);
 		waitFor(() => {
 			const DOMThumb = screen.getByTestId("test-thumb");
-			DOMThumb.dispatchEvent(new Event("pointerdown"));
-			document.dispatchEvent(new Event("pointermove"));
-			document.dispatchEvent(new Event("pointerup"));
+			DOMThumb.dispatchEvent(new MouseEvent("mousedown"));
+			document.dispatchEvent(new MouseEvent("mousemove"));
+			document.dispatchEvent(new MouseEvent("mouseup"));
 			expect(fn).toBeCalled();
 		});
 	});
