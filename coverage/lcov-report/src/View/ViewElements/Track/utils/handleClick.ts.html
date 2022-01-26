@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">30% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/20</span>
+                <span class='fraction'>20/20</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">50% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">30% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/20</span>
+                <span class='fraction'>20/20</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -87,40 +87,40 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import calculateCursorCoordinate from "../../../ViewModules/calculateCursorCoordinate";
 import Track from "../Track";
 &nbsp;
-const handleClick = <span class="fstat-no" title="function not covered" >function (</span>
-<span class="cstat-no" title="statement not covered" >	e: JQuery.MouseDownEvent | JQuery.TouchMoveEvent</span>
-<span class="cstat-no" title="statement not covered" >) {</span>
-<span class="cstat-no" title="statement not covered" >	const { thisTrack } = e.data as { thisTrack: Track; };</span>
-<span class="cstat-no" title="statement not covered" >	let direction = thisTrack.view.direction;</span>
-<span class="cstat-no" title="statement not covered" >	let coord = direction === "horizontal" ? (e.pageX || e.touches![0].pageX) : (e.pageY || e.touches![0].pageY);</span>
-<span class="cstat-no" title="statement not covered" >	let cursorCoordinate = thisTrack.view.calculateCursorCoordinate(</span>
-<span class="cstat-no" title="statement not covered" >		coord,</span>
-<span class="cstat-no" title="statement not covered" >		direction,</span>
-<span class="cstat-no" title="statement not covered" >		thisTrack.view.root,</span>
-<span class="cstat-no" title="statement not covered" >		thisTrack.view.size</span>
-<span class="cstat-no" title="statement not covered" >	);</span>
-<span class="cstat-no" title="statement not covered" >	thisTrack.view.trackView.notify("UpdateThumbModelBeforeTrackClick", cursorCoordinate);</span>
-<span class="cstat-no" title="statement not covered" >	thisTrack.notify("UpdateTrackModelFill", direction);</span>
-<span class="cstat-no" title="statement not covered" >};</span>
+const handleClick = function (
+	e: JQuery.MouseDownEvent | JQuery.TouchMoveEvent
+) {
+	const { thisTrack } = e.data as { thisTrack: Track; };
+	let direction = thisTrack.view.direction;
+	let coord = <span class="branch-0 cbranch-no" title="branch not covered" >direction === "horizontal" ? e.pageX! : e.pageY!;</span>
+	let cursorCoordinate = thisTrack.view.calculateCursorCoordinate(
+		coord,
+		direction,
+		thisTrack.view.root,
+		thisTrack.view.size
+	);
+	thisTrack.view.trackView.notify("UpdateThumbModelBeforeTrackClick", cursorCoordinate);
+	thisTrack.notify("UpdateTrackModelFill", direction);
+};
 &nbsp;
 export default handleClick;
 &nbsp;</pre></td></tr></table></pre>
@@ -130,7 +130,7 @@ export default handleClick;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Sun Jan 23 2022 14:48:09 GMT+0000 (Всемирное координированное время)
+                at Wed Jan 26 2022 13:41:23 GMT+0300 (Москва, стандартное время)
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

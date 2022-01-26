@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1642949289122" clover="3.2.0">
-  <project timestamp="1642949289122" name="All files">
-    <metrics statements="1406" coveredstatements="1273" conditionals="156" coveredconditionals="144" methods="112" coveredmethods="99" elements="1674" coveredelements="1516" complexity="0" loc="1406" ncloc="1406" packages="21" files="40" classes="40"/>
+<coverage generated="1643193683527" clover="3.2.0">
+  <project timestamp="1643193683528" name="All files">
+    <metrics statements="1411" coveredstatements="1290" conditionals="159" coveredconditionals="146" methods="112" coveredmethods="100" elements="1682" coveredelements="1536" complexity="0" loc="1411" ncloc="1411" packages="21" files="40" classes="40"/>
     <package name="src">
       <metrics statements="20" coveredstatements="20" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
-      <file name="Slider.ts" path="/srv/http/MetaLampSliderPlugin/src/Slider.ts">
+      <file name="Slider.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\Slider.ts">
         <metrics statements="20" coveredstatements="20" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -30,7 +30,7 @@
     </package>
     <package name="src.GlobalUtils">
       <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="constants.ts" path="/srv/http/MetaLampSliderPlugin/src/GlobalUtils/constants.ts">
+      <file name="constants.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\GlobalUtils\constants.ts">
         <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -53,7 +53,7 @@
     </package>
     <package name="src.Model">
       <metrics statements="301" coveredstatements="276" conditionals="41" coveredconditionals="40" methods="31" coveredmethods="29"/>
-      <file name="ThumbModel.ts" path="/srv/http/MetaLampSliderPlugin/src/Model/ThumbModel.ts">
+      <file name="ThumbModel.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\Model\ThumbModel.ts">
         <metrics statements="129" coveredstatements="129" conditionals="16" coveredconditionals="15" methods="15" coveredmethods="15"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -98,12 +98,12 @@
         <line num="41" count="5" type="stmt"/>
         <line num="42" count="1" type="stmt"/>
         <line num="43" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="44" count="287" type="stmt"/>
-        <line num="45" count="287" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
         <line num="46" count="1" type="stmt"/>
         <line num="47" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="48" count="292" type="stmt"/>
-        <line num="49" count="292" type="stmt"/>
+        <line num="48" count="6" type="stmt"/>
+        <line num="49" count="6" type="stmt"/>
         <line num="50" count="1" type="stmt"/>
         <line num="51" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="52" count="3" type="stmt"/>
@@ -114,60 +114,60 @@
         <line num="57" count="3" type="stmt"/>
         <line num="58" count="1" type="stmt"/>
         <line num="59" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="60" count="290" type="stmt"/>
-        <line num="61" count="290" type="stmt"/>
-        <line num="62" count="290" type="stmt"/>
-        <line num="63" count="290" type="stmt"/>
-        <line num="64" count="290" type="stmt"/>
+        <line num="60" count="4" type="stmt"/>
+        <line num="61" count="4" type="stmt"/>
+        <line num="62" count="4" type="stmt"/>
+        <line num="63" count="4" type="stmt"/>
+        <line num="64" count="4" type="stmt"/>
         <line num="65" count="1" type="stmt"/>
         <line num="66" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="67" count="292" type="stmt"/>
-        <line num="68" count="292" type="stmt"/>
+        <line num="67" count="6" type="stmt"/>
+        <line num="68" count="6" type="stmt"/>
         <line num="69" count="1" type="stmt"/>
         <line num="70" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="71" count="287" type="stmt"/>
-        <line num="72" count="287" type="stmt"/>
+        <line num="71" count="1" type="stmt"/>
+        <line num="72" count="1" type="stmt"/>
         <line num="73" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="74" count="287" type="stmt"/>
-        <line num="75" count="287" type="stmt"/>
-        <line num="76" count="287" type="stmt"/>
-        <line num="77" count="287" type="stmt"/>
+        <line num="74" count="1" type="stmt"/>
+        <line num="75" count="1" type="stmt"/>
+        <line num="76" count="1" type="stmt"/>
+        <line num="77" count="1" type="stmt"/>
         <line num="78" count="1" type="stmt"/>
         <line num="79" count="1" type="stmt"/>
         <line num="80" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="81" count="287" type="stmt"/>
-        <line num="82" count="287" type="stmt"/>
+        <line num="81" count="1" type="stmt"/>
+        <line num="82" count="1" type="stmt"/>
         <line num="83" count="1" type="stmt"/>
         <line num="84" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="85" count="287" type="stmt"/>
-        <line num="86" count="287" type="stmt"/>
-        <line num="87" count="287" type="stmt"/>
-        <line num="88" count="287" type="stmt"/>
-        <line num="89" count="287" type="stmt"/>
-        <line num="90" count="287" type="cond" truecount="0" falsecount="1"/>
-        <line num="91" count="287" type="stmt"/>
-        <line num="92" count="287" type="stmt"/>
-        <line num="93" count="287" type="stmt"/>
-        <line num="94" count="287" type="stmt"/>
-        <line num="95" count="287" type="stmt"/>
-        <line num="96" count="287" type="stmt"/>
-        <line num="97" count="287" type="stmt"/>
-        <line num="98" count="287" type="stmt"/>
-        <line num="99" count="287" type="stmt"/>
-        <line num="100" count="287" type="stmt"/>
-        <line num="101" count="287" type="stmt"/>
-        <line num="102" count="287" type="stmt"/>
-        <line num="103" count="287" type="stmt"/>
-        <line num="104" count="287" type="stmt"/>
-        <line num="105" count="287" type="stmt"/>
-        <line num="106" count="287" type="stmt"/>
+        <line num="85" count="1" type="stmt"/>
+        <line num="86" count="1" type="stmt"/>
+        <line num="87" count="1" type="stmt"/>
+        <line num="88" count="1" type="stmt"/>
+        <line num="89" count="1" type="stmt"/>
+        <line num="90" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="91" count="1" type="stmt"/>
+        <line num="92" count="1" type="stmt"/>
+        <line num="93" count="1" type="stmt"/>
+        <line num="94" count="1" type="stmt"/>
+        <line num="95" count="1" type="stmt"/>
+        <line num="96" count="1" type="stmt"/>
+        <line num="97" count="1" type="stmt"/>
+        <line num="98" count="1" type="stmt"/>
+        <line num="99" count="1" type="stmt"/>
+        <line num="100" count="1" type="stmt"/>
+        <line num="101" count="1" type="stmt"/>
+        <line num="102" count="1" type="stmt"/>
+        <line num="103" count="1" type="stmt"/>
+        <line num="104" count="1" type="stmt"/>
+        <line num="105" count="1" type="stmt"/>
+        <line num="106" count="1" type="stmt"/>
         <line num="107" count="1" type="stmt"/>
         <line num="108" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="109" count="1" type="stmt"/>
         <line num="110" count="1" type="stmt"/>
         <line num="111" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="112" count="578" type="stmt"/>
-        <line num="113" count="578" type="stmt"/>
+        <line num="112" count="6" type="stmt"/>
+        <line num="113" count="6" type="stmt"/>
         <line num="114" count="1" type="stmt"/>
         <line num="115" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="116" count="9" type="stmt"/>
@@ -185,7 +185,7 @@
         <line num="128" count="1" type="stmt"/>
         <line num="129" count="1" type="stmt"/>
       </file>
-      <file name="TrackModel.ts" path="/srv/http/MetaLampSliderPlugin/src/Model/TrackModel.ts">
+      <file name="TrackModel.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\Model\TrackModel.ts">
         <metrics statements="172" coveredstatements="147" conditionals="25" coveredconditionals="25" methods="16" coveredmethods="14"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -208,18 +208,18 @@
         <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
         <line num="21" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="22" count="4" type="stmt"/>
-        <line num="23" count="4" type="stmt"/>
-        <line num="24" count="4" type="stmt"/>
-        <line num="25" count="4" type="stmt"/>
-        <line num="26" count="4" type="stmt"/>
-        <line num="27" count="4" type="stmt"/>
-        <line num="28" count="4" type="stmt"/>
-        <line num="29" count="4" type="stmt"/>
-        <line num="30" count="4" type="stmt"/>
-        <line num="31" count="4" type="stmt"/>
-        <line num="32" count="4" type="stmt"/>
-        <line num="33" count="4" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
+        <line num="24" count="3" type="stmt"/>
+        <line num="25" count="3" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
+        <line num="27" count="3" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
+        <line num="29" count="3" type="stmt"/>
+        <line num="30" count="3" type="stmt"/>
+        <line num="31" count="3" type="stmt"/>
+        <line num="32" count="3" type="stmt"/>
+        <line num="33" count="3" type="stmt"/>
         <line num="34" count="1" type="stmt"/>
         <line num="35" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="36" count="1" type="stmt"/>
@@ -229,18 +229,18 @@
         <line num="40" count="1" type="stmt"/>
         <line num="41" count="1" type="stmt"/>
         <line num="42" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="43" count="6" type="stmt"/>
-        <line num="44" count="6" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
         <line num="45" count="1" type="stmt"/>
         <line num="46" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="47" count="2" type="stmt"/>
-        <line num="48" count="2" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
         <line num="49" count="1" type="stmt"/>
         <line num="50" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="51" count="2" type="stmt"/>
-        <line num="52" count="2" type="stmt"/>
-        <line num="53" count="2" type="stmt"/>
-        <line num="54" count="2" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
         <line num="55" count="1" type="stmt"/>
         <line num="56" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="57" count="5" type="stmt"/>
@@ -363,7 +363,7 @@
     </package>
     <package name="src.Model.ThumbModelModules">
       <metrics statements="25" coveredstatements="22" conditionals="7" coveredconditionals="5" methods="2" coveredmethods="2"/>
-      <file name="endsValidation.ts" path="/srv/http/MetaLampSliderPlugin/src/Model/ThumbModelModules/endsValidation.ts">
+      <file name="endsValidation.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\Model\ThumbModelModules\endsValidation.ts">
         <metrics statements="18" coveredstatements="15" conditionals="4" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -371,67 +371,67 @@
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="7" count="288" type="cond" truecount="1" falsecount="0"/>
+        <line num="7" count="2" type="cond" truecount="1" falsecount="0"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="cond" truecount="0" falsecount="1"/>
         <line num="10" count="1" type="stmt"/>
-        <line num="11" count="288" type="cond" truecount="0" falsecount="1"/>
+        <line num="11" count="2" type="cond" truecount="0" falsecount="1"/>
         <line num="12" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
-        <line num="15" count="288" type="stmt"/>
-        <line num="16" count="288" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
       </file>
-      <file name="prepareOffset.ts" path="/srv/http/MetaLampSliderPlugin/src/Model/ThumbModelModules/prepareOffset.ts">
+      <file name="prepareOffset.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\Model\ThumbModelModules\prepareOffset.ts">
         <metrics statements="7" coveredstatements="7" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="4" count="291" type="cond" truecount="2" falsecount="0"/>
-        <line num="5" count="291" type="stmt"/>
+        <line num="4" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="5" count="5" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.Observer">
       <metrics statements="28" coveredstatements="25" conditionals="5" coveredconditionals="4" methods="4" coveredmethods="3"/>
-      <file name="Observer.ts" path="/srv/http/MetaLampSliderPlugin/src/Observer/Observer.ts">
+      <file name="Observer.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\Observer\Observer.ts">
         <metrics statements="28" coveredstatements="25" conditionals="5" coveredconditionals="4" methods="4" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="6" count="57" type="stmt"/>
-        <line num="7" count="57" type="stmt"/>
+        <line num="6" count="38" type="stmt"/>
+        <line num="7" count="38" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="10" count="21" type="stmt"/>
-        <line num="11" count="21" type="cond" truecount="0" falsecount="1"/>
+        <line num="10" count="20" type="stmt"/>
+        <line num="11" count="20" type="cond" truecount="0" falsecount="1"/>
         <line num="12" count="0" type="stmt"/>
-        <line num="13" count="21" type="stmt"/>
-        <line num="14" count="21" type="stmt"/>
-        <line num="15" count="21" type="stmt"/>
-        <line num="16" count="21" type="stmt"/>
+        <line num="13" count="20" type="stmt"/>
+        <line num="14" count="20" type="stmt"/>
+        <line num="15" count="20" type="stmt"/>
+        <line num="16" count="20" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
         <line num="19" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
         <line num="22" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="23" count="1101" type="cond" truecount="1" falsecount="0"/>
-        <line num="24" count="814" type="stmt"/>
-        <line num="25" count="814" type="stmt"/>
-        <line num="26" count="1101" type="stmt"/>
+        <line num="23" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="24" count="4" type="stmt"/>
+        <line num="25" count="4" type="stmt"/>
+        <line num="26" count="7" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.Presenter">
       <metrics statements="254" coveredstatements="223" conditionals="23" coveredconditionals="20" methods="21" coveredmethods="18"/>
-      <file name="Presenter.ts" path="/srv/http/MetaLampSliderPlugin/src/Presenter/Presenter.ts">
+      <file name="Presenter.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\Presenter\Presenter.ts">
         <metrics statements="254" coveredstatements="223" conditionals="23" coveredconditionals="20" methods="21" coveredmethods="18"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -690,23 +690,25 @@
       </file>
     </package>
     <package name="src.Presenter.PresenterModules">
-      <metrics statements="120" coveredstatements="118" conditionals="18" coveredconditionals="16" methods="5" coveredmethods="4"/>
-      <file name="addListeners.ts" path="/srv/http/MetaLampSliderPlugin/src/Presenter/PresenterModules/addListeners.ts">
-        <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <metrics statements="122" coveredstatements="120" conditionals="18" coveredconditionals="16" methods="5" coveredmethods="4"/>
+      <file name="addListeners.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\Presenter\PresenterModules\addListeners.ts">
+        <metrics statements="14" coveredstatements="14" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="7" count="2" type="cond" truecount="1" falsecount="0"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="10" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
       </file>
-      <file name="checkParams.ts" path="/srv/http/MetaLampSliderPlugin/src/Presenter/PresenterModules/checkParams.ts">
+      <file name="checkParams.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\Presenter\PresenterModules\checkParams.ts">
         <metrics statements="50" coveredstatements="50" conditionals="10" coveredconditionals="8" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -759,7 +761,7 @@
         <line num="49" count="1" type="stmt"/>
         <line num="50" count="1" type="stmt"/>
       </file>
-      <file name="clearHTML.ts" path="/srv/http/MetaLampSliderPlugin/src/Presenter/PresenterModules/clearHTML.ts">
+      <file name="clearHTML.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\Presenter\PresenterModules\clearHTML.ts">
         <metrics statements="12" coveredstatements="12" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -774,7 +776,7 @@
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
       </file>
-      <file name="removeListeners.ts" path="/srv/http/MetaLampSliderPlugin/src/Presenter/PresenterModules/removeListeners.ts">
+      <file name="removeListeners.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\Presenter\PresenterModules\removeListeners.ts">
         <metrics statements="9" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -786,7 +788,7 @@
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
       </file>
-      <file name="subscribe.ts" path="/srv/http/MetaLampSliderPlugin/src/Presenter/PresenterModules/subscribe.ts">
+      <file name="subscribe.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\Presenter\PresenterModules\subscribe.ts">
         <metrics statements="37" coveredstatements="37" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -829,25 +831,25 @@
     </package>
     <package name="src.Presenter.PresenterModules.notifyModelMethods">
       <metrics statements="33" coveredstatements="26" conditionals="1" coveredconditionals="1" methods="3" coveredmethods="1"/>
-      <file name="updateThumbModel.ts" path="/srv/http/MetaLampSliderPlugin/src/Presenter/PresenterModules/notifyModelMethods/updateThumbModel.ts">
+      <file name="updateThumbModel.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\Presenter\PresenterModules\notifyModelMethods\updateThumbModel.ts">
         <metrics statements="15" coveredstatements="15" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="6" count="287" type="stmt"/>
-        <line num="7" count="287" type="stmt"/>
-        <line num="8" count="287" type="stmt"/>
-        <line num="9" count="287" type="stmt"/>
-        <line num="10" count="287" type="stmt"/>
-        <line num="11" count="287" type="stmt"/>
-        <line num="12" count="287" type="stmt"/>
-        <line num="13" count="287" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
       </file>
-      <file name="updateThumbModelBeforeTrackClick.ts" path="/srv/http/MetaLampSliderPlugin/src/Presenter/PresenterModules/notifyModelMethods/updateThumbModelBeforeTrackClick.ts">
+      <file name="updateThumbModelBeforeTrackClick.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\Presenter\PresenterModules\notifyModelMethods\updateThumbModelBeforeTrackClick.ts">
         <metrics statements="7" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -857,7 +859,7 @@
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
       </file>
-      <file name="updateTrackFillModel.ts" path="/srv/http/MetaLampSliderPlugin/src/Presenter/PresenterModules/notifyModelMethods/updateTrackFillModel.ts">
+      <file name="updateTrackFillModel.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\Presenter\PresenterModules\notifyModelMethods\updateTrackFillModel.ts">
         <metrics statements="11" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -874,36 +876,36 @@
     </package>
     <package name="src.Presenter.PresenterModules.notifyViewMethods">
       <metrics statements="34" coveredstatements="32" conditionals="4" coveredconditionals="3" methods="3" coveredmethods="3"/>
-      <file name="updateThumbView.ts" path="/srv/http/MetaLampSliderPlugin/src/Presenter/PresenterModules/notifyViewMethods/updateThumbView.ts">
+      <file name="updateThumbView.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\Presenter\PresenterModules\notifyViewMethods\updateThumbView.ts">
         <metrics statements="13" coveredstatements="11" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="5" count="287" type="stmt"/>
-        <line num="6" count="287" type="stmt"/>
-        <line num="7" count="287" type="stmt"/>
-        <line num="8" count="287" type="cond" truecount="0" falsecount="1"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="cond" truecount="0" falsecount="1"/>
         <line num="9" count="0" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
-        <line num="11" count="287" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
       </file>
-      <file name="updateTipView.ts" path="/srv/http/MetaLampSliderPlugin/src/Presenter/PresenterModules/notifyViewMethods/updateTipView.ts">
+      <file name="updateTipView.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\Presenter\PresenterModules\notifyViewMethods\updateTipView.ts">
         <metrics statements="10" coveredstatements="10" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="6" count="238" type="stmt"/>
-        <line num="7" count="238" type="stmt"/>
-        <line num="8" count="238" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
       </file>
-      <file name="updateTrackFillView.ts" path="/srv/http/MetaLampSliderPlugin/src/Presenter/PresenterModules/notifyViewMethods/updateTrackFillView.ts">
+      <file name="updateTrackFillView.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\Presenter\PresenterModules\notifyViewMethods\updateTrackFillView.ts">
         <metrics statements="11" coveredstatements="11" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -920,7 +922,7 @@
     </package>
     <package name="src.View">
       <metrics statements="87" coveredstatements="87" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3"/>
-      <file name="View.ts" path="/srv/http/MetaLampSliderPlugin/src/View/View.ts">
+      <file name="View.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\View\View.ts">
         <metrics statements="87" coveredstatements="87" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -961,29 +963,29 @@
         <line num="37" count="1" type="stmt"/>
         <line num="38" count="1" type="stmt"/>
         <line num="39" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="40" count="9" type="stmt"/>
-        <line num="41" count="9" type="stmt"/>
-        <line num="42" count="9" type="stmt"/>
-        <line num="43" count="9" type="stmt"/>
-        <line num="44" count="9" type="stmt"/>
-        <line num="45" count="9" type="stmt"/>
-        <line num="46" count="9" type="stmt"/>
-        <line num="47" count="9" type="stmt"/>
-        <line num="48" count="9" type="stmt"/>
-        <line num="49" count="9" type="stmt"/>
-        <line num="50" count="9" type="stmt"/>
-        <line num="51" count="9" type="stmt"/>
-        <line num="52" count="9" type="stmt"/>
-        <line num="53" count="9" type="stmt"/>
-        <line num="54" count="9" type="stmt"/>
-        <line num="55" count="9" type="stmt"/>
-        <line num="56" count="9" type="stmt"/>
-        <line num="57" count="9" type="stmt"/>
-        <line num="58" count="9" type="stmt"/>
-        <line num="59" count="9" type="stmt"/>
-        <line num="60" count="9" type="stmt"/>
-        <line num="61" count="9" type="stmt"/>
-        <line num="62" count="9" type="stmt"/>
+        <line num="40" count="6" type="stmt"/>
+        <line num="41" count="6" type="stmt"/>
+        <line num="42" count="6" type="stmt"/>
+        <line num="43" count="6" type="stmt"/>
+        <line num="44" count="6" type="stmt"/>
+        <line num="45" count="6" type="stmt"/>
+        <line num="46" count="6" type="stmt"/>
+        <line num="47" count="6" type="stmt"/>
+        <line num="48" count="6" type="stmt"/>
+        <line num="49" count="6" type="stmt"/>
+        <line num="50" count="6" type="stmt"/>
+        <line num="51" count="6" type="stmt"/>
+        <line num="52" count="6" type="stmt"/>
+        <line num="53" count="6" type="stmt"/>
+        <line num="54" count="6" type="stmt"/>
+        <line num="55" count="6" type="stmt"/>
+        <line num="56" count="6" type="stmt"/>
+        <line num="57" count="6" type="stmt"/>
+        <line num="58" count="6" type="stmt"/>
+        <line num="59" count="6" type="stmt"/>
+        <line num="60" count="6" type="stmt"/>
+        <line num="61" count="6" type="stmt"/>
+        <line num="62" count="6" type="stmt"/>
         <line num="63" count="1" type="stmt"/>
         <line num="64" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="65" count="2" type="stmt"/>
@@ -1013,7 +1015,7 @@
     </package>
     <package name="src.View.ViewElements.Fill">
       <metrics statements="41" coveredstatements="41" conditionals="6" coveredconditionals="6" methods="6" coveredmethods="6"/>
-      <file name="Fill.ts" path="/srv/http/MetaLampSliderPlugin/src/View/ViewElements/Fill/Fill.ts">
+      <file name="Fill.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\View\ViewElements\Fill\Fill.ts">
         <metrics statements="41" coveredstatements="41" conditionals="6" coveredconditionals="6" methods="6" coveredmethods="6"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -1026,20 +1028,20 @@
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="12" count="10" type="stmt"/>
-        <line num="13" count="10" type="stmt"/>
-        <line num="14" count="10" type="stmt"/>
-        <line num="15" count="10" type="stmt"/>
-        <line num="16" count="10" type="stmt"/>
-        <line num="17" count="10" type="stmt"/>
+        <line num="12" count="7" type="stmt"/>
+        <line num="13" count="7" type="stmt"/>
+        <line num="14" count="7" type="stmt"/>
+        <line num="15" count="7" type="stmt"/>
+        <line num="16" count="7" type="stmt"/>
+        <line num="17" count="7" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
         <line num="19" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="20" count="2" type="stmt"/>
-        <line num="21" count="2" type="stmt"/>
-        <line num="22" count="2" type="stmt"/>
-        <line num="23" count="2" type="stmt"/>
-        <line num="24" count="2" type="stmt"/>
-        <line num="25" count="2" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
         <line num="26" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="27" count="3" type="stmt"/>
         <line num="28" count="3" type="stmt"/>
@@ -1060,7 +1062,7 @@
     </package>
     <package name="src.View.ViewElements.Fill.utils">
       <metrics statements="20" coveredstatements="20" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
-      <file name="updateFill.ts" path="/srv/http/MetaLampSliderPlugin/src/View/ViewElements/Fill/utils/updateFill.ts">
+      <file name="updateFill.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\View\ViewElements\Fill\utils\updateFill.ts">
         <metrics statements="20" coveredstatements="20" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -1086,7 +1088,7 @@
     </package>
     <package name="src.View.ViewElements.Scale">
       <metrics statements="28" coveredstatements="28" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
-      <file name="Scale.ts" path="/srv/http/MetaLampSliderPlugin/src/View/ViewElements/Scale/Scale.ts">
+      <file name="Scale.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\View\ViewElements\Scale\Scale.ts">
         <metrics statements="28" coveredstatements="28" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -1102,9 +1104,9 @@
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
         <line num="14" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="15" count="10" type="stmt"/>
-        <line num="16" count="10" type="stmt"/>
-        <line num="17" count="10" type="stmt"/>
+        <line num="15" count="6" type="stmt"/>
+        <line num="16" count="6" type="stmt"/>
+        <line num="17" count="6" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
         <line num="19" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="20" count="1" type="stmt"/>
@@ -1120,7 +1122,7 @@
     </package>
     <package name="src.View.ViewElements.Scale.utils">
       <metrics statements="62" coveredstatements="60" conditionals="9" coveredconditionals="7" methods="3" coveredmethods="3"/>
-      <file name="createScaleMarks.ts" path="/srv/http/MetaLampSliderPlugin/src/View/ViewElements/Scale/utils/createScaleMarks.ts">
+      <file name="createScaleMarks.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\View\ViewElements\Scale\utils\createScaleMarks.ts">
         <metrics statements="33" coveredstatements="31" conditionals="3" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -1156,7 +1158,7 @@
         <line num="32" count="1" type="stmt"/>
         <line num="33" count="1" type="stmt"/>
       </file>
-      <file name="prepareScaleData.ts" path="/srv/http/MetaLampSliderPlugin/src/View/ViewElements/Scale/utils/prepareScaleData.ts">
+      <file name="prepareScaleData.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\View\ViewElements\Scale\utils\prepareScaleData.ts">
         <metrics statements="29" coveredstatements="29" conditionals="6" coveredconditionals="5" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="2" count="2" type="stmt"/>
@@ -1191,7 +1193,7 @@
     </package>
     <package name="src.View.ViewElements.Thumb">
       <metrics statements="76" coveredstatements="74" conditionals="8" coveredconditionals="8" methods="7" coveredmethods="6"/>
-      <file name="Thumb.ts" path="/srv/http/MetaLampSliderPlugin/src/View/ViewElements/Thumb/Thumb.ts">
+      <file name="Thumb.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\View\ViewElements\Thumb\Thumb.ts">
         <metrics statements="76" coveredstatements="74" conditionals="8" coveredconditionals="8" methods="7" coveredmethods="6"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -1218,27 +1220,27 @@
         <line num="23" count="1" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
         <line num="25" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="26" count="11" type="stmt"/>
-        <line num="27" count="11" type="stmt"/>
-        <line num="28" count="11" type="stmt"/>
-        <line num="29" count="11" type="stmt"/>
-        <line num="30" count="11" type="stmt"/>
-        <line num="31" count="11" type="stmt"/>
-        <line num="32" count="11" type="stmt"/>
-        <line num="33" count="11" type="stmt"/>
-        <line num="34" count="11" type="stmt"/>
-        <line num="35" count="11" type="stmt"/>
-        <line num="36" count="11" type="stmt"/>
-        <line num="37" count="11" type="stmt"/>
-        <line num="38" count="11" type="stmt"/>
-        <line num="39" count="11" type="stmt"/>
-        <line num="40" count="11" type="stmt"/>
+        <line num="26" count="7" type="stmt"/>
+        <line num="27" count="7" type="stmt"/>
+        <line num="28" count="7" type="stmt"/>
+        <line num="29" count="7" type="stmt"/>
+        <line num="30" count="7" type="stmt"/>
+        <line num="31" count="7" type="stmt"/>
+        <line num="32" count="7" type="stmt"/>
+        <line num="33" count="7" type="stmt"/>
+        <line num="34" count="7" type="stmt"/>
+        <line num="35" count="7" type="stmt"/>
+        <line num="36" count="7" type="stmt"/>
+        <line num="37" count="7" type="stmt"/>
+        <line num="38" count="7" type="stmt"/>
+        <line num="39" count="7" type="stmt"/>
+        <line num="40" count="7" type="stmt"/>
         <line num="41" count="1" type="stmt"/>
         <line num="42" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="43" count="10" type="stmt"/>
-        <line num="44" count="10" type="stmt"/>
-        <line num="45" count="10" type="stmt"/>
-        <line num="46" count="10" type="stmt"/>
+        <line num="43" count="4" type="stmt"/>
+        <line num="44" count="4" type="stmt"/>
+        <line num="45" count="4" type="stmt"/>
+        <line num="46" count="4" type="stmt"/>
         <line num="47" count="1" type="stmt"/>
         <line num="48" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="49" count="4" type="stmt"/>
@@ -1247,12 +1249,12 @@
         <line num="52" count="4" type="stmt"/>
         <line num="53" count="1" type="stmt"/>
         <line num="54" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="55" count="296" type="stmt"/>
-        <line num="56" count="296" type="stmt"/>
+        <line num="55" count="10" type="stmt"/>
+        <line num="56" count="10" type="stmt"/>
         <line num="57" count="1" type="stmt"/>
         <line num="58" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="59" count="299" type="stmt"/>
-        <line num="60" count="299" type="stmt"/>
+        <line num="59" count="13" type="stmt"/>
+        <line num="60" count="13" type="stmt"/>
         <line num="61" count="1" type="stmt"/>
         <line num="62" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="63" count="5" type="cond" truecount="2" falsecount="0"/>
@@ -1272,20 +1274,20 @@
       </file>
     </package>
     <package name="src.View.ViewElements.Thumb.utils">
-      <metrics statements="109" coveredstatements="69" conditionals="7" coveredconditionals="7" methods="5" coveredmethods="4"/>
-      <file name="dragThumb.ts" path="/srv/http/MetaLampSliderPlugin/src/View/ViewElements/Thumb/utils/dragThumb.ts">
-        <metrics statements="42" coveredstatements="20" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+      <metrics statements="112" coveredstatements="70" conditionals="7" coveredconditionals="7" methods="5" coveredmethods="4"/>
+      <file name="dragThumb.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\View\ViewElements\Thumb\utils\dragThumb.ts">
+        <metrics statements="45" coveredstatements="21" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="7" count="3" type="stmt"/>
-        <line num="8" count="3" type="stmt"/>
-        <line num="9" count="3" type="stmt"/>
-        <line num="10" count="3" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
@@ -1296,15 +1298,15 @@
         <line num="19" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
-        <line num="22" count="3" type="stmt"/>
-        <line num="23" count="3" type="stmt"/>
-        <line num="24" count="3" type="stmt"/>
-        <line num="25" count="3" type="stmt"/>
-        <line num="26" count="3" type="stmt"/>
-        <line num="27" count="3" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="4" type="stmt"/>
+        <line num="26" count="4" type="stmt"/>
+        <line num="27" count="4" type="stmt"/>
+        <line num="28" count="4" type="stmt"/>
+        <line num="29" count="4" type="stmt"/>
+        <line num="30" count="4" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
         <line num="32" count="0" type="stmt"/>
         <line num="33" count="0" type="stmt"/>
@@ -1313,36 +1315,39 @@
         <line num="36" count="0" type="stmt"/>
         <line num="37" count="0" type="stmt"/>
         <line num="38" count="0" type="stmt"/>
-        <line num="39" count="3" type="stmt"/>
-        <line num="40" count="3" type="stmt"/>
-        <line num="41" count="1" type="stmt"/>
-        <line num="42" count="1" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="42" count="4" type="stmt"/>
+        <line num="43" count="4" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
       </file>
-      <file name="dropThumb.ts" path="/srv/http/MetaLampSliderPlugin/src/View/ViewElements/Thumb/utils/dropThumb.ts">
+      <file name="dropThumb.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\View\ViewElements\Thumb\utils\dropThumb.ts">
         <metrics statements="21" coveredstatements="13" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="6" count="2" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
         <line num="7" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
-        <line num="12" count="2" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
-        <line num="15" count="2" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
-        <line num="18" count="2" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
       </file>
-      <file name="handleDrag.ts" path="/srv/http/MetaLampSliderPlugin/src/View/ViewElements/Thumb/utils/handleDrag.ts">
+      <file name="handleDrag.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\View\ViewElements\Thumb\utils\handleDrag.ts">
         <metrics statements="15" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -1360,7 +1365,7 @@
         <line num="14" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
       </file>
-      <file name="updateThumbPosition.ts" path="/srv/http/MetaLampSliderPlugin/src/View/ViewElements/Thumb/utils/updateThumbPosition.ts">
+      <file name="updateThumbPosition.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\View\ViewElements\Thumb\utils\updateThumbPosition.ts">
         <metrics statements="12" coveredstatements="12" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -1368,14 +1373,14 @@
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="7" count="290" type="stmt"/>
-        <line num="8" count="290" type="stmt"/>
-        <line num="9" count="290" type="stmt"/>
-        <line num="10" count="290" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="10" count="4" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
       </file>
-      <file name="validateCollision.ts" path="/srv/http/MetaLampSliderPlugin/src/View/ViewElements/Thumb/utils/validateCollision.ts">
+      <file name="validateCollision.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\View\ViewElements\Thumb\utils\validateCollision.ts">
         <metrics statements="19" coveredstatements="19" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -1400,7 +1405,7 @@
     </package>
     <package name="src.View.ViewElements.Tip">
       <metrics statements="32" coveredstatements="30" conditionals="3" coveredconditionals="3" methods="4" coveredmethods="3"/>
-      <file name="Tip.ts" path="/srv/http/MetaLampSliderPlugin/src/View/ViewElements/Tip/Tip.ts">
+      <file name="Tip.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\View\ViewElements\Tip\Tip.ts">
         <metrics statements="32" coveredstatements="30" conditionals="3" coveredconditionals="3" methods="4" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -1412,14 +1417,14 @@
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="11" count="9" type="stmt"/>
-        <line num="12" count="9" type="stmt"/>
-        <line num="13" count="9" type="stmt"/>
-        <line num="14" count="9" type="stmt"/>
-        <line num="15" count="9" type="stmt"/>
+        <line num="11" count="6" type="stmt"/>
+        <line num="12" count="6" type="stmt"/>
+        <line num="13" count="6" type="stmt"/>
+        <line num="14" count="6" type="stmt"/>
+        <line num="15" count="6" type="stmt"/>
         <line num="16" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="17" count="238" type="stmt"/>
-        <line num="18" count="238" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
@@ -1438,30 +1443,30 @@
     </package>
     <package name="src.View.ViewElements.Tip.utils">
       <metrics statements="17" coveredstatements="17" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
-      <file name="updateTipsPosition.ts" path="/srv/http/MetaLampSliderPlugin/src/View/ViewElements/Tip/utils/updateTipsPosition.ts">
+      <file name="updateTipsPosition.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\View\ViewElements\Tip\utils\updateTipsPosition.ts">
         <metrics statements="17" coveredstatements="17" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="4" count="241" type="stmt"/>
-        <line num="5" count="241" type="stmt"/>
-        <line num="6" count="241" type="stmt"/>
-        <line num="7" count="241" type="stmt"/>
-        <line num="8" count="241" type="stmt"/>
-        <line num="9" count="241" type="stmt"/>
-        <line num="10" count="241" type="stmt"/>
-        <line num="11" count="241" type="stmt"/>
-        <line num="12" count="241" type="stmt"/>
-        <line num="13" count="241" type="stmt"/>
-        <line num="14" count="241" type="stmt"/>
-        <line num="15" count="241" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="12" count="4" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.View.ViewElements.Track">
       <metrics statements="23" coveredstatements="23" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3"/>
-      <file name="Track.ts" path="/srv/http/MetaLampSliderPlugin/src/View/ViewElements/Track/Track.ts">
+      <file name="Track.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\View\ViewElements\Track\Track.ts">
         <metrics statements="23" coveredstatements="23" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -1471,67 +1476,67 @@
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="9" count="10" type="stmt"/>
-        <line num="10" count="10" type="stmt"/>
-        <line num="11" count="10" type="stmt"/>
+        <line num="9" count="6" type="stmt"/>
+        <line num="10" count="6" type="stmt"/>
+        <line num="11" count="6" type="stmt"/>
         <line num="12" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="13" count="2" type="stmt"/>
-        <line num="14" count="2" type="stmt"/>
-        <line num="15" count="2" type="stmt"/>
-        <line num="16" count="2" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
         <line num="18" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="19" count="2" type="stmt"/>
-        <line num="20" count="2" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
         <line num="22" count="1" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.View.ViewElements.Track.utils">
-      <metrics statements="20" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="handleClick.ts" path="/srv/http/MetaLampSliderPlugin/src/View/ViewElements/Track/utils/handleClick.ts">
-        <metrics statements="20" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <metrics statements="20" coveredstatements="20" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+      <file name="handleClick.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\View\ViewElements\Track\utils\handleClick.ts">
+        <metrics statements="20" coveredstatements="20" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
+        <line num="4" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.View.ViewModules">
-      <metrics statements="59" coveredstatements="59" conditionals="10" coveredconditionals="10" methods="5" coveredmethods="5"/>
-      <file name="calculateCursorCoordinate.ts" path="/srv/http/MetaLampSliderPlugin/src/View/ViewModules/calculateCursorCoordinate.ts">
-        <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <metrics statements="59" coveredstatements="59" conditionals="11" coveredconditionals="11" methods="5" coveredmethods="5"/>
+      <file name="calculateCursorCoordinate.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\View\ViewModules\calculateCursorCoordinate.ts">
+        <metrics statements="12" coveredstatements="12" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="4" count="2" type="cond" truecount="1" falsecount="0"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
+        <line num="4" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="3" type="cond" truecount="1" falsecount="0"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="10" count="4" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
       </file>
-      <file name="initialFillPlacement.ts" path="/srv/http/MetaLampSliderPlugin/src/View/ViewModules/initialFillPlacement.ts">
+      <file name="initialFillPlacement.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\View\ViewModules\initialFillPlacement.ts">
         <metrics statements="9" coveredstatements="9" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -1543,7 +1548,7 @@
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
       </file>
-      <file name="initialThumbPlacement.ts" path="/srv/http/MetaLampSliderPlugin/src/View/ViewModules/initialThumbPlacement.ts">
+      <file name="initialThumbPlacement.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\View\ViewModules\initialThumbPlacement.ts">
         <metrics statements="13" coveredstatements="13" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -1559,7 +1564,7 @@
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
       </file>
-      <file name="initialTipPlacement.ts" path="/srv/http/MetaLampSliderPlugin/src/View/ViewModules/initialTipPlacement.ts">
+      <file name="initialTipPlacement.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\View\ViewModules\initialTipPlacement.ts">
         <metrics statements="13" coveredstatements="13" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -1575,7 +1580,7 @@
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
       </file>
-      <file name="prepareDirectionForInteraction.ts" path="/srv/http/MetaLampSliderPlugin/src/View/ViewModules/prepareDirectionForInteraction.ts">
+      <file name="prepareDirectionForInteraction.ts" path="C:\Web\OpenServer\domains\localhost\bolshov\MetaLampSliderPlugin\src\View\ViewModules\prepareDirectionForInteraction.ts">
         <metrics statements="12" coveredstatements="12" conditionals="5" coveredconditionals="5" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>

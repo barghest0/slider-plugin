@@ -1,4 +1,4 @@
-import { waitFor } from '@testing-library/dom';
+import '@testing-library/jest-dom'
 import View from "../../src/View/View";
 
 beforeEach(() => {
@@ -32,7 +32,7 @@ describe("View test", () => {
 		expect(view.fillView).toHaveProperty("size", 50);
 	});
 
-	test("correct calculate cursor coordinate test", async () => {
+	test("correct calculate cursor coordinate test", () => {
 
 		$(root).position().left = 0;
 		expect(view.calculateCursorCoordinate(200, 'horizontal', root, 200)).toBe(100);

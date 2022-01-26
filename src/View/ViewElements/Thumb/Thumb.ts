@@ -41,7 +41,7 @@ class Thumb extends Observer {
 
 	public createThumb(stance: number) {
 		$(this.view.root).append(
-			`<div class="slider__thumb slider__thumb-${stance} data-testid="test-thumb-${stance}""></div>`
+			`<div class="slider__thumb slider__thumb-${stance}" data-testid="test-thumb-${stance}"></div>`
 		);
 	}
 

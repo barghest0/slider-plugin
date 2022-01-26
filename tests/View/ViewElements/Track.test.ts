@@ -1,15 +1,14 @@
 import { screen, waitFor } from "@testing-library/dom";
 import View from "../../../src/View/View";
 import Track from "../../../src/View/ViewElements/Track/Track";
-import handleClick from '../../../src/View/ViewElements/Track/utils/handleClick';
-import calculateCursorCoordinate from '../../../src/View/ViewModules/calculateCursorCoordinate';
+import '@testing-library/jest-dom'
 
 describe("Track test", () => {
 	document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
 	const root = ".slider-1";
 	const view = new View(root);
 	const track = new Track(view);
-
+	track.createTrack("horizontal");
 	test("constructor test", () => {
 		expect(track).toHaveProperty("view");
 	});
@@ -19,24 +18,34 @@ describe("Track test", () => {
 	});
 
 	test("correct track model notify before click track  test", async () => {
-		const fn = jest.fn;
-		track.createTrack("horizontal");
-		track.subscribe("UpdateThumbModelBeforeTrackClick", fn);
+		const fn = jest.fn();
+		
 		waitFor(() => {
-			const DOMTrack = screen.getByTestId("test-track");
-			DOMTrack.dispatchEvent(new MouseEvent("mousedown"));
-			expect(fn).toBeCalled();
+			try{
+				track.subscribe("UpdateThumbModelBeforeTrackClick", fn);
+				const DOMTrack = screen.getByTestId("test-track");
+				DOMTrack.dispatchEvent(new MouseEvent("mousedown"));
+				expect(fn).toBeCalled();
+			}catch(e){
+				console.log(e);
+			}
+			
 		});
 	});
 
 	test("correct track model fill notify before click track  test", async () => {
-		const fn = jest.fn;
-		track.createTrack("horizontal");
+		const fn = jest.fn();
 		track.subscribe("UpdateTrackModelFill", fn);
 		waitFor(() => {
-			const DOMTrack = screen.getByTestId("test-track");
-			DOMTrack.dispatchEvent(new MouseEvent("mousedown"));
-			expect(fn).toBeCalled();
+			try{
+				const DOMTrack = screen.getByTestId("test-track");
+				DOMTrack.dispatchEvent(new MouseEvent("mousedown"));
+				expect(fn).toBeCalled();
+			}catch(e){
+				console.log(e);
+				
+			}
+			
 		});
 	});
 });

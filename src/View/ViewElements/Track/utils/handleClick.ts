@@ -6,7 +6,7 @@ const handleClick = function (
 ) {
 	const { thisTrack } = e.data as { thisTrack: Track; };
 	let direction = thisTrack.view.direction;
-	let coord = direction === "horizontal" ? (e.pageX || e.touches![0].pageX) : (e.pageY || e.touches![0].pageY);
+	let coord = direction === "horizontal" ? e.pageX! : e.pageY!;
 	let cursorCoordinate = thisTrack.view.calculateCursorCoordinate(
 		coord,
 		direction,

@@ -1,4 +1,4 @@
-import { waitFor } from "@testing-library/dom";
+
 import TrackModel from "../../src/Model/TrackModel";
 import Presenter from '../../src/Presenter/Presenter';
 import checkParams from '../../src/Presenter/PresenterModules/checkParams';
@@ -86,7 +86,7 @@ describe("TrackModel test", () => {
     });
 
 
-    test("correct update track fill view", async () => {
+    test("correct update track fill view",  () => {
         const fn = jest.fn();
         track.subscribe("UpdateTrackFillView", fn);
         track.updateTrackFill('horizontal');

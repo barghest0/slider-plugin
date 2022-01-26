@@ -1,9 +1,10 @@
+import '@testing-library/jest-dom'
 import { waitFor } from "@testing-library/dom";
 import { DEFAULT_SLIDER_PARAMS } from "../../src/GlobalUtils/constants";
 import { SliderParams } from "../../src/GlobalUtils/interfaces";
 import Presenter from "../../src/Presenter/Presenter";
 import checkParams from "../../src/Presenter/PresenterModules/checkParams";
-import Slider from "../../src/Slider";
+
 
 describe("Presenter test", () => {
 	document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
@@ -39,15 +40,21 @@ describe("Presenter test", () => {
 
 	test("correct update thumb model", async () => {
 		waitFor(() => {
-			presenter.view.thumbView.notify(
-				"UpdateThumbModel",
-				0,
-				80,
-				"horizontal"
-			);
-			expect(presenter.thumbs[0].getOffset()).toBe(80);
-			expect(presenter.view.thumbView.getOffset()).toBe(80);
-			expect(presenter.view.thumbView.activeStance).toBe(0);
+			try{
+				presenter.view.thumbView.notify(
+					"UpdateThumbModel",
+					0,
+					80,
+					"horizontal"
+				);
+				expect(presenter.thumbs[0].getOffset()).toBe(80);
+				expect(presenter.view.thumbView.getOffset()).toBe(80);
+				expect(presenter.view.thumbView.activeStance).toBe(0);
+			}catch (e){
+				console.log(e);
+				
+			}
+			
 		});
 	});
 
@@ -61,37 +68,54 @@ describe("Presenter test", () => {
 
 	test("correct update thumb view", async () => {
 		waitFor(() => {
-			presenter.thumbs[0].notify("UpdateThumbView", 100, 50, 0);
-			expect(presenter.view.thumbView.value[0]).toBe(100);
-			expect(presenter.view.thumbView.value[1]).toBe(150);
-			expect(presenter.view.thumbView.activeStance).toBe(0);
-
-			presenter.thumbs[1].notify("UpdateThumbView", 150, 70, 1);
-			expect(presenter.view.thumbView.activeStance).toBe(1);
-			expect(presenter.view.thumbView.offset[0]).toBe(50);
-			expect(presenter.view.thumbView.offset[1]).toBe(70);
+			try{
+				presenter.thumbs[0].notify("UpdateThumbView", 100, 50, 0);
+				expect(presenter.view.thumbView.value[0]).toBe(100);
+				expect(presenter.view.thumbView.value[1]).toBe(150);
+				expect(presenter.view.thumbView.activeStance).toBe(0);
+	
+				presenter.thumbs[1].notify("UpdateThumbView", 150, 70, 1);
+				expect(presenter.view.thumbView.activeStance).toBe(1);
+				expect(presenter.view.thumbView.offset[0]).toBe(50);
+				expect(presenter.view.thumbView.offset[1]).toBe(70);
+			}catch(e){
+				console.log(e);
+				
+			}
+			
 		});
 	});
 
 	test("correct update tip view", async () => {
 		waitFor(() => {
-			presenter.thumbs[0].notify("UpdateTipView", 50, 0);
-			presenter.thumbs[1].notify("UpdateTipView", 100, 1);
-			expect(presenter.view.tipView.getOffset()[0]).toBe(100);
-			expect(presenter.view.tipView.getOffset()[1]).toBe(150);
+			try{
+				presenter.thumbs[0].notify("UpdateTipView", 50, 0);
+				presenter.thumbs[1].notify("UpdateTipView", 100, 1);
+				expect(presenter.view.tipView.getOffset()[0]).toBe(100);
+				expect(presenter.view.tipView.getOffset()[1]).toBe(150);
+			}catch(e){
+				console.log(e);
+			}
+			
 		});
 	});
 
 	test("correct update track fill view", async () => {
 		waitFor(() => {
-			presenter.trackModel.notify(
-				"UpdateTrackFillView",
-				100,
-				10,
-				"horizontal"
-			);
-			expect(presenter.view.fillView.getSize()).toBe(100);
-			expect(presenter.view.fillView.getOffset()).toBe(10);
+			try {
+				presenter.trackModel.notify(
+					"UpdateTrackFillView",
+					100,
+					10,
+					"horizontal"
+				);
+				expect(presenter.view.fillView.getSize()).toBe(100);
+				expect(presenter.view.fillView.getOffset()).toBe(10);
+			} catch (e) {
+				console.log(e);
+				
+			}
+			
 		});
 	});
 
