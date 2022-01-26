@@ -6,7 +6,9 @@ const handleDrag = function (e: JQuery.MouseMoveEvent | JQuery.TouchMoveEvent) {
 	let coord = direction === "horizontal" ? e.pageX! : e.pageY!;
 	let cursorCoordinate = thisThumb.view.calculateCursorCoordinate(coord, direction, thisThumb.view.root, thisThumb.view.size);
 	stance = thisThumb.view.isRange ? thisThumb.validateCollision(stance) : stance;
-	console.log(2); 
+
+
+
 	thisThumb.notify("UpdateThumbModel", stance, cursorCoordinate, direction, thisThumb.view.size);
 	thisThumb.view.trackView.notify("UpdateTrackModelFill", direction);
 

@@ -4,10 +4,11 @@ import Presenter from "../../../src/Presenter/Presenter";
 import checkParams from "../../../src/Presenter/PresenterModules/checkParams";
 import View from "../../../src/View/View";
 import Thumb from "../../../src/View/ViewElements/Thumb/Thumb";
+import handleDrag from '../../../src/View/ViewElements/Thumb/utils/handleDrag';
 
 
 describe("Thumb test", () => {
-	document.body.innerHTML = `<div id="slider-1" data-testid=slider-1 class="slider-1"></div>`;
+	document.body.innerHTML = `<div id="slider-1" data-testid="slider-1" class="slider-1"></div>`;
 	const root = ".slider-1";
 
 	const presenter = new Presenter('.slider-1',checkParams({}))
@@ -67,6 +68,10 @@ describe("Thumb test", () => {
 		thumb.setValue(80, 1);
 		expect(thumb.validateCollision(1)).toBe(0);
 	});
+
+
+
+
 
 
 	test("correct thumb model notify before drag thumb test", async () => {

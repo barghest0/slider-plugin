@@ -11,8 +11,6 @@ describe("Fill test", () => {
 	const fill = new Fill(view);
 	
 	fill.createFill('horizontal', true);
-
-		
 	
 	test("constructor test", () => {
 		expect(view.root).toBe(root);
@@ -27,60 +25,41 @@ describe("Fill test", () => {
 		expect(fill).toHaveProperty("offset", 100);
 	});
 
-	test("correct updateFill with single thumb test", async () => {
-		waitFor(() => {
-			try{
-				thumb.setOffset(50, 0);
-				fill.updateFill('horizontal');
-				const DOMFill = screen.getByTestId('test-fill');
-				expect(DOMFill).toHaveStyle('width:50%');
-			}catch(e){
-				console.log(e);
-			}
-		});
+	test("correct updateFill with single thumb test",  () => {
+		fill.setSize(50)
+		fill.updateFill('horizontal');
+		const DOMFill = screen.getByTestId('test-fill');
+		expect(DOMFill).toHaveStyle('width:50%');
+			
 	});
 
-	test("correct updateFill with range  test", async () => {
-		
-		waitFor(() => {
-			try{
-				view.isRange = true;
-				thumb.setOffset(50, 0);
-				thumb.setOffset(100, 1);
-				fill.updateFill('horizontal');
-				const DOMFill = screen.getByTestId('test-fill');
-				expect(DOMFill).toHaveStyle('width:50%');
-			}catch (e) {
-				console.log(e);
-			}
-			
-		});
+	test("correct updateFill with range test",  () => {
+		view.isRange = true;
+		fill.setOffset(50)
+		fill.setSize(100);
+		fill.updateFill('horizontal');
+		const DOMFill = screen.getByTestId('test-fill');
+		expect(DOMFill).toHaveStyle('width:50%');
+		expect(DOMFill).toHaveStyle('left:50%');
 	});
 
 
-	test("correct initial fill placement test", async () => {
-		waitFor(() => {
-			try{
-				view.thumbView.setOffset(10, 0);
-				view.initialFillPlacement('horizontal');
-				const DOMFill = screen.getByTestId('test-fill');
-				expect(DOMFill).toHaveStyle('width:10%');
-			}catch(e){
-				console.log(e);
-			}
-			
-		});
+	test("correct initial fill placement test",  () => {
 		
-		waitFor(() => {
-			try{
-				view.thumbView.setOffset(50, 1);
-				view.initialFillPlacement('horizontal');
-				const DOMFill = screen.getByTestId('test-fill');
-				expect(DOMFill).toHaveStyle('width:40%');
-			}catch(e){
-				console.log(e);
-			}
-		});
+		fill.setSize(10);
+		fill.setOffset(10);
+		view.initialFillPlacement('horizontal');
+		const DOMFill1 = screen.getByTestId('test-fill');
+		expect(DOMFill1).toHaveStyle('width:10%');
+		expect(DOMFill1).toHaveStyle('left:10%')
+
+
+		fill.setOffset(50);
+		fill.setSize(50);
+		view.initialFillPlacement('vertical');
+		const DOMFill2 = screen.getByTestId('test-fill');
+		expect(DOMFill2).toHaveStyle('height:50%');
+		expect(DOMFill2).toHaveStyle('top:50%');
 	});
 
 });
