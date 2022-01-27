@@ -16,6 +16,8 @@ class Track extends Observer {
 	}
 
 	public clickTrack() {
+		
+
 		$(this.view.root).on("mousedown", { thisTrack: this }, handleClick);
 	}
 }

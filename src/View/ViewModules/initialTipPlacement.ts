@@ -1,12 +1,12 @@
 import View from "../View";
-import updateTipsPosition from '../ViewElements/Tip/utils/updateTipsPosition';
 
 const initialTipPlacement = function (
 	this: View,
 	stance: number,
-	offset: number
+	offset: number,
+	value: number
 ) {
-	this.tipView.updateTipsPosition(offset, stance);
+	this.tipView.updateTipsPosition(offset, stance, value);
 
 };
 

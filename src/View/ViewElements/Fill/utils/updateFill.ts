@@ -4,7 +4,7 @@ import Fill from '../Fill';
 
 
 const updateFill = function (this: Fill, direction: Direction) {
-    
+
     if (this.view.isRange) {
         $(`${this.view.root} .slider__fill_${direction}`).css({
             [this.view.offsetDirection]:

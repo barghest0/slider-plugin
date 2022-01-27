@@ -5,12 +5,14 @@ import updateTipsPosition from "./utils/updateTipsPosition";
 
 class Tip extends Observer {
 	public view: View;
-	public updateTipsPosition: (offset: number, stance: number) => void;
+	public updateTipsPosition: (offset: number, stance: number, value: number) => void;
 	private offset: number[];
+	private value: number[];
 	constructor(view: View) {
 		super();
 		this.view = view;
 		this.offset = [];
+		this.value = [];
 		this.updateTipsPosition = updateTipsPosition.bind(this);
 	}
 	public setOffset(offset: number, stance: number) {
@@ -19,6 +21,8 @@ class Tip extends Observer {
 	public getOffset() {
 		return this.offset;
 	}
+
+
 
 	public createTip(direction: Direction, stance: number, hasTips: boolean) {
 		if (hasTips) {

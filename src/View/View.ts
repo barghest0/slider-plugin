@@ -33,7 +33,7 @@ class View extends Observer {
 	public fillDirection: string;
 	public initialThumbPlacement: (offset: number, stance: number) => void;
 	public initialFillPlacement: (direction: Direction) => void;
-	public initialTipPlacement: (offset: number, stance: number) => void;
+	public initialTipPlacement: (offset: number, stance: number, value: number) => void;
 	public prepareDirectionForInteraction: (direction: Direction) => void;
 	public calculateCursorCoordinate: (coord: number, direction: Direction, root: string, size: number) => number;
 	constructor(root: string) {

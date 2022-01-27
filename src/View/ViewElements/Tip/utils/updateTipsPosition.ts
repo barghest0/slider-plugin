@@ -1,6 +1,6 @@
 import Tip from "../Tip";
 
-const updateTipsPosition = function (this: Tip, stance: number, offset: number) {
+const updateTipsPosition = function (this: Tip, stance: number, offset: number, value: number) {
 
 
 	$(`${this.view.root} .slider__tip-${stance}`).css({
@@ -8,7 +8,7 @@ const updateTipsPosition = function (this: Tip, stance: number, offset: number) 
 	});
 
 	$(`${this.view.root} .slider__tip-${stance}`).html(
-		this.view.thumbView.value[stance].toFixed(
+		value.toFixed(
 			this.view.thumbView.decimalPlaces
 		)
 	);

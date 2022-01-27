@@ -17,4 +17,5 @@ class Slider {
 		this.presenter.init(params, mode);
 	}
 }
+
 export default Slider;

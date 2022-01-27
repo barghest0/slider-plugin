@@ -23,6 +23,7 @@ const subscribe = function (this: Presenter) {
 		thumb.subscribe("UpdateThumbView", this.updateThumbView.bind(this))
 	);
 
+
 	this.trackModel.subscribe(
 		"UpdateThumbModel",
 		this.updateThumbModel.bind(this)

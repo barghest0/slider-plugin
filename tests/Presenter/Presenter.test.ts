@@ -1,9 +1,12 @@
-import '@testing-library/jest-dom'
+import '@testing-library/jest-dom';
 import { waitFor } from "@testing-library/dom";
 import { DEFAULT_SLIDER_PARAMS } from "../../src/GlobalUtils/constants";
 import { SliderParams } from "../../src/GlobalUtils/interfaces";
 import Presenter from "../../src/Presenter/Presenter";
 import checkParams from "../../src/Presenter/PresenterModules/checkParams";
+import Panel from '../../src/Demo/Panel/Panel';
+import PreviewSlider from '../../src/Demo/PreviewSlider';
+
 
 
 describe("Presenter test", () => {
@@ -15,7 +18,14 @@ describe("Presenter test", () => {
 		value: 10,
 	});
 	const presenter = new Presenter(root, params);
+	const fn = jest.fn();
 	presenter.init(params, "init");
+	presenter.thumbs.forEach(thumb => {
+		thumb.subscribe("UpdatePanelValues", fn);
+	});
+
+
+
 	test("constructor test", () => {
 		expect(presenter).toHaveProperty("view");
 	});
@@ -38,85 +48,35 @@ describe("Presenter test", () => {
 		expect(presenter["view"].thumbView.value[0]).toBe(10);
 	});
 
-	test("correct update thumb model", async () => {
-		waitFor(() => {
-			try{
-				presenter.view.thumbView.notify(
-					"UpdateThumbModel",
-					0,
-					80,
-					"horizontal"
-				);
-				expect(presenter.thumbs[0].getOffset()).toBe(80);
-				expect(presenter.view.thumbView.getOffset()).toBe(80);
-				expect(presenter.view.thumbView.activeStance).toBe(0);
-			}catch (e){
-				console.log(e);
-				
-			}
-			
-		});
+	test("correct update thumb model", () => {
+		presenter.view.thumbView.notify("UpdateThumbModel", 0, 80, 'horizontal');
+		expect(presenter.thumbs[0].getOffset()).toBe(80);
 	});
 
-	test("correct update thumb model before track click", async () => {
-		waitFor(() => {});
+	test("correct update thumb view", () => {
+		presenter.thumbs[0].notify("UpdateThumbView", 100, 50, 0);
+		expect(presenter.view.thumbView.value[0]).toBe(100);
+		expect(presenter.view.thumbView.activeStance).toBe(0);
+		presenter.thumbs[1].notify("UpdateThumbView", 150, 70, 1);
+		expect(presenter.view.thumbView.value[1]).toBe(150);
+		expect(presenter.view.thumbView.activeStance).toBe(1);
+
 	});
 
-	test("correct update track fill model", async () => {
-		waitFor(() => {});
+	test("correct update tip view", () => {
+		presenter.thumbs[0].notify("UpdateTipView", 50, 0, 50);
+		presenter.thumbs[1].notify("UpdateTipView", 100, 1, 100);
+		expect(presenter.view.tipView.getOffset()[0]).toBe(50);
+		expect(presenter.view.tipView.getOffset()[1]).toBe(100);
 	});
 
-	test("correct update thumb view", async () => {
-		waitFor(() => {
-			try{
-				presenter.thumbs[0].notify("UpdateThumbView", 100, 50, 0);
-				expect(presenter.view.thumbView.value[0]).toBe(100);
-				expect(presenter.view.thumbView.value[1]).toBe(150);
-				expect(presenter.view.thumbView.activeStance).toBe(0);
-	
-				presenter.thumbs[1].notify("UpdateThumbView", 150, 70, 1);
-				expect(presenter.view.thumbView.activeStance).toBe(1);
-				expect(presenter.view.thumbView.offset[0]).toBe(50);
-				expect(presenter.view.thumbView.offset[1]).toBe(70);
-			}catch(e){
-				console.log(e);
-				
-			}
-			
-		});
-	});
+	test("correct update track fill view", () => {
 
-	test("correct update tip view", async () => {
-		waitFor(() => {
-			try{
-				presenter.thumbs[0].notify("UpdateTipView", 50, 0);
-				presenter.thumbs[1].notify("UpdateTipView", 100, 1);
-				expect(presenter.view.tipView.getOffset()[0]).toBe(100);
-				expect(presenter.view.tipView.getOffset()[1]).toBe(150);
-			}catch(e){
-				console.log(e);
-			}
-			
-		});
-	});
+		presenter.trackModel.notify("UpdateTrackFillView", 100, 10, "horizontal");
+		expect(presenter.view.fillView.getSize()).toBe(100);
+		expect(presenter.view.fillView.getOffset()).toBe(10);
 
-	test("correct update track fill view", async () => {
-		waitFor(() => {
-			try {
-				presenter.trackModel.notify(
-					"UpdateTrackFillView",
-					100,
-					10,
-					"horizontal"
-				);
-				expect(presenter.view.fillView.getSize()).toBe(100);
-				expect(presenter.view.fillView.getOffset()).toBe(10);
-			} catch (e) {
-				console.log(e);
-				
-			}
-			
-		});
+
 	});
 
 	test("correct check value params", () => {

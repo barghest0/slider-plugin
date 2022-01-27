@@ -7,10 +7,13 @@ class Observer {
     }
 
     public subscribe(name: string, event: SubscribeEvent) {
+
         const eventInObject = this.subscribers[name];
+
         if (eventInObject) {
             eventInObject.push(event);
         } else {
+
             this.subscribers[name] = [event];
         }
     }
@@ -20,6 +23,7 @@ class Observer {
     }
 
     public notify(name: string, ...args: any[]) {
+
         this.subscribers[name].forEach((subscriberFunc: SubscribeEvent) => {
             subscriberFunc(...args);
         });

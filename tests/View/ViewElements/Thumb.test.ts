@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom'
+import '@testing-library/jest-dom';
 import { screen, waitFor } from "@testing-library/dom";
 import Presenter from "../../../src/Presenter/Presenter";
 import checkParams from "../../../src/Presenter/PresenterModules/checkParams";
@@ -10,27 +10,20 @@ import handleDrag from '../../../src/View/ViewElements/Thumb/utils/handleDrag';
 describe("Thumb test", () => {
 	document.body.innerHTML = `<div id="slider-1" data-testid="slider-1" class="slider-1"></div>`;
 	const root = ".slider-1";
-
-	const presenter = new Presenter('.slider-1',checkParams({}))
 	const view = new View(root);
 	const thumb = new Thumb(view);
-	presenter['addListeners'](false)
+
 	thumb.createThumb(0);
+
 
 	test("constructor test", () => {
 		expect(thumb).toHaveProperty("view");
 	});
 
 	test("correct append thumb to DOM test", () => {
-		waitFor(() => {
-			try{
-				const DOMTumb = screen.getByTestId("test-thumb-0");
-				expect(DOMTumb).toBeInTheDocument();
-			}catch(e){
-				console.log(e);
-			}
-			
-		});
+		const DOMThumb = screen.getByTestId("test-thumb-0");
+		expect(DOMThumb).toBeInTheDocument();
+
 	});
 
 	test("setStep test", () => {
@@ -70,37 +63,15 @@ describe("Thumb test", () => {
 	});
 
 
-
-
-
-
-	test("correct thumb model notify before drag thumb test", async () => {
-		waitFor(() => {
-			try{
-				const fn = jest.fn();
-				thumb.subscribe("UpdateThumbModel", fn);
-				const DOMSlider = screen.getByTestId("slider-1");
-				DOMSlider.dispatchEvent(new Event("mousedown"));
-				document.dispatchEvent(new Event("mousemove"));
-				expect(fn).toBeCalled();
-			}catch(e){
-				console.log(e);
-			}
-		});
+	test("correct notify before drag thumb test", () => {
+		const fn = jest.fn();
+		thumb.subscribe("UpdateThumbModel", fn);
+		thumb.subscribe("UpdateTrackModelFill", fn);
+		jest.spyOn(thumb, 'notify');
+		const DOMSlider = screen.getByTestId("slider-1");
+		DOMSlider.dispatchEvent(new MouseEvent("mousedown"));
+		document.dispatchEvent(new MouseEvent("mousemove"));
 	});
 
-	test("correct track model notify before drag thumb test", async () => {
-		waitFor(() => {
-			try{
-				const fn = jest.fn();
-				thumb.subscribe("UpdateTrackFillModel", fn);
-				const DOMSlider = screen.getByTestId("slider-1");
-				DOMSlider.dispatchEvent(new Event("mousedown"));
-				document.dispatchEvent(new Event("mousemove"));
-				expect(fn).toBeCalled();
-			}catch(e){
-				console.log(e);
-			}
-		});
-	});
+
 });

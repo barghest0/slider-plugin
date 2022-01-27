@@ -213,8 +213,8 @@ class Presenter {
 	}
 
 	private setTipPlacement(stance: number) {
-		const { offset } = this.thumbs[stance].getState();
-		this.view.initialTipPlacement(offset, stance);
+		const { offset, value } = this.thumbs[stance].getState();
+		this.view.initialTipPlacement(offset, stance, value);
 	}
 
 	private createThumb(stance: number) {

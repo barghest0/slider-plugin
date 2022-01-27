@@ -41,6 +41,7 @@ class ThumbModel extends Observer {
 	}
 
 	private calculateValue(ends: Ends) {
+
 		return (this.stepOffset / this.stepPercent) * this.step + ends.min;
 	}
 
@@ -92,9 +93,11 @@ class ThumbModel extends Observer {
 
 		this.setStepOffset(this.calculateStepOffset(this.cursorOffset, this.stepPercent));
 		this.setValue(this.calculateValue(ends));
+
 		this.setOffset(this.calculateOffset(ends, direction));
 		this.endsValidation(ends, direction);
-		this.notify("UpdatePanelValues", this.value, stance);
+
+
 		this.notify(
 			"UpdateThumbView",
 			this.value,
@@ -102,7 +105,8 @@ class ThumbModel extends Observer {
 			stance,
 			this.cursorOffset
 		);
-		this.notify("UpdateTipView", stance, this.offset);
+		this.notify("UpdateTipView", stance, this.offset, this.value);
+		this.notify("UpdatePanelValues", this.value, stance);
 	}
 
 	public getValue() {

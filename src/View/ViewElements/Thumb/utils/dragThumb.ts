@@ -4,13 +4,13 @@ import handleDrag from './handleDrag';
 
 
 const dragThumb = function (this: Thumb, stance: number) {
-    
+
     $(this.view.root).on(
         "mousedown",
         `.slider__thumb-${stance}`,
         (event: JQuery.MouseDownEvent) => {
-            console.log(2);
-            
+
+
             event.preventDefault();
             event.stopPropagation();
             $(document).on(

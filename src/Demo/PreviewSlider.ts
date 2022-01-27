@@ -4,13 +4,12 @@ import Slider from "../Slider";
 import Panel from "./Panel/Panel";
 import checkParams from "../Presenter/PresenterModules/checkParams";
 
-class PreviewSlider extends Observer {
+class PreviewSlider {
 	public panel: Panel;
 	public slider: Slider;
 	public params: SliderParams;
 	public root: string;
 	constructor(root: string, params: UserSliderParams) {
-		super();
 		this.root = root;
 		this.params = checkParams(params);
 		this.panel = new Panel(this.params, root, this);
@@ -24,8 +23,8 @@ class PreviewSlider extends Observer {
 		}
 		this.panel.initializeInputs(this.root);
 		this.panel.initializeFormValues(params);
+		this.subscribe();
 
-		this.subscribePanel();
 	}
 	public updatePanelValues(value: number, stance: number) {
 		if (stance === 0) {
@@ -39,9 +38,9 @@ class PreviewSlider extends Observer {
 				this.params.value[stance].toFixed(this.params.decimalPlaces)
 			);
 		}
-
 	}
-	private subscribePanel() {
+
+	private subscribe() {
 		this.slider.presenter.thumbs.forEach((item) => {
 			item.subscribe(
 				"UpdatePanelValues",

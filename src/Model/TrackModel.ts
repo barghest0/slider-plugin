@@ -131,6 +131,7 @@ class TrackModel extends Observer {
 		if (!this.isRange) {
 			stance = 0;
 		}
+		console.log('prepareChoose');
 
 		this.notify(
 			"UpdateThumbModel",
