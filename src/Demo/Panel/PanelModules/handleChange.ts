@@ -5,6 +5,7 @@ const handleChange = function (this: Panel, e: Event, param: string | number, va
 	const target = e.target! as HTMLInputElement;
 	const value = target.value;
 
+
 	if (param === "value") this.params[param][valueIndex!] = +value;
 	else if (param === "direction") this.params[param] = target.checked ? "vertical" : "horizontal";
 	else this.params[param] = value ? +value : target.checked;

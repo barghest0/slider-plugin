@@ -25,6 +25,7 @@ class PreviewSlider {
 		this.panel.initializeFormValues(params);
 		this.subscribe();
 	}
+	
 	public updatePanelValues(value: number, stance: number) {
 		if (stance === 0) {
 			this.params.value[stance] = value;
@@ -35,7 +36,7 @@ class PreviewSlider {
 		}
 	}
 
-	private subscribe() {
+	private subscribe() { 
 		this.slider.presenter.thumbs.forEach((item) => {
 			item.subscribe(
 				"UpdatePanelValues",
