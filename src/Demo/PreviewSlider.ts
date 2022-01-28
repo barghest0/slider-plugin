@@ -24,19 +24,14 @@ class PreviewSlider {
 		this.panel.initializeInputs(this.root);
 		this.panel.initializeFormValues(params);
 		this.subscribe();
-
 	}
 	public updatePanelValues(value: number, stance: number) {
 		if (stance === 0) {
 			this.params.value[stance] = value;
-			this.panel.firstValueInput!.val(
-				this.params.value[stance].toFixed(this.params.decimalPlaces)
-			);
+			this.panel.firstValueInput!.value = this.params.value[stance].toFixed(this.params.decimalPlaces);
 		} else {
 			this.params.value[stance] = value;
-			this.panel.secondValueInput!.val(
-				this.params.value[stance].toFixed(this.params.decimalPlaces)
-			);
+			this.panel.secondValueInput!.value = this.params.value[stance].toFixed(this.params.decimalPlaces);
 		}
 	}
 
