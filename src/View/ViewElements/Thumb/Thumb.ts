@@ -1,12 +1,8 @@
 import Observer from "../../../Observer/Observer";
-import { Direction, SliderThumbState } from "../../../GlobalUtils/interfaces";
 import View from "../../View";
-import handleDrag from "./utils/handleDrag";
-import prepareOffset from "../../../Model/ThumbModelModules/prepareOffset";
 import updateThumbPosition from './utils/updateThumbPosition';
 import validateCollision from './utils/validateCollision';
-import dragThumb from './utils/dragThumb';
-import dropThumb from './utils/dropThumb';
+import dragAndDropThumb from './utils/dragAndDropThumb';
 
 class Thumb extends Observer {
 	public view: View;
@@ -20,8 +16,7 @@ class Thumb extends Observer {
 	public activeStance: number;
 	public updateThumbPosition: (offset: number, stance: number) => void;
 	public validateCollision: (stance: number) => number;
-	public dragThumb: (stance: number) => void;
-	public dropThumb: () => void;
+	public dragAndDropThumb: (stance: number) => void;
 	constructor(view: View) {
 		super();
 		this.view = view;
@@ -35,8 +30,7 @@ class Thumb extends Observer {
 		this.activeStance = 0;
 		this.updateThumbPosition = updateThumbPosition.bind(this);
 		this.validateCollision = validateCollision.bind(this);
-		this.dragThumb = dragThumb.bind(this);
-		this.dropThumb = dropThumb.bind(this);
+		this.dragAndDropThumb = dragAndDropThumb.bind(this);
 	}
 
 	public createThumb(stance: number) {

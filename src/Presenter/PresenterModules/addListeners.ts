@@ -1,13 +1,11 @@
 import Presenter from '../Presenter';
 
-const addListeners = function (this:Presenter,isRange: boolean) {
-    
-    
-    this.view.thumbView.dragThumb(0);
+const addListeners = function (this: Presenter, isRange: boolean) {
+
+    this.view.thumbView.dragAndDropThumb(0);
     this.view.trackView.clickTrack();
-    this.view.thumbView.dropThumb();
     if (isRange) {
-        this.view.thumbView.dragThumb(1);
+        this.view.thumbView.dragAndDropThumb(1);
     }
 };
 

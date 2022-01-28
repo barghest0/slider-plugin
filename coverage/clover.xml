@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1643397267834" clover="3.2.0">
-  <project timestamp="1643397267834" name="All files">
-    <metrics statements="1682" coveredstatements="1570" conditionals="177" coveredconditionals="165" methods="121" coveredmethods="111" elements="1980" coveredelements="1846" complexity="0" loc="1682" ncloc="1682" packages="25" files="47" classes="47"/>
+<coverage generated="1643398333384" clover="3.2.0">
+  <project timestamp="1643398333384" name="All files">
+    <metrics statements="1682" coveredstatements="1569" conditionals="177" coveredconditionals="165" methods="121" coveredmethods="111" elements="1980" coveredelements="1845" complexity="0" loc="1682" ncloc="1682" packages="25" files="47" classes="47"/>
     <package name="src">
       <metrics statements="21" coveredstatements="21" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
       <file name="Slider.ts" path="/srv/http/MetaLampSliderPlugin/src/Slider.ts">
@@ -264,21 +264,21 @@
         <line num="18" count="1" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="21" count="10" type="stmt"/>
-        <line num="22" count="10" type="stmt"/>
-        <line num="23" count="10" type="stmt"/>
-        <line num="24" count="10" type="stmt"/>
-        <line num="25" count="10" type="stmt"/>
-        <line num="26" count="10" type="stmt"/>
-        <line num="27" count="10" type="stmt"/>
-        <line num="28" count="10" type="stmt"/>
-        <line num="29" count="10" type="stmt"/>
-        <line num="30" count="10" type="stmt"/>
-        <line num="31" count="10" type="stmt"/>
-        <line num="32" count="10" type="stmt"/>
-        <line num="33" count="10" type="stmt"/>
-        <line num="34" count="10" type="stmt"/>
-        <line num="35" count="10" type="stmt"/>
+        <line num="21" count="11" type="stmt"/>
+        <line num="22" count="11" type="stmt"/>
+        <line num="23" count="11" type="stmt"/>
+        <line num="24" count="11" type="stmt"/>
+        <line num="25" count="11" type="stmt"/>
+        <line num="26" count="11" type="stmt"/>
+        <line num="27" count="11" type="stmt"/>
+        <line num="28" count="11" type="stmt"/>
+        <line num="29" count="11" type="stmt"/>
+        <line num="30" count="11" type="stmt"/>
+        <line num="31" count="11" type="stmt"/>
+        <line num="32" count="11" type="stmt"/>
+        <line num="33" count="11" type="stmt"/>
+        <line num="34" count="11" type="stmt"/>
+        <line num="35" count="11" type="stmt"/>
         <line num="36" count="1" type="stmt"/>
         <line num="37" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="38" count="11" type="stmt"/>
@@ -401,18 +401,18 @@
         <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
         <line num="21" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="22" count="7" type="stmt"/>
-        <line num="23" count="7" type="stmt"/>
-        <line num="24" count="7" type="stmt"/>
-        <line num="25" count="7" type="stmt"/>
-        <line num="26" count="7" type="stmt"/>
-        <line num="27" count="7" type="stmt"/>
-        <line num="28" count="7" type="stmt"/>
-        <line num="29" count="7" type="stmt"/>
-        <line num="30" count="7" type="stmt"/>
-        <line num="31" count="7" type="stmt"/>
-        <line num="32" count="7" type="stmt"/>
-        <line num="33" count="7" type="stmt"/>
+        <line num="22" count="8" type="stmt"/>
+        <line num="23" count="8" type="stmt"/>
+        <line num="24" count="8" type="stmt"/>
+        <line num="25" count="8" type="stmt"/>
+        <line num="26" count="8" type="stmt"/>
+        <line num="27" count="8" type="stmt"/>
+        <line num="28" count="8" type="stmt"/>
+        <line num="29" count="8" type="stmt"/>
+        <line num="30" count="8" type="stmt"/>
+        <line num="31" count="8" type="stmt"/>
+        <line num="32" count="8" type="stmt"/>
+        <line num="33" count="8" type="stmt"/>
         <line num="34" count="1" type="stmt"/>
         <line num="35" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="36" count="1" type="stmt"/>
@@ -590,16 +590,16 @@
       </file>
     </package>
     <package name="src.Observer">
-      <metrics statements="32" coveredstatements="30" conditionals="6" coveredconditionals="6" methods="4" coveredmethods="3"/>
+      <metrics statements="31" coveredstatements="29" conditionals="6" coveredconditionals="6" methods="4" coveredmethods="3"/>
       <file name="Observer.ts" path="/srv/http/MetaLampSliderPlugin/src/Observer/Observer.ts">
-        <metrics statements="32" coveredstatements="30" conditionals="6" coveredconditionals="6" methods="4" coveredmethods="3"/>
+        <metrics statements="31" coveredstatements="29" conditionals="6" coveredconditionals="6" methods="4" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="6" count="76" type="stmt"/>
-        <line num="7" count="76" type="stmt"/>
+        <line num="6" count="78" type="stmt"/>
+        <line num="7" count="78" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="10" count="58" type="stmt"/>
@@ -610,21 +610,20 @@
         <line num="15" count="58" type="cond" truecount="1" falsecount="0"/>
         <line num="16" count="48" type="stmt"/>
         <line num="17" count="48" type="stmt"/>
-        <line num="18" count="48" type="stmt"/>
-        <line num="19" count="58" type="stmt"/>
+        <line num="18" count="58" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="26" count="12" type="stmt"/>
-        <line num="27" count="12" type="cond" truecount="1" falsecount="0"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="25" count="12" type="stmt"/>
+        <line num="26" count="12" type="cond" truecount="1" falsecount="0"/>
+        <line num="27" count="12" type="stmt"/>
         <line num="28" count="12" type="stmt"/>
         <line num="29" count="12" type="stmt"/>
-        <line num="30" count="12" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
         <line num="31" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.Presenter">
@@ -1477,9 +1476,9 @@
       </file>
     </package>
     <package name="src.View.ViewElements.Thumb.utils">
-      <metrics statements="113" coveredstatements="70" conditionals="7" coveredconditionals="7" methods="5" coveredmethods="4"/>
+      <metrics statements="114" coveredstatements="70" conditionals="7" coveredconditionals="7" methods="5" coveredmethods="4"/>
       <file name="dragThumb.ts" path="/srv/http/MetaLampSliderPlugin/src/View/ViewElements/Thumb/utils/dragThumb.ts">
-        <metrics statements="45" coveredstatements="21" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <metrics statements="46" coveredstatements="21" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -1504,13 +1503,13 @@
         <line num="22" count="0" type="stmt"/>
         <line num="23" count="0" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
-        <line num="25" count="8" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
         <line num="26" count="8" type="stmt"/>
         <line num="27" count="8" type="stmt"/>
         <line num="28" count="8" type="stmt"/>
         <line num="29" count="8" type="stmt"/>
         <line num="30" count="8" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
+        <line num="31" count="8" type="stmt"/>
         <line num="32" count="0" type="stmt"/>
         <line num="33" count="0" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
@@ -1521,10 +1520,11 @@
         <line num="39" count="0" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
         <line num="41" count="0" type="stmt"/>
-        <line num="42" count="8" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
         <line num="43" count="8" type="stmt"/>
-        <line num="44" count="1" type="stmt"/>
+        <line num="44" count="8" type="stmt"/>
         <line num="45" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
       </file>
       <file name="dropThumb.ts" path="/srv/http/MetaLampSliderPlugin/src/View/ViewElements/Thumb/utils/dropThumb.ts">
         <metrics statements="21" coveredstatements="13" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>

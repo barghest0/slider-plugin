@@ -13,7 +13,6 @@ class Observer {
         if (eventInObject) {
             eventInObject.push(event);
         } else {
-
             this.subscribers[name] = [event];
         }
     }

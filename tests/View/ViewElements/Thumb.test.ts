@@ -5,6 +5,8 @@ import checkParams from "../../../src/Presenter/PresenterModules/checkParams";
 import View from "../../../src/View/View";
 import Thumb from "../../../src/View/ViewElements/Thumb/Thumb";
 import handleDrag from '../../../src/View/ViewElements/Thumb/utils/handleDrag';
+import ThumbModel from '../../../src/Model/ThumbModel';
+import TrackModel from '../../../src/Model/TrackModel';
 
 
 describe("Thumb test", () => {
@@ -12,7 +14,8 @@ describe("Thumb test", () => {
 	const root = ".slider-1";
 	const view = new View(root);
 	const thumb = new Thumb(view);
-
+	const thumbModel = new ThumbModel(root, 0);
+	const trackModel = new TrackModel(root);
 	thumb.createThumb(0);
 
 
@@ -67,11 +70,28 @@ describe("Thumb test", () => {
 		const fn = jest.fn();
 		thumb.subscribe("UpdateThumbModel", fn);
 		thumb.subscribe("UpdateTrackModelFill", fn);
-		jest.spyOn(thumb, 'notify');
+		const notify = jest.spyOn(thumb, 'notify');
 		const DOMSlider = screen.getByTestId("slider-1");
-		DOMSlider.dispatchEvent(new MouseEvent("mousedown"));
+		const DOMThumb = screen.getByTestId('test-thumb-0');
+		DOMThumb.dispatchEvent(new MouseEvent("mousedown"));
 		document.dispatchEvent(new MouseEvent("mousemove"));
+		expect(notify).toBeCalled();
 	});
+
+	// test('correct handle drag', () => {
+	// 	const fn = jest.fn();
+	// 	thumb.subscribe("UpdateThumbModel", fn);
+	// 	thumb.subscribe("UpdateTrackModelFill", fn);
+	// 	jest.spyOn(thumb, 'notify');
+	// 	const DOMSlider = screen.getByTestId("slider-1");
+	// 	DOMSlider.dispatchEvent(new MouseEvent("mousedown"));
+	// 	document.dispatchEvent(new MouseEvent("mousemove"));
+	// 	expect();
+	// 	thumbModel.subscribe('UpdateThumbView', fn);
+	// 	trackModel.subscribe('UpdateTrackFillView', fn);
+
+
+	// });
 
 
 });

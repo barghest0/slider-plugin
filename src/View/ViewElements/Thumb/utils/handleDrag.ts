@@ -1,7 +1,8 @@
 import calculateCursorCoordinate from '../../../ViewModules/calculateCursorCoordinate';
 import Thumb from '../Thumb';
-const handleDrag = function (e: JQuery.MouseMoveEvent | JQuery.TouchMoveEvent) {
-	let { thisThumb, stance } = e.data as { thisThumb: Thumb, stance: number; };
+const handleDrag = function (e: any, { thisThumb, stance }: { thisThumb: Thumb, stance: number; }) {
+
+
 	let direction = thisThumb.view.direction;
 	let coord = direction === "horizontal" ? e.clientX! : e.clientY!;
 
