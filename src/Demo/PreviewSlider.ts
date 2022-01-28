@@ -1,48 +1,53 @@
-import { SliderParams, UserSliderParams } from "../GlobalUtils/interfaces";
-import Observer from "../Observer/Observer";
-import Slider from "../Slider";
-import Panel from "./Panel/Panel";
-import checkParams from "../Presenter/PresenterModules/checkParams";
+import { SliderParams, UserSliderParams } from '../GlobalUtils/interfaces';
+import Observer from '../Observer/Observer';
+import Slider from '../Slider';
+import Panel from './Panel/Panel';
+import checkParams from '../Presenter/PresenterModules/checkParams';
 
 class PreviewSlider {
-	public panel: Panel;
-	public slider: Slider;
-	public params: SliderParams;
-	public root: string;
-	constructor(root: string, params: UserSliderParams) {
-		this.root = root;
-		this.params = checkParams(params);
-		this.panel = new Panel(this.params, root, this);
-		this.slider = new Slider(root, this.params);
-		this.init(this.params, "init");
-		this.panel.handleChangeFormValues();
-	}
-	public init(params: SliderParams, mode: string) {
-		if (mode === "rebuild") {
-			this.slider.init(params, mode);
-		}
-		this.panel.initializeInputs(this.root);
-		this.panel.initializeFormValues(params);
-		this.subscribe();
-	}
-	
-	public updatePanelValues(value: number, stance: number) {
-		if (stance === 0) {
-			this.params.value[stance] = value;
-			this.panel.firstValueInput!.value = this.params.value[stance].toFixed(this.params.decimalPlaces);
-		} else {
-			this.params.value[stance] = value;
-			this.panel.secondValueInput!.value = this.params.value[stance].toFixed(this.params.decimalPlaces);
-		}
-	}
+  public panel: Panel;
 
-	private subscribe() { 
-		this.slider.presenter.thumbs.forEach((item) => {
-			item.subscribe(
-				"UpdatePanelValues",
-				this.updatePanelValues.bind(this)
-			);
-		});
-	}
+  public slider: Slider;
+
+  public params: SliderParams;
+
+  public root: string;
+
+  constructor(root: string, params: UserSliderParams) {
+    this.root = root;
+    this.params = checkParams(params);
+    this.panel = new Panel(this.params, root, this);
+    this.slider = new Slider(root, this.params);
+    this.init(this.params, 'init');
+    this.panel.handleChangeFormValues();
+  }
+
+  public init(params: SliderParams, mode: string) {
+    if (mode === 'rebuild') {
+      this.slider.init(params, mode);
+    }
+    this.panel.initializeInputs(this.root);
+    this.panel.initializeFormValues(params);
+    this.subscribe();
+  }
+
+  public updatePanelValues(value: number, stance: number) {
+    if (stance === 0) {
+      this.params.value[stance] = value;
+			this.panel.firstValueInput!.value = this.params.value[stance].toFixed(this.params.decimalPlaces);
+    } else {
+      this.params.value[stance] = value;
+			this.panel.secondValueInput!.value = this.params.value[stance].toFixed(this.params.decimalPlaces);
+    }
+  }
+
+  private subscribe() {
+    this.slider.presenter.thumbs.forEach((item) => {
+      item.subscribe(
+        'UpdatePanelValues',
+        this.updatePanelValues.bind(this),
+      );
+    });
+  }
 }
 export default PreviewSlider;

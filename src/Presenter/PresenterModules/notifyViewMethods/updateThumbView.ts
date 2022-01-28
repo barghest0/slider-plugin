@@ -1,5 +1,4 @@
-import Presenter from "../../Presenter";
-
+import Presenter from '../../Presenter';
 
 const updateThumbView = function (this: Presenter, value: number, offset: number, stance: number) {
 	this.view.thumbView.setOffset(offset, stance);

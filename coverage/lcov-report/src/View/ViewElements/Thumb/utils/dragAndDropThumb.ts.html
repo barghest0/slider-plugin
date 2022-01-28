@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/View/ViewElements/Fill/utils/updateFill.ts</title>
+    <title>Code coverage report for src/View/ViewElements/Thumb/utils/dragAndDropThumb.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">src/View/ViewElements/Fill/utils</a> updateFill.ts</h1>
+        <h1><a href="../../../../../index.html">All files</a> / <a href="index.html">src/View/ViewElements/Thumb/utils</a> dragAndDropThumb.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">69.23% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>21/21</span>
+                <span class='fraction'>18/26</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/3</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
-                <span class="quiet">Functions</span>
                 <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">33.33% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>1/3</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">69.23% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>21/21</span>
+                <span class='fraction'>18/26</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -83,47 +83,62 @@
 <a name='L18'></a><a href='#L18'>18</a>
 <a name='L19'></a><a href='#L19'>19</a>
 <a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import { Direction } from '../../../../GlobalUtils/interfaces';
-import Fill from '../Fill';
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import Thumb from '../Thumb';
+import handleDrag from './handleDrag';
 &nbsp;
 &nbsp;
 &nbsp;
-const updateFill = function (this: Fill, direction: Direction) {
+const dragAndDropThumb = function (this: Thumb, stance: number) {
+    const rootElement = document.querySelector(this.view.root);
+    console.log(document.querySelector(this.view.root))
 &nbsp;
-    if (this.view.isRange) {
-        $(`${this.view.root} .slider__fill_${direction}`).css({
-            [this.view.offsetDirection]:
-                this.getOffset() + "%",
-            [this.view.fillDirection]: this.getSize() + "%",
-        });
-    } else {
-        $(`${this.view.root} .slider__fill_${direction}`).css({
-            [this.view.fillDirection]: this.getSize() + "%",
-        });
-    }
+    const handleMouseMove = (<span class="fstat-no" title="function not covered" >e: any) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        handleDrag(e, { thisThumb: this, stance });</span>
+<span class="cstat-no" title="statement not covered" >    };</span>
+    const handleMouseDown = (<span class="fstat-no" title="function not covered" >event: any) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        event.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >        event.stopPropagation();</span>
+<span class="cstat-no" title="statement not covered" >        document.addEventListener('mousemove', handleMouseMove);</span>
+<span class="cstat-no" title="statement not covered" >    };</span>
+&nbsp;
+    rootElement!.querySelector(`.slider__thumb-${stance}`)!.addEventListener('mousedown', handleMouseDown);
+&nbsp;
+    document.addEventListener("mouseup", () =&gt; {
+<span class="cstat-no" title="statement not covered" >        document.removeEventListener('mousemove', handleMouseMove);</span>
+<span class="cstat-no" title="statement not covered" >    });</span>
 };
 &nbsp;
-export default updateFill;</pre></td></tr></table></pre>
+export default dragAndDropThumb;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->

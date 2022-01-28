@@ -9,7 +9,7 @@ interface Ends {
 	max: number;
 }
 
-type Direction = "vertical" | "horizontal";
+type Direction = 'vertical' | 'horizontal';
 type onChange = (params: SliderParams) => void;
 interface SliderParams {
 	[index: string]: number | number[] | string | boolean | onChange | undefined | any;

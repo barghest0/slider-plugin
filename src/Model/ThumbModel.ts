@@ -1,133 +1,146 @@
-import Observer from "../Observer/Observer";
-import { Direction, Ends, SliderThumbState } from "../GlobalUtils/interfaces";
-import prepareOffset from "./ThumbModelModules/prepareOffset";
-import endsValidation from "./ThumbModelModules/endsValidation";
+import Observer from '../Observer/Observer';
+import { Direction, Ends, SliderThumbState } from '../GlobalUtils/interfaces';
+import prepareOffset from './ThumbModelModules/prepareOffset';
+import endsValidation from './ThumbModelModules/endsValidation';
 
 class ThumbModel extends Observer {
-	private root: string;
-	private offset: number;
-	private value: number;
-	private step: number;
-	private stance: number;
-	private stepCount: number;
-	private stepPercent: number;
-	private stepOffset: number;
-	private cursorOffset: number;
-	private isDecimal: boolean;
-	private decimalPlaces: number;
-	private endsValidation: (ends: Ends, direction: Direction) => void;
-	private prepareOffset: (offset: number, direction: Direction) => number;
-	constructor(root: string, stance: number) {
-		super();
-		this.root = root;
-		this.stance = stance;
-		this.step = 1;
-		this.value = 0;
-		this.stepCount = 0;
-		this.stepPercent = 0;
-		this.offset = 0;
-		this.stepOffset = 0;
-		this.cursorOffset = 0;
-		this.isDecimal = false;
-		this.decimalPlaces = 0;
-		this.endsValidation = endsValidation.bind(this);
-		this.prepareOffset = prepareOffset.bind(this);
-	}
+  private root: string;
 
-	public setStep(step: number, ends: Ends) {
-		this.step = step;
-		this.stepCount = (ends.max - ends.min) / step;
-		this.stepPercent = 100 / this.stepCount;
-	}
+  private offset: number;
 
-	private calculateValue(ends: Ends) {
+  private value: number;
 
-		return (this.stepOffset / this.stepPercent) * this.step + ends.min;
-	}
+  private step: number;
 
-	public setValue(value: number) {
-		this.value = value;
-	}
+  private stance: number;
 
-	public setStance(stance: number) {
-		this.stance = stance;
-	}
-	public setIsDecimal(isDecimal: boolean, decimalPlaces: number) {
-		this.isDecimal = isDecimal;
-		this.decimalPlaces = decimalPlaces;
-	}
+  private stepCount: number;
 
-	public calculateOffset(ends: Ends, direction: Direction) {
-		return this.prepareOffset(
-			(this.value - ends.min) / ((ends.max - ends.min) / 100),
-			direction
-		);
-	}
+  private stepPercent: number;
 
-	public setOffset(offset: number) {
-		this.offset = offset;
-	}
+  private stepOffset: number;
 
-	public setStepOffset(stepOffset: number) {
-		this.stepOffset = stepOffset;
-	}
-	private calculateStepOffset(cursorOffset: number, stepPercent: number) {
-		return (
-			Math.round(cursorOffset / stepPercent) * stepPercent
-		);
-	}
+  private cursorOffset: number;
 
+  private isDecimal: boolean;
 
-	public setCursorOffset(cursorOffset: number) {
-		this.cursorOffset = cursorOffset;
-	}
+  private decimalPlaces: number;
 
-	public updateThumbValue(
-		stance: number,
-		ends: Ends,
-		cursorOffset: number,
-		direction: Direction,
-	) {
-		if (direction === "horizontal") this.setCursorOffset(cursorOffset);
-		else this.setCursorOffset(100 - cursorOffset);
+  private endsValidation: (ends: Ends, direction: Direction) => void;
 
-		this.setStepOffset(this.calculateStepOffset(this.cursorOffset, this.stepPercent));
-		this.setValue(this.calculateValue(ends));
+  private prepareOffset: (offset: number, direction: Direction) => number;
 
-		this.setOffset(this.calculateOffset(ends, direction));
-		this.endsValidation(ends, direction);
+  constructor(root: string, stance: number) {
+    super();
+    this.root = root;
+    this.stance = stance;
+    this.step = 1;
+    this.value = 0;
+    this.stepCount = 0;
+    this.stepPercent = 0;
+    this.offset = 0;
+    this.stepOffset = 0;
+    this.cursorOffset = 0;
+    this.isDecimal = false;
+    this.decimalPlaces = 0;
+    this.endsValidation = endsValidation.bind(this);
+    this.prepareOffset = prepareOffset.bind(this);
+  }
 
+  public setStep(step: number, ends: Ends) {
+    this.step = step;
+    this.stepCount = (ends.max - ends.min) / step;
+    this.stepPercent = 100 / this.stepCount;
+  }
 
-		this.notify(
-			"UpdateThumbView",
-			this.value,
-			this.offset,
-			stance,
-			this.cursorOffset
-		);
-		this.notify("UpdateTipView", stance, this.offset, this.value);
-		this.notify("UpdatePanelValues", this.value, stance);
-	}
+  private calculateValue(ends: Ends) {
+    return (this.stepOffset / this.stepPercent) * this.step + ends.min;
+  }
 
-	public getValue() {
-		return this.value;
-	}
-	public getOffset() {
-		return this.offset;
-	}
+  public setValue(value: number) {
+    this.value = value;
+  }
 
-	public getState(): SliderThumbState {
-		return {
-			step: this.step,
-			stepCount: this.stepCount,
-			stepPercent: this.stepPercent,
-			value: this.value,
-			offset: this.offset,
-			stepOffset: this.stepOffset,
-			isDecimal: this.isDecimal,
-			decimalPlaces: this.decimalPlaces,
-		};
-	}
+  public setStance(stance: number) {
+    this.stance = stance;
+  }
+
+  public setIsDecimal(isDecimal: boolean, decimalPlaces: number) {
+    this.isDecimal = isDecimal;
+    this.decimalPlaces = decimalPlaces;
+  }
+
+  public calculateOffset(ends: Ends, direction: Direction) {
+    return this.prepareOffset(
+      (this.value - ends.min) / ((ends.max - ends.min) / 100),
+      direction,
+    );
+  }
+
+  public setOffset(offset: number) {
+    this.offset = offset;
+  }
+
+  public setStepOffset(stepOffset: number) {
+    this.stepOffset = stepOffset;
+  }
+
+  public calculateStepOffset() {
+    return (
+      Math.round(this.cursorOffset / this.stepPercent) * this.stepPercent
+    );
+  }
+
+  public setCursorOffset(cursorOffset: number) {
+    this.cursorOffset = cursorOffset;
+  }
+
+  public updateThumbValue(
+    stance: number,
+    ends: Ends,
+    cursorOffset: number,
+    direction: Direction,
+  ) {
+    if (direction === 'horizontal') this.setCursorOffset(cursorOffset);
+    else this.setCursorOffset(100 - cursorOffset);
+
+    this.setStepOffset(this.calculateStepOffset());
+    this.setValue(this.calculateValue(ends));
+
+    this.setOffset(this.calculateOffset(ends, direction));
+    this.endsValidation(ends, direction);
+
+    this.notify(
+      'UpdateThumbView',
+      this.value,
+      this.offset,
+      stance,
+      this.cursorOffset,
+    );
+    this.notify('UpdateTipView', stance, this.offset, this.value);
+    this.notify('UpdatePanelValues', this.value, stance);
+  }
+
+  public getValue() {
+    return this.value;
+  }
+
+  public getOffset() {
+    return this.offset;
+  }
+
+  public getState(): SliderThumbState {
+    return {
+      step: this.step,
+      stepCount: this.stepCount,
+      stepPercent: this.stepPercent,
+      value: this.value,
+      offset: this.offset,
+      stepOffset: this.stepOffset,
+      isDecimal: this.isDecimal,
+      decimalPlaces: this.decimalPlaces,
+    };
+  }
 }
 
 export default ThumbModel;

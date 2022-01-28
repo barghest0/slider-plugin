@@ -1,31 +1,30 @@
-import { SubscribeEvent, Subscribers } from "../GlobalUtils/interfaces";
+import { SubscribeEvent, Subscribers } from '../GlobalUtils/interfaces';
 
 class Observer {
-    private subscribers: Subscribers;
-    constructor(subscribers: Subscribers = {}) {
-        this.subscribers = subscribers;
+  private subscribers: Subscribers;
+
+  constructor(subscribers: Subscribers = {}) {
+    this.subscribers = subscribers;
+  }
+
+  public subscribe(name: string, event: SubscribeEvent) {
+    const eventInObject = this.subscribers[name];
+
+    if (eventInObject) {
+      eventInObject.push(event);
+    } else {
+      this.subscribers[name] = [event];
     }
+  }
 
-    public subscribe(name: string, event: SubscribeEvent) {
+  public unsubscribe(name: string, event: SubscribeEvent) {
+    this.subscribers[name].filter((subscriberFunc: SubscribeEvent) => event != subscriberFunc);
+  }
 
-        const eventInObject = this.subscribers[name];
-
-        if (eventInObject) {
-            eventInObject.push(event);
-        } else {
-            this.subscribers[name] = [event];
-        }
-    }
-
-    public unsubscribe(name: string, event: SubscribeEvent) {
-        this.subscribers[name].filter((subscriberFunc: SubscribeEvent) => event != subscriberFunc);
-    }
-
-    public notify(name: string, ...args: any[]) {
-
-        this.subscribers[name].forEach((subscriberFunc: SubscribeEvent) => {
-            subscriberFunc(...args);
-        });
-    }
+  public notify(name: string, ...args: any[]) {
+    this.subscribers[name].forEach((subscriberFunc: SubscribeEvent) => {
+      subscriberFunc(...args);
+    });
+  }
 }
 export default Observer;

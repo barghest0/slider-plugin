@@ -1,173 +1,180 @@
-import Observer from "../Observer/Observer";
+import Observer from '../Observer/Observer';
 import {
-	Direction,
-	Ends,
-	SliderFillState,
-	SliderParams,
-	SliderTrackState,
-} from "../GlobalUtils/interfaces";
+  Direction,
+  Ends,
+  SliderFillState,
+  SliderParams,
+  SliderTrackState,
+} from '../GlobalUtils/interfaces';
 
 class TrackModel extends Observer {
-	private root: string;
-	public isRange: boolean;
-	public direction: Direction;
-	public ends: Ends;
-	public size: number;
-	public fillSize: number;
-	public fillOffset: number;
-	public hasFill: boolean;
-	public hasTips: boolean;
-	public hasScale: boolean;
-	constructor(root: string) {
-		super();
-		this.root = root;
-		this.ends = { min: 1, max: 100 };
-		this.size = 200;
-		this.isRange = false;
-		this.direction = "horizontal";
-		this.fillSize = 0;
-		this.fillOffset = 0;
-		this.hasFill = true;
-		this.hasTips = true;
-		this.hasScale = true;
-	}
+  private root: string;
 
-	public setEnds({ min, max }: Ends) {
-		this.ends = { min, max };
-	}
+  public isRange: boolean;
 
-	public setSize(size: number) {
-		this.size = size;
-	}
-	public setIsRange(isRange: boolean) {
-		this.isRange = isRange;
-	}
+  public direction: Direction;
 
-	public setDirection(direction: Direction) {
-		this.direction = direction;
-	}
+  public ends: Ends;
 
-	public setSubViews(hasFill: boolean, hasTips: boolean, hasScale: boolean) {
-		this.hasScale = hasScale;
-		this.hasTips = hasTips;
-		this.hasFill = hasFill;
-	}
+  public size: number;
 
-	public calculateFillSize(direction: Direction) {
-		let fillSize = 0;
+  public fillSize: number;
 
-		if (this.isRange) {
-			if (direction === "horizontal") {
-				fillSize +=
-					parseInt($(`${this.root} .slider__thumb-1`).css("left")) -
-					parseInt($(`${this.root} .slider__thumb-0`).css("left"));
-			} else {
-				fillSize +=
-					parseInt($(`${this.root} .slider__thumb-0`).css("top")) -
-					parseInt($(`${this.root} .slider__thumb-1`).css("top"));
-			}
-		} else {
+  public fillOffset: number;
 
-			fillSize += parseInt(
-				$(`${this.root} .slider__thumb-0`).css(
-					direction === "horizontal" ? "left" : "bottom"
-				)
-			);
-			if (direction === "vertical") {
-				fillSize += parseInt(
-					$(`${this.root} .slider__thumb-0`).css("height")
-				);
-			}
-		}
+  public hasFill: boolean;
 
-		return +(fillSize / this.size * 100).toFixed(1);
-	}
+  public hasTips: boolean;
 
-	public setFillSize(fillSize: number) {
-		this.fillSize = fillSize;
-	}
+  public hasScale: boolean;
 
-	public calculateFillOffset(direction: Direction) {
-		let fillOffset = 0;
-		if (this.isRange) {
-			if (direction === "horizontal") {
-				fillOffset += parseInt(
-					$(`${this.root} .slider__thumb-0`).css("left"),
-					10
-				);
-			} else {
-				fillOffset += parseInt(
-					$(`${this.root} .slider__thumb-1`).css("top"),
-					10
-				);
-			}
-		} else {
-			fillOffset = 0;
-		}
-		return +(fillOffset / this.size * 100).toFixed(1);
-	}
+  constructor(root: string) {
+    super();
+    this.root = root;
+    this.ends = { min: 1, max: 100 };
+    this.size = 200;
+    this.isRange = false;
+    this.direction = 'horizontal';
+    this.fillSize = 0;
+    this.fillOffset = 0;
+    this.hasFill = true;
+    this.hasTips = true;
+    this.hasScale = true;
+  }
 
-	public setFillOffset(fillOffset: number) {
-		this.fillOffset = fillOffset;
-	}
+  public setEnds({ min, max }: Ends) {
+    this.ends = { min, max };
+  }
 
-	public updateTrackFill(direction: Direction) {
-		this.setFillSize(this.calculateFillSize(direction));
-		this.setFillOffset(this.calculateFillOffset(direction));
+  public setSize(size: number) {
+    this.size = size;
+  }
 
+  public setIsRange(isRange: boolean) {
+    this.isRange = isRange;
+  }
 
-		this.notify("UpdateTrackFillView", this.fillSize, this.fillOffset, direction);
-	}
+  public setDirection(direction: Direction) {
+    this.direction = direction;
+  }
 
-	public prepareChooseStance(cursorOffset: number) {
-		let stance = 0;
-		const chooseCorrectStance =
-			cursorOffset > this.fillSize / 2 + this.fillOffset;
+  public setSubViews(hasFill: boolean, hasTips: boolean, hasScale: boolean) {
+    this.hasScale = hasScale;
+    this.hasTips = hasTips;
+    this.hasFill = hasFill;
+  }
 
-		if (chooseCorrectStance) stance = 1;
+  public calculateFillSize(direction: Direction) {
+    let fillSize = 0;
 
-		if (this.direction === "vertical") stance = +!stance;
+    if (this.isRange) {
+      if (direction === 'horizontal') {
+        fillSize
+					+= parseInt($(`${this.root} .slider__thumb-1`).css('left'))
+					- parseInt($(`${this.root} .slider__thumb-0`).css('left'));
+      } else {
+        fillSize
+					+= parseInt($(`${this.root} .slider__thumb-0`).css('top'))
+					- parseInt($(`${this.root} .slider__thumb-1`).css('top'));
+      }
+    } else {
+      fillSize += parseInt(
+        $(`${this.root} .slider__thumb-0`).css(
+          direction === 'horizontal' ? 'left' : 'bottom',
+        ),
+      );
+      if (direction === 'vertical') {
+        fillSize += parseInt(
+          $(`${this.root} .slider__thumb-0`).css('height'),
+        );
+      }
+    }
 
-		if (!this.isRange) {
-			stance = 0;
-		}
-		console.log('prepareChoose');
+    return +(fillSize / this.size * 100).toFixed(1);
+  }
 
-		this.notify(
-			"UpdateThumbModel",
-			stance,
-			cursorOffset,
-			this.direction,
-			this.size
-		);
-	}
+  public setFillSize(fillSize: number) {
+    this.fillSize = fillSize;
+  }
 
-	public getState(): SliderTrackState {
-		return {
-			ends: this.ends,
-			size: this.size,
-			isRange: this.isRange,
-			direction: this.direction,
-			hasFill: this.hasFill,
-			hasTips: this.hasTips,
-			hasScale: this.hasScale,
-		};
-	}
+  public calculateFillOffset(direction: Direction) {
+    let fillOffset = 0;
+    if (this.isRange) {
+      if (direction === 'horizontal') {
+        fillOffset += parseInt(
+          $(`${this.root} .slider__thumb-0`).css('left'),
+          10,
+        );
+      } else {
+        fillOffset += parseInt(
+          $(`${this.root} .slider__thumb-1`).css('top'),
+          10,
+        );
+      }
+    } else {
+      fillOffset = 0;
+    }
+    return +((fillOffset / this.size) * 100).toFixed(1);
+  }
 
-	public getFillSize() {
-		return this.fillSize;
-	}
+  public setFillOffset(fillOffset: number) {
+    this.fillOffset = fillOffset;
+  }
 
-	public getFillOffset() {
-		return this.fillOffset;
-	}
+  public updateTrackFill(direction: Direction) {
+    this.setFillSize(this.calculateFillSize(direction));
+    this.setFillOffset(this.calculateFillOffset(direction));
 
-	public getFillState(): SliderFillState {
-		return {
-			fillSize: this.getFillSize(),
-			fillOffset: this.getFillOffset(),
-		};
-	}
+    this.notify('UpdateTrackFillView', this.fillSize, this.fillOffset, direction);
+  }
+
+  public prepareChooseStance(cursorOffset: number) {
+    let stance = 0;
+    const chooseCorrectStance = cursorOffset > this.fillSize / 2 + this.fillOffset;
+
+    if (chooseCorrectStance) stance = 1;
+
+    if (this.direction === 'vertical') stance = +!stance;
+
+    if (!this.isRange) {
+      stance = 0;
+    }
+
+    this.notify(
+      'UpdateThumbModel',
+      stance,
+      cursorOffset,
+      this.direction,
+      this.size,
+    );
+  }
+
+  public getState(): SliderTrackState {
+    return {
+      ends: this.ends,
+      size: this.size,
+      isRange: this.isRange,
+      direction: this.direction,
+      hasFill: this.hasFill,
+      hasTips: this.hasTips,
+      hasScale: this.hasScale,
+    };
+  }
+
+  public getFillSize() {
+    return this.fillSize;
+  }
+
+  public getFillOffset() {
+    return this.fillOffset;
+  }
+
+  public getFillState(): SliderFillState {
+    return {
+      fillSize: this.getFillSize(),
+      fillOffset: this.getFillOffset(),
+    };
+  }
 }
 
 export default TrackModel;
