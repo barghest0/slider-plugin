@@ -16,6 +16,8 @@ describe('Thumb test', () => {
   const thumbModel = new ThumbModel(root, 0);
   const trackModel = new TrackModel(root);
   thumb.createThumb(0);
+  thumb.createThumb(1);
+
 
   test('constructor test', () => {
     expect(thumb).toHaveProperty('view');

@@ -1,11 +1,10 @@
 import '@testing-library/jest-dom';
-import { waitFor } from "@testing-library/dom";
+import { screen, waitFor } from "@testing-library/dom";
 import { DEFAULT_SLIDER_PARAMS } from "../../src/GlobalUtils/constants";
 import { SliderParams } from "../../src/GlobalUtils/interfaces";
 import Presenter from "../../src/Presenter/Presenter";
 import checkParams from "../../src/Presenter/PresenterModules/checkParams";
-import Panel from '../../src/Demo/Panel/Panel';
-import PreviewSlider from '../../src/Demo/PreviewSlider';
+
 
 
 
@@ -23,8 +22,6 @@ describe("Presenter test", () => {
 	presenter.thumbs.forEach(thumb => {
 		thumb.subscribe("UpdatePanelValues", fn);
 	});
-
-
 
 	test("constructor test", () => {
 		expect(presenter).toHaveProperty("view");
@@ -53,14 +50,23 @@ describe("Presenter test", () => {
 		expect(presenter.thumbs[0].getOffset()).toBe(80);
 	});
 
+	test('correct update track fill model', () => {
+		presenter.view.thumbView.notify("UpdateThumbModel", 0, 80, 'horizontal');
+		presenter.view.thumbView.notify("UpdateTrackFillModel", 'horizontal');
+	});
+	test('correct update track fill model before click', () => {
+		presenter.view.trackView.notify("UpdateThumbModelBeforeTrackClick", 80);
+	});
+
 	test("correct update thumb view", () => {
 		presenter.thumbs[0].notify("UpdateThumbView", 100, 50, 0);
 		expect(presenter.view.thumbView.value[0]).toBe(100);
+		expect(presenter.view.thumbView.offset[0]).toBe(50);
 		expect(presenter.view.thumbView.activeStance).toBe(0);
 		presenter.thumbs[1].notify("UpdateThumbView", 150, 70, 1);
 		expect(presenter.view.thumbView.value[1]).toBe(150);
+		expect(presenter.view.thumbView.offset[1]).toBe(70);
 		expect(presenter.view.thumbView.activeStance).toBe(1);
-
 	});
 
 	test("correct update tip view", () => {
@@ -71,12 +77,9 @@ describe("Presenter test", () => {
 	});
 
 	test("correct update track fill view", () => {
-
 		presenter.trackModel.notify("UpdateTrackFillView", 100, 10, "horizontal");
 		expect(presenter.view.fillView.getSize()).toBe(100);
 		expect(presenter.view.fillView.getOffset()).toBe(10);
-
-
 	});
 
 	test("correct check value params", () => {

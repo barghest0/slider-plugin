@@ -70,22 +70,22 @@ class TrackModel extends Observer {
     if (this.isRange) {
       if (direction === 'horizontal') {
         fillSize
-          += parseInt($(`${this.root} .slider__thumb-1`).css('left'))
-          - parseInt($(`${this.root} .slider__thumb-0`).css('left'));
+          += parseInt($(`${this.root} .slider__thumb-1`).css('left'), 10)
+          - parseInt($(`${this.root} .slider__thumb-0`).css('left'), 10);
       } else {
         fillSize
-          += parseInt($(`${this.root} .slider__thumb-0`).css('top'))
-          - parseInt($(`${this.root} .slider__thumb-1`).css('top'));
+          += parseInt($(`${this.root} .slider__thumb-0`).css('top'), 10)
+          - parseInt($(`${this.root} .slider__thumb-1`).css('top'), 10);
       }
     } else {
       fillSize += parseInt(
         $(`${this.root} .slider__thumb-0`).css(
           direction === 'horizontal' ? 'left' : 'bottom',
-        ),
+        ), 10
       );
       if (direction === 'vertical') {
         fillSize += parseInt(
-          $(`${this.root} .slider__thumb-0`).css('height'),
+          $(`${this.root} .slider__thumb-0`).css('height'), 10
         );
       }
     }

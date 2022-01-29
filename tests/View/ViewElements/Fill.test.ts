@@ -32,7 +32,6 @@ describe("Fill test", () => {
 
 	});
 
-
 	test("correct updateFill with range test", () => {
 		view.isRange = true;
 		fill.setOffset(20);
