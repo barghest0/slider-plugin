@@ -64,8 +64,13 @@ describe('Thumb test', () => {
 
   test('correct notify before drag thumb test', () => {
     const fn = jest.fn();
+    thumb.dragAndDropThumb(0);
     thumb.subscribe('UpdateThumbModel', fn);
-    thumb.subscribe('UpdateTrackModelFill', fn);
+    thumb.subscribe('UpdateTrackFillModel', fn);
+    thumbModel.subscribe("UpdatePanelValues", fn);
+    thumbModel.subscribe("UpdateThumbView", fn);
+    thumbModel.subscribe("UpdateTipView", fn);
+    trackModel.subscribe('UpdateTrackFillView', fn);
     const notify = jest.spyOn(thumb, 'notify');
 
     const DOMThumb = screen.getByTestId('test-thumb-0');
@@ -74,17 +79,5 @@ describe('Thumb test', () => {
     expect(notify).toBeCalled();
   });
 
-  // test('correct handle drag', () => {
-  // 	const fn = jest.fn();
-  // 	thumb.subscribe("UpdateThumbModel", fn);
-  // 	thumb.subscribe("UpdateTrackModelFill", fn);
-  // 	jest.spyOn(thumb, 'notify');
-  // 	const DOMSlider = screen.getByTestId("slider-1");
-  // 	DOMSlider.dispatchEvent(new MouseEvent("mousedown"));
-  // 	document.dispatchEvent(new MouseEvent("mousemove"));
-  // 	expect();
-  // 	thumbModel.subscribe('UpdateThumbView', fn);
-  // 	trackModel.subscribe('UpdateTrackFillView', fn);
 
-  // });
 });

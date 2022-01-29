@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">85.46% </span>
+                <span class="strong">86.66% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>147/172</span>
+                <span class='fraction'>156/180</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">85.46% </span>
+                <span class="strong">86.66% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>147/172</span>
+                <span class='fraction'>156/180</span>
             </div>
         
             
@@ -235,7 +235,15 @@
 <a name='L170'></a><a href='#L170'>170</a>
 <a name='L171'></a><a href='#L171'>171</a>
 <a name='L172'></a><a href='#L172'>172</a>
-<a name='L173'></a><a href='#L173'>173</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -256,18 +264,29 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -310,7 +329,6 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -356,8 +374,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -407,175 +423,183 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Observer from "../Observer/Observer";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Observer from '../Observer/Observer';
 import {
-	Direction,
-	Ends,
-	SliderFillState,
-	SliderParams,
-	SliderTrackState,
-} from "../GlobalUtils/interfaces";
+  Direction,
+  Ends,
+  SliderFillState,
+  SliderParams,
+  SliderTrackState,
+} from '../GlobalUtils/interfaces';
 &nbsp;
 class TrackModel extends Observer {
-	private root: string;
-	public isRange: boolean;
-	public direction: Direction;
-	public ends: Ends;
-	public size: number;
-	public fillSize: number;
-	public fillOffset: number;
-	public hasFill: boolean;
-	public hasTips: boolean;
-	public hasScale: boolean;
-	constructor(root: string) {
-		super();
-		this.root = root;
-		this.ends = { min: 1, max: 100 };
-		this.size = 200;
-		this.isRange = false;
-		this.direction = "horizontal";
-		this.fillSize = 0;
-		this.fillOffset = 0;
-		this.hasFill = true;
-		this.hasTips = true;
-		this.hasScale = true;
-	}
+  private root: string;
 &nbsp;
-	public setEnds({ min, max }: Ends) {
-		this.ends = { min, max };
-	}
+  public isRange: boolean;
 &nbsp;
-	public setSize(size: number) {
-		this.size = size;
-	}
-	public setIsRange(isRange: boolean) {
-		this.isRange = isRange;
-	}
+  public direction: Direction;
 &nbsp;
-	public setDirection(direction: Direction) {
-		this.direction = direction;
-	}
+  public ends: Ends;
 &nbsp;
-	public setSubViews(hasFill: boolean, hasTips: boolean, hasScale: boolean) {
-		this.hasScale = hasScale;
-		this.hasTips = hasTips;
-		this.hasFill = hasFill;
-	}
+  public size: number;
 &nbsp;
-	public calculateFillSize(direction: Direction) {
-		let fillSize = 0;
+  public fillSize: number;
 &nbsp;
-		if (this.isRange) {
-			if (direction === "horizontal") {
-				fillSize +=
-					parseInt($(`${this.root} .slider__thumb-1`).css("left")) -
-					parseInt($(`${this.root} .slider__thumb-0`).css("left"));
-			} else {
-				fillSize +=
-					parseInt($(`${this.root} .slider__thumb-0`).css("top")) -
-					parseInt($(`${this.root} .slider__thumb-1`).css("top"));
-			}
-		} else {
+  public fillOffset: number;
 &nbsp;
-			fillSize += parseInt(
-				$(`${this.root} .slider__thumb-0`).css(
-					direction === "horizontal" ? "left" : "bottom"
-				)
-			);
-			if (direction === "vertical") {
-				fillSize += parseInt(
-					$(`${this.root} .slider__thumb-0`).css("height")
-				);
-			}
-		}
+  public hasFill: boolean;
 &nbsp;
-		return +(fillSize / this.size * 100).toFixed(1);
-	}
+  public hasTips: boolean;
 &nbsp;
-	public setFillSize(fillSize: number) {
-		this.fillSize = fillSize;
-	}
+  public hasScale: boolean;
 &nbsp;
-	public calculateFillOffset(direction: Direction) {
-		let fillOffset = 0;
-		if (this.isRange) {
-			if (direction === "horizontal") {
-				fillOffset += parseInt(
-					$(`${this.root} .slider__thumb-0`).css("left"),
-					10
-				);
-			} else {
-				fillOffset += parseInt(
-					$(`${this.root} .slider__thumb-1`).css("top"),
-					10
-				);
-			}
-		} else {
-			fillOffset = 0;
-		}
-		return +(fillOffset / this.size * 100).toFixed(1);
-	}
+  constructor(root: string) {
+    super();
+    this.root = root;
+    this.ends = { min: 1, max: 100 };
+    this.size = 200;
+    this.isRange = false;
+    this.direction = 'horizontal';
+    this.fillSize = 0;
+    this.fillOffset = 0;
+    this.hasFill = true;
+    this.hasTips = true;
+    this.hasScale = true;
+  }
 &nbsp;
-	public setFillOffset(fillOffset: number) {
-		this.fillOffset = fillOffset;
-	}
+  public setEnds({ min, max }: Ends) {
+    this.ends = { min, max };
+  }
 &nbsp;
-	public updateTrackFill(direction: Direction) {
-		this.setFillSize(this.calculateFillSize(direction));
-		this.setFillOffset(this.calculateFillOffset(direction));
+  public setSize(size: number) {
+    this.size = size;
+  }
 &nbsp;
+  public setIsRange(isRange: boolean) {
+    this.isRange = isRange;
+  }
 &nbsp;
-		this.notify("UpdateTrackFillView", this.fillSize, this.fillOffset, direction);
-	}
+  public setDirection(direction: Direction) {
+    this.direction = direction;
+  }
 &nbsp;
-	public <span class="fstat-no" title="function not covered" >prepareChooseStance(cursorOffset: number) {</span>
-<span class="cstat-no" title="statement not covered" >		let stance = 0;</span>
-<span class="cstat-no" title="statement not covered" >		const chooseCorrectStance =</span>
-<span class="cstat-no" title="statement not covered" >			cursorOffset &gt; this.fillSize / 2 + this.fillOffset;</span>
+  public setSubViews(hasFill: boolean, hasTips: boolean, hasScale: boolean) {
+    this.hasScale = hasScale;
+    this.hasTips = hasTips;
+    this.hasFill = hasFill;
+  }
+&nbsp;
+  public calculateFillSize(direction: Direction) {
+    let fillSize = 0;
+&nbsp;
+    if (this.isRange) {
+      if (direction === 'horizontal') {
+        fillSize
+          += parseInt($(`${this.root} .slider__thumb-1`).css('left'))
+          - parseInt($(`${this.root} .slider__thumb-0`).css('left'));
+      } else {
+        fillSize
+          += parseInt($(`${this.root} .slider__thumb-0`).css('top'))
+          - parseInt($(`${this.root} .slider__thumb-1`).css('top'));
+      }
+    } else {
+      fillSize += parseInt(
+        $(`${this.root} .slider__thumb-0`).css(
+          direction === 'horizontal' ? 'left' : 'bottom',
+        ),
+      );
+      if (direction === 'vertical') {
+        fillSize += parseInt(
+          $(`${this.root} .slider__thumb-0`).css('height'),
+        );
+      }
+    }
+&nbsp;
+    return +(fillSize / this.size * 100).toFixed(1);
+  }
+&nbsp;
+  public setFillSize(fillSize: number) {
+    this.fillSize = fillSize;
+  }
+&nbsp;
+  public calculateFillOffset(direction: Direction) {
+    let fillOffset = 0;
+    if (this.isRange) {
+      if (direction === 'horizontal') {
+        fillOffset += parseInt(
+          $(`${this.root} .slider__thumb-0`).css('left'),
+          10,
+        );
+      } else {
+        fillOffset += parseInt(
+          $(`${this.root} .slider__thumb-1`).css('top'),
+          10,
+        );
+      }
+    } else {
+      fillOffset = 0;
+    }
+    return +((fillOffset / this.size) * 100).toFixed(1);
+  }
+&nbsp;
+  public setFillOffset(fillOffset: number) {
+    this.fillOffset = fillOffset;
+  }
+&nbsp;
+  public updateTrackFill(direction: Direction) {
+    this.setFillSize(this.calculateFillSize(direction));
+    this.setFillOffset(this.calculateFillOffset(direction));
+&nbsp;
+    this.notify('UpdateTrackFillView', this.fillSize, this.fillOffset, direction);
+  }
+&nbsp;
+  public <span class="fstat-no" title="function not covered" >prepareChooseStance(cursorOffset: number) {</span>
+<span class="cstat-no" title="statement not covered" >    let stance = 0;</span>
+<span class="cstat-no" title="statement not covered" >    const chooseCorrectStance = cursorOffset &gt; this.fillSize / 2 + this.fillOffset;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >		if (chooseCorrectStance) stance = 1;</span>
+<span class="cstat-no" title="statement not covered" >    if (chooseCorrectStance) stance = 1;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >		if (this.direction === "vertical") stance = +!stance;</span>
+<span class="cstat-no" title="statement not covered" >    if (this.direction === 'vertical') stance = +!stance;</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >		if (!this.isRange) {</span>
-<span class="cstat-no" title="statement not covered" >			stance = 0;</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
+<span class="cstat-no" title="statement not covered" >    if (!this.isRange) {</span>
+<span class="cstat-no" title="statement not covered" >      stance = 0;</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >		this.notify(</span>
-<span class="cstat-no" title="statement not covered" >			"UpdateThumbModel",</span>
-<span class="cstat-no" title="statement not covered" >			stance,</span>
-<span class="cstat-no" title="statement not covered" >			cursorOffset,</span>
-<span class="cstat-no" title="statement not covered" >			this.direction,</span>
-<span class="cstat-no" title="statement not covered" >			this.size</span>
-<span class="cstat-no" title="statement not covered" >		);</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="cstat-no" title="statement not covered" >    this.notify(</span>
+<span class="cstat-no" title="statement not covered" >      'UpdateThumbModel',</span>
+<span class="cstat-no" title="statement not covered" >      stance,</span>
+<span class="cstat-no" title="statement not covered" >      cursorOffset,</span>
+<span class="cstat-no" title="statement not covered" >      this.direction,</span>
+<span class="cstat-no" title="statement not covered" >      this.size,</span>
+<span class="cstat-no" title="statement not covered" >    );</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
-	public getState(): SliderTrackState {
-		return {
-			ends: this.ends,
-			size: this.size,
-			isRange: this.isRange,
-			direction: this.direction,
-			hasFill: this.hasFill,
-			hasTips: this.hasTips,
-			hasScale: this.hasScale,
-		};
-	}
+  public getState(): SliderTrackState {
+    return {
+      ends: this.ends,
+      size: this.size,
+      isRange: this.isRange,
+      direction: this.direction,
+      hasFill: this.hasFill,
+      hasTips: this.hasTips,
+      hasScale: this.hasScale,
+    };
+  }
 &nbsp;
-	public getFillSize() {
-		return this.fillSize;
-	}
+  public getFillSize() {
+    return this.fillSize;
+  }
 &nbsp;
-	public getFillOffset() {
-		return this.fillOffset;
-	}
+  public getFillOffset() {
+    return this.fillOffset;
+  }
 &nbsp;
-	public <span class="fstat-no" title="function not covered" >getFillState(): SliderFillState {</span>
-<span class="cstat-no" title="statement not covered" >		return {</span>
-<span class="cstat-no" title="statement not covered" >			fillSize: this.getFillSize(),</span>
-<span class="cstat-no" title="statement not covered" >			fillOffset: this.getFillOffset(),</span>
-<span class="cstat-no" title="statement not covered" >		};</span>
-<span class="cstat-no" title="statement not covered" >	}</span>
+  public <span class="fstat-no" title="function not covered" >getFillState(): SliderFillState {</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+<span class="cstat-no" title="statement not covered" >      fillSize: this.getFillSize(),</span>
+<span class="cstat-no" title="statement not covered" >      fillOffset: this.getFillOffset(),</span>
+<span class="cstat-no" title="statement not covered" >    };</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
 }
 &nbsp;
 export default TrackModel;
@@ -586,7 +610,7 @@ export default TrackModel;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Fri Jan 28 2022 20:17:17 GMT+0000 (Всемирное координированное время)
+                at Sat Jan 29 2022 10:54:54 GMT+0000 (Всемирное координированное время)
             </div>
         <script src="../../prettify.js"></script>
         <script>

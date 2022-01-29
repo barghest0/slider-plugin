@@ -46,9 +46,15 @@ class Thumb extends Observer {
   }
 
   public createThumb(stance: number) {
-    $(this.view.root).append(
-      `<div class="slider__thumb slider__thumb-${stance}" data-testid="test-thumb-${stance}"></div>`,
-    );
+    const $root = document.querySelector(this.view.root);
+    const thumb = document.createElement('div');
+    thumb.classList.add('slider__thumb');
+    thumb.classList.add(`slider__thumb-${stance}`);
+    $root?.appendChild(thumb);
+    thumb.dataset.testid = `test-thumb-${stance}`;;
+    // $(this.view.root).append(
+    //   `<div class="slider__thumb slider__thumb-${stance}" data-testid="test-thumb-${stance}"></div>`,
+    // );
   }
 
   public setStep(step: number, stepPercent: number, stepCount: number) {

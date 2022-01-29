@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>36/36</span>
+                <span class='fraction'>40/40</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>36/36</span>
+                <span class='fraction'>40/40</span>
             </div>
         
             
@@ -99,7 +99,11 @@
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -110,64 +114,72 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Direction } from "../../../GlobalUtils/interfaces";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Direction } from '../../../GlobalUtils/interfaces';
 import Observer from '../../../Observer/Observer';
-import View from "../../View";
-import updateTipsPosition from "./utils/updateTipsPosition";
+import View from '../../View';
+import updateTipsPosition from './utils/updateTipsPosition';
 &nbsp;
 class Tip extends Observer {
-	public view: View;
-	public updateTipsPosition: (offset: number, stance: number, value: number) =&gt; void;
-	private offset: number[];
-	private value: number[];
-	constructor(view: View) {
-		super();
-		this.view = view;
-		this.offset = [];
-		this.value = [];
-		this.updateTipsPosition = updateTipsPosition.bind(this);
-	}
-	public setOffset(offset: number, stance: number) {
-		this.offset[stance] = offset;
-	}
-	public getOffset() {
-		return this.offset;
-	}
+  public view: View;
 &nbsp;
+  public updateTipsPosition: (offset: number, stance: number, value: number) =&gt; void;
 &nbsp;
+  private offset: number[];
 &nbsp;
-	public createTip(direction: Direction, stance: number, hasTips: boolean) {
-		if (hasTips) {
-			$(this.view.root).append(
-				`&lt;div class="slider__tip slider__tip-${stance} slider__tip_${direction}"&gt;&lt;/div&gt;`
-			);
-		}
-	}
+  private value: number[];
+&nbsp;
+  constructor(view: View) {
+    super();
+    this.view = view;
+    this.offset = [];
+    this.value = [];
+    this.updateTipsPosition = updateTipsPosition.bind(this);
+  }
+&nbsp;
+  public setOffset(offset: number, stance: number) {
+    this.offset[stance] = offset;
+  }
+&nbsp;
+  public getOffset() {
+    return this.offset;
+  }
+&nbsp;
+  public createTip(direction: Direction, stance: number, hasTips: boolean) {
+    if (hasTips) {
+      $(this.view.root).append(
+        `&lt;div class="slider__tip slider__tip-${stance} slider__tip_${direction}"&gt;&lt;/div&gt;`,
+      );
+    }
+  }
 }
 &nbsp;
 export default Tip;
@@ -178,7 +190,7 @@ export default Tip;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Fri Jan 28 2022 20:17:17 GMT+0000 (Всемирное координированное время)
+                at Sat Jan 29 2022 10:54:54 GMT+0000 (Всемирное координированное время)
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

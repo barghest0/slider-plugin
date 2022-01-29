@@ -15,7 +15,7 @@ const handleClick = function (
   );
 
   thisTrack.notify('UpdateThumbModelBeforeTrackClick', cursorCoordinate);
-  thisTrack.notify('UpdateTrackModelFill', direction);
+  thisTrack.notify('UpdateTrackFillModel', direction);
 };
 
 export default handleClick;

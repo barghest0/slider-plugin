@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.54% </span>
+                <span class="strong">93.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>29/31</span>
+                <span class='fraction'>28/30</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.54% </span>
+                <span class="strong">93.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>29/31</span>
+                <span class='fraction'>28/30</span>
             </div>
         
             
@@ -93,67 +93,64 @@
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L31'></a><a href='#L31'>31</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">71x</span>
-<span class="cline-any cline-yes">71x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">78x</span>
+<span class="cline-any cline-yes">78x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">51x</span>
-<span class="cline-any cline-yes">51x</span>
-<span class="cline-any cline-yes">51x</span>
-<span class="cline-any cline-yes">51x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">51x</span>
-<span class="cline-any cline-yes">41x</span>
-<span class="cline-any cline-yes">41x</span>
-<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-yes">68x</span>
+<span class="cline-any cline-yes">68x</span>
+<span class="cline-any cline-yes">68x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">68x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">56x</span>
+<span class="cline-any cline-yes">68x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { SubscribeEvent, Subscribers } from "../GlobalUtils/interfaces";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { SubscribeEvent, Subscribers } from '../GlobalUtils/interfaces';
 &nbsp;
 class Observer {
-    private subscribers: Subscribers;
-    constructor(subscribers: Subscribers = {}) {
-        this.subscribers = subscribers;
+  private subscribers: Subscribers;
+&nbsp;
+  constructor(subscribers: Subscribers = {}) {
+    this.subscribers = subscribers;
+  }
+&nbsp;
+  public subscribe(name: string, event: SubscribeEvent) {
+    const eventInObject = this.subscribers[name];
+&nbsp;
+    if (eventInObject) {
+      eventInObject.push(event);
+    } else {
+      this.subscribers[name] = [event];
     }
+  }
 &nbsp;
-    public subscribe(name: string, event: SubscribeEvent) {
+  public <span class="fstat-no" title="function not covered" >unsubscribe(name: string, event: SubscribeEvent) {</span>
+<span class="cstat-no" title="statement not covered" >    this.subscribers[name].filter((subscriberFunc: SubscribeEvent) =&gt; event != subscriberFunc);</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
 &nbsp;
-        const eventInObject = this.subscribers[name];
-&nbsp;
-        if (eventInObject) {
-            eventInObject.push(event);
-        } else {
-            this.subscribers[name] = [event];
-        }
-    }
-&nbsp;
-    public <span class="fstat-no" title="function not covered" >unsubscribe(name: string, event: SubscribeEvent) {</span>
-<span class="cstat-no" title="statement not covered" >        this.subscribers[name].filter((subscriberFunc: SubscribeEvent) =&gt; event != subscriberFunc);</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
-&nbsp;
-    public notify(name: string, ...args: any[]) {
-&nbsp;
-        this.subscribers[name].forEach((subscriberFunc: SubscribeEvent) =&gt; {
-            subscriberFunc(...args);
-        });
-    }
+  public notify(name: string, ...args: any[]) {
+    this.subscribers[name].forEach((subscriberFunc: SubscribeEvent) =&gt; {
+      subscriberFunc(...args);
+    });
+  }
 }
 export default Observer;
 &nbsp;</pre></td></tr></table></pre>
@@ -163,7 +160,7 @@ export default Observer;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Fri Jan 28 2022 20:17:17 GMT+0000 (Всемирное координированное время)
+                at Sat Jan 29 2022 10:54:54 GMT+0000 (Всемирное координированное время)
             </div>
         <script src="../../prettify.js"></script>
         <script>

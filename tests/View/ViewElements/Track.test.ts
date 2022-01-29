@@ -22,11 +22,10 @@ describe('Track test', () => {
 
   test('correct track model notify before click track test', () => {
     track.subscribe('UpdateThumbModelBeforeTrackClick', fn);
-    track.subscribe('UpdateTrackModelFill', fn);
+    track.subscribe('UpdateTrackFillModel', fn);
     jest.spyOn(track, 'notify');
     const DOMTrack = screen.getByTestId('slider-1');
     DOMTrack.dispatchEvent(new MouseEvent('mousedown'));
-
     expect(track.notify).toBeCalled();
   });
 });

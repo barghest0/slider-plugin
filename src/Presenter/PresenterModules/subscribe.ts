@@ -5,13 +5,15 @@ const subscribe = function (this: Presenter) {
 		"UpdateThumbModel",
 		this.updateThumbModel.bind(this)
 	);
+	this.view.thumbView.subscribe("UpdateTrackFillModel", this.updateTrackFillModel.bind(this));
 
 	this.view.trackView.subscribe(
 		"UpdateThumbModelBeforeTrackClick",
 		this.updateThumbModelBeforeTrackClick.bind(this)
 	);
+
 	this.view.trackView.subscribe(
-		"UpdateTrackModelFill",
+		"UpdateTrackFillModel",
 		this.updateTrackFillModel.bind(this)
 	);
 
@@ -22,7 +24,6 @@ const subscribe = function (this: Presenter) {
 	this.thumbs.forEach((thumb) =>
 		thumb.subscribe("UpdateThumbView", this.updateThumbView.bind(this))
 	);
-
 
 	this.trackModel.subscribe(
 		"UpdateThumbModel",
