@@ -10,7 +10,7 @@ describe('Scale test', () => {
   const root = document.querySelector(rootClass) as HTMLElement;
   const view = new View(root);
   const scale = new Scale(view);
-  scale.createScale('horizontal', true);
+  scale.createScale('horizontal');
   test('constructor test', () => {
     expect(view.DOMroot).toBeInstanceOf(HTMLElement);
   });

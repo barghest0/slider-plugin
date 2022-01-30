@@ -3,9 +3,9 @@ import Presenter from '../../Presenter';
 
 const updateTrackFillModel = function (
   this: Presenter,
-  direction: Direction,
+  offset: number[]
 ) {
-  this.trackModel.updateTrackFill(direction);
+  this.trackModel.updateTrackFill(offset);
 };
 
 export default updateTrackFillModel;

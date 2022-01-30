@@ -8,7 +8,7 @@ class Fill extends Observer {
 
   public updateFill: () => void;
 
-  public fill: HTMLElement;
+  public fill: HTMLElement | null;
 
   private size: number;
 
@@ -20,18 +20,7 @@ class Fill extends Observer {
     this.size = 0;
     this.offset = 0;
     this.updateFill = updateFill.bind(this);
-    this.fill = view.DOMroot.querySelector('.slider__fill') as HTMLElement;
-  }
-
-  public createFill(direction: Direction, hasFill: boolean) {
-    if (hasFill) {
-      const fill = document.createElement('div');
-      fill.classList.add('slider__fill');
-      fill.classList.add(`slider__fill_${direction}`);
-      fill.dataset.testid = `test-fill`;
-      this.fill = fill;
-      this.view.DOMroot?.appendChild(fill);
-    }
+    this.fill = null;
   }
 
   public setSize(size: number) {
@@ -49,6 +38,19 @@ class Fill extends Observer {
   public getOffset() {
     return this.offset;
   }
+
+  public createFill(direction: Direction) {
+   
+      const fill = document.createElement('div');
+      fill.classList.add('slider__fill');
+      fill.classList.add(`slider__fill_${direction}`);
+      fill.dataset.testid = `test-fill`;
+      this.fill = fill;
+      this.view.DOMroot?.appendChild(fill);
+    
+  }
+
+
 }
 
 export default Fill;

@@ -46,11 +46,11 @@ describe("View test", () => {
 
 	test("correct initial fill placement test", () => {
 		view.isRange = true;
-		view.fillView.createFill('horizontal', true);
+		view.fillView.createFill('horizontal');
 
 		view.fillView.setSize(10);
 		view.fillView.setOffset(10);
-		view.initialFillPlacement('horizontal');
+		view.initialFillPlacement();
 		const DOMFillHorizontal = screen.getByTestId('test-fill');
 		expect(DOMFillHorizontal).toHaveStyle('width:10%');
 		expect(DOMFillHorizontal).toHaveStyle('left:10%');

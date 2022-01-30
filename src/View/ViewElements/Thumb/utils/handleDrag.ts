@@ -9,7 +9,7 @@ const handleDrag = function handleDrag(e: any, { thisThumb, stance }: { thisThum
   currentStance = thisThumb.view.isRange ? thisThumb.validateCollision(stance) : stance;
 
   thisThumb.notify('UpdateThumbModel', currentStance, cursorCoordinate, direction, thisThumb.view.size);
-  thisThumb.notify('UpdateTrackFillModel', direction);
+  thisThumb.notify('UpdateTrackFillModel', thisThumb.getOffset());
 };
 
 export default handleDrag;

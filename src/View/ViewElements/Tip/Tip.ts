@@ -6,18 +6,20 @@ import updateTipsPosition from './utils/updateTipsPosition';
 class Tip extends Observer {
   public view: View;
 
-  public updateTipsPosition: (offset: number, stance: number, value: number) => void;
+  public updateTipsPosition: (stance: number) => void;
 
   public tips: HTMLElement[];
 
+  private value: number[];
   private offset: number[];
 
   constructor(view: View) {
     super();
     this.view = view;
     this.offset = [];
-    this.updateTipsPosition = updateTipsPosition.bind(this);
     this.tips = [];
+    this.value = [];
+    this.updateTipsPosition = updateTipsPosition.bind(this);
   }
 
   public setOffset(offset: number, stance: number) {
@@ -28,8 +30,16 @@ class Tip extends Observer {
     return this.offset;
   }
 
+  public setValue(value: number, stance: number) {
+    this.value[stance] = value;
+  }
+
+  public getValue() {
+    return this.value;
+  }
+
   public createTip(direction: Direction, stance: number, hasTips: boolean) {
-    if (hasTips) {
+    
       const tip = document.createElement('div');
       tip.classList.add('slider__tip');
       tip.classList.add(`slider__tip-${stance}`);
@@ -37,7 +47,7 @@ class Tip extends Observer {
       tip.dataset.testid = `test-tip`;
       this.tips.push(tip);
       this.view.DOMroot?.appendChild(tip);
-    }
+    
   }
 }
 

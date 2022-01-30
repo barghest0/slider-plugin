@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">97.61% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>82/84</span>
+                <span class='fraction'>87/87</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>8/8</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">85.71% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>6/7</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">97.61% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>82/84</span>
+                <span class='fraction'>87/87</span>
             </div>
         
             
@@ -147,7 +147,12 @@
 <a name='L82'></a><a href='#L82'>82</a>
 <a name='L83'></a><a href='#L83'>83</a>
 <a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -193,15 +198,16 @@
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">9x</span>
@@ -226,92 +232,95 @@
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Observer from '../../../Observer/Observer';
-import View from '../../View';
-import updateThumbPosition from './utils/updateThumbPosition';
-import validateCollision from './utils/validateCollision';
-import dragAndDropThumb from './utils/dragAndDropThumb';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Observer from "../../../Observer/Observer";
+import View from "../../View";
+import updateThumbPosition from "./utils/updateThumbPosition";
+import validateCollision from "./utils/validateCollision";
+import dragAndDropThumb from "./utils/dragAndDropThumb";
 &nbsp;
 class Thumb extends Observer {
-  public view: View;
+	public view: View;
 &nbsp;
-  public step: number;
+	public step: number;
 &nbsp;
-  public stepPercent: number;
+	public stepPercent: number;
 &nbsp;
-  public stepCount: number;
+	public stepCount: number;
 &nbsp;
-  public value: number[];
+	public value: number[];
 &nbsp;
-  public offset: number[];
+	public thumbs: HTMLElement[];
 &nbsp;
-  public isDecimal: boolean;
+	public offset: number[];
 &nbsp;
-  public decimalPlaces: number;
+	public isDecimal: boolean;
 &nbsp;
-  public activeStance: number;
+	public decimalPlaces: number;
 &nbsp;
-  public updateThumbPosition: (offset: number, stance: number) =&gt; void;
+	public activeStance: number;
 &nbsp;
-  public validateCollision: (stance: number) =&gt; number;
+	public updateThumbPosition: (offset: number, stance: number) =&gt; void;
 &nbsp;
-  public dragAndDropThumb: (stance: number) =&gt; void;
+	public validateCollision: (stance: number) =&gt; number;
 &nbsp;
-  constructor(view: View) {
-    super();
-    this.view = view;
-    this.step = 0;
-    this.stepPercent = 0;
-    this.stepCount = 0;
-    this.value = [];
-    this.offset = [];
-    this.isDecimal = false;
-    this.decimalPlaces = 0;
-    this.activeStance = 0;
-    this.updateThumbPosition = updateThumbPosition.bind(this);
-    this.validateCollision = validateCollision.bind(this);
-    this.dragAndDropThumb = dragAndDropThumb.bind(this);
-  }
+	public dragAndDropThumb: (stance: number) =&gt; void;
 &nbsp;
-  public createThumb(stance: number) {
-    const root = document.querySelector(this.view.root);
-    const thumb = document.createElement('div');
-    thumb.classList.add('slider__thumb');
-    thumb.classList.add(`slider__thumb-${stance}`);
-    root?.appendChild(thumb);
-    thumb.dataset.testid = `test-thumb-${stance}`;
-  }
+	constructor(view: View) {
+		super();
+		this.view = view;
+		this.step = 0;
+		this.stepPercent = 0;
+		this.stepCount = 0;
+		this.value = [];
+		this.offset = [];
+		this.isDecimal = false;
+		this.decimalPlaces = 0;
+		this.activeStance = 0;
+		this.thumbs = [];
+		this.updateThumbPosition = updateThumbPosition.bind(this);
+		this.validateCollision = validateCollision.bind(this);
+		this.dragAndDropThumb = dragAndDropThumb.bind(this);
+	}
 &nbsp;
-  public setStep(step: number, stepPercent: number, stepCount: number) {
-    this.step = step;
-    this.stepPercent = stepPercent;
-    this.stepCount = stepCount;
-  }
+	public createThumb(stance: number) {
+		const thumb = document.createElement("div");
+		thumb.classList.add("slider__thumb");
+		thumb.classList.add(`slider__thumb-${stance}`);
+		thumb.dataset.testid = `test-thumb-${stance}`;
+		this.thumbs.push(thumb);
+		this.view.DOMroot.appendChild(thumb);
+	}
 &nbsp;
-  public setValue(value: number, stance: number) {
-    this.value[stance] = value;
-  }
+	public setStep(step: number, stepPercent: number, stepCount: number) {
+		this.step = step;
+		this.stepPercent = stepPercent;
+		this.stepCount = stepCount;
+	}
 &nbsp;
-  public setOffset(offset: number, stance: number) {
-    this.offset[stance] = offset;
-  }
+	public setValue(value: number, stance: number) {
+		this.value[stance] = value;
+	}
 &nbsp;
-  public setIsDecimal(isDecimal: boolean, decimalPlaces: number) {
-    if (isDecimal) {
-      this.decimalPlaces = decimalPlaces;
-    } else {
-      this.decimalPlaces = 0;
-    }
-  }
+	public setOffset(offset: number, stance: number) {
+		this.offset[stance] = offset;
+	}
 &nbsp;
-  public <span class="fstat-no" title="function not covered" >getOffset() {</span>
-<span class="cstat-no" title="statement not covered" >    return this.offset;</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+	public setIsDecimal(isDecimal: boolean, decimalPlaces: number) {
+		if (isDecimal) {
+			this.decimalPlaces = decimalPlaces;
+		} else {
+			this.decimalPlaces = 0;
+		}
+	}
+&nbsp;
+	public getOffset() {
+		return this.offset;
+	}
 }
 &nbsp;
 export default Thumb;
@@ -322,7 +331,7 @@ export default Thumb;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Sat Jan 29 2022 20:42:20 GMT+0000 (Всемирное координированное время)
+                at Sun Jan 30 2022 16:53:28 GMT+0000 (Всемирное координированное время)
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

@@ -37,10 +37,10 @@ describe('PreviewSlider test', () => {
 
   test('correct handle change', () => {
     const event = new Event('change');
-        previewSlider.panel.firstValueInput!.dispatchEvent(event);
-        previewSlider.panel.firstValueInput!.value = '100';
-        document.body.innerHTML = DOMPanel;
-        handleChange.call(panel, event, 'value', 0);
-        previewSlider.params.value[0] = 100;
+    previewSlider.panel.firstValueInput!.dispatchEvent(event);
+    previewSlider.panel.firstValueInput!.value = '100';
+    document.body.innerHTML = DOMPanel;
+    handleChange.call(panel, event, 'value', 0);
+    previewSlider.params.value[0] = 100;
   });
 });

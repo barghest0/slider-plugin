@@ -19,6 +19,7 @@ const createScaleMarks = function (
     mark.classList.add('slider__scale-mark');
     mark.classList.add(`slider__scale-mark_${direction}`);
     mark.dataset.testid = "test-scale-mark";
+
     mark.style[this.view.offsetDirection] = offset + 'px';
 
     const number = document.createElement('div');
@@ -26,7 +27,7 @@ const createScaleMarks = function (
     number.classList.add(`slider__scale-number_${direction}`);
     number.innerHTML = values[i].toString();
     mark.appendChild(number);
-    this.scale.appendChild(mark);
+    this.scale!.appendChild(mark);
 
 
     offset += this.view.size / (values.length - 1);

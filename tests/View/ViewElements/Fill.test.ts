@@ -10,7 +10,7 @@ describe("Fill test", () => {
 	const view = new View(root);
 	const fill = new Fill(view);
 
-	fill.createFill('horizontal', true);
+	fill.createFill('horizontal');
 
 	test("constructor test", () => {
 		expect(view.DOMroot).toBeInstanceOf(HTMLElement);

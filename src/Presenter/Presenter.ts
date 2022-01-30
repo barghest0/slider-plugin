@@ -23,7 +23,7 @@ class Presenter {
 		cursorOffset: number,
 		direction: Direction
 	) => void;
-	public updateTrackFillModel: (direction: Direction) => void;
+	public updateTrackFillModel: (offset: number[]) => void;
 	public updateThumbModelBeforeTrackClick: (cursorOffset: number) => void;
 	public updateThumbView: (
 		value: number,
@@ -75,13 +75,16 @@ class Presenter {
 			this.clearHTML(params.direction);
 			this.thumbStance = 0;
 			this.thumbs = [];
+			this.view.thumbView.thumbs = [];
+			this.view.tipView.tips = [];
 		}
-
 		this.addSliderClasses(params.direction);
-		this.setTrackModelState(params).setViewState();
+		this.setTrackModelState(params);
+		this.setViewState();
 		this.createRangeSlider(params);
 		this.subscribe();
 		this.addListeners(params.isRange);
+
 	}
 
 	private setTrackModelState({
@@ -142,24 +145,28 @@ class Presenter {
 			direction
 		);
 		this.createThumbView(stance);
-		this.creteTipView(direction, stance, hasTips);
 		this.setThumbView(stance);
 		this.setThumbPlacement(stance);
-		this.setTipPlacement(stance);
+		if (hasTips) {
+			this.createTipView(direction, stance, hasTips);
+			this.setTipView(stance);
+			this.setTipPlacement(stance);
+		}
+
 	}
 
 	private createRangeSlider(params: SliderParams) {
-		this.createSubViewsView(this.params);
 		this.createSlider(params, this.thumbStance);
+		this.createSubViewsView(params);
 
 		if (params.isRange) {
 			this.thumbStance += 1;
 			this.createSlider(params, this.thumbStance);
 		}
 
-		this.setTrackFillModel(params.direction);
+		this.setTrackFillModel();
 		this.setTrackFillView();
-		this.setTrackFillPlacement(params.direction);
+		this.setTrackFillPlacement();
 		return this;
 	}
 
@@ -206,12 +213,14 @@ class Presenter {
 		this.view.initialThumbPlacement(offset, stance);
 	}
 
-	private setTrackFillModel(direction: Direction) {
+	private setTrackFillModel() {
+		const offset: number[] = [];
+		this.thumbs.forEach(thumb => offset.push(thumb.getState().offset));
 		this.trackModel.setFillSize(
-			this.trackModel.calculateFillSize(direction)
+			this.trackModel.calculateFillSize(offset)
 		);
 		this.trackModel.setFillOffset(
-			this.trackModel.calculateFillOffset(direction)
+			this.trackModel.calculateFillOffset(offset)
 		);
 	}
 
@@ -219,13 +228,13 @@ class Presenter {
 		this.view.setFillState(this.trackModel.getFillState());
 	}
 
-	private setTrackFillPlacement(direction: Direction) {
-		this.view.initialFillPlacement(direction);
+	private setTrackFillPlacement() {
+		this.view.initialFillPlacement();
 	}
 
 	private setTipPlacement(stance: number) {
-		const { offset, value } = this.thumbs[stance].getState();
-		this.view.initialTipPlacement(offset, stance, value);
+
+		this.view.initialTipPlacement(stance);
 	}
 
 	private createThumb(stance: number) {
@@ -245,22 +254,28 @@ class Presenter {
 		step: number,
 		max: number,
 		min: number,
-		hasScale: boolean
 	) {
-		this.view.scaleView.createScale(direction, hasScale);
+		this.view.scaleView.createScale(direction);
 		this.view.scaleView.createScaleMarks(step, max, min, direction);
 	}
 
-	private creteFillView(direction: Direction, hasFill: boolean) {
-		this.view.fillView.createFill(direction, hasFill);
+	private creteFillView(direction: Direction) {
+		this.view.fillView.createFill(direction);
 	}
 
-	private creteTipView(
+	private createTipView(
 		direction: Direction,
 		stance: number,
 		hasTips: boolean
 	) {
 		this.view.tipView.createTip(direction, stance, hasTips);
+	}
+
+	private setTipView(stance: number) {
+		const offset = this.thumbs[stance].getOffset();
+		const value = this.thumbs[stance].getValue();
+		this.view.tipView.setOffset(offset, stance);
+		this.view.tipView.setValue(value, stance);
 	}
 
 	private createSubViewsView({
@@ -272,8 +287,11 @@ class Presenter {
 		hasScale,
 	}: SliderParams) {
 		this.createTrackView(direction);
-		this.createScaleView(direction, step, max, min, hasScale);
-		this.creteFillView(direction, hasFill);
+		if (hasScale) this.createScaleView(direction, step, max, min);
+		if (hasFill) this.creteFillView(direction);
+
+
+
 	}
 }
 

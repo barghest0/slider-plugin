@@ -28,6 +28,8 @@ class TrackModel extends Observer {
 
   public hasScale: boolean;
 
+
+
   constructor(DOMroot: HTMLElement) {
     super();
     this.DOMroot = DOMroot;
@@ -64,59 +66,43 @@ class TrackModel extends Observer {
     this.hasFill = hasFill;
   }
 
-  public calculateFillSize(direction: Direction) {
-    let fillSize = 0;
-    const thumb0 = this.DOMroot.querySelector('.slider__thumb-0') as HTMLElement;
-    const thumb1 = this.DOMroot.querySelector('.slider__thumb-1') as HTMLElement;
+  public calculateFillSize(offset: number[]) {
     if (this.isRange) {
-      if (direction === 'horizontal') {
-        fillSize += parseInt(thumb1.style.left, 10) - parseInt(thumb0.style.left, 10);
-      } else {
-        fillSize += parseInt(thumb0.style.top, 10) - parseInt(thumb1.style.top, 10);
-      }
+      return this.direction === "horizontal" ? offset[1] - offset[0] : offset[0] - offset[1];
     } else {
-      fillSize += parseInt(thumb0.style[direction === 'horizontal' ? 'left' : 'bottom'], 10);
-      if (direction === 'vertical') fillSize += parseInt(thumb0.style.height, 10);
+      return this.direction === "horizontal" ? offset[0] : 100 - offset[0];
     }
-
-    return +(fillSize / this.size * 100).toFixed(1);
   }
 
   public setFillSize(fillSize: number) {
     this.fillSize = fillSize;
   }
 
-  public calculateFillOffset(direction: Direction) {
-    let fillOffset = 0;
-    const thumb0 = this.DOMroot.querySelector('.slider__thumb-0') as HTMLElement;
-    const thumb1 = this.DOMroot.querySelector('.slider__thumb-1') as HTMLElement;
+  public calculateFillOffset(offset: number[]) {
     if (this.isRange) {
-      if (direction === 'horizontal') {
-        fillOffset += parseInt(thumb0.style.left, 10);
-      } else {
-        fillOffset += parseInt(thumb1.style.left, 10);
-      }
+      return this.direction === "horizontal" ? offset[0] : offset[1];
     } else {
-      fillOffset = 0;
+      return 0;
     }
-    return +((fillOffset / this.size) * 100).toFixed(1);
   }
 
   public setFillOffset(fillOffset: number) {
     this.fillOffset = fillOffset;
   }
 
-  public updateTrackFill(direction: Direction) {
-    this.setFillSize(this.calculateFillSize(direction));
-    this.setFillOffset(this.calculateFillOffset(direction));
+  public updateTrackFill(offset: number[]) {
+    this.setFillSize(this.calculateFillSize(offset));
+    this.setFillOffset(this.calculateFillOffset(offset));
 
-    this.notify('UpdateTrackFillView', this.fillSize, this.fillOffset, direction);
+    this.notify('UpdateTrackFillView', this.fillSize, this.fillOffset);
   }
 
   public prepareChooseStance(cursorOffset: number) {
     let stance = 0;
     const chooseCorrectStance = cursorOffset > this.fillSize / 2 + this.fillOffset;
 
+    
+    
     if (chooseCorrectStance) stance = 1;
 
     if (this.direction === 'vertical') stance = +!stance;

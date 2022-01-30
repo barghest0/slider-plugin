@@ -2,9 +2,9 @@ import calculateCursorCoordinate from '../../../ViewModules/calculateCursorCoord
 import Track from '../Track';
 
 const handleClick = function (
-  e: JQuery.MouseDownEvent | JQuery.TouchMoveEvent,
+  e: any,
+  thisTrack:Track
 ) {
-  const { thisTrack } = e.data as { thisTrack: Track; };
   const { direction } = thisTrack.view;
   const coord = direction === 'horizontal' ? e.pageX! : e.pageY!;
   const cursorCoordinate = thisTrack.view.calculateCursorCoordinate(
@@ -13,9 +13,9 @@ const handleClick = function (
     thisTrack.view.DOMroot,
     thisTrack.view.size,
   );
-
   thisTrack.notify('UpdateThumbModelBeforeTrackClick', cursorCoordinate);
-  thisTrack.notify('UpdateTrackFillModel', direction);
+  thisTrack.notify('UpdateTrackFillModel', thisTrack.view.thumbView.getOffset());
+
 };
 
 export default handleClick;

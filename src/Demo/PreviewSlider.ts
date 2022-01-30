@@ -18,6 +18,7 @@ class PreviewSlider {
     this.params = checkParams(params);
     this.panel = new Panel(this.params, root, this);
     this.slider = new Slider(root, this.params);
+
     this.init(this.params, 'init');
     this.panel.handleChangeFormValues();
   }
@@ -25,6 +26,8 @@ class PreviewSlider {
   public init(params: SliderParams, mode: string) {
     if (mode === 'rebuild') {
       this.slider.init(params, mode);
+      
+
     }
     this.panel.initializeInputs(this.root);
     this.panel.initializeFormValues(params);
@@ -34,10 +37,10 @@ class PreviewSlider {
   public updatePanelValues(value: number, stance: number) {
     if (stance === 0) {
       this.params.value[stance] = value;
-			this.panel.firstValueInput!.value = this.params.value[stance].toFixed(this.params.decimalPlaces);
+      this.panel.firstValueInput!.value = this.params.value[stance].toFixed(this.params.decimalPlaces);
     } else {
       this.params.value[stance] = value;
-			this.panel.secondValueInput!.value = this.params.value[stance].toFixed(this.params.decimalPlaces);
+      this.panel.secondValueInput!.value = this.params.value[stance].toFixed(this.params.decimalPlaces);
     }
   }
 

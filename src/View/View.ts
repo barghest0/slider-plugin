@@ -49,9 +49,9 @@ class View extends Observer {
 
   public initialThumbPlacement: (offset: number, stance: number) => void;
 
-  public initialFillPlacement: (direction: Direction) => void;
+  public initialFillPlacement: () => void;
 
-  public initialTipPlacement: (offset: number, stance: number, value: number) => void;
+  public initialTipPlacement: (stance: number) => void;
 
   public prepareDirectionForInteraction: (direction: Direction) => void;
 

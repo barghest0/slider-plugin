@@ -55,14 +55,14 @@ describe('TrackModel test', () => {
         track.setIsRange(false);
 
         track.size = 200;
-        expect(track.calculateFillOffset('horizontal')).toBe(0);
+        expect(track.calculateFillOffset([10, 100])).toBe(0);
         track.setIsRange(true);
 
         $(`${root} .slider__thumb-0`).css({ left: `${100}px` });
-        expect(track.calculateFillOffset('horizontal')).toBe(50);
+        expect(track.calculateFillOffset([10, 100])).toBe(50);
 
         $(`${root} .slider__thumb-1`).css({ top: `${100}px` });
-        expect(track.calculateFillOffset('vertical')).toBe(50);
+        expect(track.calculateFillOffset([100])).toBe(50);
     });
 
     test('correct calculate fill size', () => {
@@ -70,25 +70,25 @@ describe('TrackModel test', () => {
         thumb.createThumb(1);
         track.setIsRange(false);
         $(`${root} .slider__thumb-0`).css({ left: `${100}px` });
-        expect(track.calculateFillSize('horizontal')).toBe(50);
+        expect(track.calculateFillSize([5, 30])).toBe(50);
 
         $(`${root} .slider__thumb-0`).css({ bottom: `${100}px` });
         $(`${root} .slider__thumb-0`).css({ height: `${15}px` });
-        expect(track.calculateFillSize('vertical')).toBe(57.5);
+        expect(track.calculateFillSize([20, 70])).toBe(57.5);
 
         $(`${root} .slider__thumb-1`).css({ left: `${150}px` });
         track.setIsRange(true);
-        expect(track.calculateFillSize('horizontal')).toBe(25);
+        expect(track.calculateFillSize([5, 30])).toBe(25);
 
         $(`${root} .slider__thumb-0`).css({ top: `${150}px` });
         $(`${root} .slider__thumb-1`).css({ top: `${100}px` });
-        expect(track.calculateFillSize('vertical')).toBe(25);
+        expect(track.calculateFillSize([20, 70])).toBe(25);
     });
 
     test('correct update track fill view', () => {
         const fn = jest.fn();
         track.subscribe('UpdateTrackFillView', fn);
-        track.updateTrackFill('horizontal');
+        track.updateTrackFill([10, 20]);
         expect(fn).toBeCalled();
     });
 });
