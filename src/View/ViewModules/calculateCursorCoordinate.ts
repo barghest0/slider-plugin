@@ -1,10 +1,10 @@
 import { Direction } from '../../GlobalUtils/interfaces';
 
-const calculateCursorCoordinate = function (coord: number, direction: Direction, root: string, size: number) {
+const calculateCursorCoordinate = function (coord: number, direction: Direction, DOMroot: HTMLElement, size: number) {
   if (direction === 'horizontal') {
-    return ((coord - $(root).position().left) / size) * 100;
+    return ((coord - DOMroot.getBoundingClientRect().left) / size) * 100;
   }
-  return ((coord - $(root).position().top) / size) * 100;
+  return ((coord - DOMroot.getBoundingClientRect().top) / size) * 100;
 };
 
 export default calculateCursorCoordinate;

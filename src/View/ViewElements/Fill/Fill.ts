@@ -6,7 +6,9 @@ import updateFill from './utils/updateFill';
 class Fill extends Observer {
   public view: View;
 
-  public updateFill: (direction: Direction) => void;
+  public updateFill: () => void;
+
+  public fill: HTMLElement;
 
   private size: number;
 
@@ -18,13 +20,17 @@ class Fill extends Observer {
     this.size = 0;
     this.offset = 0;
     this.updateFill = updateFill.bind(this);
+    this.fill = view.DOMroot.querySelector('.slider__fill') as HTMLElement;
   }
 
   public createFill(direction: Direction, hasFill: boolean) {
     if (hasFill) {
-      $(this.view.root).append(
-        `<div class="slider__fill slider__fill_${direction}" data-testid="test-fill"></div>`,
-      );
+      const fill = document.createElement('div');
+      fill.classList.add('slider__fill');
+      fill.classList.add(`slider__fill_${direction}`);
+      fill.dataset.testid = `test-fill`;
+      this.fill = fill;
+      this.view.DOMroot?.appendChild(fill);
     }
   }
 

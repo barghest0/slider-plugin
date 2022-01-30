@@ -8,7 +8,7 @@ import {
 } from '../GlobalUtils/interfaces';
 
 class TrackModel extends Observer {
-  private root: string;
+  private DOMroot: HTMLElement;
 
   public isRange: boolean;
 
@@ -28,9 +28,9 @@ class TrackModel extends Observer {
 
   public hasScale: boolean;
 
-  constructor(root: string) {
+  constructor(DOMroot: HTMLElement) {
     super();
-    this.root = root;
+    this.DOMroot = DOMroot;
     this.ends = { min: 1, max: 100 };
     this.size = 200;
     this.isRange = false;
@@ -66,28 +66,17 @@ class TrackModel extends Observer {
 
   public calculateFillSize(direction: Direction) {
     let fillSize = 0;
-
+    const thumb0 = this.DOMroot.querySelector('.slider__thumb-0') as HTMLElement;
+    const thumb1 = this.DOMroot.querySelector('.slider__thumb-1') as HTMLElement;
     if (this.isRange) {
       if (direction === 'horizontal') {
-        fillSize
-          += parseInt($(`${this.root} .slider__thumb-1`).css('left'), 10)
-          - parseInt($(`${this.root} .slider__thumb-0`).css('left'), 10);
+        fillSize += parseInt(thumb1.style.left, 10) - parseInt(thumb0.style.left, 10);
       } else {
-        fillSize
-          += parseInt($(`${this.root} .slider__thumb-0`).css('top'), 10)
-          - parseInt($(`${this.root} .slider__thumb-1`).css('top'), 10);
+        fillSize += parseInt(thumb0.style.top, 10) - parseInt(thumb1.style.top, 10);
       }
     } else {
-      fillSize += parseInt(
-        $(`${this.root} .slider__thumb-0`).css(
-          direction === 'horizontal' ? 'left' : 'bottom',
-        ), 10
-      );
-      if (direction === 'vertical') {
-        fillSize += parseInt(
-          $(`${this.root} .slider__thumb-0`).css('height'), 10
-        );
-      }
+      fillSize += parseInt(thumb0.style[direction === 'horizontal' ? 'left' : 'bottom'], 10);
+      if (direction === 'vertical') fillSize += parseInt(thumb0.style.height, 10);
     }
 
     return +(fillSize / this.size * 100).toFixed(1);
@@ -99,17 +88,13 @@ class TrackModel extends Observer {
 
   public calculateFillOffset(direction: Direction) {
     let fillOffset = 0;
+    const thumb0 = this.DOMroot.querySelector('.slider__thumb-0') as HTMLElement;
+    const thumb1 = this.DOMroot.querySelector('.slider__thumb-1') as HTMLElement;
     if (this.isRange) {
       if (direction === 'horizontal') {
-        fillOffset += parseInt(
-          $(`${this.root} .slider__thumb-0`).css('left'),
-          10,
-        );
+        fillOffset += parseInt(thumb0.style.left, 10);
       } else {
-        fillOffset += parseInt(
-          $(`${this.root} .slider__thumb-1`).css('top'),
-          10,
-        );
+        fillOffset += parseInt(thumb1.style.left, 10);
       }
     } else {
       fillOffset = 0;

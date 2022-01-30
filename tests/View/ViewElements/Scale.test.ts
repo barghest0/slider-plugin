@@ -6,12 +6,13 @@ import '@testing-library/jest-dom';
 
 describe('Scale test', () => {
   document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';
-  const root = '.slider-1';
+  const rootClass = '.slider-1';
+  const root = document.querySelector(rootClass) as HTMLElement;
   const view = new View(root);
   const scale = new Scale(view);
   scale.createScale('horizontal', true);
   test('constructor test', () => {
-    expect(view.root).toBe(root);
+    expect(view.DOMroot).toBeInstanceOf(HTMLElement);
   });
 
   test('correct append scale to DOM test', () => {

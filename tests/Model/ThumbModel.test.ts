@@ -5,7 +5,9 @@ beforeEach(() => {
 });
 
 describe('ThumbModel test', () => {
-    const thumbModel = new ThumbModel('.slider-1', 0);
+    const rootClass = '.slider-1';
+    const root = document.querySelector(rootClass) as HTMLElement;
+    const thumbModel = new ThumbModel(root, 0);
 
     test('constructor test', () => {
         expect(thumbModel).toHaveProperty('stance', 0);

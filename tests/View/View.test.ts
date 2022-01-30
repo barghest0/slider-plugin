@@ -7,10 +7,11 @@ beforeEach(() => {
 });
 
 describe("View test", () => {
-	const root = '.slider-1';
+	const rootClass = '.slider-1';
+	const root = document.querySelector(rootClass) as HTMLElement;
 	const view = new View(root);
 	test("constructor test", () => {
-		expect(view.root).toBe(root);
+		expect(view.DOMroot).toBeInstanceOf(HTMLElement);
 	});
 	test("setState test", () => {
 		view.setState({

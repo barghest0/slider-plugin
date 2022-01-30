@@ -7,12 +7,11 @@ import ThumbModel from '../../../src/Model/ThumbModel';
 
 describe('Track test', () => {
   document.body.innerHTML = '<div id="slider-1" data-testid="slider-1" class="slider-1"></div>';
-  const root = '.slider-1';
+  const rootClass = '.slider-1';
+  const root = document.querySelector(rootClass) as HTMLElement;
   const view = new View(root);
   const track = new Track(view);
   const fn = jest.fn();
-  const trackModel = new TrackModel(root);
-  const thumbModel = new ThumbModel(root, 0);
   track.createTrack('horizontal');
   track.clickTrack();
 

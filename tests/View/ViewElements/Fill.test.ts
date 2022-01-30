@@ -5,14 +5,15 @@ import '@testing-library/jest-dom';
 
 describe("Fill test", () => {
 	document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
-	const root = ".slider-1";
+	const rootClass = '.slider-1';
+	const root = document.querySelector(rootClass) as HTMLElement;
 	const view = new View(root);
 	const fill = new Fill(view);
 
 	fill.createFill('horizontal', true);
 
 	test("constructor test", () => {
-		expect(view.root).toBe(root);
+		expect(view.DOMroot).toBeInstanceOf(HTMLElement);
 	});
 	test("setSize test", () => {
 		fill.setSize(100);
@@ -26,7 +27,7 @@ describe("Fill test", () => {
 
 	test("correct updateFill with single thumb test", () => {
 		fill.setSize(50);
-		fill.updateFill('horizontal');
+		fill.updateFill();
 		const DOMFill = screen.getByTestId('test-fill');
 		expect(DOMFill).toHaveStyle('width:50%');
 
@@ -36,7 +37,7 @@ describe("Fill test", () => {
 		view.isRange = true;
 		fill.setOffset(20);
 		fill.setSize(80);
-		fill.updateFill('horizontal');
+		fill.updateFill();
 		const DOMFill = screen.getByTestId('test-fill');
 		expect(DOMFill).toHaveStyle('width:80%');
 		expect(DOMFill).toHaveStyle('left:20%');

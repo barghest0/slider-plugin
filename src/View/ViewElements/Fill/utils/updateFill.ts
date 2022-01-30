@@ -1,17 +1,12 @@
 import { Direction } from '../../../../GlobalUtils/interfaces';
 import Fill from '../Fill';
 
-const updateFill = function (this: Fill, direction: Direction) {
+const updateFill = function (this: Fill) {
   if (this.view.isRange) {
-    $(`${this.view.root} .slider__fill_${direction}`).css({
-      [this.view.offsetDirection]:
-        `${this.getOffset()}%`,
-      [this.view.fillDirection]: `${this.getSize()}%`,
-    });
+    this.fill.style[this.view.offsetDirection] = `${this.getOffset()}%`;
+    this.fill.style[this.view.fillDirection] = `${this.getSize()}%`;
   } else {
-    $(`${this.view.root} .slider__fill_${direction}`).css({
-      [this.view.fillDirection]: `${this.getSize()}%`,
-    });
+    this.fill.style[this.view.fillDirection] = `${this.getSize()}%`;
   }
 };
 

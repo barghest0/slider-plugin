@@ -8,16 +8,16 @@ class Tip extends Observer {
 
   public updateTipsPosition: (offset: number, stance: number, value: number) => void;
 
-  private offset: number[];
+  public tips: HTMLElement[];
 
-  private value: number[];
+  private offset: number[];
 
   constructor(view: View) {
     super();
     this.view = view;
     this.offset = [];
-    this.value = [];
     this.updateTipsPosition = updateTipsPosition.bind(this);
+    this.tips = [];
   }
 
   public setOffset(offset: number, stance: number) {
@@ -30,9 +30,13 @@ class Tip extends Observer {
 
   public createTip(direction: Direction, stance: number, hasTips: boolean) {
     if (hasTips) {
-      $(this.view.root).append(
-        `<div class="slider__tip slider__tip-${stance} slider__tip_${direction}"></div>`,
-      );
+      const tip = document.createElement('div');
+      tip.classList.add('slider__tip');
+      tip.classList.add(`slider__tip-${stance}`);
+      tip.classList.add(`slider__tip_${direction}`);
+      tip.dataset.testid = `test-tip`;
+      this.tips.push(tip);
+      this.view.DOMroot?.appendChild(tip);
     }
   }
 }

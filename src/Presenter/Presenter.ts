@@ -11,16 +11,17 @@ import updateThumbView from "./PresenterModules/notifyViewMethods/updateThumbVie
 import updateTipView from "./PresenterModules/notifyViewMethods/updateTipView";
 import updateTrackFillView from "./PresenterModules/notifyViewMethods/updateTrackFillView";
 import updateThumbModel from "./PresenterModules/notifyModelMethods/updateThumbModel";
-import addListeners from './PresenterModules/addListeners';
+import addListeners from "./PresenterModules/addListeners";
 class Presenter {
 	public root: string;
+	public DOMroot: HTMLElement;
 	public view: View;
 	public thumbs: ThumbModel[];
 	public trackModel: TrackModel;
 	public updateThumbModel: (
 		stance: number,
 		cursorOffset: number,
-		direction: Direction,
+		direction: Direction
 	) => void;
 	public updateTrackFillModel: (direction: Direction) => void;
 	public updateThumbModelBeforeTrackClick: (cursorOffset: number) => void;
@@ -47,8 +48,9 @@ class Presenter {
 	private subscribe: () => void;
 	constructor(root: string, params: SliderParams) {
 		this.root = root;
-		this.trackModel = new TrackModel(root);
-		this.view = new View(root);
+		this.DOMroot = document.querySelector(root) as HTMLElement;
+		this.trackModel = new TrackModel(this.DOMroot);
+		this.view = new View(this.DOMroot);
 		this.thumbs = [];
 		this.params = params;
 		this.thumbStance = 0;
@@ -74,11 +76,10 @@ class Presenter {
 			this.thumbStance = 0;
 			this.thumbs = [];
 		}
-		$(document).ready(() => {
-			this.setTrackModelState(params).setViewState();
-		});
-		this.createRangeSlider(params);
+
 		this.addSliderClasses(params.direction);
+		this.setTrackModelState(params).setViewState();
+		this.createRangeSlider(params);
 		this.subscribe();
 		this.addListeners(params.isRange);
 	}
@@ -94,8 +95,9 @@ class Presenter {
 	}: SliderParams) {
 		const size =
 			direction === "horizontal"
-				? $(this.root).width()!
-				: $(this.root).height()!;
+				? this.DOMroot.clientWidth
+				: this.DOMroot.offsetHeight;
+
 		this.trackModel.setSize(size);
 		this.trackModel.setEnds({ min, max });
 		this.trackModel.setIsRange(isRange);
@@ -110,8 +112,8 @@ class Presenter {
 	}
 
 	private addSliderClasses(direction: Direction) {
-		$(this.root).addClass(`slider_${direction}`);
-		$(this.root).parent().addClass(`slider-parent_${direction}`);
+		this.DOMroot.classList.add(`slider_${direction}`);
+		this.DOMroot.parentElement!.classList.add(`slider-parent_${direction}`);
 	}
 
 	private createSlider(
@@ -129,7 +131,16 @@ class Presenter {
 	) {
 		this.createThumb(stance);
 		this.view.prepareDirectionForInteraction(direction);
-		this.setThumbModelState(stance, step, Array.isArray(value) ? value[stance] : value, min, max, isDecimal, decimalPlaces, direction);
+		this.setThumbModelState(
+			stance,
+			step,
+			Array.isArray(value) ? value[stance] : value,
+			min,
+			max,
+			isDecimal,
+			decimalPlaces,
+			direction
+		);
 		this.createThumbView(stance);
 		this.creteTipView(direction, stance, hasTips);
 		this.setThumbView(stance);
@@ -138,7 +149,6 @@ class Presenter {
 	}
 
 	private createRangeSlider(params: SliderParams) {
-
 		this.createSubViewsView(this.params);
 		this.createSlider(params, this.thumbStance);
 
@@ -175,9 +185,16 @@ class Presenter {
 		return this;
 	}
 
-
 	private setThumbView(stance: number) {
-		const { step, stepCount, stepPercent, value, offset, isDecimal, decimalPlaces } = this.thumbs[stance].getState();
+		const {
+			step,
+			stepCount,
+			stepPercent,
+			value,
+			offset,
+			isDecimal,
+			decimalPlaces,
+		} = this.thumbs[stance].getState();
 		this.view.thumbView.setStep(step, stepPercent, stepCount);
 		this.view.thumbView.setValue(value, stance);
 		this.view.thumbView.setOffset(offset, stance);
@@ -190,26 +207,20 @@ class Presenter {
 	}
 
 	private setTrackFillModel(direction: Direction) {
-		$(document).ready(() => {
-			this.trackModel.setFillSize(
-				this.trackModel.calculateFillSize(direction)
-			);
-			this.trackModel.setFillOffset(
-				this.trackModel.calculateFillOffset(direction)
-			);
-		});
+		this.trackModel.setFillSize(
+			this.trackModel.calculateFillSize(direction)
+		);
+		this.trackModel.setFillOffset(
+			this.trackModel.calculateFillOffset(direction)
+		);
 	}
 
 	private setTrackFillView() {
-		$(document).ready(() => {
-			this.view.setFillState(this.trackModel.getFillState());
-		});
+		this.view.setFillState(this.trackModel.getFillState());
 	}
 
 	private setTrackFillPlacement(direction: Direction) {
-		$(document).ready(() => {
-			this.view.initialFillPlacement(direction);
-		});
+		this.view.initialFillPlacement(direction);
 	}
 
 	private setTipPlacement(stance: number) {
@@ -218,7 +229,7 @@ class Presenter {
 	}
 
 	private createThumb(stance: number) {
-		this.thumbs.push(new ThumbModel(this.root, stance));
+		this.thumbs.push(new ThumbModel(this.DOMroot, stance));
 	}
 
 	private createThumbView(stance: number) {
@@ -229,7 +240,13 @@ class Presenter {
 		this.view.trackView.createTrack(direction);
 	}
 
-	private createScaleView(direction: Direction, step: number, max: number, min: number, hasScale: boolean) {
+	private createScaleView(
+		direction: Direction,
+		step: number,
+		max: number,
+		min: number,
+		hasScale: boolean
+	) {
 		this.view.scaleView.createScale(direction, hasScale);
 		this.view.scaleView.createScaleMarks(step, max, min, direction);
 	}
@@ -238,16 +255,25 @@ class Presenter {
 		this.view.fillView.createFill(direction, hasFill);
 	}
 
-	private creteTipView(direction: Direction, stance: number, hasTips: boolean) {
+	private creteTipView(
+		direction: Direction,
+		stance: number,
+		hasTips: boolean
+	) {
 		this.view.tipView.createTip(direction, stance, hasTips);
 	}
 
-	private createSubViewsView({ direction, step, max, min, hasFill, hasScale }: SliderParams) {
-		$(document).ready(() => {
-			this.createTrackView(direction);
-			this.createScaleView(direction, step, max, min, hasScale);
-			this.creteFillView(direction, hasFill);
-		});
+	private createSubViewsView({
+		direction,
+		step,
+		max,
+		min,
+		hasFill,
+		hasScale,
+	}: SliderParams) {
+		this.createTrackView(direction);
+		this.createScaleView(direction, step, max, min, hasScale);
+		this.creteFillView(direction, hasFill);
 	}
 }
 

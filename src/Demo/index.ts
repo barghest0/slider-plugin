@@ -10,7 +10,7 @@ const previewSlider2 = new PreviewSlider('.slider-2', {
   max: 6,
   step: 3,
   value: [-3, 3],
-  isRange: false,
+  isRange: true,
   direction: 'horizontal',
   hasFill: true,
   hasTips: true,

@@ -9,8 +9,9 @@ beforeEach(() => {
 });
 
 describe('TrackModel test', () => {
-    const root = '.slider-1';
-    const presenter = new Presenter(root, checkParams({}));
+    const rootClass = '.slider-1';
+    const root = document.querySelector(rootClass) as HTMLElement;
+    const presenter = new Presenter(rootClass, checkParams({}));
     const view = new View(root);
     const track = new TrackModel(root);
     const thumb = new Thumb(view);

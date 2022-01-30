@@ -29,7 +29,7 @@ class View extends Observer {
 
   public ends: Ends;
 
-  public root: string;
+  public DOMroot: HTMLElement;
 
   public isRange: boolean;
 
@@ -43,9 +43,9 @@ class View extends Observer {
 
   public hasScale: boolean;
 
-  public offsetDirection: string;
+  public offsetDirection: 'left' | 'top';
 
-  public fillDirection: string;
+  public fillDirection: 'width' | 'height';
 
   public initialThumbPlacement: (offset: number, stance: number) => void;
 
@@ -55,16 +55,16 @@ class View extends Observer {
 
   public prepareDirectionForInteraction: (direction: Direction) => void;
 
-  public calculateCursorCoordinate: (coord: number, direction: Direction, root: string, size: number) => number;
+  public calculateCursorCoordinate: (coord: number, direction: Direction, DOMroot: HTMLElement, size: number) => number;
 
-  constructor(root: string) {
+  constructor(DOMroot: HTMLElement) {
     super();
+    this.DOMroot = DOMroot;
     this.thumbView = new Thumb(this);
     this.trackView = new Track(this);
     this.scaleView = new Scale(this);
     this.fillView = new Fill(this);
     this.tipView = new Tip(this);
-    this.root = root;
     this.ends = { min: 0, max: 0 };
     this.size = 200;
     this.isRange = false;

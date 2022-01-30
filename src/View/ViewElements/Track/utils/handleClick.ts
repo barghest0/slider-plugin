@@ -6,11 +6,11 @@ const handleClick = function (
 ) {
   const { thisTrack } = e.data as { thisTrack: Track; };
   const { direction } = thisTrack.view;
-  const coord = direction === 'horizontal' ? e.clientX! : e.clientY!;
+  const coord = direction === 'horizontal' ? e.pageX! : e.pageY!;
   const cursorCoordinate = thisTrack.view.calculateCursorCoordinate(
     coord,
     direction,
-    thisTrack.view.root,
+    thisTrack.view.DOMroot,
     thisTrack.view.size,
   );
 

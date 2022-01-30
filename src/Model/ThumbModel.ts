@@ -4,7 +4,7 @@ import prepareOffset from './ThumbModelModules/prepareOffset';
 import endsValidation from './ThumbModelModules/endsValidation';
 
 class ThumbModel extends Observer {
-  private root: string;
+  private DOMroot: HTMLElement;
 
   private offset: number;
 
@@ -30,9 +30,9 @@ class ThumbModel extends Observer {
 
   private prepareOffset: (offset: number, direction: Direction) => number;
 
-  constructor(root: string, stance: number) {
+  constructor(DOMroot: HTMLElement, stance: number) {
     super();
-    this.root = root;
+    this.DOMroot = DOMroot;
     this.stance = stance;
     this.step = 1;
     this.value = 0;
@@ -54,10 +54,13 @@ class ThumbModel extends Observer {
   }
 
   private calculateValue(ends: Ends) {
+
     return (this.stepOffset / this.stepPercent) * this.step + ends.min;
   }
 
   public setValue(value: number) {
+
+
     this.value = value;
   }
 

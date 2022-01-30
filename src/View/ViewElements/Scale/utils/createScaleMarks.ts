@@ -15,16 +15,19 @@ const createScaleMarks = function (
     values.reverse();
   }
   for (let i = 0; i < values.length; i++) {
-    $(`${this.view.root} .slider__scale`).append(
-      `<div class="slider__scale-mark slider__scale-mark_${direction}" data-testid="test-scale-mark" style="${this.view.offsetDirection}:${offset}px"></div>`,
-    );
-    const parentElement = $(`${this.view.root} .slider__scale`).children(
-      '.slider__scale-mark',
-    )[i];
+    const mark = document.createElement('div');
+    mark.classList.add('slider__scale-mark');
+    mark.classList.add(`slider__scale-mark_${direction}`);
+    mark.dataset.testid = "test-scale-mark";
+    mark.style[this.view.offsetDirection] = offset + 'px';
 
-    $(parentElement).append(
-      `<div class="slider__scale-number slider__scale-number_${direction}" >${values[i]}</div>`,
-    );
+    const number = document.createElement('div');
+    number.classList.add('slider__scale-number');
+    number.classList.add(`slider__scale-number_${direction}`);
+    number.innerHTML = values[i].toString();
+    mark.appendChild(number);
+    this.scale.appendChild(mark);
+
 
     offset += this.view.size / (values.length - 1);
   }
