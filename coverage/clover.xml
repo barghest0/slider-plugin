@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1643561608487" clover="3.2.0">
-  <project timestamp="1643561608487" name="All files">
-    <metrics statements="1737" coveredstatements="1723" conditionals="195" coveredconditionals="180" methods="125" coveredmethods="124" elements="2057" coveredelements="2027" complexity="0" loc="1737" ncloc="1737" packages="25" files="46" classes="46"/>
+<coverage generated="1643578601957" clover="3.2.0">
+  <project timestamp="1643578601957" name="All files">
+    <metrics statements="1734" coveredstatements="1722" conditionals="195" coveredconditionals="181" methods="125" coveredmethods="124" elements="2054" coveredelements="2027" complexity="0" loc="1734" ncloc="1734" packages="25" files="46" classes="46"/>
     <package name="src">
       <metrics statements="24" coveredstatements="24" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
       <file name="Slider.ts" path="/srv/http/MetaLampSliderPlugin/src/Slider.ts">
@@ -242,31 +242,8 @@
         <line num="15" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="src.GlobalUtils">
-      <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="constants.ts" path="/srv/http/MetaLampSliderPlugin/src/GlobalUtils/constants.ts">
-        <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-      </file>
-    </package>
     <package name="src.Model">
-      <metrics statements="300" coveredstatements="298" conditionals="42" coveredconditionals="39" methods="31" coveredmethods="31"/>
+      <metrics statements="298" coveredstatements="296" conditionals="42" coveredconditionals="39" methods="31" coveredmethods="31"/>
       <file name="ThumbModel.ts" path="/srv/http/MetaLampSliderPlugin/src/Model/ThumbModel.ts">
         <metrics statements="149" coveredstatements="149" conditionals="17" coveredconditionals="17" methods="15" coveredmethods="15"/>
         <line num="1" count="1" type="stmt"/>
@@ -420,7 +397,7 @@
         <line num="149" count="1" type="stmt"/>
       </file>
       <file name="TrackModel.ts" path="/srv/http/MetaLampSliderPlugin/src/Model/TrackModel.ts">
-        <metrics statements="151" coveredstatements="149" conditionals="25" coveredconditionals="22" methods="16" coveredmethods="16"/>
+        <metrics statements="149" coveredstatements="147" conditionals="25" coveredconditionals="22" methods="16" coveredmethods="16"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -451,9 +428,9 @@
         <line num="28" count="1" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
         <line num="30" count="1" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
-        <line num="33" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="31" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="32" count="7" type="stmt"/>
+        <line num="33" count="7" type="stmt"/>
         <line num="34" count="7" type="stmt"/>
         <line num="35" count="7" type="stmt"/>
         <line num="36" count="7" type="stmt"/>
@@ -464,75 +441,75 @@
         <line num="41" count="7" type="stmt"/>
         <line num="42" count="7" type="stmt"/>
         <line num="43" count="7" type="stmt"/>
-        <line num="44" count="7" type="stmt"/>
-        <line num="45" count="7" type="stmt"/>
-        <line num="46" count="1" type="stmt"/>
-        <line num="47" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="48" count="7" type="stmt"/>
-        <line num="49" count="7" type="stmt"/>
-        <line num="50" count="1" type="stmt"/>
-        <line num="51" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="52" count="7" type="stmt"/>
-        <line num="53" count="7" type="stmt"/>
-        <line num="54" count="1" type="stmt"/>
-        <line num="55" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="56" count="8" type="stmt"/>
-        <line num="57" count="8" type="stmt"/>
-        <line num="58" count="1" type="stmt"/>
-        <line num="59" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="60" count="8" type="stmt"/>
-        <line num="61" count="8" type="stmt"/>
-        <line num="62" count="1" type="stmt"/>
-        <line num="63" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="45" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="46" count="7" type="stmt"/>
+        <line num="47" count="7" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="49" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="50" count="7" type="stmt"/>
+        <line num="51" count="7" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="53" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="54" count="12" type="stmt"/>
+        <line num="55" count="12" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="57" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="58" count="8" type="stmt"/>
+        <line num="59" count="8" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="61" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="62" count="8" type="stmt"/>
+        <line num="63" count="8" type="stmt"/>
         <line num="64" count="8" type="stmt"/>
         <line num="65" count="8" type="stmt"/>
-        <line num="66" count="8" type="stmt"/>
-        <line num="67" count="8" type="stmt"/>
-        <line num="68" count="1" type="stmt"/>
-        <line num="69" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="70" count="8" type="cond" truecount="1" falsecount="0"/>
-        <line num="71" count="4" type="cond" truecount="2" falsecount="0"/>
-        <line num="72" count="4" type="stmt"/>
-        <line num="73" count="4" type="cond" truecount="0" falsecount="1"/>
-        <line num="74" count="4" type="stmt"/>
-        <line num="75" count="8" type="stmt"/>
-        <line num="76" count="1" type="stmt"/>
-        <line num="77" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="78" count="10" type="stmt"/>
-        <line num="79" count="10" type="stmt"/>
-        <line num="80" count="1" type="stmt"/>
-        <line num="81" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="82" count="8" type="cond" truecount="1" falsecount="0"/>
-        <line num="83" count="4" type="cond" truecount="2" falsecount="0"/>
-        <line num="84" count="4" type="stmt"/>
-        <line num="85" count="4" type="stmt"/>
-        <line num="86" count="4" type="stmt"/>
-        <line num="87" count="8" type="stmt"/>
-        <line num="88" count="1" type="stmt"/>
-        <line num="89" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="90" count="9" type="stmt"/>
-        <line num="91" count="9" type="stmt"/>
-        <line num="92" count="1" type="stmt"/>
-        <line num="93" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="66" count="1" type="stmt"/>
+        <line num="67" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="68" count="10" type="cond" truecount="1" falsecount="0"/>
+        <line num="69" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="70" count="5" type="stmt"/>
+        <line num="71" count="5" type="cond" truecount="0" falsecount="1"/>
+        <line num="72" count="5" type="stmt"/>
+        <line num="73" count="10" type="stmt"/>
+        <line num="74" count="1" type="stmt"/>
+        <line num="75" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="76" count="10" type="stmt"/>
+        <line num="77" count="10" type="stmt"/>
+        <line num="78" count="1" type="stmt"/>
+        <line num="79" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="80" count="10" type="cond" truecount="1" falsecount="0"/>
+        <line num="81" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="82" count="5" type="stmt"/>
+        <line num="83" count="5" type="stmt"/>
+        <line num="84" count="5" type="stmt"/>
+        <line num="85" count="10" type="stmt"/>
+        <line num="86" count="1" type="stmt"/>
+        <line num="87" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="88" count="9" type="stmt"/>
+        <line num="89" count="9" type="stmt"/>
+        <line num="90" count="1" type="stmt"/>
+        <line num="91" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="92" count="2" type="stmt"/>
+        <line num="93" count="2" type="stmt"/>
         <line num="94" count="2" type="stmt"/>
         <line num="95" count="2" type="stmt"/>
         <line num="96" count="2" type="stmt"/>
-        <line num="97" count="2" type="stmt"/>
-        <line num="98" count="2" type="stmt"/>
+        <line num="97" count="1" type="stmt"/>
+        <line num="98" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="99" count="1" type="stmt"/>
-        <line num="100" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="100" count="1" type="stmt"/>
         <line num="101" count="1" type="stmt"/>
         <line num="102" count="1" type="stmt"/>
         <line num="103" count="1" type="stmt"/>
-        <line num="104" count="1" type="stmt"/>
+        <line num="104" count="1" type="cond" truecount="0" falsecount="1"/>
         <line num="105" count="1" type="stmt"/>
-        <line num="106" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="106" count="1" type="stmt"/>
         <line num="107" count="1" type="stmt"/>
-        <line num="108" count="1" type="stmt"/>
-        <line num="109" count="1" type="stmt"/>
-        <line num="110" count="1" type="cond" truecount="0" falsecount="1"/>
-        <line num="111" count="0" type="stmt"/>
-        <line num="112" count="0" type="stmt"/>
+        <line num="108" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="109" count="0" type="stmt"/>
+        <line num="110" count="0" type="stmt"/>
+        <line num="111" count="1" type="stmt"/>
+        <line num="112" count="1" type="stmt"/>
         <line num="113" count="1" type="stmt"/>
         <line num="114" count="1" type="stmt"/>
         <line num="115" count="1" type="stmt"/>
@@ -541,9 +518,9 @@
         <line num="118" count="1" type="stmt"/>
         <line num="119" count="1" type="stmt"/>
         <line num="120" count="1" type="stmt"/>
-        <line num="121" count="1" type="stmt"/>
-        <line num="122" count="1" type="stmt"/>
-        <line num="123" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="121" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="122" count="7" type="stmt"/>
+        <line num="123" count="7" type="stmt"/>
         <line num="124" count="7" type="stmt"/>
         <line num="125" count="7" type="stmt"/>
         <line num="126" count="7" type="stmt"/>
@@ -552,26 +529,24 @@
         <line num="129" count="7" type="stmt"/>
         <line num="130" count="7" type="stmt"/>
         <line num="131" count="7" type="stmt"/>
-        <line num="132" count="7" type="stmt"/>
-        <line num="133" count="7" type="stmt"/>
-        <line num="134" count="1" type="stmt"/>
-        <line num="135" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="136" count="8" type="stmt"/>
-        <line num="137" count="8" type="stmt"/>
-        <line num="138" count="1" type="stmt"/>
-        <line num="139" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="140" count="7" type="stmt"/>
-        <line num="141" count="7" type="stmt"/>
-        <line num="142" count="1" type="stmt"/>
-        <line num="143" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="132" count="1" type="stmt"/>
+        <line num="133" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="134" count="8" type="stmt"/>
+        <line num="135" count="8" type="stmt"/>
+        <line num="136" count="1" type="stmt"/>
+        <line num="137" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="138" count="7" type="stmt"/>
+        <line num="139" count="7" type="stmt"/>
+        <line num="140" count="1" type="stmt"/>
+        <line num="141" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="142" count="6" type="stmt"/>
+        <line num="143" count="6" type="stmt"/>
         <line num="144" count="6" type="stmt"/>
         <line num="145" count="6" type="stmt"/>
         <line num="146" count="6" type="stmt"/>
-        <line num="147" count="6" type="stmt"/>
-        <line num="148" count="6" type="stmt"/>
+        <line num="147" count="1" type="stmt"/>
+        <line num="148" count="1" type="stmt"/>
         <line num="149" count="1" type="stmt"/>
-        <line num="150" count="1" type="stmt"/>
-        <line num="151" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.Model.ThumbModelModules">
@@ -633,10 +608,10 @@
         <line num="22" count="0" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
         <line num="24" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="25" count="24" type="cond" truecount="1" falsecount="0"/>
-        <line num="26" count="24" type="stmt"/>
-        <line num="27" count="24" type="stmt"/>
-        <line num="28" count="24" type="stmt"/>
+        <line num="25" count="25" type="cond" truecount="1" falsecount="0"/>
+        <line num="26" count="25" type="stmt"/>
+        <line num="27" count="25" type="stmt"/>
+        <line num="28" count="25" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
         <line num="30" count="1" type="stmt"/>
       </file>
@@ -1150,10 +1125,10 @@
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="4" count="4" type="stmt"/>
-        <line num="5" count="4" type="stmt"/>
-        <line num="6" count="4" type="stmt"/>
-        <line num="7" count="4" type="stmt"/>
+        <line num="4" count="5" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
+        <line num="6" count="5" type="stmt"/>
+        <line num="7" count="5" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
       </file>
@@ -1285,9 +1260,9 @@
       </file>
     </package>
     <package name="src.View.ViewElements.Fill">
-      <metrics statements="56" coveredstatements="56" conditionals="7" coveredconditionals="7" methods="6" coveredmethods="6"/>
+      <metrics statements="56" coveredstatements="56" conditionals="6" coveredconditionals="6" methods="6" coveredmethods="6"/>
       <file name="Fill.ts" path="/srv/http/MetaLampSliderPlugin/src/View/ViewElements/Fill/Fill.ts">
-        <metrics statements="56" coveredstatements="56" conditionals="7" coveredconditionals="7" methods="6" coveredmethods="6"/>
+        <metrics statements="56" coveredstatements="56" conditionals="6" coveredconditionals="6" methods="6" coveredmethods="6"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -1336,7 +1311,7 @@
         <line num="46" count="8" type="stmt"/>
         <line num="47" count="8" type="stmt"/>
         <line num="48" count="8" type="stmt"/>
-        <line num="49" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="49" count="8" type="stmt"/>
         <line num="50" count="8" type="stmt"/>
         <line num="51" count="8" type="stmt"/>
         <line num="52" count="1" type="stmt"/>
@@ -1531,13 +1506,13 @@
         <line num="49" count="13" type="stmt"/>
         <line num="50" count="1" type="stmt"/>
         <line num="51" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="52" count="12" type="stmt"/>
-        <line num="53" count="12" type="stmt"/>
-        <line num="54" count="12" type="stmt"/>
-        <line num="55" count="12" type="stmt"/>
-        <line num="56" count="12" type="stmt"/>
-        <line num="57" count="12" type="stmt"/>
-        <line num="58" count="12" type="stmt"/>
+        <line num="52" count="14" type="stmt"/>
+        <line num="53" count="14" type="stmt"/>
+        <line num="54" count="14" type="stmt"/>
+        <line num="55" count="14" type="stmt"/>
+        <line num="56" count="14" type="stmt"/>
+        <line num="57" count="14" type="stmt"/>
+        <line num="58" count="14" type="stmt"/>
         <line num="59" count="1" type="stmt"/>
         <line num="60" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="61" count="9" type="stmt"/>
@@ -1675,20 +1650,20 @@
         <line num="23" count="11" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
         <line num="25" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="26" count="12" type="stmt"/>
-        <line num="27" count="12" type="stmt"/>
+        <line num="26" count="13" type="stmt"/>
+        <line num="27" count="13" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
         <line num="29" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="30" count="11" type="stmt"/>
-        <line num="31" count="11" type="stmt"/>
+        <line num="30" count="15" type="stmt"/>
+        <line num="31" count="15" type="stmt"/>
         <line num="32" count="1" type="stmt"/>
         <line num="33" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="34" count="12" type="stmt"/>
-        <line num="35" count="12" type="stmt"/>
+        <line num="34" count="13" type="stmt"/>
+        <line num="35" count="13" type="stmt"/>
         <line num="36" count="1" type="stmt"/>
         <line num="37" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="38" count="11" type="stmt"/>
-        <line num="39" count="11" type="stmt"/>
+        <line num="38" count="13" type="stmt"/>
+        <line num="39" count="13" type="stmt"/>
         <line num="40" count="1" type="stmt"/>
         <line num="41" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="42" count="8" type="stmt"/>
@@ -1707,20 +1682,19 @@
       </file>
     </package>
     <package name="src.View.ViewElements.Tip.utils">
-      <metrics statements="11" coveredstatements="11" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+      <metrics statements="10" coveredstatements="10" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
       <file name="updateTipsPosition.ts" path="/srv/http/MetaLampSliderPlugin/src/View/ViewElements/Tip/utils/updateTipsPosition.ts">
-        <metrics statements="11" coveredstatements="11" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <metrics statements="10" coveredstatements="10" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="4" count="12" type="stmt"/>
-        <line num="5" count="12" type="stmt"/>
-        <line num="6" count="12" type="stmt"/>
-        <line num="7" count="12" type="stmt"/>
-        <line num="8" count="12" type="stmt"/>
-        <line num="9" count="12" type="stmt"/>
+        <line num="4" count="13" type="stmt"/>
+        <line num="5" count="13" type="stmt"/>
+        <line num="6" count="13" type="stmt"/>
+        <line num="7" count="13" type="stmt"/>
+        <line num="8" count="13" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.View.ViewElements.Track">
@@ -1787,17 +1761,17 @@
       </file>
     </package>
     <package name="src.View.ViewModules">
-      <metrics statements="55" coveredstatements="53" conditionals="10" coveredconditionals="9" methods="5" coveredmethods="5"/>
+      <metrics statements="55" coveredstatements="55" conditionals="11" coveredconditionals="11" methods="5" coveredmethods="5"/>
       <file name="calculateCursorCoordinate.ts" path="/srv/http/MetaLampSliderPlugin/src/View/ViewModules/calculateCursorCoordinate.ts">
-        <metrics statements="10" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <metrics statements="10" coveredstatements="10" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="7" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="8" count="0" type="stmt"/>
+        <line num="4" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
       </file>
@@ -1857,6 +1831,29 @@
         <line num="12" count="8" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.utils">
+      <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="constants.ts" path="/srv/http/MetaLampSliderPlugin/src/utils/constants.ts">
+        <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
       </file>
     </package>
     <package name="tests.Demo">

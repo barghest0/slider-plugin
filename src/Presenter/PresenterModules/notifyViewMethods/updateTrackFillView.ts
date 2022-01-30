@@ -1,4 +1,4 @@
-import { Direction } from '../../../GlobalUtils/interfaces';
+import { Direction } from '../../../utils/interfaces';
 import Presenter from '../../Presenter';
 
 const updateTrackFillView = function (this: Presenter, size: number, offset: number) {

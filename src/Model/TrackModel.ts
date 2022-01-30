@@ -5,7 +5,7 @@ import {
   SliderFillState,
   SliderParams,
   SliderTrackState,
-} from '../GlobalUtils/interfaces';
+} from '../utils/interfaces';
 
 class TrackModel extends Observer {
   private DOMroot: HTMLElement;
@@ -27,8 +27,6 @@ class TrackModel extends Observer {
   public hasTips: boolean;
 
   public hasScale: boolean;
-
-
 
   constructor(DOMroot: HTMLElement) {
     super();

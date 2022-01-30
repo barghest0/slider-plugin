@@ -1,6 +1,6 @@
 import View from "../View/View";
 import TrackModel from "../Model/TrackModel";
-import { Direction, SliderParams } from "../GlobalUtils/interfaces";
+import { Direction, SliderParams } from "../utils/interfaces";
 import ThumbModel from "../Model/ThumbModel";
 import clearHTML from "./PresenterModules/clearHTML";
 import removeListeners from "./PresenterModules/removeListeners";

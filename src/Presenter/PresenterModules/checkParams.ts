@@ -1,4 +1,4 @@
-import { SliderParams, UserSliderParams } from "../../GlobalUtils/interfaces";
+import { SliderParams, UserSliderParams } from "../../utils/interfaces";
 
 const checkParams = function (params: UserSliderParams): SliderParams {
 	let {

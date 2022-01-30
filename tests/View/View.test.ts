@@ -2,11 +2,9 @@ import '@testing-library/jest-dom';
 import { screen } from '@testing-library/dom';
 import View from "../../src/View/View";
 
-beforeEach(() => {
-	document.body.innerHTML = `<div id="slider-1" data-testid="slider-1" class="slider-1"></div>`;
-});
 
 describe("View test", () => {
+	document.body.innerHTML = `<div id="slider-1" data-testid="slider-1" class="slider-1"></div>`;
 	const rootClass = '.slider-1';
 	const root = document.querySelector(rootClass) as HTMLElement;
 	const view = new View(root);

@@ -1,7 +1,6 @@
 import '@testing-library/jest-dom';
-import { screen, waitFor } from "@testing-library/dom";
-import { DEFAULT_SLIDER_PARAMS } from "../../src/GlobalUtils/constants";
-import { SliderParams } from "../../src/GlobalUtils/interfaces";
+import { DEFAULT_SLIDER_PARAMS } from "../../src/utils/constants";
+import { SliderParams } from "../../src/utils/interfaces";
 import Presenter from "../../src/Presenter/Presenter";
 import checkParams from "../../src/Presenter/PresenterModules/checkParams";
 
@@ -70,8 +69,8 @@ describe("Presenter test", () => {
 	});
 
 	test("correct update tip view", () => {
-		presenter.thumbs[0].notify("UpdateTipView", 50, 0, 50);
-		presenter.thumbs[1].notify("UpdateTipView", 100, 1, 100);
+		presenter.thumbs[0].notify("UpdateTipView", 0, 50, 50);
+		presenter.thumbs[1].notify("UpdateTipView", 1, 100,  100);
 		expect(presenter.view.tipView.getOffset()[0]).toBe(50);
 		expect(presenter.view.tipView.getOffset()[1]).toBe(100);
 	});

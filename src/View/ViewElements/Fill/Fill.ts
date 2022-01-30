@@ -1,4 +1,4 @@
-import { Direction } from '../../../GlobalUtils/interfaces';
+import { Direction } from '../../../utils/interfaces';
 import Observer from '../../../Observer/Observer';
 import View from '../../View';
 import updateFill from './utils/updateFill';

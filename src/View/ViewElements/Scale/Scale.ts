@@ -1,4 +1,4 @@
-import { Direction } from "../../../GlobalUtils/interfaces";
+import { Direction } from "../../../utils/interfaces";
 import View from "../../View";
 import createScaleMarks from "./utils/createScaleMarks";
 

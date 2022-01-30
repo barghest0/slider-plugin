@@ -1,4 +1,4 @@
-import { Direction, Ends } from '../../GlobalUtils/interfaces';
+import { Direction, Ends } from '../../utils/interfaces';
 import ThumbModel from '../ThumbModel';
 
 const endsValidation = function (this: ThumbModel, ends: Ends, direction: Direction) {

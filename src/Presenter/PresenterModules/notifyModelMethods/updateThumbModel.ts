@@ -1,4 +1,4 @@
-import { Direction } from '../../../GlobalUtils/interfaces';
+import { Direction } from '../../../utils/interfaces';
 import Presenter from '../../Presenter';
 
 const updateThumbModel = function (this: Presenter, stance: number, cursorOffset: number, direction: Direction) {

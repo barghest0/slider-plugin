@@ -1,15 +1,16 @@
 import ThumbModel from '../../src/Model/ThumbModel';
 
-beforeEach(() => {
-    document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';
-});
+
 
 describe('ThumbModel test', () => {
+    document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';
     const rootClass = '.slider-1';
     const root = document.querySelector(rootClass) as HTMLElement;
     const thumbModel = new ThumbModel(root, 0);
 
     test('constructor test', () => {
+        expect(thumbModel).toHaveProperty('DOMroot');
+
         expect(thumbModel).toHaveProperty('stance', 0);
     });
 

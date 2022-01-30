@@ -1,4 +1,4 @@
-import { Direction } from '../../GlobalUtils/interfaces';
+import { Direction } from '../../utils/interfaces';
 
 const calculateCursorCoordinate = function (coord: number, direction: Direction, DOMroot: HTMLElement, size: number) {
   if (direction === 'horizontal') {

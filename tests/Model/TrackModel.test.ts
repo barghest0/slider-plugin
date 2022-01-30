@@ -4,11 +4,10 @@ import checkParams from '../../src/Presenter/PresenterModules/checkParams';
 import View from '../../src/View/View';
 import Thumb from '../../src/View/ViewElements/Thumb/Thumb';
 
-beforeEach(() => {
-    document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';
-});
+
 
 describe('TrackModel test', () => {
+    document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';
     const rootClass = '.slider-1';
     const root = document.querySelector(rootClass) as HTMLElement;
     const presenter = new Presenter(rootClass, checkParams({}));
@@ -16,7 +15,7 @@ describe('TrackModel test', () => {
     const track = new TrackModel(root);
     const thumb = new Thumb(view);
     test('constructor test', () => {
-        expect(track).toHaveProperty('root', root);
+        expect(track).toHaveProperty('DOMroot');
     });
     test('correct fill offset test', () => {
         track.setFillOffset(50);
@@ -54,35 +53,21 @@ describe('TrackModel test', () => {
         thumb.createThumb(1);
         track.setIsRange(false);
 
-        track.size = 200;
-        expect(track.calculateFillOffset([10, 100])).toBe(0);
+        expect(track.calculateFillOffset([10])).toBe(0);
         track.setIsRange(true);
 
-        $(`${root} .slider__thumb-0`).css({ left: `${100}px` });
-        expect(track.calculateFillOffset([10, 100])).toBe(50);
-
-        $(`${root} .slider__thumb-1`).css({ top: `${100}px` });
-        expect(track.calculateFillOffset([100])).toBe(50);
+        expect(track.calculateFillOffset([10, 100])).toBe(10);
     });
 
     test('correct calculate fill size', () => {
         thumb.createThumb(0);
         thumb.createThumb(1);
         track.setIsRange(false);
-        $(`${root} .slider__thumb-0`).css({ left: `${100}px` });
-        expect(track.calculateFillSize([5, 30])).toBe(50);
 
-        $(`${root} .slider__thumb-0`).css({ bottom: `${100}px` });
-        $(`${root} .slider__thumb-0`).css({ height: `${15}px` });
-        expect(track.calculateFillSize([20, 70])).toBe(57.5);
+        expect(track.calculateFillSize([30])).toBe(30);
 
-        $(`${root} .slider__thumb-1`).css({ left: `${150}px` });
         track.setIsRange(true);
         expect(track.calculateFillSize([5, 30])).toBe(25);
-
-        $(`${root} .slider__thumb-0`).css({ top: `${150}px` });
-        $(`${root} .slider__thumb-1`).css({ top: `${100}px` });
-        expect(track.calculateFillSize([20, 70])).toBe(25);
     });
 
     test('correct update track fill view', () => {

@@ -1,5 +1,5 @@
 import Observer from '../Observer/Observer';
-import { Direction, Ends, SliderThumbState } from '../GlobalUtils/interfaces';
+import { Direction, Ends, SliderThumbState } from '../utils/interfaces';
 import prepareOffset from './ThumbModelModules/prepareOffset';
 import endsValidation from './ThumbModelModules/endsValidation';
 

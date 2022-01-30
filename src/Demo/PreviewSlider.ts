@@ -1,4 +1,4 @@
-import { SliderParams, UserSliderParams } from '../GlobalUtils/interfaces';
+import { SliderParams, UserSliderParams } from '../utils/interfaces';
 import Observer from '../Observer/Observer';
 import Slider from '../Slider';
 import Panel from './Panel/Panel';
