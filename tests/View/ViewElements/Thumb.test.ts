@@ -82,5 +82,15 @@ describe('Thumb test', () => {
     expect(notify).toBeCalled();
   });
 
+  test('correct handle drag test', () => {
+    thumb.dragAndDropThumb(0);
+    view.isRange = true;
+    const validateCollision = jest.spyOn(thumb, 'validateCollision');
+    const DOMThumb = screen.getByTestId('test-thumb-0');
+    DOMThumb.dispatchEvent(new MouseEvent('mousedown'));
+    document.dispatchEvent(new MouseEvent('mousemove'));
+    expect(validateCollision).toBeCalled();
+  });
+
 
 });

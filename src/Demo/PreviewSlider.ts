@@ -18,16 +18,14 @@ class PreviewSlider {
     this.params = checkParams(params);
     this.panel = new Panel(this.params, root, this);
     this.slider = new Slider(root, this.params);
-
     this.init(this.params, 'init');
     this.panel.handleChangeFormValues();
   }
 
   public init(params: SliderParams, mode: string) {
     if (mode === 'rebuild') {
+      this.params = params;
       this.slider.init(params, mode);
-      
-
     }
     this.panel.initializeInputs(this.root);
     this.panel.initializeFormValues(params);

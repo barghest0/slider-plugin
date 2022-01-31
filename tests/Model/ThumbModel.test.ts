@@ -35,5 +35,24 @@ describe('ThumbModel test', () => {
         thumbModel.setOffset(110);
         thumbModel['endsValidation']({ min: 0, max: 100 }, 'horizontal');
         expect(thumbModel.getOffset()).toBe(100);
+        expect(thumbModel.getValue()).toBe(100);
+
+        thumbModel.setOffset(110);
+        thumbModel['endsValidation']({ min: 0, max: 100 }, 'vertical');
+        expect(thumbModel.getOffset()).toBe(100);
+        expect(thumbModel.getValue()).toBe(0);
+
+        thumbModel.setOffset(-100);
+        thumbModel['endsValidation']({ min: 0, max: 100 }, 'horizontal');
+        expect(thumbModel.getOffset()).toBe(0);
+        expect(thumbModel.getValue()).toBe(0);
+
+        thumbModel.setOffset(-100);
+        thumbModel['endsValidation']({ min: 0, max: 100 }, 'vertical');
+        expect(thumbModel.getOffset()).toBe(0);
+        expect(thumbModel.getValue()).toBe(100);
+
+
+
     });
 });

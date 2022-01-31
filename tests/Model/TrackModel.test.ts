@@ -54,8 +54,9 @@ describe('TrackModel test', () => {
         track.setIsRange(false);
 
         expect(track.calculateFillOffset([10])).toBe(0);
-        track.setIsRange(true);
 
+        track.setIsRange(true);
+        
         expect(track.calculateFillOffset([10, 100])).toBe(10);
     });
 
