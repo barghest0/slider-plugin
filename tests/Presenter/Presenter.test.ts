@@ -58,19 +58,24 @@ describe("Presenter test", () => {
 	});
 
 	test("correct update thumb view", () => {
+		const fn = jest.fn();
+		presenter.params.onChange = fn;
 		presenter.thumbs[0].notify("UpdateThumbView", 100, 50, 0);
 		expect(presenter.view.thumbView.value[0]).toBe(100);
 		expect(presenter.view.thumbView.offset[0]).toBe(50);
 		expect(presenter.view.thumbView.activeStance).toBe(0);
 		presenter.thumbs[1].notify("UpdateThumbView", 150, 70, 1);
+
 		expect(presenter.view.thumbView.value[1]).toBe(150);
 		expect(presenter.view.thumbView.offset[1]).toBe(70);
 		expect(presenter.view.thumbView.activeStance).toBe(1);
+
+		expect(presenter.params.onChange).toBeDefined();
 	});
 
 	test("correct update tip view", () => {
 		presenter.thumbs[0].notify("UpdateTipView", 0, 50, 50);
-		presenter.thumbs[1].notify("UpdateTipView", 1, 100,  100);
+		presenter.thumbs[1].notify("UpdateTipView", 1, 100, 100);
 		expect(presenter.view.tipView.getOffset()[0]).toBe(50);
 		expect(presenter.view.tipView.getOffset()[1]).toBe(100);
 	});
@@ -81,7 +86,7 @@ describe("Presenter test", () => {
 		expect(presenter.view.fillView.getOffset()).toBe(10);
 	});
 
-	test("correct check value params", () => {
+	test("correct check values params", () => {
 		expect(checkParams({})).toEqual(DEFAULT_SLIDER_PARAMS);
 		const correctParams: SliderParams = JSON.parse(
 			JSON.stringify(DEFAULT_SLIDER_PARAMS)

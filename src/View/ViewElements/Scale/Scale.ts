@@ -4,13 +4,13 @@ import createScaleMarks from "./utils/createScaleMarks";
 
 class Scale {
 	public scale: HTMLElement | null;
+	public view: View;
 	public createScaleMarks: (
 		step: number,
 		max: number,
 		min: number,
 		direction: Direction
 	) => void;
-	public view: View;
 	constructor(view: View) {
 		this.view = view;
 		this.scale = null;

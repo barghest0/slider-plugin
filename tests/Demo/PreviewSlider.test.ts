@@ -66,6 +66,5 @@ describe('PreviewSlider test', () => {
     handleChange.call(panel, event, 'min');
     expect(previewSlider.params.min).toBe(200);
 
-
   });
 });

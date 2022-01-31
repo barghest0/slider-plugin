@@ -40,7 +40,6 @@ class Fill extends Observer {
   }
 
   public createFill(direction: Direction) {
-   
       const fill = document.createElement('div');
       fill.classList.add('slider__fill');
       fill.classList.add(`slider__fill_${direction}`);

@@ -42,6 +42,7 @@ class PreviewSlider {
     }
   }
 
+
   private subscribe() {
     this.slider.presenter.thumbs.forEach((item) => {
       item.subscribe(

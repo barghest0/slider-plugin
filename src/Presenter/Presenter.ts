@@ -98,8 +98,8 @@ class Presenter {
 	}: SliderParams) {
 		const size =
 			direction === "horizontal"
-				? this.DOMroot.clientWidth
-				: this.DOMroot.offsetHeight;
+				? this.DOMroot.getBoundingClientRect().width
+				: this.DOMroot.getBoundingClientRect().height;
 
 		this.trackModel.setSize(size);
 		this.trackModel.setEnds({ min, max });
