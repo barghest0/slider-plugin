@@ -43,6 +43,4 @@ describe("Fill test", () => {
 		expect(DOMFill).toHaveStyle('left:20%');
 	});
 
-
-
 });

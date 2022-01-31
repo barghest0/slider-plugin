@@ -23,7 +23,7 @@ class Scale {
 		scale.classList.add(`slider__scale_${direction}`);
 		scale.dataset.testid = `test-scale`;
 		this.scale = scale;
-		this.view.DOMroot?.appendChild(scale);
+		this.view.DOMroot.appendChild(scale);
 	}
 }
 

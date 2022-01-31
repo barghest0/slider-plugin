@@ -1,5 +1,4 @@
 import { SliderParams, UserSliderParams } from '../utils/interfaces';
-import Observer from '../Observer/Observer';
 import Slider from '../Slider';
 import Panel from './Panel/Panel';
 import checkParams from '../Presenter/PresenterModules/checkParams';
@@ -18,6 +17,7 @@ class PreviewSlider {
     this.params = checkParams(params);
     this.panel = new Panel(this.params, root, this);
     this.slider = new Slider(root, this.params);
+    
     this.init(this.params, 'init');
     this.panel.handleChangeFormValues();
   }
@@ -27,6 +27,7 @@ class PreviewSlider {
       this.params = params;
       this.slider.init(params, mode);
     }
+
     this.panel.initializeInputs(this.root);
     this.panel.initializeFormValues(params);
     this.subscribe();

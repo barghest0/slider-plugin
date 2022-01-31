@@ -19,7 +19,7 @@ class Track extends Observer {
     track.classList.add(`slider__track_${direction}`);
     track.dataset.testid = `test-track`;
     this.track = track;
-    this.view.DOMroot?.appendChild(track);
+    this.view.DOMroot.appendChild(track);
   }
 
   public clickTrack() {

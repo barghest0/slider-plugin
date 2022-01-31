@@ -67,8 +67,10 @@ class Panel {
     this.initializeInputs = initializeInputs.bind(this);
     this.handleChangeFormValues = handleChangeFormValues.bind(this);
     this.createPanel = createPanel.bind(this);
+
     this.createPanel();
   }
 }
+
 
 export default Panel;

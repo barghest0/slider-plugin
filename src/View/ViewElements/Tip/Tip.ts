@@ -46,7 +46,7 @@ class Tip extends Observer {
       tip.classList.add(`slider__tip_${direction}`);
       tip.dataset.testid = `test-tip`;
       this.tips.push(tip);
-      this.view.DOMroot?.appendChild(tip);
+      this.view.DOMroot.appendChild(tip);
     
   }
 }

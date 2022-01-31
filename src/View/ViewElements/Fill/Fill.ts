@@ -45,7 +45,7 @@ class Fill extends Observer {
       fill.classList.add(`slider__fill_${direction}`);
       fill.dataset.testid = `test-fill`;
       this.fill = fill;
-      this.view.DOMroot?.appendChild(fill);
+      this.view.DOMroot.appendChild(fill);
     
   }
 

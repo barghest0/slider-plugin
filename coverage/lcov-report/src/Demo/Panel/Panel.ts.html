@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>57/57</span>
+                <span class='fraction'>76/76</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>57/57</span>
+                <span class='fraction'>76/76</span>
             </div>
         
             
@@ -120,7 +120,37 @@
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -174,6 +204,14 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -182,8 +220,17 @@ import initializeFormValues from './PanelModules/initializeFormValues';
 import initializeInputs from './PanelModules/initializeInputs';
 import handleChangeFormValues from './PanelModules/handleChangeFormValues';
 import PreviewSlider from '../PreviewSlider';
+import createPanel from './PanelModules/createPanel';
 &nbsp;
 class Panel {
+  public params: SliderParams;
+&nbsp;
+  public parent: PreviewSlider;
+&nbsp;
+  public root: string;
+&nbsp;
+  public DOMroot: HTMLElement;
+&nbsp;
   public minValueInput: HTMLInputElement | null;
 &nbsp;
   public maxValueInput: HTMLInputElement | null;
@@ -194,6 +241,8 @@ class Panel {
 &nbsp;
   public secondValueInput: HTMLInputElement | null;
 &nbsp;
+  public decimalPlacesInput: HTMLInputElement | null;
+&nbsp;
   public isRange: HTMLInputElement | null;
 &nbsp;
   public isVertical: HTMLInputElement | null;
@@ -202,22 +251,23 @@ class Panel {
 &nbsp;
   public hasFill: HTMLInputElement | null;
 &nbsp;
+  public hasScale: HTMLInputElement | null;
+&nbsp;
+  public isDecimal: HTMLInputElement | null;
+&nbsp;
   public initializeFormValues: (params: SliderParams) =&gt; void;
 &nbsp;
   public initializeInputs: (root: string) =&gt; void;
 &nbsp;
   public handleChangeFormValues: () =&gt; void;
 &nbsp;
-  public params: SliderParams;
-&nbsp;
-  public parent: PreviewSlider;
-&nbsp;
-  public root: string;
+  public createPanel: () =&gt; void;
 &nbsp;
   constructor(params: SliderParams, root: string, parent: PreviewSlider) {
     this.parent = parent;
     this.params = params;
     this.root = root;
+    this.DOMroot = document.querySelector(root) as HTMLElement;
     this.minValueInput = null;
     this.maxValueInput = null;
     this.firstValueInput = null;
@@ -227,11 +277,18 @@ class Panel {
     this.isVertical = null;
     this.hasTips = null;
     this.hasFill = null;
+    this.hasScale = null;
+    this.decimalPlacesInput = null;
+    this.isDecimal = null;
     this.initializeFormValues = initializeFormValues.bind(this);
     this.initializeInputs = initializeInputs.bind(this);
     this.handleChangeFormValues = handleChangeFormValues.bind(this);
+    this.createPanel = createPanel.bind(this);
+&nbsp;
+    this.createPanel();
   }
 }
+&nbsp;
 &nbsp;
 export default Panel;
 &nbsp;</pre></td></tr></table></pre>
@@ -241,7 +298,7 @@ export default Panel;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon Jan 31 2022 19:18:00 GMT+0000 (Всемирное координированное время)
+                at Tue Feb 01 2022 08:02:44 GMT+0300 (Москва, стандартное время)
             </div>
         <script src="../../../prettify.js"></script>
         <script>
