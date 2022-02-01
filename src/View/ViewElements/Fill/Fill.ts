@@ -6,9 +6,9 @@ import updateFill from './utils/updateFill';
 class Fill extends Observer {
   public view: View;
 
-  public updateFill: () => void;
-
   public fill: HTMLElement | null;
+
+  public updateFill: () => void;
 
   private size: number;
 
@@ -46,7 +46,6 @@ class Fill extends Observer {
       fill.dataset.testid = `test-fill`;
       this.fill = fill;
       this.view.DOMroot.appendChild(fill);
-    
   }
 
 

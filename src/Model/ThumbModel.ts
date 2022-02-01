@@ -113,13 +113,7 @@ class ThumbModel extends Observer {
     this.setOffset(this.calculateOffset(ends, direction));
     this.endsValidation(ends, direction);
 
-    this.notify(
-      'UpdateThumbView',
-      this.value,
-      this.offset,
-      stance,
-      this.cursorOffset,
-    );
+    this.notify('UpdateThumbView', this.value, this.offset, stance, this.cursorOffset);
     this.notify('UpdateTipView', stance, this.offset, this.value);
     this.notify('UpdatePanelValues', this.value, stance);
   }

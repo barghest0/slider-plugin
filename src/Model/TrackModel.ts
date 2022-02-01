@@ -99,8 +99,6 @@ class TrackModel extends Observer {
     let stance = 0;
     const chooseCorrectStance = cursorOffset > this.fillSize / 2 + this.fillOffset;
 
-    
-    
     if (chooseCorrectStance) stance = 1;
 
     if (this.direction === 'vertical') stance = +!stance;
@@ -109,13 +107,7 @@ class TrackModel extends Observer {
       stance = 0;
     }
 
-    this.notify(
-      'UpdateThumbModel',
-      stance,
-      cursorOffset,
-      this.direction,
-      this.size,
-    );
+    this.notify('UpdateThumbModel',stance,cursorOffset,this.direction,this.size);
   }
 
   public getState(): SliderTrackState {

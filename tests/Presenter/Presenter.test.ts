@@ -41,7 +41,7 @@ describe("Presenter test", () => {
 	});
 
 	test("correct set thumb view test", () => {
-		expect(presenter["view"].thumbView.value[0]).toBe(10);
+		expect(presenter["view"].thumbView.getValue()[0]).toBe(10);
 	});
 
 	test("correct update thumb model", () => {
@@ -61,13 +61,13 @@ describe("Presenter test", () => {
 		const fn = jest.fn();
 		presenter.params.onChange = fn;
 		presenter.thumbs[0].notify("UpdateThumbView", 100, 50, 0);
-		expect(presenter.view.thumbView.value[0]).toBe(100);
-		expect(presenter.view.thumbView.offset[0]).toBe(50);
+		expect(presenter.view.thumbView.getValue()[0]).toBe(100);
+		expect(presenter.view.thumbView.getOffset()[0]).toBe(50);
 		expect(presenter.view.thumbView.activeStance).toBe(0);
 		presenter.thumbs[1].notify("UpdateThumbView", 150, 70, 1);
 
-		expect(presenter.view.thumbView.value[1]).toBe(150);
-		expect(presenter.view.thumbView.offset[1]).toBe(70);
+		expect(presenter.view.thumbView.getValue()[1]).toBe(150);
+		expect(presenter.view.thumbView.getOffset()[1]).toBe(70);
 		expect(presenter.view.thumbView.activeStance).toBe(1);
 
 		expect(presenter.params.onChange).toBeDefined();

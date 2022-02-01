@@ -31,21 +31,21 @@ describe('Thumb test', () => {
 
   test('setStep test', () => {
     thumb.setStep(100, 10, 10);
-    expect(thumb.step).toBe(100);
+    expect(thumb.getStep().step).toBe(100);
   });
 
   test('setValue test', () => {
     thumb.setValue(100, 0);
-    expect(thumb.value[0]).toBe(100);
+    expect(thumb.getValue()[0]).toBe(100);
     thumb.setValue(150, 1);
-    expect(thumb.value[1]).toBe(150);
+    expect(thumb.getValue()[1]).toBe(150);
   });
 
   test('setOffset test', () => {
     thumb.setOffset(50, 0);
-    expect(thumb.offset[0]).toBe(50);
+    expect(thumb.getOffset()[0]).toBe(50);
     thumb.setOffset(60, 1);
-    expect(thumb.offset[1]).toBe(60);
+    expect(thumb.getOffset()[1]).toBe(60);
   });
 
   test('setIsDecimal test', () => {

@@ -7,17 +7,9 @@ import dragAndDropThumb from "./utils/dragAndDropThumb";
 class Thumb extends Observer {
 	public view: View;
 
-	public step: number;
-
-	public stepPercent: number;
-
-	public stepCount: number;
-
-	public value: number[];
-
 	public thumbs: HTMLElement[];
 
-	public offset: number[];
+	private offset: number[];
 
 	public isDecimal: boolean;
 
@@ -30,6 +22,14 @@ class Thumb extends Observer {
 	public validateCollision: (stance: number) => number;
 
 	public dragAndDropThumb: (stance: number) => void;
+
+	private step: number;
+
+	private stepPercent: number;
+
+	private stepCount: number;
+
+	private value: number[];
 
 	constructor(view: View) {
 		super();
@@ -63,13 +63,26 @@ class Thumb extends Observer {
 		this.stepCount = stepCount;
 	}
 
+	public getStep(){
+		return {step:this.step, stepPercent:this.stepPercent, stepCount:this.stepCount}
+	}
+
 	public setValue(value: number, stance: number) {
 		this.value[stance] = value;
+	}
+
+	public getValue(){
+		return this.value
 	}
 
 	public setOffset(offset: number, stance: number) {
 		this.offset[stance] = offset;
 	}
+
+	public getOffset() {
+		return this.offset;
+	}
+
 
 	public setIsDecimal(isDecimal: boolean, decimalPlaces: number) {
 		if (isDecimal) {
@@ -79,9 +92,7 @@ class Thumb extends Observer {
 		}
 	}
 
-	public getOffset() {
-		return this.offset;
-	}
+	
 }
 
 export default Thumb;
