@@ -26,6 +26,10 @@ const checkParams = function (params: UserSliderParams): SliderParams {
 	if (value[0] > value[1]) {
 		value[1] = value[0];
 	}
+
+	if(min>=max-step) min = max - step
+	if(max<=min+step) max = min + step
+
 	if (isRange && value.length === 1) value.push(value[0]);
 
 	const checkedParams: SliderParams = {
