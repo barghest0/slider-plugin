@@ -6,6 +6,7 @@ const createPanel = function (this: Panel) {
 	const root = this.DOMroot.parentElement!.parentElement;
 
 	const panel = document.createElement('div');
+	panel.classList.add(`slider-panel`);
 	panel.classList.add(`${this.root.slice(1)}__panel`);
 	createInput('Min Value', 'number', "js-input__min-value", 'js-input', panel);
 	createInput('Max Value', 'number', "js-input__max-value", 'js-input', panel);
@@ -34,6 +35,7 @@ export const createInput = function (text: string, type: string, inputClass: str
 	container.classList.add('input-container');
 
 	const label = document.createElement('label');
+	label.classList.add('label')
 	label.classList.add(labelClass)
 
 	const input = document.createElement('input');
