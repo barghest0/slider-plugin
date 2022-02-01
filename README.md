@@ -39,3 +39,7 @@ const slider = new Slider(".slider", {});
 | hasScale      | boolean                 | true                  | Отображение шкалы                                  |
 | hasTips       | boolean                 | true                  | Отображение подсказок над бегунками                |
 | hasFill       | boolean                 | true                  | Отображение прогресс бара                          |
+
+## Архитектура
+
+![UML](uml.png)
