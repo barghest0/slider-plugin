@@ -3,20 +3,22 @@ import handleDrag from './handleDrag';
 
 const dragAndDropThumb = function (this: Thumb, stance: number) {
 
-
-  const handleMouseMove = (e: any) => {
+  const handlePointerMove = (e: any) => {
     handleDrag(e, { thisThumb: this, stance });
   };
-  const handleMouseDown = (event: any) => {
+  const handlePointerDown = (event: any) => {
     event.preventDefault();
     event.stopPropagation();
-    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('pointermove', handlePointerMove);
   };
-  this.view.DOMroot!.querySelector(`.slider__thumb-${stance}`)!.addEventListener('mousedown', handleMouseDown);
+  this.view.DOMroot!.querySelector(`.slider__thumb-${stance}`)!.addEventListener('pointerdown', handlePointerDown);
 
-  document.addEventListener('mouseup', () => {
-    document.removeEventListener('mousemove', handleMouseMove);
+  document.addEventListener('pointerup', () => {
+    document.removeEventListener('pointermove', handlePointerMove);
   });
+
+  this.view.DOMroot!.querySelector(`.slider__thumb-${stance}`)!.addEventListener('touchstart', handlePointerDown);
+
 };
 
 export default dragAndDropThumb;
