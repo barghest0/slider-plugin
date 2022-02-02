@@ -10,7 +10,6 @@ const createScaleMarks = function (
   direction: Direction,
 ) {
   const values = prepareScaleData(min, max, step);
-  let offset = 0;
   if (direction === 'vertical') {
     values.reverse();
   }
@@ -20,7 +19,6 @@ const createScaleMarks = function (
     mark.classList.add(`slider__scale-mark_${direction}`);
     mark.dataset.testid = "test-scale-mark";
 
-    mark.style[this.view.offsetDirection] = offset + 'px';
 
     const number = document.createElement('div');
     number.classList.add('slider__scale-number');

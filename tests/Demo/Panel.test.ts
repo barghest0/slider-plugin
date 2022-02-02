@@ -21,7 +21,7 @@ describe('Panel test', () => {
     const input = document.querySelector('.js-input__first-value') as HTMLInputElement;
     expect(input).toBeInTheDocument();
     expect(input.type).toBe('number');
-    expect(input.parentElement!.classList.contains('js-input')).toBeTruthy();
+    expect(input.parentElement!.classList.contains('custom-input')).toBeTruthy();
     const label = document.querySelector('.js-input');
 
     const checkbox = document.querySelector('.js-checkbox__is-range') as HTMLInputElement;
