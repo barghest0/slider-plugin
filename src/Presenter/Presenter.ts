@@ -165,9 +165,7 @@ class Presenter {
 			this.thumbStance += 1;
 			this.createThumb(params, this.thumbStance);
 		}
-		
 		this.createTrackFill()
-		
 	}
 
 	private createTrackFill(){

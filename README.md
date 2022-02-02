@@ -24,14 +24,14 @@
 const slider = new Slider(".slider", {});
 ```
 
-Параметры:
+Пользовательские параметры:
 
 | Параметр      | Тип                     | Значение по умолчанию | Описание                                           |
 | ------------- | ----------------------- | --------------------- | -------------------------------------------------- |
 | min           | number                  | 0                     | Минимальное значение                               |
 | max           | number                  | 100                   | Максимальное значение                              |
 | step          | number                  | 1                     | Шаг бегунка                                        |
-| value         | number / number[]       | 0                     | Значение первого бегунок                           |
+| value         | number / number[]       | 0                     | Значение бегунков                                  |
 | isRange       | boolean                 | false                 | Создание 2 бегунка                                 |
 | idDecimal     | boolean                 | false                 | Добавление к значению десятичной части             |
 | decimalPlaces | number                  | 0                     | Количество цифр после запятой                      |
@@ -39,6 +39,17 @@ const slider = new Slider(".slider", {});
 | hasScale      | boolean                 | true                  | Отображение шкалы                                  |
 | hasTips       | boolean                 | true                  | Отображение подсказок над бегунками                |
 | hasFill       | boolean                 | true                  | Отображение прогресс бара                          |
+
+Альтернативный вариант установки параметров через `data` атрибуты:
+
+```html
+<div class="slider" 
+    data-min-value="-100" 
+    data-is-range="true" 
+    data-first-value="-10"
+    data-second-value="10">
+</div>
+```
 
 ## Архитектура
 
