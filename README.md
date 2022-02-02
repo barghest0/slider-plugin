@@ -1,6 +1,6 @@
 # SliderPlugin
 
-[Пример реализации](https://barghest0.github.io/MetaLampSliderPlugin/dist/)
+[Пример реализации](https://barghest0.github.io/MetaLampSliderPlugin/dist)
 
 ## Команды
 
@@ -11,6 +11,8 @@
 -   Запуск сервера для разработки - `npm run dev` или `yarn dev`
 
 -   Сборка проекта - `npm run build` или `yarn build`
+
+-   Деплой github pages - `npm run build` или `yarn build`
 
 -   Запуск тестов jest - `npm run test` или `yarn test`
 
