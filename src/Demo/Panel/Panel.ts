@@ -1,9 +1,9 @@
 import { SliderParams } from '../../utils/interfaces';
 import initializeFormValues from './PanelModules/initializeFormValues';
 import initializeInputs from './PanelModules/initializeInputs';
-import handleChangeFormValues from './PanelModules/handleChangeFormValues';
+import addInputListeners from './PanelModules/addInputListeners';
 import PreviewSlider from '../PreviewSlider';
-import createPanel from './PanelModules/createPanel';
+import renderPanel from './PanelModules/renderPanel';
 
 class Panel {
   public params: SliderParams;
@@ -42,9 +42,9 @@ class Panel {
 
   public initializeInputs: (root: string) => void;
 
-  public handleChangeFormValues: () => void;
+  public addInputListeners:  () => void;
 
-  public createPanel: () => void;
+  public renderPanel: () => void;
 
   constructor(params: SliderParams, root: string, parent: PreviewSlider) {
     this.parent = parent;
@@ -65,10 +65,10 @@ class Panel {
     this.isDecimal = null;
     this.initializeFormValues = initializeFormValues.bind(this);
     this.initializeInputs = initializeInputs.bind(this);
-    this.handleChangeFormValues = handleChangeFormValues.bind(this);
-    this.createPanel = createPanel.bind(this);
+    this.addInputListeners = addInputListeners.bind(this);
+    this.renderPanel = renderPanel.bind(this);
 
-    this.createPanel();
+    this.renderPanel();
   }
 }
 

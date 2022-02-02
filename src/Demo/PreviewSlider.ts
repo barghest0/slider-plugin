@@ -22,7 +22,7 @@ class PreviewSlider {
     this.panel = new Panel(this.params, root, this);
 
     this.init(this.params, 'init');
-    this.panel.handleChangeFormValues();
+    this.panel.addInputListeners();
   }
 
   public init(params: SliderParams, mode: string) {

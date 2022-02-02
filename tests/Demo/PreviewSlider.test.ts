@@ -22,7 +22,7 @@ describe("PreviewSlider test", () => {
 			HTMLInputElement
 		);
 
-		panel.createPanel();
+		panel.renderPanel();
 		previewSlider.init(checkParams({ isRange: true }, previewSlider.DOMroot), "rebuild");
 		previewSlider.slider.params.isRange = true;
 	});
@@ -36,7 +36,7 @@ describe("PreviewSlider test", () => {
 
 	test("correct handle change", () => {
 		const event = new Event("input");
-		panel.createPanel();
+		panel.renderPanel();
 
 		previewSlider.panel.firstValueInput!.dispatchEvent(event);
 		previewSlider.panel.firstValueInput!.value = "50";

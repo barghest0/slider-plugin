@@ -1,7 +1,7 @@
 import Panel from '../Panel';
 import handleChange from './handleChange';
 
-const handleChangeFormValues = function (this: Panel) {
+const addInputListeners = function (this: Panel) {
 	this.minValueInput!.addEventListener('change', (e) => handleChange.call(this, e, 'min'));
 	this.maxValueInput!.addEventListener('change', (e) => handleChange.call(this, e, 'max'));
 	this.firstValueInput!.addEventListener('change', (e) => handleChange.call(this, e, 'value', 0));
@@ -16,4 +16,4 @@ const handleChangeFormValues = function (this: Panel) {
 	this.isDecimal!.addEventListener('change', (e) => handleChange.call(this, e, 'isDecimal'));
 };
 
-export default handleChangeFormValues;
+export default addInputListeners;
