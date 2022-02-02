@@ -96,13 +96,14 @@ class Presenter {
 		hasTips,
 		hasScale,
 	}: SliderParams) {
-		const size =
-			direction === "horizontal"
+
+		const size = direction === "horizontal"
 				? this.DOMroot.getBoundingClientRect()!.width
 				: this.DOMroot.getBoundingClientRect()!.height;
-		console.log(this.DOMroot.getBoundingClientRect()!.width);
+		console.log(size);
 		
-		this.trackModel.setSize(size);
+				
+		this.trackModel.setSize(size)
 		this.trackModel.setEnds({ min, max });
 		this.trackModel.setIsRange(isRange);
 		this.trackModel.setDirection(direction);

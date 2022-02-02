@@ -17,6 +17,7 @@ body {
     margin-bottom: 50px;
 }
 .panel {
+    width: 100%;
     padding-top: 20px;
     background-color: rgba(64, 72, 80, 0.667);
     border-radius: 5px;
@@ -27,8 +28,10 @@ body {
 .slider-panel{
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 20px;
+    grid-template-columns: repeat(auto-fill,minmax(170px,1fr));
+    grid-template-rows: repeat(auto-fill,minmax(50px,1fr));
+
+    grid-row-gap: 20px;
     column-gap: 20px;
 }
 
@@ -44,6 +47,9 @@ body {
 }
 .checkbox-panel{
     display: flex;
+    flex-wrap: wrap;
     justify-self: center;
     column-gap: 50px;
+    grid-column: 1/-1;
+    grid-row: 0;
 }
