@@ -12,12 +12,15 @@ class PreviewSlider {
 
   public root: string;
 
+  public DOMroot: HTMLElement;
+
   constructor(root: string, params: UserSliderParams) {
     this.root = root;
-    this.params = checkParams(params);
-    this.panel = new Panel(this.params, root, this);
+    this.DOMroot = document.querySelector(root) as HTMLElement;
+    this.params = checkParams(params, this.DOMroot);
     this.slider = new Slider(root, this.params);
-    
+    this.panel = new Panel(this.params, root, this);
+
     this.init(this.params, 'init');
     this.panel.handleChangeFormValues();
   }

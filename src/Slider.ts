@@ -7,12 +7,15 @@ class Slider {
 
   public root: string;
 
+  public DOMroot: HTMLElement;
+
   public params: SliderParams;
 
   constructor(root: string, params: UserSliderParams) {
     this.root = root;
-    this.params = checkParams(params);
-    this.presenter = new Presenter(root, checkParams(params));
+    this.DOMroot = document.querySelector(root) as HTMLElement;
+    this.params = checkParams(params, this.DOMroot);
+    this.presenter = new Presenter(root, checkParams(params, this.DOMroot));
     this.init(this.params, 'init');
   }
 

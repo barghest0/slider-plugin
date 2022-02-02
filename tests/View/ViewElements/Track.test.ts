@@ -1,9 +1,7 @@
-import { screen, waitFor } from '@testing-library/dom';
+import { screen } from '@testing-library/dom';
 import View from '../../../src/View/View';
 import Track from '../../../src/View/ViewElements/Track/Track';
 import '@testing-library/jest-dom';
-import TrackModel from '../../../src/Model/TrackModel';
-import ThumbModel from '../../../src/Model/ThumbModel';
 
 describe('Track test', () => {
   document.body.innerHTML = '<div id="slider-1" data-testid="slider-1" class="slider-1"></div>';

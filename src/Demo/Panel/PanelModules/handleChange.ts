@@ -14,7 +14,7 @@ const handleChange = function (this: Panel, e: Event, param: string | number, va
     else this.params[param] = target.checked;
   }
 
-  this.parent.init(checkParams(this.params), 'rebuild');
-  this.parent.panel.initializeFormValues(checkParams(this.params));
+  this.parent.init(checkParams(this.params, this.DOMroot), 'rebuild');
+  this.parent.panel.initializeFormValues(checkParams(this.params, this.DOMroot));
 };
 export default handleChange;

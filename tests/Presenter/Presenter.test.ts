@@ -10,11 +10,12 @@ import checkParams from "../../src/Presenter/PresenterModules/checkParams";
 describe("Presenter test", () => {
 	document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
 	const root = ".slider-1";
+	const DOMroot = document.querySelector(root) as HTMLElement;
 	const params: SliderParams = checkParams({
 		isRange: true,
 		direction: "vertical",
 		value: 10,
-	});
+	}, DOMroot);
 	const presenter = new Presenter(root, params);
 	const fn = jest.fn();
 	presenter.init(params, "init");
@@ -87,23 +88,23 @@ describe("Presenter test", () => {
 	});
 
 	test("correct check values params", () => {
-		expect(checkParams({})).toEqual(DEFAULT_SLIDER_PARAMS);
+		expect(checkParams({}, presenter.DOMroot)).toEqual(DEFAULT_SLIDER_PARAMS);
 		const correctParams: SliderParams = JSON.parse(
 			JSON.stringify(DEFAULT_SLIDER_PARAMS)
 		);
 
 		correctParams.value = [50];
-		expect(checkParams({ value: 50 })).toEqual(correctParams);
+		expect(checkParams({ value: 50 }, presenter.DOMroot)).toEqual(correctParams);
 
 		correctParams.value = [100, 100];
 		correctParams.isRange = true;
-		expect(checkParams({ value: [100, 50], isRange: true })).toEqual(
+		expect(checkParams({ value: [100, 50], isRange: true }, presenter.DOMroot)).toEqual(
 			correctParams
 		);
 
 		correctParams.value = [50, 50];
 		correctParams.isRange = true;
-		expect(checkParams({ value: 50, isRange: true })).toEqual(
+		expect(checkParams({ value: 50, isRange: true }, presenter.DOMroot)).toEqual(
 			correctParams
 		);
 	});
@@ -116,14 +117,14 @@ describe("Presenter test", () => {
 		correctParams.max = 100;
 		correctParams.isRange = true;
 		expect(
-			checkParams({ value: [0, 200], max: 100, isRange: true })
+			checkParams({ value: [0, 200], max: 100, isRange: true }, presenter.DOMroot)
 		).toEqual(correctParams);
 
 		correctParams.value = [50, 100];
 		correctParams.min = 50;
 		correctParams.isRange = true;
 		expect(
-			checkParams({ value: [0, 100], min: 50, isRange: true })
+			checkParams({ value: [0, 100], min: 50, isRange: true }, presenter.DOMroot)
 		).toEqual(correctParams);
 	});
 
@@ -133,7 +134,7 @@ describe("Presenter test", () => {
 		);
 		const fn = jest.fn();
 		correctParams.onChange = fn;
-		expect(checkParams({ onChange: fn })).toEqual(correctParams);
+		expect(checkParams({ onChange: fn }, presenter.DOMroot)).toEqual(correctParams);
 	});
 
 	test("correct clear HTML", () => {

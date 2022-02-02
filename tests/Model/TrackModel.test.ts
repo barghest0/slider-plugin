@@ -1,6 +1,4 @@
 import TrackModel from '../../src/Model/TrackModel';
-import Presenter from '../../src/Presenter/Presenter';
-import checkParams from '../../src/Presenter/PresenterModules/checkParams';
 import View from '../../src/View/View';
 import Thumb from '../../src/View/ViewElements/Thumb/Thumb';
 
@@ -10,7 +8,6 @@ describe('TrackModel test', () => {
     document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';
     const rootClass = '.slider-1';
     const root = document.querySelector(rootClass) as HTMLElement;
-    const presenter = new Presenter(rootClass, checkParams({}));
     const view = new View(root);
     const track = new TrackModel(root);
     const thumb = new Thumb(view);
@@ -56,7 +53,7 @@ describe('TrackModel test', () => {
         expect(track.calculateFillOffset([10])).toBe(0);
 
         track.setIsRange(true);
-        
+
         expect(track.calculateFillOffset([10, 100])).toBe(10);
     });
 

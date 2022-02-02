@@ -10,7 +10,7 @@ describe("Slider test", () => {
 	const slider = new Slider(".slider-1", {});
 
 	test("constructor test", () => {
-		expect(slider['params']).toEqual(checkParams({}));
+		expect(slider['params']).toEqual(checkParams({}, slider.DOMroot));
 	});
 
 

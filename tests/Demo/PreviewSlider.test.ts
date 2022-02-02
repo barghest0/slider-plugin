@@ -10,7 +10,7 @@ describe("PreviewSlider test", () => {
 	const root = ".slider-1";
 
 	const previewSlider = new PreviewSlider(root, {});
-	const panel = new Panel(checkParams({}), root, previewSlider);
+	const panel = new Panel(checkParams({}, previewSlider.DOMroot), root, previewSlider);
 	test("constructor test", () => {
 		expect(previewSlider.panel).toBeInstanceOf(Panel);
 		expect(previewSlider.slider).toBeInstanceOf(Slider);
@@ -23,7 +23,7 @@ describe("PreviewSlider test", () => {
 		);
 
 		panel.createPanel();
-		previewSlider.init(checkParams({ isRange: true }), "rebuild");
+		previewSlider.init(checkParams({ isRange: true }, previewSlider.DOMroot), "rebuild");
 		previewSlider.slider.params.isRange = true;
 	});
 
