@@ -100,7 +100,7 @@ class Presenter {
 			direction === "horizontal"
 				? this.DOMroot.getBoundingClientRect()!.width
 				: this.DOMroot.getBoundingClientRect()!.height;
-		console.log(this.DOMroot.getBoundingClientRect()!.height);
+		console.log(this.DOMroot.getBoundingClientRect()!.width);
 		
 		this.trackModel.setSize(size);
 		this.trackModel.setEnds({ min, max });
