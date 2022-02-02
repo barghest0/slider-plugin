@@ -71,7 +71,7 @@ describe("Presenter test", () => {
 		expect(presenter.view.thumbView.getOffset()[1]).toBe(70);
 		expect(presenter.view.thumbView.activeStance).toBe(1);
 
-		expect(presenter.params.onChange).toBeDefined();
+		expect(presenter.params.onChange).toBeDefined(); 29;
 	});
 
 	test("correct update tip view", () => {
