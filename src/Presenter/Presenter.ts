@@ -81,7 +81,7 @@ class Presenter {
 		this.addSliderClasses(params.direction);
 		this.setTrackModelState(params);
 		this.setViewState();
-		this.createRangeSlider(params);
+		this.createSlider(params);
 		this.subscribe();
 		this.addListeners(params.isRange);
 
@@ -100,8 +100,6 @@ class Presenter {
 		const size = direction === "horizontal"
 				? this.DOMroot.getBoundingClientRect()!.width
 				: this.DOMroot.getBoundingClientRect()!.height;
-		console.log(size);
-		
 				
 		this.trackModel.setSize(size)
 		this.trackModel.setEnds({ min, max });
@@ -121,7 +119,7 @@ class Presenter {
 		this.DOMroot.parentElement!.classList.add(`slider-parent_${direction}`);
 	}
 
-	private createSlider(
+	private createThumb(
 		{
 			step,
 			value,
@@ -134,8 +132,7 @@ class Presenter {
 		}: SliderParams,
 		stance: number
 	) {
-		this.createThumb(stance);
-		this.view.prepareDirectionForInteraction(direction);
+		this.createThumbModel(stance);
 		this.setThumbModelState(
 			stance,
 			step,
@@ -146,30 +143,37 @@ class Presenter {
 			decimalPlaces,
 			direction
 		);
-		this.createThumbView(stance);
-		this.setThumbView(stance);
+		this.renderThumb(stance);
+		this.setThumbView(stance,direction);
 		this.setThumbPlacement(stance);
 		if (hasTips) {
-			this.createTipView(direction, stance, hasTips);
-			this.setTipView(stance);
-			this.setTipPlacement(stance);
+			this.createTip(stance,direction)
 		}
-
 	}
 
-	private createRangeSlider(params: SliderParams) {
-		this.createSlider(params, this.thumbStance);
-		this.createSubViewsView(params);
+	private createTip(stance:number,direction:Direction){
+		this.setTipView(stance);
+		this.renderTip(direction, stance);
+		this.setTipPlacement(stance);
+	}
 
+	private createSlider(params: SliderParams) {
+		this.createThumb(params, this.thumbStance);
+		this.createSubViewsView(params);
+		
 		if (params.isRange) {
 			this.thumbStance += 1;
-			this.createSlider(params, this.thumbStance);
+			this.createThumb(params, this.thumbStance);
 		}
+		
+		this.createTrackFill()
+		
+	}
 
+	private createTrackFill(){
 		this.setTrackFillModel();
 		this.setTrackFillView();
 		this.setTrackFillPlacement();
-		return this;
 	}
 
 	private setThumbModelState(
@@ -191,10 +195,9 @@ class Presenter {
 			this.thumbs[stance].calculateOffset({ min, max }, direction)
 		);
 		this.thumbs[stance].setIsDecimal(isDecimal, decimalPlaces);
-		return this;
 	}
 
-	private setThumbView(stance: number) {
+	private setThumbView(stance: number,direction:Direction) {
 		const {
 			step,
 			stepCount,
@@ -208,6 +211,7 @@ class Presenter {
 		this.view.thumbView.setValue(value, stance);
 		this.view.thumbView.setOffset(offset, stance);
 		this.view.thumbView.setIsDecimal(isDecimal, decimalPlaces);
+		this.view.prepareDirectionForInteraction(direction);
 	}
 
 	private setThumbPlacement(stance: number) {
@@ -235,23 +239,22 @@ class Presenter {
 	}
 
 	private setTipPlacement(stance: number) {
-
 		this.view.initialTipPlacement(stance);
 	}
 
-	private createThumb(stance: number) {
+	private createThumbModel(stance: number) {
 		this.thumbs.push(new ThumbModel(this.DOMroot, stance));
 	}
 
-	private createThumbView(stance: number) {
+	private renderThumb(stance: number) {
 		this.view.thumbView.createThumb(stance);
 	}
 
-	private createTrackView(direction: Direction) {
+	private renderTrack(direction: Direction) {
 		this.view.trackView.createTrack(direction);
 	}
 
-	private createScaleView(
+	private renderScale(
 		direction: Direction,
 		step: number,
 		max: number,
@@ -261,16 +264,15 @@ class Presenter {
 		this.view.scaleView.createScaleMarks(step, max, min, direction);
 	}
 
-	private creteFillView(direction: Direction) {
+	private renderFill(direction: Direction) {
 		this.view.fillView.createFill(direction);
 	}
 
-	private createTipView(
+	private renderTip(
 		direction: Direction,
 		stance: number,
-		hasTips: boolean
 	) {
-		this.view.tipView.createTip(direction, stance, hasTips);
+		this.view.tipView.createTip(direction, stance);
 	}
 
 	private setTipView(stance: number) {
@@ -288,12 +290,9 @@ class Presenter {
 		hasFill,
 		hasScale,
 	}: SliderParams) {
-		this.createTrackView(direction);
-		if (hasScale) this.createScaleView(direction, step, max, min);
-		if (hasFill) this.creteFillView(direction);
-
-
-
+		this.renderTrack(direction);
+		if (hasScale) this.renderScale(direction, step, max, min);
+		if (hasFill) this.renderFill(direction);
 	}
 }
 

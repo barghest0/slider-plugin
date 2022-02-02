@@ -38,8 +38,7 @@ class Tip extends Observer {
     return this.value;
   }
 
-  public createTip(direction: Direction, stance: number, hasTips: boolean) {
-    
+  public createTip(direction: Direction, stance: number) {
       const tip = document.createElement('div');
       tip.classList.add('slider__tip');
       tip.classList.add(`slider__tip-${stance}`);
