@@ -3,10 +3,10 @@
         margin-bottom: 20px;
         display: flex;
         justify-content: center;
-
+        align-items: center;
         &_horizontal {
             width: 70%;
-            height: auto;
+            height: 400px;
         }
         &_vertical {
             height: 400px;
@@ -74,12 +74,12 @@
         }
     }
     &__scale {
-        position: absolute;
-        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
         cursor: pointer;
         top: 5px;
         &-mark {
-            position: absolute;
             height: 10px;
             width: 1px;
             background-color: rgb(36, 36, 36);
@@ -103,6 +103,7 @@
         }
 
         &_vertical {
+            flex-direction: column;
             height: 100%;
             width: 2px;
             left: 5px;
@@ -112,6 +113,7 @@
     &__fill {
         z-index: 10;
         position: absolute;
+        top: 0;
         background-color: rgb(36, 36, 36);
         height: 4px;
         border-radius: 50px;
@@ -121,6 +123,7 @@
             height: 100%;
             width: 4px;
             bottom: 0;
+            top: auto;
         }
     }
 }

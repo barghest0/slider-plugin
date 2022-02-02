@@ -29,8 +29,6 @@ const createScaleMarks = function (
     mark.appendChild(number);
     this.scale!.appendChild(mark);
 
-
-    offset += this.view.size / (values.length - 1);
   }
 };
 

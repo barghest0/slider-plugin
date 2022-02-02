@@ -14,7 +14,7 @@ export const prepareScaleData = function (
   multiplier = multiplier < 15 ? Math.min(multiplier, delimiter) : multiplier;
   const values = [];
   for (let i = 0; i < Math.ceil(length / multiplier); i++) {
-    values.push(+(step * i * multiplier + min).toFixed(1));
+    values.push(+(step * i * multiplier + min).toFixed(3));
   }
   return values;
 };
