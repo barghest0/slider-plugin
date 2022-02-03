@@ -48,7 +48,7 @@ class Presenter {
 	private subscribe: () => void;
 	constructor(root: string, params: SliderParams) {
 		this.root = root;
-		this.DOMroot = document.querySelector(root) as HTMLElement;
+		this.DOMroot = document.querySelector<HTMLElement>(root)!;
 		this.trackModel = new TrackModel(this.DOMroot);
 		this.view = new View(this.DOMroot);
 		this.thumbs = [];
@@ -98,10 +98,10 @@ class Presenter {
 	}: SliderParams) {
 
 		const size = direction === "horizontal"
-				? this.DOMroot.getBoundingClientRect()!.width
-				: this.DOMroot.getBoundingClientRect()!.height;
-				
-		this.trackModel.setSize(size)
+			? this.DOMroot.getBoundingClientRect()!.width
+			: this.DOMroot.getBoundingClientRect()!.height;
+
+		this.trackModel.setSize(size);
 		this.trackModel.setEnds({ min, max });
 		this.trackModel.setIsRange(isRange);
 		this.trackModel.setDirection(direction);
@@ -144,14 +144,14 @@ class Presenter {
 			direction
 		);
 		this.renderThumb(stance);
-		this.setThumbView(stance,direction);
+		this.setThumbView(stance, direction);
 		this.setThumbPlacement(stance);
 		if (hasTips) {
-			this.createTip(stance,direction)
+			this.createTip(stance, direction);
 		}
 	}
 
-	private createTip(stance:number,direction:Direction){
+	private createTip(stance: number, direction: Direction) {
 		this.setTipView(stance);
 		this.renderTip(direction, stance);
 		this.setTipPlacement(stance);
@@ -160,15 +160,15 @@ class Presenter {
 	private createSlider(params: SliderParams) {
 		this.createThumb(params, this.thumbStance);
 		this.createSubViewsView(params);
-		
+
 		if (params.isRange) {
 			this.thumbStance += 1;
 			this.createThumb(params, this.thumbStance);
 		}
-		this.createTrackFill()
+		this.createTrackFill();
 	}
 
-	private createTrackFill(){
+	private createTrackFill() {
 		this.setTrackFillModel();
 		this.setTrackFillView();
 		this.setTrackFillPlacement();
@@ -195,7 +195,7 @@ class Presenter {
 		this.thumbs[stance].setIsDecimal(isDecimal, decimalPlaces);
 	}
 
-	private setThumbView(stance: number,direction:Direction) {
+	private setThumbView(stance: number, direction: Direction) {
 		const {
 			step,
 			stepCount,

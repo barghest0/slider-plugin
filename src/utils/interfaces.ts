@@ -9,10 +9,17 @@ interface Ends {
 	max: number;
 }
 
-type Direction = 'vertical' | 'horizontal';
+type Direction = "vertical" | "horizontal";
 type onChange = (params: SliderParams) => void;
 interface SliderParams {
-	[index: string]: number | number[] | string | boolean | onChange | undefined | any;
+	[index: string]:
+	| number
+	| number[]
+	| string
+	| boolean
+	| onChange
+	| undefined
+	| any;
 	min: number;
 	max: number;
 	step: number;
@@ -28,7 +35,13 @@ interface SliderParams {
 }
 
 interface UserSliderParams {
-	[index: string]: number | number[] | string | boolean | onChange | undefined;
+	[index: string]:
+	| number
+	| number[]
+	| string
+	| boolean
+	| onChange
+	| undefined;
 	min?: number;
 	max?: number;
 	step?: number;
@@ -67,6 +80,17 @@ interface SliderFillState {
 	fillOffset: number;
 	fillSize: number;
 }
+
+enum SubscribersNames {
+	updateThumbModel = "UpdateThumbModel",
+	updateTrackFillModel = "UpdateTrackFillModel",
+	updateThumbModelBeforeTrackClick = "UpdateThumbModelBeforeTrackClick",
+	updateTipView = "UpdateTipView",
+	updateThumbView = "UpdateThumbView",
+	updateTrackFillView = "UpdateTrackFillView",
+	updatePanelValues = "UpdatePanelValues",
+}
+
 export {
 	SubscribeEvent,
 	Subscribers,
@@ -77,4 +101,5 @@ export {
 	SliderTrackState,
 	SliderThumbState,
 	SliderFillState,
+	SubscribersNames,
 };

@@ -1,38 +1,42 @@
+import { SubscribersNames } from "../../utils/interfaces";
 import Presenter from "../Presenter";
 
 const subscribe = function (this: Presenter) {
 	this.view.thumbView.subscribe(
-		"UpdateThumbModel",
-		this.updateThumbModel.bind(this)
+		SubscribersNames.updateThumbModel,
+		this.updateThumbModel
 	);
-	this.view.thumbView.subscribe("UpdateTrackFillModel", this.updateTrackFillModel.bind(this));
-
-	this.view.trackView.subscribe(
-		"UpdateThumbModelBeforeTrackClick",
-		this.updateThumbModelBeforeTrackClick.bind(this)
+	this.view.thumbView.subscribe(
+		SubscribersNames.updateTrackFillModel,
+		this.updateTrackFillModel
 	);
 
 	this.view.trackView.subscribe(
-		"UpdateTrackFillModel",
-		this.updateTrackFillModel.bind(this)
+		SubscribersNames.updateThumbModelBeforeTrackClick,
+		this.updateThumbModelBeforeTrackClick
+	);
+
+	this.view.trackView.subscribe(
+		SubscribersNames.updateTrackFillModel,
+		this.updateTrackFillModel
 	);
 
 	this.thumbs.forEach((thumb) =>
-		thumb.subscribe("UpdateTipView", this.updateTipView.bind(this))
+		thumb.subscribe(SubscribersNames.updateTipView, this.updateTipView)
 	);
 
 	this.thumbs.forEach((thumb) =>
-		thumb.subscribe("UpdateThumbView", this.updateThumbView.bind(this))
+		thumb.subscribe(SubscribersNames.updateThumbView, this.updateThumbView)
 	);
 
 	this.trackModel.subscribe(
-		"UpdateThumbModel",
-		this.updateThumbModel.bind(this)
+		SubscribersNames.updateThumbModel,
+		this.updateThumbModel
 	);
 
 	this.trackModel.subscribe(
-		"UpdateTrackFillView",
-		this.updateTrackFillView.bind(this)
+		SubscribersNames.updateTrackFillView,
+		this.updateTrackFillView
 	);
 };
 

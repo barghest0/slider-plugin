@@ -13,11 +13,12 @@ const dragAndDropThumb = function (this: Thumb, stance: number) {
   };
   this.view.DOMroot!.querySelector(`.slider__thumb-${stance}`)!.addEventListener('pointerdown', handlePointerDown);
 
+  this.view.DOMroot!.querySelector(`.slider__thumb-${stance}`)!.addEventListener('touchstart', handlePointerDown);
+
   document.addEventListener('pointerup', () => {
     document.removeEventListener('pointermove', handlePointerMove);
   });
 
-  this.view.DOMroot!.querySelector(`.slider__thumb-${stance}`)!.addEventListener('touchstart', handlePointerDown);
 
 };
 
