@@ -1,11 +1,12 @@
+import { FIRST_VALUE, SECOND_VALUE } from '../../../utils/constants';
 import Panel from '../Panel';
 import handleChange from './handleChange';
 
 const addInputListeners = function (this: Panel) {
 	this.minValueInput!.addEventListener('change', (e) => handleChange.call(this, e, 'min'));
 	this.maxValueInput!.addEventListener('change', (e) => handleChange.call(this, e, 'max'));
-	this.firstValueInput!.addEventListener('change', (e) => handleChange.call(this, e, 'value', 0));
-	this.secondValueInput!.addEventListener('change', (e) => handleChange.call(this, e, 'value', 1));
+	this.firstValueInput!.addEventListener('change', (e) => handleChange.call(this, e, 'value', FIRST_VALUE));
+	this.secondValueInput!.addEventListener('change', (e) => handleChange.call(this, e, 'value', SECOND_VALUE));
 	this.decimalPlacesInput!.addEventListener('change', (e) => handleChange.call(this, e, 'decimalPlaces'));
 	this.stepInput!.addEventListener('change', (e) => handleChange.call(this, e, 'step'));
 	this.isRange!.addEventListener('change', (e) => handleChange.call(this, e, 'isRange'));

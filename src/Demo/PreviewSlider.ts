@@ -6,6 +6,7 @@ import {
 import Slider from "../Slider";
 import Panel from "./Panel/Panel";
 import checkParams from "../Presenter/PresenterModules/checkParams";
+import { FIRST_THUMB_STANCE } from '../utils/constants';
 
 class PreviewSlider {
 	public panel: Panel;
@@ -41,7 +42,7 @@ class PreviewSlider {
 	}
 
 	public updatePanelValues(value: number, stance: number) {
-		if (stance === 0) {
+		if (stance === FIRST_THUMB_STANCE) {
 			this.params.value[stance] = value;
 			this.panel.firstValueInput!.value = this.params.value[
 				stance

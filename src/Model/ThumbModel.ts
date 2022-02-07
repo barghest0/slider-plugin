@@ -7,6 +7,7 @@ import {
 } from "../utils/interfaces";
 import prepareOffset from "./ThumbModelModules/prepareOffset";
 import endsValidation from "./ThumbModelModules/endsValidation";
+import { MAX_OFFSET } from '../utils/constants';
 
 class ThumbModel extends Observer {
 	private DOMroot: HTMLElement;
@@ -107,7 +108,7 @@ class ThumbModel extends Observer {
 		direction: Direction
 	) {
 		if (direction === "horizontal") this.setCursorOffset(cursorOffset);
-		else this.setCursorOffset(100 - cursorOffset);
+		else this.setCursorOffset(MAX_OFFSET - cursorOffset);
 
 		this.setStepOffset(this.calculateStepOffset());
 		this.setValue(this.calculateValue(ends));

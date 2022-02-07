@@ -4,6 +4,7 @@ import checkParams from "../../src/Presenter/PresenterModules/checkParams";
 import Slider from "../../src/Slider";
 import "@testing-library/jest-dom";
 import handleChange from "../../src/Demo/Panel/PanelModules/handleChange";
+import { FIRST_THUMB_STANCE, FIRST_VALUE, SECOND_THUMB_STANCE } from '../../src/utils/constants';
 
 describe("PreviewSlider test", () => {
 	document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';
@@ -28,9 +29,9 @@ describe("PreviewSlider test", () => {
 	});
 
 	test("correct update panel values", () => {
-		previewSlider.updatePanelValues(100, 0);
+		previewSlider.updatePanelValues(100, FIRST_THUMB_STANCE);
 		expect(previewSlider.panel.firstValueInput!.value).toBe("100");
-		previewSlider.updatePanelValues(200, 1);
+		previewSlider.updatePanelValues(200, SECOND_THUMB_STANCE);
 		expect(previewSlider.panel.secondValueInput!.value).toBe("200");
 	});
 
@@ -41,8 +42,8 @@ describe("PreviewSlider test", () => {
 		previewSlider.panel.firstValueInput!.dispatchEvent(event);
 		previewSlider.panel.firstValueInput!.value = "50";
 
-		handleChange.call(panel, event, "value", 0);
-		expect(previewSlider.params.value[0]).toBe(50);
+		handleChange.call(panel, event, "value", FIRST_VALUE);
+		expect(previewSlider.params.value[FIRST_VALUE]).toBe(50);
 
 		previewSlider.panel.maxValueInput!.dispatchEvent(event);
 		previewSlider.panel.maxValueInput!.value = "200";

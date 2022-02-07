@@ -5,7 +5,6 @@ const handleChange = function (this: Panel, e: Event, param: string | number, va
   const target = e.target! as HTMLInputElement;
   const { value } = target;
 
-
   if (target.type === 'number') {
     if (param === 'value') this.params[param][valueIndex!] = +value;
     else this.params[param] = +value;

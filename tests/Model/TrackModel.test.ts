@@ -1,4 +1,5 @@
 import TrackModel from '../../src/Model/TrackModel';
+import { FIRST_THUMB_STANCE, SECOND_THUMB_STANCE } from '../../src/utils/constants';
 import View from '../../src/View/View';
 import Thumb from '../../src/View/ViewElements/Thumb/Thumb';
 
@@ -46,8 +47,8 @@ describe('TrackModel test', () => {
     });
 
     test('correct calculate fill offset', () => {
-        thumb.createThumb(0);
-        thumb.createThumb(1);
+        thumb.createThumb(FIRST_THUMB_STANCE);
+        thumb.createThumb(SECOND_THUMB_STANCE);
         track.setIsRange(false);
 
         expect(track.calculateFillOffset([10])).toBe(0);
@@ -58,8 +59,8 @@ describe('TrackModel test', () => {
     });
 
     test('correct calculate fill size', () => {
-        thumb.createThumb(0);
-        thumb.createThumb(1);
+        thumb.createThumb(FIRST_THUMB_STANCE);
+        thumb.createThumb(SECOND_THUMB_STANCE);
         track.setIsRange(false);
 
         expect(track.calculateFillSize([30])).toBe(30);

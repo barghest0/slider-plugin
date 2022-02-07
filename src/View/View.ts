@@ -6,6 +6,8 @@ import Fill from './ViewElements/Fill/Fill';
 import {
   Direction,
   Ends,
+  FillDirection,
+  OffsetDirection,
   SliderFillState,
   SliderTrackState,
 } from '../utils/interfaces';
@@ -43,9 +45,9 @@ class View extends Observer {
 
   public hasScale: boolean;
 
-  public offsetDirection: 'left' | 'top';
+  public offsetDirection: OffsetDirection;
 
-  public fillDirection: 'width' | 'height';
+  public fillDirection: FillDirection;
 
   public initialThumbPlacement: (offset: number, stance: number) => void;
 

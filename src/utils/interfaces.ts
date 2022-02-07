@@ -10,6 +10,11 @@ interface Ends {
 }
 
 type Direction = "vertical" | "horizontal";
+type OffsetDirection = 'left' | 'top';
+type FillDirection = 'width' | 'height';
+
+
+
 type onChange = (params: SliderParams) => void;
 interface SliderParams {
 	[index: string]:
@@ -102,4 +107,6 @@ export {
 	SliderThumbState,
 	SliderFillState,
 	SubscribersNames,
+	FillDirection,
+	OffsetDirection
 };

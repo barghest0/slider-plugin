@@ -1,3 +1,4 @@
+import { FIRST_THUMB_STANCE, SECOND_THUMB_STANCE } from '../../utils/constants';
 import { Direction, SliderParams, UserSliderParams } from "../../utils/interfaces";
 
 const checkParams = function (params: UserSliderParams, DOMroot: HTMLElement): SliderParams {
@@ -20,22 +21,20 @@ const checkParams = function (params: UserSliderParams, DOMroot: HTMLElement): S
 
 
 	if (!Array.isArray(value)) value = [value];
-	if (isRange && value.length === 1) value.push(value[0]);
+	if (isRange && value.length === 1) value.push(value[FIRST_THUMB_STANCE]);
 
-	value[0] = Math.max(min, value[0]);
-	value[0] = Math.min(max, value[0]);
+	value[FIRST_THUMB_STANCE] = Math.max(min, value[FIRST_THUMB_STANCE]);
+	value[FIRST_THUMB_STANCE] = Math.min(max, value[FIRST_THUMB_STANCE]);
 
 	if (isRange) {
-		value[1] = Math.max(min, value[1]);
-		value[1] = Math.min(max, value[1]);
-		value[1] = Math.max(value[0], value[1]);
+		value[SECOND_THUMB_STANCE] = Math.max(min, value[SECOND_THUMB_STANCE]);
+		value[SECOND_THUMB_STANCE] = Math.min(max, value[SECOND_THUMB_STANCE]);
+		value[SECOND_THUMB_STANCE] = Math.max(value[FIRST_THUMB_STANCE], value[SECOND_THUMB_STANCE]);
 	}
 
 
 	if (min >= max - step) min = max - step;
 	if (max <= min + step) max = min + step;
-
-
 
 
 	const checkedParams: SliderParams = {

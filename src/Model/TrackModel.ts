@@ -1,4 +1,5 @@
 import Observer from "../Observer/Observer";
+import { FIRST_OFFSET, FIRST_THUMB_STANCE, MAX_OFFSET, MIN_OFFSET, SECOND_OFFSET, SECOND_THUMB_STANCE } from '../utils/constants';
 import {
 	Direction,
 	Ends,
@@ -66,12 +67,12 @@ class TrackModel extends Observer {
 	public calculateFillSize(offset: number[]) {
 		if (this.isRange) {
 			return this.direction === "horizontal"
-				? offset[1] - offset[0]
-				: offset[0] - offset[1];
+				? offset[SECOND_OFFSET] - offset[FIRST_OFFSET]
+				: offset[FIRST_OFFSET] - offset[SECOND_OFFSET];
 		} else {
 			return this.direction === "horizontal"
-				? offset[0]
-				: 100 - offset[0];
+				? offset[FIRST_OFFSET]
+				: MAX_OFFSET - offset[FIRST_OFFSET];
 		}
 	}
 
@@ -81,9 +82,9 @@ class TrackModel extends Observer {
 
 	public calculateFillOffset(offset: number[]) {
 		if (this.isRange) {
-			return this.direction === "horizontal" ? offset[0] : offset[1];
+			return this.direction === "horizontal" ? offset[FIRST_OFFSET] : offset[SECOND_OFFSET];
 		} else {
-			return 0;
+			return MIN_OFFSET;
 		}
 	}
 
@@ -103,16 +104,16 @@ class TrackModel extends Observer {
 	}
 
 	public prepareChooseStance(cursorOffset: number) {
-		let stance = 0;
+		let stance = FIRST_THUMB_STANCE;
 		const chooseCorrectStance =
 			cursorOffset > this.fillSize / 2 + this.fillOffset;
 
-		if (chooseCorrectStance) stance = 1;
+		if (chooseCorrectStance) stance = SECOND_THUMB_STANCE;
 
 		if (this.direction === "vertical") stance = +!stance;
 
 		if (!this.isRange) {
-			stance = 0;
+			stance = FIRST_THUMB_STANCE;
 		}
 
 		this.notify(

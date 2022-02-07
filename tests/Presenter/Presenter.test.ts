@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { DEFAULT_SLIDER_PARAMS } from "../../src/utils/constants";
+import { DEFAULT_SLIDER_PARAMS, FIRST_OFFSET, FIRST_THUMB_STANCE, FIRST_VALUE, SECOND_OFFSET, SECOND_THUMB_STANCE, SECOND_VALUE } from "../../src/utils/constants";
 import { SliderParams, SubscribersNames } from "../../src/utils/interfaces";
 import Presenter from "../../src/Presenter/Presenter";
 import checkParams from "../../src/Presenter/PresenterModules/checkParams";
@@ -42,7 +42,7 @@ describe("Presenter test", () => {
 	});
 
 	test("correct set thumb view test", () => {
-		expect(presenter["view"].thumbView.getValue()[0]).toBe(10);
+		expect(presenter["view"].thumbView.getValue()[FIRST_VALUE]).toBe(10);
 	});
 
 	test("correct update thumb model", () => {
@@ -52,7 +52,7 @@ describe("Presenter test", () => {
 			80,
 			"horizontal"
 		);
-		expect(presenter.thumbs[0].getOffset()).toBe(80);
+		expect(presenter.thumbs[FIRST_THUMB_STANCE].getOffset()).toBe(80);
 	});
 
 	test("correct update track fill model", () => {
@@ -74,35 +74,35 @@ describe("Presenter test", () => {
 	test("correct update thumb view", () => {
 		const fn = jest.fn();
 		presenter.params.onChange = fn;
-		presenter.thumbs[0].notify(
+		presenter.thumbs[FIRST_THUMB_STANCE].notify(
 			SubscribersNames.updateThumbView,
 			100,
 			50,
-			0
+			FIRST_THUMB_STANCE
 		);
-		expect(presenter.view.thumbView.getValue()[0]).toBe(100);
-		expect(presenter.view.thumbView.getOffset()[0]).toBe(50);
-		expect(presenter.view.thumbView.activeStance).toBe(0);
+		expect(presenter.view.thumbView.getValue()[FIRST_VALUE]).toBe(100);
+		expect(presenter.view.thumbView.getOffset()[FIRST_OFFSET]).toBe(50);
+		expect(presenter.view.thumbView.activeStance).toBe(FIRST_THUMB_STANCE);
 		presenter.thumbs[1].notify(
 			SubscribersNames.updateThumbView,
 			150,
 			70,
-			1
+			SECOND_THUMB_STANCE
 		);
 
-		expect(presenter.view.thumbView.getValue()[1]).toBe(150);
-		expect(presenter.view.thumbView.getOffset()[1]).toBe(70);
-		expect(presenter.view.thumbView.activeStance).toBe(1);
+		expect(presenter.view.thumbView.getValue()[SECOND_VALUE]).toBe(150);
+		expect(presenter.view.thumbView.getOffset()[SECOND_OFFSET]).toBe(70);
+		expect(presenter.view.thumbView.activeStance).toBe(SECOND_THUMB_STANCE);
 
 		expect(presenter.params.onChange).toBeDefined();
 		29;
 	});
 
 	test("correct update tip view", () => {
-		presenter.thumbs[0].notify(SubscribersNames.updateTipView, 0, 50, 50);
-		presenter.thumbs[1].notify(SubscribersNames.updateTipView, 1, 100, 100);
-		expect(presenter.view.tipView.getOffset()[0]).toBe(50);
-		expect(presenter.view.tipView.getOffset()[1]).toBe(100);
+		presenter.thumbs[FIRST_THUMB_STANCE].notify(SubscribersNames.updateTipView, FIRST_THUMB_STANCE, 50, 50);
+		presenter.thumbs[SECOND_THUMB_STANCE].notify(SubscribersNames.updateTipView, SECOND_THUMB_STANCE, 100, 100);
+		expect(presenter.view.tipView.getOffset()[FIRST_OFFSET]).toBe(50);
+		expect(presenter.view.tipView.getOffset()[SECOND_OFFSET]).toBe(100);
 	});
 
 	test("correct update track fill view", () => {
