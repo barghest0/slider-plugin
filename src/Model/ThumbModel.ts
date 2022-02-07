@@ -1,12 +1,7 @@
-import Observer from "../Observer/Observer";
-import {
-	Direction,
-	Ends,
-	SliderThumbState,
-	SubscribersNames,
-} from "../utils/interfaces";
-import prepareOffset from "./ThumbModelModules/prepareOffset";
-import endsValidation from "./ThumbModelModules/endsValidation";
+import Observer from '../Observer/Observer';
+import { Direction, Ends, SliderThumbState, SubscribersNames } from '../utils/interfaces';
+import prepareOffset from './ThumbModelModules/prepareOffset';
+import endsValidation from './ThumbModelModules/endsValidation';
 import { MAX_OFFSET } from '../utils/constants';
 
 class ThumbModel extends Observer {
@@ -77,10 +72,7 @@ class ThumbModel extends Observer {
 	}
 
 	public calculateOffset(ends: Ends, direction: Direction) {
-		return this.prepareOffset(
-			(this.value - ends.min) / ((ends.max - ends.min) / 100),
-			direction
-		);
+		return this.prepareOffset((this.value - ends.min) / ((ends.max - ends.min) / 100), direction);
 	}
 
 	public setOffset(offset: number) {
@@ -92,22 +84,15 @@ class ThumbModel extends Observer {
 	}
 
 	public calculateStepOffset() {
-		return (
-			Math.round(this.cursorOffset / this.stepPercent) * this.stepPercent
-		);
+		return Math.round(this.cursorOffset / this.stepPercent) * this.stepPercent;
 	}
 
 	public setCursorOffset(cursorOffset: number) {
 		this.cursorOffset = cursorOffset;
 	}
 
-	public updateThumbValue(
-		stance: number,
-		ends: Ends,
-		cursorOffset: number,
-		direction: Direction
-	) {
-		if (direction === "horizontal") this.setCursorOffset(cursorOffset);
+	public updateThumbValue(stance: number, ends: Ends, cursorOffset: number, direction: Direction) {
+		if (direction === 'horizontal') this.setCursorOffset(cursorOffset);
 		else this.setCursorOffset(MAX_OFFSET - cursorOffset);
 
 		this.setStepOffset(this.calculateStepOffset());
@@ -121,14 +106,9 @@ class ThumbModel extends Observer {
 			this.value,
 			this.offset,
 			stance,
-			this.cursorOffset
+			this.cursorOffset,
 		);
-		this.notify(
-			SubscribersNames.updateTipView,
-			stance,
-			this.offset,
-			this.value
-		);
+		this.notify(SubscribersNames.updateTipView, stance, this.offset, this.value);
 		this.notify(SubscribersNames.updatePanelValues, this.value, stance);
 	}
 

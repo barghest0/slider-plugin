@@ -1,4 +1,4 @@
-import Fill from "../Fill";
+import Fill from '../Fill';
 
 const updateFill = function (this: Fill) {
 	if (this.view.isRange) {

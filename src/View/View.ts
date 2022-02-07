@@ -4,12 +4,12 @@ import Observer from '../Observer/Observer';
 import Scale from './ViewElements/Scale/Scale';
 import Fill from './ViewElements/Fill/Fill';
 import {
-  Direction,
-  Ends,
-  FillDirection,
-  OffsetDirection,
-  SliderFillState,
-  SliderTrackState,
+	Direction,
+	Ends,
+	FillDirection,
+	OffsetDirection,
+	SliderFillState,
+	SliderTrackState,
 } from '../utils/interfaces';
 import initialThumbPlacement from './ViewModules/initialThumbPlacement';
 import initialFillPlacement from './ViewModules/initialFillPlacement';
@@ -19,91 +19,96 @@ import prepareDirectionForInteraction from './ViewModules/prepareDirectionForInt
 import calculateCursorCoordinate from './ViewModules/calculateCursorCoordinate';
 
 class View extends Observer {
-  public thumbView: Thumb;
+	public thumbView: Thumb;
 
-  public trackView: Track;
+	public trackView: Track;
 
-  public scaleView: Scale;
+	public scaleView: Scale;
 
-  public tipView: Tip;
+	public tipView: Tip;
 
-  public fillView: Fill;
+	public fillView: Fill;
 
-  public ends: Ends;
+	public ends: Ends;
 
-  public DOMroot: HTMLElement;
+	public DOMroot: HTMLElement;
 
-  public isRange: boolean;
+	public isRange: boolean;
 
-  public direction: Direction;
+	public direction: Direction;
 
-  public size: number;
+	public size: number;
 
-  public hasTips: boolean;
+	public hasTips: boolean;
 
-  public hasFill: boolean;
+	public hasFill: boolean;
 
-  public hasScale: boolean;
+	public hasScale: boolean;
 
-  public offsetDirection: OffsetDirection;
+	public offsetDirection: OffsetDirection;
 
-  public fillDirection: FillDirection;
+	public fillDirection: FillDirection;
 
-  public initialThumbPlacement: (offset: number, stance: number) => void;
+	public initialThumbPlacement: (offset: number, stance: number) => void;
 
-  public initialFillPlacement: () => void;
+	public initialFillPlacement: () => void;
 
-  public initialTipPlacement: (stance: number) => void;
+	public initialTipPlacement: (stance: number) => void;
 
-  public prepareDirectionForInteraction: (direction: Direction) => void;
+	public prepareDirectionForInteraction: (direction: Direction) => void;
 
-  public calculateCursorCoordinate: (coord: number, direction: Direction, DOMroot: HTMLElement, size: number) => number;
+	public calculateCursorCoordinate: (
+		coord: number,
+		direction: Direction,
+		DOMroot: HTMLElement,
+		size: number,
+	) => number;
 
-  constructor(DOMroot: HTMLElement) {
-    super();
-    this.DOMroot = DOMroot;
-    this.thumbView = new Thumb(this);
-    this.trackView = new Track(this);
-    this.scaleView = new Scale(this);
-    this.fillView = new Fill(this);
-    this.tipView = new Tip(this);
-    this.ends = { min: 0, max: 0 };
-    this.size = 200;
-    this.isRange = false;
-    this.direction = 'horizontal';
-    this.hasFill = true;
-    this.hasTips = true;
-    this.hasScale = true;
-    this.offsetDirection = 'left';
-    this.fillDirection = 'width';
-    this.initialThumbPlacement = initialThumbPlacement.bind(this);
-    this.initialFillPlacement = initialFillPlacement.bind(this);
-    this.initialTipPlacement = initialTipPlacement.bind(this);
-    this.prepareDirectionForInteraction = prepareDirectionForInteraction.bind(this);
-    this.calculateCursorCoordinate = calculateCursorCoordinate.bind(this);
-  }
+	constructor(DOMroot: HTMLElement) {
+		super();
+		this.DOMroot = DOMroot;
+		this.thumbView = new Thumb(this);
+		this.trackView = new Track(this);
+		this.scaleView = new Scale(this);
+		this.fillView = new Fill(this);
+		this.tipView = new Tip(this);
+		this.ends = { min: 0, max: 0 };
+		this.size = 200;
+		this.isRange = false;
+		this.direction = 'horizontal';
+		this.hasFill = true;
+		this.hasTips = true;
+		this.hasScale = true;
+		this.offsetDirection = 'left';
+		this.fillDirection = 'width';
+		this.initialThumbPlacement = initialThumbPlacement.bind(this);
+		this.initialFillPlacement = initialFillPlacement.bind(this);
+		this.initialTipPlacement = initialTipPlacement.bind(this);
+		this.prepareDirectionForInteraction = prepareDirectionForInteraction.bind(this);
+		this.calculateCursorCoordinate = calculateCursorCoordinate.bind(this);
+	}
 
-  public setState({
-    isRange,
-    direction,
-    ends,
-    size,
-    hasTips,
-    hasScale,
-    hasFill,
-  }: SliderTrackState) {
-    this.ends = ends;
-    this.size = size;
-    this.isRange = isRange;
-    this.direction = direction;
-    this.hasTips = hasTips;
-    this.hasFill = hasFill;
-    this.hasScale = hasScale;
-  }
+	public setState({
+		isRange,
+		direction,
+		ends,
+		size,
+		hasTips,
+		hasScale,
+		hasFill,
+	}: SliderTrackState) {
+		this.ends = ends;
+		this.size = size;
+		this.isRange = isRange;
+		this.direction = direction;
+		this.hasTips = hasTips;
+		this.hasFill = hasFill;
+		this.hasScale = hasScale;
+	}
 
-  public setFillState({ fillSize, fillOffset }: SliderFillState) {
-    this.fillView.setSize(fillSize);
-    this.fillView.setOffset(fillOffset);
-  }
+	public setFillState({ fillSize, fillOffset }: SliderFillState) {
+		this.fillView.setSize(fillSize);
+		this.fillView.setOffset(fillOffset);
+	}
 }
 export default View;

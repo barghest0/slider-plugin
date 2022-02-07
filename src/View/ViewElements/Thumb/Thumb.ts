@@ -1,8 +1,8 @@
-import Observer from "../../../Observer/Observer";
-import View from "../../View";
-import updateThumbPosition from "./utils/updateThumbPosition";
-import validateCollision from "./utils/validateCollision";
-import dragAndDropThumb from "./utils/dragAndDropThumb";
+import Observer from '../../../Observer/Observer';
+import View from '../../View';
+import updateThumbPosition from './utils/updateThumbPosition';
+import validateCollision from './utils/validateCollision';
+import dragAndDropThumb from './utils/dragAndDropThumb';
 
 class Thumb extends Observer {
 	public view: View;
@@ -49,8 +49,8 @@ class Thumb extends Observer {
 	}
 
 	public createThumb(stance: number) {
-		const thumb = document.createElement("div");
-		thumb.classList.add("slider__thumb");
+		const thumb = document.createElement('div');
+		thumb.classList.add('slider__thumb');
 		thumb.classList.add(`slider__thumb-${stance}`);
 		thumb.dataset.testid = `test-thumb-${stance}`;
 		this.thumbs.push(thumb);
@@ -63,16 +63,20 @@ class Thumb extends Observer {
 		this.stepCount = stepCount;
 	}
 
-	public getStep(){
-		return {step:this.step, stepPercent:this.stepPercent, stepCount:this.stepCount}
+	public getStep() {
+		return {
+			step: this.step,
+			stepPercent: this.stepPercent,
+			stepCount: this.stepCount,
+		};
 	}
 
 	public setValue(value: number, stance: number) {
 		this.value[stance] = value;
 	}
 
-	public getValue(){
-		return this.value
+	public getValue() {
+		return this.value;
 	}
 
 	public setOffset(offset: number, stance: number) {
@@ -83,7 +87,6 @@ class Thumb extends Observer {
 		return this.offset;
 	}
 
-
 	public setIsDecimal(isDecimal: boolean, decimalPlaces: number) {
 		if (isDecimal) {
 			this.decimalPlaces = decimalPlaces;
@@ -91,8 +94,6 @@ class Thumb extends Observer {
 			this.decimalPlaces = 0;
 		}
 	}
-
-	
 }
 
 export default Thumb;

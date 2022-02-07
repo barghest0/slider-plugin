@@ -1,11 +1,7 @@
-import {
-	SliderParams,
-	SubscribersNames,
-	UserSliderParams,
-} from "../utils/interfaces";
-import Slider from "../Slider";
-import Panel from "./Panel/Panel";
-import checkParams from "../Presenter/PresenterModules/checkParams";
+import { SliderParams, SubscribersNames, UserSliderParams } from '../utils/interfaces';
+import Slider from '../Slider';
+import Panel from './Panel/Panel';
+import checkParams from '../Presenter/PresenterModules/checkParams';
 import { FIRST_THUMB_STANCE } from '../utils/constants';
 
 class PreviewSlider {
@@ -26,12 +22,12 @@ class PreviewSlider {
 		this.slider = new Slider(root, this.params);
 		this.panel = new Panel(this.params, root, this);
 
-		this.init(this.params, "init");
+		this.init(this.params, 'init');
 		this.panel.addInputListeners();
 	}
 
 	public init(params: SliderParams, mode: string) {
-		if (mode === "rebuild") {
+		if (mode === 'rebuild') {
 			this.params = params;
 			this.slider.init(params, mode);
 		}
@@ -44,23 +40,20 @@ class PreviewSlider {
 	public updatePanelValues(value: number, stance: number) {
 		if (stance === FIRST_THUMB_STANCE) {
 			this.params.value[stance] = value;
-			this.panel.firstValueInput!.value = this.params.value[
-				stance
-			].toFixed(this.params.decimalPlaces);
+			this.panel.firstValueInput!.value = this.params.value[stance].toFixed(
+				this.params.decimalPlaces,
+			);
 		} else {
 			this.params.value[stance] = value;
-			this.panel.secondValueInput!.value = this.params.value[
-				stance
-			].toFixed(this.params.decimalPlaces);
+			this.panel.secondValueInput!.value = this.params.value[stance].toFixed(
+				this.params.decimalPlaces,
+			);
 		}
 	}
 
 	private subscribe() {
-		this.slider.presenter.thumbs.forEach((item) => {
-			item.subscribe(
-				SubscribersNames.updatePanelValues,
-				this.updatePanelValues.bind(this)
-			);
+		this.slider.presenter.thumbs.forEach(item => {
+			item.subscribe(SubscribersNames.updatePanelValues, this.updatePanelValues.bind(this));
 		});
 	}
 }

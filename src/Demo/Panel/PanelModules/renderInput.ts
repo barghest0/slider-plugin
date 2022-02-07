@@ -1,5 +1,10 @@
-const renderInput = function (text: string, type: string, inputClass: string, labelClass: string, parent: HTMLElement) {
-
+const renderInput = function (
+	text: string,
+	type: string,
+	inputClass: string,
+	labelClass: string,
+	parent: HTMLElement,
+) {
 	const custom = document.createElement('div');
 	custom.classList.add('custom-input');
 
@@ -20,7 +25,6 @@ const renderInput = function (text: string, type: string, inputClass: string, la
 		label.appendChild(custom);
 		custom.appendChild(input);
 	}
-
 };
 
 export default renderInput;

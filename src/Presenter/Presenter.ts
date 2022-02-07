@@ -1,51 +1,53 @@
-import View from "../View/View";
-import TrackModel from "../Model/TrackModel";
-import { Direction, SliderParams } from "../utils/interfaces";
-import ThumbModel from "../Model/ThumbModel";
-import clearHTML from "./PresenterModules/clearHTML";
-import removeListeners from "./PresenterModules/removeListeners";
-import subscribe from "./PresenterModules/subscribe";
-import updateThumbModelBeforeTrackClick from "./PresenterModules/notifyModelMethods/updateThumbModelBeforeTrackClick";
-import updateTrackFillModel from "./PresenterModules/notifyModelMethods/updateTrackFillModel";
-import updateThumbView from "./PresenterModules/notifyViewMethods/updateThumbView";
-import updateTipView from "./PresenterModules/notifyViewMethods/updateTipView";
-import updateTrackFillView from "./PresenterModules/notifyViewMethods/updateTrackFillView";
-import updateThumbModel from "./PresenterModules/notifyModelMethods/updateThumbModel";
-import addListeners from "./PresenterModules/addListeners";
+import View from '../View/View';
+import TrackModel from '../Model/TrackModel';
+import { Direction, SliderParams } from '../utils/interfaces';
+import ThumbModel from '../Model/ThumbModel';
+import clearHTML from './PresenterModules/clearHTML';
+import removeListeners from './PresenterModules/removeListeners';
+import subscribe from './PresenterModules/subscribe';
+import updateThumbModelBeforeTrackClick from './PresenterModules/notifyModelMethods/updateThumbModelBeforeTrackClick';
+import updateTrackFillModel from './PresenterModules/notifyModelMethods/updateTrackFillModel';
+import updateThumbView from './PresenterModules/notifyViewMethods/updateThumbView';
+import updateTipView from './PresenterModules/notifyViewMethods/updateTipView';
+import updateTrackFillView from './PresenterModules/notifyViewMethods/updateTrackFillView';
+import updateThumbModel from './PresenterModules/notifyModelMethods/updateThumbModel';
+import addListeners from './PresenterModules/addListeners';
+
 class Presenter {
 	public root: string;
+
 	public DOMroot: HTMLElement;
+
 	public view: View;
+
 	public thumbs: ThumbModel[];
+
 	public trackModel: TrackModel;
-	public updateThumbModel: (
-		stance: number,
-		cursorOffset: number,
-		direction: Direction
-	) => void;
+
+	public updateThumbModel: (stance: number, cursorOffset: number, direction: Direction) => void;
+
 	public updateTrackFillModel: (offset: number[]) => void;
+
 	public updateThumbModelBeforeTrackClick: (cursorOffset: number) => void;
-	public updateThumbView: (
-		value: number,
-		offset: number,
-		stance: number
-	) => void;
-	public updateTipView: (
-		value: number,
-		offset: number,
-		stance: number
-	) => void;
-	public updateTrackFillView: (
-		size: number,
-		offset: number,
-		direction: Direction
-	) => void;
+
+	public updateThumbView: (value: number, offset: number, stance: number) => void;
+
+	public updateTipView: (value: number, offset: number, stance: number) => void;
+
+	public updateTrackFillView: (size: number, offset: number, direction: Direction) => void;
+
 	public params: SliderParams;
+
 	private thumbStance: number;
+
 	private clearHTML: (direction: Direction) => void;
+
 	private removeListeners: () => void;
+
 	private addListeners: (isRange: boolean) => void;
+
 	private subscribe: () => void;
+
 	constructor(root: string, params: SliderParams) {
 		this.root = root;
 		this.DOMroot = <HTMLElement>document.querySelector(root);
@@ -57,8 +59,7 @@ class Presenter {
 		this.clearHTML = clearHTML.bind(this);
 		this.removeListeners = removeListeners.bind(this);
 		this.subscribe = subscribe.bind(this);
-		this.updateThumbModelBeforeTrackClick =
-			updateThumbModelBeforeTrackClick.bind(this);
+		this.updateThumbModelBeforeTrackClick = updateThumbModelBeforeTrackClick.bind(this);
 		this.updateThumbModel = updateThumbModel.bind(this);
 		this.updateTrackFillModel = updateTrackFillModel.bind(this);
 		this.updateThumbView = updateThumbView.bind(this);
@@ -68,7 +69,7 @@ class Presenter {
 	}
 
 	public init(params: SliderParams, mode: string) {
-		if (mode === "rebuild") {
+		if (mode === 'rebuild') {
 			this.params = params;
 			this.view.isRange = false;
 			this.removeListeners();
@@ -84,7 +85,6 @@ class Presenter {
 		this.createSlider(params);
 		this.subscribe();
 		this.addListeners(params.isRange);
-
 	}
 
 	private setTrackModelState({
@@ -96,10 +96,10 @@ class Presenter {
 		hasTips,
 		hasScale,
 	}: SliderParams) {
-
-		const size = direction === "horizontal"
-			? this.DOMroot.getBoundingClientRect()!.width
-			: this.DOMroot.getBoundingClientRect()!.height;
+		const size =
+			direction === 'horizontal'
+				? this.DOMroot.getBoundingClientRect()!.width
+				: this.DOMroot.getBoundingClientRect()!.height;
 
 		this.trackModel.setSize(size);
 		this.trackModel.setEnds({ min, max });
@@ -120,17 +120,8 @@ class Presenter {
 	}
 
 	private createThumb(
-		{
-			step,
-			value,
-			min,
-			max,
-			direction,
-			hasTips,
-			isDecimal,
-			decimalPlaces,
-		}: SliderParams,
-		stance: number
+		{ step, value, min, max, direction, hasTips, isDecimal, decimalPlaces }: SliderParams,
+		stance: number,
 	) {
 		this.createThumbModel(stance);
 		this.setThumbModelState(
@@ -141,7 +132,7 @@ class Presenter {
 			max,
 			isDecimal,
 			decimalPlaces,
-			direction
+			direction,
 		);
 		this.renderThumb(stance);
 		this.setThumbView(stance, direction);
@@ -182,29 +173,20 @@ class Presenter {
 		max: number,
 		isDecimal: boolean,
 		decimalPlaces: number,
-		direction: Direction
+		direction: Direction,
 	) {
-		this.thumbs.forEach((thumb) => {
+		this.thumbs.forEach(thumb => {
 			thumb.setStep(step, { min, max });
 		});
 		this.thumbs[stance].setStance(stance);
 		this.thumbs[stance].setValue(value);
-		this.thumbs[stance].setOffset(
-			this.thumbs[stance].calculateOffset({ min, max }, direction)
-		);
+		this.thumbs[stance].setOffset(this.thumbs[stance].calculateOffset({ min, max }, direction));
 		this.thumbs[stance].setIsDecimal(isDecimal, decimalPlaces);
 	}
 
 	private setThumbView(stance: number, direction: Direction) {
-		const {
-			step,
-			stepCount,
-			stepPercent,
-			value,
-			offset,
-			isDecimal,
-			decimalPlaces,
-		} = this.thumbs[stance].getState();
+		const { step, stepCount, stepPercent, value, offset, isDecimal, decimalPlaces } =
+			this.thumbs[stance].getState();
 		this.view.thumbView.setStep(step, stepPercent, stepCount);
 		this.view.thumbView.setValue(value, stance);
 		this.view.thumbView.setOffset(offset, stance);
@@ -220,12 +202,8 @@ class Presenter {
 	private setTrackFillModel() {
 		const offset: number[] = [];
 		this.thumbs.forEach(thumb => offset.push(thumb.getState().offset));
-		this.trackModel.setFillSize(
-			this.trackModel.calculateFillSize(offset)
-		);
-		this.trackModel.setFillOffset(
-			this.trackModel.calculateFillOffset(offset)
-		);
+		this.trackModel.setFillSize(this.trackModel.calculateFillSize(offset));
+		this.trackModel.setFillOffset(this.trackModel.calculateFillOffset(offset));
 	}
 
 	private setTrackFillView() {
@@ -252,12 +230,7 @@ class Presenter {
 		this.view.trackView.createTrack(direction);
 	}
 
-	private renderScale(
-		direction: Direction,
-		step: number,
-		max: number,
-		min: number,
-	) {
+	private renderScale(direction: Direction, step: number, max: number, min: number) {
 		this.view.scaleView.createScale(direction);
 		this.view.scaleView.createScaleMarks(step, max, min, direction);
 	}
@@ -266,10 +239,7 @@ class Presenter {
 		this.view.fillView.createFill(direction);
 	}
 
-	private renderTip(
-		direction: Direction,
-		stance: number,
-	) {
+	private renderTip(direction: Direction, stance: number) {
 		this.view.tipView.createTip(direction, stance);
 	}
 
@@ -280,14 +250,7 @@ class Presenter {
 		this.view.tipView.setValue(value, stance);
 	}
 
-	private createSubViewsView({
-		direction,
-		step,
-		max,
-		min,
-		hasFill,
-		hasScale,
-	}: SliderParams) {
+	private createSubViewsView({ direction, step, max, min, hasFill, hasScale }: SliderParams) {
 		this.renderTrack(direction);
 		if (hasScale) this.renderScale(direction, step, max, min);
 		if (hasFill) this.renderFill(direction);

@@ -4,27 +4,28 @@ import handleClick from './utils/handleClick';
 import Observer from '../../../Observer/Observer';
 
 class Track extends Observer {
-  public view: View;
-  public track: HTMLElement;
+	public view: View;
 
-  constructor(view: View) {
-    super();
-    this.view = view;
-    this.track = <HTMLElement>document.querySelector('.slider__track');
-  }
+	public track: HTMLElement;
 
-  public createTrack(direction: Direction) {
-    const track = document.createElement('div');
-    track.classList.add('slider__track');
-    track.classList.add(`slider__track_${direction}`);
-    track.dataset.testid = `test-track`;
-    this.track = track;
-    this.view.DOMroot.appendChild(track);
-  }
+	constructor(view: View) {
+		super();
+		this.view = view;
+		this.track = <HTMLElement>document.querySelector('.slider__track');
+	}
 
-  public clickTrack() {
-    this.view.DOMroot.addEventListener('mousedown', (e) => handleClick(e, this));
-  }
+	public createTrack(direction: Direction) {
+		const track = document.createElement('div');
+		track.classList.add('slider__track');
+		track.classList.add(`slider__track_${direction}`);
+		track.dataset.testid = `test-track`;
+		this.track = track;
+		this.view.DOMroot.appendChild(track);
+	}
+
+	public clickTrack() {
+		this.view.DOMroot.addEventListener('mousedown', e => handleClick(e, this));
+	}
 }
 
 export default Track;

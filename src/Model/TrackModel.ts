@@ -1,12 +1,19 @@
-import Observer from "../Observer/Observer";
-import { FIRST_OFFSET, FIRST_THUMB_STANCE, MAX_OFFSET, MIN_OFFSET, SECOND_OFFSET, SECOND_THUMB_STANCE } from '../utils/constants';
+import Observer from '../Observer/Observer';
+import {
+	FIRST_OFFSET,
+	FIRST_THUMB_STANCE,
+	MAX_OFFSET,
+	MIN_OFFSET,
+	SECOND_OFFSET,
+	SECOND_THUMB_STANCE,
+} from '../utils/constants';
 import {
 	Direction,
 	Ends,
 	SliderFillState,
 	SliderTrackState,
 	SubscribersNames,
-} from "../utils/interfaces";
+} from '../utils/interfaces';
 
 class TrackModel extends Observer {
 	public isRange: boolean;
@@ -28,13 +35,14 @@ class TrackModel extends Observer {
 	public hasScale: boolean;
 
 	private DOMroot: HTMLElement;
+
 	constructor(DOMroot: HTMLElement) {
 		super();
 		this.DOMroot = DOMroot;
 		this.ends = { min: 1, max: 100 };
 		this.size = 200;
 		this.isRange = false;
-		this.direction = "horizontal";
+		this.direction = 'horizontal';
 		this.fillSize = 0;
 		this.fillOffset = 0;
 		this.hasFill = true;
@@ -66,14 +74,13 @@ class TrackModel extends Observer {
 
 	public calculateFillSize(offset: number[]) {
 		if (this.isRange) {
-			return this.direction === "horizontal"
+			return this.direction === 'horizontal'
 				? offset[SECOND_OFFSET] - offset[FIRST_OFFSET]
 				: offset[FIRST_OFFSET] - offset[SECOND_OFFSET];
-		} else {
-			return this.direction === "horizontal"
-				? offset[FIRST_OFFSET]
-				: MAX_OFFSET - offset[FIRST_OFFSET];
 		}
+		return this.direction === 'horizontal'
+			? offset[FIRST_OFFSET]
+			: MAX_OFFSET - offset[FIRST_OFFSET];
 	}
 
 	public setFillSize(fillSize: number) {
@@ -82,10 +89,9 @@ class TrackModel extends Observer {
 
 	public calculateFillOffset(offset: number[]) {
 		if (this.isRange) {
-			return this.direction === "horizontal" ? offset[FIRST_OFFSET] : offset[SECOND_OFFSET];
-		} else {
-			return MIN_OFFSET;
+			return this.direction === 'horizontal' ? offset[FIRST_OFFSET] : offset[SECOND_OFFSET];
 		}
+		return MIN_OFFSET;
 	}
 
 	public setFillOffset(fillOffset: number) {
@@ -96,33 +102,22 @@ class TrackModel extends Observer {
 		this.setFillSize(this.calculateFillSize(offset));
 		this.setFillOffset(this.calculateFillOffset(offset));
 
-		this.notify(
-			SubscribersNames.updateTrackFillView,
-			this.fillSize,
-			this.fillOffset
-		);
+		this.notify(SubscribersNames.updateTrackFillView, this.fillSize, this.fillOffset);
 	}
 
 	public prepareChooseStance(cursorOffset: number) {
 		let stance = FIRST_THUMB_STANCE;
-		const chooseCorrectStance =
-			cursorOffset > this.fillSize / 2 + this.fillOffset;
+		const chooseCorrectStance = cursorOffset > this.fillSize / 2 + this.fillOffset;
 
 		if (chooseCorrectStance) stance = SECOND_THUMB_STANCE;
 
-		if (this.direction === "vertical") stance = +!stance;
+		if (this.direction === 'vertical') stance = +!stance;
 
 		if (!this.isRange) {
 			stance = FIRST_THUMB_STANCE;
 		}
 
-		this.notify(
-			SubscribersNames.updateThumbModel,
-			stance,
-			cursorOffset,
-			this.direction,
-			this.size
-		);
+		this.notify(SubscribersNames.updateThumbModel, stance, cursorOffset, this.direction, this.size);
 	}
 
 	public getState(): SliderTrackState {
