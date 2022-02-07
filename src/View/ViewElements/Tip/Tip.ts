@@ -11,6 +11,7 @@ class Tip extends Observer {
   public tips: HTMLElement[];
 
   private value: number[];
+  
   private offset: number[];
 
   constructor(view: View) {

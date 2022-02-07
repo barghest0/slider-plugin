@@ -2,7 +2,7 @@ import checkParams from '../../../Presenter/PresenterModules/checkParams';
 import Panel from '../Panel';
 
 const handleChange = function (this: Panel, e: Event, param: string | number, valueIndex?: number) {
-  const target = e.target! as HTMLInputElement;
+  const target = <HTMLInputElement>e.target;
   const { value } = target;
 
   if (target.type === 'number') {

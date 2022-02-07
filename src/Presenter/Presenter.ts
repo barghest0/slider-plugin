@@ -48,7 +48,7 @@ class Presenter {
 	private subscribe: () => void;
 	constructor(root: string, params: SliderParams) {
 		this.root = root;
-		this.DOMroot = document.querySelector<HTMLElement>(root)!;
+		this.DOMroot = <HTMLElement>document.querySelector(root);
 		this.trackModel = new TrackModel(this.DOMroot);
 		this.view = new View(this.DOMroot);
 		this.thumbs = [];

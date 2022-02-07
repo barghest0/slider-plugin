@@ -10,9 +10,8 @@ const createScaleMarks = function (
   direction: Direction,
 ) {
   const values = prepareScaleData(min, max, step);
-  if (direction === 'vertical') {
-    values.reverse();
-  }
+  if (direction === 'vertical') values.reverse();
+  
   for (let i = 0; i < values.length; i++) {
     const mark = document.createElement('div');
     mark.classList.add('slider__scale-mark');
@@ -25,7 +24,7 @@ const createScaleMarks = function (
     number.classList.add(`slider__scale-number_${direction}`);
     number.innerHTML = values[i].toString();
     mark.appendChild(number);
-    this.scale!.appendChild(mark);
+    this.scale.appendChild(mark);
 
   }
 };

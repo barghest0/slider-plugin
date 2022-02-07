@@ -6,7 +6,7 @@ import { FIRST_THUMB_STANCE, MAX_OFFSET, MIN_OFFSET } from '../../src/utils/cons
 describe('ThumbModel test', () => {
     document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';
     const rootClass = '.slider-1';
-    const root = document.querySelector(rootClass) as HTMLElement;
+    const root = <HTMLElement>document.querySelector(rootClass);
     const thumbModel = new ThumbModel(root, FIRST_THUMB_STANCE);
 
     test('constructor test', () => {

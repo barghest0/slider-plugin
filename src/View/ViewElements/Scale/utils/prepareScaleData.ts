@@ -11,8 +11,11 @@ export const prepareScaleData = function (
   const delimiter = getDelimiter(lastIndex, primes);
 
   let multiplier = Math.max(Math.floor(lastIndex / delimiter), 1);
+
   multiplier = multiplier < 15 ? Math.min(multiplier, delimiter) : multiplier;
+
   const values = [];
+  
   for (let i = 0; i < Math.ceil(length / multiplier); i++) {
     values.push(+(step * i * multiplier + min).toFixed(3));
   }

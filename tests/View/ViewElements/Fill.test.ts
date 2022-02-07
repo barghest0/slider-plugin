@@ -6,7 +6,7 @@ import '@testing-library/jest-dom';
 describe("Fill test", () => {
 	document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
 	const rootClass = '.slider-1';
-	const root = document.querySelector(rootClass) as HTMLElement;
+	const root = <HTMLElement>document.querySelector(rootClass);
 	const view = new View(root);
 	const fill = new Fill(view);
 

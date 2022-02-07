@@ -21,7 +21,7 @@ class PreviewSlider {
 
 	constructor(root: string, params: UserSliderParams) {
 		this.root = root;
-		this.DOMroot = document.querySelector(root) as HTMLElement;
+		this.DOMroot = <HTMLElement>document.querySelector(root);
 		this.params = checkParams(params, this.DOMroot);
 		this.slider = new Slider(root, this.params);
 		this.panel = new Panel(this.params, root, this);

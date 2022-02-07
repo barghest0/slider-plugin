@@ -7,7 +7,7 @@ import checkParams from "../../src/Presenter/PresenterModules/checkParams";
 describe("Presenter test", () => {
 	document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
 	const root = ".slider-1";
-	const DOMroot = document.querySelector(root) as HTMLElement;
+	const DOMroot = <HTMLElement>document.querySelector(root);
 	const params: SliderParams = checkParams(
 		{
 			isRange: true,

@@ -8,7 +8,7 @@ import Thumb from '../../src/View/ViewElements/Thumb/Thumb';
 describe('TrackModel test', () => {
     document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';
     const rootClass = '.slider-1';
-    const root = document.querySelector(rootClass) as HTMLElement;
+    const root = <HTMLElement>document.querySelector(rootClass);
     const view = new View(root);
     const track = new TrackModel(root);
     const thumb = new Thumb(view);

@@ -1,6 +1,4 @@
-import { Direction } from '../../utils/interfaces';
 import View from '../View';
-import updateThumbPosition from '../ViewElements/Thumb/utils/updateThumbPosition';
 
 const initialThumbPlacement = function (
   this: View,

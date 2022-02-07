@@ -3,7 +3,7 @@ import renderInput from './renderInput';
 
 
 const renderPanel = function (this: Panel) {
-	const root = this.DOMroot.parentElement!.parentElement;
+	const root = <HTMLElement>this.DOMroot.parentElement!.parentElement;
 	const panel = document.createElement('div');
 	panel.classList.add(`slider-panel`);
 	panel.classList.add(`${this.root.slice(1)}__panel`);
@@ -13,7 +13,7 @@ const renderPanel = function (this: Panel) {
 	renderInput('Second Value', 'number', "js-input__second-value", 'js-input', panel);
 	renderInput('Step', 'number', "js-input__step", 'js-input', panel);
 	renderInput('Decimal Places', 'number', "js-input__decimal-places", 'js-input', panel);
-	
+
 
 	const checkboxesPanel = document.createElement('div');
 	checkboxesPanel.classList.add('checkbox-panel');
@@ -24,7 +24,7 @@ const renderPanel = function (this: Panel) {
 	renderInput('Scale', 'checkbox', "js-checkbox__scale", 'js-checkbox', checkboxesPanel);
 	renderInput('Decimal', 'checkbox', "js-checkbox__decimal", 'js-checkbox', checkboxesPanel);
 
-	root!.appendChild(panel);
+	root.appendChild(panel);
 	panel.appendChild(checkboxesPanel);
 };
 

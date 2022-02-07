@@ -5,12 +5,12 @@ import Observer from '../../../Observer/Observer';
 
 class Track extends Observer {
   public view: View;
-  public track: HTMLElement | null;
+  public track: HTMLElement;
 
   constructor(view: View) {
     super();
     this.view = view;
-    this.track = null;
+    this.track = <HTMLElement>document.querySelector('.slider__track');
   }
 
   public createTrack(direction: Direction) {
@@ -23,7 +23,7 @@ class Track extends Observer {
   }
 
   public clickTrack() {
-    this.view.DOMroot!.addEventListener('mousedown', (e) => handleClick(e, this));
+    this.view.DOMroot.addEventListener('mousedown', (e) => handleClick(e, this));
   }
 }
 

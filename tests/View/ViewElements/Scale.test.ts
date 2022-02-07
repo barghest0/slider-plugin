@@ -7,7 +7,7 @@ import '@testing-library/jest-dom';
 describe('Scale test', () => {
   document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';
   const rootClass = '.slider-1';
-  const root = document.querySelector(rootClass) as HTMLElement;
+  const root = <HTMLElement>document.querySelector(rootClass);
   const view = new View(root);
   const scale = new Scale(view);
   scale.createScale('horizontal');

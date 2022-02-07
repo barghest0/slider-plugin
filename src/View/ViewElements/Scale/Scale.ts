@@ -3,7 +3,7 @@ import View from "../../View";
 import createScaleMarks from "./utils/createScaleMarks";
 
 class Scale {
-	public scale: HTMLElement | null;
+	public scale: HTMLElement;
 	public view: View;
 	public createScaleMarks: (
 		step: number,
@@ -13,7 +13,7 @@ class Scale {
 	) => void;
 	constructor(view: View) {
 		this.view = view;
-		this.scale = null;
+		this.scale = <HTMLElement>document.querySelector('.slider__scale');
 		this.createScaleMarks = createScaleMarks.bind(this);
 	}
 

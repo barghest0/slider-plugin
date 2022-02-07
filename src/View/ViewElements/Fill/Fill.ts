@@ -6,7 +6,7 @@ import updateFill from './utils/updateFill';
 class Fill extends Observer {
   public view: View;
 
-  public fill: HTMLElement | null;
+  public fill: HTMLElement;
 
   public updateFill: () => void;
 
@@ -16,11 +16,11 @@ class Fill extends Observer {
 
   constructor(view: View) {
     super();
+    this.fill = <HTMLElement>document.querySelector('.slider__fill');
     this.view = view;
     this.size = 0;
     this.offset = 0;
     this.updateFill = updateFill.bind(this);
-    this.fill = null;
   }
 
   public setSize(size: number) {
@@ -40,12 +40,12 @@ class Fill extends Observer {
   }
 
   public createFill(direction: Direction) {
-      const fill = document.createElement('div');
-      fill.classList.add('slider__fill');
-      fill.classList.add(`slider__fill_${direction}`);
-      fill.dataset.testid = `test-fill`;
-      this.fill = fill;
-      this.view.DOMroot.appendChild(fill);
+    const fill = document.createElement('div');
+    fill.classList.add('slider__fill');
+    fill.classList.add(`slider__fill_${direction}`);
+    fill.dataset.testid = `test-fill`;
+    this.fill = fill;
+    this.view.DOMroot.appendChild(fill);
   }
 
 
