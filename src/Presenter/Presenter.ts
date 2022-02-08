@@ -38,9 +38,9 @@ class Presenter {
 
 	public params: SliderParams;
 
-	private thumbStance: number;
+	public clearHTML: (direction: Direction) => void;
 
-	private clearHTML: (direction: Direction) => void;
+	private thumbStance: number;
 
 	private removeListeners: () => void;
 
@@ -87,7 +87,7 @@ class Presenter {
 		this.addListeners(params.isRange);
 	}
 
-	private setTrackModelState({
+	public setTrackModelState({
 		min,
 		max,
 		isRange,
@@ -98,8 +98,8 @@ class Presenter {
 	}: SliderParams) {
 		const size =
 			direction === 'horizontal'
-				? this.DOMroot.getBoundingClientRect()!.width
-				: this.DOMroot.getBoundingClientRect()!.height;
+				? this.DOMroot.getBoundingClientRect().width
+				: this.DOMroot.getBoundingClientRect().height;
 
 		this.trackModel.setSize(size);
 		this.trackModel.setEnds({ min, max });
@@ -109,14 +109,15 @@ class Presenter {
 		return this;
 	}
 
-	private setViewState() {
+	public setViewState() {
 		this.view.setState(this.trackModel.getState());
 		return this;
 	}
 
 	private addSliderClasses(direction: Direction) {
+		const parent = <HTMLElement>this.DOMroot.parentElement;
 		this.DOMroot.classList.add(`slider_${direction}`);
-		this.DOMroot.parentElement!.classList.add(`slider-parent_${direction}`);
+		parent.classList.add(`slider-parent_${direction}`);
 	}
 
 	private createThumb(

@@ -1,6 +1,6 @@
 import Panel from '../Panel';
 
-const initializeInputs = function initializeInputs(this: Panel, root: string) {
+function initializeInputs(this: Panel, root: string) {
 	const panel = <HTMLElement>document.querySelector(`${root}__panel`);
 
 	this.minValueInput = <HTMLInputElement>panel.querySelector('.js-input__min-value');
@@ -16,5 +16,5 @@ const initializeInputs = function initializeInputs(this: Panel, root: string) {
 	this.hasTips = <HTMLInputElement>panel.querySelector('.js-checkbox__tips');
 	this.hasScale = <HTMLInputElement>panel.querySelector('.js-checkbox__scale');
 	this.isDecimal = <HTMLInputElement>panel.querySelector('.js-checkbox__decimal');
-};
+}
 export default initializeInputs;

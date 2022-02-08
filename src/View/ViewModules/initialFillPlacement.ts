@@ -1,7 +1,7 @@
 import View from '../View';
 
-const initialFillPlacement = function (this: View) {
+function initialFillPlacement(this: View) {
 	this.fillView.updateFill();
-};
+}
 
 export default initialFillPlacement;

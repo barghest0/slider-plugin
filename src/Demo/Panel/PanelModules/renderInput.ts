@@ -1,4 +1,4 @@
-const renderInput = function (
+function renderInput(
 	text: string,
 	type: string,
 	inputClass: string,
@@ -25,6 +25,6 @@ const renderInput = function (
 		label.appendChild(custom);
 		custom.appendChild(input);
 	}
-};
+}
 
 export default renderInput;

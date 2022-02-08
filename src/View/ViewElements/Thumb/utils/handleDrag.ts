@@ -1,12 +1,9 @@
 import { SubscribersNames } from '../../../../utils/interfaces';
 import Thumb from '../Thumb';
 
-const handleDrag = function handleDrag(
-	e: any,
-	{ thisThumb, stance }: { thisThumb: Thumb; stance: number },
-) {
+function handleDrag(e: any, thisThumb: Thumb, stance: number) {
 	const { direction } = thisThumb.view;
-	const coord = direction === 'horizontal' ? e.pageX! : e.pageY!;
+	const coord = direction === 'horizontal' ? e.pageX : e.pageY;
 
 	const cursorCoordinate = thisThumb.view.calculateCursorCoordinate(
 		coord,
@@ -24,6 +21,6 @@ const handleDrag = function handleDrag(
 		thisThumb.view.size,
 	);
 	thisThumb.notify(SubscribersNames.updateTrackFillModel, thisThumb.getOffset());
-};
+}
 
 export default handleDrag;

@@ -2,7 +2,7 @@ import { FIRST_VALUE, SECOND_VALUE } from '../../../utils/constants';
 import Panel from '../Panel';
 import handleChange from './handleChange';
 
-const addInputListeners = function (this: Panel) {
+function addInputListeners(this: Panel) {
 	this.minValueInput.addEventListener('change', e => handleChange.call(this, e, 'min'));
 	this.maxValueInput.addEventListener('change', e => handleChange.call(this, e, 'max'));
 	this.firstValueInput.addEventListener('change', e =>
@@ -22,6 +22,6 @@ const addInputListeners = function (this: Panel) {
 	this.hasTips.addEventListener('change', e => handleChange.call(this, e, 'hasTips'));
 	this.hasScale.addEventListener('change', e => handleChange.call(this, e, 'hasScale'));
 	this.isDecimal.addEventListener('change', e => handleChange.call(this, e, 'isDecimal'));
-};
+}
 
 export default addInputListeners;

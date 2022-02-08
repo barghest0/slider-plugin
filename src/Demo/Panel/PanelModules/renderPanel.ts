@@ -1,7 +1,7 @@
 import Panel from '../Panel';
 import renderInput from './renderInput';
 
-const renderPanel = function (this: Panel) {
+function renderPanel(this: Panel) {
 	const rootParent = <HTMLElement>this.DOMroot.parentElement;
 	const root = <HTMLElement>rootParent.parentElement;
 	const panel = document.createElement('div');
@@ -25,6 +25,6 @@ const renderPanel = function (this: Panel) {
 
 	root.appendChild(panel);
 	panel.appendChild(checkboxesPanel);
-};
+}
 
 export default renderPanel;

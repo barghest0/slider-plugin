@@ -1,8 +1,8 @@
 import { Direction } from '../../../../utils/interfaces';
 import Scale from '../Scale';
-import { prepareScaleData } from './prepareScaleData';
+import prepareScaleData from './prepareScaleData';
 
-const createScaleMarks = function (
+function createScaleMarks(
 	this: Scale,
 	step: number,
 	max: number,
@@ -12,7 +12,7 @@ const createScaleMarks = function (
 	const values = prepareScaleData(min, max, step);
 	if (direction === 'vertical') values.reverse();
 
-	for (let i = 0; i < values.length; i++) {
+	for (let i = 0; i < values.length; i += 1) {
 		const mark = document.createElement('div');
 		mark.classList.add('slider__scale-mark');
 		mark.classList.add(`slider__scale-mark_${direction}`);
@@ -25,6 +25,6 @@ const createScaleMarks = function (
 		mark.appendChild(number);
 		this.scale.appendChild(mark);
 	}
-};
+}
 
 export default createScaleMarks;

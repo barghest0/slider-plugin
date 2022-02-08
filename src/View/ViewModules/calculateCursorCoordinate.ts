@@ -1,6 +1,6 @@
 import { Direction } from '../../utils/interfaces';
 
-const calculateCursorCoordinate = function (
+function calculateCursorCoordinate(
 	coord: number,
 	direction: Direction,
 	DOMroot: HTMLElement,
@@ -10,6 +10,6 @@ const calculateCursorCoordinate = function (
 		return ((coord - DOMroot.offsetLeft) / size) * 100;
 	}
 	return ((coord - DOMroot.offsetTop) / size) * 100;
-};
+}
 
 export default calculateCursorCoordinate;

@@ -13,9 +13,8 @@ type Direction = 'vertical' | 'horizontal';
 type OffsetDirection = 'left' | 'top';
 type FillDirection = 'width' | 'height';
 
-type onChange = (params: SliderParams) => void;
 interface SliderParams {
-	[index: string]: number | number[] | string | boolean | onChange | undefined | any;
+	[index: string]: any;
 	min: number;
 	max: number;
 	step: number;
@@ -31,7 +30,7 @@ interface SliderParams {
 }
 
 interface UserSliderParams {
-	[index: string]: number | number[] | string | boolean | onChange | undefined;
+	[index: string]: any;
 	min?: number;
 	max?: number;
 	step?: number;

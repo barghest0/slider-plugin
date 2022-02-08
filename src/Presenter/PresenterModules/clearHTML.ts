@@ -1,11 +1,12 @@
 import { Direction } from '../../utils/interfaces';
 import Presenter from '../Presenter';
 
-const clearHTML = function (this: Presenter, direction: Direction) {
+function clearHTML(this: Presenter, direction: Direction) {
 	const prevDirection = direction === 'horizontal' ? 'vertical' : 'horizontal';
+	const parent = <HTMLElement>this.DOMroot.parentElement;
 	this.DOMroot.classList.remove(`slider_${prevDirection}`);
-	this.DOMroot.parentElement!.classList.remove(`slider-parent_${prevDirection}`);
+	parent.classList.remove(`slider-parent_${prevDirection}`);
 	this.DOMroot.innerHTML = '';
-};
+}
 
 export default clearHTML;

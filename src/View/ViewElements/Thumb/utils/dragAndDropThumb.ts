@@ -1,9 +1,11 @@
 import Thumb from '../Thumb';
 import handleDrag from './handleDrag';
 
-const dragAndDropThumb = function (this: Thumb, stance: number) {
+function dragAndDropThumb(this: Thumb, stance: number) {
+	const DOMthumb = <HTMLElement>this.view.DOMroot.querySelector(`.slider__thumb-${stance}`);
+
 	const handlePointerMove = (e: any) => {
-		handleDrag(e, { thisThumb: this, stance });
+		handleDrag(e, this, stance);
 	};
 
 	const handlePointerDown = (event: any) => {
@@ -12,19 +14,13 @@ const dragAndDropThumb = function (this: Thumb, stance: number) {
 		document.addEventListener('pointermove', handlePointerMove);
 	};
 
-	this.view.DOMroot.querySelector(`.slider__thumb-${stance}`)!.addEventListener(
-		'pointerdown',
-		handlePointerDown,
-	);
+	DOMthumb.addEventListener('pointerdown', handlePointerDown);
 
-	this.view.DOMroot.querySelector(`.slider__thumb-${stance}`)!.addEventListener(
-		'touchstart',
-		handlePointerDown,
-	);
+	DOMthumb.addEventListener('touchstart', handlePointerDown);
 
 	document.addEventListener('pointerup', () => {
 		document.removeEventListener('pointermove', handlePointerMove);
 	});
-};
+}
 
 export default dragAndDropThumb;

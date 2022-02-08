@@ -18,7 +18,7 @@ class Observer {
 	}
 
 	public unsubscribe(name: string, event: SubscribeEvent) {
-		this.subscribers[name].filter((subscriberFunc: SubscribeEvent) => event != subscriberFunc);
+		this.subscribers[name].filter((subscriberFunc: SubscribeEvent) => event !== subscriberFunc);
 	}
 
 	public notify(name: string, ...args: any[]) {

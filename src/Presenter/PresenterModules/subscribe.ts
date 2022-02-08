@@ -1,7 +1,7 @@
 import { SubscribersNames } from '../../utils/interfaces';
 import Presenter from '../Presenter';
 
-const subscribe = function (this: Presenter) {
+function subscribe(this: Presenter) {
 	this.view.thumbView.subscribe(SubscribersNames.updateThumbModel, this.updateThumbModel);
 	this.view.thumbView.subscribe(SubscribersNames.updateTrackFillModel, this.updateTrackFillModel);
 
@@ -21,6 +21,6 @@ const subscribe = function (this: Presenter) {
 	this.trackModel.subscribe(SubscribersNames.updateThumbModel, this.updateThumbModel);
 
 	this.trackModel.subscribe(SubscribersNames.updateTrackFillView, this.updateTrackFillView);
-};
+}
 
 export default subscribe;

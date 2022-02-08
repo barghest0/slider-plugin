@@ -5,6 +5,10 @@ import endsValidation from './ThumbModelModules/endsValidation';
 import { MAX_OFFSET } from '../utils/constants';
 
 class ThumbModel extends Observer {
+	public endsValidation: (ends: Ends, direction: Direction) => void;
+
+	public prepareOffset: (offset: number, direction: Direction) => number;
+
 	private DOMroot: HTMLElement;
 
 	private offset: number;
@@ -26,10 +30,6 @@ class ThumbModel extends Observer {
 	private isDecimal: boolean;
 
 	private decimalPlaces: number;
-
-	private endsValidation: (ends: Ends, direction: Direction) => void;
-
-	private prepareOffset: (offset: number, direction: Direction) => number;
 
 	constructor(DOMroot: HTMLElement, stance: number) {
 		super();

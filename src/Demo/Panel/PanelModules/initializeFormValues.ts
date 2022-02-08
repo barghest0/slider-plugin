@@ -2,7 +2,7 @@ import { FIRST_VALUE, SECOND_VALUE } from '../../../utils/constants';
 import { SliderParams } from '../../../utils/interfaces';
 import Panel from '../Panel';
 
-const initializeFormValues = function (
+function initializeFormValues(
 	this: Panel,
 	{
 		min,
@@ -36,6 +36,6 @@ const initializeFormValues = function (
 	this.hasTips.checked = hasTips;
 	this.hasScale.checked = hasScale;
 	this.isDecimal.checked = isDecimal;
-};
+}
 
 export default initializeFormValues;

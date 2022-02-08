@@ -1,7 +1,7 @@
 import checkParams from '../../../Presenter/PresenterModules/checkParams';
 import Panel from '../Panel';
 
-const handleChange = function (this: Panel, e: Event, param: string | number, valueIndex?: number) {
+function handleChange(this: Panel, e: Event, param: string | number, valueIndex?: number) {
 	const target = <HTMLInputElement>e.target;
 	const { value } = target;
 	const isValueParam = param === 'value';
@@ -16,5 +16,5 @@ const handleChange = function (this: Panel, e: Event, param: string | number, va
 
 	this.parent.init(checkParams(this.params, this.DOMroot), 'rebuild');
 	this.parent.panel.initializeFormValues(checkParams(this.params, this.DOMroot));
-};
+}
 export default handleChange;
