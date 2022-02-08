@@ -3,10 +3,14 @@ import { Direction, SliderParams, UserSliderParams } from '../../utils/interface
 
 function checkParams(params: UserSliderParams, DOMroot: HTMLElement): SliderParams {
 	const data = DOMroot.dataset;
-	const dataValues =
-		data.firstValue && data.secondValue ? [+data.firstValue, +data.secondValue] : 0;
+	const values = data.firstValue && data.secondValue ? [+data.firstValue, +data.secondValue] : 0;
 
-	let { min = Number(data.min) || 0, max = Number(data.max) || 100, value = dataValues } = params;
+	let {
+		min = Number(data.min) || 0,
+		max = Number(data.max) || 100,
+		value = values,
+		decimalPlaces = Number(data.decimalPlaces) || 0,
+	} = params;
 
 	const {
 		step = Number(data.step) || 10,
@@ -16,7 +20,6 @@ function checkParams(params: UserSliderParams, DOMroot: HTMLElement): SliderPara
 		hasTips = Boolean(data.hasTips) || true,
 		hasScale = Boolean(data.hasScale) || true,
 		isDecimal = Boolean(data.isDecimal) || false,
-		decimalPlaces = Number(data.decimalPlaces) || 0,
 	} = params;
 
 	if (!Array.isArray(value)) value = [value];
@@ -33,6 +36,8 @@ function checkParams(params: UserSliderParams, DOMroot: HTMLElement): SliderPara
 
 	if (min >= max - step) min = max - step;
 	if (max <= min + step) max = min + step;
+
+	decimalPlaces = Math.min(decimalPlaces, 3);
 
 	const checkedParams: SliderParams = {
 		min,
