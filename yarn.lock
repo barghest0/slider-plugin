@@ -1578,7 +1578,7 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@typescript-eslint/eslint-plugin@^5.0.0", "@typescript-eslint/eslint-plugin@^5.10.2":
+"@typescript-eslint/eslint-plugin@^5.10.2":
   "integrity" "sha512-4W/9lLuE+v27O/oe7hXJKjNtBLnZE8tQAFpapdxwSVHqtmIoPB1gph3+ahNwVuNL37BX7YQHyGF9Xv6XCnIX2Q=="
   "resolved" "https://registry.npmjs.org/@typescript-eslint/eslint-plugin/-/eslint-plugin-5.10.2.tgz"
   "version" "5.10.2"
@@ -2186,6 +2186,11 @@
     "loader-utils" "^1.4.0"
     "make-dir" "^3.1.0"
     "schema-utils" "^2.6.5"
+
+"babel-plugin-add-module-exports@^1.0.4":
+  "integrity" "sha512-g+8yxHUZ60RcyaUpfNzy56OtWW+x9cyEe9j+CranqLiqbju2yf/Cy6ZtYK40EZxtrdHllzlVZgLmcOUCTlJ7Jg=="
+  "resolved" "https://registry.npmjs.org/babel-plugin-add-module-exports/-/babel-plugin-add-module-exports-1.0.4.tgz"
+  "version" "1.0.4"
 
 "babel-plugin-dynamic-import-node@^2.3.3":
   "integrity" "sha512-jZVI+s9Zg3IqA/kdi0i6UDCybUI3aSBLnglhYbSSjKlV7yF1F/5LWv8MakQmvYpnbJDS6fcBL2KzHSxNCMtWSQ=="
@@ -3385,13 +3390,6 @@
     "object.assign" "^4.1.2"
     "object.entries" "^1.1.5"
     "semver" "^6.3.0"
-
-"eslint-config-airbnb-typescript@^16.1.0":
-  "integrity" "sha512-W5Cq20KpEx5ZLC54bnVrC37zq2+WD956Kp/Ma3nYFRjT1v9KM63v+DPkrrmmrVqrlDKaD0ivm/qeYmyHV6qKlw=="
-  "resolved" "https://registry.npmjs.org/eslint-config-airbnb-typescript/-/eslint-config-airbnb-typescript-16.1.0.tgz"
-  "version" "16.1.0"
-  dependencies:
-    "eslint-config-airbnb-base" "^15.0.0"
 
 "eslint-config-prettier@^8.3.0":
   "integrity" "sha512-BgZuLUSeKzvlL/VUjx/Yb787VQ26RU3gGjA3iiFvdsp/2bMfVIWUVP7tjxtjS0e+HP409cPlPvNkQloz8C91ew=="
