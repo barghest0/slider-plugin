@@ -109,7 +109,7 @@ class ThumbModel extends Observer {
 			this.cursorOffset,
 		);
 		this.notify(SubscribersNames.updateTipView, stance, this.offset, this.value);
-		this.notify(SubscribersNames.updatePanelValues, this.value, stance);
+		this.notify(SubscribersNames.updateThumbsValues, this.value, stance);
 	}
 
 	public getValue() {

@@ -28,7 +28,7 @@ describe('Presenter test', () => {
 	const fn = jest.fn();
 	presenter.init(params, 'init');
 	presenter.thumbs.forEach(thumb => {
-		thumb.subscribe(SubscribersNames.updatePanelValues, fn);
+		thumb.subscribe(SubscribersNames.updateThumbsValues, fn);
 	});
 
 	test('constructor test', () => {

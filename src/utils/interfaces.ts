@@ -77,7 +77,7 @@ enum SubscribersNames {
 	updateTipView = 'UpdateTipView',
 	updateThumbView = 'UpdateThumbView',
 	updateTrackFillView = 'UpdateTrackFillView',
-	updatePanelValues = 'UpdatePanelValues',
+	updateThumbsValues = 'UpdateThumbsValues',
 }
 
 export {

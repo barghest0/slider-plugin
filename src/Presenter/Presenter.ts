@@ -12,6 +12,7 @@ import updateTipView from './PresenterModules/notifyViewMethods/updateTipView';
 import updateTrackFillView from './PresenterModules/notifyViewMethods/updateTrackFillView';
 import updateThumbModel from './PresenterModules/notifyModelMethods/updateThumbModel';
 import addListeners from './PresenterModules/addListeners';
+import { FIRST_THUMB_STANCE } from '../utils/constants';
 
 class Presenter {
 	public root: string;
@@ -112,6 +113,14 @@ class Presenter {
 	public setViewState() {
 		this.view.setState(this.trackModel.getState());
 		return this;
+	}
+
+	public updateThumbsValues(value: number, stance: number) {
+		if (stance === FIRST_THUMB_STANCE) {
+			this.params.value[stance] = value;
+		} else {
+			this.params.value[stance] = value;
+		}
 	}
 
 	private addSliderClasses(direction: Direction) {
