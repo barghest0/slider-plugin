@@ -116,11 +116,7 @@ class Presenter {
 	}
 
 	public updateThumbsValues(value: number, stance: number) {
-		if (stance === FIRST_THUMB_STANCE) {
-			this.params.value[stance] = value;
-		} else {
-			this.params.value[stance] = value;
-		}
+		this.params.value[stance] = value;
 	}
 
 	private addSliderClasses(direction: Direction) {

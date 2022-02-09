@@ -31,6 +31,7 @@ const previewSlider3 = new PreviewSlider('.slider-3', {
 	hasScale: true,
 	isDecimal: false,
 	decimalPlaces: 1,
+	onChange: params => console.log(params.value),
 });
 
 const previewSlider4 = new PreviewSlider('.slider-4', {
