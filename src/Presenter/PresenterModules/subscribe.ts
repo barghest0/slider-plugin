@@ -19,7 +19,7 @@ function subscribe(this: Presenter) {
 	);
 
 	this.thumbs.forEach(thumb => {
-		thumb.subscribe(SubscribersNames.updateThumbsValues, this.updateThumbsValues.bind(this));
+		thumb.subscribe(SubscribersNames.updateValues, this.updateValues.bind(this));
 	});
 
 	this.trackModel.subscribe(SubscribersNames.updateThumbModel, this.updateThumbModel);

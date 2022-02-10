@@ -75,7 +75,7 @@ describe('Thumb test', () => {
 		thumb.dragAndDropThumb(FIRST_THUMB_STANCE);
 		thumb.subscribe(SubscribersNames.updateThumbModel, fn);
 		thumb.subscribe(SubscribersNames.updateTrackFillModel, fn);
-		thumbModel.subscribe(SubscribersNames.updateThumbsValues, fn);
+		thumbModel.subscribe(SubscribersNames.updateValues, fn);
 		thumbModel.subscribe(SubscribersNames.updateThumbView, fn);
 		thumbModel.subscribe(SubscribersNames.updateTipView, fn);
 		trackModel.subscribe(SubscribersNames.updateTrackFillView, fn);

@@ -28,7 +28,7 @@ describe('Presenter test', () => {
 	const fn = jest.fn();
 	presenter.init(params, 'init');
 	presenter.thumbs.forEach(thumb => {
-		thumb.subscribe(SubscribersNames.updateThumbsValues, fn);
+		thumb.subscribe(SubscribersNames.updateValues, fn);
 	});
 
 	test('constructor test', () => {
@@ -62,6 +62,7 @@ describe('Presenter test', () => {
 		presenter.view.thumbView.notify(SubscribersNames.updateThumbModel, 0, 80, 'horizontal');
 		presenter.view.thumbView.notify(SubscribersNames.updateTrackFillModel, 'horizontal');
 	});
+
 	test('correct update track fill model before click', () => {
 		presenter.view.trackView.notify('UpdateThumbModelBeforeTrackClick', 80);
 	});

@@ -19,6 +19,8 @@ class Presenter {
 
 	public DOMroot: HTMLElement;
 
+	public DOMparent: HTMLElement;
+
 	public view: View;
 
 	public thumbs: ThumbModel[];
@@ -52,6 +54,7 @@ class Presenter {
 	constructor(root: string, params: SliderParams) {
 		this.root = root;
 		this.DOMroot = <HTMLElement>document.querySelector(root);
+		this.DOMparent = <HTMLElement>this.DOMroot.parentElement;
 		this.trackModel = new TrackModel(this.DOMroot);
 		this.view = new View(this.DOMroot);
 		this.thumbs = [];
@@ -115,14 +118,28 @@ class Presenter {
 		return this;
 	}
 
-	public updateThumbsValues(value: number, stance: number) {
+	public updateValues(value: number, stance: number) {
 		this.params.value[stance] = value;
+		const panel = <HTMLElement>this.DOMparent.parentElement?.querySelector('.slider-panel');
+		if (panel) {
+			this.updatePanelValues(stance, panel);
+		}
+	}
+
+	private updatePanelValues(stance: number, panel: HTMLElement) {
+		const firstStance = stance === FIRST_THUMB_STANCE;
+		if (firstStance) {
+			const firstValueInput = <HTMLInputElement>panel.querySelector('.js-input__first-value');
+			firstValueInput.value = String(this.params.value[stance]);
+		} else {
+			const secondValueInput = <HTMLInputElement>panel.querySelector('.js-input__second-value');
+			secondValueInput.value = String(this.params.value[stance]);
+		}
 	}
 
 	private addSliderClasses(direction: Direction) {
-		const parent = <HTMLElement>this.DOMroot.parentElement;
 		this.DOMroot.classList.add(`slider_${direction}`);
-		parent.classList.add(`slider-parent_${direction}`);
+		this.DOMparent.classList.add(`slider-parent_${direction}`);
 	}
 
 	private createThumb(

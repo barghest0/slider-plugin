@@ -65,6 +65,7 @@ interface SliderThumbState {
 	offset: number;
 	stepOffset: number;
 }
+
 interface SliderFillState {
 	fillOffset: number;
 	fillSize: number;
@@ -77,7 +78,7 @@ enum SubscribersNames {
 	updateTipView = 'UpdateTipView',
 	updateThumbView = 'UpdateThumbView',
 	updateTrackFillView = 'UpdateTrackFillView',
-	updateThumbsValues = 'UpdateThumbsValues',
+	updateValues = 'UpdateValues',
 }
 
 export {
