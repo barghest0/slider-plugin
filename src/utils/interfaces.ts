@@ -30,7 +30,6 @@ interface SliderParams {
 }
 
 interface UserSliderParams {
-	[index: string]: any;
 	min?: number;
 	max?: number;
 	step?: number;

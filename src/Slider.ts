@@ -1,6 +1,6 @@
 import { SliderParams, UserSliderParams } from './utils/interfaces';
 import Presenter from './Presenter/Presenter';
-import checkParams from './Presenter/PresenterModules/checkParams';
+import checkParams from './Presenter/PresenterModules/validateParams/validateParams';
 import { FIRST_THUMB_STANCE } from './utils/constants';
 
 class Slider {

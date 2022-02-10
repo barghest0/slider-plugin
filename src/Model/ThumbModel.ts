@@ -54,12 +54,8 @@ class ThumbModel extends Observer {
 		this.stepPercent = 100 / this.stepCount;
 	}
 
-	private calculateValue(ends: Ends) {
-		return (this.stepOffset / this.stepPercent) * this.step + ends.min;
-	}
-
 	public setValue(value: number) {
-		this.value = value;
+		this.value = +value.toFixed(this.decimalPlaces);
 	}
 
 	public setStance(stance: number) {
@@ -131,6 +127,10 @@ class ThumbModel extends Observer {
 			isDecimal: this.isDecimal,
 			decimalPlaces: this.decimalPlaces,
 		};
+	}
+
+	private calculateValue(ends: Ends) {
+		return (this.stepOffset / this.stepPercent) * this.step + ends.min;
 	}
 }
 

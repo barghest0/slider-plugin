@@ -1,4 +1,4 @@
-import checkParams from '../../../Presenter/PresenterModules/checkParams';
+import checkParams from '../../../Presenter/PresenterModules/validateParams/validateParams';
 import Panel from '../Panel';
 
 function handleChange(this: Panel, e: Event, param: string | number, valueIndex?: number) {
@@ -8,8 +8,8 @@ function handleChange(this: Panel, e: Event, param: string | number, valueIndex?
 	const isNumberParam = target.type === 'number';
 	const isDirectionParam = param === 'direction';
 
-	if (isNumberParam) {
-		if (isValueParam && valueIndex) this.params[param][valueIndex] = +value;
+	if (isNumberParam) {		
+		if (isValueParam) this.params[param][valueIndex!] = +value;
 		else this.params[param] = +value;
 	} else if (isDirectionParam) this.params[param] = target.checked ? 'vertical' : 'horizontal';
 	else this.params[param] = target.checked;

@@ -3,6 +3,8 @@ import PreviewSlider from './PreviewSlider';
 
 const previewSlider1 = new PreviewSlider('.slider-1', {
 	onChange: params => console.log(params.value),
+	step: 16,
+	isRange:true
 });
 
 const previewSlider2 = new PreviewSlider('.slider-2', {
@@ -31,7 +33,6 @@ const previewSlider3 = new PreviewSlider('.slider-3', {
 	hasScale: true,
 	isDecimal: false,
 	decimalPlaces: 1,
-	onChange: params => console.log(params.value),
 });
 
 const previewSlider4 = new PreviewSlider('.slider-4', {

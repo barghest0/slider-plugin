@@ -1,4 +1,4 @@
-import checkParams from '../src/Presenter/PresenterModules/checkParams';
+import validateParams from '../src/Presenter/PresenterModules/validateParams/validateParams';
 import Slider from '../src/Slider';
 
 describe('Slider test', () => {
@@ -7,6 +7,6 @@ describe('Slider test', () => {
 	const slider = new Slider('.slider-1', {});
 
 	test('constructor test', () => {
-		expect(slider.params).toEqual(checkParams({}, slider.DOMroot));
+		expect(slider.params).toEqual(validateParams({}, slider.DOMroot));
 	});
 });

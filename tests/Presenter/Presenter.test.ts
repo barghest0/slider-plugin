@@ -10,7 +10,7 @@ import {
 } from '../../src/utils/constants';
 import { SliderParams, SubscribersNames } from '../../src/utils/interfaces';
 import Presenter from '../../src/Presenter/Presenter';
-import checkParams from '../../src/Presenter/PresenterModules/checkParams';
+import checkParams from '../../src/Presenter/PresenterModules/validateParams/validateParams';
 
 describe('Presenter test', () => {
 	document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;

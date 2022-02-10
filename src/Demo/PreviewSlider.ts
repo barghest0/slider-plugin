@@ -1,8 +1,7 @@
 import { SliderParams, SubscribersNames, UserSliderParams } from '../utils/interfaces';
 import Slider from '../Slider';
 import Panel from './Panel/Panel';
-import checkParams from '../Presenter/PresenterModules/checkParams';
-import { FIRST_THUMB_STANCE } from '../utils/constants';
+import checkParams from '../Presenter/PresenterModules/validateParams/validateParams';
 
 class PreviewSlider {
 	public panel: Panel;

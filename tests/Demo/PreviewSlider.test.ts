@@ -1,6 +1,6 @@
 import Panel from '../../src/Demo/Panel/Panel';
 import PreviewSlider from '../../src/Demo/PreviewSlider';
-import checkParams from '../../src/Presenter/PresenterModules/checkParams';
+import validateParams from '../../src/Presenter/PresenterModules/validateParams/validateParams';
 import Slider from '../../src/Slider';
 import '@testing-library/jest-dom';
 import handleChange from '../../src/Demo/Panel/PanelModules/handleChange';
@@ -11,7 +11,7 @@ describe('PreviewSlider test', () => {
 	const root = '.slider-1';
 
 	const previewSlider = new PreviewSlider(root, {});
-	const panel = new Panel(checkParams({}, previewSlider.DOMroot), root, previewSlider);
+	const panel = new Panel(validateParams({}, previewSlider.DOMroot), root, previewSlider);
 	test('constructor test', () => {
 		expect(previewSlider.panel).toBeInstanceOf(Panel);
 		expect(previewSlider.slider).toBeInstanceOf(Slider);
@@ -22,7 +22,7 @@ describe('PreviewSlider test', () => {
 		expect(previewSlider.panel.firstValueInput).toBeInstanceOf(HTMLInputElement);
 
 		panel.renderPanel();
-		previewSlider.init(checkParams({ isRange: true }, previewSlider.DOMroot), 'rebuild');
+		previewSlider.init(validateParams({ isRange: true }, previewSlider.DOMroot), 'rebuild');
 		previewSlider.slider.params.isRange = true;
 	});
 

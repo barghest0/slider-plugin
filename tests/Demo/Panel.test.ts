@@ -1,13 +1,13 @@
 import Panel from '../../src/Demo/Panel/Panel';
 import PreviewSlider from '../../src/Demo/PreviewSlider';
-import checkParams from '../../src/Presenter/PresenterModules/checkParams';
+import validateParams from '../../src/Presenter/PresenterModules/validateParams/validateParams';
 import '@testing-library/jest-dom';
 
 describe('Panel test', () => {
 	document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';
 	const root = '.slider-1';
 	const previewSlider = new PreviewSlider(root, {});
-	const panel = new Panel(checkParams({}, previewSlider.DOMroot), root, previewSlider);
+	const panel = new Panel(validateParams({}, previewSlider.DOMroot), root, previewSlider);
 
 	test('constructor test', () => {
 		expect(panel.parent).toBeInstanceOf(PreviewSlider);
