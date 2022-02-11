@@ -13,18 +13,48 @@ function prepareScaleData(min: number, max: number, step: number) {
 
 	const primes = [3, 5, 7, 11];
 
-	const delimiter = getDelimiter(lastIndex, primes);																																			
+	const delimiter = getDelimiter(lastIndex, primes);
+
 	let multiplier = Math.max(Math.floor(lastIndex / delimiter), 1);
 
 	multiplier = multiplier < 15 ? Math.min(multiplier, delimiter) : multiplier;
 
-	const values = [];
+	const linesCount = Math.ceil(length / multiplier);
 
-	for (let i = 0; i < Math.ceil(length / multiplier); i += 1) {
-		values.push(+(step * i * multiplier + min).toFixed(3));
-	}
+	const range = Math.abs(max - min);
 
-	return values;
+	const isCountBigThanScalePoint = Math.floor(range / step) > linesCount;
+
+	const actualScaleSize = isCountBigThanScalePoint
+		? Math.round(Math.round(range / step) / (linesCount - 1)) * step
+		: step;
+
+	const values = new Array(linesCount)
+		.fill(null)
+		.map((_, index) => {
+			let value = min + actualScaleSize * index;
+			value = Math.min(value, max);
+			if (index === linesCount - 1) value = max;
+			return value;
+		})
+		.filter((item, pos, arr) => !pos || item !== arr[pos - 1]);
+
+	const offsets = new Array(linesCount)
+		.fill('')
+		.map((_, index) => {
+			let styleValue = Math.abs(actualScaleSize / range) * index * 100;
+			if (styleValue > 100) styleValue = 100;
+			if (index === linesCount - 1) styleValue = 100;
+			return styleValue;
+		})
+		.filter((item, pos, arr) => !pos || item !== arr[pos - 1]);
+
+	const scaleData = {
+		values,
+		offsets,
+	};
+
+	return scaleData;
 }
 
 export default prepareScaleData;

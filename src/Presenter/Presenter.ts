@@ -99,7 +99,6 @@ class Presenter {
 		hasFill,
 		hasTips,
 		hasScale,
-		step,
 	}: SliderParams) {
 		const size =
 			direction === 'horizontal'

@@ -4,7 +4,6 @@ import PreviewSlider from './PreviewSlider';
 const previewSlider1 = new PreviewSlider('.slider-1', {
 	onChange: params => console.log(params.value),
 	step: 16,
-	isRange:true,
 });
 
 const previewSlider2 = new PreviewSlider('.slider-2', {
