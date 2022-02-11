@@ -23,6 +23,7 @@ function validateDefaultParams(params: UserSliderParams, DOMroot: HTMLElement) {
 		isDecimal = Boolean(data.isDecimal) || DEFAULT_SLIDER_PARAMS.isDecimal,
 	} = params;
 
+	
 	return {
 		min,
 		max,

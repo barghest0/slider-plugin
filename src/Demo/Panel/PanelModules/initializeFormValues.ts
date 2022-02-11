@@ -18,6 +18,8 @@ function initializeFormValues(
 		isDecimal,
 	}: SliderParams,
 ) {
+	 
+	 
 	this.minValueInput.value = min.toString();
 	this.maxValueInput.value = max.toString();
 	this.decimalPlacesInput.value = decimalPlaces.toString();

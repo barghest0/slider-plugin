@@ -13,7 +13,7 @@ function prepareScaleData(min: number, max: number, step: number) {
 
 	const primes = [3, 5, 7, 11];
 
-	const delimiter = getDelimiter(lastIndex, primes);
+	const delimiter = getDelimiter(lastIndex, primes);																																			
 	let multiplier = Math.max(Math.floor(lastIndex / delimiter), 1);
 
 	multiplier = multiplier < 15 ? Math.min(multiplier, delimiter) : multiplier;
