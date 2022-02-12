@@ -42,10 +42,11 @@ function prepareScaleData(min: number, max: number, step: number) {
 	const offsets = new Array(linesCount)
 		.fill('')
 		.map((_, index) => {
-			let styleValue = Math.abs(actualScaleSize / range) * index * 100;
-			if (styleValue > 100) styleValue = 100;
-			if (index === linesCount - 1) styleValue = 100;
-			return styleValue;
+			let offset = Math.abs(actualScaleSize / range) * index * 100;
+
+			if (offset > 100) offset = 100;
+			if (index === linesCount - 1) offset = 100;
+			return offset;
 		})
 		.filter((item, pos, arr) => !pos || item !== arr[pos - 1]);
 

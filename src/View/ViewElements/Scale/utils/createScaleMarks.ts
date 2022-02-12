@@ -12,6 +12,7 @@ function createScaleMarks(
 	const scaleData = prepareScaleData(min, max, step);
 	if (direction === 'vertical') {
 		scaleData.values.reverse();
+		scaleData.offsets.reverse();
 	}
 
 	for (let i = 0; i < scaleData.values.length; i += 1) {
@@ -19,7 +20,13 @@ function createScaleMarks(
 		mark.classList.add('slider__scale-mark');
 		mark.classList.add(`slider__scale-mark_${direction}`);
 		mark.dataset.testid = 'test-scale-mark';
-		mark.style[this.view.offsetDirection] = `${scaleData.offsets[i]}%`;
+
+		const offset =
+			this.view.direction === 'horizontal'
+				? scaleData.offsets[i]
+				: Math.abs(100 - scaleData.offsets[i]);
+
+		mark.style[this.view.offsetDirection] = `${offset}%`;
 
 		const number = document.createElement('div');
 		number.classList.add('slider__scale-number');
