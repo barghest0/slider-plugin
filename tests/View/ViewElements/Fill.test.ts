@@ -2,6 +2,7 @@ import { screen } from '@testing-library/dom';
 import View from '../../../src/View/View';
 import Fill from '../../../src/View/ViewElements/Fill/Fill';
 import '@testing-library/jest-dom';
+import { Directions } from '../../../src/utils/interfaces';
 
 describe('Fill test', () => {
 	document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
@@ -10,7 +11,7 @@ describe('Fill test', () => {
 	const view = new View(root);
 	const fill = new Fill(view);
 
-	fill.createFill('horizontal');
+	fill.createFill(Directions.horizontal);
 
 	test('constructor test', () => {
 		expect(view.DOMroot).toBeInstanceOf(HTMLElement);

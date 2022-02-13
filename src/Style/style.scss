@@ -96,10 +96,10 @@ body {
 			transition: all 0.2s ease-in-out;
 		}
 	}
-	input:checked + .custom-input {
+	input:checked + .custom {
 		background-color: rgb(43, 177, 166);
 	}
-	input:checked + .custom-input::after {
+	input:checked + .custom::after {
 		background-color: rgb(255, 255, 255);
 		transform: translateX(30px);
 	}

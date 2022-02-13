@@ -14,16 +14,16 @@ describe('Panel test', () => {
 	});
 
 	test('create panel test', () => {
-		const input = <HTMLInputElement>document.querySelector('.js-input__first-value');
+		const input = <HTMLInputElement>document.querySelector('.first-value');
 		const inputParent = <HTMLElement>input.parentElement;
 		expect(input).toBeInTheDocument();
 		expect(input.type).toBe('number');
 		expect(inputParent.classList.contains('custom-input')).toBeTruthy();
 
-		const checkbox = <HTMLInputElement>document.querySelector('.js-checkbox__is-range');
+		const checkbox = <HTMLInputElement>document.querySelector('.is-range');
 		const checkboxParent = <HTMLElement>checkbox.parentElement;
 		expect(checkbox).toBeInTheDocument();
 		expect(checkbox.type).toBe('checkbox');
-		expect(checkboxParent.classList.contains('js-checkbox')).toBeTruthy();
+		expect(checkboxParent.classList.contains('checkbox-label')).toBeTruthy();
 	});
 });

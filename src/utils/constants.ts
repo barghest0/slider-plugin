@@ -28,6 +28,20 @@ const MAX_OFFSET = 100;
 
 const MIN_OFFSET = 0;
 
+const PARENT_CLASS = 'slider-parent';
+
+const MAIN_CLASS = 'slider';
+
+const TRACK_CLASS = 'slider__track';
+
+const THUMB_CLASS = 'slider__thumb';
+
+const FILL_CLASS = 'slider__fill';
+
+const SCALE_CLASS = 'slider__scale';
+
+const TIP_CLASS = 'slider__tip';
+
 export {
 	DEFAULT_SLIDER_PARAMS,
 	FIRST_THUMB_STANCE,
@@ -38,4 +52,11 @@ export {
 	MIN_OFFSET,
 	FIRST_OFFSET,
 	SECOND_OFFSET,
+	PARENT_CLASS,
+	MAIN_CLASS,
+	TRACK_CLASS,
+	THUMB_CLASS,
+	FILL_CLASS,
+	SCALE_CLASS,
+	TIP_CLASS,
 };

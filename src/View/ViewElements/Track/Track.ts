@@ -2,6 +2,7 @@ import { Direction } from '../../../utils/interfaces';
 import View from '../../View';
 import handleClick from './utils/handleClick';
 import Observer from '../../../Observer/Observer';
+import { TRACK_CLASS } from '../../../utils/constants';
 
 class Track extends Observer {
 	public view: View;
@@ -11,13 +12,13 @@ class Track extends Observer {
 	constructor(view: View) {
 		super();
 		this.view = view;
-		this.track = <HTMLElement>document.querySelector('.slider__track');
+		this.track = <HTMLElement>document.querySelector(`.${TRACK_CLASS}`);
 	}
 
 	public createTrack(direction: Direction) {
 		const track = document.createElement('div');
-		track.classList.add('slider__track');
-		track.classList.add(`slider__track_${direction}`);
+		track.classList.add(TRACK_CLASS);
+		track.classList.add(`${TRACK_CLASS}_${direction}`);
 		track.dataset.testid = `test-track`;
 		this.track = track;
 		this.view.DOMroot.appendChild(track);

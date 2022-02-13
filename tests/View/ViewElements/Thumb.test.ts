@@ -54,9 +54,11 @@ describe('Thumb test', () => {
 	});
 
 	test('setIsDecimal test', () => {
-		thumb.setIsDecimal(false, 10);
+		thumb.setIsDecimal(false);
+		thumb.setDecimalPlaces(10);
 		expect(thumb.decimalPlaces).toBe(0);
-		thumb.setIsDecimal(true, 10);
+		thumb.setIsDecimal(true);
+		thumb.setDecimalPlaces(10);
 		expect(thumb.decimalPlaces).toBe(10);
 	});
 

@@ -2,6 +2,7 @@ import { Direction } from '../../../utils/interfaces';
 import Observer from '../../../Observer/Observer';
 import View from '../../View';
 import updateFill from './utils/updateFill';
+import { FILL_CLASS } from '../../../utils/constants';
 
 class Fill extends Observer {
 	public view: View;
@@ -16,7 +17,7 @@ class Fill extends Observer {
 
 	constructor(view: View) {
 		super();
-		this.fill = <HTMLElement>document.querySelector('.slider__fill');
+		this.fill = <HTMLElement>document.querySelector(`.${FILL_CLASS}`);
 		this.view = view;
 		this.size = 0;
 		this.offset = 0;
@@ -41,8 +42,8 @@ class Fill extends Observer {
 
 	public createFill(direction: Direction) {
 		const fill = document.createElement('div');
-		fill.classList.add('slider__fill');
-		fill.classList.add(`slider__fill_${direction}`);
+		fill.classList.add(FILL_CLASS);
+		fill.classList.add(`${FILL_CLASS}_${direction}`);
 		fill.dataset.testid = `test-fill`;
 		this.fill = fill;
 		this.view.DOMroot.appendChild(fill);

@@ -2,6 +2,7 @@ import { Direction } from '../../../utils/interfaces';
 import Observer from '../../../Observer/Observer';
 import View from '../../View';
 import updateTipsPosition from './utils/updateTipsPosition';
+import { TIP_CLASS } from '../../../utils/constants';
 
 class Tip extends Observer {
 	public view: View;
@@ -41,9 +42,9 @@ class Tip extends Observer {
 
 	public createTip(direction: Direction, stance: number) {
 		const tip = document.createElement('div');
-		tip.classList.add('slider__tip');
-		tip.classList.add(`slider__tip-${stance}`);
-		tip.classList.add(`slider__tip_${direction}`);
+		tip.classList.add(TIP_CLASS);
+		tip.classList.add(`${TIP_CLASS}-${stance}`);
+		tip.classList.add(`${TIP_CLASS}_${direction}`);
 		tip.dataset.testid = `test-tip`;
 		this.tips.push(tip);
 		this.view.DOMroot.appendChild(tip);

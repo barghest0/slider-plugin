@@ -4,6 +4,7 @@ import {
 	FIRST_OFFSET,
 	FIRST_THUMB_STANCE,
 	FIRST_VALUE,
+	MAIN_CLASS,
 	SECOND_OFFSET,
 	SECOND_THUMB_STANCE,
 	SECOND_VALUE,
@@ -46,7 +47,7 @@ describe('Presenter test', () => {
 	});
 
 	test('correct set class test', () => {
-		expect($(presenter.root).hasClass('slider_vertical')).toBe(true);
+		expect($(presenter.root).hasClass(`${MAIN_CLASS}_vertical`)).toBe(true);
 	});
 
 	test('correct set thumb view test', () => {
@@ -168,8 +169,8 @@ describe('Presenter test', () => {
 
 	test('correct clear HTML', () => {
 		presenter.clearHTML(Directions.horizontal);
-		expect($(presenter.root).hasClass('slider_vertical')).toBe(false);
-		presenter.clearHTML('vertical');
-		expect($(presenter.root).hasClass('slider_horizontal')).toBe(false);
+		expect($(presenter.root).hasClass(`${MAIN_CLASS}_vertical`)).toBe(false);
+		presenter.clearHTML(Directions.vertical);
+		expect($(presenter.root).hasClass(`${MAIN_CLASS}_horizontal`)).toBe(false);
 	});
 });

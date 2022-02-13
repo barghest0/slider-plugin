@@ -3,6 +3,7 @@ import View from '../../View';
 import updateThumbPosition from './utils/updateThumbPosition';
 import validateCollision from './utils/validateCollision';
 import dragAndDropThumb from './utils/dragAndDropThumb';
+import { THUMB_CLASS } from '../../../utils/constants';
 
 class Thumb extends Observer {
 	public view: View;
@@ -50,8 +51,8 @@ class Thumb extends Observer {
 
 	public createThumb(stance: number) {
 		const thumb = document.createElement('div');
-		thumb.classList.add('slider__thumb');
-		thumb.classList.add(`slider__thumb-${stance}`);
+		thumb.classList.add(THUMB_CLASS);
+		thumb.classList.add(`${THUMB_CLASS}-${stance}`);
 		thumb.dataset.testid = `test-thumb-${stance}`;
 		this.thumbs.push(thumb);
 		this.view.DOMroot.appendChild(thumb);
@@ -87,8 +88,12 @@ class Thumb extends Observer {
 		return this.offset;
 	}
 
-	public setIsDecimal(isDecimal: boolean, decimalPlaces: number) {
-		if (isDecimal) {
+	public setIsDecimal(isDecimal: boolean) {
+		this.isDecimal = isDecimal;
+	}
+
+	public setDecimalPlaces(decimalPlaces: number) {
+		if (this.isDecimal) {
 			this.decimalPlaces = decimalPlaces;
 		} else {
 			this.decimalPlaces = 0;

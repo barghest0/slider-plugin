@@ -68,8 +68,11 @@ class ThumbModel extends Observer {
 		this.stance = stance;
 	}
 
-	public setIsDecimal(isDecimal: boolean, decimalPlaces: number) {
+	public setIsDecimal(isDecimal: boolean) {
 		this.isDecimal = isDecimal;
+	}
+
+	public setDecimalPlaces(decimalPlaces: number) {
 		this.decimalPlaces = decimalPlaces;
 	}
 

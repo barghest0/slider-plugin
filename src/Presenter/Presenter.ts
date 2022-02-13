@@ -12,7 +12,7 @@ import updateTipView from './PresenterModules/notifyViewMethods/updateTipView';
 import updateTrackFillView from './PresenterModules/notifyViewMethods/updateTrackFillView';
 import updateThumbModel from './PresenterModules/notifyModelMethods/updateThumbModel';
 import addListeners from './PresenterModules/addListeners';
-import { FIRST_THUMB_STANCE } from '../utils/constants';
+import { FIRST_THUMB_STANCE, MAIN_CLASS, PARENT_CLASS } from '../utils/constants';
 
 class Presenter {
 	public root: string;
@@ -138,8 +138,8 @@ class Presenter {
 	}
 
 	private addSliderClasses(direction: Direction) {
-		this.DOMroot.classList.add(`slider_${direction}`);
-		this.DOMparent.classList.add(`slider-parent_${direction}`);
+		this.DOMroot.classList.add(`${MAIN_CLASS}_${direction}`);
+		this.DOMparent.classList.add(`${PARENT_CLASS}_${direction}`);
 	}
 
 	private createThumb(
@@ -204,7 +204,8 @@ class Presenter {
 		this.thumbs[stance].setStance(stance);
 		this.thumbs[stance].setValue(value);
 		this.thumbs[stance].setOffset(this.thumbs[stance].calculateOffset({ min, max }, direction));
-		this.thumbs[stance].setIsDecimal(isDecimal, decimalPlaces);
+		this.thumbs[stance].setIsDecimal(isDecimal);
+		this.thumbs[stance].setDecimalPlaces(decimalPlaces);
 	}
 
 	private setThumbView(stance: number, direction: Direction) {
@@ -213,7 +214,8 @@ class Presenter {
 		this.view.thumbView.setStep(step, stepPercent, stepCount);
 		this.view.thumbView.setValue(value, stance);
 		this.view.thumbView.setOffset(offset, stance);
-		this.view.thumbView.setIsDecimal(isDecimal, decimalPlaces);
+		this.view.thumbView.setIsDecimal(isDecimal);
+		this.view.thumbView.setDecimalPlaces(decimalPlaces);
 		this.view.prepareDirectionForInteraction(direction);
 	}
 

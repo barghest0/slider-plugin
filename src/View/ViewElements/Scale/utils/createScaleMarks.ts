@@ -1,3 +1,4 @@
+import { SCALE_CLASS } from '../../../../utils/constants';
 import { Direction, Directions } from '../../../../utils/interfaces';
 import Scale from '../Scale';
 import prepareScaleData from './prepareScaleData';
@@ -17,8 +18,8 @@ function createScaleMarks(
 
 	for (let i = 0; i < scaleData.values.length; i += 1) {
 		const mark = document.createElement('div');
-		mark.classList.add('slider__scale-mark');
-		mark.classList.add(`slider__scale-mark_${direction}`);
+		mark.classList.add(`${SCALE_CLASS}-mark`);
+		mark.classList.add(`${SCALE_CLASS}-mark_${direction}`);
 		mark.dataset.testid = 'test-scale-mark';
 
 		const offset =
@@ -29,8 +30,8 @@ function createScaleMarks(
 		mark.style[this.view.offsetDirection] = `${offset}%`;
 
 		const number = document.createElement('div');
-		number.classList.add('slider__scale-number');
-		number.classList.add(`slider__scale-number_${direction}`);
+		number.classList.add(`${SCALE_CLASS}-number`);
+		number.classList.add(`${SCALE_CLASS}-number_${direction}`);
 		number.innerHTML = scaleData.values[i].toString();
 		mark.appendChild(number);
 		this.scale.appendChild(mark);

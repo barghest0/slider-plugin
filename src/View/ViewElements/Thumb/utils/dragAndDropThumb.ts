@@ -2,7 +2,7 @@ import Thumb from '../Thumb';
 import handleDrag from './handleDrag';
 
 function dragAndDropThumb(this: Thumb, stance: number) {
-	const DOMthumb = <HTMLElement>this.view.DOMroot.querySelector(`.slider__thumb-${stance}`);
+	const DOMthumb = this.thumbs[stance];
 
 	const handlePointerMove = (e: any) => {
 		handleDrag(e, this, stance);
