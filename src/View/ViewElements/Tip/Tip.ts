@@ -43,6 +43,7 @@ class Tip extends Observer {
 	public createTip(direction: Direction, stance: number) {
 		const tip = document.createElement('div');
 		tip.classList.add(TIP_CLASS);
+		tip.classList.add(`js-${TIP_CLASS}-${stance}`);
 		tip.classList.add(`${TIP_CLASS}-${stance}`);
 		tip.classList.add(`${TIP_CLASS}_${direction}`);
 		tip.dataset.testid = `test-tip`;

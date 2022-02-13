@@ -4,6 +4,20 @@ import initializeInputs from './PanelModules/initializeInputs';
 import addInputListeners from './PanelModules/addInputListeners';
 import PreviewSlider from '../PreviewSlider';
 import renderPanel from './PanelModules/renderPanel';
+import {
+	DECIMAL_PLACES_CLASS,
+	FIRST_VALUE_CLASS,
+	HAS_FILL_CLASS,
+	HAS_SCALE_CLASS,
+	HAS_TIPS_CLASS,
+	IS_DECIMAL_CLASS,
+	IS_RANGE_CLASS,
+	IS_VERTICAL_CLASS,
+	MAX_CLASS,
+	MIN_CLASS,
+	SECOND_VALUE_CLASS,
+	STEP_CLASS,
+} from '../../utils/constants';
 
 class Panel {
 	public params: SliderParams;
@@ -51,19 +65,21 @@ class Panel {
 		this.params = params;
 		this.root = root;
 		this.DOMroot = <HTMLElement>document.querySelector(root);
-		this.minValueInput = <HTMLInputElement>document.querySelector('.js-min-value');
-		this.maxValueInput = <HTMLInputElement>document.querySelector('.js-max-value');
-		this.firstValueInput = <HTMLInputElement>document.querySelector('.js-first-value');
-		this.secondValueInput = <HTMLInputElement>document.querySelector('.js-second-value');
-		this.decimalPlacesInput = <HTMLInputElement>document.querySelector('.js-decimal-places');
-		this.stepInput = <HTMLInputElement>document.querySelector('.js-step');
+		this.minValueInput = <HTMLInputElement>document.querySelector(`.js-${MIN_CLASS}`);
+		this.maxValueInput = <HTMLInputElement>document.querySelector(`.js-${MAX_CLASS}`);
+		this.firstValueInput = <HTMLInputElement>document.querySelector(`.js-${FIRST_VALUE_CLASS}`);
+		this.secondValueInput = <HTMLInputElement>document.querySelector(`.js-${SECOND_VALUE_CLASS}`);
+		this.decimalPlacesInput = <HTMLInputElement>(
+			document.querySelector(`.js-${DECIMAL_PLACES_CLASS}`)
+		);
+		this.stepInput = <HTMLInputElement>document.querySelector(`.js-${STEP_CLASS}`);
 
-		this.isRange = <HTMLInputElement>document.querySelector('.js-is-range');
-		this.isVertical = <HTMLInputElement>document.querySelector('.js-vertical');
-		this.hasFill = <HTMLInputElement>document.querySelector('.js-fill');
-		this.hasTips = <HTMLInputElement>document.querySelector('.js-tips');
-		this.hasScale = <HTMLInputElement>document.querySelector('.js-scale');
-		this.isDecimal = <HTMLInputElement>document.querySelector('.js-decimal');
+		this.isRange = <HTMLInputElement>document.querySelector(`.js-${IS_RANGE_CLASS}`);
+		this.isVertical = <HTMLInputElement>document.querySelector(`.js-${IS_VERTICAL_CLASS}`);
+		this.hasFill = <HTMLInputElement>document.querySelector(`.js-${HAS_FILL_CLASS}`);
+		this.hasTips = <HTMLInputElement>document.querySelector(`.js-${HAS_TIPS_CLASS}`);
+		this.hasScale = <HTMLInputElement>document.querySelector(`.js-${HAS_SCALE_CLASS}`);
+		this.isDecimal = <HTMLInputElement>document.querySelector(`.js-${IS_DECIMAL_CLASS}`);
 		this.initializeFormValues = initializeFormValues.bind(this);
 		this.initializeInputs = initializeInputs.bind(this);
 		this.addInputListeners = addInputListeners.bind(this);

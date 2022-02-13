@@ -52,6 +52,7 @@ class Thumb extends Observer {
 	public createThumb(stance: number) {
 		const thumb = document.createElement('div');
 		thumb.classList.add(THUMB_CLASS);
+		thumb.classList.add(`js-${THUMB_CLASS}-${stance}`);
 		thumb.classList.add(`${THUMB_CLASS}-${stance}`);
 		thumb.dataset.testid = `test-thumb-${stance}`;
 		this.thumbs.push(thumb);
