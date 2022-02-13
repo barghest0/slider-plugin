@@ -7,21 +7,21 @@ function renderPanel(this: Panel) {
 	const panel = document.createElement('div');
 	panel.classList.add(`slider-panel`);
 	panel.classList.add(`${this.root.slice(1)}__panel`);
-	renderInput('Min Value', 'number', 'js-input__min-value', 'js-input', panel);
-	renderInput('Max Value', 'number', 'js-input__max-value', 'js-input', panel);
-	renderInput('First Value', 'number', 'js-input__first-value', 'js-input', panel);
-	renderInput('Second Value', 'number', 'js-input__second-value', 'js-input', panel);
-	renderInput('Step', 'number', 'js-input__step', 'js-input', panel);
-	renderInput('Decimal Places', 'number', 'js-input__decimal-places', 'js-input', panel);
+	renderInput('Min Value', 'number', 'min-value', 'text-label', panel);
+	renderInput('Max Value', 'number', 'max-value', 'text-label', panel);
+	renderInput('First Value', 'number', 'first-value', 'text-label', panel);
+	renderInput('Second Value', 'number', 'second-value', 'text-label', panel);
+	renderInput('Step', 'number', 'step', 'text-label', panel);
+	renderInput('Decimal Places', 'number', 'decimal-places', 'text-label', panel);
 
 	const checkboxesPanel = document.createElement('div');
 	checkboxesPanel.classList.add('checkbox-panel');
-	renderInput('Range', 'checkbox', 'js-checkbox__is-range', 'js-checkbox', checkboxesPanel);
-	renderInput('Vertical', 'checkbox', 'js-checkbox__vertical', 'js-checkbox', checkboxesPanel);
-	renderInput('Fill', 'checkbox', 'js-checkbox__fill', 'js-checkbox', checkboxesPanel);
-	renderInput('Tips', 'checkbox', 'js-checkbox__tips', 'js-checkbox', checkboxesPanel);
-	renderInput('Scale', 'checkbox', 'js-checkbox__scale', 'js-checkbox', checkboxesPanel);
-	renderInput('Decimal', 'checkbox', 'js-checkbox__decimal', 'js-checkbox', checkboxesPanel);
+	renderInput('Range', 'checkbox', 'is-range', 'checkbox-label', checkboxesPanel);
+	renderInput('Vertical', 'checkbox', 'vertical', 'checkbox-label', checkboxesPanel);
+	renderInput('Fill', 'checkbox', 'fill', 'checkbox-label', checkboxesPanel);
+	renderInput('Tips', 'checkbox', 'tips', 'checkbox-label', checkboxesPanel);
+	renderInput('Scale', 'checkbox', 'scale', 'checkbox-label', checkboxesPanel);
+	renderInput('Decimal', 'checkbox', 'decimal', 'checkbox-label', checkboxesPanel);
 
 	root.appendChild(panel);
 	panel.appendChild(checkboxesPanel);

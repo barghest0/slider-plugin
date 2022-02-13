@@ -129,10 +129,10 @@ class Presenter {
 	private updatePanelValues(stance: number, panel: HTMLElement) {
 		const firstStance = stance === FIRST_THUMB_STANCE;
 		if (firstStance) {
-			const firstValueInput = <HTMLInputElement>panel.querySelector('.js-input__first-value');
+			const firstValueInput = <HTMLInputElement>panel.querySelector('.first-value');
 			firstValueInput.value = String(this.params.value[stance]);
 		} else {
-			const secondValueInput = <HTMLInputElement>panel.querySelector('.js-input__second-value');
+			const secondValueInput = <HTMLInputElement>panel.querySelector('.second-value');
 			secondValueInput.value = String(this.params.value[stance]);
 		}
 	}

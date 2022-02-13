@@ -25,6 +25,10 @@ body {
 	border-radius: 5px;
 	box-shadow: 0px 5px 10px rgb(19, 35, 37);
 	padding-bottom: 20px;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
 }
 
 .slider-panel {
@@ -37,7 +41,7 @@ body {
 	column-gap: 20px;
 }
 
-.custom-input {
+.custom {
 	display: flex;
 	min-height: 35px;
 
@@ -57,48 +61,50 @@ body {
 	}
 }
 
-.label {
+.text-label {
 	display: flex;
 	flex-direction: column;
+}
 
+.checkbox-label {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	column-gap: 10px;
 	[type='checkbox'] {
 		appearance: none;
 	}
 
-	&.js-checkbox {
-		flex-direction: row;
-		align-items: center;
-		column-gap: 10px;
-		.custom-input {
-			padding: 0 2px;
-			width: 50px;
-			min-height: 20px;
-			background-color: rgb(36, 36, 36);
-			border-radius: 20px;
-			position: relative;
+	.custom {
+		padding: 0 2px;
+		width: 50px;
+		min-height: 20px;
+		background-color: rgb(36, 36, 36);
+		border-radius: 20px;
+		position: relative;
+		transition: all 0.2s ease-in-out;
+		cursor: pointer;
+		&::after {
+			content: '';
+			z-index: 100;
+			top: 2.5px;
+			position: absolute;
+			width: 15px;
+			height: 15px;
+			border-radius: 50%;
+			background-color: rgb(94, 94, 94);
 			transition: all 0.2s ease-in-out;
-			cursor: pointer;
-			&::after {
-				content: '';
-				z-index: 100;
-				top: 2.5px;
-				position: absolute;
-				width: 15px;
-				height: 15px;
-				border-radius: 50%;
-				background-color: rgb(94, 94, 94);
-				transition: all 0.2s ease-in-out;
-			}
-		}
-		input:checked + .custom-input {
-			background-color: rgb(43, 177, 166);
-		}
-		input:checked + .custom-input::after {
-			background-color: rgb(255, 255, 255);
-			transform: translateX(30px);
 		}
 	}
+	input:checked + .custom-input {
+		background-color: rgb(43, 177, 166);
+	}
+	input:checked + .custom-input::after {
+		background-color: rgb(255, 255, 255);
+		transform: translateX(30px);
+	}
 }
+
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
 	-webkit-appearance: none;
@@ -113,16 +119,4 @@ input[type='number']::-webkit-outer-spin-button {
 	column-gap: 20px;
 	row-gap: 10px;
 	grid-column: 1/-1;
-}
-
-.slider {
-	&__fill {
-		background-color: rgb(43, 177, 166);
-	}
-	&__thumb {
-		background-color: rgb(43, 177, 166);
-	}
-	&__scale-mark {
-		background-color: rgb(43, 177, 166);
-	}
 }

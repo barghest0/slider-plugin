@@ -6,18 +6,19 @@ function renderInput(
 	parent: HTMLElement,
 ) {
 	const custom = document.createElement('div');
-	custom.classList.add('custom-input');
+	custom.classList.add('custom');
 
 	const label = document.createElement('label');
-	label.classList.add('label');
 	label.classList.add(labelClass);
 
 	const input = document.createElement('input');
 	input.type = type;
 	input.classList.add(inputClass);
+	input.classList.add(`js-${inputClass}`);
 	label.innerHTML = text;
 
 	parent.appendChild(label);
+
 	if (type === 'checkbox') {
 		label.appendChild(input);
 		label.appendChild(custom);
