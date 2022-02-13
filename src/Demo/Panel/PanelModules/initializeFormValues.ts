@@ -1,5 +1,5 @@
 import { FIRST_VALUE, SECOND_VALUE } from '../../../utils/constants';
-import { SliderParams } from '../../../utils/interfaces';
+import { Directions, SliderParams } from '../../../utils/interfaces';
 import Panel from '../Panel';
 
 function initializeFormValues(
@@ -18,8 +18,6 @@ function initializeFormValues(
 		isDecimal,
 	}: SliderParams,
 ) {
-	 
-	 
 	this.minValueInput.value = min.toString();
 	this.maxValueInput.value = max.toString();
 	this.decimalPlacesInput.value = decimalPlaces.toString();
@@ -33,7 +31,7 @@ function initializeFormValues(
 	}
 	this.stepInput.value = step.toString();
 	this.isRange.checked = isRange;
-	this.isVertical.checked = direction === 'vertical';
+	this.isVertical.checked = direction === Directions.vertical;
 	this.hasFill.checked = hasFill;
 	this.hasTips.checked = hasTips;
 	this.hasScale.checked = hasScale;

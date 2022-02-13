@@ -1,4 +1,4 @@
-import { SliderParams, SubscribersNames, UserSliderParams } from '../utils/interfaces';
+import { InitMods, SliderParams, SubscribersNames, UserSliderParams } from '../utils/interfaces';
 import Slider from '../Slider';
 import Panel from './Panel/Panel';
 import checkParams from '../Presenter/PresenterModules/validateParams/validateParams';
@@ -21,12 +21,12 @@ class PreviewSlider {
 		this.slider = new Slider(root, this.params);
 		this.panel = new Panel(this.params, root, this);
 
-		this.init(this.params, 'init');
+		this.init(this.params, InitMods.init);
 		this.panel.addInputListeners();
 	}
 
 	public init(params: SliderParams, mode: string) {
-		if (mode === 'rebuild') {
+		if (mode === InitMods.rebuild) {
 			this.params = params;
 			this.slider.init(params, mode);
 		}

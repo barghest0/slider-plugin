@@ -1,7 +1,6 @@
-import { SliderParams, UserSliderParams } from './utils/interfaces';
+import { InitMods, SliderParams, UserSliderParams } from './utils/interfaces';
 import Presenter from './Presenter/Presenter';
 import checkParams from './Presenter/PresenterModules/validateParams/validateParams';
-import { FIRST_THUMB_STANCE } from './utils/constants';
 
 class Slider {
 	public presenter: Presenter;
@@ -17,7 +16,7 @@ class Slider {
 		this.DOMroot = <HTMLElement>document.querySelector(root);
 		this.params = checkParams(params, this.DOMroot);
 		this.presenter = new Presenter(root, checkParams(params, this.DOMroot));
-		this.init(this.params, 'init');
+		this.init(this.params, InitMods.init);
 	}
 
 	public init(params: SliderParams, mode: string) {

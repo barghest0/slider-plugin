@@ -1,9 +1,9 @@
-import { SubscribersNames } from '../../../../utils/interfaces';
+import { Directions, SubscribersNames } from '../../../../utils/interfaces';
 import Track from '../Track';
 
 function handleClick(e: any, thisTrack: Track) {
 	const { direction } = thisTrack.view;
-	const coord = direction === 'horizontal' ? e.pageX : e.pageY;
+	const coord = direction === Directions.horizontal ? e.pageX : e.pageY;
 	const cursorCoordinate = thisTrack.view.calculateCursorCoordinate(
 		coord,
 		direction,

@@ -7,8 +7,7 @@ function validateDefaultParams(params: UserSliderParams, DOMroot: HTMLElement) {
 		data.firstValue && data.secondValue
 			? [+data.firstValue, +data.secondValue]
 			: DEFAULT_SLIDER_PARAMS.value;
-	
-	
+
 	const {
 		min = Number(data.min) || DEFAULT_SLIDER_PARAMS.min,
 		max = Number(data.max) || DEFAULT_SLIDER_PARAMS.max,
@@ -23,7 +22,6 @@ function validateDefaultParams(params: UserSliderParams, DOMroot: HTMLElement) {
 		isDecimal = Boolean(data.isDecimal) || DEFAULT_SLIDER_PARAMS.isDecimal,
 	} = params;
 
-	
 	return {
 		min,
 		max,

@@ -5,6 +5,7 @@ import Slider from '../../src/Slider';
 import '@testing-library/jest-dom';
 import handleChange from '../../src/Demo/Panel/PanelModules/handleChange';
 import { FIRST_VALUE } from '../../src/utils/constants';
+import { Directions, InitMods, Params } from '../../src/utils/interfaces';
 
 describe('PreviewSlider test', () => {
 	document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';
@@ -22,7 +23,7 @@ describe('PreviewSlider test', () => {
 		expect(previewSlider.panel.firstValueInput).toBeInstanceOf(HTMLInputElement);
 
 		panel.renderPanel();
-		previewSlider.init(validateParams({ isRange: true }, previewSlider.DOMroot), 'rebuild');
+		previewSlider.init(validateParams({ isRange: true }, previewSlider.DOMroot), InitMods.rebuild);
 		previewSlider.slider.params.isRange = true;
 	});
 
@@ -33,27 +34,27 @@ describe('PreviewSlider test', () => {
 		previewSlider.panel.firstValueInput.dispatchEvent(event);
 		previewSlider.panel.firstValueInput.value = '50';
 
-		handleChange.call(panel, event, 'value', FIRST_VALUE);
+		handleChange.call(panel, event, Params.value, FIRST_VALUE);
 		expect(previewSlider.params.value[FIRST_VALUE]).toBe(50);
 
 		previewSlider.panel.maxValueInput.dispatchEvent(event);
 		previewSlider.panel.maxValueInput.value = '200';
-		handleChange.call(panel, event, 'max');
+		handleChange.call(panel, event, Params.max);
 		expect(previewSlider.params.max).toBe(200);
 
 		previewSlider.panel.minValueInput.dispatchEvent(event);
-		previewSlider.panel.minValueInput.value = '200';
-		handleChange.call(panel, event, 'min');
-		expect(previewSlider.params.min).toBe(190);
+		previewSlider.panel.minValueInput.value = '-100';
+		handleChange.call(panel, event, Params.min);
+		expect(previewSlider.params.min).toBe(-100);
 
 		previewSlider.panel.isVertical.dispatchEvent(event);
 		previewSlider.panel.isVertical.checked = true;
-		handleChange.call(panel, event, 'direction');
-		expect(previewSlider.params.direction).toBe('vertical');
+		handleChange.call(panel, event, Params.direction);
+		expect(previewSlider.params.direction).toBe(Directions.vertical);
 
 		previewSlider.panel.hasFill.dispatchEvent(event);
 		previewSlider.panel.hasFill.checked = true;
-		handleChange.call(panel, event, 'hasFill');
+		handleChange.call(panel, event, Params.hasFill);
 		expect(previewSlider.params.hasFill).toBe(true);
 	});
 });

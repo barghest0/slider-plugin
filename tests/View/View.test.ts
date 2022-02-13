@@ -1,6 +1,7 @@
 import '@testing-library/jest-dom';
 import { screen } from '@testing-library/dom';
 import View from '../../src/View/View';
+import { Directions, Params } from '../../src/utils/interfaces';
 
 describe('View test', () => {
 	document.body.innerHTML = `<div id="slider-1" data-testid="slider-1" class="slider-1"></div>`;
@@ -12,7 +13,7 @@ describe('View test', () => {
 	});
 	test('setState test', () => {
 		view.setState({
-			direction: 'vertical',
+			direction: Directions.vertical,
 			ends: { min: -100, max: 100 },
 			size: 100,
 			hasFill: true,
@@ -20,7 +21,7 @@ describe('View test', () => {
 			hasScale: true,
 			isRange: false,
 		});
-		expect(view).toHaveProperty('direction', 'vertical');
+		expect(view).toHaveProperty(Params.direction, Directions.vertical);
 	});
 
 	test('setFillState test', () => {
@@ -33,15 +34,15 @@ describe('View test', () => {
 
 	test('correct calculate cursor coordinate test', () => {
 		$(root).position().left = 0;
-		expect(view.calculateCursorCoordinate(200, 'horizontal', root, 200)).toBe(100);
+		expect(view.calculateCursorCoordinate(200, Directions.horizontal, root, 200)).toBe(100);
 
 		$(root).position().top = 0;
-		expect(view.calculateCursorCoordinate(200, 'vertical', root, 200)).toBe(100);
+		expect(view.calculateCursorCoordinate(200, Directions.vertical, root, 200)).toBe(100);
 	});
 
 	test('correct initial fill placement test', () => {
 		view.isRange = true;
-		view.fillView.createFill('horizontal');
+		view.fillView.createFill(Directions.horizontal);
 
 		view.fillView.setSize(10);
 		view.fillView.setOffset(10);

@@ -80,6 +80,38 @@ enum SubscribersNames {
 	updateValues = 'UpdateValues',
 }
 
+enum Directions {
+	horizontal = 'horizontal',
+	vertical = 'vertical',
+}
+
+enum Params {
+	min = 'min',
+	max = 'max',
+	step = 'step',
+	value = 'value',
+	isRange = 'isRange',
+	direction = 'direction',
+	hasFill = 'hasFill',
+	hasTips = 'hasTips',
+	hasScale = 'hasScale',
+	isDecimal = 'isDecimal',
+	decimalPlaces = 'decimalPlaces',
+}
+
+enum InitMods {
+	init = 'init',
+	rebuild = 'rebuild',
+}
+
+enum OffsetDirections {
+	left = 'left',
+	top = 'top',
+}
+enum FillDirections {
+	width = 'width',
+	height = 'height',
+}
 export {
 	SubscribeEvent,
 	Subscribers,
@@ -93,4 +125,9 @@ export {
 	SubscribersNames,
 	FillDirection,
 	OffsetDirection,
+	Directions,
+	Params,
+	InitMods,
+	OffsetDirections,
+	FillDirections,
 };

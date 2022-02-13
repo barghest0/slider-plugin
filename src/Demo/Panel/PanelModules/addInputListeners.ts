@@ -1,27 +1,39 @@
 import { FIRST_VALUE, SECOND_VALUE } from '../../../utils/constants';
+import { Params } from '../../../utils/interfaces';
 import Panel from '../Panel';
 import handleChange from './handleChange';
 
 function addInputListeners(this: Panel) {
-	this.minValueInput.addEventListener('change', e => handleChange.call(this, e, 'min'));
-	this.maxValueInput.addEventListener('change', e => handleChange.call(this, e, 'max'));
-	this.firstValueInput.addEventListener('change', e =>
-		handleChange.call(this, e, 'value', FIRST_VALUE),
+	this.minValueInput.addEventListener('change', event =>
+		handleChange.call(this, event, Params.min),
+	);
+	this.maxValueInput.addEventListener('change', event =>
+		handleChange.call(this, event, Params.max),
+	);
+	this.firstValueInput.addEventListener('change', event =>
+		handleChange.call(this, event, Params.value, FIRST_VALUE),
 	);
 
-	this.secondValueInput.addEventListener('change', e =>
-		handleChange.call(this, e, 'value', SECOND_VALUE),
+	this.secondValueInput.addEventListener('change', event =>
+		handleChange.call(this, event, Params.value, SECOND_VALUE),
 	);
-	this.decimalPlacesInput.addEventListener('change', e =>
-		handleChange.call(this, e, 'decimalPlaces'),
+	this.decimalPlacesInput.addEventListener('change', event =>
+		handleChange.call(this, event, Params.decimalPlaces),
 	);
-	this.stepInput.addEventListener('change', e => handleChange.call(this, e, 'step'));
-	this.isRange.addEventListener('change', e => handleChange.call(this, e, 'isRange'));
-	this.isVertical.addEventListener('change', e => handleChange.call(this, e, 'direction'));
-	this.hasFill.addEventListener('change', e => handleChange.call(this, e, 'hasFill'));
-	this.hasTips.addEventListener('change', e => handleChange.call(this, e, 'hasTips'));
-	this.hasScale.addEventListener('change', e => handleChange.call(this, e, 'hasScale'));
-	this.isDecimal.addEventListener('change', e => handleChange.call(this, e, 'isDecimal'));
+	this.stepInput.addEventListener('change', event => handleChange.call(this, event, Params.step));
+
+	this.isRange.addEventListener('change', event => handleChange.call(this, event, Params.isRange));
+	this.isVertical.addEventListener('change', event =>
+		handleChange.call(this, event, Params.direction),
+	);
+	this.hasFill.addEventListener('change', event => handleChange.call(this, event, Params.hasFill));
+	this.hasTips.addEventListener('change', event => handleChange.call(this, event, Params.hasTips));
+	this.hasScale.addEventListener('change', event =>
+		handleChange.call(this, event, Params.hasScale),
+	);
+	this.isDecimal.addEventListener('change', event =>
+		handleChange.call(this, event, Params.isDecimal),
+	);
 }
 
 export default addInputListeners;

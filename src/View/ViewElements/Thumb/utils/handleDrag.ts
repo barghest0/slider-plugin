@@ -1,9 +1,9 @@
-import { SubscribersNames } from '../../../../utils/interfaces';
+import { Directions, SubscribersNames } from '../../../../utils/interfaces';
 import Thumb from '../Thumb';
 
 function handleDrag(e: any, thisThumb: Thumb, stance: number) {
 	const { direction } = thisThumb.view;
-	const coord = direction === 'horizontal' ? e.pageX : e.pageY;
+	const coord = direction === Directions.horizontal ? e.pageX : e.pageY;
 
 	const cursorCoordinate = thisThumb.view.calculateCursorCoordinate(
 		coord,

@@ -8,7 +8,7 @@ import {
 	SECOND_THUMB_STANCE,
 	SECOND_VALUE,
 } from '../../src/utils/constants';
-import { SliderParams, SubscribersNames } from '../../src/utils/interfaces';
+import { Directions, InitMods, SliderParams, SubscribersNames } from '../../src/utils/interfaces';
 import Presenter from '../../src/Presenter/Presenter';
 import checkParams from '../../src/Presenter/PresenterModules/validateParams/validateParams';
 
@@ -26,7 +26,7 @@ describe('Presenter test', () => {
 	);
 	const presenter = new Presenter(root, params);
 	const fn = jest.fn();
-	presenter.init(params, 'init');
+	presenter.init(params, InitMods.init);
 	presenter.thumbs.forEach(thumb => {
 		thumb.subscribe(SubscribersNames.updateValues, fn);
 	});
@@ -54,17 +54,27 @@ describe('Presenter test', () => {
 	});
 
 	test('correct update thumb model', () => {
-		presenter.view.thumbView.notify(SubscribersNames.updateThumbModel, 0, 80, 'horizontal');
+		presenter.view.thumbView.notify(
+			SubscribersNames.updateThumbModel,
+			0,
+			80,
+			Directions.horizontal,
+		);
 		expect(presenter.thumbs[FIRST_THUMB_STANCE].getOffset()).toBe(80);
 	});
 
 	test('correct update track fill model', () => {
-		presenter.view.thumbView.notify(SubscribersNames.updateThumbModel, 0, 80, 'horizontal');
-		presenter.view.thumbView.notify(SubscribersNames.updateTrackFillModel, 'horizontal');
+		presenter.view.thumbView.notify(
+			SubscribersNames.updateThumbModel,
+			0,
+			80,
+			Directions.horizontal,
+		);
+		presenter.view.thumbView.notify(SubscribersNames.updateTrackFillModel, Directions.horizontal);
 	});
 
 	test('correct update track fill model before click', () => {
-		presenter.view.trackView.notify('UpdateThumbModelBeforeTrackClick', 80);
+		presenter.view.trackView.notify(SubscribersNames.updateThumbModelBeforeTrackClick, 80);
 	});
 
 	test('correct update thumb view', () => {
@@ -105,7 +115,12 @@ describe('Presenter test', () => {
 	});
 
 	test('correct update track fill view', () => {
-		presenter.trackModel.notify(SubscribersNames.updateTrackFillView, 100, 10, 'horizontal');
+		presenter.trackModel.notify(
+			SubscribersNames.updateTrackFillView,
+			100,
+			10,
+			Directions.horizontal,
+		);
 		expect(presenter.view.fillView.getSize()).toBe(100);
 		expect(presenter.view.fillView.getOffset()).toBe(10);
 	});
@@ -123,7 +138,7 @@ describe('Presenter test', () => {
 			correctParams,
 		);
 
-		correctParams.value = [50, 50];
+		correctParams.value = [50, 60];
 		correctParams.isRange = true;
 		expect(checkParams({ value: 50, isRange: true }, presenter.DOMroot)).toEqual(correctParams);
 	});
@@ -152,7 +167,7 @@ describe('Presenter test', () => {
 	});
 
 	test('correct clear HTML', () => {
-		presenter.clearHTML('horizontal');
+		presenter.clearHTML(Directions.horizontal);
 		expect($(presenter.root).hasClass('slider_vertical')).toBe(false);
 		presenter.clearHTML('vertical');
 		expect($(presenter.root).hasClass('slider_horizontal')).toBe(false);

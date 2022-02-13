@@ -1,5 +1,6 @@
 import TrackModel from '../../src/Model/TrackModel';
 import { FIRST_THUMB_STANCE, SECOND_THUMB_STANCE } from '../../src/utils/constants';
+import { Directions, Params, SubscribersNames } from '../../src/utils/interfaces';
 import View from '../../src/View/View';
 import Thumb from '../../src/View/ViewElements/Thumb/Thumb';
 
@@ -28,8 +29,8 @@ describe('TrackModel test', () => {
 	});
 
 	test('correct set direction test', () => {
-		track.setDirection('horizontal');
-		expect(track.direction).toBe('horizontal');
+		track.setDirection(Directions.horizontal);
+		expect(track.direction).toBe(Directions.horizontal);
 	});
 
 	test('correct set isRange test', () => {
@@ -39,9 +40,9 @@ describe('TrackModel test', () => {
 
 	test('correct set subviews test', () => {
 		track.setSubViews(true, true, true);
-		expect(track).toHaveProperty('hasFill', true);
-		expect(track).toHaveProperty('hasScale', true);
-		expect(track).toHaveProperty('hasTips', true);
+		expect(track).toHaveProperty(Params.hasFill, true);
+		expect(track).toHaveProperty(Params.hasScale, true);
+		expect(track).toHaveProperty(Params.hasTips, true);
 	});
 
 	test('correct calculate fill offset', () => {
@@ -69,7 +70,7 @@ describe('TrackModel test', () => {
 
 	test('correct update track fill view', () => {
 		const fn = jest.fn();
-		track.subscribe('UpdateTrackFillView', fn);
+		track.subscribe(SubscribersNames.updateTrackFillView, fn);
 		track.updateTrackFill([10, 20]);
 		expect(fn).toBeCalled();
 	});

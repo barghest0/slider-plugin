@@ -5,9 +5,12 @@ import Scale from './ViewElements/Scale/Scale';
 import Fill from './ViewElements/Fill/Fill';
 import {
 	Direction,
+	Directions,
 	Ends,
 	FillDirection,
+	FillDirections,
 	OffsetDirection,
+	OffsetDirections,
 	SliderFillState,
 	SliderTrackState,
 } from '../utils/interfaces';
@@ -75,12 +78,12 @@ class View extends Observer {
 		this.ends = { min: 0, max: 0 };
 		this.size = 200;
 		this.isRange = false;
-		this.direction = 'horizontal';
+		this.direction = Directions.horizontal;
 		this.hasFill = true;
 		this.hasTips = true;
 		this.hasScale = true;
-		this.offsetDirection = 'left';
-		this.fillDirection = 'width';
+		this.offsetDirection = OffsetDirections.left;
+		this.fillDirection = FillDirections.width;
 		this.initialThumbPlacement = initialThumbPlacement.bind(this);
 		this.initialFillPlacement = initialFillPlacement.bind(this);
 		this.initialTipPlacement = initialTipPlacement.bind(this);

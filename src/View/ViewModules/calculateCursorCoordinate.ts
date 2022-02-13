@@ -1,4 +1,4 @@
-import { Direction } from '../../utils/interfaces';
+import { Direction, Directions } from '../../utils/interfaces';
 
 function calculateCursorCoordinate(
 	coord: number,
@@ -6,7 +6,7 @@ function calculateCursorCoordinate(
 	DOMroot: HTMLElement,
 	size: number,
 ) {
-	if (direction === 'horizontal') {
+	if (direction === Directions.horizontal) {
 		return ((coord - DOMroot.offsetLeft) / size) * 100;
 	}
 	return ((coord - DOMroot.offsetTop) / size) * 100;

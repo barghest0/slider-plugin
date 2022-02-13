@@ -9,6 +9,7 @@ import {
 } from '../utils/constants';
 import {
 	Direction,
+	Directions,
 	Ends,
 	SliderFillState,
 	SliderTrackState,
@@ -42,7 +43,7 @@ class TrackModel extends Observer {
 		this.ends = { min: 1, max: 100 };
 		this.size = 200;
 		this.isRange = false;
-		this.direction = 'horizontal';
+		this.direction = Directions.horizontal;
 		this.fillSize = 0;
 		this.fillOffset = 0;
 		this.hasFill = true;
@@ -74,11 +75,11 @@ class TrackModel extends Observer {
 
 	public calculateFillSize(offset: number[]) {
 		if (this.isRange) {
-			return this.direction === 'horizontal'
+			return this.direction === Directions.horizontal
 				? offset[SECOND_OFFSET] - offset[FIRST_OFFSET]
 				: offset[FIRST_OFFSET] - offset[SECOND_OFFSET];
 		}
-		return this.direction === 'horizontal'
+		return this.direction === Directions.horizontal
 			? offset[FIRST_OFFSET]
 			: MAX_OFFSET - offset[FIRST_OFFSET];
 	}
@@ -89,7 +90,9 @@ class TrackModel extends Observer {
 
 	public calculateFillOffset(offset: number[]) {
 		if (this.isRange) {
-			return this.direction === 'horizontal' ? offset[FIRST_OFFSET] : offset[SECOND_OFFSET];
+			return this.direction === Directions.horizontal
+				? offset[FIRST_OFFSET]
+				: offset[SECOND_OFFSET];
 		}
 		return MIN_OFFSET;
 	}
@@ -111,7 +114,7 @@ class TrackModel extends Observer {
 
 		if (chooseCorrectStance) stance = SECOND_THUMB_STANCE;
 
-		if (this.direction === 'vertical') stance = +!stance;
+		if (this.direction === Directions.vertical) stance = +!stance;
 
 		if (!this.isRange) {
 			stance = FIRST_THUMB_STANCE;

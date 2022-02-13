@@ -1,5 +1,6 @@
 import ThumbModel from '../../src/Model/ThumbModel';
 import { FIRST_THUMB_STANCE, MAX_OFFSET, MIN_OFFSET } from '../../src/utils/constants';
+import { Directions } from '../../src/utils/interfaces';
 
 describe('ThumbModel test', () => {
 	document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';
@@ -26,24 +27,24 @@ describe('ThumbModel test', () => {
 
 	test('prepare offset test', () => {
 		const offset = thumbModel.getOffset();
-		expect(thumbModel.prepareOffset(offset, 'vertical')).toBe(MAX_OFFSET - offset);
+		expect(thumbModel.prepareOffset(offset, Directions.vertical)).toBe(MAX_OFFSET - offset);
 	});
 
 	test('ends validation test', () => {
 		thumbModel.setOffset(110);
-		thumbModel.endsValidation({ min: 0, max: 100 }, 'horizontal');
+		thumbModel.endsValidation({ min: 0, max: 100 }, Directions.horizontal);
 		expect(thumbModel.getOffset()).toBe(MAX_OFFSET);
 
 		thumbModel.setOffset(110);
-		thumbModel.endsValidation({ min: 0, max: 100 }, 'vertical');
+		thumbModel.endsValidation({ min: 0, max: 100 }, Directions.vertical);
 		expect(thumbModel.getOffset()).toBe(MAX_OFFSET);
 
 		thumbModel.setOffset(-100);
-		thumbModel.endsValidation({ min: 0, max: 100 }, 'horizontal');
+		thumbModel.endsValidation({ min: 0, max: 100 }, Directions.horizontal);
 		expect(thumbModel.getOffset()).toBe(MIN_OFFSET);
 
 		thumbModel.setOffset(-100);
-		thumbModel.endsValidation({ min: 0, max: 100 }, 'vertical');
+		thumbModel.endsValidation({ min: 0, max: 100 }, Directions.vertical);
 		expect(thumbModel.getOffset()).toBe(MIN_OFFSET);
 	});
 });

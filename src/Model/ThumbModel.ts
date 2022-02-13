@@ -1,5 +1,11 @@
 import Observer from '../Observer/Observer';
-import { Direction, Ends, SliderThumbState, SubscribersNames } from '../utils/interfaces';
+import {
+	Direction,
+	Directions,
+	Ends,
+	SliderThumbState,
+	SubscribersNames,
+} from '../utils/interfaces';
 import prepareOffset from './ThumbModelModules/prepareOffset';
 import endsValidation from './ThumbModelModules/endsValidation';
 import { MAX_OFFSET } from '../utils/constants';
@@ -88,7 +94,7 @@ class ThumbModel extends Observer {
 	}
 
 	public updateThumbValue(stance: number, ends: Ends, cursorOffset: number, direction: Direction) {
-		if (direction === 'horizontal') this.setCursorOffset(cursorOffset);
+		if (direction === Directions.horizontal) this.setCursorOffset(cursorOffset);
 		else this.setCursorOffset(MAX_OFFSET - cursorOffset);
 
 		this.setStepOffset(this.calculateStepOffset());

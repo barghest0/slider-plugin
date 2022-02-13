@@ -16,28 +16,20 @@ function validateParams(params: UserSliderParams, DOMroot: HTMLElement): SliderP
 		DOMroot,
 	);
 
-	
 	value = validateValue(value);
-	
-	step = validateStep(step,min,max);
-	
+	step = validateStep(step, min, max);
 	min = validateMin(min, max, step);
 	max = validateMax(min, max, step);
-	
 	decimalPlaces = validateDecimalPlaces(decimalPlaces, 3);
-		
-	
 	value[FIRST_THUMB_STANCE] = validateFirstThumb(value, min, max);
-	const isSingleThumb = value.length === 1
-	
+
+	const isSingleThumb = value.length === 1;
 	if (isRange) {
 		if (isSingleThumb) {
 			value.push(value[FIRST_THUMB_STANCE] + step);
 		}
 		value[SECOND_THUMB_STANCE] = validateSecondThumb(value, min, max);
 	}
-	
-
 
 	const checkedParams: SliderParams = {
 		min,

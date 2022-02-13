@@ -29,26 +29,19 @@ function prepareScaleData(min: number, max: number, step: number) {
 		? Math.round(Math.round(range / step) / (linesCount - 1)) * step
 		: step;
 
-	const values = new Array(linesCount)
-		.fill(null)
-		.map((_, index) => {
-			let value = min + actualScaleSize * index;
-			value = Math.min(value, max);
-			if (index === linesCount - 1) value = max;
-			return value;
-		})
-		.filter((item, pos, arr) => !pos || item !== arr[pos - 1]);
+	const values = new Array(linesCount).fill(null).map((_, index) => {
+		let value = min + actualScaleSize * index;
+		value = Math.min(value, max);
+		if (index === linesCount - 1) value = max;
+		return +value.toFixed();
+	});
 
-	const offsets = new Array(linesCount)
-		.fill('')
-		.map((_, index) => {
-			let offset = Math.abs(actualScaleSize / range) * index * 100;
-
-			if (offset > 100) offset = 100;
-			if (index === linesCount - 1) offset = 100;
-			return offset;
-		})
-		.filter((item, pos, arr) => !pos || item !== arr[pos - 1]);
+	const offsets = new Array(linesCount).fill('').map((_, index) => {
+		let offset = Math.abs(actualScaleSize / range) * index * 100;
+		offset = Math.min(100, offset);
+		if (index === linesCount - 1) offset = 100;
+		return +offset.toFixed();
+	});
 
 	const scaleData = {
 		values,

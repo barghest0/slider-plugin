@@ -1,6 +1,6 @@
 import View from '../View/View';
 import TrackModel from '../Model/TrackModel';
-import { Direction, SliderParams } from '../utils/interfaces';
+import { Direction, Directions, InitMods, SliderParams } from '../utils/interfaces';
 import ThumbModel from '../Model/ThumbModel';
 import clearHTML from './PresenterModules/clearHTML';
 import removeListeners from './PresenterModules/removeListeners';
@@ -73,7 +73,7 @@ class Presenter {
 	}
 
 	public init(params: SliderParams, mode: string) {
-		if (mode === 'rebuild') {
+		if (mode === InitMods.rebuild) {
 			this.params = params;
 			this.view.isRange = false;
 			this.removeListeners();
@@ -101,7 +101,7 @@ class Presenter {
 		hasScale,
 	}: SliderParams) {
 		const size =
-			direction === 'horizontal'
+			direction === Directions.horizontal
 				? this.DOMroot.getBoundingClientRect().width
 				: this.DOMroot.getBoundingClientRect().height;
 

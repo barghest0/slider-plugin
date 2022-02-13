@@ -2,7 +2,7 @@ import { screen } from '@testing-library/dom';
 import View from '../../../src/View/View';
 import Track from '../../../src/View/ViewElements/Track/Track';
 import '@testing-library/jest-dom';
-import { SubscribersNames } from '../../../src/utils/interfaces';
+import { Directions, SubscribersNames } from '../../../src/utils/interfaces';
 
 describe('Track test', () => {
 	document.body.innerHTML = '<div id="slider-1" data-testid="slider-1" class="slider-1"></div>';
@@ -11,7 +11,7 @@ describe('Track test', () => {
 	const view = new View(root);
 	const track = new Track(view);
 	const fn = jest.fn();
-	track.createTrack('horizontal');
+	track.createTrack(Directions.horizontal);
 	track.clickTrack();
 
 	test('constructor test', () => {
