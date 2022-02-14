@@ -57,6 +57,10 @@ class Tip extends Observer {
     this.view.DOMroot.appendChild(tip);
   }
 
+  public setIsDecimal(isDecimal: boolean) {
+    this.isDecimal = isDecimal;
+  }
+
   public setDecimalPlaces(decimalPlaces: number) {
     if (this.isDecimal) {
       this.decimalPlaces = decimalPlaces;

@@ -84,11 +84,8 @@ class Model extends Observer {
   }
 
   public updateThumb(stance: number, cursorOffset: number) {
-    const { direction, value } = this.params;
-    const directionalCursorOffset =
-      direction === Directions.horizontal
-        ? cursorOffset
-        : MAX_OFFSET - cursorOffset;
+    const { value } = this.params;
+    const directionalCursorOffset = this.prepareOffset(cursorOffset);
     const stepPercent = this.calculateStepPercent();
     const stepOffset =
       Math.round(directionalCursorOffset / stepPercent) * stepPercent;

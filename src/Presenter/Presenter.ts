@@ -1,3 +1,4 @@
+import { tsImportEqualsDeclaration } from '@babel/types';
 import View from '../View/View';
 
 import {
@@ -167,14 +168,17 @@ class Presenter {
     this.view.trackView.createTrack(direction);
   }
 
-  private createThumb({ direction, hasTips }: SliderParams, stance: number) {
+  private createThumb(
+    { direction, hasTips, isDecimal, decimalPlaces }: SliderParams,
+    stance: number,
+  ) {
     this.model.setOffset(stance, this.model.calculateOffset(stance));
     this.view.prepareDirectionForInteraction(direction);
     this.renderThumb(stance);
     this.setThumbView(stance);
     this.setThumbPlacement(stance);
     if (hasTips) {
-      this.createTip(stance, direction);
+      this.createTip(stance, direction, isDecimal, decimalPlaces);
     }
   }
 
@@ -193,9 +197,14 @@ class Presenter {
     this.view.thumbView.updateThumbPosition(stance);
   }
 
-  private createTip(stance: number, direction: Direction) {
+  private createTip(
+    stance: number,
+    direction: Direction,
+    isDecimal: boolean,
+    decimalPlaces: number,
+  ) {
     this.renderTip(direction, stance);
-    this.setTipView(stance);
+    this.setTipView(stance, isDecimal, decimalPlaces);
     this.setTipPlacement(stance);
   }
 
@@ -203,11 +212,17 @@ class Presenter {
     this.view.tipView.createTip(direction, stance);
   }
 
-  private setTipView(stance: number) {
+  private setTipView(
+    stance: number,
+    isDecimal: boolean,
+    decimalPlaces: number,
+  ) {
     const offset = this.model.getOffset()[stance];
     const value = this.model.getValue()[stance];
     this.view.tipView.setOffset(offset, stance);
     this.view.tipView.setValue(value, stance);
+    this.view.tipView.setIsDecimal(isDecimal);
+    this.view.tipView.setDecimalPlaces(decimalPlaces);
   }
 
   private setTipPlacement(stance: number) {
