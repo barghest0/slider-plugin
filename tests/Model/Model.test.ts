@@ -2,6 +2,8 @@ import Model from '../../src/Model/Model';
 import {
   DEFAULT_SLIDER_PARAMS,
   FIRST_THUMB_STANCE,
+  MAX_OFFSET,
+  MIN_OFFSET,
   SECOND_THUMB_STANCE,
 } from '../../src/utils/constants';
 import {
@@ -61,7 +63,33 @@ describe('Model test', () => {
     expect(model.prepareOffset(100)).toBe(0);
   });
 
-  test('check calculate fill state with value equal 20-40 and horizontal/vertical direction', () => {
+  test('check ends validation when first value more than max in horizontal/vertical direction', () => {
+    model.setParam(Params.direction, Directions.horizontal);
+    model.setOffset(FIRST_THUMB_STANCE, 150);
+    model.endsValidation(FIRST_THUMB_STANCE);
+    expect(model.getOffset()[FIRST_THUMB_STANCE]).toBe(MAX_OFFSET);
+    expect(model.getValue()[FIRST_THUMB_STANCE]).toBe(100);
+
+    model.setParam(Params.direction, Directions.vertical);
+    model.setOffset(FIRST_THUMB_STANCE, 150);
+    model.endsValidation(FIRST_THUMB_STANCE);
+    expect(model.getValue()[FIRST_THUMB_STANCE]).toBe(0);
+  });
+
+  test('check ends validation when first value little than min in horizontal/vertical direction', () => {
+    model.setParam(Params.direction, Directions.horizontal);
+    model.setOffset(FIRST_THUMB_STANCE, -20);
+    model.endsValidation(FIRST_THUMB_STANCE);
+    expect(model.getOffset()[FIRST_THUMB_STANCE]).toBe(MIN_OFFSET);
+    expect(model.getValue()[FIRST_THUMB_STANCE]).toBe(0);
+
+    model.setParam(Params.direction, Directions.vertical);
+    model.setOffset(FIRST_THUMB_STANCE, -20);
+    model.endsValidation(FIRST_THUMB_STANCE);
+    expect(model.getValue()[FIRST_THUMB_STANCE]).toBe(100);
+  });
+
+  test('check calculate fill state with value equal 20-40 in horizontal/vertical direction', () => {
     model.setParam(Params.direction, Directions.horizontal);
     model.setParam(Params.value, [20, 40]);
     model.setParam(Params.isRange, true);
@@ -94,7 +122,7 @@ describe('Model test', () => {
     });
   });
 
-  test('check calculate fill state with value equal 20 and horizontal/vertical direction', () => {
+  test('check calculate fill state with value equal 20 in horizontal/vertical direction', () => {
     model.setParam(Params.direction, Directions.horizontal);
     model.setParam(Params.value, [20]);
     model.setParam(Params.isRange, false);
@@ -124,7 +152,7 @@ describe('Model test', () => {
     model.subscribe(SubscribersNames.updateThumbView, subscriberFn);
     model.subscribe(SubscribersNames.updateValues, subscriberFn);
     model.updateThumb(FIRST_THUMB_STANCE, 20);
-    expect(subscriberFn).toBeCalledTimes(4);
+    expect(subscriberFn).toBeCalledTimes(3);
   });
 
   test('expect updateThumb called after calling updateThumbBeforeTrackClick ', () => {

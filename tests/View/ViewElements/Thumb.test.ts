@@ -62,6 +62,7 @@ describe('Thumb test', () => {
     const fn = jest.fn();
     thumb.dragAndDropThumb(FIRST_THUMB_STANCE);
     thumb.subscribe(SubscribersNames.updateThumb, fn);
+    thumb.subscribe(SubscribersNames.updateFill, fn);
     model.subscribe(SubscribersNames.updateValues, fn);
     model.subscribe(SubscribersNames.updateThumbView, fn);
     model.subscribe(SubscribersNames.updateTipView, fn);
