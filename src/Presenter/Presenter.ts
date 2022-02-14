@@ -1,6 +1,4 @@
-import { tsImportEqualsDeclaration } from '@babel/types';
 import View from '../View/View';
-
 import {
   Direction,
   Directions,

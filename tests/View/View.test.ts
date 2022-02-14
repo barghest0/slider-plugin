@@ -1,7 +1,6 @@
 import '@testing-library/jest-dom';
-import { screen } from '@testing-library/dom';
 import View from '../../src/View/View';
-import { Directions, Params } from '../../src/utils/interfaces';
+import { Directions } from '../../src/utils/interfaces';
 import { DEFAULT_SLIDER_PARAMS } from '../../src/utils/constants';
 
 describe('View test', () => {

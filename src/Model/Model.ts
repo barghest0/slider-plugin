@@ -1,4 +1,3 @@
-import { convertTypeAcquisitionFromJson } from 'typescript';
 import Observer from '../Observer/Observer';
 import {
   Directions,
@@ -10,7 +9,6 @@ import {
   DEFAULT_SLIDER_PARAMS,
   FIRST_OFFSET,
   FIRST_THUMB_STANCE,
-  MAX_OFFSET,
   MIN_OFFSET,
   SECOND_OFFSET,
   SECOND_THUMB_STANCE,
@@ -23,11 +21,11 @@ class Model extends Observer {
 
   public DOMroot: HTMLElement;
 
-  public offset: number[];
+  private offset: number[];
 
-  public fillState: SliderFillState;
+  private fillState: SliderFillState;
 
-  public size: number;
+  private size: number;
 
   private prepareOffset: (offset: number) => number;
 
@@ -46,6 +44,10 @@ class Model extends Observer {
 
   public setParams(params: SliderParams) {
     this.params = params;
+  }
+
+  public setParam(param: string, value: string | number | number[] | boolean) {
+    this.params[param] = value;
   }
 
   public getParams() {
@@ -70,17 +72,17 @@ class Model extends Observer {
     return value;
   }
 
-  public calculateOffset(stance: number) {
-    const { min, max, value } = this.params;
-    return this.prepareOffset((value[stance] - min) / ((max - min) / 100));
-  }
-
   public setOffset(stance: number, offset: number) {
     this.offset[stance] = offset;
   }
 
   public getOffset() {
     return this.offset;
+  }
+
+  public calculateOffset(stance: number) {
+    const { min, max, value } = this.params;
+    return this.prepareOffset((value[stance] - min) / ((max - min) / 100));
   }
 
   public updateThumb(stance: number, cursorOffset: number) {
@@ -117,14 +119,12 @@ class Model extends Observer {
     const { fillOffset, fillSize } = this.getFillState();
     let stance = FIRST_THUMB_STANCE;
     const isSecondThumbNearest = cursorOffset > fillSize / 2 + fillOffset;
-
+    const reverseStance = +!stance;
     if (isSecondThumbNearest) stance = SECOND_THUMB_STANCE;
 
-    if (direction === Directions.vertical) stance = +!stance;
+    if (direction === Directions.vertical) stance = reverseStance;
 
-    if (!isRange) {
-      stance = FIRST_THUMB_STANCE;
-    }
+    if (!isRange) stance = FIRST_THUMB_STANCE;
 
     this.updateThumb(stance, cursorOffset);
   }
