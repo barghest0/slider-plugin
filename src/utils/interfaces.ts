@@ -77,6 +77,7 @@ enum SubscribersNames {
   updateThumbView = 'UpdateThumbView',
   updateFillView = 'UpdateFillView',
   updateValues = 'UpdateValues',
+  updateFill = 'UpdateFill',
 }
 
 enum Directions {

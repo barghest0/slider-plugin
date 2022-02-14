@@ -111,7 +111,6 @@ class Model extends Observer {
       this.offset[stance],
     );
     this.notify(SubscribersNames.updateValues, value[stance], stance);
-    this.updateFill();
   }
 
   public updateThumbBeforeTrackClick(cursorOffset: number) {

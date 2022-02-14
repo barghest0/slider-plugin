@@ -120,7 +120,6 @@ describe('Model test', () => {
 
   test('expect notify thumb view after calling updateThumb', () => {
     const subscriberFn = jest.fn();
-    model.subscribe(SubscribersNames.updateFillView, subscriberFn);
     model.subscribe(SubscribersNames.updateTipView, subscriberFn);
     model.subscribe(SubscribersNames.updateThumbView, subscriberFn);
     model.subscribe(SubscribersNames.updateValues, subscriberFn);

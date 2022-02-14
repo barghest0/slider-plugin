@@ -27,7 +27,9 @@ class Track extends Observer {
   }
 
   public clickTrack() {
-    this.view.DOMroot.addEventListener('mousedown', e => handleClick(e, this));
+    this.view.DOMroot.addEventListener('mousedown', event =>
+      handleClick(event, this),
+    );
   }
 }
 
