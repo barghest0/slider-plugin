@@ -12,9 +12,10 @@ describe('View test', () => {
   test('constructor test', () => {
     expect(view.DOMroot).toBeInstanceOf(HTMLElement);
   });
+
   test('setParams test', () => {
     view.setParams(DEFAULT_SLIDER_PARAMS);
-    expect(view).toHaveProperty(Params.direction, Directions.horizontal);
+    expect(view).toHaveProperty('params', DEFAULT_SLIDER_PARAMS);
   });
 
   test('correct calculate cursor coordinate test', () => {

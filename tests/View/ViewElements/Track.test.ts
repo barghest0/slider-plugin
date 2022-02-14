@@ -21,7 +21,6 @@ describe('Track test', () => {
 
   test('correct track model notify before click track test', () => {
     track.subscribe(SubscribersNames.updateThumbBeforeTrackClick, fn);
-    track.subscribe(SubscribersNames.updateFill, fn);
     jest.spyOn(track, 'notify');
     const DOMTrack = screen.getByTestId('slider-1');
     DOMTrack.dispatchEvent(new MouseEvent('mousedown'));

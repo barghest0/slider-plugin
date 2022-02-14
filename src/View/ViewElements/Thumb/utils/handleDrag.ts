@@ -14,13 +14,7 @@ function handleDrag(e: any, thisThumb: Thumb, stance: number) {
   );
   const currentStance = isRange ? thisThumb.validateCollision(stance) : stance;
 
-  thisThumb.notify(
-    SubscribersNames.updateThumb,
-    currentStance,
-    cursorOffset,
-    direction,
-    size,
-  );
+  thisThumb.notify(SubscribersNames.updateThumb, currentStance, cursorOffset);
 }
 
 export default handleDrag;

@@ -185,8 +185,6 @@ class Presenter {
   private setThumbView(stance: number) {
     const { value } = this.model.getParams();
     const offset = this.model.getOffset();
-    console.log(offset);
-
     this.view.thumbView.setValue(value[stance], stance);
     this.view.thumbView.setOffset(offset[stance], stance);
   }

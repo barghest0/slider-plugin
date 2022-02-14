@@ -22,7 +22,7 @@ describe('Panel test', () => {
     const inputParent = <HTMLElement>input.parentElement;
     expect(input).toBeInTheDocument();
     expect(input.type).toBe('number');
-    expect(inputParent.classList.contains('custom-input')).toBeTruthy();
+    expect(inputParent.classList.contains('custom')).toBeTruthy();
 
     const checkbox = <HTMLInputElement>document.querySelector('.is-range');
     const checkboxParent = <HTMLElement>checkbox.parentElement;

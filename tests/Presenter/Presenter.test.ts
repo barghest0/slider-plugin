@@ -60,51 +60,30 @@ describe('Presenter test', () => {
   test('correct update thumb model', () => {
     presenter.view.thumbView.notify(
       SubscribersNames.updateThumb,
-      0,
-      80,
-      Directions.horizontal,
-    );
-    expect(presenter.model.getOffset()).toBe(80);
-  });
-
-  test('correct update track fill model', () => {
-    presenter.view.thumbView.notify(
-      SubscribersNames.updateThumb,
-      0,
-      80,
-      Directions.horizontal,
-    );
-    presenter.view.thumbView.notify(
-      SubscribersNames.updateFill,
-      Directions.horizontal,
-    );
-  });
-
-  test('correct update track fill model before click', () => {
-    presenter.view.trackView.notify(
-      SubscribersNames.updateThumbBeforeTrackClick,
+      FIRST_THUMB_STANCE,
       80,
     );
+    expect(presenter.model.getOffset()[FIRST_THUMB_STANCE]).toBe(80);
   });
 
   test('correct update thumb view', () => {
     presenter.params.onChange = fn;
+
     presenter.model.notify(
       SubscribersNames.updateThumbView,
+      FIRST_THUMB_STANCE,
       100,
       50,
-      FIRST_THUMB_STANCE,
     );
     expect(presenter.view.thumbView.getValue()[FIRST_VALUE]).toBe(100);
     expect(presenter.view.thumbView.getOffset()[FIRST_OFFSET]).toBe(50);
     expect(presenter.view.thumbView.activeStance).toBe(FIRST_THUMB_STANCE);
     presenter.model.notify(
       SubscribersNames.updateThumbView,
+      SECOND_THUMB_STANCE,
       150,
       70,
-      SECOND_THUMB_STANCE,
     );
-
     expect(presenter.view.thumbView.getValue()[SECOND_VALUE]).toBe(150);
     expect(presenter.view.thumbView.getOffset()[SECOND_OFFSET]).toBe(70);
     expect(presenter.view.thumbView.activeStance).toBe(SECOND_THUMB_STANCE);
@@ -129,13 +108,11 @@ describe('Presenter test', () => {
     expect(presenter.view.tipView.getOffset()[SECOND_OFFSET]).toBe(100);
   });
 
-  test('correct update track fill view', () => {
-    presenter.model.notify(
-      SubscribersNames.updateFillView,
-      100,
-      10,
-      Directions.horizontal,
-    );
+  test('correct update  fill view', () => {
+    presenter.model.notify(SubscribersNames.updateFillView, {
+      fillSize: 100,
+      fillOffset: 10,
+    });
     expect(presenter.view.fillView.getSize()).toBe(100);
     expect(presenter.view.fillView.getOffset()).toBe(10);
   });
