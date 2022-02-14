@@ -183,13 +183,14 @@ class Presenter {
 	}
 
 	private setThumbView(stance: number) {
-		const { value, offset } = this.model.getParams();
+		const { value } = this.model.getParams();
+		const offset = this.model.getOffset();
 		this.view.thumbView.setValue(value[stance], stance);
-		this.view.thumbView.setOffset(offset, stance);
+		this.view.thumbView.setOffset(offset[stance], stance);
 	}
 
 	private setThumbPlacement(stance: number) {
-		this.view.thumbView.updateThumbPosition(this.model.offset[stance], stance);
+		this.view.thumbView.updateThumbPosition(stance);
 	}
 
 	private createTip(stance: number, direction: Direction) {

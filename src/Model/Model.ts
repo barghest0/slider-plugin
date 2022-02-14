@@ -71,7 +71,7 @@ class Model extends Observer {
 		return this.offset;
 	}
 
-	public updateThumbValue(stance: number, cursorOffset: number) {
+	public updateThumb(stance: number, cursorOffset: number) {
 		const { direction, value } = this.params;
 		const currentCursorOffset =
 			direction === Directions.horizontal
@@ -103,7 +103,7 @@ class Model extends Observer {
 		this.updateFill();
 	}
 
-	public prepareChooseStance(cursorOffset: number, size: number) {
+	public updateThumbBeforeTrackClick(cursorOffset: number) {
 		const { direction, isRange } = this.params;
 		const { fillOffset, fillSize } = this.getFillState();
 		let stance = FIRST_THUMB_STANCE;
@@ -116,6 +116,7 @@ class Model extends Observer {
 		if (!isRange) {
 			stance = FIRST_THUMB_STANCE;
 		}
+		this.updateThumb(stance, cursorOffset);
 	}
 
 	public updateFill() {
@@ -142,7 +143,6 @@ class Model extends Observer {
 			fillOffset = this.offset[FIRST_OFFSET];
 			fillSize = this.offset[FIRST_OFFSET];
 		}
-
 		return { fillOffset, fillSize };
 	}
 

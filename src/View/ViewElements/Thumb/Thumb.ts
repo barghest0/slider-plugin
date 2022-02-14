@@ -14,7 +14,7 @@ class Thumb extends Observer {
 
 	public activeStance: number;
 
-	public updateThumbPosition: (offset: number, stance: number) => void;
+	public updateThumbPosition: (stance: number) => void;
 
 	public validateCollision: (stance: number) => number;
 
