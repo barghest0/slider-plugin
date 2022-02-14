@@ -6,60 +6,60 @@ import dragAndDropThumb from './utils/dragAndDropThumb';
 import { THUMB_CLASS } from '../../../utils/constants';
 
 class Thumb extends Observer {
-	public view: View;
+  public view: View;
 
-	public thumbs: HTMLElement[];
+  public thumbs: HTMLElement[];
 
-	private offset: number[];
+  private offset: number[];
 
-	public activeStance: number;
+  public activeStance: number;
 
-	public updateThumbPosition: (stance: number) => void;
+  public updateThumbPosition: (stance: number) => void;
 
-	public validateCollision: (stance: number) => number;
+  public validateCollision: (stance: number) => number;
 
-	public dragAndDropThumb: (stance: number) => void;
+  public dragAndDropThumb: (stance: number) => void;
 
-	private value: number[];
+  private value: number[];
 
-	constructor(view: View) {
-		super();
-		this.view = view;
-		this.value = [];
-		this.offset = [];
+  constructor(view: View) {
+    super();
+    this.view = view;
+    this.value = [];
+    this.offset = [];
 
-		this.activeStance = 0;
-		this.thumbs = [];
-		this.updateThumbPosition = updateThumbPosition.bind(this);
-		this.validateCollision = validateCollision.bind(this);
-		this.dragAndDropThumb = dragAndDropThumb.bind(this);
-	}
+    this.activeStance = 0;
+    this.thumbs = [];
+    this.updateThumbPosition = updateThumbPosition.bind(this);
+    this.validateCollision = validateCollision.bind(this);
+    this.dragAndDropThumb = dragAndDropThumb.bind(this);
+  }
 
-	public createThumb(stance: number) {
-		const thumb = document.createElement('div');
-		thumb.classList.add(THUMB_CLASS);
-		thumb.classList.add(`js-${THUMB_CLASS}-${stance}`);
-		thumb.classList.add(`${THUMB_CLASS}-${stance}`);
-		thumb.dataset.testid = `test-thumb-${stance}`;
-		this.thumbs.push(thumb);
-		this.view.DOMroot.appendChild(thumb);
-	}
+  public createThumb(stance: number) {
+    const thumb = document.createElement('div');
+    thumb.classList.add(THUMB_CLASS);
+    thumb.classList.add(`js-${THUMB_CLASS}-${stance}`);
+    thumb.classList.add(`${THUMB_CLASS}-${stance}`);
+    thumb.dataset.testid = `test-thumb-${stance}`;
+    this.thumbs.push(thumb);
+    this.view.DOMroot.appendChild(thumb);
+  }
 
-	public setValue(value: number, stance: number) {
-		this.value[stance] = value;
-	}
+  public setValue(value: number, stance: number) {
+    this.value[stance] = value;
+  }
 
-	public getValue() {
-		return this.value;
-	}
+  public getValue() {
+    return this.value;
+  }
 
-	public setOffset(offset: number, stance: number) {
-		this.offset[stance] = offset;
-	}
+  public setOffset(offset: number, stance: number) {
+    this.offset[stance] = offset;
+  }
 
-	public getOffset() {
-		return this.offset;
-	}
+  public getOffset() {
+    return this.offset;
+  }
 }
 
 export default Thumb;

@@ -1,161 +1,180 @@
 import { convertTypeAcquisitionFromJson } from 'typescript';
 import Observer from '../Observer/Observer';
 import {
-	Directions,
-	SliderFillState,
-	SliderParams,
-	SubscribersNames,
+  Directions,
+  SliderFillState,
+  SliderParams,
+  SubscribersNames,
 } from '../utils/interfaces';
 import {
-	DEFAULT_SLIDER_PARAMS,
-	FIRST_OFFSET,
-	FIRST_THUMB_STANCE,
-	MAX_OFFSET,
-	SECOND_OFFSET,
-	SECOND_THUMB_STANCE,
+  DEFAULT_SLIDER_PARAMS,
+  FIRST_OFFSET,
+  FIRST_THUMB_STANCE,
+  MAX_OFFSET,
+  MIN_OFFSET,
+  SECOND_OFFSET,
+  SECOND_THUMB_STANCE,
 } from '../utils/constants';
 import prepareOffset from './ModelModules/prepareOffset';
 import endsValidation from './ModelModules/endsValidation';
 
 class Model extends Observer {
-	public params: SliderParams;
+  public params: SliderParams;
 
-	public DOMroot: HTMLElement;
+  public DOMroot: HTMLElement;
 
-	public offset: number[];
+  public offset: number[];
 
-	public fillState: SliderFillState;
+  public fillState: SliderFillState;
 
-	private prepareOffset: (offset: number) => number;
+  public size: number;
 
-	private endsValidation: (stance: number, offset: number) => void;
+  private prepareOffset: (offset: number) => number;
 
-	constructor(DOMroot: HTMLElement) {
-		super();
-		this.DOMroot = DOMroot;
-		this.params = DEFAULT_SLIDER_PARAMS;
-		this.offset = [];
-		this.fillState = { fillOffset: 0, fillSize: 0 };
-		this.endsValidation = endsValidation.bind(this);
-		this.prepareOffset = prepareOffset.bind(this);
-	}
+  private endsValidation: (stance: number) => void;
 
-	public setParams(params: SliderParams) {
-		this.params = params;
-	}
+  constructor(DOMroot: HTMLElement) {
+    super();
+    this.DOMroot = DOMroot;
+    this.params = DEFAULT_SLIDER_PARAMS;
+    this.offset = [];
+    this.fillState = { fillOffset: 0, fillSize: 0 };
+    this.size = 0;
+    this.endsValidation = endsValidation.bind(this);
+    this.prepareOffset = prepareOffset.bind(this);
+  }
 
-	public getParams() {
-		return this.params;
-	}
+  public setParams(params: SliderParams) {
+    this.params = params;
+  }
 
-	public setValue(stance: number, value: number) {
-		const { decimalPlaces } = this.params;
-		this.params.value[stance] = Number(value.toFixed(decimalPlaces));
-	}
+  public getParams() {
+    return this.params;
+  }
 
-	public getValue() {
-		const { value } = this.params;
-		return value;
-	}
+  public setSize(size: number) {
+    this.size = size;
+  }
 
-	public calculateOffset(stance: number) {
-		const { min, max, value } = this.params;
-		return this.prepareOffset((value[stance] - min) / ((max - min) / 100));
-	}
+  public getSize() {
+    return this.size;
+  }
 
-	public setOffset(stance: number, offset: number) {
-		this.offset[stance] = offset;
-	}
+  public setValue(stance: number, value: number) {
+    const { decimalPlaces } = this.params;
+    this.params.value[stance] = Number(value.toFixed(decimalPlaces));
+  }
 
-	public getOffset() {
-		return this.offset;
-	}
+  public getValue() {
+    const { value } = this.params;
+    return value;
+  }
 
-	public updateThumb(stance: number, cursorOffset: number) {
-		const { direction, value } = this.params;
-		const currentCursorOffset =
-			direction === Directions.horizontal
-				? cursorOffset
-				: MAX_OFFSET - cursorOffset;
-		const stepPercent = this.calculateStepPercent();
-		const stepOffset =
-			Math.round(currentCursorOffset / stepPercent) * stepPercent;
+  public calculateOffset(stance: number) {
+    const { min, max, value } = this.params;
+    return this.prepareOffset((value[stance] - min) / ((max - min) / 100));
+  }
 
-		this.setValue(stance, this.calculateValue(stepOffset, stepPercent));
+  public setOffset(stance: number, offset: number) {
+    this.offset[stance] = offset;
+  }
 
-		this.setOffset(stance, this.calculateOffset(stance));
+  public getOffset() {
+    return this.offset;
+  }
 
-		this.endsValidation(stance, this.offset[stance]);
+  public updateThumb(stance: number, cursorOffset: number) {
+    const { direction, value } = this.params;
+    const directionalCursorOffset =
+      direction === Directions.horizontal
+        ? cursorOffset
+        : MAX_OFFSET - cursorOffset;
+    const stepPercent = this.calculateStepPercent();
+    const stepOffset =
+      Math.round(directionalCursorOffset / stepPercent) * stepPercent;
 
-		this.notify(
-			SubscribersNames.updateThumbView,
-			stance,
-			value[stance],
-			this.offset[stance],
-		);
-		this.notify(
-			SubscribersNames.updateTipView,
-			stance,
-			value[stance],
-			this.offset[stance],
-		);
-		this.notify(SubscribersNames.updateValues, value[stance], stance);
-		this.updateFill();
-	}
+    this.setValue(stance, this.calculateValue(stepOffset, stepPercent));
 
-	public updateThumbBeforeTrackClick(cursorOffset: number) {
-		const { direction, isRange } = this.params;
-		const { fillOffset, fillSize } = this.getFillState();
-		let stance = FIRST_THUMB_STANCE;
-		const isSecondThumbNearest = cursorOffset > fillSize / 2 + fillOffset;
+    this.setOffset(stance, this.calculateOffset(stance));
 
-		if (isSecondThumbNearest) stance = SECOND_THUMB_STANCE;
+    this.endsValidation(stance);
 
-		if (direction === Directions.vertical) stance = +!stance;
+    this.notify(
+      SubscribersNames.updateThumbView,
+      stance,
+      value[stance],
+      this.offset[stance],
+    );
+    this.notify(
+      SubscribersNames.updateTipView,
+      stance,
+      value[stance],
+      this.offset[stance],
+    );
+    this.notify(SubscribersNames.updateValues, value[stance], stance);
+    this.updateFill();
+  }
 
-		if (!isRange) {
-			stance = FIRST_THUMB_STANCE;
-		}
-		this.updateThumb(stance, cursorOffset);
-	}
+  public updateThumbBeforeTrackClick(cursorOffset: number) {
+    const { direction, isRange } = this.params;
+    const { fillOffset, fillSize } = this.getFillState();
+    let stance = FIRST_THUMB_STANCE;
+    const isSecondThumbNearest = cursorOffset > fillSize / 2 + fillOffset;
 
-	public updateFill() {
-		this.setFillState(this.calculateFillState());
-		this.notify(SubscribersNames.updateFillView, this.getFillState());
-	}
+    if (isSecondThumbNearest) stance = SECOND_THUMB_STANCE;
 
-	public setFillState(fillState: SliderFillState) {
-		this.fillState = fillState;
-	}
+    if (direction === Directions.vertical) stance = +!stance;
 
-	public getFillState() {
-		return this.fillState;
-	}
+    if (!isRange) {
+      stance = FIRST_THUMB_STANCE;
+    }
 
-	public calculateFillState() {
-		const { isRange } = this.params;
-		let fillOffset = 0;
-		let fillSize = 0;
-		if (isRange) {
-			fillSize = this.offset[SECOND_OFFSET] - this.offset[FIRST_OFFSET];
-			fillOffset = this.offset[FIRST_OFFSET];
-		} else {
-			fillOffset = this.offset[FIRST_OFFSET];
-			fillSize = this.offset[FIRST_OFFSET];
-		}
-		return { fillOffset, fillSize };
-	}
+    this.updateThumb(stance, cursorOffset);
+  }
 
-	private calculateStepPercent() {
-		const { max, min, step } = this.params;
-		const stepCount = (max - min) / step;
-		return 100 / stepCount;
-	}
+  public updateFill() {
+    this.setFillState(this.calculateFillState());
+    this.notify(SubscribersNames.updateFillView, this.getFillState());
+  }
 
-	private calculateValue(stepOffset: number, stepPercent: number) {
-		const { step, min } = this.params;
-		return (stepOffset / stepPercent) * step + min;
-	}
+  public setFillState(fillState: SliderFillState) {
+    this.fillState = fillState;
+  }
+
+  public getFillState() {
+    return this.fillState;
+  }
+
+  public calculateFillState() {
+    const { isRange, direction } = this.params;
+    let fillOffset = 0;
+    let fillSize = 0;
+    if (isRange) {
+      fillSize =
+        direction === Directions.horizontal
+          ? this.offset[SECOND_OFFSET] - this.offset[FIRST_OFFSET]
+          : this.offset[FIRST_OFFSET] - this.offset[SECOND_OFFSET];
+      fillOffset =
+        direction === Directions.horizontal
+          ? this.offset[FIRST_OFFSET]
+          : this.offset[SECOND_OFFSET];
+    } else {
+      fillOffset = MIN_OFFSET;
+      fillSize = this.prepareOffset(this.offset[FIRST_OFFSET]);
+    }
+    return { fillOffset, fillSize };
+  }
+
+  private calculateStepPercent() {
+    const { max, min, step } = this.params;
+    const stepCount = (max - min) / step;
+    return 100 / stepCount;
+  }
+
+  private calculateValue(stepOffset: number, stepPercent: number) {
+    const { step, min } = this.params;
+    return (stepOffset / stepPercent) * step + min;
+  }
 }
 
 export default Model;

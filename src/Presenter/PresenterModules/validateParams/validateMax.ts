@@ -1,7 +1,7 @@
 function validateMax(min: number, max: number, step: number) {
-	const validatedMax = Math.max(min - step, max);
+  const validatedMax = Math.max(min - step, max);
 
-	return validatedMax;
+  return validatedMax;
 }
 
 export default validateMax;

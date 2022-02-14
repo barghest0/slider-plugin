@@ -3,8 +3,8 @@ import { Directions } from '../../utils/interfaces';
 import Model from '../Model';
 
 function prepareOffset(this: Model, offset: number): number {
-	const { direction } = this.params;
-	return direction === Directions.horizontal ? offset : MAX_OFFSET - offset;
+  const { direction } = this.params;
+  return direction === Directions.horizontal ? offset : MAX_OFFSET - offset;
 }
 
 export default prepareOffset;

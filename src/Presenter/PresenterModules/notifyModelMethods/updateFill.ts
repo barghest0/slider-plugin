@@ -1,7 +1,7 @@
 import Presenter from '../../Presenter';
 
 function updateFill(this: Presenter) {
-	this.model.updateFill();
+  this.model.updateFill();
 }
 
 export default updateFill;

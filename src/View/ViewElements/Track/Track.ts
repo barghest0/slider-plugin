@@ -5,30 +5,30 @@ import Observer from '../../../Observer/Observer';
 import { TRACK_CLASS } from '../../../utils/constants';
 
 class Track extends Observer {
-	public view: View;
+  public view: View;
 
-	public track: HTMLElement;
+  public track: HTMLElement;
 
-	constructor(view: View) {
-		super();
-		this.view = view;
-		this.track = <HTMLElement>document.querySelector(`.${TRACK_CLASS}`);
-	}
+  constructor(view: View) {
+    super();
+    this.view = view;
+    this.track = <HTMLElement>document.querySelector(`.${TRACK_CLASS}`);
+  }
 
-	public createTrack(direction: Direction) {
-		const track = document.createElement('div');
-		track.classList.add(TRACK_CLASS);
-		track.classList.add(`js-${TRACK_CLASS}`);
+  public createTrack(direction: Direction) {
+    const track = document.createElement('div');
+    track.classList.add(TRACK_CLASS);
+    track.classList.add(`js-${TRACK_CLASS}`);
 
-		track.classList.add(`${TRACK_CLASS}_${direction}`);
-		track.dataset.testid = `test-track`;
-		this.track = track;
-		this.view.DOMroot.appendChild(track);
-	}
+    track.classList.add(`${TRACK_CLASS}_${direction}`);
+    track.dataset.testid = `test-track`;
+    this.track = track;
+    this.view.DOMroot.appendChild(track);
+  }
 
-	public clickTrack() {
-		this.view.DOMroot.addEventListener('mousedown', e => handleClick(e, this));
-	}
+  public clickTrack() {
+    this.view.DOMroot.addEventListener('mousedown', e => handleClick(e, this));
+  }
 }
 
 export default Track;

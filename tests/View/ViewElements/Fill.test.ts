@@ -5,41 +5,41 @@ import '@testing-library/jest-dom';
 import { Directions } from '../../../src/utils/interfaces';
 
 describe('Fill test', () => {
-	document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
-	const rootClass = '.slider-1';
-	const root = <HTMLElement>document.querySelector(rootClass);
-	const view = new View(root);
-	const fill = new Fill(view);
+  document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
+  const rootClass = '.slider-1';
+  const root = <HTMLElement>document.querySelector(rootClass);
+  const view = new View(root);
+  const fill = new Fill(view);
 
-	fill.createFill(Directions.horizontal);
+  fill.createFill(Directions.horizontal);
 
-	test('constructor test', () => {
-		expect(view.DOMroot).toBeInstanceOf(HTMLElement);
-	});
-	test('setSize test', () => {
-		fill.setSize(100);
-		expect(fill).toHaveProperty('size', 100);
-	});
+  test('constructor test', () => {
+    expect(view.DOMroot).toBeInstanceOf(HTMLElement);
+  });
+  test('setSize test', () => {
+    fill.setSize(100);
+    expect(fill).toHaveProperty('size', 100);
+  });
 
-	test('setOffset test', () => {
-		fill.setOffset(100);
-		expect(fill).toHaveProperty('offset', 100);
-	});
+  test('setOffset test', () => {
+    fill.setOffset(100);
+    expect(fill).toHaveProperty('offset', 100);
+  });
 
-	test('correct updateFill with single thumb test', () => {
-		fill.setSize(50);
-		fill.updateFill();
-		const DOMFill = screen.getByTestId('test-fill');
-		expect(DOMFill).toHaveStyle('width:50%');
-	});
+  test('correct updateFill with single thumb test', () => {
+    fill.setSize(50);
+    fill.updateFill();
+    const DOMFill = screen.getByTestId('test-fill');
+    expect(DOMFill).toHaveStyle('width:50%');
+  });
 
-	test('correct updateFill with range test', () => {
-		view.params.isRange = true;
-		fill.setOffset(20);
-		fill.setSize(80);
-		fill.updateFill();
-		const DOMFill = screen.getByTestId('test-fill');
-		expect(DOMFill).toHaveStyle('width:80%');
-		expect(DOMFill).toHaveStyle('left:20%');
-	});
+  test('correct updateFill with range test', () => {
+    view.params.isRange = true;
+    fill.setOffset(20);
+    fill.setSize(80);
+    fill.updateFill();
+    const DOMFill = screen.getByTestId('test-fill');
+    expect(DOMFill).toHaveStyle('width:80%');
+    expect(DOMFill).toHaveStyle('left:20%');
+  });
 });
