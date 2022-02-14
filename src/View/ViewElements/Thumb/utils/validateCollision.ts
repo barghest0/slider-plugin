@@ -8,7 +8,10 @@ import {
 } from '../../../../utils/constants';
 import Thumb from '../Thumb';
 
-const validateCollision = function validateCollision(this: Thumb, stance: number) {
+const validateCollision = function validateCollision(
+	this: Thumb,
+	stance: number,
+) {
 	const reverseStance = +!stance;
 	if (stance === FIRST_THUMB_STANCE) {
 		if (this.getValue()[FIRST_VALUE] > this.getValue()[SECOND_VALUE]) {

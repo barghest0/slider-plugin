@@ -12,10 +12,12 @@ function validateDefaultParams(params: UserSliderParams, DOMroot: HTMLElement) {
 		min = Number(data.min) || DEFAULT_SLIDER_PARAMS.min,
 		max = Number(data.max) || DEFAULT_SLIDER_PARAMS.max,
 		value = values,
-		decimalPlaces = Number(data.decimalPlaces) || DEFAULT_SLIDER_PARAMS.decimalPlaces,
+		decimalPlaces = Number(data.decimalPlaces) ||
+			DEFAULT_SLIDER_PARAMS.decimalPlaces,
 		step = Number(data.step) || DEFAULT_SLIDER_PARAMS.step,
 		isRange = Boolean(data.isRange) || DEFAULT_SLIDER_PARAMS.isRange,
-		direction = (data.direction as Direction) || DEFAULT_SLIDER_PARAMS.direction,
+		direction = (data.direction as Direction) ||
+			DEFAULT_SLIDER_PARAMS.direction,
 		hasFill = Boolean(data.hasFill) || DEFAULT_SLIDER_PARAMS.hasFill,
 		hasTips = Boolean(data.hasTips) || DEFAULT_SLIDER_PARAMS.hasTips,
 		hasScale = Boolean(data.hasScale) || DEFAULT_SLIDER_PARAMS.hasScale,

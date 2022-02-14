@@ -1,4 +1,6 @@
-const DEFAULT_SLIDER_PARAMS = {
+import { SliderParams } from './interfaces';
+
+const DEFAULT_SLIDER_PARAMS: SliderParams = {
 	min: 0,
 	max: 100,
 	step: 10,

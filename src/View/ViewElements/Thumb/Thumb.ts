@@ -12,10 +12,6 @@ class Thumb extends Observer {
 
 	private offset: number[];
 
-	public isDecimal: boolean;
-
-	public decimalPlaces: number;
-
 	public activeStance: number;
 
 	public updateThumbPosition: (offset: number, stance: number) => void;
@@ -24,24 +20,14 @@ class Thumb extends Observer {
 
 	public dragAndDropThumb: (stance: number) => void;
 
-	private step: number;
-
-	private stepPercent: number;
-
-	private stepCount: number;
-
 	private value: number[];
 
 	constructor(view: View) {
 		super();
 		this.view = view;
-		this.step = 0;
-		this.stepPercent = 0;
-		this.stepCount = 0;
 		this.value = [];
 		this.offset = [];
-		this.isDecimal = false;
-		this.decimalPlaces = 0;
+
 		this.activeStance = 0;
 		this.thumbs = [];
 		this.updateThumbPosition = updateThumbPosition.bind(this);
@@ -59,20 +45,6 @@ class Thumb extends Observer {
 		this.view.DOMroot.appendChild(thumb);
 	}
 
-	public setStep(step: number, stepPercent: number, stepCount: number) {
-		this.step = step;
-		this.stepPercent = stepPercent;
-		this.stepCount = stepCount;
-	}
-
-	public getStep() {
-		return {
-			step: this.step,
-			stepPercent: this.stepPercent,
-			stepCount: this.stepCount,
-		};
-	}
-
 	public setValue(value: number, stance: number) {
 		this.value[stance] = value;
 	}
@@ -87,18 +59,6 @@ class Thumb extends Observer {
 
 	public getOffset() {
 		return this.offset;
-	}
-
-	public setIsDecimal(isDecimal: boolean) {
-		this.isDecimal = isDecimal;
-	}
-
-	public setDecimalPlaces(decimalPlaces: number) {
-		if (this.isDecimal) {
-			this.decimalPlaces = decimalPlaces;
-		} else {
-			this.decimalPlaces = 0;
-		}
 	}
 }
 

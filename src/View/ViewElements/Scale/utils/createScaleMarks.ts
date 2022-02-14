@@ -23,7 +23,7 @@ function createScaleMarks(
 		mark.dataset.testid = 'test-scale-mark';
 
 		const offset =
-			this.view.direction === Directions.horizontal
+			this.view.getParams().direction === Directions.horizontal
 				? scaleData.offsets[i]
 				: Math.abs(100 - scaleData.offsets[i]);
 

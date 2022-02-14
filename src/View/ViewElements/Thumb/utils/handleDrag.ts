@@ -2,25 +2,25 @@ import { Directions, SubscribersNames } from '../../../../utils/interfaces';
 import Thumb from '../Thumb';
 
 function handleDrag(e: any, thisThumb: Thumb, stance: number) {
-	const { direction } = thisThumb.view;
-	const coord = direction === Directions.horizontal ? e.pageX : e.pageY;
+	const { direction, isRange } = thisThumb.view.params;
+	const { DOMroot, size } = thisThumb.view;
+	const coordinate = direction === Directions.horizontal ? e.pageX : e.pageY;
 
-	const cursorCoordinate = thisThumb.view.calculateCursorCoordinate(
-		coord,
+	const cursorOffset = thisThumb.view.calculateCursorOffset(
+		coordinate,
 		direction,
-		thisThumb.view.DOMroot,
-		thisThumb.view.size,
+		DOMroot,
+		size,
 	);
-	const currentStance = thisThumb.view.isRange ? thisThumb.validateCollision(stance) : stance;
+	const currentStance = isRange ? thisThumb.validateCollision(stance) : stance;
 
 	thisThumb.notify(
-		SubscribersNames.updateThumbModel,
+		SubscribersNames.updateThumb,
 		currentStance,
-		cursorCoordinate,
+		cursorOffset,
 		direction,
-		thisThumb.view.size,
+		size,
 	);
-	thisThumb.notify(SubscribersNames.updateTrackFillModel, thisThumb.getOffset());
 }
 
 export default handleDrag;

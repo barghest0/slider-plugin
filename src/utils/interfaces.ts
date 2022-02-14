@@ -71,12 +71,12 @@ interface SliderFillState {
 }
 
 enum SubscribersNames {
-	updateThumbModel = 'UpdateThumbModel',
-	updateTrackFillModel = 'UpdateTrackFillModel',
-	updateThumbModelBeforeTrackClick = 'UpdateThumbModelBeforeTrackClick',
+	updateThumb = 'UpdateThumb',
+	updateFill = 'UpdateFill',
+	updateThumbBeforeTrackClick = 'UpdateThumbBeforeTrackClick',
 	updateTipView = 'UpdateTipView',
 	updateThumbView = 'UpdateThumbView',
-	updateTrackFillView = 'UpdateTrackFillView',
+	updateFillView = 'UpdateFillView',
 	updateValues = 'UpdateValues',
 }
 

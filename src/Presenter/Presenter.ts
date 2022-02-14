@@ -1,18 +1,28 @@
 import View from '../View/View';
-import TrackModel from '../Model/TrackModel';
-import { Direction, Directions, InitMods, SliderParams } from '../utils/interfaces';
-import ThumbModel from '../Model/ThumbModel';
+
+import {
+	Direction,
+	Directions,
+	InitMods,
+	SliderFillState,
+	SliderParams,
+} from '../utils/interfaces';
 import clearHTML from './PresenterModules/clearHTML';
 import removeListeners from './PresenterModules/removeListeners';
 import subscribe from './PresenterModules/subscribe';
-import updateThumbModelBeforeTrackClick from './PresenterModules/notifyModelMethods/updateThumbModelBeforeTrackClick';
-import updateTrackFillModel from './PresenterModules/notifyModelMethods/updateTrackFillModel';
-import updateThumbView from './PresenterModules/notifyViewMethods/updateThumbView';
 import updateTipView from './PresenterModules/notifyViewMethods/updateTipView';
-import updateTrackFillView from './PresenterModules/notifyViewMethods/updateTrackFillView';
-import updateThumbModel from './PresenterModules/notifyModelMethods/updateThumbModel';
+import updateFillView from './PresenterModules/notifyViewMethods/updateFillView';
 import addListeners from './PresenterModules/addListeners';
-import { FIRST_THUMB_STANCE, MAIN_CLASS, PARENT_CLASS } from '../utils/constants';
+import {
+	FIRST_THUMB_STANCE,
+	MAIN_CLASS,
+	PARENT_CLASS,
+} from '../utils/constants';
+import Model from '../Model/Model';
+import updateThumbBeforeTrackClick from './PresenterModules/notifyModelMethods/updateThumbBeforeTrackClick';
+import updateThumb from './PresenterModules/notifyModelMethods/updateThumb';
+import updateFill from './PresenterModules/notifyModelMethods/updateFill';
+import updateThumbView from './PresenterModules/notifyViewMethods/updateThumbView';
 
 class Presenter {
 	public root: string;
@@ -23,21 +33,30 @@ class Presenter {
 
 	public view: View;
 
-	public thumbs: ThumbModel[];
+	public model: Model;
 
-	public trackModel: TrackModel;
+	public updateThumb: (
+		stance: number,
+		cursorOffset: number,
+		direction: Direction,
+	) => void;
 
-	public updateThumbModel: (stance: number, cursorOffset: number, direction: Direction) => void;
+	public updateFill: (offset: number[]) => void;
 
-	public updateTrackFillModel: (offset: number[]) => void;
+	public updateThumbBeforeTrackClick: (
+		cursorOffset: number,
+		size: number,
+	) => void;
 
-	public updateThumbModelBeforeTrackClick: (cursorOffset: number) => void;
+	public updateThumbView: (
+		stance: number,
+		value: number,
+		offset: number,
+	) => void;
 
-	public updateThumbView: (value: number, offset: number, stance: number) => void;
+	public updateTipView: (stance: number, value: number, offset: number) => void;
 
-	public updateTipView: (value: number, offset: number, stance: number) => void;
-
-	public updateTrackFillView: (size: number, offset: number, direction: Direction) => void;
+	public updateFillView: (state: SliderFillState) => void;
 
 	public params: SliderParams;
 
@@ -55,72 +74,61 @@ class Presenter {
 		this.root = root;
 		this.DOMroot = <HTMLElement>document.querySelector(root);
 		this.DOMparent = <HTMLElement>this.DOMroot.parentElement;
-		this.trackModel = new TrackModel(this.DOMroot);
+		this.model = new Model(this.DOMroot);
 		this.view = new View(this.DOMroot);
-		this.thumbs = [];
 		this.params = params;
 		this.thumbStance = 0;
 		this.clearHTML = clearHTML.bind(this);
 		this.removeListeners = removeListeners.bind(this);
 		this.subscribe = subscribe.bind(this);
-		this.updateThumbModelBeforeTrackClick = updateThumbModelBeforeTrackClick.bind(this);
-		this.updateThumbModel = updateThumbModel.bind(this);
-		this.updateTrackFillModel = updateTrackFillModel.bind(this);
+		this.updateThumbBeforeTrackClick = updateThumbBeforeTrackClick.bind(this);
+		this.updateThumb = updateThumb.bind(this);
+		this.updateFill = updateFill.bind(this);
 		this.updateThumbView = updateThumbView.bind(this);
 		this.updateTipView = updateTipView.bind(this);
 		this.addListeners = addListeners.bind(this);
-		this.updateTrackFillView = updateTrackFillView.bind(this);
+		this.updateFillView = updateFillView.bind(this);
 	}
 
 	public init(params: SliderParams, mode: string) {
 		if (mode === InitMods.rebuild) {
 			this.params = params;
-			this.view.isRange = false;
 			this.removeListeners();
 			this.clearHTML(params.direction);
 			this.thumbStance = 0;
-			this.thumbs = [];
 			this.view.thumbView.thumbs = [];
 			this.view.tipView.tips = [];
 		}
 		this.addSliderClasses(params.direction);
-		this.setTrackModelState(params);
+		this.setModelState(params);
 		this.setViewState();
 		this.createSlider(params);
 		this.subscribe();
 		this.addListeners(params.isRange);
 	}
 
-	public setTrackModelState({
-		min,
-		max,
-		isRange,
-		direction,
-		hasFill,
-		hasTips,
-		hasScale,
-	}: SliderParams) {
-		const size =
-			direction === Directions.horizontal
-				? this.DOMroot.getBoundingClientRect().width
-				: this.DOMroot.getBoundingClientRect().height;
+	public setModelState(params: SliderParams) {
+		this.model.setParams(params);
 
-		this.trackModel.setSize(size);
-		this.trackModel.setEnds({ min, max });
-		this.trackModel.setIsRange(isRange);
-		this.trackModel.setDirection(direction);
-		this.trackModel.setSubViews(hasFill, hasTips, hasScale);
 		return this;
 	}
 
 	public setViewState() {
-		this.view.setState(this.trackModel.getState());
+		const { direction } = this.model.getParams();
+		this.view.setParams(this.model.getParams());
+		const size =
+			direction === Directions.horizontal
+				? this.DOMroot.getBoundingClientRect().width
+				: this.DOMroot.getBoundingClientRect().height;
+		this.view.setSize(size);
 		return this;
 	}
 
 	public updateValues(value: number, stance: number) {
 		this.params.value[stance] = value;
-		const panel = <HTMLElement>this.DOMparent.parentElement?.querySelector('.slider-panel');
+		const panel = <HTMLElement>(
+			this.DOMparent.parentElement?.querySelector('.slider-panel')
+		);
 		if (panel) {
 			this.updatePanelValues(stance, panel);
 		}
@@ -129,10 +137,14 @@ class Presenter {
 	private updatePanelValues(stance: number, panel: HTMLElement) {
 		const firstStance = stance === FIRST_THUMB_STANCE;
 		if (firstStance) {
-			const firstValueInput = <HTMLInputElement>panel.querySelector('.first-value');
+			const firstValueInput = <HTMLInputElement>(
+				panel.querySelector('.first-value')
+			);
 			firstValueInput.value = String(this.params.value[stance]);
 		} else {
-			const secondValueInput = <HTMLInputElement>panel.querySelector('.second-value');
+			const secondValueInput = <HTMLInputElement>(
+				panel.querySelector('.second-value')
+			);
 			secondValueInput.value = String(this.params.value[stance]);
 		}
 	}
@@ -142,126 +154,48 @@ class Presenter {
 		this.DOMparent.classList.add(`${PARENT_CLASS}_${direction}`);
 	}
 
-	private createThumb(
-		{ step, value, min, max, direction, hasTips, isDecimal, decimalPlaces }: SliderParams,
-		stance: number,
-	) {
-		this.createThumbModel(stance);
-		this.setThumbModelState(
-			stance,
-			step,
-			Array.isArray(value) ? value[stance] : value,
-			min,
-			max,
-			isDecimal,
-			decimalPlaces,
-			direction,
-		);
-		this.renderThumb(stance);
-		this.setThumbView(stance, direction);
-		this.setThumbPlacement(stance);
-		if (hasTips) {
-			this.createTip(stance, direction);
-		}
-	}
-
-	private createTip(stance: number, direction: Direction) {
-		this.setTipView(stance);
-		this.renderTip(direction, stance);
-		this.setTipPlacement(stance);
-	}
-
 	private createSlider(params: SliderParams) {
 		this.createThumb(params, this.thumbStance);
-		this.createSubViewsView(params);
-
 		if (params.isRange) {
 			this.thumbStance += 1;
 			this.createThumb(params, this.thumbStance);
 		}
-		this.createTrackFill();
-	}
-
-	private createTrackFill() {
-		this.setTrackFillModel();
-		this.setTrackFillView();
-		this.setTrackFillPlacement();
-	}
-
-	private setThumbModelState(
-		stance: number,
-		step: number,
-		value: number,
-		min: number,
-		max: number,
-		isDecimal: boolean,
-		decimalPlaces: number,
-		direction: Direction,
-	) {
-		this.thumbs.forEach(thumb => {
-			thumb.setStep(step, { min, max });
-		});
-		this.thumbs[stance].setStance(stance);
-		this.thumbs[stance].setValue(value);
-		this.thumbs[stance].setOffset(this.thumbs[stance].calculateOffset({ min, max }, direction));
-		this.thumbs[stance].setIsDecimal(isDecimal);
-		this.thumbs[stance].setDecimalPlaces(decimalPlaces);
-	}
-
-	private setThumbView(stance: number, direction: Direction) {
-		const { step, stepCount, stepPercent, value, offset, isDecimal, decimalPlaces } =
-			this.thumbs[stance].getState();
-		this.view.thumbView.setStep(step, stepPercent, stepCount);
-		this.view.thumbView.setValue(value, stance);
-		this.view.thumbView.setOffset(offset, stance);
-		this.view.thumbView.setIsDecimal(isDecimal);
-		this.view.thumbView.setDecimalPlaces(decimalPlaces);
-		this.view.prepareDirectionForInteraction(direction);
-	}
-
-	private setThumbPlacement(stance: number) {
-		const { offset } = this.thumbs[stance].getState();
-		this.view.initialThumbPlacement(offset, stance);
-	}
-
-	private setTrackFillModel() {
-		const offset: number[] = [];
-		this.thumbs.forEach(thumb => offset.push(thumb.getState().offset));
-		this.trackModel.setFillSize(this.trackModel.calculateFillSize(offset));
-		this.trackModel.setFillOffset(this.trackModel.calculateFillOffset(offset));
-	}
-
-	private setTrackFillView() {
-		this.view.setFillState(this.trackModel.getFillState());
-	}
-
-	private setTrackFillPlacement() {
-		this.view.initialFillPlacement();
-	}
-
-	private setTipPlacement(stance: number) {
-		this.view.initialTipPlacement(stance);
-	}
-
-	private createThumbModel(stance: number) {
-		this.thumbs.push(new ThumbModel(this.DOMroot, stance));
-	}
-
-	private renderThumb(stance: number) {
-		this.view.thumbView.createThumb(stance);
+		this.createSubViewsView(params);
+		this.view.prepareDirectionForInteraction(params.direction);
 	}
 
 	private renderTrack(direction: Direction) {
 		this.view.trackView.createTrack(direction);
 	}
 
-	private renderScale(direction: Direction, step: number, max: number, min: number) {
-		this.view.scaleView.createScale(direction);
-		this.view.scaleView.createScaleMarks(step, max, min, direction);
+	private createThumb({ direction, hasTips }: SliderParams, stance: number) {
+		this.model.setOffset(stance, this.model.calculateOffset(stance));
+		this.renderThumb(stance);
+		this.setThumbView(stance);
+		this.setThumbPlacement(stance);
+		if (hasTips) {
+			this.createTip(stance, direction);
+		}
 	}
 
-	private renderFill(direction: Direction) {
-		this.view.fillView.createFill(direction);
+	private renderThumb(stance: number) {
+		this.view.thumbView.createThumb(stance);
+	}
+
+	private setThumbView(stance: number) {
+		const { value, offset } = this.model.getParams();
+		this.view.thumbView.setValue(value[stance], stance);
+		this.view.thumbView.setOffset(offset, stance);
+	}
+
+	private setThumbPlacement(stance: number) {
+		this.view.thumbView.updateThumbPosition(this.model.offset[stance], stance);
+	}
+
+	private createTip(stance: number, direction: Direction) {
+		this.renderTip(direction, stance);
+		this.setTipView(stance);
+		this.setTipPlacement(stance);
 	}
 
 	private renderTip(direction: Direction, stance: number) {
@@ -269,16 +203,58 @@ class Presenter {
 	}
 
 	private setTipView(stance: number) {
-		const offset = this.thumbs[stance].getOffset();
-		const value = this.thumbs[stance].getValue();
+		const offset = this.model.getOffset()[stance];
+		const value = this.model.getValue()[stance];
 		this.view.tipView.setOffset(offset, stance);
 		this.view.tipView.setValue(value, stance);
 	}
 
-	private createSubViewsView({ direction, step, max, min, hasFill, hasScale }: SliderParams) {
+	private setTipPlacement(stance: number) {
+		this.view.tipView.updateTipsPosition(stance);
+	}
+
+	private createFill(direction: Direction) {
+		this.renderFill(direction);
+		this.model.setFillState(this.model.calculateFillState());
+		this.setFillView();
+		this.setFillPlacement();
+	}
+
+	private renderFill(direction: Direction) {
+		this.view.fillView.createFill(direction);
+	}
+
+	private setFillView() {
+		const fillState = this.model.getFillState();
+		this.view.fillView.setOffset(fillState.fillOffset);
+		this.view.fillView.setSize(fillState.fillSize);
+	}
+
+	private setFillPlacement() {
+		this.view.fillView.updateFill();
+	}
+
+	private createSubViewsView({
+		direction,
+		step,
+		max,
+		min,
+		hasFill,
+		hasScale,
+	}: SliderParams) {
 		this.renderTrack(direction);
 		if (hasScale) this.renderScale(direction, step, max, min);
-		if (hasFill) this.renderFill(direction);
+		if (hasFill) this.createFill(direction);
+	}
+
+	private renderScale(
+		direction: Direction,
+		step: number,
+		max: number,
+		min: number,
+	) {
+		this.view.scaleView.createScale(direction);
+		this.view.scaleView.createScaleMarks(step, max, min, direction);
 	}
 }
 

@@ -2,7 +2,7 @@ import '../Style/style.scss';
 import PreviewSlider from './PreviewSlider';
 
 const previewSlider1 = new PreviewSlider('.slider-1', {
-	onChange: params => console.log(params.value),
+	// onChange: params => console.log(params.value),
 });
 
 const previewSlider2 = new PreviewSlider('.slider-2', {

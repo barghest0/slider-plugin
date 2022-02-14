@@ -1,4 +1,7 @@
-import { FIRST_THUMB_STANCE, SECOND_THUMB_STANCE } from '../../../utils/constants';
+import {
+	FIRST_THUMB_STANCE,
+	SECOND_THUMB_STANCE,
+} from '../../../utils/constants';
 import { SliderParams, UserSliderParams } from '../../../utils/interfaces';
 import getDefaultParams from './validateDefaultParams';
 import validateDecimalPlaces from './validateDecimalPlaces';
@@ -9,12 +12,16 @@ import validateSecondThumb from './validateSecondThumb';
 import validateStep from './validateStep';
 import validateValue from './validateValue';
 
-function validateParams(params: UserSliderParams, DOMroot: HTMLElement): SliderParams {
-	let { min, max, value, decimalPlaces, step } = getDefaultParams(params, DOMroot);
-	const { isRange, direction, hasFill, hasTips, hasScale, isDecimal } = getDefaultParams(
+function validateParams(
+	params: UserSliderParams,
+	DOMroot: HTMLElement,
+): SliderParams {
+	let { min, max, value, decimalPlaces, step } = getDefaultParams(
 		params,
 		DOMroot,
 	);
+	const { isRange, direction, hasFill, hasTips, hasScale, isDecimal } =
+		getDefaultParams(params, DOMroot);
 
 	value = validateValue(value);
 	step = validateStep(step, min, max);

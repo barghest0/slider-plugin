@@ -8,7 +8,12 @@ class Scale {
 
 	public view: View;
 
-	public createScaleMarks: (step: number, max: number, min: number, direction: Direction) => void;
+	public createScaleMarks: (
+		step: number,
+		max: number,
+		min: number,
+		direction: Direction,
+	) => void;
 
 	constructor(view: View) {
 		this.view = view;

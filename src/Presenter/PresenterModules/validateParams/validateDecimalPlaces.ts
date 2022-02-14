@@ -1,4 +1,7 @@
-function validateDecimalPlaces(decimalPlaces: number, maxDecimalPlaces: number) {
+function validateDecimalPlaces(
+	decimalPlaces: number,
+	maxDecimalPlaces: number,
+) {
 	const validatedDecimalPlaces = Math.min(decimalPlaces, maxDecimalPlaces);
 	return validatedDecimalPlaces;
 }

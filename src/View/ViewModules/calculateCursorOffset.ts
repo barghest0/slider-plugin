@@ -1,6 +1,6 @@
 import { Direction, Directions } from '../../utils/interfaces';
 
-function calculateCursorCoordinate(
+function calculateCursorOffset(
 	coord: number,
 	direction: Direction,
 	DOMroot: HTMLElement,
@@ -12,4 +12,4 @@ function calculateCursorCoordinate(
 	return ((coord - DOMroot.offsetTop) / size) * 100;
 }
 
-export default calculateCursorCoordinate;
+export default calculateCursorOffset;
