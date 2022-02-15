@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import View from '../../src/View/View';
 import { Directions, Params } from '../../src/utils/interfaces';
 import { DEFAULT_SLIDER_PARAMS } from '../../src/utils/constants';

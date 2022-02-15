@@ -1,8 +1,6 @@
-import { screen } from '@testing-library/dom';
 import View from '../../../src/View/View';
 import Scale from '../../../src/View/ViewElements/Scale/Scale';
 import prepareScaleData from '../../../src/View/ViewElements/Scale/utils/prepareScaleData';
-import '@testing-library/jest-dom';
 import { Directions } from '../../../src/utils/interfaces';
 
 describe('Scale test', () => {
@@ -12,14 +10,11 @@ describe('Scale test', () => {
   const view = new View(root);
   const scale = new Scale(view);
   scale.createScale(Directions.horizontal);
-  test('constructor test', () => {
-    expect(view.DOMroot).toBeInstanceOf(HTMLElement);
+
+  test('is DOM scale instance of HTMLElement test', () => {
+    expect(scale.scale).toBeInstanceOf(HTMLElement);
   });
 
-  test('correct append scale to DOM test', () => {
-    const DOMScale = screen.getByTestId('test-scale');
-    expect(DOMScale).toBeInTheDocument();
-  });
   test('correct prepare scale data test', () => {
     expect(prepareScaleData(0, 100, 10)).toEqual({
       offsets: [0, 20, 40, 60, 80, 100],

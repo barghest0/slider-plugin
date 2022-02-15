@@ -52,7 +52,6 @@ class Tip extends Observer {
     tip.classList.add(`js-${TIP_CLASS}-${stance}`);
     tip.classList.add(`${TIP_CLASS}-${stance}`);
     tip.classList.add(`${TIP_CLASS}_${direction}`);
-    tip.dataset.testid = `test-tip`;
     this.tips.push(tip);
     this.view.DOMroot.appendChild(tip);
   }

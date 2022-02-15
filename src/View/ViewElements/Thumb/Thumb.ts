@@ -40,7 +40,6 @@ class Thumb extends Observer {
     thumb.classList.add(THUMB_CLASS);
     thumb.classList.add(`js-${THUMB_CLASS}-${stance}`);
     thumb.classList.add(`${THUMB_CLASS}-${stance}`);
-    thumb.dataset.testid = `test-thumb-${stance}`;
     this.thumbs.push(thumb);
     this.view.DOMroot.appendChild(thumb);
   }

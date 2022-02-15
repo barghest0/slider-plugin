@@ -26,7 +26,6 @@ class Scale {
     scale.classList.add(SCALE_CLASS);
     scale.classList.add(`js-${SCALE_CLASS}`);
     scale.classList.add(`${SCALE_CLASS}_${direction}`);
-    scale.dataset.testid = `test-scale`;
     this.scale = scale;
     this.view.DOMroot.appendChild(scale);
   }

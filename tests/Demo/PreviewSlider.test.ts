@@ -2,7 +2,6 @@ import Panel from '../../src/Demo/Panel/Panel';
 import PreviewSlider from '../../src/Demo/PreviewSlider';
 import validateParams from '../../src/Presenter/PresenterModules/validateParams/validateParams';
 import Slider from '../../src/Slider';
-import '@testing-library/jest-dom';
 import handleChange from '../../src/Demo/Panel/PanelModules/handleChange';
 import { FIRST_VALUE } from '../../src/utils/constants';
 import { Directions, InitMods, Params } from '../../src/utils/interfaces';

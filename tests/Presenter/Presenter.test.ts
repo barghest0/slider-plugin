@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import {
   DEFAULT_SLIDER_PARAMS,
   FIRST_OFFSET,
@@ -12,7 +11,6 @@ import {
 import {
   Directions,
   InitMods,
-  Params,
   SubscribersNames,
 } from '../../src/utils/interfaces';
 import Presenter from '../../src/Presenter/Presenter';

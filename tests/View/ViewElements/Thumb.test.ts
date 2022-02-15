@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom';
 import View from '../../../src/View/View';
 import Thumb from '../../../src/View/ViewElements/Thumb/Thumb';
 
@@ -24,16 +23,11 @@ describe('Thumb test', () => {
   thumb.createThumb(FIRST_THUMB_STANCE);
   thumb.createThumb(SECOND_THUMB_STANCE);
 
-  test('constructor test', () => {
-    expect(thumb).toHaveProperty('view');
+  test('is DOM first thumb instance of HTMLElement test', () => {
+    expect(thumb.thumbs[FIRST_THUMB_STANCE]).toBeInstanceOf(HTMLElement);
   });
-
-  test('check presence first thumb in the document', () => {
-    expect(thumb.thumbs[FIRST_THUMB_STANCE]).toBeInTheDocument();
-  });
-
-  test('check presence first thumb in the document', () => {
-    expect(thumb.thumbs[SECOND_THUMB_STANCE]).toBeInTheDocument();
+  test('is DOM second thumb instance of HTMLElement test', () => {
+    expect(thumb.thumbs[SECOND_THUMB_STANCE]).toBeInstanceOf(HTMLElement);
   });
 
   test('correct set/get 100 first`s thumb value', () => {

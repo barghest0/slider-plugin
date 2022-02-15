@@ -1,7 +1,5 @@
-import { screen } from '@testing-library/dom';
 import View from '../../../src/View/View';
 import Track from '../../../src/View/ViewElements/Track/Track';
-import '@testing-library/jest-dom';
 import { Directions, SubscribersNames } from '../../../src/utils/interfaces';
 
 describe('Track test', () => {
@@ -15,17 +13,15 @@ describe('Track test', () => {
   track.createTrack(Directions.horizontal);
   track.clickTrack();
 
-  test('constructor test', () => {
-    expect(track).toHaveProperty('view');
+  test('is DOM track instance of HTMLElement test', () => {
+    expect(track.track).toBeInstanceOf(HTMLElement);
   });
 
   test('correct track model notify before click track test', () => {
     track.subscribe(SubscribersNames.updateThumbBeforeTrackClick, fn);
     track.subscribe(SubscribersNames.updateFill, fn);
-
     jest.spyOn(track, 'notify');
-    const DOMTrack = screen.getByTestId('slider-1');
-    DOMTrack.dispatchEvent(new MouseEvent('mousedown'));
+    root.dispatchEvent(new MouseEvent('pointerdown'));
     expect(track.notify).toBeCalled();
   });
 });

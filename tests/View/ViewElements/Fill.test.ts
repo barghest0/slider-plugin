@@ -1,7 +1,5 @@
-import { screen } from '@testing-library/dom';
 import View from '../../../src/View/View';
 import Fill from '../../../src/View/ViewElements/Fill/Fill';
-import '@testing-library/jest-dom';
 import { Directions } from '../../../src/utils/interfaces';
 
 describe('Fill test', () => {
@@ -13,9 +11,10 @@ describe('Fill test', () => {
 
   fill.createFill(Directions.horizontal);
 
-  test('constructor test', () => {
-    expect(view.DOMroot).toBeInstanceOf(HTMLElement);
+  test('is DOM fill instance of HTMLElement test', () => {
+    expect(fill.fill).toBeInstanceOf(HTMLElement);
   });
+
   test('setSize test', () => {
     fill.setSize(100);
     expect(fill).toHaveProperty('size', 100);
@@ -29,8 +28,7 @@ describe('Fill test', () => {
   test('correct updateFill with single thumb test', () => {
     fill.setSize(50);
     fill.updateFill();
-    const DOMFill = screen.getByTestId('test-fill');
-    expect(DOMFill).toHaveStyle('width:50%');
+    expect(fill.fill.style.width).toBe('50%');
   });
 
   test('correct updateFill with range test', () => {
@@ -38,8 +36,7 @@ describe('Fill test', () => {
     fill.setOffset(20);
     fill.setSize(80);
     fill.updateFill();
-    const DOMFill = screen.getByTestId('test-fill');
-    expect(DOMFill).toHaveStyle('width:80%');
-    expect(DOMFill).toHaveStyle('left:20%');
+    expect(fill.fill.style.width).toBe('80%');
+    expect(fill.fill.style.left).toBe('20%');
   });
 });

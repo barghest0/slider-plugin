@@ -44,9 +44,7 @@ class Fill extends Observer {
     const fill = document.createElement('div');
     fill.classList.add(FILL_CLASS);
     fill.classList.add(`js-${FILL_CLASS}`);
-
     fill.classList.add(`${FILL_CLASS}_${direction}`);
-    fill.dataset.testid = `test-fill`;
     this.fill = fill;
     this.view.DOMroot.appendChild(fill);
   }

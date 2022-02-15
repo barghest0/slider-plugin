@@ -19,9 +19,7 @@ class Track extends Observer {
     const track = document.createElement('div');
     track.classList.add(TRACK_CLASS);
     track.classList.add(`js-${TRACK_CLASS}`);
-
     track.classList.add(`${TRACK_CLASS}_${direction}`);
-    track.dataset.testid = `test-track`;
     this.track = track;
     this.view.DOMroot.appendChild(track);
   }
