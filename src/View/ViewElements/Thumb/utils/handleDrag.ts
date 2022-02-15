@@ -1,7 +1,7 @@
 import { Directions, SubscribersNames } from '../../../../utils/interfaces';
 import Thumb from '../Thumb';
 
-function handleDrag(event: any, thisThumb: Thumb, stance: number) {
+function handleDrag(event: PointerEvent, thisThumb: Thumb, stance: number) {
   const { direction, isRange } = thisThumb.view.params;
   const { DOMroot, size } = thisThumb.view;
   const coordinate =

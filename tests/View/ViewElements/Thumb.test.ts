@@ -1,5 +1,4 @@
 import '@testing-library/jest-dom';
-import { screen } from '@testing-library/dom';
 import View from '../../../src/View/View';
 import Thumb from '../../../src/View/ViewElements/Thumb/Thumb';
 

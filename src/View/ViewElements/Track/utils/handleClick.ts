@@ -1,7 +1,7 @@
 import { Directions, SubscribersNames } from '../../../../utils/interfaces';
 import Track from '../Track';
 
-function handleClick(event: any, thisTrack: Track) {
+function handleClick(event: PointerEvent, thisTrack: Track) {
   const { direction } = thisTrack.view.params;
   const coordinate =
     direction === Directions.horizontal ? event.pageX : event.pageY;

@@ -1,9 +1,6 @@
 import {
-  FIRST_OFFSET,
   FIRST_THUMB_STANCE,
   FIRST_VALUE,
-  SECOND_OFFSET,
-  SECOND_THUMB_STANCE,
   SECOND_VALUE,
 } from '../../../../utils/constants';
 import Thumb from '../Thumb';
