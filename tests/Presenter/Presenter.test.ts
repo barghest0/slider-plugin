@@ -15,6 +15,11 @@ import {
 } from '../../src/utils/interfaces';
 import Presenter from '../../src/Presenter/Presenter';
 import validateParams from '../../src/Presenter/PresenterModules/validateParams/validateParams';
+import validateStep from '../../src/Presenter/PresenterModules/validateParams/validateStep';
+import validateValue from '../../src/Presenter/PresenterModules/validateParams/validateValue';
+import validateMax from '../../src/Presenter/PresenterModules/validateParams/validateMax';
+import validateMin from '../../src/Presenter/PresenterModules/validateParams/validateMin';
+import validateDecimalPlaces from '../../src/Presenter/PresenterModules/validateParams/validateDecimalPlaces';
 
 describe('Presenter test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
@@ -179,5 +184,35 @@ describe('Presenter test', () => {
     expect($(presenter.root).hasClass(`${MAIN_CLASS}_vertical`)).toBe(false);
     presenter.clearHTML(Directions.vertical);
     expect($(presenter.root).hasClass(`${MAIN_CLASS}_horizontal`)).toBe(false);
+  });
+
+  test('expect validate and change step to 100 before set step more then delta ends', () => {
+    const step = validateStep(200, 0, 100);
+    expect(step).toBe(100);
+  });
+
+  test('expect validate and change step to 100 before set step less 0', () => {
+    const step = validateStep(-10, 0, 100);
+    expect(step).toBe(10);
+  });
+
+  test('expect validate and push number value to array for interaction in view and model', () => {
+    const value = validateValue(3);
+    expect(value).toEqual([3]);
+  });
+
+  test('expect  max value not be less min when step equal 2', () => {
+    const max = validateMax(10, 0, 2);
+    expect(max).toEqual(8);
+  });
+
+  test('expect  min value not be bigger min when step equal 2', () => {
+    const min = validateMin(15, 10, 2);
+    expect(min).toEqual(8);
+  });
+
+  test('expect decimal places not be  bigger 3', () => {
+    const decimalPlaces = validateDecimalPlaces(231, 3);
+    expect(decimalPlaces).toEqual(3);
   });
 });

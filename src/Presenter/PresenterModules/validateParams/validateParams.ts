@@ -25,8 +25,8 @@ function validateParams(
 
   value = validateValue(value);
   step = validateStep(step, min, max);
-  min = validateMin(min, max, step);
   max = validateMax(min, max, step);
+  min = validateMin(min, max, step);
   decimalPlaces = validateDecimalPlaces(decimalPlaces, 3);
   value[FIRST_THUMB_STANCE] = validateFirstThumb(value, min, max);
 
