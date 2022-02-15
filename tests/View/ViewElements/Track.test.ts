@@ -1,6 +1,10 @@
 import View from '../../../src/View/View';
 import Track from '../../../src/View/ViewElements/Track/Track';
-import { Directions, SubscribersNames } from '../../../src/utils/interfaces';
+import {
+  Directions,
+  Params,
+  SubscribersNames,
+} from '../../../src/utils/interfaces';
 
 describe('Track test', () => {
   document.body.innerHTML =
@@ -9,7 +13,6 @@ describe('Track test', () => {
   const root = <HTMLElement>document.querySelector(rootClass);
   const view = new View(root);
   const track = new Track(view);
-  const fn = jest.fn();
   track.createTrack(Directions.horizontal);
   track.clickTrack();
 
@@ -17,10 +20,17 @@ describe('Track test', () => {
     expect(track.track).toBeInstanceOf(HTMLElement);
   });
 
-  test('correct track model notify before click track test', () => {
-    track.subscribe(SubscribersNames.updateThumbBeforeTrackClick, fn);
-    track.subscribe(SubscribersNames.updateFill, fn);
+  test('expect notify model before click track in horizontal/vertical direction', () => {
+    const subscriberFn = jest.fn();
     jest.spyOn(track, 'notify');
+    track.subscribe(SubscribersNames.updateThumbBeforeTrackClick, subscriberFn);
+    track.subscribe(SubscribersNames.updateFill, subscriberFn);
+
+    view.setParam(Params.direction, Directions.horizontal);
+    root.dispatchEvent(new MouseEvent('pointerdown'));
+    expect(track.notify).toBeCalled();
+
+    view.setParam(Params.direction, Directions.vertical);
     root.dispatchEvent(new MouseEvent('pointerdown'));
     expect(track.notify).toBeCalled();
   });

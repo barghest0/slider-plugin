@@ -21,8 +21,4 @@ describe('Scale test', () => {
       values: [0, 20, 40, 60, 80, 100],
     });
   });
-
-  test('correct return values for scale test', () => {
-    expect(scale.createScaleMarks(10, 100, 0, Directions.horizontal));
-  });
 });
