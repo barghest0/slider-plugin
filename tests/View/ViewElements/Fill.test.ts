@@ -1,6 +1,6 @@
 import View from '../../../src/View/View';
 import Fill from '../../../src/View/ViewElements/Fill/Fill';
-import { Directions } from '../../../src/utils/interfaces';
+import { Directions, Params } from '../../../src/utils/interfaces';
 
 describe('Fill test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
@@ -15,28 +15,37 @@ describe('Fill test', () => {
     expect(fill.fill).toBeInstanceOf(HTMLElement);
   });
 
-  test('setSize test', () => {
+  test('correct set/get 100 size', () => {
     fill.setSize(100);
-    expect(fill).toHaveProperty('size', 100);
+    expect(fill.getSize()).toBe(100);
   });
 
-  test('setOffset test', () => {
+  test('correct set/get 100 offset', () => {
     fill.setOffset(100);
-    expect(fill).toHaveProperty('offset', 100);
+    expect(fill.getOffset()).toBe(100);
   });
 
-  test('correct updateFill with single thumb test', () => {
+  test('expect change fill size to 50% before calling update fill in horizontal/vertical direction', () => {
+    view.prepareDirectionForInteraction(Directions.horizontal);
     fill.setSize(50);
     fill.updateFill();
     expect(fill.fill.style.width).toBe('50%');
+
+    view.prepareDirectionForInteraction(Directions.vertical);
+    fill.setSize(50);
+    fill.updateFill();
+    expect(fill.fill.style.height).toBe('50%');
   });
 
-  test('correct updateFill with range test', () => {
-    view.params.isRange = true;
-    fill.setOffset(20);
-    fill.setSize(80);
+  test('expect change fill offset to 50% before calling update fill in horizontal/vertical direction', () => {
+    view.prepareDirectionForInteraction(Directions.horizontal);
+    fill.setOffset(50);
     fill.updateFill();
-    expect(fill.fill.style.width).toBe('80%');
-    expect(fill.fill.style.left).toBe('20%');
+    expect(fill.fill.style.width).toBe('50%');
+
+    view.prepareDirectionForInteraction(Directions.vertical);
+    fill.setOffset(50);
+    fill.updateFill();
+    expect(fill.fill.style.height).toBe('50%');
   });
 });
