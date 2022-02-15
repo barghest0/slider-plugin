@@ -3,7 +3,7 @@ import {
   SECOND_THUMB_STANCE,
 } from '../../../utils/constants';
 import { SliderParams, UserSliderParams } from '../../../utils/interfaces';
-import getDefaultParams from './validateDefaultParams';
+import validateDefaultParams from './validateDefaultParams';
 import validateDecimalPlaces from './validateDecimalPlaces';
 import validateFirstThumb from './validateFirstThumb';
 import validateMax from './validateMax';
@@ -16,40 +16,56 @@ function validateParams(
   params: UserSliderParams,
   DOMroot: HTMLElement,
 ): SliderParams {
-  let { min, max, value, decimalPlaces, step } = getDefaultParams(
-    params,
-    DOMroot,
-  );
-  const { isRange, direction, hasFill, hasTips, hasScale, isDecimal } =
-    getDefaultParams(params, DOMroot);
-
-  value = validateValue(value);
-  step = validateStep(step, min, max);
-  max = validateMax(min, max, step);
-  min = validateMin(min, max, step);
-  decimalPlaces = validateDecimalPlaces(decimalPlaces, 3);
-  value[FIRST_THUMB_STANCE] = validateFirstThumb(value, min, max);
-
-  const isSingleThumb = value.length === 1;
-  if (isRange) {
-    if (isSingleThumb) {
-      value.push(value[FIRST_THUMB_STANCE] + step);
-    }
-    value[SECOND_THUMB_STANCE] = validateSecondThumb(value, min, max);
-  }
-
-  const checkedParams: SliderParams = {
+  const {
     min,
     max,
-    step,
     value,
+    decimalPlaces,
+    step,
     isRange,
     direction,
     hasFill,
     hasTips,
     hasScale,
     isDecimal,
-    decimalPlaces,
+  } = validateDefaultParams(params, DOMroot);
+
+  const validatedValue = validateValue(value);
+  const validatedStep = validateStep(step, min, max);
+  const validatedMin = validateMin(min, max, step);
+  const validatedMax = validateMax(min, max, step);
+  const validatedDecimalPlaces = validateDecimalPlaces(decimalPlaces, 3);
+
+  validatedValue[FIRST_THUMB_STANCE] = validateFirstThumb(
+    validatedValue,
+    min,
+    max,
+  );
+  const isSingleThumb = validatedValue.length === 1;
+
+  if (isRange) {
+    if (isSingleThumb) {
+      validatedValue.push(validatedValue[FIRST_THUMB_STANCE] + step);
+    }
+    validatedValue[SECOND_THUMB_STANCE] = validateSecondThumb(
+      validatedValue,
+      min,
+      max,
+    );
+  }
+
+  const checkedParams: SliderParams = {
+    min: validatedMin,
+    max: validatedMax,
+    step: validatedStep,
+    value: validatedValue,
+    decimalPlaces: validatedDecimalPlaces,
+    isDecimal,
+    isRange,
+    direction,
+    hasFill,
+    hasTips,
+    hasScale,
   };
 
   if (params.onChange) checkedParams.onChange = params.onChange;
