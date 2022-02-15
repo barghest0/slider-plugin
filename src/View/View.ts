@@ -68,6 +68,10 @@ class View extends Observer {
     this.params = params;
   }
 
+  public setParam(param: string, value: string | number | number[] | boolean) {
+    this.params[param] = value;
+  }
+
   public setSize(size: number) {
     this.size = size;
   }

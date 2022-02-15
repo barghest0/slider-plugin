@@ -12,63 +12,86 @@ import {
 import {
   Directions,
   InitMods,
-  SliderParams,
+  Params,
   SubscribersNames,
 } from '../../src/utils/interfaces';
 import Presenter from '../../src/Presenter/Presenter';
-import checkParams from '../../src/Presenter/PresenterModules/validateParams/validateParams';
+import validateParams from '../../src/Presenter/PresenterModules/validateParams/validateParams';
 
 describe('Presenter test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
   const root = '.slider-1';
   const DOMroot = <HTMLElement>document.querySelector(root);
-  const params: SliderParams = checkParams(
-    {
-      isRange: true,
-      direction: 'vertical',
-      value: 10,
-    },
-    DOMroot,
-  );
-  const presenter = new Presenter(root, params);
-  const fn = jest.fn();
+  const params = JSON.parse(JSON.stringify(DEFAULT_SLIDER_PARAMS));
+  params.isRange = true;
+  const presenter = new Presenter(root, validateParams(params, DOMroot));
+
+  const updateValues = jest.fn();
   presenter.init(params, InitMods.init);
-  presenter.model.subscribe(SubscribersNames.updateValues, fn);
+  presenter.model.subscribe(SubscribersNames.updateValues, updateValues);
 
   test('constructor test', () => {
     expect(presenter).toHaveProperty('view');
   });
 
-  test('correct set model param', () => {
+  test('correct set/get model default params', () => {
     presenter.setModelState(params);
-    expect(presenter.model.getParams().isRange).toBe(true);
+    expect(presenter.model.getParams()).toEqual(params);
   });
 
-  test('correct set view param', () => {
+  test('correct set/get view default params', () => {
+    presenter.setModelState(params);
     presenter.setViewState();
-    expect(presenter.view.getParams().isRange).toBe(true);
+    expect(presenter.view.getParams()).toEqual(params);
   });
 
-  test('correct set class test', () => {
-    expect($(presenter.root).hasClass(`${MAIN_CLASS}_vertical`)).toBe(true);
+  test('expect horizontal modifier', () => {
+    expect(
+      presenter.DOMroot.classList.contains(`${MAIN_CLASS}_horizontal`),
+    ).toBeTruthy();
   });
 
-  test('correct set thumb view test', () => {
-    expect(presenter.view.thumbView.getValue()[FIRST_VALUE]).toBe(10);
-  });
-
-  test('correct update thumb model', () => {
+  test('expect change thumb offset to 80 after notify model when drag first thumb', () => {
     presenter.view.thumbView.notify(
       SubscribersNames.updateThumb,
       FIRST_THUMB_STANCE,
       80,
     );
-    expect(presenter.model.getOffset()[FIRST_THUMB_STANCE]).toBe(80);
+    expect(presenter.model.getOffset()[FIRST_OFFSET]).toBe(80);
   });
 
-  test('correct update thumb view', () => {
-    presenter.params.onChange = fn;
+  test('expect change thumb offset to 90 after notify model when drag second thumb', () => {
+    presenter.view.thumbView.notify(
+      SubscribersNames.updateThumb,
+      SECOND_THUMB_STANCE,
+      90,
+    );
+    expect(presenter.model.getOffset()[SECOND_OFFSET]).toBe(90);
+  });
 
+  test('expect change thumb offset to 90 after notify model when click track closer to first thumb', () => {
+    presenter.model.setFillState({ fillOffset: 30, fillSize: 30 });
+    presenter.model.setOffset(FIRST_THUMB_STANCE, 20);
+    presenter.model.setOffset(SECOND_THUMB_STANCE, 50);
+    presenter.view.trackView.notify(
+      SubscribersNames.updateThumbBeforeTrackClick,
+      90,
+    );
+    expect(presenter.model.getOffset()[SECOND_OFFSET]).toBe(90);
+  });
+
+  test('expect change thumb offset to 90 after notify model when click track closer to second thumb', () => {
+    presenter.model.setFillState({ fillOffset: 30, fillSize: 30 });
+    presenter.model.setOffset(FIRST_THUMB_STANCE, 20);
+    presenter.model.setOffset(SECOND_THUMB_STANCE, 50);
+    presenter.view.trackView.notify(
+      SubscribersNames.updateThumbBeforeTrackClick,
+      10,
+    );
+    expect(presenter.model.getOffset()[FIRST_OFFSET]).toBe(10);
+  });
+
+  test('expect change thumb value to 100 and offset to 50 after notify view when drag first thumb', () => {
     presenter.model.notify(
       SubscribersNames.updateThumbView,
       FIRST_THUMB_STANCE,
@@ -78,6 +101,9 @@ describe('Presenter test', () => {
     expect(presenter.view.thumbView.getValue()[FIRST_VALUE]).toBe(100);
     expect(presenter.view.thumbView.getOffset()[FIRST_OFFSET]).toBe(50);
     expect(presenter.view.thumbView.activeStance).toBe(FIRST_THUMB_STANCE);
+  });
+
+  test('expect change thumb value to 150 and offset to 70 after notify view when drag second thumb', () => {
     presenter.model.notify(
       SubscribersNames.updateThumbView,
       SECOND_THUMB_STANCE,
@@ -87,93 +113,67 @@ describe('Presenter test', () => {
     expect(presenter.view.thumbView.getValue()[SECOND_VALUE]).toBe(150);
     expect(presenter.view.thumbView.getOffset()[SECOND_OFFSET]).toBe(70);
     expect(presenter.view.thumbView.activeStance).toBe(SECOND_THUMB_STANCE);
-
-    expect(presenter.params.onChange).toBeDefined();
   });
 
-  test('correct update tip view', () => {
+  test('expect change tip value to 50 and offset to 50 after notify view when drag first thumb', () => {
     presenter.model.notify(
       SubscribersNames.updateTipView,
       FIRST_THUMB_STANCE,
       50,
       50,
     );
+    expect(presenter.view.tipView.getValue()[FIRST_VALUE]).toBe(50);
+    expect(presenter.view.tipView.getOffset()[FIRST_OFFSET]).toBe(50);
+  });
+
+  test('expect change tip value to 100 and offset to 100 after notify view when drag second thumb', () => {
     presenter.model.notify(
       SubscribersNames.updateTipView,
       SECOND_THUMB_STANCE,
       100,
       100,
     );
-    expect(presenter.view.tipView.getOffset()[FIRST_OFFSET]).toBe(50);
+    expect(presenter.view.tipView.getValue()[SECOND_VALUE]).toBe(100);
     expect(presenter.view.tipView.getOffset()[SECOND_OFFSET]).toBe(100);
   });
 
-  test('correct update  fill view', () => {
-    presenter.model.notify(SubscribersNames.updateFillView, {
-      fillSize: 100,
-      fillOffset: 10,
+  test('expect change fill size to 30 and offset to 30 after notify model when drag two thumbs', () => {
+    presenter.view.thumbView.notify(
+      SubscribersNames.updateThumb,
+      FIRST_THUMB_STANCE,
+      30,
+    );
+    presenter.view.thumbView.notify(
+      SubscribersNames.updateThumb,
+      SECOND_THUMB_STANCE,
+      60,
+    );
+    presenter.view.thumbView.notify(SubscribersNames.updateFill);
+    expect(presenter.model.getFillState()).toEqual({
+      fillOffset: 30,
+      fillSize: 30,
     });
-    expect(presenter.view.fillView.getSize()).toBe(100);
-    expect(presenter.view.fillView.getOffset()).toBe(10);
   });
 
-  test('correct check values params', () => {
-    expect(checkParams({}, presenter.DOMroot)).toEqual(DEFAULT_SLIDER_PARAMS);
-    const correctParams: SliderParams = JSON.parse(
-      JSON.stringify(DEFAULT_SLIDER_PARAMS),
-    );
-
-    correctParams.value = [50];
-    expect(checkParams({ value: 50 }, presenter.DOMroot)).toEqual(
-      correctParams,
-    );
-
-    correctParams.value = [100, 100];
-    correctParams.isRange = true;
-    expect(
-      checkParams({ value: [100, 50], isRange: true }, presenter.DOMroot),
-    ).toEqual(correctParams);
-
-    correctParams.value = [50, 60];
-    correctParams.isRange = true;
-    expect(
-      checkParams({ value: 50, isRange: true }, presenter.DOMroot),
-    ).toEqual(correctParams);
+  test('expect change fill size to 30 and offset to 30 after notify view when', () => {
+    presenter.model.notify(SubscribersNames.updateFillView, {
+      fillSize: 30,
+      fillOffset: 30,
+    });
+    expect(presenter.view.fillView.getSize()).toBe(30);
+    expect(presenter.view.fillView.getOffset()).toBe(30);
   });
 
-  test('correct check params min max restrictions', () => {
-    const correctParams: SliderParams = JSON.parse(
-      JSON.stringify(DEFAULT_SLIDER_PARAMS),
+  test('expect calling onChange after notify view', () => {
+    const onChange = jest.fn();
+    presenter.params.onChange = onChange;
+    presenter.model.notify(
+      SubscribersNames.updateThumbView,
+      SECOND_THUMB_STANCE,
+      150,
+      70,
     );
-    correctParams.value = [0, 100];
-    correctParams.max = 100;
-    correctParams.isRange = true;
-    expect(
-      checkParams(
-        { value: [0, 200], max: 100, isRange: true },
-        presenter.DOMroot,
-      ),
-    ).toEqual(correctParams);
-
-    correctParams.value = [50, 100];
-    correctParams.min = 50;
-    correctParams.isRange = true;
-    expect(
-      checkParams(
-        { value: [0, 100], min: 50, isRange: true },
-        presenter.DOMroot,
-      ),
-    ).toEqual(correctParams);
-  });
-
-  test('correct check onChange param', () => {
-    const correctParams: SliderParams = JSON.parse(
-      JSON.stringify(DEFAULT_SLIDER_PARAMS),
-    );
-    correctParams.onChange = fn;
-    expect(checkParams({ onChange: fn }, presenter.DOMroot)).toEqual(
-      correctParams,
-    );
+    expect(presenter.params.onChange).toBeDefined();
   });
 
   test('correct clear HTML', () => {

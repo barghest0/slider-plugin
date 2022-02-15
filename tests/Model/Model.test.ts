@@ -101,7 +101,6 @@ describe('Model test', () => {
       SECOND_THUMB_STANCE,
       model.calculateOffset(SECOND_THUMB_STANCE),
     );
-
     expect(model.calculateFillState()).toEqual({
       fillOffset: 20,
       fillSize: 20,
