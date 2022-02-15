@@ -12,9 +12,8 @@ interface Ends {
 type Direction = 'vertical' | 'horizontal';
 type OffsetDirection = 'left' | 'top';
 type FillDirection = 'width' | 'height';
-
 interface SliderParams {
-  [index: string]: any;
+  [index: string]: number | number[] | Direction | boolean | any;
   min: number;
   max: number;
   step: number;
