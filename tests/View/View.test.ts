@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import View from '../../src/View/View';
-import { Directions } from '../../src/utils/interfaces';
+import { Directions, Params } from '../../src/utils/interfaces';
 import { DEFAULT_SLIDER_PARAMS } from '../../src/utils/constants';
 
 describe('View test', () => {
@@ -12,20 +12,40 @@ describe('View test', () => {
     expect(view.DOMroot).toBeInstanceOf(HTMLElement);
   });
 
-  test('setParams test', () => {
+  test('correct set/get params', () => {
     view.setParams(DEFAULT_SLIDER_PARAMS);
     expect(view).toHaveProperty('params', DEFAULT_SLIDER_PARAMS);
   });
 
-  test('correct calculate cursor coordinate test', () => {
-    $(root).position().left = 0;
+  test('correct set param', () => {
+    view.setParam(Params.hasFill, true);
+    expect(view.params.hasFill).toBeTruthy();
+  });
+
+  test('correct set/get size', () => {
+    view.setSize(400);
+    expect(view.getSize()).toBe(400);
+  });
+
+  test('expect offset equal 100 when cursorOffset equal 100 in horizontal/vertical direction', () => {
     expect(
       view.calculateCursorOffset(200, Directions.horizontal, root, 200),
     ).toBe(100);
 
-    $(root).position().top = 0;
     expect(
       view.calculateCursorOffset(200, Directions.vertical, root, 200),
     ).toBe(100);
+  });
+
+  test('expect fill direction equal width, offset direction equal left in horizontal direction', () => {
+    view.prepareDirectionForInteraction(Directions.horizontal);
+    expect(view.fillDirection).toBe('width');
+    expect(view.offsetDirection).toBe('left');
+  });
+
+  test('expect fill direction equal height, offset direction equal top in horizontal direction', () => {
+    view.prepareDirectionForInteraction(Directions.vertical);
+    expect(view.fillDirection).toBe('height');
+    expect(view.offsetDirection).toBe('top');
   });
 });

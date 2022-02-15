@@ -41,7 +41,7 @@ class View extends Observer {
   public prepareDirectionForInteraction: (direction: Direction) => void;
 
   public calculateCursorOffset: (
-    coord: number,
+    coordinate: number,
     direction: Direction,
     DOMroot: HTMLElement,
     size: number,
