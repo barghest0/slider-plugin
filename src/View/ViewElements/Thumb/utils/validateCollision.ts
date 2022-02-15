@@ -13,15 +13,16 @@ const validateCollision = function validateCollision(
   stance: number,
 ) {
   const reverseStance = +!stance;
-  if (stance === FIRST_THUMB_STANCE) {
-    if (this.getValue()[FIRST_VALUE] > this.getValue()[SECOND_VALUE]) {
-      this.setOffset(SECOND_THUMB_STANCE, this.getOffset()[FIRST_OFFSET]);
-      return reverseStance;
-    }
-  } else if (this.getValue()[SECOND_VALUE] < this.getValue()[FIRST_VALUE]) {
-    this.setOffset(FIRST_THUMB_STANCE, this.getOffset()[SECOND_OFFSET]);
-    return reverseStance;
-  }
+  const isFirstStanceCurrent = stance === FIRST_THUMB_STANCE;
+  const isFirstValueBiggerSecond =
+    this.getValue()[FIRST_VALUE] > this.getValue()[SECOND_VALUE];
+  const isSecondValueLessFirst =
+    this.getValue()[SECOND_VALUE] < this.getValue()[FIRST_VALUE];
+
+  if (isFirstValueBiggerSecond && isFirstStanceCurrent) return reverseStance;
+
+  if (isSecondValueLessFirst && !isFirstStanceCurrent) return reverseStance;
+
   return stance;
 };
 
