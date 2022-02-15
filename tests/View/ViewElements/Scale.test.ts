@@ -15,7 +15,7 @@ describe('Scale test', () => {
     expect(scale.scale).toBeInstanceOf(HTMLElement);
   });
 
-  test('correct prepare scale data test', () => {
+  test('expect correct scale marks values with default params', () => {
     expect(prepareScaleData(0, 100, 10)).toEqual({
       offsets: [0, 20, 40, 60, 80, 100],
       values: [0, 20, 40, 60, 80, 100],
