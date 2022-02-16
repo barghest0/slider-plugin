@@ -17,7 +17,6 @@ import Presenter from '../../src/Presenter/Presenter';
 import validateParams from '../../src/Presenter/PresenterModules/validateParams/validateParams';
 import validateStep from '../../src/Presenter/PresenterModules/validateParams/validateStep';
 import validateValue from '../../src/Presenter/PresenterModules/validateParams/validateValue';
-import validateMax from '../../src/Presenter/PresenterModules/validateParams/validateMax';
 import validateMin from '../../src/Presenter/PresenterModules/validateParams/validateMin';
 import validateDecimalPlaces from '../../src/Presenter/PresenterModules/validateParams/validateDecimalPlaces';
 
@@ -201,10 +200,6 @@ describe('Presenter test', () => {
     expect(value).toEqual([3]);
   });
 
-  test('expect  max value not be less min when step equal 2', () => {
-    const max = validateMax(10, 0, 2);
-    expect(max).toEqual(8);
-  });
 
   test('expect  min value not be bigger min when step equal 2', () => {
     const min = validateMin(15, 10, 2);

@@ -6,7 +6,6 @@ import { SliderParams, UserSliderParams } from '../../../utils/interfaces';
 import validateDefaultParams from './validateDefaultParams';
 import validateDecimalPlaces from './validateDecimalPlaces';
 import validateFirstThumb from './validateFirstThumb';
-import validateMax from './validateMax';
 import validateMin from './validateMin';
 import validateSecondThumb from './validateSecondThumb';
 import validateStep from './validateStep';
@@ -32,10 +31,8 @@ function validateParams(
 
   const validatedValue = validateValue(value);
   const validatedStep = validateStep(step, min, max);
-  let validatedMin = validateMin(min, max, step);
-  let validatedMax = validateMax(min, max, step);
+  const validatedMin = validateMin(min, max, validatedStep);
   const validatedDecimalPlaces = validateDecimalPlaces(decimalPlaces, 3);
-
   validatedValue[FIRST_THUMB_STANCE] = validateFirstThumb(
     validatedValue,
     min,
@@ -56,7 +53,7 @@ function validateParams(
 
   const checkedParams: SliderParams = {
     min: validatedMin,
-    max: validatedMax,
+    max,
     step: validatedStep,
     value: validatedValue,
     decimalPlaces: validatedDecimalPlaces,
