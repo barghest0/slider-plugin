@@ -40,46 +40,45 @@ describe('PreviewSlider test', () => {
 
   const event = new Event('input');
 
-  test('expect change first thumb value to 50 after dispatch event',()=>{
-    previewSlider.panel.firstValueInput.dispatchEvent(event)
-    previewSlider.panel.firstValueInput.value = '50'
-    handleValueChange.call(panel,event,FIRST_VALUE)
+  test('expect change first thumb value to 50 after dispatch event', () => {
+    previewSlider.panel.firstValueInput.dispatchEvent(event);
+    previewSlider.panel.firstValueInput.value = '50';
+    handleValueChange.call(panel, event, FIRST_VALUE);
     expect(previewSlider.params.value[FIRST_VALUE]).toBe(50);
-  })
+  });
 
-  test('expect change direction to vertical after dispatch event',()=>{
-    previewSlider.panel.isVertical.dispatchEvent(event)
-    previewSlider.panel.isVertical.checked = true
-    handleDirectionChange.call(panel,event)
+  test('expect change direction to vertical after dispatch event', () => {
+    previewSlider.panel.isVertical.dispatchEvent(event);
+    previewSlider.panel.isVertical.checked = true;
+    handleDirectionChange.call(panel, event);
     expect(previewSlider.params.direction).toBe(Directions.vertical);
-  })
+  });
 
-  test('expect change direction to vertical after dispatch event',()=>{
-    previewSlider.panel.isVertical.dispatchEvent(event)
-    previewSlider.panel.isVertical.checked = false
-    handleDirectionChange.call(panel,event)
+  test('expect change direction to vertical after dispatch event', () => {
+    previewSlider.panel.isVertical.dispatchEvent(event);
+    previewSlider.panel.isVertical.checked = false;
+    handleDirectionChange.call(panel, event);
     expect(previewSlider.params.direction).toBe(Directions.horizontal);
-  })
+  });
 
-  test('expect change min value to 50 after dispatch event',()=>{
-    previewSlider.panel.minValueInput.dispatchEvent(event)
-    previewSlider.panel.minValueInput.value = '50'
-    handleOtherParamChange.call(panel,event,Params.min)
+  test('expect change min value to 50 after dispatch event', () => {
+    previewSlider.panel.minValueInput.dispatchEvent(event);
+    previewSlider.panel.minValueInput.value = '50';
+    handleOtherParamChange.call(panel, event, Params.min);
     expect(previewSlider.params.min).toBe(50);
-  })
+  });
 
-  test('expect change max value to 100 after dispatch event',()=>{
-    previewSlider.panel.maxValueInput.dispatchEvent(event)
-    previewSlider.panel.maxValueInput.value = '100'
-    handleOtherParamChange.call(panel,event,Params.max)
+  test('expect change max value to 100 after dispatch event', () => {
+    previewSlider.panel.maxValueInput.dispatchEvent(event);
+    previewSlider.panel.maxValueInput.value = '100';
+    handleOtherParamChange.call(panel, event, Params.max);
     expect(previewSlider.params.max).toBe(100);
-  })
+  });
 
-  test('expect change hasFill to false after dispatch event',()=>{
-    previewSlider.panel.hasFill.dispatchEvent(event)
-    previewSlider.panel.hasFill.checked = false
-    handleOtherParamChange.call(panel,event,Params.hasFill)
+  test('expect change hasFill to false after dispatch event', () => {
+    previewSlider.panel.hasFill.dispatchEvent(event);
+    previewSlider.panel.hasFill.checked = false;
+    handleOtherParamChange.call(panel, event, Params.hasFill);
     expect(previewSlider.params.hasFill).toBe(false);
-  })
-
+  });
 });

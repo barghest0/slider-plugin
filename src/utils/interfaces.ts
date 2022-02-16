@@ -12,8 +12,16 @@ interface Ends {
 type Direction = 'vertical' | 'horizontal';
 type OffsetDirection = 'left' | 'top';
 type FillDirection = 'width' | 'height';
+type onChange<T> = (params: T) => void;
 interface SliderParams {
-  [index: string]: number | number[] | Direction | boolean | any;
+  [index: string]:
+    | number
+    | string
+    | number[]
+    | Direction
+    | boolean
+    | onChange<SliderParams>
+    | undefined;
   min: number;
   max: number;
   step: number;
@@ -25,7 +33,7 @@ interface SliderParams {
   hasScale: boolean;
   isDecimal: boolean;
   decimalPlaces: number;
-  onChange?: (params: SliderParams) => void;
+  onChange?: onChange<SliderParams>;
 }
 
 interface UserSliderParams {
@@ -40,7 +48,7 @@ interface UserSliderParams {
   hasScale?: boolean;
   isDecimal?: boolean;
   decimalPlaces?: number;
-  onChange?: (params: SliderParams) => void;
+  onChange?: onChange<SliderParams>;
 }
 
 interface SliderTrackState {
