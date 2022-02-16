@@ -5,6 +5,7 @@ import {
   InitMods,
   SliderFillState,
   SliderParams,
+  SubscribersNames,
 } from '../@types/slider';
 import clearHTML from './PresenterModules/clearHTML';
 import removeListeners from './PresenterModules/removeListeners';
@@ -22,6 +23,8 @@ import updateThumbBeforeTrackClick from './PresenterModules/notifyModelMethods/u
 import updateThumb from './PresenterModules/notifyModelMethods/updateThumb';
 import updateFill from './PresenterModules/notifyModelMethods/updateFill';
 import updateThumbView from './PresenterModules/notifyViewMethods/updateThumbView';
+import unsubscribe from './PresenterModules/unsubscribe';
+import updateValues from './PresenterModules/updateValues';
 
 class Presenter {
   public root: string;
@@ -33,6 +36,10 @@ class Presenter {
   public view: View;
 
   public model: Model;
+
+  public params: SliderParams;
+
+  public thumbStance: number;
 
   public updateThumb: (
     stance: number,
@@ -57,17 +64,17 @@ class Presenter {
 
   public updateFillView: (state: SliderFillState) => void;
 
-  public params: SliderParams;
+  public updateValues: (stance: number, value: number) => void;
 
   public clearHTML: (direction: Direction) => void;
-
-  private thumbStance: number;
 
   private removeListeners: () => void;
 
   private addListeners: (isRange: boolean) => void;
 
   private subscribe: () => void;
+
+  private unsubscribe: () => void;
 
   constructor(root: string, params: SliderParams) {
     this.root = root;
@@ -80,6 +87,7 @@ class Presenter {
     this.clearHTML = clearHTML.bind(this);
     this.removeListeners = removeListeners.bind(this);
     this.subscribe = subscribe.bind(this);
+    this.unsubscribe = unsubscribe.bind(this);
     this.updateThumbBeforeTrackClick = updateThumbBeforeTrackClick.bind(this);
     this.updateThumb = updateThumb.bind(this);
     this.updateFill = updateFill.bind(this);
@@ -87,6 +95,7 @@ class Presenter {
     this.updateTipView = updateTipView.bind(this);
     this.addListeners = addListeners.bind(this);
     this.updateFillView = updateFillView.bind(this);
+    this.updateValues = updateValues.bind(this);
   }
 
   public init(params: SliderParams, mode: string) {
@@ -97,6 +106,7 @@ class Presenter {
       this.thumbStance = 0;
       this.view.thumbView.thumbs = [];
       this.view.tipView.tips = [];
+      this.unsubscribe();
     }
     this.addSliderClasses(params.direction);
     this.setModelState(params);
@@ -121,31 +131,6 @@ class Presenter {
     this.view.setParams(this.model.getParams());
     this.view.setSize(size);
     return this;
-  }
-
-  public updateValues(value: number, stance: number) {
-    this.params.value[stance] = value;
-    const panel = <HTMLElement>(
-      this.DOMparent.parentElement?.querySelector('.slider-panel')
-    );
-    if (panel) {
-      this.updatePanelValues(stance, panel);
-    }
-  }
-
-  private updatePanelValues(stance: number, panel: HTMLElement) {
-    const firstStance = stance === FIRST_THUMB_STANCE;
-    if (firstStance) {
-      const firstValueInput = <HTMLInputElement>(
-        panel.querySelector('.first-value')
-      );
-      firstValueInput.value = String(this.params.value[stance]);
-    } else {
-      const secondValueInput = <HTMLInputElement>(
-        panel.querySelector('.second-value')
-      );
-      secondValueInput.value = String(this.params.value[stance]);
-    }
   }
 
   private addSliderClasses(direction: Direction) {

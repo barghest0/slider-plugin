@@ -1,30 +1,25 @@
-import { SubscriberEvent, Subscribers } from './@types/observer';
+import { SubscriberFn, Subscribers } from './@types/observer';
 
 class Observer {
-  private subscribers: Subscribers;
+  public subscribers: Subscribers;
 
   constructor(subscribers: Subscribers = {}) {
     this.subscribers = subscribers;
   }
 
-  public subscribe(name: string, event: SubscriberEvent) {
-    const eventInObject = this.subscribers[name];
-
-    if (eventInObject) {
-      eventInObject.push(event);
-    } else {
-      this.subscribers[name] = [event];
-    }
+  public subscribe(name: string, fn: SubscriberFn) {
+    this.subscribers[name] = this.subscribers[name] || [];
+    this.subscribers[name].push(fn);
   }
 
-  public unsubscribe(name: string, event: SubscriberEvent) {
-    this.subscribers[name].filter(
-      (subscriberFunc: SubscriberEvent) => event !== subscriberFunc,
+  public unsubscribe(name: string, fn: SubscriberFn) {
+    this.subscribers[name] = this.subscribers[name].filter(
+      (subscriberFunc: SubscriberFn) => fn !== subscriberFunc,
     );
   }
 
   public notify(name: string, ...args: any[]) {
-    this.subscribers[name].forEach((subscriberFunc: SubscriberEvent) => {
+    this.subscribers[name].forEach((subscriberFunc: SubscriberFn) => {
       subscriberFunc(...args);
     });
   }

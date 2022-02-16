@@ -14,11 +14,7 @@ function subscribe(this: Presenter) {
   this.model.subscribe(SubscribersNames.updateThumbView, this.updateThumbView);
   this.model.subscribe(SubscribersNames.updateTipView, this.updateTipView);
   this.model.subscribe(SubscribersNames.updateFillView, this.updateFillView);
-
-  this.model.subscribe(
-    SubscribersNames.updateValues,
-    this.updateValues.bind(this),
-  );
+  this.model.subscribe(SubscribersNames.updateValues, this.updateValues);
 }
 
 export default subscribe;

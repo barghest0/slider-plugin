@@ -1,7 +1,7 @@
-type SubscriberEvent = (...data: any[]) => void;
+type SubscriberFn = (...data: any[]) => void;
 
 type Subscribers = {
-  [key: string]: SubscriberEvent[];
+  [key: string]: SubscriberFn[];
 };
 
-export { SubscriberEvent, Subscribers };
+export { SubscriberFn, Subscribers };
