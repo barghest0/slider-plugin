@@ -32,8 +32,8 @@ function validateParams(
 
   const validatedValue = validateValue(value);
   const validatedStep = validateStep(step, min, max);
-  const validatedMin = validateMin(min, max, step);
-  const validatedMax = validateMax(min, max, step);
+  let validatedMin = validateMin(min, max, step);
+  let validatedMax = validateMax(min, max, step);
   const validatedDecimalPlaces = validateDecimalPlaces(decimalPlaces, 3);
 
   validatedValue[FIRST_THUMB_STANCE] = validateFirstThumb(

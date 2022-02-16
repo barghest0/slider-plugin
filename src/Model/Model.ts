@@ -118,11 +118,11 @@ class Model extends Observer {
     const { fillOffset, fillSize } = this.getFillState();
     let stance = FIRST_THUMB_STANCE;
     const isSecondThumbNearest = cursorOffset > fillSize / 2 + fillOffset;
-    const reverseStance = +!stance;
     if (isSecondThumbNearest) stance = SECOND_THUMB_STANCE;
+    const reversedStance = +!stance
+    if (direction === Directions.vertical) stance = reversedStance;
 
-    if (direction === Directions.vertical) stance = reverseStance;
-
+    
     if (!isRange) stance = FIRST_THUMB_STANCE;
 
     this.updateThumb(stance, cursorOffset);
