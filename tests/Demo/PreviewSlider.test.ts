@@ -5,6 +5,9 @@ import Slider from '../../src/Slider';
 import handleChange from '../../src/Demo/Panel/PanelModules/handleOtherParamChange';
 import { FIRST_VALUE } from '../../src/utils/constants';
 import { Directions, InitMods, Params } from '../../src/utils/interfaces';
+import handleValueChange from '../../src/Demo/Panel/PanelModules/handleValueChange';
+import handleDirectionChange from '../../src/Demo/Panel/PanelModules/handleDirectionChange';
+import handleOtherParamChange from '../../src/Demo/Panel/PanelModules/handleOtherParamChange';
 
 describe('PreviewSlider test', () => {
   document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';
@@ -35,34 +38,48 @@ describe('PreviewSlider test', () => {
     previewSlider.slider.params.isRange = true;
   });
 
-  // test('correct handle change', () => {
-  //   const event = new Event('input');
-  //   panel.renderPanel();
+  const event = new Event('input');
 
-  //   previewSlider.panel.firstValueInput.dispatchEvent(event);
-  //   previewSlider.panel.firstValueInput.value = '50';
+  test('expect change first thumb value to 50 after dispatch event',()=>{
+    previewSlider.panel.firstValueInput.dispatchEvent(event)
+    previewSlider.panel.firstValueInput.value = '50'
+    handleValueChange.call(panel,event,FIRST_VALUE)
+    expect(previewSlider.params.value[FIRST_VALUE]).toBe(50);
+  })
 
-  //   handleChange.call(panel, event, Params.value, FIRST_VALUE);
-  //   expect(previewSlider.params.value[FIRST_VALUE]).toBe(50);
+  test('expect change direction to vertical after dispatch event',()=>{
+    previewSlider.panel.isVertical.dispatchEvent(event)
+    previewSlider.panel.isVertical.checked = true
+    handleDirectionChange.call(panel,event)
+    expect(previewSlider.params.direction).toBe(Directions.vertical);
+  })
 
-  //   previewSlider.panel.maxValueInput.dispatchEvent(event);
-  //   previewSlider.panel.maxValueInput.value = '200';
-  //   handleChange.call(panel, event, Params.max);
-  //   expect(previewSlider.params.max).toBe(200);
+  test('expect change direction to vertical after dispatch event',()=>{
+    previewSlider.panel.isVertical.dispatchEvent(event)
+    previewSlider.panel.isVertical.checked = false
+    handleDirectionChange.call(panel,event)
+    expect(previewSlider.params.direction).toBe(Directions.horizontal);
+  })
 
-  //   previewSlider.panel.minValueInput.dispatchEvent(event);
-  //   previewSlider.panel.minValueInput.value = '-100';
-  //   handleChange.call(panel, event, Params.min);
-  //   expect(previewSlider.params.min).toBe(-100);
+  test('expect change min value to 50 after dispatch event',()=>{
+    previewSlider.panel.minValueInput.dispatchEvent(event)
+    previewSlider.panel.minValueInput.value = '50'
+    handleOtherParamChange.call(panel,event,Params.min)
+    expect(previewSlider.params.min).toBe(50);
+  })
 
-  //   previewSlider.panel.isVertical.dispatchEvent(event);
-  //   previewSlider.panel.isVertical.checked = true;
-  //   handleChange.call(panel, event, Params.direction);
-  //   expect(previewSlider.params.direction).toBe(Directions.vertical);
+  test('expect change max value to 100 after dispatch event',()=>{
+    previewSlider.panel.maxValueInput.dispatchEvent(event)
+    previewSlider.panel.maxValueInput.value = '100'
+    handleOtherParamChange.call(panel,event,Params.max)
+    expect(previewSlider.params.max).toBe(100);
+  })
 
-  //   previewSlider.panel.hasFill.dispatchEvent(event);
-  //   previewSlider.panel.hasFill.checked = true;
-  //   handleChange.call(panel, event, Params.hasFill);
-  //   expect(previewSlider.params.hasFill).toBe(true);
-  // });
+  test('expect change hasFill to false after dispatch event',()=>{
+    previewSlider.panel.hasFill.dispatchEvent(event)
+    previewSlider.panel.hasFill.checked = false
+    handleOtherParamChange.call(panel,event,Params.hasFill)
+    expect(previewSlider.params.hasFill).toBe(false);
+  })
+
 });
