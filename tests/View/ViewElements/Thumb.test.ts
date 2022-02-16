@@ -1,7 +1,7 @@
 import View from '../../../src/View/View';
 import Thumb from '../../../src/View/ViewElements/Thumb/Thumb';
 
-import { Directions, SubscribersNames } from '../../../src/utils/interfaces';
+import { Directions, SubscribersNames } from '../../../src/@types/slider';
 import {
   FIRST_OFFSET,
   FIRST_THUMB_STANCE,
@@ -9,7 +9,7 @@ import {
   SECOND_OFFSET,
   SECOND_THUMB_STANCE,
   SECOND_VALUE,
-} from '../../../src/utils/constants';
+} from '../../../src/constants/slider';
 import Model from '../../../src/Model/Model';
 
 describe('Thumb test', () => {

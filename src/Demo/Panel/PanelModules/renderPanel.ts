@@ -11,7 +11,7 @@ import {
   MIN_CLASS,
   SECOND_VALUE_CLASS,
   STEP_CLASS,
-} from '../../../utils/constants';
+} from '../constants';
 import Panel from '../Panel';
 import renderInput from './renderInput';
 

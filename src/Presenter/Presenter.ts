@@ -5,7 +5,7 @@ import {
   InitMods,
   SliderFillState,
   SliderParams,
-} from '../utils/interfaces';
+} from '../@types/slider';
 import clearHTML from './PresenterModules/clearHTML';
 import removeListeners from './PresenterModules/removeListeners';
 import subscribe from './PresenterModules/subscribe';
@@ -16,7 +16,7 @@ import {
   FIRST_THUMB_STANCE,
   MAIN_CLASS,
   PARENT_CLASS,
-} from '../utils/constants';
+} from '../constants/slider';
 import Model from '../Model/Model';
 import updateThumbBeforeTrackClick from './PresenterModules/notifyModelMethods/updateThumbBeforeTrackClick';
 import updateThumb from './PresenterModules/notifyModelMethods/updateThumb';

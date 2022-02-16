@@ -5,12 +5,12 @@ import {
   MAX_OFFSET,
   MIN_OFFSET,
   SECOND_THUMB_STANCE,
-} from '../../src/utils/constants';
+} from '../../src/constants/slider';
 import {
   Directions,
   Params,
   SubscribersNames,
-} from '../../src/utils/interfaces';
+} from '../../src/@types/slider';
 
 describe('Model test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;

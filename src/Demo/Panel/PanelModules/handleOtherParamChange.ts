@@ -1,5 +1,5 @@
-import validateParams from '../../../Presenter/PresenterModules/validateParams/validateParams';
-import { InitMods } from '../../../utils/interfaces';
+import validateParams from '../../../Presenter/PresenterModules/validateParams';
+import { InitMods } from '../../../@types/slider';
 import Panel from '../Panel';
 
 function handleOtherParamChange(this: Panel, event: Event, param: string) {

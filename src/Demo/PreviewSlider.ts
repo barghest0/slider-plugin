@@ -1,7 +1,7 @@
-import { InitMods, SliderParams, UserSliderParams } from '../utils/interfaces';
+import { InitMods, SliderParams, UserSliderParams } from '../@types/slider';
 import Slider from '../Slider';
 import Panel from './Panel/Panel';
-import checkParams from '../Presenter/PresenterModules/validateParams/validateParams';
+import checkParams from '../Presenter/PresenterModules/validateParams';
 
 class PreviewSlider {
   public panel: Panel;

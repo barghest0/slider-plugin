@@ -1,4 +1,4 @@
-import { Directions, SubscribersNames } from '../../../../utils/interfaces';
+import { Directions, SubscribersNames } from '../../../../@types/slider';
 import Thumb from '../Thumb';
 
 function handleDrag(event: PointerEvent, thisThumb: Thumb, stance: number) {

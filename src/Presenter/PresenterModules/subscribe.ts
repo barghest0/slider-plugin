@@ -1,4 +1,4 @@
-import { SubscribersNames } from '../../utils/interfaces';
+import { SubscribersNames } from '../../@types/slider';
 import Presenter from '../Presenter';
 
 function subscribe(this: Presenter) {

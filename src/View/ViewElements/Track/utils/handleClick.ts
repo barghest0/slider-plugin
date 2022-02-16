@@ -1,4 +1,4 @@
-import { Directions, SubscribersNames } from '../../../../utils/interfaces';
+import { Directions, SubscribersNames } from '../../../../@types/slider';
 import Track from '../Track';
 
 function handleClick(event: PointerEvent, thisTrack: Track) {

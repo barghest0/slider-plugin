@@ -1,8 +1,8 @@
-import { Direction } from '../../../utils/interfaces';
+import { Direction } from '../../../@types/slider';
 import Observer from '../../../Observer/Observer';
 import View from '../../View';
 import updateFill from './utils/updateFill';
-import { FILL_CLASS } from '../../../utils/constants';
+import { FILL_CLASS } from '../../../constants/slider';
 
 class Fill extends Observer {
   public view: View;

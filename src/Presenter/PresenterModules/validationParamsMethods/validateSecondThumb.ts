@@ -1,7 +1,7 @@
 import {
   FIRST_THUMB_STANCE,
   SECOND_THUMB_STANCE,
-} from '../../../utils/constants';
+} from '../../../constants/slider';
 
 function validateSecondThumb(value: number[], min: number, max: number) {
   const validatedValue = value;

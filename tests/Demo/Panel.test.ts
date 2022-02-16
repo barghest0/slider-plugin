@@ -1,6 +1,6 @@
 import Panel from '../../src/Demo/Panel/Panel';
 import PreviewSlider from '../../src/Demo/PreviewSlider';
-import validateParams from '../../src/Presenter/PresenterModules/validateParams/validateParams';
+import validateParams from '../../src/Presenter/PresenterModules/validateParams';
 
 describe('Panel test', () => {
   document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';

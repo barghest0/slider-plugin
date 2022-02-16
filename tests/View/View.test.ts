@@ -1,6 +1,6 @@
 import View from '../../src/View/View';
-import { Directions, Params } from '../../src/utils/interfaces';
-import { DEFAULT_SLIDER_PARAMS } from '../../src/utils/constants';
+import { Directions, Params } from '../../src/@types/slider';
+import { DEFAULT_SLIDER_PARAMS } from '../../src/constants/slider';
 
 describe('View test', () => {
   document.body.innerHTML = `<div id="slider-1" data-testid="slider-1" class="slider-1"></div>`;

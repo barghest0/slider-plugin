@@ -1,4 +1,4 @@
-import { SliderParams } from '../../utils/interfaces';
+import { SliderParams } from '../../@types/slider';
 import initializeFormValues from './PanelModules/initializeFormValues';
 import initializeInputs from './PanelModules/initializeInputs';
 import addInputListeners from './PanelModules/addInputListeners';
@@ -17,7 +17,7 @@ import {
   MIN_CLASS,
   SECOND_VALUE_CLASS,
   STEP_CLASS,
-} from '../../utils/constants';
+} from './constants';
 
 class Panel {
   public params: SliderParams;

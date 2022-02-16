@@ -7,18 +7,18 @@ import {
   SECOND_OFFSET,
   SECOND_THUMB_STANCE,
   SECOND_VALUE,
-} from '../../src/utils/constants';
+} from '../../src/constants/slider';
 import {
   Directions,
   InitMods,
   SubscribersNames,
-} from '../../src/utils/interfaces';
+} from '../../src/@types/slider';
 import Presenter from '../../src/Presenter/Presenter';
-import validateParams from '../../src/Presenter/PresenterModules/validateParams/validateParams';
-import validateStep from '../../src/Presenter/PresenterModules/validateParams/validateStep';
-import validateValue from '../../src/Presenter/PresenterModules/validateParams/validateValue';
-import validateMin from '../../src/Presenter/PresenterModules/validateParams/validateMin';
-import validateDecimalPlaces from '../../src/Presenter/PresenterModules/validateParams/validateDecimalPlaces';
+import validateParams from '../../src/Presenter/PresenterModules/validateParams';
+import validateStep from '../../src/Presenter/PresenterModules/validationParamsMethods/validateStep';
+import validateValue from '../../src/Presenter/PresenterModules/validationParamsMethods/validateValue';
+import validateMin from '../../src/Presenter/PresenterModules/validationParamsMethods/validateMin';
+import validateDecimalPlaces from '../../src/Presenter/PresenterModules/validationParamsMethods/validateDecimalPlaces';
 
 describe('Presenter test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;

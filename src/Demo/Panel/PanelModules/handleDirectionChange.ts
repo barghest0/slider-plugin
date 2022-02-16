@@ -1,5 +1,5 @@
-import validateParams from '../../../Presenter/PresenterModules/validateParams/validateParams';
-import { Directions, InitMods } from '../../../utils/interfaces';
+import validateParams from '../../../Presenter/PresenterModules/validateParams';
+import { Directions, InitMods } from '../../../@types/slider';
 import Panel from '../Panel';
 
 function handleDirectionChange(this: Panel, event: Event) {

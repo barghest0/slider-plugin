@@ -10,10 +10,10 @@ import {
   OffsetDirection,
   OffsetDirections,
   SliderParams,
-} from '../utils/interfaces';
+} from '../@types/slider';
 
 import prepareDirectionForInteraction from './ViewModules/prepareDirectionForInteraction';
-import { DEFAULT_SLIDER_PARAMS } from '../utils/constants';
+import { DEFAULT_SLIDER_PARAMS } from '../constants/slider';
 import calculateCursorOffset from './ViewModules/calculateCursorOffset';
 import Tip from './ViewElements/Tip/Tip';
 

@@ -1,4 +1,4 @@
-import { SubscribeEvent, Subscribers } from '../utils/interfaces';
+import { SubscriberEvent, Subscribers } from './@types/observer';
 
 class Observer {
   private subscribers: Subscribers;
@@ -7,7 +7,7 @@ class Observer {
     this.subscribers = subscribers;
   }
 
-  public subscribe(name: string, event: SubscribeEvent) {
+  public subscribe(name: string, event: SubscriberEvent) {
     const eventInObject = this.subscribers[name];
 
     if (eventInObject) {
@@ -17,14 +17,14 @@ class Observer {
     }
   }
 
-  public unsubscribe(name: string, event: SubscribeEvent) {
+  public unsubscribe(name: string, event: SubscriberEvent) {
     this.subscribers[name].filter(
-      (subscriberFunc: SubscribeEvent) => event !== subscriberFunc,
+      (subscriberFunc: SubscriberEvent) => event !== subscriberFunc,
     );
   }
 
   public notify(name: string, ...args: any[]) {
-    this.subscribers[name].forEach((subscriberFunc: SubscribeEvent) => {
+    this.subscribers[name].forEach((subscriberFunc: SubscriberEvent) => {
       subscriberFunc(...args);
     });
   }

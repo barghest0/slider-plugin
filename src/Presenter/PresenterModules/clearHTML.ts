@@ -1,4 +1,4 @@
-import { Direction, Directions } from '../../utils/interfaces';
+import { Direction, Directions } from '../../@types/slider';
 import Presenter from '../Presenter';
 
 function clearHTML(this: Presenter, direction: Direction) {

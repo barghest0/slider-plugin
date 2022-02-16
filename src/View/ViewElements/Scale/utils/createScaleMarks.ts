@@ -1,5 +1,5 @@
-import { SCALE_CLASS } from '../../../../utils/constants';
-import { Direction, Directions } from '../../../../utils/interfaces';
+import { SCALE_CLASS } from '../../../../constants/slider';
+import { Direction, Directions } from '../../../../@types/slider';
 import Scale from '../Scale';
 import prepareScaleData from './prepareScaleData';
 

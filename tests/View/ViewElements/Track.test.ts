@@ -4,7 +4,7 @@ import {
   Directions,
   Params,
   SubscribersNames,
-} from '../../../src/utils/interfaces';
+} from '../../../src/@types/slider';
 
 describe('Track test', () => {
   document.body.innerHTML =

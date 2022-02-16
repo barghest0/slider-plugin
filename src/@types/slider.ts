@@ -1,27 +1,20 @@
-type SubscribeEvent = (...data: any[]) => void;
-
-interface Subscribers {
-  [key: string]: SubscribeEvent[];
-}
-
-interface Ends {
+type Ends = {
   min: number;
   max: number;
-}
-
+};
 type Direction = 'vertical' | 'horizontal';
 type OffsetDirection = 'left' | 'top';
 type FillDirection = 'width' | 'height';
 type onChange<T> = (params: T) => void;
-interface SliderParams {
+type SliderParams = {
   [index: string]:
-    | number
-    | string
-    | number[]
-    | Direction
-    | boolean
-    | onChange<SliderParams>
-    | undefined;
+  | number
+  | string
+  | number[]
+  | Direction
+  | boolean
+  | onChange<SliderParams>
+  | undefined;
   min: number;
   max: number;
   step: number;
@@ -34,9 +27,9 @@ interface SliderParams {
   isDecimal: boolean;
   decimalPlaces: number;
   onChange?: onChange<SliderParams>;
-}
+};
 
-interface UserSliderParams {
+type UserSliderParams = {
   min?: number;
   max?: number;
   step?: number;
@@ -49,9 +42,9 @@ interface UserSliderParams {
   isDecimal?: boolean;
   decimalPlaces?: number;
   onChange?: onChange<SliderParams>;
-}
+};
 
-interface SliderTrackState {
+type SliderTrackState = {
   ends: Ends;
   size: number;
   isRange: boolean;
@@ -59,9 +52,9 @@ interface SliderTrackState {
   hasFill: boolean;
   hasTips: boolean;
   hasScale: boolean;
-}
+};
 
-interface SliderThumbState {
+type SliderThumbState = {
   step: number;
   value: number;
   isDecimal: boolean;
@@ -70,12 +63,12 @@ interface SliderThumbState {
   stepPercent: number;
   offset: number;
   stepOffset: number;
-}
+};
 
-interface SliderFillState {
+type SliderFillState = {
   fillOffset: number;
   fillSize: number;
-}
+};
 
 enum SubscribersNames {
   updateThumb = 'UpdateThumb',
@@ -120,8 +113,6 @@ enum FillDirections {
   height = 'height',
 }
 export {
-  SubscribeEvent,
-  Subscribers,
   Ends,
   SliderParams,
   UserSliderParams,

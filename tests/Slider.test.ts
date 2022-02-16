@@ -1,4 +1,4 @@
-import validateParams from '../src/Presenter/PresenterModules/validateParams/validateParams';
+import validateParams from '../src/Presenter/PresenterModules/validateParams';
 import Slider from '../src/Slider';
 
 describe('Slider test', () => {

@@ -4,7 +4,7 @@ import {
   SliderFillState,
   SliderParams,
   SubscribersNames,
-} from '../utils/interfaces';
+} from '../@types/slider';
 import {
   DEFAULT_SLIDER_PARAMS,
   FIRST_OFFSET,
@@ -12,7 +12,7 @@ import {
   MIN_OFFSET,
   SECOND_OFFSET,
   SECOND_THUMB_STANCE,
-} from '../utils/constants';
+} from '../constants/slider';
 import prepareOffset from './ModelModules/prepareOffset';
 import endsValidation from './ModelModules/endsValidation';
 

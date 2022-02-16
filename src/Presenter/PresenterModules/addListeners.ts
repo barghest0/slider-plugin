@@ -1,4 +1,4 @@
-import { FIRST_THUMB_STANCE, SECOND_THUMB_STANCE } from '../../utils/constants';
+import { FIRST_THUMB_STANCE, SECOND_THUMB_STANCE } from '../../constants/slider';
 import Presenter from '../Presenter';
 
 function addListeners(this: Presenter, isRange: boolean) {

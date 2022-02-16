@@ -2,7 +2,7 @@ import {
   FIRST_THUMB_STANCE,
   FIRST_VALUE,
   SECOND_VALUE,
-} from '../../../../utils/constants';
+} from '../../../../constants/slider';
 import Thumb from '../Thumb';
 
 const validateCollision = function validateCollision(

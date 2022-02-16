@@ -1,4 +1,4 @@
-import { SliderFillState } from '../../../utils/interfaces';
+import { SliderFillState } from '../../../@types/slider';
 import Presenter from '../../Presenter';
 
 function updateFillView(

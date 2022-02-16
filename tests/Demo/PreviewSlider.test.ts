@@ -1,10 +1,9 @@
 import Panel from '../../src/Demo/Panel/Panel';
 import PreviewSlider from '../../src/Demo/PreviewSlider';
-import validateParams from '../../src/Presenter/PresenterModules/validateParams/validateParams';
+import validateParams from '../../src/Presenter/PresenterModules/validateParams';
 import Slider from '../../src/Slider';
-import handleChange from '../../src/Demo/Panel/PanelModules/handleOtherParamChange';
-import { FIRST_VALUE } from '../../src/utils/constants';
-import { Directions, InitMods, Params } from '../../src/utils/interfaces';
+import { FIRST_VALUE } from '../../src/constants/slider';
+import { Directions, InitMods, Params } from '../../src/@types/slider';
 import handleValueChange from '../../src/Demo/Panel/PanelModules/handleValueChange';
 import handleDirectionChange from '../../src/Demo/Panel/PanelModules/handleDirectionChange';
 import handleOtherParamChange from '../../src/Demo/Panel/PanelModules/handleOtherParamChange';

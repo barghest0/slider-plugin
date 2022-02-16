@@ -1,6 +1,6 @@
-import { InitMods, SliderParams, UserSliderParams } from './utils/interfaces';
+import { InitMods, SliderParams, UserSliderParams } from './@types/slider';
 import Presenter from './Presenter/Presenter';
-import checkParams from './Presenter/PresenterModules/validateParams/validateParams';
+import checkParams from './Presenter/PresenterModules/validateParams';
 
 class Slider {
   public presenter: Presenter;

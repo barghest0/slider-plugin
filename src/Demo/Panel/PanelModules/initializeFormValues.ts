@@ -1,5 +1,5 @@
-import { FIRST_VALUE, SECOND_VALUE } from '../../../utils/constants';
-import { Directions, SliderParams } from '../../../utils/interfaces';
+import { FIRST_VALUE, SECOND_VALUE } from '../../../constants/slider';
+import { Directions, SliderParams } from '../../../@types/slider';
 import Panel from '../Panel';
 
 function initializeFormValues(

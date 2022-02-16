@@ -1,8 +1,8 @@
-import { Direction } from '../../../utils/interfaces';
+import { Direction } from '../../../@types/slider';
 import Observer from '../../../Observer/Observer';
 import View from '../../View';
 import updateTipsPosition from './utils/updateTipsPosition';
-import { TIP_CLASS } from '../../../utils/constants';
+import { TIP_CLASS } from '../../../constants/slider';
 
 class Tip extends Observer {
   public view: View;

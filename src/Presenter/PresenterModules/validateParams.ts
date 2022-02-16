@@ -1,15 +1,15 @@
 import {
   FIRST_THUMB_STANCE,
   SECOND_THUMB_STANCE,
-} from '../../../utils/constants';
-import { SliderParams, UserSliderParams } from '../../../utils/interfaces';
-import validateDefaultParams from './validateDefaultParams';
-import validateDecimalPlaces from './validateDecimalPlaces';
-import validateFirstThumb from './validateFirstThumb';
-import validateMin from './validateMin';
-import validateSecondThumb from './validateSecondThumb';
-import validateStep from './validateStep';
-import validateValue from './validateValue';
+} from '../../constants/slider';
+import { SliderParams, UserSliderParams } from '../../@types/slider';
+import validateDefaultParams from './validationParamsMethods/validateDefaultParams';
+import validateDecimalPlaces from './validationParamsMethods/validateDecimalPlaces';
+import validateFirstThumb from './validationParamsMethods/validateFirstThumb';
+import validateMin from './validationParamsMethods/validateMin';
+import validateSecondThumb from './validationParamsMethods/validateSecondThumb';
+import validateStep from './validationParamsMethods/validateStep';
+import validateValue from './validationParamsMethods/validateValue';
 
 function validateParams(
   params: UserSliderParams,

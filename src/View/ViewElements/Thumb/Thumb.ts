@@ -3,7 +3,7 @@ import View from '../../View';
 import updateThumbPosition from './utils/updateThumbPosition';
 import validateCollision from './utils/validateCollision';
 import dragAndDropThumb from './utils/dragAndDropThumb';
-import { THUMB_CLASS } from '../../../utils/constants';
+import { THUMB_CLASS } from '../../../constants/slider';
 
 class Thumb extends Observer {
   public view: View;
