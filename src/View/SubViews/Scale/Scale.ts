@@ -1,5 +1,5 @@
 import { SCALE_CLASS } from '../../../constants/slider';
-import { Direction } from '../../../@types/slider';
+import { Direction } from '../../../types/slider';
 import View from '../../View';
 import createScaleMarks from './utils/createScaleMarks';
 

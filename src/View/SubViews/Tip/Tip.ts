@@ -1,13 +1,13 @@
-import { Direction } from '../../../@types/slider';
+import { Direction } from '../../../types/slider';
 import Observer from '../../../Observer/Observer';
 import View from '../../View';
-import updateTipsPosition from './utils/updateTipsPosition';
+import updateTipStyle from './utils/updateTipStyle';
 import { TIP_CLASS } from '../../../constants/slider';
 
 class Tip extends Observer {
   public view: View;
 
-  public updateTipsPosition: (stance: number) => void;
+  public updateTipStyle: (stance: number) => void;
 
   public tips: HTMLElement[];
 
@@ -27,7 +27,7 @@ class Tip extends Observer {
     this.value = [];
     this.decimalPlaces = 0;
     this.isDecimal = false;
-    this.updateTipsPosition = updateTipsPosition.bind(this);
+    this.updateTipStyle = updateTipStyle.bind(this);
   }
 
   public setOffset(offset: number, stance: number) {
@@ -46,6 +46,18 @@ class Tip extends Observer {
     return this.value;
   }
 
+  public setDecimalPlaces(decimalPlaces: number) {
+    if (this.isDecimal) {
+      this.decimalPlaces = decimalPlaces;
+    } else {
+      this.decimalPlaces = 0;
+    }
+  }
+
+  public setIsDecimal(isDecimal: boolean) {
+    this.isDecimal = isDecimal;
+  }
+
   public createTip(direction: Direction, stance: number) {
     const tip = document.createElement('div');
     tip.classList.add(TIP_CLASS);
@@ -54,18 +66,7 @@ class Tip extends Observer {
     tip.classList.add(`${TIP_CLASS}_${direction}`);
     this.tips.push(tip);
     this.view.DOMroot.appendChild(tip);
-  }
-
-  public setIsDecimal(isDecimal: boolean) {
-    this.isDecimal = isDecimal;
-  }
-
-  public setDecimalPlaces(decimalPlaces: number) {
-    if (this.isDecimal) {
-      this.decimalPlaces = decimalPlaces;
-    } else {
-      this.decimalPlaces = 0;
-    }
+    this.updateTipStyle(stance);
   }
 }
 

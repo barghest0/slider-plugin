@@ -1,7 +1,11 @@
-import { Directions, SubscribersNames } from '../../../../@types/slider';
+import { Directions, SubscribersNames } from '../../../../types/slider';
 import Thumb from '../Thumb';
 
-function handleDrag(event: PointerEvent, thisThumb: Thumb, stance: number) {
+function handleThumbDrag(
+  event: PointerEvent,
+  thisThumb: Thumb,
+  stance: number,
+) {
   const { direction, isRange } = thisThumb.view.params;
   const { DOMroot, size } = thisThumb.view;
   const coordinate =
@@ -18,4 +22,4 @@ function handleDrag(event: PointerEvent, thisThumb: Thumb, stance: number) {
   thisThumb.notify(SubscribersNames.updateFill);
 }
 
-export default handleDrag;
+export default handleThumbDrag;

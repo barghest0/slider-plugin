@@ -1,8 +1,7 @@
-import { SliderParams } from '../../@types/slider';
+import { InitMods, SliderParams, SubscribersNames } from '../../types/slider';
 import initializeFormValues from './PanelModules/initializeFormValues';
 import initializeInputs from './PanelModules/initializeInputs';
 import addInputListeners from './PanelModules/addInputListeners';
-import PreviewSlider from '../PreviewSlider';
 import renderPanel from './PanelModules/renderPanel';
 import {
   DECIMAL_PLACES_CLASS,
@@ -18,11 +17,13 @@ import {
   SECOND_VALUE_CLASS,
   STEP_CLASS,
 } from './constants';
+import Slider from '../../Slider';
+import Observer from '../../Observer/Observer';
 
-class Panel {
+class Panel extends Observer {
   public params: SliderParams;
 
-  public parent: PreviewSlider;
+  public slider: Slider;
 
   public root: string;
 
@@ -60,8 +61,9 @@ class Panel {
 
   public renderPanel: () => void;
 
-  constructor(params: SliderParams, root: string, parent: PreviewSlider) {
-    this.parent = parent;
+  constructor(params: SliderParams, root: string, slider: Slider) {
+    super();
+    this.slider = slider;
     this.params = params;
     this.root = root;
     this.DOMroot = <HTMLElement>document.querySelector(root);
@@ -83,7 +85,6 @@ class Panel {
     this.stepInput = <HTMLInputElement>(
       document.querySelector(`.js-${STEP_CLASS}`)
     );
-
     this.isRange = <HTMLInputElement>(
       document.querySelector(`.js-${IS_RANGE_CLASS}`)
     );
@@ -106,8 +107,13 @@ class Panel {
     this.initializeInputs = initializeInputs.bind(this);
     this.addInputListeners = addInputListeners.bind(this);
     this.renderPanel = renderPanel.bind(this);
+  }
 
+  public init() {
     this.renderPanel();
+    this.initializeInputs(this.root);
+    this.initializeFormValues(this.params);
+    this.addInputListeners();
   }
 }
 

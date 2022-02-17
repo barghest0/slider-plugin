@@ -1,11 +1,11 @@
 import Thumb from '../Thumb';
-import handleDrag from './handleDrag';
+import handleThumbDrag from './handleThumbDrag';
 
 function dragAndDropThumb(this: Thumb, stance: number) {
   const DOMthumb = this.thumbs[stance];
 
   const handlePointerMove = (event: PointerEvent) => {
-    handleDrag(event, this, stance);
+    handleThumbDrag(event, this, stance);
   };
 
   const handlePointerDown = (event: PointerEvent | TouchEvent) => {

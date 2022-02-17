@@ -3,7 +3,7 @@ import {
   Directions,
   FillDirections,
   OffsetDirections,
-} from '../../@types/slider';
+} from '../../types/slider';
 import View from '../View';
 
 function prepareDirectionForInteraction(this: View, direction: Direction) {

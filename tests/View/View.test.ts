@@ -1,5 +1,5 @@
 import View from '../../src/View/View';
-import { Directions, Params } from '../../src/@types/slider';
+import { Directions, Params } from '../../src/types/slider';
 import { DEFAULT_SLIDER_PARAMS } from '../../src/constants/slider';
 
 describe('View test', () => {

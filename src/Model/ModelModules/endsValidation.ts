@@ -1,5 +1,5 @@
 import { MAX_OFFSET, MIN_OFFSET } from '../../constants/slider';
-import { Directions } from '../../@types/slider';
+import { Directions } from '../../types/slider';
 import Model from '../Model';
 
 function endsValidation(this: Model, stance: number) {

@@ -1,10 +1,10 @@
 import View from '../../../src/View/View';
-import Track from '../../../src/View/ViewElements/Track/Track';
+import Track from '../../../src/View/SubViews/Track/Track';
 import {
   Directions,
   Params,
   SubscribersNames,
-} from '../../../src/@types/slider';
+} from '../../../src/types/slider';
 
 describe('Track test', () => {
   document.body.innerHTML =

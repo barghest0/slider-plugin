@@ -1,7 +1,7 @@
-import { Directions, SubscribersNames } from '../../../../@types/slider';
+import { Directions, SubscribersNames } from '../../../../types/slider';
 import Track from '../Track';
 
-function handleClick(event: PointerEvent, thisTrack: Track) {
+function handleTrackClick(event: PointerEvent, thisTrack: Track) {
   const { direction } = thisTrack.view.params;
   const coordinate =
     direction === Directions.horizontal ? event.pageX : event.pageY;
@@ -15,4 +15,4 @@ function handleClick(event: PointerEvent, thisTrack: Track) {
   thisTrack.notify(SubscribersNames.updateFill);
 }
 
-export default handleClick;
+export default handleTrackClick;

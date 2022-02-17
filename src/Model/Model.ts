@@ -1,10 +1,11 @@
 import Observer from '../Observer/Observer';
 import {
   Directions,
+  Params,
   SliderFillState,
   SliderParams,
   SubscribersNames,
-} from '../@types/slider';
+} from '../types/slider';
 import {
   DEFAULT_SLIDER_PARAMS,
   FIRST_OFFSET,
@@ -21,7 +22,7 @@ class Model extends Observer {
 
   public DOMroot: HTMLElement;
 
-  private offset: number[];
+  private thumbsOffset: number[];
 
   private fillState: SliderFillState;
 
@@ -35,7 +36,7 @@ class Model extends Observer {
     super();
     this.DOMroot = DOMroot;
     this.params = DEFAULT_SLIDER_PARAMS;
-    this.offset = [];
+    this.thumbsOffset = [];
     this.fillState = { fillOffset: 0, fillSize: 0 };
     this.size = 0;
     this.endsValidation = endsValidation.bind(this);
@@ -73,11 +74,11 @@ class Model extends Observer {
   }
 
   public setOffset(stance: number, offset: number) {
-    this.offset[stance] = offset;
+    this.thumbsOffset[stance] = offset;
   }
 
   public getOffset() {
-    return this.offset;
+    return this.thumbsOffset;
   }
 
   public calculateOffset(stance: number) {
@@ -102,15 +103,8 @@ class Model extends Observer {
       SubscribersNames.updateThumbView,
       stance,
       value[stance],
-      this.offset[stance],
+      this.thumbsOffset[stance],
     );
-    this.notify(
-      SubscribersNames.updateTipView,
-      stance,
-      value[stance],
-      this.offset[stance],
-    );
-    this.notify(SubscribersNames.updateValues, value[stance], stance);
   }
 
   public updateThumbBeforeTrackClick(cursorOffset: number) {
@@ -119,10 +113,9 @@ class Model extends Observer {
     let stance = FIRST_THUMB_STANCE;
     const isSecondThumbNearest = cursorOffset > fillSize / 2 + fillOffset;
     if (isSecondThumbNearest) stance = SECOND_THUMB_STANCE;
-    const reversedStance = +!stance
+    const reversedStance = Number(!stance);
     if (direction === Directions.vertical) stance = reversedStance;
 
-    
     if (!isRange) stance = FIRST_THUMB_STANCE;
 
     this.updateThumb(stance, cursorOffset);
@@ -148,15 +141,15 @@ class Model extends Observer {
     if (isRange) {
       fillSize =
         direction === Directions.horizontal
-          ? this.offset[SECOND_OFFSET] - this.offset[FIRST_OFFSET]
-          : this.offset[FIRST_OFFSET] - this.offset[SECOND_OFFSET];
+          ? this.thumbsOffset[SECOND_OFFSET] - this.thumbsOffset[FIRST_OFFSET]
+          : this.thumbsOffset[FIRST_OFFSET] - this.thumbsOffset[SECOND_OFFSET];
       fillOffset =
         direction === Directions.horizontal
-          ? this.offset[FIRST_OFFSET]
-          : this.offset[SECOND_OFFSET];
+          ? this.thumbsOffset[FIRST_OFFSET]
+          : this.thumbsOffset[SECOND_OFFSET];
     } else {
       fillOffset = MIN_OFFSET;
-      fillSize = this.prepareOffset(this.offset[FIRST_OFFSET]);
+      fillSize = this.prepareOffset(this.thumbsOffset[FIRST_OFFSET]);
     }
     return { fillOffset, fillSize };
   }

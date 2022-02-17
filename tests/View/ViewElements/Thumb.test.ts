@@ -1,7 +1,7 @@
 import View from '../../../src/View/View';
-import Thumb from '../../../src/View/ViewElements/Thumb/Thumb';
+import Thumb from '../../../src/View/SubViews/Thumb/Thumb';
 
-import { Directions, SubscribersNames } from '../../../src/@types/slider';
+import { Directions, SubscribersNames } from '../../../src/types/slider';
 import {
   FIRST_OFFSET,
   FIRST_THUMB_STANCE,

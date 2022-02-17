@@ -1,4 +1,4 @@
-import { SliderFillState } from '../../../@types/slider';
+import { SliderFillState } from '../../../types/slider';
 import Presenter from '../../Presenter';
 
 function updateFillView(
@@ -7,7 +7,7 @@ function updateFillView(
 ) {
   this.view.fillView.setSize(fillSize);
   this.view.fillView.setOffset(fillOffset);
-  this.view.fillView.updateFill();
+  this.view.fillView.updateFillStyle();
 }
 
 export default updateFillView;

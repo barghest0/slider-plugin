@@ -1,6 +1,6 @@
-import { Direction } from '../../../@types/slider';
+import { Direction } from '../../../types/slider';
 import View from '../../View';
-import handleClick from './utils/handleClick';
+import handleTrackClick from './utils/handleTrackClick';
 import Observer from '../../../Observer/Observer';
 import { TRACK_CLASS } from '../../../constants/slider';
 
@@ -26,7 +26,7 @@ class Track extends Observer {
 
   public clickTrack() {
     this.view.DOMroot.addEventListener('pointerdown', event =>
-      handleClick(event, this),
+      handleTrackClick(event, this),
     );
   }
 }

@@ -1,4 +1,4 @@
-import { Direction, Directions } from '../../@types/slider';
+import { Direction, Directions } from '../../types/slider';
 
 function calculateCursorOffset(
   coord: number,

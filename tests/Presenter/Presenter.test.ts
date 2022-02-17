@@ -12,7 +12,7 @@ import {
   Directions,
   InitMods,
   SubscribersNames,
-} from '../../src/@types/slider';
+} from '../../src/types/slider';
 import Presenter from '../../src/Presenter/Presenter';
 import validateParams from '../../src/Presenter/PresenterModules/validateParams';
 import validateStep from '../../src/Presenter/PresenterModules/validationParamsMethods/validateStep';

@@ -1,5 +1,5 @@
 import { DEFAULT_SLIDER_PARAMS } from '../../../constants/slider';
-import { Direction, UserSliderParams } from '../../../@types/slider';
+import { Direction, UserSliderParams } from '../../../types/slider';
 
 function validateDefaultParams(params: UserSliderParams, DOMroot: HTMLElement) {
   const data = DOMroot.dataset;

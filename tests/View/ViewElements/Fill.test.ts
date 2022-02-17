@@ -1,6 +1,6 @@
 import View from '../../../src/View/View';
-import Fill from '../../../src/View/ViewElements/Fill/Fill';
-import { Directions } from '../../../src/@types/slider';
+import Fill from '../../../src/View/SubViews/Fill/Fill';
+import { Directions } from '../../../src/types/slider';
 
 describe('Fill test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
@@ -28,24 +28,24 @@ describe('Fill test', () => {
   test('expect change fill size to 50% before calling update fill in horizontal/vertical direction', () => {
     view.prepareDirectionForInteraction(Directions.horizontal);
     fill.setSize(50);
-    fill.updateFill();
+    fill.updateFillStyle();
     expect(fill.fill.style.width).toBe('50%');
 
     view.prepareDirectionForInteraction(Directions.vertical);
     fill.setSize(50);
-    fill.updateFill();
+    fill.updateFillStyle();
     expect(fill.fill.style.height).toBe('50%');
   });
 
   test('expect change fill offset to 50% before calling update fill in horizontal/vertical direction', () => {
     view.prepareDirectionForInteraction(Directions.horizontal);
     fill.setOffset(50);
-    fill.updateFill();
+    fill.updateFillStyle();
     expect(fill.fill.style.width).toBe('50%');
 
     view.prepareDirectionForInteraction(Directions.vertical);
     fill.setOffset(50);
-    fill.updateFill();
+    fill.updateFillStyle();
     expect(fill.fill.style.height).toBe('50%');
   });
 });

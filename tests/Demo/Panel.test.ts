@@ -1,19 +1,20 @@
+import { FIRST_VALUE } from '../../src/constants/slider';
 import Panel from '../../src/Demo/Panel/Panel';
-import PreviewSlider from '../../src/Demo/PreviewSlider';
+import handleDirectionChange from '../../src/Demo/Panel/PanelModules/handleDirectionChange';
+import handleOtherParamChange from '../../src/Demo/Panel/PanelModules/handleOtherParamChange';
+import handleValueChange from '../../src/Demo/Panel/PanelModules/handleValueChange';
 import validateParams from '../../src/Presenter/PresenterModules/validateParams';
+import Slider from '../../src/Slider';
+import { Directions, InitMods, Params } from '../../src/types/slider';
 
 describe('Panel test', () => {
   document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';
   const root = '.slider-1';
-  const previewSlider = new PreviewSlider(root, {});
-  const panel = new Panel(
-    validateParams({}, previewSlider.DOMroot),
-    root,
-    previewSlider,
-  );
+  const slider = new Slider(root, {});
+  const panel = new Panel(validateParams({}, slider.DOMroot), root, slider);
 
   test('constructor test', () => {
-    expect(panel.parent).toBeInstanceOf(PreviewSlider);
+    expect(slider).toBeInstanceOf(Slider);
   });
 
   test('create panel test', () => {
@@ -26,5 +27,57 @@ describe('Panel test', () => {
     const checkboxParent = <HTMLElement>checkbox.parentElement;
     expect(checkbox.type).toBe('checkbox');
     expect(checkboxParent.classList.contains('checkbox-label')).toBeTruthy();
+  });
+
+  test('init test', () => {
+    expect(panel.firstValueInput.value).toBe('0');
+    expect(panel.firstValueInput).toBeInstanceOf(HTMLInputElement);
+
+    panel.init();
+    panel.params.isRange = true;
+  });
+
+  const event = new Event('input');
+
+  test('expect change first thumb value to 50 after dispatch event', () => {
+    panel.firstValueInput.dispatchEvent(event);
+    panel.firstValueInput.value = '50';
+    handleValueChange.call(panel, event, FIRST_VALUE);
+    expect(panel.params.value[FIRST_VALUE]).toBe(50);
+  });
+
+  test('expect change direction to vertical after dispatch event', () => {
+    panel.isVertical.dispatchEvent(event);
+    panel.isVertical.checked = true;
+    handleDirectionChange.call(panel, event);
+    expect(panel.params.direction).toBe(Directions.vertical);
+  });
+
+  test('expect change direction to vertical after dispatch event', () => {
+    panel.isVertical.dispatchEvent(event);
+    panel.isVertical.checked = false;
+    handleDirectionChange.call(panel, event);
+    expect(panel.params.direction).toBe(Directions.horizontal);
+  });
+
+  test('expect change min value to 50 after dispatch event', () => {
+    panel.minValueInput.dispatchEvent(event);
+    panel.minValueInput.value = '50';
+    handleOtherParamChange.call(panel, event, Params.min);
+    expect(panel.params.min).toBe(50);
+  });
+
+  test('expect change max value to 100 after dispatch event', () => {
+    panel.maxValueInput.dispatchEvent(event);
+    panel.maxValueInput.value = '100';
+    handleOtherParamChange.call(panel, event, Params.max);
+    expect(panel.params.max).toBe(100);
+  });
+
+  test('expect change hasFill to false after dispatch event', () => {
+    panel.hasFill.dispatchEvent(event);
+    panel.hasFill.checked = false;
+    handleOtherParamChange.call(panel, event, Params.hasFill);
+    expect(panel.params.hasFill).toBe(false);
   });
 });

@@ -1,7 +1,7 @@
-import { Direction } from '../../../@types/slider';
+import { Direction } from '../../../types/slider';
 import Observer from '../../../Observer/Observer';
 import View from '../../View';
-import updateFill from './utils/updateFill';
+import updateFillStyle from './utils/updateFillStyle';
 import { FILL_CLASS } from '../../../constants/slider';
 
 class Fill extends Observer {
@@ -9,7 +9,7 @@ class Fill extends Observer {
 
   public fill: HTMLElement;
 
-  public updateFill: () => void;
+  public updateFillStyle: () => void;
 
   private size: number;
 
@@ -21,7 +21,7 @@ class Fill extends Observer {
     this.view = view;
     this.size = 0;
     this.offset = 0;
-    this.updateFill = updateFill.bind(this);
+    this.updateFillStyle = updateFillStyle.bind(this);
   }
 
   public setSize(size: number) {
@@ -47,6 +47,7 @@ class Fill extends Observer {
     fill.classList.add(`${FILL_CLASS}_${direction}`);
     this.fill = fill;
     this.view.DOMroot.appendChild(fill);
+    this.updateFillStyle();
   }
 }
 

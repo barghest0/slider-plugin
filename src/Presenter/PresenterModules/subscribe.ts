@@ -1,10 +1,9 @@
-import { SubscribersNames } from '../../@types/slider';
+import { SubscribersNames } from '../../types/slider';
 import Presenter from '../Presenter';
 
 function subscribe(this: Presenter) {
   this.view.thumbView.subscribe(SubscribersNames.updateThumb, this.updateThumb);
   this.view.thumbView.subscribe(SubscribersNames.updateFill, this.updateFill);
-
   this.view.trackView.subscribe(
     SubscribersNames.updateThumbBeforeTrackClick,
     this.updateThumbBeforeTrackClick,
@@ -12,9 +11,9 @@ function subscribe(this: Presenter) {
   this.view.trackView.subscribe(SubscribersNames.updateFill, this.updateFill);
 
   this.model.subscribe(SubscribersNames.updateThumbView, this.updateThumbView);
-  this.model.subscribe(SubscribersNames.updateTipView, this.updateTipView);
+  this.model.subscribe(SubscribersNames.updateThumbView, this.updateTipView);
+
   this.model.subscribe(SubscribersNames.updateFillView, this.updateFillView);
-  this.model.subscribe(SubscribersNames.updateValues, this.updateValues);
 }
 
 export default subscribe;

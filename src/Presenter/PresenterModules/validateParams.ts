@@ -2,7 +2,7 @@ import {
   FIRST_THUMB_STANCE,
   SECOND_THUMB_STANCE,
 } from '../../constants/slider';
-import { SliderParams, UserSliderParams } from '../../@types/slider';
+import { SliderParams, UserSliderParams } from '../../types/slider';
 import validateDefaultParams from './validationParamsMethods/validateDefaultParams';
 import validateDecimalPlaces from './validationParamsMethods/validateDecimalPlaces';
 import validateFirstThumb from './validationParamsMethods/validateFirstThumb';

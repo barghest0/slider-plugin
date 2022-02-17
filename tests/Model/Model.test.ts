@@ -10,7 +10,7 @@ import {
   Directions,
   Params,
   SubscribersNames,
-} from '../../src/@types/slider';
+} from '../../src/types/slider';
 
 describe('Model test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;

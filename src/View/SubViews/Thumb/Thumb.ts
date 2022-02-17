@@ -1,6 +1,6 @@
 import Observer from '../../../Observer/Observer';
 import View from '../../View';
-import updateThumbPosition from './utils/updateThumbPosition';
+import updateThumbStyle from './utils/updateThumbStyle';
 import validateCollision from './utils/validateCollision';
 import dragAndDropThumb from './utils/dragAndDropThumb';
 import { THUMB_CLASS } from '../../../constants/slider';
@@ -14,7 +14,7 @@ class Thumb extends Observer {
 
   public activeStance: number;
 
-  public updateThumbPosition: (stance: number) => void;
+  public updateThumbStyle: (stance: number) => void;
 
   public validateCollision: (stance: number) => number;
 
@@ -27,21 +27,11 @@ class Thumb extends Observer {
     this.view = view;
     this.value = [];
     this.offset = [];
-
     this.activeStance = 0;
     this.thumbs = [];
-    this.updateThumbPosition = updateThumbPosition.bind(this);
+    this.updateThumbStyle = updateThumbStyle.bind(this);
     this.validateCollision = validateCollision.bind(this);
     this.dragAndDropThumb = dragAndDropThumb.bind(this);
-  }
-
-  public createThumb(stance: number) {
-    const thumb = document.createElement('div');
-    thumb.classList.add(THUMB_CLASS);
-    thumb.classList.add(`js-${THUMB_CLASS}-${stance}`);
-    thumb.classList.add(`${THUMB_CLASS}-${stance}`);
-    this.thumbs.push(thumb);
-    this.view.DOMroot.appendChild(thumb);
   }
 
   public setValue(value: number, stance: number) {
@@ -58,6 +48,16 @@ class Thumb extends Observer {
 
   public getOffset() {
     return this.offset;
+  }
+
+  public createThumb(stance: number) {
+    const thumb = document.createElement('div');
+    thumb.classList.add(THUMB_CLASS);
+    thumb.classList.add(`js-${THUMB_CLASS}-${stance}`);
+    thumb.classList.add(`${THUMB_CLASS}-${stance}`);
+    this.thumbs.push(thumb);
+    this.view.DOMroot.appendChild(thumb);
+    this.updateThumbStyle(stance);
   }
 }
 
