@@ -1,4 +1,4 @@
-import { InitMods, SliderParams, UserSliderParams } from './types/slider';
+import { SliderParams, UserSliderParams } from './types/slider';
 import Presenter from './Presenter/Presenter';
 import validateParams from './Presenter/PresenterModules/validateParams';
 import Panel from './Demo/Panel/Panel';
@@ -17,11 +17,11 @@ class Slider {
     this.DOMroot = <HTMLElement>document.querySelector(root);
     this.params = validateParams(params, this.DOMroot);
     this.presenter = new Presenter(root, this.params);
-    this.init(this.params, InitMods.init);
+    this.init(this.params);
   }
 
-  public init(params: SliderParams, mode: string) {
-    this.presenter.init(validateParams(params, this.DOMroot), mode);
+  public init(params: SliderParams) {
+    this.presenter.init(validateParams(params, this.DOMroot));
   }
 
   public addControlPanel() {

@@ -21,13 +21,15 @@ class Scale {
     this.createScaleMarks = createScaleMarks.bind(this);
   }
 
-  public createScale(direction: Direction) {
-    const scale = document.createElement('div');
-    scale.classList.add(SCALE_CLASS);
-    scale.classList.add(`js-${SCALE_CLASS}`);
-    scale.classList.add(`${SCALE_CLASS}_${direction}`);
-    this.scale = scale;
-    this.view.DOMroot.appendChild(scale);
+  public createScale(direction: Direction, hasScale: boolean) {
+    if (hasScale) {
+      const scale = document.createElement('div');
+      scale.classList.add(SCALE_CLASS);
+      scale.classList.add(`js-${SCALE_CLASS}`);
+      scale.classList.add(`${SCALE_CLASS}_${direction}`);
+      this.scale = scale;
+      this.view.DOMroot.appendChild(scale);
+    }
   }
 }
 

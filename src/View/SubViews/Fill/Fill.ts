@@ -40,14 +40,16 @@ class Fill extends Observer {
     return this.offset;
   }
 
-  public createFill(direction: Direction) {
-    const fill = document.createElement('div');
-    fill.classList.add(FILL_CLASS);
-    fill.classList.add(`js-${FILL_CLASS}`);
-    fill.classList.add(`${FILL_CLASS}_${direction}`);
-    this.fill = fill;
-    this.view.DOMroot.appendChild(fill);
-    this.updateFillStyle();
+  public createFill(direction: Direction, hasFill: boolean) {
+    if (hasFill) {
+      const fill = document.createElement('div');
+      fill.classList.add(FILL_CLASS);
+      fill.classList.add(`js-${FILL_CLASS}`);
+      fill.classList.add(`${FILL_CLASS}_${direction}`);
+      this.fill = fill;
+      this.view.DOMroot.appendChild(fill);
+      this.updateFillStyle();
+    }
   }
 }
 

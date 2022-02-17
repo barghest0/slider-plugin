@@ -9,7 +9,7 @@ describe('Fill test', () => {
   const view = new View(root);
   const fill = new Fill(view);
 
-  fill.createFill(Directions.horizontal);
+  fill.createFill(Directions.horizontal, true);
 
   test('is DOM fill instance of HTMLElement test', () => {
     expect(fill.fill).toBeInstanceOf(HTMLElement);

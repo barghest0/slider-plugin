@@ -8,11 +8,7 @@ import {
   SECOND_THUMB_STANCE,
   SECOND_VALUE,
 } from '../../src/constants/slider';
-import {
-  Directions,
-  InitMods,
-  SubscribersNames,
-} from '../../src/types/slider';
+import { Directions, SubscribersNames } from '../../src/types/slider';
 import Presenter from '../../src/Presenter/Presenter';
 import validateParams from '../../src/Presenter/PresenterModules/validateParams';
 import validateStep from '../../src/Presenter/PresenterModules/validationParamsMethods/validateStep';
@@ -29,7 +25,7 @@ describe('Presenter test', () => {
   const presenter = new Presenter(root, validateParams(params, DOMroot));
 
   const updateValues = jest.fn();
-  presenter.init(params, InitMods.init);
+  presenter.init(params);
   presenter.model.subscribe(SubscribersNames.updateValues, updateValues);
 
   test('constructor test', () => {
@@ -199,7 +195,6 @@ describe('Presenter test', () => {
     const value = validateValue(3);
     expect(value).toEqual([3]);
   });
-
 
   test('expect  min value not be bigger min when step equal 2', () => {
     const min = validateMin(15, 10, 2);

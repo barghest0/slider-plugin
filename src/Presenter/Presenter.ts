@@ -90,16 +90,7 @@ class Presenter {
     this.updateFillView = updateFillView.bind(this);
   }
 
-  public init(params: SliderParams, mode: string) {
-    // if (mode === InitMods.rebuild) {
-    //   this.params = params;
-    //   this.removeListeners();
-    //   this.clearHTML(params.direction);
-    //   this.thumbStance = 0;
-    //   this.view.thumbView.thumbs = [];
-    //   this.view.tipView.tips = [];
-    // this.unsubscribe();
-    // }
+  public init(params: SliderParams) {
     this.addSliderClasses(params.direction);
     this.setModelState(params);
     this.setViewState();
@@ -110,13 +101,22 @@ class Presenter {
     this.addListeners(params.isRange);
   }
 
-  public renderSlider({ direction, step, max, min, value }: SliderParams) {
+  public renderSlider({
+    direction,
+    step,
+    max,
+    min,
+    value,
+    hasFill,
+    hasScale,
+    hasTips,
+  }: SliderParams) {
     this.renderTrack(direction);
-    this.renderScale(direction, step, max, min);
-    this.renderFill(direction);
+    this.renderScale(direction, step, max, min, hasScale);
+    this.renderFill(direction, hasFill);
     value.forEach((_, stance) => {
       this.renderThumb(stance);
-      this.renderTip(direction, stance);
+      this.renderTip(direction, stance, hasTips);
     });
   }
 
@@ -157,7 +157,6 @@ class Presenter {
         decimalPlaces,
       );
     });
-
     this.setFillViewState(fillState);
   }
 
@@ -197,12 +196,12 @@ class Presenter {
     this.view.thumbView.createThumb(stance);
   }
 
-  private renderTip(direction: Direction, stance: number) {
-    this.view.tipView.createTip(direction, stance);
+  private renderTip(direction: Direction, stance: number, hasTips: boolean) {
+    this.view.tipView.createTip(direction, stance, hasTips);
   }
 
-  private renderFill(direction: Direction) {
-    this.view.fillView.createFill(direction);
+  private renderFill(direction: Direction, hasFill: boolean) {
+    this.view.fillView.createFill(direction, hasFill);
   }
 
   private renderScale(
@@ -210,8 +209,9 @@ class Presenter {
     step: number,
     max: number,
     min: number,
+    hasScale: boolean,
   ) {
-    this.view.scaleView.createScale(direction);
+    this.view.scaleView.createScale(direction, hasScale);
     this.view.scaleView.createScaleMarks(step, max, min, direction);
   }
 }
