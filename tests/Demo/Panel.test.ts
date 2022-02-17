@@ -12,9 +12,10 @@ describe('Panel test', () => {
   const root = '.slider-1';
   const slider = new Slider(root, {});
   const panel = new Panel(validateParams({}, slider.DOMroot), root, slider);
+  panel.init();
 
   test('constructor test', () => {
-    expect(slider).toBeInstanceOf(Slider);
+    expect(panel.slider).toBeInstanceOf(Slider);
   });
 
   test('create panel test', () => {

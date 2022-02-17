@@ -1,5 +1,6 @@
 import validateParams from '../../../Presenter/PresenterModules/validateParams';
-import { InitMods } from '../../../types/slider';
+import { SubscribersNames } from '../../../types/slider';
+
 import Panel from '../Panel';
 
 function handleOtherParamChange(this: Panel, event: Event, param: string) {
@@ -7,5 +8,7 @@ function handleOtherParamChange(this: Panel, event: Event, param: string) {
   const { value } = target;
   const isNumberParam = target.type === 'number';
   this.params[param] = isNumberParam ? +value : target.checked;
+  const validatedParams = validateParams(this.params, this.DOMroot);
+  this.notify(SubscribersNames.updateParams, validatedParams);
 }
 export default handleOtherParamChange;

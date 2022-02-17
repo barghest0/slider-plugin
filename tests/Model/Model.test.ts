@@ -147,11 +147,9 @@ describe('Model test', () => {
 
   test('expect notify thumb view after calling updateThumb', () => {
     const subscriberFn = jest.fn();
-    model.subscribe(SubscribersNames.updateTipView, subscriberFn);
     model.subscribe(SubscribersNames.updateThumbView, subscriberFn);
-    model.subscribe(SubscribersNames.updateValues, subscriberFn);
     model.updateThumb(FIRST_THUMB_STANCE, 20);
-    expect(subscriberFn).toBeCalledTimes(3);
+    expect(subscriberFn).toBeCalledTimes(1);
   });
 
   test('expect updateThumb called after calling updateThumbBeforeTrackClick ', () => {

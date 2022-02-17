@@ -19,6 +19,7 @@ import {
 } from './constants';
 import Slider from '../../Slider';
 import Observer from '../../Observer/Observer';
+import { SubscriberFn } from '../../Observer/types/observer';
 
 class Panel extends Observer {
   public params: SliderParams;
@@ -114,6 +115,22 @@ class Panel extends Observer {
     this.initializeInputs(this.root);
     this.initializeFormValues(this.params);
     this.addInputListeners();
+    this.subscribePanel();
+  }
+
+  private subscribePanel() {
+    this.subscribe(
+      SubscribersNames.updateParams,
+      this.slider.setParams.bind(this.slider),
+    );
+    this.subscribe(
+      SubscribersNames.updateParams,
+      this.initializeFormValues.bind(this),
+    );
+    this.subscribe(
+      SubscribersNames.updateParams,
+      this.slider.init.bind(this.slider),
+    );
   }
 }
 

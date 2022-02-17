@@ -11,12 +11,7 @@ import subscribe from './PresenterModules/subscribe';
 import updateTipView from './PresenterModules/notifyViewMethods/updateTipView';
 import updateFillView from './PresenterModules/notifyViewMethods/updateFillView';
 import addListeners from './PresenterModules/addListeners';
-import {
-  FIRST_THUMB_STANCE,
-  MAIN_CLASS,
-  PARENT_CLASS,
-  SECOND_THUMB_STANCE,
-} from '../constants/slider';
+import { MAIN_CLASS, PARENT_CLASS } from '../constants/slider';
 import Model from '../Model/Model';
 import updateThumbBeforeTrackClick from './PresenterModules/notifyModelMethods/updateThumbBeforeTrackClick';
 import updateThumb from './PresenterModules/notifyModelMethods/updateThumb';
@@ -91,12 +86,14 @@ class Presenter {
   }
 
   public init(params: SliderParams) {
+    this.view.thumbView.thumbs = [];
+    this.view.tipView.tips = [];
+    this.clearHTML(params.direction);
+    this.removeListeners();
     this.addSliderClasses(params.direction);
     this.setModelState(params);
     this.setViewState();
-    this.setSubViewsState();
     this.renderSlider(params);
-
     this.subscribe();
     this.addListeners(params.isRange);
   }
@@ -139,6 +136,7 @@ class Presenter {
     this.view.setParams(this.model.getParams());
     this.view.setSize(this.model.getSize());
     this.view.prepareDirectionForInteraction(this.model.getParams().direction);
+    this.setSubViewsState();
     return this;
   }
 

@@ -16,12 +16,20 @@ class Slider {
     this.root = root;
     this.DOMroot = <HTMLElement>document.querySelector(root);
     this.params = validateParams(params, this.DOMroot);
-    this.presenter = new Presenter(root, this.params);
-    this.init(this.params);
+    this.presenter = new Presenter(root, this.getParams());
+    this.init();
   }
 
-  public init(params: SliderParams) {
-    this.presenter.init(validateParams(params, this.DOMroot));
+  public init() {
+    this.presenter.init(validateParams(this.getParams(), this.DOMroot));
+  }
+
+  public setParams(params: SliderParams) {
+    this.params = params;
+  }
+
+  public getParams() {
+    return this.params;
   }
 
   public addControlPanel() {

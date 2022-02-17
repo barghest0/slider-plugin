@@ -4,6 +4,7 @@ import handleThumbDrag from './handleThumbDrag';
 function dragAndDropThumb(this: Thumb, stance: number) {
   const DOMthumb = this.thumbs[stance];
 
+
   const handlePointerMove = (event: PointerEvent) => {
     handleThumbDrag(event, this, stance);
   };
