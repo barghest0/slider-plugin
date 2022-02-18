@@ -2,7 +2,7 @@ import { FIRST_VALUE, SECOND_VALUE } from '../../../constants/slider';
 import { Directions, SliderParams } from '../../../types/slider';
 import Panel from '../Panel';
 
-function initializeFormValues(this: Panel) {
+function initializePanelsParams(this: Panel) {
   const {
     min,
     max,
@@ -37,4 +37,4 @@ function initializeFormValues(this: Panel) {
   this.isDecimal.checked = isDecimal;
 }
 
-export default initializeFormValues;
+export default initializePanelsParams;

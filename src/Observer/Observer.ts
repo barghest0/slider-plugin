@@ -1,7 +1,7 @@
 import { SubscriberFn, Subscribers } from './types/observer';
 
 class Observer {
-  public subscribers: Subscribers;
+  private subscribers: Subscribers;
 
   constructor(subscribers: Subscribers = {}) {
     this.subscribers = subscribers;
@@ -22,6 +22,10 @@ class Observer {
     this.subscribers[name].forEach((subscriberFunc: SubscriberFn) => {
       subscriberFunc(...args);
     });
+  }
+
+  public getSubscribers() {
+    return this.subscribers;
   }
 }
 export default Observer;

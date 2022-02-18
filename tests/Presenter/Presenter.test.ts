@@ -159,17 +159,6 @@ describe('Presenter test', () => {
     expect(presenter.view.fillView.getOffset()).toBe(30);
   });
 
-  test('expect calling onChange after notify view', () => {
-    const onChange = jest.fn();
-    presenter.params.onChange = onChange;
-    presenter.model.notify(
-      SubscribersNames.updateThumbView,
-      SECOND_THUMB_STANCE,
-      150,
-      70,
-    );
-    expect(presenter.params.onChange).toBeDefined();
-  });
 
   test('correct clear HTML', () => {
     presenter.clearHTML(Directions.horizontal);
@@ -201,5 +190,12 @@ describe('Presenter test', () => {
   test('expect decimal places not be  bigger 3', () => {
     const decimalPlaces = validateDecimalPlaces(231, 3);
     expect(decimalPlaces).toEqual(3);
+  });
+
+  test('correct unsubscribe', () => {
+    presenter.unsubscribe();
+    expect(
+      presenter.view.thumbView.getSubscribers()[SubscribersNames.updateThumb],
+    ).toEqual([]);
   });
 });

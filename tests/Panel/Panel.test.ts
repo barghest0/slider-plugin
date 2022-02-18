@@ -3,6 +3,7 @@ import Panel from '../../src/Demo/Panel/Panel';
 import handleDirectionChange from '../../src/Demo/Panel/PanelModules/handleDirectionChange';
 import handleOtherParamChange from '../../src/Demo/Panel/PanelModules/handleOtherParamChange';
 import handleValueChange from '../../src/Demo/Panel/PanelModules/handleValueChange';
+import validateParams from '../../src/Presenter/PresenterModules/validateParams';
 
 import Slider from '../../src/Slider';
 import { Directions, Params, SubscribersNames } from '../../src/types/slider';
@@ -83,5 +84,24 @@ describe('Panel test', () => {
     panel.hasFill.checked = false;
     handleOtherParamChange.call(panel, event, Params.hasFill);
     expect(panel.slider.params.hasFill).toBe(false);
+  });
+
+  test('expect initialize only first value input if isRange equal false', () => {
+    slider.setParams(
+      validateParams({ isRange: false, value: [10] }, slider.DOMroot),
+    );
+    panel.initializePanelsParams();
+    expect(panel.firstValueInput.value).toBe('10');
+    expect(panel.secondValueInput.value).toBe('');
+    expect(panel.secondValueInput.disabled).toBeTruthy();
+  });
+
+  test('expect initialize both value inputs if isRange equal true', () => {
+    slider.setParams(
+      validateParams({ isRange: true, value: [10, 20] }, slider.DOMroot),
+    );
+    panel.initializePanelsParams();
+    expect(panel.firstValueInput.value).toBe('10');
+    expect(panel.secondValueInput.value).toBe('20');
   });
 });

@@ -1,5 +1,5 @@
 import { InitMods, SliderParams, SubscribersNames } from '../../types/slider';
-import initializeFormValues from './PanelModules/initializeFormValues';
+import initializePanelsParams from './PanelModules/initializePanelParams';
 import initializeInputs from './PanelModules/initializeInputs';
 import addInputListeners from './PanelModules/addInputListeners';
 import renderPanel from './PanelModules/renderPanel';
@@ -51,7 +51,7 @@ class Panel extends Observer {
 
   public isDecimal: HTMLInputElement;
 
-  public initializeFormValues: () => void;
+  public initializePanelsParams: () => void;
 
   public initializeInputs: (root: string) => void;
 
@@ -100,7 +100,7 @@ class Panel extends Observer {
     this.isDecimal = <HTMLInputElement>(
       document.querySelector(`.js-${IS_DECIMAL_CLASS}`)
     );
-    this.initializeFormValues = initializeFormValues.bind(this);
+    this.initializePanelsParams = initializePanelsParams.bind(this);
     this.initializeInputs = initializeInputs.bind(this);
     this.addInputListeners = addInputListeners.bind(this);
     this.renderPanel = renderPanel.bind(this);
@@ -109,7 +109,7 @@ class Panel extends Observer {
   public init() {
     this.renderPanel();
     this.initializeInputs(this.root);
-    this.initializeFormValues();
+    this.initializePanelsParams();
     this.addInputListeners();
   }
 }

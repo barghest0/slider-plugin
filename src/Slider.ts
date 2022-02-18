@@ -22,12 +22,12 @@ class Slider extends Observer {
 
   public params: SliderParams;
 
-  public panel: Panel | null;
+  public panel: Panel;
 
   constructor(root: string, params: UserSliderParams) {
     super();
     this.root = root;
-    this.panel = null;
+    this.panel = new Panel(this.root, this);
     this.DOMroot = <HTMLElement>document.querySelector(root);
     this.params = validateParams(params, this.DOMroot);
     this.presenter = new Presenter(root, this.getParams());
@@ -51,11 +51,10 @@ class Slider extends Observer {
   }
 
   public addControlPanel() {
-    this.panel = new Panel(this.root, this);
     this.panel.init();
     this.panel.subscribe(
       SubscribersNames.updateParams,
-      this.panel.initializeFormValues.bind(this.panel),
+      this.panel.initializePanelsParams.bind(this.panel),
     );
     this.panel.subscribe(
       SubscribersNames.updateParams,

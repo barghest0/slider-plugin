@@ -57,13 +57,13 @@ class Presenter {
 
   public unsubscribe: () => void;
 
+  public subscribe: () => void;
+
   public clearHTML: (direction: Direction) => void;
 
   private removeListeners: () => void;
 
   private addListeners: (isRange: boolean) => void;
-
-  private subscribe: () => void;
 
   constructor(root: string, params: SliderParams) {
     this.root = root;
