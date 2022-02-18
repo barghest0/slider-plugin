@@ -16,9 +16,23 @@ describe('Scale test', () => {
   });
 
   test('expect correct scale marks values with default params', () => {
-    expect(prepareScaleData(0, 100, 10)).toEqual({
+    expect(prepareScaleData(0, 100, 10, Directions.horizontal)).toEqual({
       offsets: [0, 20, 40, 60, 80, 100],
       values: [0, 20, 40, 60, 80, 100],
+    });
+  });
+
+  test('expect correct scale marks values with ugly step in horizontal direction', () => {
+    expect(prepareScaleData(0, 100, 13, Directions.horizontal)).toEqual({
+      offsets: [0, 13, 26, 39, 52, 65, 78, 91, 100],
+      values: [0, 13, 26, 39, 52, 65, 78, 91, 100],
+    });
+  });
+
+  test('expect correct scale marks values with ugly step in vertical direction', () => {
+    expect(prepareScaleData(0, 100, 13, Directions.vertical)).toEqual({
+      offsets: [100, 87, 74, 61, 48, 35, 22, 9, 0],
+      values: [0, 13, 26, 39, 52, 65, 78, 91, 100],
     });
   });
 });

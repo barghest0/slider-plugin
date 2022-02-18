@@ -1,3 +1,5 @@
+import { Direction, Directions } from '../../../../types/slider';
+
 function getDelimiter(dividend: number, delimiters: number[]): number {
   for (let i = 0; i < delimiters.length; i += 1) {
     if (dividend % delimiters[i] === 0) {
@@ -7,7 +9,12 @@ function getDelimiter(dividend: number, delimiters: number[]): number {
   return getDelimiter(dividend - 1, delimiters);
 }
 
-function prepareScaleData(min: number, max: number, step: number) {
+function prepareScaleData(
+  min: number,
+  max: number,
+  step: number,
+  direction: Direction,
+) {
   const length = Math.round((max - min) / step + 1);
   const lastIndex = length - 1;
 
@@ -40,6 +47,7 @@ function prepareScaleData(min: number, max: number, step: number) {
     let offset = Math.abs(actualScaleSize / range) * index * 100;
     offset = Math.min(100, offset);
     if (index === linesCount - 1) offset = 100;
+    if (direction === Directions.vertical) offset = Math.abs(100 - offset);
     return +offset.toFixed();
   });
 
