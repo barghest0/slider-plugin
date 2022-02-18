@@ -159,7 +159,6 @@ describe('Presenter test', () => {
     expect(presenter.view.fillView.getOffset()).toBe(30);
   });
 
-
   test('correct clear HTML', () => {
     presenter.clearHTML(Directions.horizontal);
     expect($(presenter.root).hasClass(`${MAIN_CLASS}_vertical`)).toBe(false);

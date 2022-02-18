@@ -11,7 +11,12 @@ import subscribe from './PresenterModules/subscribe';
 import updateTipView from './PresenterModules/notifyViewMethods/updateTipView';
 import updateFillView from './PresenterModules/notifyViewMethods/updateFillView';
 import addListeners from './PresenterModules/addListeners';
-import { MAIN_CLASS, PARENT_CLASS } from '../constants/slider';
+import {
+  FIRST_THUMB_STANCE,
+  MAIN_CLASS,
+  PARENT_CLASS,
+  SECOND_THUMB_STANCE,
+} from '../constants/slider';
 import Model from '../Model/Model';
 import updateThumbAfterTrackClick from './PresenterModules/notifyModelMethods/updateThumbAfterTrackClick';
 import updateThumb from './PresenterModules/notifyModelMethods/updateThumb';
@@ -108,14 +113,17 @@ class Presenter {
     hasFill,
     hasScale,
     hasTips,
+    isRange,
   }: SliderParams) {
     this.renderTrack(direction);
-    this.renderScale(direction, step, max, min, hasScale);
-    this.renderFill(direction, hasFill);
-    value.forEach((_, stance) => {
-      this.renderThumb(stance);
-      this.renderTip(direction, stance, hasTips);
-    });
+    this.renderThumb(FIRST_THUMB_STANCE);
+    if (hasTips) this.renderTip(direction, FIRST_THUMB_STANCE, hasTips);
+    if (hasScale) this.renderScale(direction, step, max, min, hasScale);
+    if (hasFill) this.renderFill(direction, hasFill);
+    if (isRange) {
+      this.renderThumb(SECOND_THUMB_STANCE);
+      if (hasTips) this.renderTip(direction, SECOND_THUMB_STANCE, hasTips);
+    }
   }
 
   public setModelState(params: SliderParams) {
@@ -142,21 +150,23 @@ class Presenter {
   }
 
   private setSubViewsState() {
-    const { isDecimal, decimalPlaces } = this.model.getParams();
+    const { isDecimal, decimalPlaces, hasTips, hasFill } =
+      this.model.getParams();
     const offset = this.model.getOffset();
     const value = this.model.getValue();
     const fillState = this.model.getFillState();
     value.forEach((_, index) => {
       this.setThumbViewState(offset[index], value[index], index);
-      this.setTipViewState(
-        offset[index],
-        value[index],
-        index,
-        isDecimal,
-        decimalPlaces,
-      );
+      if (hasTips)
+        this.setTipViewState(
+          offset[index],
+          value[index],
+          index,
+          isDecimal,
+          decimalPlaces,
+        );
     });
-    this.setFillViewState(fillState);
+    if (hasFill) this.setFillViewState(fillState);
   }
 
   private setThumbViewState(offset: number, value: number, stance: number) {
