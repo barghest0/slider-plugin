@@ -22,15 +22,15 @@ class Model extends Observer {
 
   public DOMroot: HTMLElement;
 
+  public prepareOffset: (offset: number) => number;
+
+  public endsValidation: (stance: number) => void;
+
   private thumbsOffset: number[];
 
   private fillState: SliderFillState;
 
   private size: number;
-
-  private prepareOffset: (offset: number) => number;
-
-  private endsValidation: (stance: number) => void;
 
   constructor(DOMroot: HTMLElement) {
     super();
@@ -107,7 +107,7 @@ class Model extends Observer {
     );
   }
 
-  public updateThumbBeforeTrackClick(cursorOffset: number) {
+  public updateThumbAfterTrackClick(cursorOffset: number) {
     const { direction, isRange } = this.params;
     const { fillOffset, fillSize } = this.getFillState();
     let stance = FIRST_THUMB_STANCE;
@@ -154,13 +154,13 @@ class Model extends Observer {
     return { fillOffset, fillSize };
   }
 
-  private calculateStepPercent() {
+  public calculateStepPercent() {
     const { max, min, step } = this.params;
     const stepCount = (max - min) / step;
     return 100 / stepCount;
   }
 
-  private calculateValue(stepOffset: number, stepPercent: number) {
+  public calculateValue(stepOffset: number, stepPercent: number) {
     const { step, min } = this.params;
     return (stepOffset / stepPercent) * step + min;
   }

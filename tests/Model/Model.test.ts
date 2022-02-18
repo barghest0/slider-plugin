@@ -6,11 +6,7 @@ import {
   MIN_OFFSET,
   SECOND_THUMB_STANCE,
 } from '../../src/constants/slider';
-import {
-  Directions,
-  Params,
-  SubscribersNames,
-} from '../../src/types/slider';
+import { Directions, Params, SubscribersNames } from '../../src/types/slider';
 
 describe('Model test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
@@ -49,43 +45,43 @@ describe('Model test', () => {
   });
 
   test('correct calculate step percent', () => {
-    expect(model['calculateStepPercent']()).toBe(10);
+    expect(model.calculateStepPercent()).toBe(10);
   });
 
   test('correct calculate value percent', () => {
-    expect(model['calculateValue'](50, 10)).toBe(50);
+    expect(model.calculateValue(50, 10)).toBe(50);
   });
 
   test('check prepareOffset with horizontal/vertical direction', () => {
     model.setParam(Params.direction, Directions.horizontal);
-    expect(model['prepareOffset'](100)).toBe(100);
+    expect(model.prepareOffset(100)).toBe(100);
     model.setParam(Params.direction, Directions.vertical);
-    expect(model['prepareOffset'](100)).toBe(0);
+    expect(model.prepareOffset(100)).toBe(0);
   });
 
   test('check ends validation when first value more than max in horizontal/vertical direction', () => {
     model.setParam(Params.direction, Directions.horizontal);
     model.setOffset(FIRST_THUMB_STANCE, 150);
-    model['endsValidation'](FIRST_THUMB_STANCE);
+    model.endsValidation(FIRST_THUMB_STANCE);
     expect(model.getOffset()[FIRST_THUMB_STANCE]).toBe(MAX_OFFSET);
     expect(model.getValue()[FIRST_THUMB_STANCE]).toBe(100);
 
     model.setParam(Params.direction, Directions.vertical);
     model.setOffset(FIRST_THUMB_STANCE, 150);
-    model['endsValidation'](FIRST_THUMB_STANCE);
+    model.endsValidation(FIRST_THUMB_STANCE);
     expect(model.getValue()[FIRST_THUMB_STANCE]).toBe(0);
   });
 
   test('check ends validation when first value little than min in horizontal/vertical direction', () => {
     model.setParam(Params.direction, Directions.horizontal);
     model.setOffset(FIRST_THUMB_STANCE, -20);
-    model['endsValidation'](FIRST_THUMB_STANCE);
+    model.endsValidation(FIRST_THUMB_STANCE);
     expect(model.getOffset()[FIRST_THUMB_STANCE]).toBe(MIN_OFFSET);
     expect(model.getValue()[FIRST_THUMB_STANCE]).toBe(0);
 
     model.setParam(Params.direction, Directions.vertical);
     model.setOffset(FIRST_THUMB_STANCE, -20);
-    model['endsValidation'](FIRST_THUMB_STANCE);
+    model.endsValidation(FIRST_THUMB_STANCE);
     expect(model.getValue()[FIRST_THUMB_STANCE]).toBe(100);
   });
 
@@ -152,10 +148,10 @@ describe('Model test', () => {
     expect(subscriberFn).toBeCalledTimes(1);
   });
 
-  test('expect updateThumb called after calling updateThumbBeforeTrackClick ', () => {
+  test('expect updateThumb called after calling updateThumbAfterTrackClick ', () => {
     const updateThumb = jest.fn();
     model.updateThumb = updateThumb;
-    model.updateThumbBeforeTrackClick(20);
+    model.updateThumbAfterTrackClick(20);
     expect(updateThumb).toBeCalled();
   });
 

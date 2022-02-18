@@ -20,10 +20,10 @@ describe('Track test', () => {
     expect(track.track).toBeInstanceOf(HTMLElement);
   });
 
-  test('expect notify model before click track in horizontal/vertical direction', () => {
+  test('expect notify model after click track in horizontal/vertical direction', () => {
     const subscriberFn = jest.fn();
     jest.spyOn(track, 'notify');
-    track.subscribe(SubscribersNames.updateThumbBeforeTrackClick, subscriberFn);
+    track.subscribe(SubscribersNames.updateThumbAfterTrackClick, subscriberFn);
     track.subscribe(SubscribersNames.updateFill, subscriberFn);
 
     view.setParam(Params.direction, Directions.horizontal);

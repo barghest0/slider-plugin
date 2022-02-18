@@ -2,9 +2,8 @@ import { FIRST_VALUE, SECOND_VALUE } from '../../../constants/slider';
 import { Directions, SliderParams } from '../../../types/slider';
 import Panel from '../Panel';
 
-function initializeFormValues(
-  this: Panel,
-  {
+function initializeFormValues(this: Panel) {
+  const {
     min,
     max,
     value,
@@ -16,8 +15,8 @@ function initializeFormValues(
     hasScale,
     decimalPlaces,
     isDecimal,
-  }: SliderParams,
-) {
+  }: SliderParams = this.slider.getParams();
+
   this.minValueInput.value = min.toString();
   this.maxValueInput.value = max.toString();
   this.decimalPlacesInput.value = decimalPlaces.toString();

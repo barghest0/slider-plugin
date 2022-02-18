@@ -14,9 +14,10 @@ function unsubscribe(this: Presenter) {
   this.view.thumbView.unsubscribe(SubscribersNames.updateFill, this.updateFill);
 
   this.view.trackView.unsubscribe(
-    SubscribersNames.updateThumbBeforeTrackClick,
-    this.updateThumbBeforeTrackClick,
+    SubscribersNames.updateThumbAfterTrackClick,
+    this.updateThumbAfterTrackClick,
   );
+
   this.view.trackView.unsubscribe(SubscribersNames.updateFill, this.updateFill);
 
   this.model.unsubscribe(

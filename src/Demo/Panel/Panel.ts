@@ -19,11 +19,8 @@ import {
 } from './constants';
 import Slider from '../../Slider';
 import Observer from '../../Observer/Observer';
-import { SubscriberFn } from '../../Observer/types/observer';
 
 class Panel extends Observer {
-  public params: SliderParams;
-
   public slider: Slider;
 
   public root: string;
@@ -54,7 +51,7 @@ class Panel extends Observer {
 
   public isDecimal: HTMLInputElement;
 
-  public initializeFormValues: (params: SliderParams) => void;
+  public initializeFormValues: () => void;
 
   public initializeInputs: (root: string) => void;
 
@@ -62,10 +59,9 @@ class Panel extends Observer {
 
   public renderPanel: () => void;
 
-  constructor(params: SliderParams, root: string, slider: Slider) {
+  constructor(root: string, slider: Slider) {
     super();
     this.slider = slider;
-    this.params = params;
     this.root = root;
     this.DOMroot = <HTMLElement>document.querySelector(root);
     this.minValueInput = <HTMLInputElement>(
@@ -113,24 +109,8 @@ class Panel extends Observer {
   public init() {
     this.renderPanel();
     this.initializeInputs(this.root);
-    this.initializeFormValues(this.params);
+    this.initializeFormValues();
     this.addInputListeners();
-    this.subscribePanel();
-  }
-
-  private subscribePanel() {
-    this.subscribe(
-      SubscribersNames.updateParams,
-      this.slider.setParams.bind(this.slider),
-    );
-    this.subscribe(
-      SubscribersNames.updateParams,
-      this.initializeFormValues.bind(this),
-    );
-    this.subscribe(
-      SubscribersNames.updateParams,
-      this.slider.init.bind(this.slider),
-    );
   }
 }
 

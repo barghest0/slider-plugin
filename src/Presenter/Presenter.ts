@@ -13,7 +13,7 @@ import updateFillView from './PresenterModules/notifyViewMethods/updateFillView'
 import addListeners from './PresenterModules/addListeners';
 import { MAIN_CLASS, PARENT_CLASS } from '../constants/slider';
 import Model from '../Model/Model';
-import updateThumbBeforeTrackClick from './PresenterModules/notifyModelMethods/updateThumbBeforeTrackClick';
+import updateThumbAfterTrackClick from './PresenterModules/notifyModelMethods/updateThumbAfterTrackClick';
 import updateThumb from './PresenterModules/notifyModelMethods/updateThumb';
 import updateFill from './PresenterModules/notifyModelMethods/updateFill';
 import updateThumbView from './PresenterModules/notifyViewMethods/updateThumbView';
@@ -40,7 +40,7 @@ class Presenter {
 
   public updateFill: (offset: number[]) => void;
 
-  public updateThumbBeforeTrackClick: (
+  public updateThumbAfterTrackClick: (
     cursorOffset: number,
     size: number,
   ) => void;
@@ -55,6 +55,8 @@ class Presenter {
 
   public updateFillView: (state: SliderFillState) => void;
 
+  public unsubscribe: () => void;
+
   public clearHTML: (direction: Direction) => void;
 
   private removeListeners: () => void;
@@ -62,8 +64,6 @@ class Presenter {
   private addListeners: (isRange: boolean) => void;
 
   private subscribe: () => void;
-
-  private unsubscribe: () => void;
 
   constructor(root: string, params: SliderParams) {
     this.root = root;
@@ -76,13 +76,13 @@ class Presenter {
     this.removeListeners = removeListeners.bind(this);
     this.subscribe = subscribe.bind(this);
     this.unsubscribe = unsubscribe.bind(this);
-    this.updateThumbBeforeTrackClick = updateThumbBeforeTrackClick.bind(this);
+    this.updateThumbAfterTrackClick = updateThumbAfterTrackClick.bind(this);
     this.updateThumb = updateThumb.bind(this);
     this.updateFill = updateFill.bind(this);
     this.updateThumbView = updateThumbView.bind(this);
     this.updateTipView = updateTipView.bind(this);
-    this.addListeners = addListeners.bind(this);
     this.updateFillView = updateFillView.bind(this);
+    this.addListeners = addListeners.bind(this);
   }
 
   public init(params: SliderParams) {
@@ -93,6 +93,7 @@ class Presenter {
     this.addSliderClasses(params.direction);
     this.setModelState(params);
     this.setViewState();
+    this.setSubViewsState();
     this.renderSlider(params);
     this.subscribe();
     this.addListeners(params.isRange);
@@ -136,7 +137,7 @@ class Presenter {
     this.view.setParams(this.model.getParams());
     this.view.setSize(this.model.getSize());
     this.view.prepareDirectionForInteraction(this.model.getParams().direction);
-    this.setSubViewsState();
+
     return this;
   }
 

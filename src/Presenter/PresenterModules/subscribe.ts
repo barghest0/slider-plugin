@@ -5,14 +5,13 @@ function subscribe(this: Presenter) {
   this.view.thumbView.subscribe(SubscribersNames.updateThumb, this.updateThumb);
   this.view.thumbView.subscribe(SubscribersNames.updateFill, this.updateFill);
   this.view.trackView.subscribe(
-    SubscribersNames.updateThumbBeforeTrackClick,
-    this.updateThumbBeforeTrackClick,
+    SubscribersNames.updateThumbAfterTrackClick,
+    this.updateThumbAfterTrackClick,
   );
   this.view.trackView.subscribe(SubscribersNames.updateFill, this.updateFill);
 
   this.model.subscribe(SubscribersNames.updateThumbView, this.updateThumbView);
   this.model.subscribe(SubscribersNames.updateThumbView, this.updateTipView);
-
   this.model.subscribe(SubscribersNames.updateFillView, this.updateFillView);
 }
 

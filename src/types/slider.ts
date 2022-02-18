@@ -72,13 +72,12 @@ type SliderFillState = {
 
 enum SubscribersNames {
   updateThumb = 'UpdateThumb',
-  updateThumbBeforeTrackClick = 'UpdateThumbBeforeTrackClick',
-  updateTipView = 'UpdateTipView',
+  updateThumbAfterTrackClick = 'UpdateThumbAfterTrackClick',
+  updateFill = 'UpdateFill',
   updateThumbView = 'UpdateThumbView',
   updateFillView = 'UpdateFillView',
-  updateValues = 'UpdateValues',
-  updateFill = 'UpdateFill',
   updateParams = 'UpdateParams',
+  updateValues = 'UpdateValues',
 }
 
 enum Directions {

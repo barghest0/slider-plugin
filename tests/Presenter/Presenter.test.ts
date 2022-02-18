@@ -69,7 +69,7 @@ describe('Presenter test', () => {
     presenter.model.setOffset(FIRST_THUMB_STANCE, 20);
     presenter.model.setOffset(SECOND_THUMB_STANCE, 50);
     presenter.view.trackView.notify(
-      SubscribersNames.updateThumbBeforeTrackClick,
+      SubscribersNames.updateThumbAfterTrackClick,
       90,
     );
     expect(presenter.model.getOffset()[SECOND_OFFSET]).toBe(90);
@@ -80,7 +80,7 @@ describe('Presenter test', () => {
     presenter.model.setOffset(FIRST_THUMB_STANCE, 20);
     presenter.model.setOffset(SECOND_THUMB_STANCE, 50);
     presenter.view.trackView.notify(
-      SubscribersNames.updateThumbBeforeTrackClick,
+      SubscribersNames.updateThumbAfterTrackClick,
       10,
     );
     expect(presenter.model.getOffset()[FIRST_OFFSET]).toBe(10);

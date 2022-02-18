@@ -4,10 +4,10 @@ import Panel from '../Panel';
 
 function handleDirectionChange(this: Panel, event: Event) {
   const target = <HTMLInputElement>event.target;
-  this.params.direction = target.checked
+  this.slider.params.direction = target.checked
     ? Directions.vertical
     : Directions.horizontal;
-  const validatedParams = validateParams(this.params, this.DOMroot);
+  const validatedParams = validateParams(this.slider.params, this.DOMroot);
   this.notify(SubscribersNames.updateParams, validatedParams);
 }
 

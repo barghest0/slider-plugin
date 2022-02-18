@@ -11,7 +11,7 @@ function handleTrackClick(event: PointerEvent, thisTrack: Track) {
     thisTrack.view.DOMroot,
     thisTrack.view.size,
   );
-  thisTrack.notify(SubscribersNames.updateThumbBeforeTrackClick, cursorOffset);
+  thisTrack.notify(SubscribersNames.updateThumbAfterTrackClick, cursorOffset);
   thisTrack.notify(SubscribersNames.updateFill);
 }
 

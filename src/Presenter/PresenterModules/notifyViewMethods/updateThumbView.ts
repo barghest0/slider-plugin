@@ -10,9 +10,6 @@ function updateThumbView(
   this.view.thumbView.setValue(value, stance);
   this.view.thumbView.updateThumbStyle(stance);
   this.view.thumbView.activeStance = stance;
-  if (this.params.onChange) {
-    this.params.onChange(this.params);
-  }
 }
 
 export default updateThumbView;
