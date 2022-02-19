@@ -10,8 +10,6 @@ class Thumb extends Observer {
 
   public thumbs: HTMLElement[];
 
-  private offset: number[];
-
   public activeStance: number;
 
   public updateThumbStyle: (stance: number) => void;
@@ -19,6 +17,8 @@ class Thumb extends Observer {
   public validateCollision: (stance: number) => number;
 
   public dragAndDropThumb: (stance: number) => void;
+
+  private offset: number[];
 
   private value: number[];
 

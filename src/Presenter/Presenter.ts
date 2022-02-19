@@ -45,10 +45,7 @@ class Presenter {
 
   public updateFill: (offset: number[]) => void;
 
-  public updateThumbAfterTrackClick: (
-    cursorOffset: number,
-    size: number,
-  ) => void;
+  public updateThumbAfterTrackClick: (cursorOffset: number) => void;
 
   public updateThumbView: (
     stance: number,
@@ -66,9 +63,9 @@ class Presenter {
 
   public clearHTML: (direction: Direction) => void;
 
-  private removeListeners: () => void;
-
   private addListeners: (isRange: boolean) => void;
+
+  private removeListeners: () => void;
 
   constructor(root: string, params: SliderParams) {
     this.root = root;
@@ -95,38 +92,32 @@ class Presenter {
     this.view.tipView.tips = [];
     this.clearHTML(params.direction);
     this.removeListeners();
-    this.addSliderClasses(params.direction);
-    this.setModelState(params);
-    this.setViewState();
-    this.setSubViewsState();
-    this.renderSlider(params);
+
+    this.addSliderClasses(params.direction)
+      .setModelState(params)
+      .setViewState()
+      .setSubViewsState()
+      .renderSlider();
+
     this.subscribe();
     this.addListeners(params.isRange);
   }
 
-  public renderSlider({
-    direction,
-    step,
-    max,
-    min,
-    value,
-    hasFill,
-    hasScale,
-    hasTips,
-    isRange,
-  }: SliderParams) {
+  private renderSlider() {
+    const { direction, step, max, min, hasFill, hasScale, hasTips, isRange } =
+      this.model.getParams();
     this.renderTrack(direction);
     this.renderThumb(FIRST_THUMB_STANCE);
-    if (hasTips) this.renderTip(direction, FIRST_THUMB_STANCE, hasTips);
-    if (hasScale) this.renderScale(direction, step, max, min, hasScale);
-    if (hasFill) this.renderFill(direction, hasFill);
+    if (hasTips) this.renderTip(direction, FIRST_THUMB_STANCE);
+    if (hasScale) this.renderScale(direction, step, max, min);
+    if (hasFill) this.renderFill(direction);
     if (isRange) {
       this.renderThumb(SECOND_THUMB_STANCE);
-      if (hasTips) this.renderTip(direction, SECOND_THUMB_STANCE, hasTips);
+      if (hasTips) this.renderTip(direction, SECOND_THUMB_STANCE);
     }
   }
 
-  public setModelState(params: SliderParams) {
+  private setModelState(params: SliderParams) {
     this.model.setParams(params);
     const size =
       params.direction === Directions.horizontal
@@ -141,11 +132,17 @@ class Presenter {
     return this;
   }
 
-  public setViewState() {
+  private setViewState() {
     this.view.setParams(this.model.getParams());
     this.view.setSize(this.model.getSize());
     this.view.prepareDirectionForInteraction(this.model.getParams().direction);
 
+    return this;
+  }
+
+  private addSliderClasses(direction: Direction) {
+    this.DOMroot.classList.add(`${MAIN_CLASS}_${direction}`);
+    this.DOMparent.classList.add(`${PARENT_CLASS}_${direction}`);
     return this;
   }
 
@@ -167,6 +164,7 @@ class Presenter {
         );
     });
     if (hasFill) this.setFillViewState(fillState);
+    return this;
   }
 
   private setThumbViewState(offset: number, value: number, stance: number) {
@@ -192,11 +190,6 @@ class Presenter {
     this.view.tipView.setDecimalPlaces(decimalPlaces);
   }
 
-  private addSliderClasses(direction: Direction) {
-    this.DOMroot.classList.add(`${MAIN_CLASS}_${direction}`);
-    this.DOMparent.classList.add(`${PARENT_CLASS}_${direction}`);
-  }
-
   private renderTrack(direction: Direction) {
     this.view.trackView.createTrack(direction);
   }
@@ -205,12 +198,12 @@ class Presenter {
     this.view.thumbView.createThumb(stance);
   }
 
-  private renderTip(direction: Direction, stance: number, hasTips: boolean) {
-    this.view.tipView.createTip(direction, stance, hasTips);
+  private renderTip(direction: Direction, stance: number) {
+    this.view.tipView.createTip(direction, stance);
   }
 
-  private renderFill(direction: Direction, hasFill: boolean) {
-    this.view.fillView.createFill(direction, hasFill);
+  private renderFill(direction: Direction) {
+    this.view.fillView.createFill(direction);
   }
 
   private renderScale(
@@ -218,9 +211,8 @@ class Presenter {
     step: number,
     max: number,
     min: number,
-    hasScale: boolean,
   ) {
-    this.view.scaleView.createScale(direction, hasScale);
+    this.view.scaleView.createScale(direction);
     this.view.scaleView.createScaleMarks(step, max, min, direction);
   }
 }

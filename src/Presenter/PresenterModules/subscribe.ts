@@ -11,8 +11,12 @@ function subscribe(this: Presenter) {
   this.view.trackView.subscribe(SubscribersNames.updateFill, this.updateFill);
 
   this.model.subscribe(SubscribersNames.updateThumbView, this.updateThumbView);
-  this.model.subscribe(SubscribersNames.updateThumbView, this.updateTipView);
+  if (this.model.getParams().hasTips) {
+    this.model.subscribe(SubscribersNames.updateThumbView, this.updateTipView);
+  }
   this.model.subscribe(SubscribersNames.updateFillView, this.updateFillView);
+
+  return this;
 }
 
 export default subscribe;

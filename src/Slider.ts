@@ -20,9 +20,9 @@ class Slider extends Observer {
 
   public DOMroot: HTMLElement;
 
-  public params: SliderParams;
-
   public panel: Panel;
+
+  private params: SliderParams;
 
   constructor(root: string, params: UserSliderParams) {
     super();

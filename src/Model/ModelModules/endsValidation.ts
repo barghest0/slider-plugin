@@ -3,7 +3,7 @@ import { Directions } from '../../types/slider';
 import Model from '../Model';
 
 function endsValidation(this: Model, stance: number) {
-  const { min, max, direction } = this.params;
+  const { min, max, direction } = this.getParams();
   if (this.getOffset()[stance] > MAX_OFFSET) {
     this.setOffset(stance, MAX_OFFSET);
     this.setValue(stance, direction === Directions.horizontal ? max : min);

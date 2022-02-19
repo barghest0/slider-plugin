@@ -60,13 +60,13 @@ describe('Slider test', () => {
 
   test('expect calling onChange after notify view', () => {
     const onChange = jest.fn();
-    slider.params.onChange = onChange;
+    slider.getParams().onChange = onChange;
     slider.presenter.model.notify(
       SubscribersNames.updateThumbView,
       SECOND_THUMB_STANCE,
       150,
       70,
     );
-    expect(slider.params.onChange).toBeDefined();
+    expect(slider.getParams().onChange).toBeDefined();
   });
 });

@@ -3,7 +3,7 @@ import { Directions } from '../../types/slider';
 import Model from '../Model';
 
 function prepareOffset(this: Model, offset: number): number {
-  const { direction } = this.params;
+  const { direction } = this.getParams();
   return direction === Directions.horizontal ? offset : MAX_OFFSET - offset;
 }
 

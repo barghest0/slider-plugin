@@ -18,8 +18,6 @@ import prepareOffset from './ModelModules/prepareOffset';
 import endsValidation from './ModelModules/endsValidation';
 
 class Model extends Observer {
-  public params: SliderParams;
-
   public DOMroot: HTMLElement;
 
   public prepareOffset: (offset: number) => number;
@@ -29,6 +27,8 @@ class Model extends Observer {
   private thumbsOffset: number[];
 
   private fillState: SliderFillState;
+
+  private params: SliderParams;
 
   private size: number;
 

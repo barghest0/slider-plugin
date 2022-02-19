@@ -29,17 +29,6 @@ describe('Presenter test', () => {
     expect(presenter).toHaveProperty('view');
   });
 
-  test('correct set/get model default params', () => {
-    presenter.setModelState(params);
-    expect(presenter.model.getParams()).toEqual(params);
-  });
-
-  test('correct set/get view default params', () => {
-    presenter.setModelState(params);
-    presenter.setViewState();
-    expect(presenter.view.getParams()).toEqual(params);
-  });
-
   test('expect horizontal modifier', () => {
     expect(
       presenter.DOMroot.classList.contains(`${MAIN_CLASS}_horizontal`),

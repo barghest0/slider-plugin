@@ -7,13 +7,13 @@ import { TIP_CLASS } from '../../../constants/slider';
 class Tip extends Observer {
   public view: View;
 
-  public updateTipStyle: (stance: number) => void;
-
   public tips: HTMLElement[];
 
   public decimalPlaces: number;
 
   public isDecimal: boolean;
+
+  public updateTipStyle: (stance: number) => void;
 
   private value: number[];
 
@@ -58,17 +58,15 @@ class Tip extends Observer {
     this.isDecimal = isDecimal;
   }
 
-  public createTip(direction: Direction, stance: number, hasTip: boolean) {
-    if (hasTip) {
-      const tip = document.createElement('div');
-      tip.classList.add(TIP_CLASS);
-      tip.classList.add(`js-${TIP_CLASS}-${stance}`);
-      tip.classList.add(`${TIP_CLASS}-${stance}`);
-      tip.classList.add(`${TIP_CLASS}_${direction}`);
-      this.tips.push(tip);
-      this.view.DOMroot.appendChild(tip);
-      this.updateTipStyle(stance);
-    }
+  public createTip(direction: Direction, stance: number) {
+    const tip = document.createElement('div');
+    tip.classList.add(TIP_CLASS);
+    tip.classList.add(`js-${TIP_CLASS}-${stance}`);
+    tip.classList.add(`${TIP_CLASS}-${stance}`);
+    tip.classList.add(`${TIP_CLASS}_${direction}`);
+    this.tips.push(tip);
+    this.view.DOMroot.appendChild(tip);
+    this.updateTipStyle(stance);
   }
 }
 

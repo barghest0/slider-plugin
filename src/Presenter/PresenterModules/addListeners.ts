@@ -10,6 +10,7 @@ function addListeners(this: Presenter, isRange: boolean) {
   if (isRange) {
     this.view.thumbView.dragAndDropThumb(SECOND_THUMB_STANCE);
   }
+  return this;
 }
 
 export default addListeners;

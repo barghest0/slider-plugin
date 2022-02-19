@@ -39,7 +39,7 @@ describe('Panel test', () => {
     expect(panel.firstValueInput).toBeInstanceOf(HTMLInputElement);
 
     panel.init();
-    panel.slider.params.isRange = true;
+    panel.slider.getParams().isRange = true;
   });
 
   const event = new Event('input');
@@ -48,42 +48,42 @@ describe('Panel test', () => {
     panel.firstValueInput.dispatchEvent(event);
     panel.firstValueInput.value = '50';
     handleValueChange.call(panel, event, FIRST_VALUE);
-    expect(panel.slider.params.value[FIRST_VALUE]).toBe(50);
+    expect(panel.slider.getParams().value[FIRST_VALUE]).toBe(50);
   });
 
   test('expect change direction to vertical after dispatch event', () => {
     panel.isVertical.dispatchEvent(event);
     panel.isVertical.checked = true;
     handleDirectionChange.call(panel, event);
-    expect(panel.slider.params.direction).toBe(Directions.vertical);
+    expect(panel.slider.getParams().direction).toBe(Directions.vertical);
   });
 
   test('expect change direction to vertical after dispatch event', () => {
     panel.isVertical.dispatchEvent(event);
     panel.isVertical.checked = false;
     handleDirectionChange.call(panel, event);
-    expect(panel.slider.params.direction).toBe(Directions.horizontal);
+    expect(panel.slider.getParams().direction).toBe(Directions.horizontal);
   });
 
   test('expect change min value to 50 after dispatch event', () => {
     panel.minValueInput.dispatchEvent(event);
     panel.minValueInput.value = '50';
     handleOtherParamChange.call(panel, event, Params.min);
-    expect(panel.slider.params.min).toBe(50);
+    expect(panel.slider.getParams().min).toBe(50);
   });
 
   test('expect change max value to 100 after dispatch event', () => {
     panel.maxValueInput.dispatchEvent(event);
     panel.maxValueInput.value = '100';
     handleOtherParamChange.call(panel, event, Params.max);
-    expect(panel.slider.params.max).toBe(100);
+    expect(panel.slider.getParams().max).toBe(100);
   });
 
   test('expect change hasFill to false after dispatch event', () => {
     panel.hasFill.dispatchEvent(event);
     panel.hasFill.checked = false;
     handleOtherParamChange.call(panel, event, Params.hasFill);
-    expect(panel.slider.params.hasFill).toBe(false);
+    expect(panel.slider.getParams().hasFill).toBe(false);
   });
 
   test('expect initialize only first value input if isRange equal false', () => {
