@@ -27,24 +27,16 @@ class Slider extends Observer {
     this.init();
   }
 
-  public init() {
-    this.presenter.init(validateParams(this.getParams(), this.DOMroot));
-    this.presenter.model.subscribe(
-      SubscribersNames.updateThumbView,
-      this.handleThumbChange.bind(this),
-    );
-  }
-
-  public unsubscribe() {
-    this.presenter.unsubscribe();
-  }
-
   public setParams(params: SliderParams) {
     this.params = params;
   }
 
   public getParams() {
     return this.params;
+  }
+
+  public unsubscribe() {
+    this.presenter.unsubscribe();
   }
 
   public addControlPanel() {
@@ -56,6 +48,14 @@ class Slider extends Observer {
     this.panel.subscribe(
       SubscribersNames.updateParams,
       this.panel.initializePanelsParams.bind(this.panel),
+    );
+  }
+
+  private init() {
+    this.presenter.init(validateParams(this.getParams(), this.DOMroot));
+    this.presenter.model.subscribe(
+      SubscribersNames.updateThumbView,
+      this.handleThumbChange.bind(this),
     );
   }
 
