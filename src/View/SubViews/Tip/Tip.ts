@@ -9,13 +9,7 @@ class Tip extends Observer {
 
   public tips: HTMLElement[];
 
-  public decimalPlaces: number;
-
-  public isDecimal: boolean;
-
   public updateTipStyle: (stance: number) => void;
-
-  private value: number[];
 
   private offset: number[];
 
@@ -24,9 +18,6 @@ class Tip extends Observer {
     this.view = view;
     this.offset = [];
     this.tips = [];
-    this.value = [];
-    this.decimalPlaces = 0;
-    this.isDecimal = false;
     this.updateTipStyle = updateTipStyle.bind(this);
   }
 
@@ -36,26 +27,6 @@ class Tip extends Observer {
 
   public getOffset() {
     return this.offset;
-  }
-
-  public setValue(value: number, stance: number) {
-    this.value[stance] = value;
-  }
-
-  public getValue() {
-    return this.value;
-  }
-
-  public setDecimalPlaces(decimalPlaces: number) {
-    if (this.isDecimal) {
-      this.decimalPlaces = decimalPlaces;
-    } else {
-      this.decimalPlaces = 0;
-    }
-  }
-
-  public setIsDecimal(isDecimal: boolean) {
-    this.isDecimal = isDecimal;
   }
 
   public createTip(direction: Direction, stance: number) {

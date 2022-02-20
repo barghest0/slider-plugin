@@ -20,26 +20,15 @@ class Thumb extends Observer {
 
   private offset: number[];
 
-  private value: number[];
-
   constructor(view: View) {
     super();
     this.view = view;
-    this.value = [];
     this.offset = [];
     this.activeStance = 0;
     this.thumbs = [];
     this.updateThumbStyle = updateThumbStyle.bind(this);
     this.validateCollision = validateCollision.bind(this);
     this.dragAndDropThumb = dragAndDropThumb.bind(this);
-  }
-
-  public setValue(value: number, stance: number) {
-    this.value[stance] = value;
-  }
-
-  public getValue() {
-    return this.value;
   }
 
   public setOffset(offset: number, stance: number) {

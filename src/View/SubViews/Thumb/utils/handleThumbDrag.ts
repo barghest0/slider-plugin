@@ -6,8 +6,9 @@ function handleThumbDrag(
   thisThumb: Thumb,
   stance: number,
 ) {
-  const { direction, isRange } = thisThumb.view.params;
-  const { DOMroot, size } = thisThumb.view;
+  const { direction, isRange } = thisThumb.view.getParams();
+  const { DOMroot } = thisThumb.view;
+  const size = thisThumb.view.getSize();
   const coordinate =
     direction === Directions.horizontal ? event.pageX : event.pageY;
 

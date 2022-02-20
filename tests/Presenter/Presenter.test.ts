@@ -82,7 +82,7 @@ describe('Presenter test', () => {
       100,
       50,
     );
-    expect(presenter.view.thumbView.getValue()[FIRST_VALUE]).toBe(100);
+    expect(presenter.view.getValue()[FIRST_VALUE]).toBe(100);
     expect(presenter.view.thumbView.getOffset()[FIRST_OFFSET]).toBe(50);
     expect(presenter.view.thumbView.activeStance).toBe(FIRST_THUMB_STANCE);
   });
@@ -94,7 +94,7 @@ describe('Presenter test', () => {
       150,
       70,
     );
-    expect(presenter.view.thumbView.getValue()[SECOND_VALUE]).toBe(150);
+    expect(presenter.view.getValue()[SECOND_VALUE]).toBe(150);
     expect(presenter.view.thumbView.getOffset()[SECOND_OFFSET]).toBe(70);
     expect(presenter.view.thumbView.activeStance).toBe(SECOND_THUMB_STANCE);
   });
@@ -106,7 +106,7 @@ describe('Presenter test', () => {
       50,
       50,
     );
-    expect(presenter.view.tipView.getValue()[FIRST_VALUE]).toBe(50);
+    expect(presenter.view.getValue()[FIRST_VALUE]).toBe(50);
     expect(presenter.view.tipView.getOffset()[FIRST_OFFSET]).toBe(50);
   });
 
@@ -117,7 +117,7 @@ describe('Presenter test', () => {
       100,
       100,
     );
-    expect(presenter.view.tipView.getValue()[SECOND_VALUE]).toBe(100);
+    expect(presenter.view.getValue()[SECOND_VALUE]).toBe(100);
     expect(presenter.view.tipView.getOffset()[SECOND_OFFSET]).toBe(100);
   });
 
@@ -144,8 +144,8 @@ describe('Presenter test', () => {
       fillSize: 30,
       fillOffset: 30,
     });
-    expect(presenter.view.fillView.getSize()).toBe(30);
-    expect(presenter.view.fillView.getOffset()).toBe(30);
+    expect(presenter.view.fillView.getState().fillSize).toBe(30);
+    expect(presenter.view.fillView.getState().fillOffset).toBe(30);
   });
 
   test('correct clear HTML', () => {

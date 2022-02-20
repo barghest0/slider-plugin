@@ -1,6 +1,12 @@
 import View from '../../src/View/View';
 import { Directions, Params } from '../../src/types/slider';
-import { DEFAULT_SLIDER_PARAMS } from '../../src/constants/slider';
+import {
+  DEFAULT_SLIDER_PARAMS,
+  FIRST_THUMB_STANCE,
+  FIRST_VALUE,
+  SECOND_THUMB_STANCE,
+  SECOND_VALUE,
+} from '../../src/constants/slider';
 
 describe('View test', () => {
   document.body.innerHTML = `<div id="slider-1" data-testid="slider-1" class="slider-1"></div>`;
@@ -18,7 +24,17 @@ describe('View test', () => {
 
   test('correct set param', () => {
     view.setParam(Params.hasFill, true);
-    expect(view.params.hasFill).toBeTruthy();
+    expect(view.getParams().hasFill).toBeTruthy();
+  });
+
+  test('correct set/get 100 first value', () => {
+    view.setValue(FIRST_THUMB_STANCE, 100);
+    expect(view.getValue()[FIRST_VALUE]).toBe(100);
+  });
+
+  test('correct set/get 200 second value', () => {
+    view.setValue(SECOND_THUMB_STANCE, 200);
+    expect(view.getValue()[SECOND_VALUE]).toBe(200);
   });
 
   test('correct set/get size', () => {

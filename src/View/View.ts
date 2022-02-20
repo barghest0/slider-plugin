@@ -30,15 +30,15 @@ class View extends Observer {
 
   public DOMroot: HTMLElement;
 
-  public params: SliderParams;
-
   public offsetDirection: OffsetDirection;
 
   public fillDirection: FillDirection;
 
-  public size: number;
-
   public prepareDirectionForInteraction: (direction: Direction) => void;
+
+  private params: SliderParams;
+
+  private size: number;
 
   public calculateCursorOffset: (
     coordinate: number,
@@ -82,6 +82,14 @@ class View extends Observer {
 
   public getSize() {
     return this.size;
+  }
+
+  public setValue(stance: number, value: number) {
+    this.params.value[stance] = value;
+  }
+
+  public getValue() {
+    return this.params.value;
   }
 }
 export default View;

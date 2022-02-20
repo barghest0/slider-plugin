@@ -1,4 +1,4 @@
-import { Direction } from '../../../types/slider';
+import { Direction, SliderFillState } from '../../../types/slider';
 import Observer from '../../../Observer/Observer';
 import View from '../../View';
 import updateFillStyle from './utils/updateFillStyle';
@@ -11,33 +11,23 @@ class Fill extends Observer {
 
   public updateFillStyle: () => void;
 
-  private size: number;
-
-  private offset: number;
+  private state: SliderFillState;
 
   constructor(view: View) {
     super();
     this.fill = <HTMLElement>document.querySelector(`.${FILL_CLASS}`);
     this.view = view;
-    this.size = 0;
-    this.offset = 0;
+    this.state = { fillOffset: 0, fillSize: 0 };
     this.updateFillStyle = updateFillStyle.bind(this);
   }
 
-  public setSize(size: number) {
-    this.size = size;
+  public setState({ fillOffset, fillSize }: SliderFillState) {
+    this.state.fillOffset = fillOffset;
+    this.state.fillSize = fillSize;
   }
 
-  public setOffset(offset: number) {
-    this.offset = offset;
-  }
-
-  public getSize() {
-    return this.size;
-  }
-
-  public getOffset() {
-    return this.offset;
+  public getState() {
+    return this.state;
   }
 
   public createFill(direction: Direction) {

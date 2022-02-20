@@ -47,13 +47,9 @@ class Presenter {
 
   public updateThumbAfterTrackClick: (cursorOffset: number) => void;
 
-  public updateThumbView: (
-    stance: number,
-    value: number,
-    offset: number,
-  ) => void;
+  public updateThumbView: (stance: number, offset: number) => void;
 
-  public updateTipView: (stance: number, value: number, offset: number) => void;
+  public updateTipView: (stance: number, offset: number) => void;
 
   public updateFillView: (state: SliderFillState) => void;
 
@@ -147,47 +143,28 @@ class Presenter {
   }
 
   private setSubViewsState() {
-    const { isDecimal, decimalPlaces, hasTips, hasFill } =
-      this.model.getParams();
+    const { hasTips, hasFill } = this.model.getParams();
     const offset = this.model.getOffset();
     const value = this.model.getValue();
     const fillState = this.model.getFillState();
     value.forEach((_, index) => {
-      this.setThumbViewState(offset[index], value[index], index);
-      if (hasTips)
-        this.setTipViewState(
-          offset[index],
-          value[index],
-          index,
-          isDecimal,
-          decimalPlaces,
-        );
+      this.setThumbViewState(offset[index], index);
+      if (hasTips) this.setTipViewState(offset[index], index);
     });
     if (hasFill) this.setFillViewState(fillState);
     return this;
   }
 
-  private setThumbViewState(offset: number, value: number, stance: number) {
+  private setThumbViewState(offset: number, stance: number) {
     this.view.thumbView.setOffset(offset, stance);
-    this.view.thumbView.setValue(value, stance);
   }
 
-  private setFillViewState({ fillSize, fillOffset }: SliderFillState) {
-    this.view.fillView.setOffset(fillOffset);
-    this.view.fillView.setSize(fillSize);
+  private setFillViewState(state: SliderFillState) {
+    this.view.fillView.setState(state);
   }
 
-  private setTipViewState(
-    offset: number,
-    value: number,
-    stance: number,
-    isDecimal: boolean,
-    decimalPlaces: number,
-  ) {
+  private setTipViewState(offset: number, stance: number) {
     this.view.tipView.setOffset(offset, stance);
-    this.view.tipView.setValue(value, stance);
-    this.view.tipView.setIsDecimal(isDecimal);
-    this.view.tipView.setDecimalPlaces(decimalPlaces);
   }
 
   private renderTrack(direction: Direction) {

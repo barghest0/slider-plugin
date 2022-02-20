@@ -12,9 +12,9 @@ const validateCollision = function validateCollision(
   const reverseStance = +!stance;
   const isFirstStanceCurrent = stance === FIRST_THUMB_STANCE;
   const isFirstValueBiggerSecond =
-    this.getValue()[FIRST_VALUE] > this.getValue()[SECOND_VALUE];
+    this.view.getValue()[FIRST_VALUE] > this.view.getValue()[SECOND_VALUE];
   const isSecondValueLessFirst =
-    this.getValue()[SECOND_VALUE] < this.getValue()[FIRST_VALUE];
+    this.view.getValue()[SECOND_VALUE] < this.view.getValue()[FIRST_VALUE];
 
   if (isFirstValueBiggerSecond && isFirstStanceCurrent) return reverseStance;
 
