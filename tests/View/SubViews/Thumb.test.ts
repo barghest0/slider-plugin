@@ -34,16 +34,6 @@ describe('Thumb test', () => {
     expect(thumb.thumbs[SECOND_THUMB_STANCE]).toBeInstanceOf(HTMLElement);
   });
 
-  test('correct set/get 100 first`s thumb value', () => {
-    thumb.view.setValue(100, FIRST_THUMB_STANCE);
-    expect(thumb.view.getValue()[FIRST_VALUE]).toBe(100);
-  });
-
-  test('correct set/get 150 seconds`s thumb value', () => {
-    thumb.view.setValue(150, SECOND_THUMB_STANCE);
-    expect(thumb.view.getValue()[SECOND_VALUE]).toBe(150);
-  });
-
   test('correct set/get 50 first`s thumb offset', () => {
     thumb.setOffset(50, FIRST_THUMB_STANCE);
     expect(thumb.getOffset()[FIRST_OFFSET]).toBe(50);
@@ -55,24 +45,24 @@ describe('Thumb test', () => {
   });
 
   test('expect return initial stance thumb if first value less than second', () => {
-    thumb.view.setValue(60, FIRST_THUMB_STANCE);
-    thumb.view.setValue(100, SECOND_THUMB_STANCE);
+    thumb.view.setValue(FIRST_THUMB_STANCE, 60);
+    thumb.view.setValue(SECOND_THUMB_STANCE, 100);
     expect(thumb.validateCollision(FIRST_THUMB_STANCE)).toBe(
       FIRST_THUMB_STANCE,
     );
   });
 
   test('expect return reverse stance thumb if first value bigger than second', () => {
-    thumb.view.setValue(150, FIRST_THUMB_STANCE);
-    thumb.view.setValue(100, SECOND_THUMB_STANCE);
+    thumb.view.setValue(FIRST_THUMB_STANCE, 150);
+    thumb.view.setValue(SECOND_THUMB_STANCE, 100);
     expect(thumb.validateCollision(FIRST_THUMB_STANCE)).toBe(
       SECOND_THUMB_STANCE,
     );
   });
 
   test('expect return reverse stance thumb if first value bigger than second', () => {
-    thumb.view.setValue(150, FIRST_THUMB_STANCE);
-    thumb.view.setValue(100, SECOND_THUMB_STANCE);
+    thumb.view.setValue(FIRST_THUMB_STANCE, 150);
+    thumb.view.setValue(SECOND_THUMB_STANCE, 100);
     expect(thumb.validateCollision(SECOND_THUMB_STANCE)).toBe(
       FIRST_THUMB_STANCE,
     );

@@ -17,7 +17,7 @@ describe('Fill test', () => {
 
   test('correct set/get 100 size and 100 offset', () => {
     fill.setState({ fillOffset: 100, fillSize: 100 });
-    expect(fill.getState()).toBe({ fillOffset: 100, fillSize: 100 });
+    expect(fill.getState()).toEqual({ fillOffset: 100, fillSize: 100 });
   });
 
   test('expect change fill size and offset to 50% before calling update fill in horizontal/vertical direction', () => {

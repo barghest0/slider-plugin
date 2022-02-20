@@ -54,11 +54,11 @@ class Slider extends Observer {
     this.panel.init();
     this.panel.subscribe(
       SubscribersNames.updateParams,
-      this.panel.initializePanelsParams.bind(this.panel),
+      this.updateParamsFromPanel.bind(this),
     );
     this.panel.subscribe(
       SubscribersNames.updateParams,
-      this.updateParamsFromPanel.bind(this),
+      this.panel.initializePanelsParams.bind(this.panel),
     );
   }
 

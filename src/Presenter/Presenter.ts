@@ -47,7 +47,11 @@ class Presenter {
 
   public updateThumbAfterTrackClick: (cursorOffset: number) => void;
 
-  public updateThumbView: (stance: number, offset: number) => void;
+  public updateThumbView: (
+    stance: number,
+    value: number,
+    offset: number,
+  ) => void;
 
   public updateTipView: (stance: number, offset: number) => void;
 

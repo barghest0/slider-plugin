@@ -87,6 +87,7 @@ class Model extends Observer {
   }
 
   public updateThumb(stance: number, cursorOffset: number) {
+    const { value } = this.params;
     const directionalCursorOffset = this.prepareOffset(cursorOffset);
     const stepPercent = this.calculateStepPercent();
     const stepOffset =
@@ -101,6 +102,7 @@ class Model extends Observer {
     this.notify(
       SubscribersNames.updateThumbView,
       stance,
+      value[stance],
       this.thumbsOffset[stance],
     );
   }

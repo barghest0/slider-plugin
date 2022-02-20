@@ -39,7 +39,6 @@ function validateParams(
     max,
   );
   const isSingleThumb = validatedValue.length === 1;
-
   if (isRange) {
     if (isSingleThumb) {
       validatedValue.push(validatedValue[FIRST_THUMB_STANCE] + step);
@@ -56,7 +55,7 @@ function validateParams(
     max,
     step: validatedStep,
     value: validatedValue,
-    decimalPlaces: validatedDecimalPlaces,
+    decimalPlaces: isDecimal ? validatedDecimalPlaces : 0,
     isDecimal,
     isRange,
     direction,
