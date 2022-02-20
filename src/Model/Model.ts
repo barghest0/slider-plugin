@@ -20,9 +20,9 @@ import endsValidation from './ModelModules/endsValidation';
 class Model extends Observer {
   public DOMroot: HTMLElement;
 
-  public prepareOffset: (offset: number) => number;
-
   public endsValidation: (stance: number) => void;
+
+  private prepareOffset: (offset: number) => number;
 
   private thumbsOffset: number[];
 

@@ -69,7 +69,6 @@ class Slider extends Observer {
 
   private handleThumbChange(stance: number) {
     const value = this.presenter.model.getValue()[stance];
-
     this.params.value[stance] = value;
     if (this.params.onChange) {
       this.params.onChange(this.params);

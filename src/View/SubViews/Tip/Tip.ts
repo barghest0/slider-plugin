@@ -21,7 +21,7 @@ class Tip extends Observer {
     this.updateTipStyle = updateTipStyle.bind(this);
   }
 
-  public setOffset(offset: number, stance: number) {
+  public setOffset(stance: number, offset: number) {
     this.offset[stance] = offset;
   }
 
@@ -29,7 +29,7 @@ class Tip extends Observer {
     return this.offset;
   }
 
-  public createTip(direction: Direction, stance: number) {
+  public createTip(stance: number, direction: Direction) {
     const tip = document.createElement('div');
     tip.classList.add(TIP_CLASS);
     tip.classList.add(`js-${TIP_CLASS}-${stance}`);

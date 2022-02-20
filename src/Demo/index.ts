@@ -21,6 +21,8 @@ const previewSlider2 = new Slider('.slider-2', {
   decimalPlaces: 1,
 });
 
+previewSlider2.addControlPanel();
+
 const previewSlider3 = new Slider('.slider-3', {
   min: -15000,
   max: 15000,
@@ -35,6 +37,8 @@ const previewSlider3 = new Slider('.slider-3', {
   decimalPlaces: 1,
 });
 
+previewSlider3.addControlPanel();
+
 const previewSlider4 = new Slider('.slider-4', {
   min: -100,
   max: 100,
@@ -48,3 +52,5 @@ const previewSlider4 = new Slider('.slider-4', {
   isDecimal: false,
   decimalPlaces: 1,
 });
+
+previewSlider4.addControlPanel();

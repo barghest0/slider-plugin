@@ -52,13 +52,6 @@ describe('Model test', () => {
     expect(model.calculateValue(50, 10)).toBe(50);
   });
 
-  test('check prepareOffset with horizontal/vertical direction', () => {
-    model.setParam(Params.direction, Directions.horizontal);
-    expect(model.prepareOffset(100)).toBe(100);
-    model.setParam(Params.direction, Directions.vertical);
-    expect(model.prepareOffset(100)).toBe(0);
-  });
-
   test('check ends validation when first value more than max in horizontal/vertical direction', () => {
     model.setParam(Params.direction, Directions.horizontal);
     model.setOffset(FIRST_THUMB_STANCE, 150);

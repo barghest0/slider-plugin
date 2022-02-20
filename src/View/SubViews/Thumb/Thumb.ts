@@ -31,7 +31,7 @@ class Thumb extends Observer {
     this.dragAndDropThumb = dragAndDropThumb.bind(this);
   }
 
-  public setOffset(offset: number, stance: number) {
+  public setOffset(stance: number, offset: number) {
     this.offset[stance] = offset;
   }
 

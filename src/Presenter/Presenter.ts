@@ -37,23 +37,15 @@ class Presenter {
 
   public params: SliderParams;
 
-  public updateThumb: (
-    stance: number,
-    cursorOffset: number,
-    direction: Direction,
-  ) => void;
+  public updateThumb: (stance: number, cursorOffset: number) => void;
 
   public updateFill: (offset: number[]) => void;
 
   public updateThumbAfterTrackClick: (cursorOffset: number) => void;
 
-  public updateThumbView: (
-    stance: number,
-    value: number,
-    offset: number,
-  ) => void;
+  public updateThumbView: (stance: number) => void;
 
-  public updateTipView: (stance: number, offset: number) => void;
+  public updateTipView: (stance: number) => void;
 
   public updateFillView: (state: SliderFillState) => void;
 
@@ -108,12 +100,12 @@ class Presenter {
       this.model.getParams();
     this.renderTrack(direction);
     this.renderThumb(FIRST_THUMB_STANCE);
-    if (hasTips) this.renderTip(direction, FIRST_THUMB_STANCE);
+    if (hasTips) this.renderTip(FIRST_THUMB_STANCE, direction);
     if (hasScale) this.renderScale(direction);
     if (hasFill) this.renderFill(direction);
     if (isRange) {
       this.renderThumb(SECOND_THUMB_STANCE);
-      if (hasTips) this.renderTip(direction, SECOND_THUMB_STANCE);
+      if (hasTips) this.renderTip(SECOND_THUMB_STANCE, direction);
     }
   }
 
@@ -153,23 +145,23 @@ class Presenter {
     const value = this.model.getValue();
     const fillState = this.model.getFillState();
     value.forEach((_, index) => {
-      this.setThumbViewState(offset[index], index);
-      if (hasTips) this.setTipViewState(offset[index], index);
+      this.setThumbViewState(index, offset[index]);
+      if (hasTips) this.setTipViewState(index, offset[index]);
     });
     if (hasFill) this.setFillViewState(fillState);
     return this;
   }
 
-  private setThumbViewState(offset: number, stance: number) {
-    this.view.thumbView.setOffset(offset, stance);
+  private setThumbViewState(stance: number, offset: number) {
+    this.view.thumbView.setOffset(stance, offset);
   }
 
   private setFillViewState(state: SliderFillState) {
     this.view.fillView.setState(state);
   }
 
-  private setTipViewState(offset: number, stance: number) {
-    this.view.tipView.setOffset(offset, stance);
+  private setTipViewState(stance: number, offset: number) {
+    this.view.tipView.setOffset(stance, offset);
   }
 
   private renderTrack(direction: Direction) {
@@ -180,8 +172,8 @@ class Presenter {
     this.view.thumbView.createThumb(stance);
   }
 
-  private renderTip(direction: Direction, stance: number) {
-    this.view.tipView.createTip(direction, stance);
+  private renderTip(stance: number, direction: Direction) {
+    this.view.tipView.createTip(stance, direction);
   }
 
   private renderFill(direction: Direction) {

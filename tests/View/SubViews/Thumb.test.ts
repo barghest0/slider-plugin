@@ -35,12 +35,12 @@ describe('Thumb test', () => {
   });
 
   test('correct set/get 50 first`s thumb offset', () => {
-    thumb.setOffset(50, FIRST_THUMB_STANCE);
+    thumb.setOffset(FIRST_THUMB_STANCE, 50);
     expect(thumb.getOffset()[FIRST_OFFSET]).toBe(50);
   });
 
   test('correct set/get 60 seconds`s thumb offset', () => {
-    thumb.setOffset(60, SECOND_THUMB_STANCE);
+    thumb.setOffset(SECOND_THUMB_STANCE, 60);
     expect(thumb.getOffset()[SECOND_OFFSET]).toBe(60);
   });
 
