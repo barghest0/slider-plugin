@@ -1,8 +1,4 @@
-import {
-  SliderParams,
-  SubscribersNames,
-  UserSliderParams,
-} from './types/slider';
+import { SliderParams, SubscribersNames, UserSliderParams } from './types/slider';
 import Presenter from './Presenter/Presenter';
 import validateParams from './Presenter/PresenterModules/validateParams';
 import Panel from './Demo/Panel/Panel';

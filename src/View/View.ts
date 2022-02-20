@@ -36,16 +36,16 @@ class View extends Observer {
 
   public prepareDirectionForInteraction: (direction: Direction) => void;
 
-  private params: SliderParams;
-
-  private size: number;
-
   public calculateCursorOffset: (
     coordinate: number,
     direction: Direction,
     DOMroot: HTMLElement,
     size: number,
   ) => number;
+
+  private params: SliderParams;
+
+  private size: number;
 
   constructor(DOMroot: HTMLElement) {
     super();
@@ -59,8 +59,7 @@ class View extends Observer {
     this.size = 0;
     this.offsetDirection = OffsetDirections.left;
     this.fillDirection = FillDirections.width;
-    this.prepareDirectionForInteraction =
-      prepareDirectionForInteraction.bind(this);
+    this.prepareDirectionForInteraction = prepareDirectionForInteraction.bind(this);
     this.calculateCursorOffset = calculateCursorOffset.bind(this);
   }
 

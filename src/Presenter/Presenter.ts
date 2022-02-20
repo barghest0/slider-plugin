@@ -1,10 +1,5 @@
 import View from '../View/View';
-import {
-  Direction,
-  Directions,
-  SliderFillState,
-  SliderParams,
-} from '../types/slider';
+import { Direction, Directions, SliderFillState, SliderParams } from '../types/slider';
 import clearHTML from './PresenterModules/clearHTML';
 import removeListeners from './PresenterModules/removeListeners';
 import subscribe from './PresenterModules/subscribe';
@@ -49,9 +44,9 @@ class Presenter {
 
   public updateFillView: (state: SliderFillState) => void;
 
-  public unsubscribe: () => void;
-
   public subscribe: () => void;
+
+  public unsubscribe: () => void;
 
   public clearHTML: (direction: Direction) => void;
 
@@ -102,8 +97,7 @@ class Presenter {
   }
 
   private renderSlider() {
-    const { direction, hasFill, hasScale, hasTips, isRange } =
-      this.model.getParams();
+    const { direction, hasFill, hasScale, hasTips, isRange } = this.model.getParams();
     this.renderTrack(direction);
     this.renderThumb(FIRST_THUMB_STANCE);
     if (hasTips) this.renderTip(FIRST_THUMB_STANCE, direction);
@@ -140,18 +134,18 @@ class Presenter {
 
   private setSubViewsState() {
     const { hasTips, hasFill } = this.model.getParams();
-    const offset = this.model.getOffset();
     const value = this.model.getValue();
     const fillState = this.model.getFillState();
-    value.forEach((_, index) => {
-      this.setThumbViewState(index, offset[index]);
-      if (hasTips) this.setTipViewState(index, offset[index]);
+    value.forEach((_, stance) => {
+      this.setThumbViewState(stance);
+      if (hasTips) this.setTipViewState(stance);
     });
     if (hasFill) this.setFillViewState(fillState);
     return this;
   }
 
-  private setThumbViewState(stance: number, offset: number) {
+  private setThumbViewState(stance: number) {
+    const offset = this.model.getOffset()[stance];
     this.view.thumbView.setOffset(stance, offset);
   }
 
@@ -159,7 +153,8 @@ class Presenter {
     this.view.fillView.setState(state);
   }
 
-  private setTipViewState(stance: number, offset: number) {
+  private setTipViewState(stance: number) {
+    const offset = this.model.getOffset()[stance];
     this.view.tipView.setOffset(stance, offset);
   }
 
