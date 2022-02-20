@@ -9,12 +9,7 @@ function getDelimiter(dividend: number, delimiters: number[]): number {
   return getDelimiter(dividend - 1, delimiters);
 }
 
-function prepareScaleData(
-  min: number,
-  max: number,
-  step: number,
-  direction: Direction,
-) {
+function prepareScaleData(min: number, max: number, step: number, direction: Direction) {
   const length = Math.round((max - min) / step + 1);
   const lastIndex = length - 1;
 

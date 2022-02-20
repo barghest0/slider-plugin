@@ -90,11 +90,16 @@
       font-size: 12px;
       position: relative;
       top: 15px;
-
+      font-weight: bold;
+      opacity: 0.5;
+      transition: 0.1s linear;
       &_vertical {
         left: 15px;
         top: 0;
         margin-left: 5px;
+      }
+      &:hover {
+        opacity: 1;
       }
     }
 

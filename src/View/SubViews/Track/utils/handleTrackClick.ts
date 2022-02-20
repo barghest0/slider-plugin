@@ -5,8 +5,7 @@ function handleTrackClick(event: PointerEvent, thisTrack: Track) {
   const { direction } = thisTrack.view.getParams();
   const { DOMroot } = thisTrack.view;
   const size = thisTrack.view.getSize();
-  const coordinate =
-    direction === Directions.horizontal ? event.pageX : event.pageY;
+  const coordinate = direction === Directions.horizontal ? event.pageX : event.pageY;
   const cursorOffset = thisTrack.view.calculateCursorOffset(
     coordinate,
     direction,

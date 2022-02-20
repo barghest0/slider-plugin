@@ -16,7 +16,6 @@ function createScaleMarks(
     const mark = document.createElement('div');
     mark.classList.add(`${SCALE_CLASS}-mark`);
     mark.classList.add(`${SCALE_CLASS}-mark_${direction}`);
-    mark.dataset.testid = 'test-scale-mark';
 
     const offset = scaleData.offsets[i];
 

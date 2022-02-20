@@ -1,8 +1,4 @@
 import {
-  convertTypeAcquisitionFromJson,
-  textChangeRangeIsUnchanged,
-} from 'typescript';
-import {
   SliderParams,
   SubscribersNames,
   UserSliderParams,
@@ -43,6 +39,10 @@ class Slider extends Observer {
     );
   }
 
+  public unsubscribe() {
+    this.presenter.unsubscribe();
+  }
+
   public setParams(params: SliderParams) {
     this.params = params;
   }
@@ -63,10 +63,6 @@ class Slider extends Observer {
     );
   }
 
-  public unsubscribe() {
-    this.presenter.unsubscribe();
-  }
-
   private handleThumbChange(stance: number) {
     const value = this.presenter.model.getValue()[stance];
     this.params.value[stance] = value;
@@ -83,7 +79,7 @@ class Slider extends Observer {
   }
 
   private updateParamsFromPanel(params: SliderParams) {
-    this.params = params;
+    this.setParams(params);
     this.unsubscribe();
     this.init();
   }
