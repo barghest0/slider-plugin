@@ -44,14 +44,6 @@ describe('Model test', () => {
     expect(model.getFillState()).toEqual(fillState);
   });
 
-  test('correct calculate step percent', () => {
-    expect(model.calculateStepPercent()).toBe(10);
-  });
-
-  test('correct calculate value percent', () => {
-    expect(model.calculateValue(50, 10)).toBe(50);
-  });
-
   test('check ends validation when first value more than max in horizontal/vertical direction', () => {
     model.setParam(Params.direction, Directions.horizontal);
     model.setOffset(FIRST_THUMB_STANCE, 150);

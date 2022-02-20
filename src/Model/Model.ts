@@ -1,7 +1,6 @@
 import Observer from '../Observer/Observer';
 import {
   Directions,
-  Params,
   SliderFillState,
   SliderParams,
   SubscribersNames,
@@ -105,9 +104,13 @@ class Model extends Observer {
     const { direction, isRange } = this.params;
     const { fillOffset, fillSize } = this.getFillState();
     let stance = FIRST_THUMB_STANCE;
+
     const isSecondThumbNearest = cursorOffset > fillSize / 2 + fillOffset;
+
     if (isSecondThumbNearest) stance = SECOND_THUMB_STANCE;
+
     const reversedStance = Number(!stance);
+
     if (direction === Directions.vertical) stance = reversedStance;
 
     if (!isRange) stance = FIRST_THUMB_STANCE;
@@ -148,13 +151,13 @@ class Model extends Observer {
     return { fillOffset, fillSize };
   }
 
-  public calculateStepPercent() {
+  private calculateStepPercent() {
     const { max, min, step } = this.params;
     const stepCount = (max - min) / step;
     return 100 / stepCount;
   }
 
-  public calculateValue(stepOffset: number, stepPercent: number) {
+  private calculateValue(stepOffset: number, stepPercent: number) {
     const { step, min } = this.params;
     return (stepOffset / stepPercent) * step + min;
   }

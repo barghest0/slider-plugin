@@ -85,14 +85,20 @@ class Presenter {
     this.clearHTML(params.direction);
     this.removeListeners();
 
-    this.setModelState(params)
-      .addSliderClasses()
+    this.addSliderClasses(params.direction)
+      .setModelState(params)
       .setViewState()
       .setSubViewsState()
       .renderSlider();
 
     this.subscribe();
     this.addListeners(params.isRange);
+  }
+
+  private addSliderClasses(direction: Direction) {
+    this.DOMroot.classList.add(`${MAIN_CLASS}_${direction}`);
+    this.DOMparent.classList.add(`${PARENT_CLASS}_${direction}`);
+    return this;
   }
 
   private renderSlider() {
@@ -129,13 +135,6 @@ class Presenter {
     this.view.setSize(this.model.getSize());
     this.view.prepareDirectionForInteraction(this.model.getParams().direction);
 
-    return this;
-  }
-
-  private addSliderClasses() {
-    const { direction } = this.model.getParams();
-    this.DOMroot.classList.add(`${MAIN_CLASS}_${direction}`);
-    this.DOMparent.classList.add(`${PARENT_CLASS}_${direction}`);
     return this;
   }
 
