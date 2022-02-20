@@ -93,8 +93,8 @@ class Presenter {
     this.clearHTML(params.direction);
     this.removeListeners();
 
-    this.addSliderClasses(params.direction)
-      .setModelState(params)
+    this.setModelState(params)
+      .addSliderClasses()
       .setViewState()
       .setSubViewsState()
       .renderSlider();
@@ -104,12 +104,12 @@ class Presenter {
   }
 
   private renderSlider() {
-    const { direction, step, max, min, hasFill, hasScale, hasTips, isRange } =
+    const { direction, hasFill, hasScale, hasTips, isRange } =
       this.model.getParams();
     this.renderTrack(direction);
     this.renderThumb(FIRST_THUMB_STANCE);
     if (hasTips) this.renderTip(direction, FIRST_THUMB_STANCE);
-    if (hasScale) this.renderScale(direction, step, max, min);
+    if (hasScale) this.renderScale(direction);
     if (hasFill) this.renderFill(direction);
     if (isRange) {
       this.renderThumb(SECOND_THUMB_STANCE);
@@ -140,7 +140,8 @@ class Presenter {
     return this;
   }
 
-  private addSliderClasses(direction: Direction) {
+  private addSliderClasses() {
+    const { direction } = this.model.getParams();
     this.DOMroot.classList.add(`${MAIN_CLASS}_${direction}`);
     this.DOMparent.classList.add(`${PARENT_CLASS}_${direction}`);
     return this;
@@ -187,12 +188,8 @@ class Presenter {
     this.view.fillView.createFill(direction);
   }
 
-  private renderScale(
-    direction: Direction,
-    step: number,
-    max: number,
-    min: number,
-  ) {
+  private renderScale(direction: Direction) {
+    const { step, max, min } = this.model.getParams();
     this.view.scaleView.createScale(direction);
     this.view.scaleView.createScaleMarks(step, max, min, direction);
   }

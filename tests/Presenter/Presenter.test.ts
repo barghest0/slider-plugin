@@ -76,11 +76,11 @@ describe('Presenter test', () => {
   });
 
   test('expect change thumb value to 100 and offset to 50 after notify view when drag first thumb', () => {
+    presenter.model.setValue(FIRST_THUMB_STANCE, 100);
+    presenter.model.setOffset(FIRST_THUMB_STANCE, 50);
     presenter.model.notify(
       SubscribersNames.updateThumbView,
       FIRST_THUMB_STANCE,
-      100,
-      50,
     );
     expect(presenter.view.getValue()[FIRST_VALUE]).toBe(100);
     expect(presenter.view.thumbView.getOffset()[FIRST_OFFSET]).toBe(50);
@@ -88,11 +88,11 @@ describe('Presenter test', () => {
   });
 
   test('expect change thumb value to 150 and offset to 70 after notify view when drag second thumb', () => {
+    presenter.model.setValue(SECOND_THUMB_STANCE, 150);
+    presenter.model.setOffset(SECOND_THUMB_STANCE, 70);
     presenter.model.notify(
       SubscribersNames.updateThumbView,
       SECOND_THUMB_STANCE,
-      150,
-      70,
     );
     expect(presenter.view.getValue()[SECOND_VALUE]).toBe(150);
     expect(presenter.view.thumbView.getOffset()[SECOND_OFFSET]).toBe(70);
@@ -100,22 +100,22 @@ describe('Presenter test', () => {
   });
 
   test('expect change tip value to 50 and offset to 50 after notify view when drag first thumb', () => {
+    presenter.model.setValue(FIRST_THUMB_STANCE, 50);
+    presenter.model.setOffset(FIRST_THUMB_STANCE, 50);
     presenter.model.notify(
       SubscribersNames.updateThumbView,
       FIRST_THUMB_STANCE,
-      50,
-      50,
     );
     expect(presenter.view.getValue()[FIRST_VALUE]).toBe(50);
     expect(presenter.view.tipView.getOffset()[FIRST_OFFSET]).toBe(50);
   });
 
   test('expect change tip value to 100 and offset to 100 after notify view when drag second thumb', () => {
+    presenter.model.setValue(SECOND_THUMB_STANCE, 100);
+    presenter.model.setOffset(SECOND_THUMB_STANCE, 100);
     presenter.model.notify(
       SubscribersNames.updateThumbView,
       SECOND_THUMB_STANCE,
-      100,
-      100,
     );
     expect(presenter.view.getValue()[SECOND_VALUE]).toBe(100);
     expect(presenter.view.tipView.getOffset()[SECOND_OFFSET]).toBe(100);
@@ -140,10 +140,11 @@ describe('Presenter test', () => {
   });
 
   test('expect change fill size to 30 and offset to 30 after notify view when', () => {
-    presenter.model.notify(SubscribersNames.updateFillView, {
+    presenter.model.setFillState({
       fillSize: 30,
       fillOffset: 30,
     });
+    presenter.model.notify(SubscribersNames.updateFillView);
     expect(presenter.view.fillView.getState().fillSize).toBe(30);
     expect(presenter.view.fillView.getState().fillOffset).toBe(30);
   });

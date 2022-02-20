@@ -1,13 +1,10 @@
 import Presenter from '../../Presenter';
 
-function updateThumbView(
-  this: Presenter,
-  stance: number,
-  value: number,
-  offset: number,
-) {
+function updateThumbView(this: Presenter, stance: number) {
+  const offset = this.model.getOffset()[stance];
+
   this.view.thumbView.setOffset(offset, stance);
-  this.view.setValue(stance, value);
+
   this.view.thumbView.updateThumbStyle(stance);
   this.view.thumbView.activeStance = stance;
 }

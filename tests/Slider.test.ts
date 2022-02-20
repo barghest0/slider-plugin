@@ -39,21 +39,20 @@ describe('Slider test', () => {
   });
 
   test('expect change first value input values to 20 before drag first thumb', () => {
+    slider.presenter.model.setValue(FIRST_THUMB_STANCE, 20);
     slider.presenter.model.notify(
       SubscribersNames.updateThumbView,
       FIRST_THUMB_STANCE,
-      20,
-      20,
     );
     expect(slider.panel.firstValueInput.value).toBe('20');
   });
 
   test('expect change second value input values to 30 before drag first thumb', () => {
+    slider.presenter.model.setValue(SECOND_THUMB_STANCE, 30);
+
     slider.presenter.model.notify(
       SubscribersNames.updateThumbView,
       SECOND_THUMB_STANCE,
-      30,
-      30,
     );
     expect(slider.panel.secondValueInput.value).toBe('30');
   });

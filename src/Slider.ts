@@ -31,6 +31,7 @@ class Slider extends Observer {
     this.DOMroot = <HTMLElement>document.querySelector(root);
     this.params = validateParams(params, this.DOMroot);
     this.presenter = new Presenter(root, this.getParams());
+
     this.init();
   }
 
@@ -66,7 +67,9 @@ class Slider extends Observer {
     this.presenter.unsubscribe();
   }
 
-  private handleThumbChange(stance: number, value: number) {
+  private handleThumbChange(stance: number) {
+    const value = this.presenter.model.getValue()[stance];
+
     this.params.value[stance] = value;
     if (this.params.onChange) {
       this.params.onChange(this.params);
