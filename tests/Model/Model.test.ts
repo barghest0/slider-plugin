@@ -142,6 +142,10 @@ describe('Model test', () => {
     const step = validateStep(-10, 0, 100);
     expect(step).toBe(10);
   });
+  test('expect validate and change step to 1 before set step equal 0', () => {
+    const step = validateStep(0, 0, 100);
+    expect(step).toBe(1);
+  });
 
   test('expect validate and push number value to array for interaction in view and model', () => {
     const value = validateValue(3);

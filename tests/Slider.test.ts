@@ -5,12 +5,16 @@ import {
 } from '../src/constants/slider';
 import Panel from '../src/Demo/Panel/Panel';
 import handleValueChange from '../src/Demo/Panel/PanelModules/handleValueChange';
-import validateParams from '../src/Model/ModelModules/validateParams';
 import Slider from '../src/Slider';
 import { SubscribersNames } from '../src/types/slider';
 
 describe('Slider test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
+
+  test('expect set default params if don`t pass params', () => {
+    const slider = new Slider('.slider-1');
+    expect(slider.getParams()).toEqual(DEFAULT_SLIDER_PARAMS);
+  });
 
   const slider = new Slider('.slider-1', { isRange: true });
   slider.addControlPanel();
@@ -20,6 +24,7 @@ describe('Slider test', () => {
     slider.setParams(DEFAULT_SLIDER_PARAMS);
     expect(slider.getParams()).toEqual(DEFAULT_SLIDER_PARAMS);
   });
+
   test('correct add panel to properties', () => {
     slider.addControlPanel();
     expect(panel).toBeDefined();
