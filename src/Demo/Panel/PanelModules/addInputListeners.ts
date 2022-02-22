@@ -13,18 +13,23 @@ function addInputListeners(this: Panel) {
   this.maxValueInput.addEventListener('change', event =>
     handleOtherParamChange.call(this, event, Params.max),
   );
+
   this.firstValueInput.addEventListener('change', event =>
     handleValueChange.call(this, event, FIRST_VALUE),
   );
+
   this.secondValueInput.addEventListener('change', event =>
     handleValueChange.call(this, event, SECOND_VALUE),
   );
+
   this.isVertical.addEventListener('change', event =>
     handleDirectionChange.call(this, event),
   );
+
   this.decimalPlacesInput.addEventListener('change', event =>
     handleOtherParamChange.call(this, event, Params.decimalPlaces),
   );
+
   this.stepInput.addEventListener('change', event =>
     handleOtherParamChange.call(this, event, Params.step),
   );
@@ -36,12 +41,15 @@ function addInputListeners(this: Panel) {
   this.hasFill.addEventListener('change', event =>
     handleOtherParamChange.call(this, event, Params.hasFill),
   );
+
   this.hasTips.addEventListener('change', event =>
     handleOtherParamChange.call(this, event, Params.hasTips),
   );
+
   this.hasScale.addEventListener('change', event =>
     handleOtherParamChange.call(this, event, Params.hasScale),
   );
+
   this.isDecimal.addEventListener('change', event =>
     handleOtherParamChange.call(this, event, Params.isDecimal),
   );

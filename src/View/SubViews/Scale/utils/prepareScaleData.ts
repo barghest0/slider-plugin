@@ -35,7 +35,7 @@ function prepareScaleData(min: number, max: number, step: number, direction: Dir
     let value = min + actualScaleSize * index;
     value = Math.min(value, max);
     if (index === linesCount - 1) value = max;
-    return +value.toFixed();
+    return value;
   });
 
   const offsets = new Array(linesCount).fill('').map((_, index) => {
