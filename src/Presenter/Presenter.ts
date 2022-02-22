@@ -1,5 +1,10 @@
 import View from '../View/View';
-import { Direction, Directions, SliderFillState, SliderParams } from '../types/slider';
+import {
+  Direction,
+  Directions,
+  SliderFillState,
+  UserSliderParams,
+} from '../types/slider';
 import clearHTML from './PresenterModules/clearHTML';
 import removeListeners from './PresenterModules/removeListeners';
 import subscribe from './PresenterModules/subscribe';
@@ -18,9 +23,12 @@ import updateThumb from './PresenterModules/notifyModelMethods/updateThumb';
 import updateFill from './PresenterModules/notifyModelMethods/updateFill';
 import updateThumbView from './PresenterModules/notifyViewMethods/updateThumbView';
 import unsubscribe from './PresenterModules/unsubscribe';
+import Slider from '../Slider';
 
 class Presenter {
   public root: string;
+
+  public slider: Slider;
 
   public DOMroot: HTMLElement;
 
@@ -30,7 +38,7 @@ class Presenter {
 
   public model: Model;
 
-  public params: SliderParams;
+  public params: UserSliderParams;
 
   public updateThumb: (stance: number, cursorOffset: number) => void;
 
@@ -48,14 +56,15 @@ class Presenter {
 
   public unsubscribe: () => void;
 
-  public clearHTML: (direction: Direction) => void;
+  public clearHTML: () => void;
 
-  private addListeners: (isRange: boolean) => void;
+  private addListeners: () => void;
 
   private removeListeners: () => void;
 
-  constructor(root: string, params: SliderParams) {
+  constructor(root: string, params: UserSliderParams, slider: Slider) {
     this.root = root;
+    this.slider = slider;
     this.DOMroot = <HTMLElement>document.querySelector(root);
     this.DOMparent = <HTMLElement>this.DOMroot.parentElement;
     this.model = new Model(this.DOMroot);
@@ -74,52 +83,49 @@ class Presenter {
     this.addListeners = addListeners.bind(this);
   }
 
-  public init(params: SliderParams) {
+  public init(params: UserSliderParams) {
+    this.params = params;
     this.view.thumbView.thumbs = [];
     this.view.tipView.tips = [];
-    this.clearHTML(params.direction);
+    this.clearHTML();
     this.removeListeners();
 
-    this.addSliderClasses(params.direction)
-      .setModelState(params)
+    this.setModelState()
+      .setSliderParams()
+      .addSliderClasses()
       .setViewState()
       .setSubViewsState()
       .renderSlider();
 
     this.subscribe();
-    this.addListeners(params.isRange);
+    this.addListeners();
   }
 
-  private addSliderClasses(direction: Direction) {
-    this.DOMroot.classList.add(`${MAIN_CLASS}_${direction}`);
-    this.DOMparent.classList.add(`${PARENT_CLASS}_${direction}`);
-    return this;
-  }
-
-  private renderSlider() {
-    const { direction, hasFill, hasScale, hasTips, isRange } = this.model.getParams();
-    this.renderTrack(direction);
-    this.renderThumb(FIRST_THUMB_STANCE);
-    if (hasTips) this.renderTip(FIRST_THUMB_STANCE, direction);
-    if (hasScale) this.renderScale(direction);
-    if (hasFill) this.renderFill(direction);
-    if (isRange) {
-      this.renderThumb(SECOND_THUMB_STANCE);
-      if (hasTips) this.renderTip(SECOND_THUMB_STANCE, direction);
-    }
-  }
-
-  private setModelState(params: SliderParams) {
-    this.model.setParams(params);
+  private setModelState() {
+    this.model.setParams(this.params);
     const size =
-      params.direction === Directions.horizontal
-        ? this.DOMroot.offsetWidth
-        : this.DOMroot.offsetHeight;
+      this.model.getParams().direction === Directions.horizontal
+        ? this.DOMparent.offsetWidth
+        : this.DOMparent.offsetHeight;
     this.model.setSize(size);
-    params.value.forEach((_, index) => {
+    this.model.getParams().value.forEach((_, index) => {
       this.model.setOffset(index, this.model.calculateOffset(index));
     });
     this.model.setFillState(this.model.calculateFillState());
+
+    return this;
+  }
+
+  private setSliderParams() {
+    this.slider.setParams(this.model.getParams());
+
+    return this;
+  }
+
+  private addSliderClasses() {
+    const { direction } = this.model.getParams();
+    this.DOMroot.classList.add(`${MAIN_CLASS}_${direction}`);
+    this.DOMparent.classList.add(`${PARENT_CLASS}_${direction}`);
 
     return this;
   }
@@ -141,6 +147,7 @@ class Presenter {
       if (hasTips) this.setTipViewState(stance);
     });
     if (hasFill) this.setFillViewState(fillState);
+
     return this;
   }
 
@@ -156,6 +163,19 @@ class Presenter {
   private setTipViewState(stance: number) {
     const offset = this.model.getOffset()[stance];
     this.view.tipView.setOffset(stance, offset);
+  }
+
+  private renderSlider() {
+    const { direction, hasFill, hasScale, hasTips, isRange } = this.model.getParams();
+    this.renderTrack(direction);
+    this.renderThumb(FIRST_THUMB_STANCE);
+    if (hasTips) this.renderTip(FIRST_THUMB_STANCE, direction);
+    if (hasScale) this.renderScale(direction);
+    if (hasFill) this.renderFill(direction);
+    if (isRange) {
+      this.renderThumb(SECOND_THUMB_STANCE);
+      if (hasTips) this.renderTip(SECOND_THUMB_STANCE, direction);
+    }
   }
 
   private renderTrack(direction: Direction) {

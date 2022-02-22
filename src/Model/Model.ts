@@ -4,6 +4,7 @@ import {
   SliderFillState,
   SliderParams,
   SubscribersNames,
+  UserSliderParams,
 } from '../types/slider';
 import {
   DEFAULT_SLIDER_PARAMS,
@@ -15,9 +16,12 @@ import {
 } from '../constants/slider';
 import prepareOffset from './ModelModules/prepareOffset';
 import endsValidation from './ModelModules/endsValidation';
+import validateParams from './ModelModules/validateParams';
 
 class Model extends Observer {
   public DOMroot: HTMLElement;
+
+  public validateParams: (param: UserSliderParams) => SliderParams;
 
   public endsValidation: (stance: number) => void;
 
@@ -40,10 +44,11 @@ class Model extends Observer {
     this.size = 0;
     this.endsValidation = endsValidation.bind(this);
     this.prepareOffset = prepareOffset.bind(this);
+    this.validateParams = validateParams.bind(this);
   }
 
-  public setParams(params: SliderParams) {
-    this.params = params;
+  public setParams(params: UserSliderParams) {
+    this.params = this.validateParams(params);
   }
 
   public setParam(param: string, value: string | number | number[] | boolean) {
@@ -88,8 +93,7 @@ class Model extends Observer {
   public updateThumb(stance: number, cursorOffset: number) {
     const directionalCursorOffset = this.prepareOffset(cursorOffset);
     const stepPercent = this.calculateStepPercent();
-    const stepOffset =
-      Math.round(directionalCursorOffset / stepPercent) * stepPercent;
+    const stepOffset = Math.round(directionalCursorOffset / stepPercent) * stepPercent;
 
     this.setValue(stance, this.calculateValue(stepOffset, stepPercent));
 

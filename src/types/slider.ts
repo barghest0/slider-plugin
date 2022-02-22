@@ -6,6 +6,7 @@ type Direction = 'vertical' | 'horizontal';
 type OffsetDirection = 'left' | 'top';
 type FillDirection = 'width' | 'height';
 type onChange<T> = (params: T) => void;
+
 type SliderParams = {
   [index: string]:
   | number
@@ -30,6 +31,14 @@ type SliderParams = {
 };
 
 type UserSliderParams = {
+  [index: string]:
+  | number
+  | string
+  | number[]
+  | Direction
+  | boolean
+  | onChange<SliderParams>
+  | undefined;
   min?: number;
   max?: number;
   step?: number;

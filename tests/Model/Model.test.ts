@@ -7,6 +7,10 @@ import {
   SECOND_THUMB_STANCE,
 } from '../../src/constants/slider';
 import { Directions, Params, SubscribersNames } from '../../src/types/slider';
+import validateStep from '../../src/Model/ModelModules/validationParamsMethods/validateStep';
+import validateValue from '../../src/Model/ModelModules/validationParamsMethods/validateValue';
+import validateMin from '../../src/Model/ModelModules/validationParamsMethods/validateMin';
+import validateDecimalPlaces from '../../src/Model/ModelModules/validationParamsMethods/validateDecimalPlaces';
 
 describe('Model test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
@@ -74,28 +78,16 @@ describe('Model test', () => {
     model.setParam(Params.direction, Directions.horizontal);
     model.setParam(Params.value, [20, 40]);
     model.setParam(Params.isRange, true);
-    model.setOffset(
-      FIRST_THUMB_STANCE,
-      model.calculateOffset(FIRST_THUMB_STANCE),
-    );
-    model.setOffset(
-      SECOND_THUMB_STANCE,
-      model.calculateOffset(SECOND_THUMB_STANCE),
-    );
+    model.setOffset(FIRST_THUMB_STANCE, model.calculateOffset(FIRST_THUMB_STANCE));
+    model.setOffset(SECOND_THUMB_STANCE, model.calculateOffset(SECOND_THUMB_STANCE));
     expect(model.calculateFillState()).toEqual({
       fillOffset: 20,
       fillSize: 20,
     });
 
     model.setParam(Params.direction, Directions.vertical);
-    model.setOffset(
-      FIRST_THUMB_STANCE,
-      model.calculateOffset(FIRST_THUMB_STANCE),
-    );
-    model.setOffset(
-      SECOND_THUMB_STANCE,
-      model.calculateOffset(SECOND_THUMB_STANCE),
-    );
+    model.setOffset(FIRST_THUMB_STANCE, model.calculateOffset(FIRST_THUMB_STANCE));
+    model.setOffset(SECOND_THUMB_STANCE, model.calculateOffset(SECOND_THUMB_STANCE));
     expect(model.calculateFillState()).toEqual({
       fillOffset: 60,
       fillSize: 20,
@@ -106,20 +98,14 @@ describe('Model test', () => {
     model.setParam(Params.direction, Directions.horizontal);
     model.setParam(Params.value, [20]);
     model.setParam(Params.isRange, false);
-    model.setOffset(
-      FIRST_THUMB_STANCE,
-      model.calculateOffset(FIRST_THUMB_STANCE),
-    );
+    model.setOffset(FIRST_THUMB_STANCE, model.calculateOffset(FIRST_THUMB_STANCE));
     expect(model.calculateFillState()).toEqual({
       fillOffset: 0,
       fillSize: 20,
     });
 
     model.setParam(Params.direction, Directions.vertical);
-    model.setOffset(
-      FIRST_THUMB_STANCE,
-      model.calculateOffset(FIRST_THUMB_STANCE),
-    );
+    model.setOffset(FIRST_THUMB_STANCE, model.calculateOffset(FIRST_THUMB_STANCE));
     expect(model.calculateFillState()).toEqual({
       fillOffset: 0,
       fillSize: 20,
@@ -145,5 +131,30 @@ describe('Model test', () => {
     model.subscribe(SubscribersNames.updateFillView, subscriberFn);
     model.updateFill();
     expect(subscriberFn).toBeCalled();
+  });
+
+  test('expect validate and change step to 100 before set step more then delta ends', () => {
+    const step = validateStep(200, 0, 100);
+    expect(step).toBe(100);
+  });
+
+  test('expect validate and change step to 100 before set step less 0', () => {
+    const step = validateStep(-10, 0, 100);
+    expect(step).toBe(10);
+  });
+
+  test('expect validate and push number value to array for interaction in view and model', () => {
+    const value = validateValue(3);
+    expect(value).toEqual([3]);
+  });
+
+  test('expect  min value not be bigger min when step equal 2', () => {
+    const min = validateMin(15, 10, 2);
+    expect(min).toEqual(8);
+  });
+
+  test('expect decimal places not be  bigger 3', () => {
+    const decimalPlaces = validateDecimalPlaces(231, 3);
+    expect(decimalPlaces).toEqual(3);
   });
 });

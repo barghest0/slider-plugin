@@ -3,8 +3,9 @@ import {
   FIRST_THUMB_STANCE,
   SECOND_THUMB_STANCE,
 } from '../src/constants/slider';
+import Panel from '../src/Demo/Panel/Panel';
 import handleValueChange from '../src/Demo/Panel/PanelModules/handleValueChange';
-import validateParams from '../src/Presenter/PresenterModules/validateParams';
+import validateParams from '../src/Model/ModelModules/validateParams';
 import Slider from '../src/Slider';
 import { SubscribersNames } from '../src/types/slider';
 
@@ -12,29 +13,29 @@ describe('Slider test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
 
   const slider = new Slider('.slider-1', { isRange: true });
+  slider.addControlPanel();
+  const panel = slider.panel as Panel;
 
   test('correct set/get params ', () => {
-    slider.setParams(validateParams(DEFAULT_SLIDER_PARAMS, slider.DOMroot));
-    expect(slider.getParams()).toEqual(
-      validateParams(DEFAULT_SLIDER_PARAMS, slider.DOMroot),
-    );
+    slider.setParams(DEFAULT_SLIDER_PARAMS);
+    expect(slider.getParams()).toEqual(DEFAULT_SLIDER_PARAMS);
   });
   test('correct add panel to properties', () => {
     slider.addControlPanel();
-    expect(slider.panel).toBeDefined();
+    expect(panel).toBeDefined();
   });
 
   test('expect change first value input values to 20 before drag first thumb', () => {
     slider.presenter.model.setValue(FIRST_THUMB_STANCE, 20);
     slider.presenter.model.notify(SubscribersNames.updateThumbView, FIRST_THUMB_STANCE);
-    expect(slider.panel.firstValueInput.value).toBe('20');
+    expect(panel.firstValueInput.value).toBe('20');
   });
 
   test('expect change second value input values to 30 before drag first thumb', () => {
     slider.presenter.model.setValue(SECOND_THUMB_STANCE, 30);
 
     slider.presenter.model.notify(SubscribersNames.updateThumbView, SECOND_THUMB_STANCE);
-    expect(slider.panel.secondValueInput.value).toBe('30');
+    expect(panel.secondValueInput.value).toBe('30');
   });
 
   test('expect calling onChange after notify view', () => {
@@ -48,10 +49,10 @@ describe('Slider test', () => {
     const unsubscribe = jest.fn();
     const event = new Event('input');
     slider.unsubscribe = unsubscribe;
-    slider.panel.firstValueInput.dispatchEvent(event);
-    slider.panel.firstValueInput.value = '50';
+    panel.firstValueInput.dispatchEvent(event);
+    panel.firstValueInput.value = '50';
 
-    handleValueChange.call(slider.panel, event, FIRST_THUMB_STANCE);
+    handleValueChange.call(panel, event, FIRST_THUMB_STANCE);
     expect(slider.unsubscribe).toBeCalled();
   });
 });

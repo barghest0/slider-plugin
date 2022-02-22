@@ -1,9 +1,8 @@
 import { SliderParams, SubscribersNames, UserSliderParams } from './types/slider';
 import Presenter from './Presenter/Presenter';
-import validateParams from './Presenter/PresenterModules/validateParams';
 import Panel from './Demo/Panel/Panel';
 import Observer from './Observer/Observer';
-import { FIRST_THUMB_STANCE } from './constants/slider';
+import { DEFAULT_SLIDER_PARAMS, FIRST_THUMB_STANCE } from './constants/slider';
 
 class Slider extends Observer {
   public presenter: Presenter;
@@ -12,19 +11,19 @@ class Slider extends Observer {
 
   public DOMroot: HTMLElement;
 
-  public panel: Panel;
+  public panel: Panel | null;
 
   private params: SliderParams;
 
-  constructor(root: string, params: UserSliderParams) {
+  constructor(root: string, params?: UserSliderParams) {
     super();
     this.root = root;
-    this.panel = new Panel(this.root, this);
+    this.panel = null;
     this.DOMroot = <HTMLElement>document.querySelector(root);
-    this.params = validateParams(params, this.DOMroot);
-    this.presenter = new Presenter(root, this.getParams());
+    this.params = DEFAULT_SLIDER_PARAMS;
+    this.presenter = new Presenter(this.root, params || this.params, this);
 
-    this.init();
+    this.init(params || this.params);
   }
 
   public setParams(params: SliderParams) {
@@ -40,7 +39,7 @@ class Slider extends Observer {
   }
 
   public addControlPanel() {
-    this.panel.init();
+    this.panel = new Panel(this.root, this);
     this.panel.subscribe(
       SubscribersNames.updateParams,
       this.updateParamsFromPanel.bind(this),
@@ -49,21 +48,23 @@ class Slider extends Observer {
       SubscribersNames.updateParams,
       this.panel.initializePanelsParams.bind(this.panel),
     );
+
+    this.panel.init();
   }
 
-  private init() {
-    this.presenter.init(validateParams(this.getParams(), this.DOMroot));
+  private init(params: UserSliderParams) {
     this.presenter.model.subscribe(
       SubscribersNames.updateThumbView,
       this.handleThumbChange.bind(this),
     );
+    this.presenter.init(params);
   }
 
   private handleThumbChange(stance: number) {
     const value = this.presenter.model.getValue()[stance];
-    this.params.value[stance] = value;
+    const params = this.presenter.model.getParams();
     if (this.params.onChange) {
-      this.params.onChange(this.params);
+      this.params.onChange(params);
     }
     if (this.panel) {
       if (stance === FIRST_THUMB_STANCE) {
@@ -74,10 +75,9 @@ class Slider extends Observer {
     }
   }
 
-  private updateParamsFromPanel(params: SliderParams) {
-    this.setParams(params);
+  private updateParamsFromPanel(params: UserSliderParams) {
     this.unsubscribe();
-    this.init();
+    this.init(params);
   }
 }
 

@@ -1,14 +1,14 @@
-import { Direction, Directions } from '../../types/slider';
+import { MAIN_CLASS, PARENT_CLASS } from '../../constants/slider';
+import { Directions } from '../../types/slider';
 import Presenter from '../Presenter';
 
-function clearHTML(this: Presenter, direction: Direction) {
+function clearHTML(this: Presenter) {
+  const { direction } = this.model.getParams();
   const prevDirection =
-    direction === Directions.horizontal
-      ? Directions.vertical
-      : Directions.horizontal;
+    direction === Directions.horizontal ? Directions.vertical : Directions.horizontal;
   const parent = <HTMLElement>this.DOMroot.parentElement;
-  this.DOMroot.classList.remove(`slider_${prevDirection}`);
-  parent.classList.remove(`slider-parent_${prevDirection}`);
+  this.DOMroot.classList.remove(`${MAIN_CLASS}_${prevDirection}`);
+  parent.classList.remove(`${PARENT_CLASS}_${prevDirection}`);
   this.DOMroot.innerHTML = '';
 }
 

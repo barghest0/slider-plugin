@@ -3,7 +3,6 @@ import Panel from '../../src/Demo/Panel/Panel';
 import handleDirectionChange from '../../src/Demo/Panel/PanelModules/handleDirectionChange';
 import handleOtherParamChange from '../../src/Demo/Panel/PanelModules/handleOtherParamChange';
 import handleValueChange from '../../src/Demo/Panel/PanelModules/handleValueChange';
-import validateParams from '../../src/Presenter/PresenterModules/validateParams';
 
 import Slider from '../../src/Slider';
 import { Directions, Params, SubscribersNames } from '../../src/types/slider';
@@ -88,7 +87,7 @@ describe('Panel test', () => {
 
   test('expect initialize only first value input if isRange equal false', () => {
     slider.setParams(
-      validateParams({ isRange: false, value: [10] }, slider.DOMroot),
+      slider.presenter.model.validateParams({ isRange: false, value: [10] }),
     );
     panel.initializePanelsParams();
     expect(panel.firstValueInput.value).toBe('10');
@@ -98,7 +97,7 @@ describe('Panel test', () => {
 
   test('expect initialize both value inputs if isRange equal true', () => {
     slider.setParams(
-      validateParams({ isRange: true, value: [10, 20] }, slider.DOMroot),
+      slider.presenter.model.validateParams({ isRange: true, value: [10, 20] }),
     );
     panel.initializePanelsParams();
     expect(panel.firstValueInput.value).toBe('10');

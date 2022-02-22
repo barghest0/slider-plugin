@@ -1,9 +1,7 @@
 import Slider from '../Slider';
 import '../Style/style.scss';
 
-const previewSlider1 = new Slider('.slider-1', {
-  onChange: params => console.log(params.value),
-});
+const previewSlider1 = new Slider('.slider-1');
 
 previewSlider1.addControlPanel();
 
