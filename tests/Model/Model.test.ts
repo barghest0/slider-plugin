@@ -13,7 +13,7 @@ import validateMin from '../../src/Model/ModelModules/validationParamsMethods/va
 import validateDecimalPlaces from '../../src/Model/ModelModules/validationParamsMethods/validateDecimalPlaces';
 
 describe('Model test', () => {
-  document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
+  document.body.innerHTML = `<div id="slider-1" class="slider-1" data-min="10" data-max="100" data-first-value="20" data-second-value="50"></div>`;
   const root = '.slider-1';
   const DOMroot = <HTMLElement>document.querySelector(root);
   const model = new Model(DOMroot);
@@ -132,6 +132,12 @@ describe('Model test', () => {
     model.updateFill();
     expect(subscriberFn).toBeCalled();
   });
+  test('correct set min max data properties', () => {
+    model.setParams(model.validateParams({}));
+    expect(model.getParams().min).toBe(10);
+    expect(model.getParams().max).toBe(100);
+    expect(model.getParams().value).toEqual([20, 50]);
+  });
 
   test('expect validate and change step to 100 before set step more then delta ends', () => {
     const step = validateStep(200, 0, 100);
@@ -142,6 +148,7 @@ describe('Model test', () => {
     const step = validateStep(-10, 0, 100);
     expect(step).toBe(10);
   });
+
   test('expect validate and change step to 1 before set step equal 0', () => {
     const step = validateStep(0, 0, 100);
     expect(step).toBe(1);
@@ -150,6 +157,11 @@ describe('Model test', () => {
   test('expect validate and push number value to array for interaction in view and model', () => {
     const value = validateValue(3);
     expect(value).toEqual([3]);
+  });
+
+  test('expect trim values to 2', () => {
+    const values = validateValue([1, 2, 3, 4, 5]);
+    expect(values).toEqual([1, 2]);
   });
 
   test('expect  min value not be bigger min when step equal 2', () => {
