@@ -10,14 +10,14 @@ import { SubscribersNames } from '../src/types/slider';
 
 describe('Slider test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
-
+  const root = '#slider-1';
   test('expect set default params if don`t pass params', () => {
-    const slider = new Slider('.slider-1');
+    const slider = new Slider(root);
     expect(slider.getParams()).toEqual(DEFAULT_SLIDER_PARAMS);
   });
 
-  const slider = new Slider('.slider-1', { isRange: true });
-  slider.addControlPanel();
+  const slider = new Slider(root, { isRange: true, panel: true });
+
   const panel = slider.panel as Panel;
 
   test('correct set/get params ', () => {
@@ -26,7 +26,6 @@ describe('Slider test', () => {
   });
 
   test('correct add panel to properties', () => {
-    slider.addControlPanel();
     expect(panel).toBeDefined();
   });
 

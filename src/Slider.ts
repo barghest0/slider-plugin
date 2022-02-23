@@ -19,10 +19,9 @@ class Slider extends Observer {
     super();
     this.root = root;
     this.panel = null;
-    this.DOMroot = <HTMLElement>document.querySelector(root);
     this.params = DEFAULT_SLIDER_PARAMS;
-    this.presenter = new Presenter(this.root, params || this.params, this);
-
+    this.DOMroot = <HTMLElement>document.querySelector(root);
+    this.presenter = new Presenter(root, params || this.params, this);
     this.init(params || this.params);
   }
 
@@ -53,6 +52,9 @@ class Slider extends Observer {
   }
 
   private init(params: UserSliderParams) {
+    if (params.panel) {
+      this.addControlPanel();
+    }
     this.presenter.model.subscribe(
       SubscribersNames.updateThumbView,
       this.handleThumbChange.bind(this),

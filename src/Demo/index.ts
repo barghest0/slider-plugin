@@ -1,11 +1,15 @@
-import Slider from '../Slider';
 import '../Style/style.scss';
+import '../slider-plugin';
 
-const previewSlider1 = new Slider('.slider-1');
+// const previewSlider1 = new Slider('.slider-1');
 
-previewSlider1.addControlPanel();
+// previewSlider1.addControlPanel();
 
-const previewSlider2 = new Slider('.slider-2', {
+$('#slider-1').slider({
+  panel: true,
+});
+
+$('#slider-2').slider({
   min: -6,
   max: 6,
   step: 3,
@@ -17,11 +21,10 @@ const previewSlider2 = new Slider('.slider-2', {
   hasScale: true,
   isDecimal: true,
   decimalPlaces: 1,
+  panel: true,
 });
 
-previewSlider2.addControlPanel();
-
-const previewSlider3 = new Slider('.slider-3', {
+$('#slider-3').slider({
   min: -15000,
   max: 15000,
   step: 500,
@@ -33,11 +36,10 @@ const previewSlider3 = new Slider('.slider-3', {
   hasScale: true,
   isDecimal: false,
   decimalPlaces: 1,
+  panel: true,
 });
 
-previewSlider3.addControlPanel();
-
-const previewSlider4 = new Slider('.slider-4', {
+$('#slider-4').slider({
   min: -100,
   max: 100,
   step: 10,
@@ -49,6 +51,5 @@ const previewSlider4 = new Slider('.slider-4', {
   hasScale: true,
   isDecimal: false,
   decimalPlaces: 1,
+  panel: true,
 });
-
-previewSlider4.addControlPanel();

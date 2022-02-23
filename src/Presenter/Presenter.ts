@@ -32,13 +32,9 @@ class Presenter {
 
   public DOMroot: HTMLElement;
 
-  public DOMparent: HTMLElement;
-
   public view: View;
 
   public model: Model;
-
-  public params: UserSliderParams;
 
   public updateThumb: (stance: number, cursorOffset: number) => void;
 
@@ -57,6 +53,10 @@ class Presenter {
   public unsubscribe: () => void;
 
   public clearHTML: () => void;
+
+  private DOMparent: HTMLElement;
+
+  private params: UserSliderParams;
 
   private addListeners: () => void;
 

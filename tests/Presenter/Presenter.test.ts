@@ -12,7 +12,7 @@ import Slider from '../../src/Slider';
 
 describe('Presenter test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
-  const root = '.slider-1';
+  const root = '#slider-1';
   const slider = new Slider(root, { isRange: true });
   const { presenter } = slider;
 

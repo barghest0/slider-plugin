@@ -9,7 +9,7 @@ import { Directions, Params, SubscribersNames } from '../../src/types/slider';
 
 describe('Panel test', () => {
   document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';
-  const root = '.slider-1';
+  const root = '#slider-1';
   const slider = new Slider(root, {});
   const panel = new Panel(root, slider);
   const subscriberFn = jest.fn();

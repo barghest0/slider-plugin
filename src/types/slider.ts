@@ -49,6 +49,7 @@ type UserSliderParams = {
   hasTips?: boolean;
   hasScale?: boolean;
   isDecimal?: boolean;
+  panel?: boolean;
   decimalPlaces?: number;
   onChange?: onChange<SliderParams>;
 };
