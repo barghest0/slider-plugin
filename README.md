@@ -23,7 +23,10 @@
 Инициализация:
 
 ```javascript
-const slider = new Slider('.slider', {});
+import 'slider-plugin'
+import 'slider-plugin.css'
+
+$('#slider').slider(params)
 ```
 
 Пользовательские параметры:
@@ -46,6 +49,7 @@ const slider = new Slider('.slider', {});
 
 ```html
 <div
+  id="slider"
   class="slider"
   data-min-value="-100"
   data-is-range="true"
