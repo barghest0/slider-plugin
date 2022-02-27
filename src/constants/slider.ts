@@ -12,6 +12,7 @@ const DEFAULT_SLIDER_PARAMS: SliderParams = {
   hasScale: true,
   isDecimal: false,
   decimalPlaces: 0,
+  panel: false,
 };
 
 const FIRST_THUMB_STANCE = 0;

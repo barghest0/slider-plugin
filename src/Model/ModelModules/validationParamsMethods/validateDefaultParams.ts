@@ -1,39 +1,20 @@
 import { DEFAULT_SLIDER_PARAMS } from '../../../constants/slider';
-import { Direction, UserSliderParams } from '../../../types/slider';
+import { UserSliderParams } from '../../../types/slider';
 
-function validateDefaultParams(params: UserSliderParams, DOMroot: HTMLElement) {
-  const data = DOMroot.dataset;
-  const values =
-    data.firstValue && data.secondValue
-      ? [+data.firstValue, +data.secondValue]
-      : DEFAULT_SLIDER_PARAMS.value;
-
-  const {
-    min = Number(data.min) || DEFAULT_SLIDER_PARAMS.min,
-    max = Number(data.max) || DEFAULT_SLIDER_PARAMS.max,
-    value = values,
-    decimalPlaces = Number(data.decimalPlaces) || DEFAULT_SLIDER_PARAMS.decimalPlaces,
-    step = Number(data.step) || DEFAULT_SLIDER_PARAMS.step,
-    isRange = Boolean(data.isRange) || DEFAULT_SLIDER_PARAMS.isRange,
-    direction = <Direction>data.direction || DEFAULT_SLIDER_PARAMS.direction,
-    hasFill = Boolean(data.hasFill) || DEFAULT_SLIDER_PARAMS.hasFill,
-    hasTips = Boolean(data.hasTips) || DEFAULT_SLIDER_PARAMS.hasTips,
-    hasScale = Boolean(data.hasScale) || DEFAULT_SLIDER_PARAMS.hasScale,
-    isDecimal = Boolean(data.isDecimal) || DEFAULT_SLIDER_PARAMS.isDecimal,
-  } = params;
-
+function validateDefaultParams(params: UserSliderParams) {
   return {
-    min,
-    max,
-    value,
-    decimalPlaces,
-    isRange,
-    direction,
-    hasFill,
-    hasTips,
-    hasScale,
-    isDecimal,
-    step,
+    min: params.min || DEFAULT_SLIDER_PARAMS.min,
+    max: params.max || DEFAULT_SLIDER_PARAMS.max,
+    value: params.value || DEFAULT_SLIDER_PARAMS.value,
+    decimalPlaces: params.decimalPlaces || DEFAULT_SLIDER_PARAMS.decimalPlaces,
+    step: params.step || DEFAULT_SLIDER_PARAMS.step,
+    isRange: params.isRange || DEFAULT_SLIDER_PARAMS.isRange,
+    direction: params.direction || DEFAULT_SLIDER_PARAMS.direction,
+    hasFill: params.hasFill || DEFAULT_SLIDER_PARAMS.hasFill,
+    hasTips: params.hasTips || DEFAULT_SLIDER_PARAMS.hasTips,
+    hasScale: params.hasScale || DEFAULT_SLIDER_PARAMS.hasScale,
+    isDecimal: params.isDecimal || DEFAULT_SLIDER_PARAMS.isDecimal,
+    panel: params.panel || DEFAULT_SLIDER_PARAMS.panel,
   };
 }
 

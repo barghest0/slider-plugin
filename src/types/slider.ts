@@ -28,6 +28,7 @@ type SliderParams = {
   isDecimal: boolean;
   decimalPlaces: number;
   onChange?: onChange<SliderParams>;
+  panel: boolean;
 };
 
 type UserSliderParams = {

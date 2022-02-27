@@ -22,7 +22,8 @@ function validateParams(this: Model, params: UserSliderParams): SliderParams {
     hasTips,
     hasScale,
     isDecimal,
-  } = validateDefaultParams(params, this.DOMroot);
+    panel,
+  } = validateDefaultParams(params);
 
   const validatedValue = validateValue(value);
   const validatedStep = validateStep(step, min, max);
@@ -49,6 +50,7 @@ function validateParams(this: Model, params: UserSliderParams): SliderParams {
     hasFill,
     hasTips,
     hasScale,
+    panel,
   };
 
   if (params.onChange) validatedParams.onChange = params.onChange;
