@@ -26,8 +26,6 @@ import unsubscribe from './PresenterModules/unsubscribe';
 import Slider from '../Slider';
 
 class Presenter {
-  public root: string;
-
   public slider: Slider;
 
   public DOMroot: HTMLElement;
@@ -62,11 +60,10 @@ class Presenter {
 
   private removeListeners: () => void;
 
-  constructor(root: string, params: UserSliderParams, slider: Slider) {
-    this.root = root;
+  constructor(params: UserSliderParams, slider: Slider) {
     this.slider = slider;
-    this.DOMroot = <HTMLElement>document.querySelector(root);
-    this.DOMparent = <HTMLElement>this.DOMroot.parentElement;
+    this.DOMroot = this.slider.DOMroot;
+    this.DOMparent = this.slider.DOMparent;
     this.model = new Model(this.DOMroot);
     this.view = new View(this.DOMroot);
     this.params = params;

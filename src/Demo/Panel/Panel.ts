@@ -22,8 +22,6 @@ import Observer from '../../Observer/Observer';
 class Panel extends Observer {
   public slider: Slider;
 
-  public root: string;
-
   public DOMroot: HTMLElement;
 
   public minValueInput: HTMLInputElement;
@@ -52,17 +50,16 @@ class Panel extends Observer {
 
   public initializePanelsParams: () => void;
 
-  public initializeInputs: (root: string) => void;
+  public initializeInputs: () => void;
 
   public addInputListeners: () => void;
 
   public renderPanel: () => void;
 
-  constructor(root: string, slider: Slider) {
+  constructor(slider: Slider) {
     super();
     this.slider = slider;
-    this.root = root;
-    this.DOMroot = <HTMLElement>document.querySelector(root);
+    this.DOMroot = slider.DOMroot;
     this.minValueInput = <HTMLInputElement>document.querySelector(`.js-${MIN_CLASS}`);
     this.maxValueInput = <HTMLInputElement>document.querySelector(`.js-${MAX_CLASS}`);
     this.firstValueInput = <HTMLInputElement>(
@@ -91,7 +88,7 @@ class Panel extends Observer {
 
   public init() {
     this.renderPanel();
-    this.initializeInputs(this.root);
+    this.initializeInputs();
     this.initializePanelsParams();
     this.addInputListeners();
   }

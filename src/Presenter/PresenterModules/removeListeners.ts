@@ -1,7 +1,7 @@
 import Presenter from '../Presenter';
 
 function removeListeners(this: Presenter) {
-  $(this.root).off();
+  $(this.DOMroot.classList[0]).off();
 }
 
 export default removeListeners;

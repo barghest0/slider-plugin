@@ -7,21 +7,21 @@ import { DEFAULT_SLIDER_PARAMS, FIRST_THUMB_STANCE } from './constants/slider';
 class Slider extends Observer {
   public presenter: Presenter;
 
-  public root: string;
-
   public DOMroot: HTMLElement;
+
+  public DOMparent: HTMLElement;
 
   public panel: Panel | null;
 
   private params: SliderParams;
 
-  constructor(root: string, params?: UserSliderParams) {
+  constructor(DOMroot: HTMLElement, params?: UserSliderParams) {
     super();
-    this.root = root;
     this.panel = null;
     this.params = DEFAULT_SLIDER_PARAMS;
-    this.DOMroot = <HTMLElement>document.querySelector(root);
-    this.presenter = new Presenter(root, params || this.params, this);
+    this.DOMroot = DOMroot;
+    this.DOMparent = <HTMLElement>DOMroot.parentElement;
+    this.presenter = new Presenter(params || this.params, this);
     this.init(params || this.params);
   }
 
@@ -38,7 +38,7 @@ class Slider extends Observer {
   }
 
   public addControlPanel() {
-    this.panel = new Panel(this.root, this);
+    this.panel = new Panel(this);
     this.panel.subscribe(
       SubscribersNames.updateParams,
       this.updateParamsFromPanel.bind(this),
@@ -52,14 +52,14 @@ class Slider extends Observer {
   }
 
   private init(params: UserSliderParams) {
-    if (params.panel) {
-      this.addControlPanel();
-    }
+    this.presenter.init(params);
     this.presenter.model.subscribe(
       SubscribersNames.updateThumbView,
       this.handleThumbChange.bind(this),
     );
-    this.presenter.init(params);
+    if (params.panel) {
+      this.addControlPanel();
+    }
   }
 
   private handleThumbChange(stance: number) {

@@ -13,7 +13,8 @@ import Slider from '../../src/Slider';
 describe('Presenter test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
   const root = '#slider-1';
-  const slider = new Slider(root, { isRange: true });
+  const DOMroot = <HTMLElement>document.querySelector(root);
+  const slider = new Slider(DOMroot, { isRange: true });
   const { presenter } = slider;
 
   test('constructor test', () => {
@@ -115,10 +116,10 @@ describe('Presenter test', () => {
   test('correct clear HTML', () => {
     presenter.model.setParam(Params.direction, Directions.horizontal);
     presenter.clearHTML();
-    expect($(presenter.root).hasClass(`${MAIN_CLASS}_vertical`)).toBe(false);
+    expect(presenter.DOMroot.classList.contains(`${MAIN_CLASS}_vertical`)).toBe(false);
     presenter.model.setParam(Params.direction, Directions.vertical);
     presenter.clearHTML();
-    expect($(presenter.root).hasClass(`${MAIN_CLASS}_horizontal`)).toBe(false);
+    expect(presenter.DOMroot.classList.contains(`${MAIN_CLASS}_horizontal`)).toBe(false);
   });
 
   test('correct unsubscribe', () => {

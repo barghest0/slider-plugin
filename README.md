@@ -44,6 +44,8 @@ $('#slider').slider(params)
 | hasScale      | boolean                 | true                  | Отображение шкалы                                  |
 | hasTips       | boolean                 | true                  | Отображение подсказок над бегунками                |
 | hasFill       | boolean                 | true                  | Отображение прогресс бара                          |
+| panel         | boolean                 | false                 | Отображение контроль панели                        |
+
 
 Альтернативный вариант установки параметров через `data` атрибуты:
 

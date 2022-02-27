@@ -10,8 +10,9 @@ import { Directions, Params, SubscribersNames } from '../../src/types/slider';
 describe('Panel test', () => {
   document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';
   const root = '#slider-1';
-  const slider = new Slider(root, {});
-  const panel = new Panel(root, slider);
+  const DOMroot = <HTMLElement>document.querySelector(root);
+  const slider = new Slider(DOMroot, {});
+  const panel = new Panel(slider);
   const subscriberFn = jest.fn();
   panel.init();
   panel.subscribe(SubscribersNames.updateParams, subscriberFn);

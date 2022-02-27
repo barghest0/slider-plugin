@@ -14,17 +14,11 @@ import {
 } from '../constants';
 import Panel from '../Panel';
 
-function initializeInputs(this: Panel, root: string) {
-  const panel = <HTMLElement>(
-    document.querySelector(`.js-${root.slice(1)}-panel`)
-  );
+function initializeInputs(this: Panel) {
+  const panel = <HTMLElement>this.slider.DOMparent.nextElementSibling;
 
-  this.minValueInput = <HTMLInputElement>(
-    panel.querySelector(`.js-${MIN_CLASS}`)
-  );
-  this.maxValueInput = <HTMLInputElement>(
-    panel.querySelector(`.js-${MAX_CLASS}`)
-  );
+  this.minValueInput = <HTMLInputElement>panel.querySelector(`.js-${MIN_CLASS}`);
+  this.maxValueInput = <HTMLInputElement>panel.querySelector(`.js-${MAX_CLASS}`);
   this.firstValueInput = <HTMLInputElement>(
     panel.querySelector(`.js-${FIRST_VALUE_CLASS}`)
   );
@@ -35,18 +29,11 @@ function initializeInputs(this: Panel, root: string) {
     panel.querySelector(`.js-${DECIMAL_PLACES_CLASS}`)
   );
   this.stepInput = <HTMLInputElement>panel.querySelector(`.js-${STEP_CLASS}`);
-
   this.isRange = <HTMLInputElement>panel.querySelector(`.js-${IS_RANGE_CLASS}`);
-  this.isVertical = <HTMLInputElement>(
-    panel.querySelector(`.js-${IS_VERTICAL_CLASS}`)
-  );
+  this.isVertical = <HTMLInputElement>panel.querySelector(`.js-${IS_VERTICAL_CLASS}`);
   this.hasFill = <HTMLInputElement>panel.querySelector(`.js-${HAS_FILL_CLASS}`);
   this.hasTips = <HTMLInputElement>panel.querySelector(`.js-${HAS_TIPS_CLASS}`);
-  this.hasScale = <HTMLInputElement>(
-    panel.querySelector(`.js-${HAS_SCALE_CLASS}`)
-  );
-  this.isDecimal = <HTMLInputElement>(
-    panel.querySelector(`.js-${IS_DECIMAL_CLASS}`)
-  );
+  this.hasScale = <HTMLInputElement>panel.querySelector(`.js-${HAS_SCALE_CLASS}`);
+  this.isDecimal = <HTMLInputElement>panel.querySelector(`.js-${IS_DECIMAL_CLASS}`);
 }
 export default initializeInputs;
