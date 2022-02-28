@@ -6,9 +6,8 @@ function clearHTML(this: Presenter) {
   const { direction } = this.model.getParams();
   const prevDirection =
     direction === Directions.horizontal ? Directions.vertical : Directions.horizontal;
-  const parent = <HTMLElement>this.DOMroot.parentElement;
   this.DOMroot.classList.remove(`${MAIN_CLASS}_${prevDirection}`);
-  parent.classList.remove(`${PARENT_CLASS}_${prevDirection}`);
+  this.DOMparent.classList.remove(`${PARENT_CLASS}_${prevDirection}`);
   this.DOMroot.innerHTML = '';
 }
 

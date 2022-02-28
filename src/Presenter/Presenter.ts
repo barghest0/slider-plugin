@@ -24,11 +24,15 @@ import updateFill from './PresenterModules/notifyModelMethods/updateFill';
 import updateThumbView from './PresenterModules/notifyViewMethods/updateThumbView';
 import unsubscribe from './PresenterModules/unsubscribe';
 import Slider from '../Slider';
+import updateModelParams from './PresenterModules/notifyModelMethods/updateModelParams';
+import updateViewParams from './PresenterModules/notifyViewMethods/updateViewParams';
 
 class Presenter {
   public slider: Slider;
 
   public DOMroot: HTMLElement;
+
+  public DOMparent: HTMLElement;
 
   public view: View;
 
@@ -46,13 +50,15 @@ class Presenter {
 
   public updateFillView: (state: SliderFillState) => void;
 
+  public updateModelParams: (params: UserSliderParams) => void;
+
+  public updateViewParams: () => void;
+
   public subscribe: () => void;
 
   public unsubscribe: () => void;
 
   public clearHTML: () => void;
-
-  private DOMparent: HTMLElement;
 
   private params: UserSliderParams;
 
@@ -77,6 +83,8 @@ class Presenter {
     this.updateThumbView = updateThumbView.bind(this);
     this.updateTipView = updateTipView.bind(this);
     this.updateFillView = updateFillView.bind(this);
+    this.updateModelParams = updateModelParams.bind(this);
+    this.updateViewParams = updateViewParams.bind(this);
     this.addListeners = addListeners.bind(this);
   }
 
@@ -84,12 +92,13 @@ class Presenter {
     this.params = params;
     this.view.thumbView.thumbs = [];
     this.view.tipView.tips = [];
+
     this.clearHTML();
     this.removeListeners();
 
-    this.setModelState()
+    this.addSliderClasses('horizontal')
+      .setModelState()
       .setSliderParams()
-      .addSliderClasses()
       .setViewState()
       .setSubViewsState()
       .renderSlider();
@@ -102,8 +111,9 @@ class Presenter {
     this.model.setParams(this.params);
     const size =
       this.model.getParams().direction === Directions.horizontal
-        ? this.DOMparent.offsetWidth
-        : this.DOMparent.offsetHeight;
+        ? this.DOMroot.offsetWidth
+        : this.DOMroot.offsetHeight;
+
     this.model.setSize(size);
     this.model.getParams().value.forEach((_, index) => {
       this.model.setOffset(index, this.model.calculateOffset(index));
@@ -119,8 +129,7 @@ class Presenter {
     return this;
   }
 
-  private addSliderClasses() {
-    const { direction } = this.model.getParams();
+  private addSliderClasses(direction: Direction) {
     this.DOMroot.classList.add(`${MAIN_CLASS}_${direction}`);
     this.DOMparent.classList.add(`${PARENT_CLASS}_${direction}`);
 
@@ -163,7 +172,8 @@ class Presenter {
   }
 
   private renderSlider() {
-    const { direction, hasFill, hasScale, hasTips, isRange } = this.model.getParams();
+    const { direction, hasFill, hasScale, hasTips, isRange, panel } =
+      this.model.getParams();
     this.renderTrack(direction);
     this.renderThumb(FIRST_THUMB_STANCE);
     if (hasTips) this.renderTip(FIRST_THUMB_STANCE, direction);
@@ -173,6 +183,7 @@ class Presenter {
       this.renderThumb(SECOND_THUMB_STANCE);
       if (hasTips) this.renderTip(SECOND_THUMB_STANCE, direction);
     }
+    if (panel) this.renderPanel(this.DOMparent);
   }
 
   private renderTrack(direction: Direction) {
@@ -195,6 +206,10 @@ class Presenter {
     const { step, max, min } = this.model.getParams();
     this.view.scaleView.createScale(direction);
     this.view.scaleView.createScaleMarks(step, max, min, direction);
+  }
+
+  private renderPanel(DOMparent: HTMLElement) {
+    this.view.panelView.createPanel(DOMparent);
   }
 }
 

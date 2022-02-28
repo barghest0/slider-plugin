@@ -1,5 +1,6 @@
-import { FIRST_VALUE, SECOND_VALUE } from '../../../constants/slider';
-import { Directions, SliderParams } from '../../../types/slider';
+import { FIRST_VALUE, SECOND_VALUE } from '../../../../constants/slider';
+import { Directions, SliderParams } from '../../../../types/slider';
+
 import Panel from '../Panel';
 
 function initializePanelsParams(this: Panel) {
@@ -15,7 +16,7 @@ function initializePanelsParams(this: Panel) {
     hasScale,
     decimalPlaces,
     isDecimal,
-  }: SliderParams = this.slider.getParams();
+  }: SliderParams = this.view.getParams();
 
   this.minValueInput.value = min.toString();
   this.maxValueInput.value = max.toString();

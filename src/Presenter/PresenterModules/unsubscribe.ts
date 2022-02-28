@@ -10,6 +10,13 @@ function unsubscribe(this: Presenter) {
   );
   this.view.trackView.unsubscribe(SubscribersNames.updateFill, this.updateFill);
 
+  if (this.model.getParams().panel) {
+    this.view.panelView.unsubscribe(
+      SubscribersNames.updateParams,
+      this.updateModelParams,
+    );
+    this.model.unsubscribe(SubscribersNames.updateParams, this.updateViewParams);
+  }
   this.model.unsubscribe(SubscribersNames.updateThumbView, this.updateThumbView);
   this.model.unsubscribe(SubscribersNames.updateThumbView, this.updateTipView);
   this.model.unsubscribe(SubscribersNames.updateFillView, this.updateFillView);

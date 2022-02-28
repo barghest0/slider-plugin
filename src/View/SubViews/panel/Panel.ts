@@ -1,7 +1,3 @@
-import initializePanelsParams from './PanelModules/initializePanelParams';
-import initializeInputs from './PanelModules/initializeInputs';
-import addInputListeners from './PanelModules/addInputListeners';
-import renderPanel from './PanelModules/renderPanel';
 import {
   DECIMAL_PLACES_CLASS,
   FIRST_VALUE_CLASS,
@@ -15,14 +11,18 @@ import {
   MIN_CLASS,
   SECOND_VALUE_CLASS,
   STEP_CLASS,
-} from './constants';
-import Slider from '../../Slider';
-import Observer from '../../Observer/Observer';
+} from '../../../constants/panel';
+import Observer from '../../../Observer/Observer';
+import View from '../../View';
+import addInputListeners from './utils/addInputListeners';
+import initializeInputs from './utils/initializeInputs';
+import initializePanelsParams from './utils/initializePanelParams';
+import renderPanel from './utils/renderPanel';
 
 class Panel extends Observer {
-  public slider: Slider;
+  public view: View;
 
-  public DOMroot: HTMLElement;
+  public panel: HTMLElement;
 
   public minValueInput: HTMLInputElement;
 
@@ -48,18 +48,18 @@ class Panel extends Observer {
 
   public isDecimal: HTMLInputElement;
 
-  public initializePanelsParams: () => void;
+  private initializePanelsParams: () => void;
 
-  public initializeInputs: () => void;
+  private initializeInputs: () => void;
 
-  public addInputListeners: () => void;
+  private addInputListeners: () => void;
 
-  public renderPanel: () => void;
+  private renderPanel: (DOMParent: HTMLElement) => void;
 
-  constructor(slider: Slider) {
+  constructor(view: View) {
     super();
-    this.slider = slider;
-    this.DOMroot = slider.DOMroot;
+    this.view = view;
+    this.panel = <HTMLElement>document.querySelector('.slider-panel');
     this.minValueInput = <HTMLInputElement>document.querySelector(`.js-${MIN_CLASS}`);
     this.maxValueInput = <HTMLInputElement>document.querySelector(`.js-${MAX_CLASS}`);
     this.firstValueInput = <HTMLInputElement>(
@@ -86,8 +86,9 @@ class Panel extends Observer {
     this.renderPanel = renderPanel.bind(this);
   }
 
-  public init() {
-    this.renderPanel();
+  public createPanel(DOMparent: HTMLElement) {
+    this.renderPanel(DOMparent);
+    this.panel = <HTMLElement>DOMparent.querySelector('.slider-panel');
     this.initializeInputs();
     this.initializePanelsParams();
     this.addInputListeners();

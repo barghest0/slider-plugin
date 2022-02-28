@@ -11,13 +11,11 @@ import {
   MIN_CLASS,
   SECOND_VALUE_CLASS,
   STEP_CLASS,
-} from '../constants';
+} from '../../../../constants/panel';
 import Panel from '../Panel';
 import renderInput from './renderInput';
 
-function renderPanel(this: Panel) {
-  const rootParent = <HTMLElement>this.DOMroot.parentElement;
-  const root = <HTMLElement>rootParent.parentElement;
+function renderPanel(this: Panel, DOMParent: HTMLElement) {
   const panel = document.createElement('div');
   panel.classList.add(`slider-panel`);
   panel.classList.add(`js-slider-panel`);
@@ -44,7 +42,7 @@ function renderPanel(this: Panel) {
   renderInput('Scale', 'checkbox', HAS_SCALE_CLASS, 'checkbox-label', checkboxesPanel);
   renderInput('Decimal', 'checkbox', IS_DECIMAL_CLASS, 'checkbox-label', checkboxesPanel);
 
-  root.appendChild(panel);
+  DOMParent.appendChild(panel);
   panel.appendChild(checkboxesPanel);
 }
 

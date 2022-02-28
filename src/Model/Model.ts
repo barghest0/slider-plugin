@@ -51,6 +51,11 @@ class Model extends Observer {
     this.params = this.validateParams(params);
   }
 
+  public updateParams(params: UserSliderParams) {
+    this.params = this.validateParams(params);
+    this.notify(SubscribersNames.updateParams, this.getParams());
+  }
+
   public setParam(param: string, value: string | number | number[] | boolean) {
     this.params[param] = value;
   }

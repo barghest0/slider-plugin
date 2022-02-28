@@ -1,13 +1,13 @@
-import { Directions, SubscribersNames } from '../../../types/slider';
+import { Directions, SubscribersNames } from '../../../../types/slider';
 import Panel from '../Panel';
 
 function handleDirectionChange(this: Panel, event: Event) {
   const target = <HTMLInputElement>event.target;
-  this.slider.getParams().direction = target.checked
+  this.view.getParams().direction = target.checked
     ? Directions.vertical
     : Directions.horizontal;
 
-  this.notify(SubscribersNames.updateParams, this.slider.getParams());
+  this.notify(SubscribersNames.updateParams, this.view.getParams());
 }
 
 export default handleDirectionChange;

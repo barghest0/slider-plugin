@@ -15,9 +15,15 @@ body {
 .title {
   margin-bottom: 30px;
 }
-.slider {
-  margin-bottom: 50px;
+.slider-parent {
+  margin: 0 auto;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-rows: 350px 220px;
+  row-gap: 50px;
+  width: 80%;
 }
+
 .panel {
   width: 100%;
   padding-top: 40px;
@@ -29,94 +35,4 @@ body {
   flex-direction: column;
   align-content: center;
   justify-content: center;
-}
-
-.slider-panel {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(50px, 1fr));
-
-  grid-row-gap: 20px;
-  column-gap: 20px;
-}
-
-.custom {
-  display: flex;
-  min-height: 35px;
-
-  [type='number'] {
-    padding: 0 10px;
-    border-radius: 4px;
-    background-color: rgb(36, 36, 36);
-    color: #fff;
-    width: 100%;
-    height: 100%;
-    border: none;
-    outline: none;
-  }
-
-  input {
-    background-color: transparent;
-  }
-}
-
-.text-label {
-  display: flex;
-  flex-direction: column;
-}
-
-.checkbox-label {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  column-gap: 10px;
-  [type='checkbox'] {
-    appearance: none;
-  }
-
-  .custom {
-    padding: 0 2px;
-    width: 50px;
-    min-height: 20px;
-    background-color: rgb(36, 36, 36);
-    border-radius: 20px;
-    position: relative;
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
-    &::after {
-      content: '';
-      z-index: 100;
-      top: 2.5px;
-      position: absolute;
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      background-color: rgb(94, 94, 94);
-      transition: all 0.2s ease-in-out;
-    }
-  }
-  input:checked + .custom {
-    background-color: rgb(43, 177, 166);
-  }
-  input:checked + .custom::after {
-    background-color: rgb(255, 255, 255);
-    transform: translateX(30px);
-  }
-}
-
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  margin: 0;
-}
-.checkbox-panel {
-  display: flex;
-  flex-wrap: wrap;
-  justify-self: center;
-  column-gap: 20px;
-  row-gap: 10px;
-  grid-column: 1/-1;
 }

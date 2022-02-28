@@ -16,6 +16,7 @@ import prepareDirectionForInteraction from './ViewModules/prepareDirectionForInt
 import { DEFAULT_SLIDER_PARAMS } from '../constants/slider';
 import calculateCursorOffset from './ViewModules/calculateCursorOffset';
 import Tip from './SubViews/Tip/Tip';
+import Panel from './SubViews/panel/Panel';
 
 class View extends Observer {
   public thumbView: Thumb;
@@ -27,6 +28,8 @@ class View extends Observer {
   public tipView: Tip;
 
   public fillView: Fill;
+
+  public panelView: Panel;
 
   public DOMroot: HTMLElement;
 
@@ -55,6 +58,7 @@ class View extends Observer {
     this.scaleView = new Scale(this);
     this.fillView = new Fill(this);
     this.tipView = new Tip(this);
+    this.panelView = new Panel(this);
     this.params = DEFAULT_SLIDER_PARAMS;
     this.size = 0;
     this.offsetDirection = OffsetDirections.left;

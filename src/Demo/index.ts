@@ -1,10 +1,6 @@
 import '../Style/style.scss';
 import '../slider-plugin';
 
-// const previewSlider1 = new Slider('.slider-1');
-
-// previewSlider1.addControlPanel();
-
 $('#slider-1').slider({
   panel: true,
 });
