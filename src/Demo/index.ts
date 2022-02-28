@@ -1,7 +1,7 @@
 import '../Style/style.scss';
 import '../slider-plugin';
 
-$('#slider-1').slider({
+const slider1 = $('#slider-1').slider({
   panel: true,
   onChange: params => console.log(params),
 });

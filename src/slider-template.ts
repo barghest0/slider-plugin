@@ -80,12 +80,9 @@ function getValidatedParams({
 function slider(this: JQuery, params?: UserSliderParams) {
   const dataParams = getParamsFromDataset(this, params || DEFAULT_SLIDER_PARAMS);
   const validatedParams = getValidatedParams(dataParams);
-  console.log(validatedParams);
 
   const sliderInstance = new Slider(this[0], validatedParams);
-  return {
-    unsubscribe: sliderInstance.presenter.unsubscribe,
-  };
+  return sliderInstance;
 }
 
 export default slider;

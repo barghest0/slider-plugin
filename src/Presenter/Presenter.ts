@@ -85,6 +85,7 @@ class Presenter {
 
   public init(params: SliderParams) {
     this.setParams(params);
+
     this.createSlider();
     if (params.panel) {
       this.renderPanel();
