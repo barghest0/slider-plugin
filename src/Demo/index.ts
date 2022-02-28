@@ -3,6 +3,7 @@ import '../slider-plugin';
 
 $('#slider-1').slider({
   panel: true,
+  onChange: params => console.log(params),
 });
 
 $('#slider-2').slider({

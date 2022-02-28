@@ -48,7 +48,7 @@ class Panel extends Observer {
 
   public isDecimal: HTMLInputElement;
 
-  private initializePanelsParams: () => void;
+  public initializePanelsParams: () => void;
 
   private initializeInputs: () => void;
 

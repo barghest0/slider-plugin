@@ -1,9 +1,9 @@
 import { FIRST_VALUE } from '../../../src/constants/slider';
 import { Directions, Params, SubscribersNames } from '../../../src/types/slider';
-import Panel from '../../../src/View/SubViews/panel/Panel';
-import handleDirectionChange from '../../../src/View/SubViews/panel/utils/handleDirectionChange';
-import handleOtherParamChange from '../../../src/View/SubViews/panel/utils/handleOtherParamChange';
-import handleValueChange from '../../../src/View/SubViews/panel/utils/handleValueChange';
+import Panel from '../../../src/View/SubViews/Panel/Panel';
+import handleDirectionChange from '../../../src/View/SubViews/Panel/utils/handleDirectionChange';
+import handleOtherParamChange from '../../../src/View/SubViews/Panel/utils/handleOtherParamChange';
+import handleValueChange from '../../../src/View/SubViews/Panel/utils/handleValueChange';
 import View from '../../../src/View/View';
 
 describe('Panel test', () => {

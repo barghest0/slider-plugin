@@ -84,7 +84,7 @@ class Presenter {
   }
 
   public init(params: SliderParams) {
-    this.params = params;
+    this.setParams(params);
     this.createSlider();
     if (params.panel) {
       this.renderPanel();
@@ -94,9 +94,11 @@ class Presenter {
   }
 
   public rerender(params: SliderParams) {
-    this.params = params;
+    this.setParams(params);
+
     this.view.thumbView.thumbs = [];
     this.view.tipView.tips = [];
+    this.view.panelView.initializePanelsParams();
     this.unsubscribe();
     this.clearHTML();
     this.removeListeners();
@@ -113,6 +115,14 @@ class Presenter {
       .setViewState()
       .setSubViewsState()
       .renderSlider();
+  }
+
+  public setParams(params: SliderParams) {
+    this.params = params;
+  }
+
+  public getParams() {
+    return this.params;
   }
 
   private setModelState() {

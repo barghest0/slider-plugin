@@ -16,7 +16,7 @@ import prepareDirectionForInteraction from './ViewModules/prepareDirectionForInt
 import { DEFAULT_SLIDER_PARAMS } from '../constants/slider';
 import calculateCursorOffset from './ViewModules/calculateCursorOffset';
 import Tip from './SubViews/Tip/Tip';
-import Panel from './SubViews/panel/Panel';
+import Panel from './SubViews/Panel/Panel';
 
 class View extends Observer {
   public thumbView: Thumb;

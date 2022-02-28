@@ -25,8 +25,8 @@ function getParamsFromDataset(element: JQuery, params: UserSliderParams) {
     hasScale = Boolean(element.data('hasScale')),
     isDecimal = Boolean(element.data('isDecimal')),
     panel = Boolean(element.data('panel')),
+    onChange,
   } = params;
-  console.log(decimalPlaces);
 
   return {
     min,
@@ -41,6 +41,7 @@ function getParamsFromDataset(element: JQuery, params: UserSliderParams) {
     hasScale,
     isDecimal,
     panel,
+    onChange,
   };
 }
 
@@ -57,6 +58,7 @@ function getValidatedParams({
   hasScale,
   isDecimal,
   panel,
+  onChange,
 }: SliderParams) {
   return {
     min: min || DEFAULT_SLIDER_PARAMS.min,
@@ -71,12 +73,14 @@ function getValidatedParams({
     hasScale: hasScale || DEFAULT_SLIDER_PARAMS.hasScale,
     isDecimal: isDecimal || DEFAULT_SLIDER_PARAMS.isDecimal,
     panel: panel || DEFAULT_SLIDER_PARAMS.panel,
+    onChange: onChange || DEFAULT_SLIDER_PARAMS.onChange,
   };
 }
 
 function slider(this: JQuery, params?: UserSliderParams) {
   const dataParams = getParamsFromDataset(this, params || DEFAULT_SLIDER_PARAMS);
   const validatedParams = getValidatedParams(dataParams);
+  console.log(validatedParams);
 
   const sliderInstance = new Slider(this[0], validatedParams);
   return {
