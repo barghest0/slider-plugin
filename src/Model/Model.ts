@@ -4,7 +4,6 @@ import {
   SliderFillState,
   SliderParams,
   SubscribersNames,
-  UserSliderParams,
 } from '../types/slider';
 import {
   DEFAULT_SLIDER_PARAMS,

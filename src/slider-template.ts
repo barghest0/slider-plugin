@@ -26,6 +26,7 @@ function getParamsFromDataset(element: JQuery, params: UserSliderParams) {
     isDecimal = Boolean(element.data('isDecimal')),
     panel = Boolean(element.data('panel')),
   } = params;
+  console.log(decimalPlaces);
 
   return {
     min,

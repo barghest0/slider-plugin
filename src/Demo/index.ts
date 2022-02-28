@@ -8,7 +8,7 @@ $('#slider-1').slider({
 $('#slider-2').slider({
   min: -6,
   max: 6,
-  step: 3,
+  step: 1.5,
   value: [-3, 3],
   isRange: true,
   direction: 'horizontal',
@@ -31,7 +31,7 @@ $('#slider-3').slider({
   hasTips: true,
   hasScale: true,
   isDecimal: false,
-  decimalPlaces: 1,
+  decimalPlaces: 0,
   panel: true,
 });
 
@@ -46,6 +46,6 @@ $('#slider-4').slider({
   hasTips: true,
   hasScale: true,
   isDecimal: false,
-  decimalPlaces: 1,
+  decimalPlaces: 0,
   panel: true,
 });

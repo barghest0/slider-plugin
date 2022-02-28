@@ -85,21 +85,34 @@ class Presenter {
 
   public init(params: SliderParams) {
     this.params = params;
+    this.createSlider();
+    if (params.panel) {
+      this.renderPanel();
+    }
+    this.subscribe();
+    this.addListeners();
+  }
+
+  public rerender(params: SliderParams) {
+    this.params = params;
     this.view.thumbView.thumbs = [];
     this.view.tipView.tips = [];
-
+    this.unsubscribe();
     this.clearHTML();
     this.removeListeners();
+    this.createSlider();
 
-    this.addSliderClasses(params.direction)
+    this.subscribe();
+    this.addListeners();
+  }
+
+  private createSlider() {
+    this.addSliderClasses(this.params.direction)
       .setModelState()
       .setSliderParams()
       .setViewState()
       .setSubViewsState()
       .renderSlider();
-
-    this.subscribe();
-    this.addListeners();
   }
 
   private setModelState() {
@@ -167,8 +180,7 @@ class Presenter {
   }
 
   private renderSlider() {
-    const { direction, hasFill, hasScale, hasTips, isRange, panel } =
-      this.model.getParams();
+    const { direction, hasFill, hasScale, hasTips, isRange } = this.model.getParams();
     this.renderTrack(direction);
     this.renderThumb(FIRST_THUMB_STANCE);
     if (hasTips) this.renderTip(FIRST_THUMB_STANCE, direction);
@@ -178,7 +190,6 @@ class Presenter {
       this.renderThumb(SECOND_THUMB_STANCE);
       if (hasTips) this.renderTip(SECOND_THUMB_STANCE, direction);
     }
-    if (panel) this.renderPanel(this.DOMparent);
   }
 
   private renderTrack(direction: Direction) {
@@ -203,8 +214,8 @@ class Presenter {
     this.view.scaleView.createScaleMarks(step, max, min, direction);
   }
 
-  private renderPanel(DOMparent: HTMLElement) {
-    this.view.panelView.createPanel(DOMparent);
+  private renderPanel() {
+    this.view.panelView.createPanel(this.DOMparent);
   }
 }
 
