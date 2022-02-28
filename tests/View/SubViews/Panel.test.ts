@@ -1,10 +1,15 @@
-import { FIRST_VALUE } from '../../../src/constants/slider';
+import {
+  FIRST_THUMB_STANCE,
+  FIRST_VALUE,
+  SECOND_THUMB_STANCE,
+} from '../../../src/constants/slider';
 import { Directions, Params, SubscribersNames } from '../../../src/types/slider';
 import Panel from '../../../src/View/SubViews/Panel/Panel';
 import handleDirectionChange from '../../../src/View/SubViews/Panel/utils/handleDirectionChange';
 import handleOtherParamChange from '../../../src/View/SubViews/Panel/utils/handleOtherParamChange';
 import handleValueChange from '../../../src/View/SubViews/Panel/utils/handleValueChange';
 import View from '../../../src/View/View';
+import '../../../src/slider-plugin';
 
 describe('Panel test', () => {
   document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';
@@ -15,7 +20,6 @@ describe('Panel test', () => {
   const panel = new Panel(view);
   const subscriberFn = jest.fn();
   panel.createPanel(DOMparent);
-  panel.subscribe(SubscribersNames.updateParams, subscriberFn);
   panel.subscribe(SubscribersNames.updateParams, subscriberFn);
 
   test('constructor test', () => {
@@ -86,18 +90,41 @@ describe('Panel test', () => {
     expect(panel.view.getParams().hasFill).toBe(false);
   });
 
-  // test('expect initialize only first value input if isRange equal false', () => {
-  //   view.setParams();
-  //   panel.createPanel(DOMparent);
-  //   expect(panel.firstValueInput.value).toBe('10');
-  //   expect(panel.secondValueInput.value).toBe('');
-  //   expect(panel.secondValueInput.disabled).toBeTruthy();
-  // });
+  test('expect initialize only first value input if isRange equal false', () => {
+    view.setParam(Params.isRange, false);
+    view.setParam(Params.value, [10]);
+    panel.initializePanelsParams();
+    expect(panel.firstValueInput.value).toBe('10');
+    expect(panel.secondValueInput.value).toBe('0');
+    expect(panel.secondValueInput.disabled).toBeTruthy();
+  });
+  test('expect initialize both value inputs if isRange equal true', () => {
+    view.setParam(Params.isRange, true);
+    view.setParam(Params.value, [10, 20]);
+    panel.initializePanelsParams();
+    expect(panel.firstValueInput.value).toBe('10');
+    expect(panel.secondValueInput.value).toBe('20');
+  });
 
-  // test('expect initialize both value inputs if isRange equal true', () => {
-  //   view.setParams();
-  //   panel.createPanel(DOMparent);
-  //   expect(panel.firstValueInput.value).toBe('10');
-  //   expect(panel.secondValueInput.value).toBe('20');
-  // });
+  const slider = $(root).slider({ isRange: true, panel: true });
+  const { presenter } = slider;
+
+  test('expect change first value input values to 20 after drag first thumb', () => {
+    presenter.model.setValue(FIRST_THUMB_STANCE, 20);
+    presenter.model.notify(SubscribersNames.updatePanelValues, FIRST_THUMB_STANCE);
+    expect(panel.firstValueInput.value).toBe('20');
+  });
+
+  test('expect change second value input values to 30 after drag first thumb', () => {
+    presenter.model.setValue(SECOND_THUMB_STANCE, 30);
+    presenter.model.notify(SubscribersNames.updatePanelValues, SECOND_THUMB_STANCE);
+    expect(panel.secondValueInput.value).toBe('30');
+  });
+
+  test('expect calling onChange after notify view', () => {
+    const onChange = jest.fn();
+    slider.getParams().onChange = onChange;
+    presenter.model.notify(SubscribersNames.updateThumbView, SECOND_THUMB_STANCE);
+    expect(slider.getParams().onChange).toBeDefined();
+  });
 });

@@ -21,6 +21,7 @@ import unsubscribe from './PresenterModules/unsubscribe';
 import Slider from '../Slider';
 import updateModelParams from './PresenterModules/notifyModelMethods/updateModelParams';
 import updateViewParams from './PresenterModules/notifyViewMethods/updateViewParams';
+import updatePanelValuesAfterThumbDrag from './PresenterModules/notifyModelMethods/updatePanelValuesAfterThumbDrag';
 
 class Presenter {
   public slider: Slider;
@@ -44,6 +45,8 @@ class Presenter {
   public updateTipView: (stance: number) => void;
 
   public updateFillView: (state: SliderFillState) => void;
+
+  public updatePanelValuesAfterThumbDrag: (stance: number) => void;
 
   public updateModelParams: (params: SliderParams) => void;
 
@@ -80,6 +83,7 @@ class Presenter {
     this.updateFillView = updateFillView.bind(this);
     this.updateModelParams = updateModelParams.bind(this);
     this.updateViewParams = updateViewParams.bind(this);
+    this.updatePanelValuesAfterThumbDrag = updatePanelValuesAfterThumbDrag.bind(this);
     this.addListeners = addListeners.bind(this);
   }
 

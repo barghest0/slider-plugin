@@ -1,7 +1,7 @@
 import '../Style/style.scss';
 import '../slider-plugin';
 
-const slider1 = $('#slider-1').slider({
+$('#slider-1').slider({
   panel: true,
   onChange: params => console.log(params),
 });
@@ -10,7 +10,7 @@ $('#slider-2').slider({
   min: -6,
   max: 6,
   step: 1.5,
-  value: [-3, 3],
+  value: [3],
   isRange: true,
   direction: 'horizontal',
   hasFill: true,

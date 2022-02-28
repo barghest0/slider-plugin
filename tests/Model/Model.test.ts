@@ -152,8 +152,8 @@ describe('Model test', () => {
     expect(min).toEqual(8);
   });
 
-  test('expect decimal places not be  bigger 3', () => {
-    const decimalPlaces = validateDecimalPlaces(231, 3);
+  test('expect decimal places not be bigger 3', () => {
+    const decimalPlaces = validateDecimalPlaces(231, 3, true);
     expect(decimalPlaces).toEqual(3);
   });
 });

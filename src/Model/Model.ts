@@ -106,6 +106,9 @@ class Model extends Observer {
     this.endsValidation(stance);
 
     this.notify(SubscribersNames.updateThumbView, stance);
+    if (this.getParams().panel) {
+      this.notify(SubscribersNames.updatePanelValues, stance);
+    }
   }
 
   public updateThumbAfterTrackClick(cursorOffset: number) {

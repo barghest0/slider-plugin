@@ -29,14 +29,16 @@ function validateParams(
   const validatedValue = value;
   const validatedStep = validateStep(step, min, max);
   const validatedMin = validateMin(min, max, validatedStep);
-  const validatedDecimalPlaces = validateDecimalPlaces(decimalPlaces, 3);
+  const validatedDecimalPlaces = validateDecimalPlaces(decimalPlaces, 3, isDecimal);
+
   validatedValue[FIRST_THUMB_STANCE] = validateFirstThumb(validatedValue, min, max);
-  const isSingleThumb = validatedValue.length === 1;
 
   if (isRange) {
+    const isSingleThumb = validatedValue.length === 1;
     if (isSingleThumb) {
-      validatedValue.push(validatedValue[FIRST_THUMB_STANCE] + step);
+      validatedValue.push(validatedValue[FIRST_THUMB_STANCE]);
     }
+
     validatedValue[SECOND_THUMB_STANCE] = validateSecondThumb(validatedValue, min, max);
   }
 
@@ -45,7 +47,7 @@ function validateParams(
     max,
     step: validatedStep,
     value: validatedValue,
-    decimalPlaces: isDecimal ? validatedDecimalPlaces : 0,
+    decimalPlaces: validatedDecimalPlaces,
     isDecimal,
     isRange,
     direction,

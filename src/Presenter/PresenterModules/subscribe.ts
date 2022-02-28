@@ -17,6 +17,10 @@ function subscribe(this: Presenter) {
   if (this.model.getParams().panel) {
     this.view.panelView.subscribe(SubscribersNames.updateParams, this.updateModelParams);
     this.model.subscribe(SubscribersNames.updateParams, this.updateViewParams);
+    this.model.subscribe(
+      SubscribersNames.updatePanelValues,
+      this.updatePanelValuesAfterThumbDrag,
+    );
   }
   this.model.subscribe(SubscribersNames.updateFillView, this.updateFillView);
 
