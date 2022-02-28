@@ -1,10 +1,5 @@
 import View from '../View/View';
-import {
-  Direction,
-  Directions,
-  SliderFillState,
-  UserSliderParams,
-} from '../types/slider';
+import { Direction, Directions, SliderFillState, SliderParams } from '../types/slider';
 import clearHTML from './PresenterModules/clearHTML';
 import removeListeners from './PresenterModules/removeListeners';
 import subscribe from './PresenterModules/subscribe';
@@ -50,7 +45,7 @@ class Presenter {
 
   public updateFillView: (state: SliderFillState) => void;
 
-  public updateModelParams: (params: UserSliderParams) => void;
+  public updateModelParams: (params: SliderParams) => void;
 
   public updateViewParams: () => void;
 
@@ -60,13 +55,13 @@ class Presenter {
 
   public clearHTML: () => void;
 
-  private params: UserSliderParams;
+  private params: SliderParams;
 
   private addListeners: () => void;
 
   private removeListeners: () => void;
 
-  constructor(params: UserSliderParams, slider: Slider) {
+  constructor(params: SliderParams, slider: Slider) {
     this.slider = slider;
     this.DOMroot = this.slider.DOMroot;
     this.DOMparent = this.slider.DOMparent;
@@ -88,7 +83,7 @@ class Presenter {
     this.addListeners = addListeners.bind(this);
   }
 
-  public init(params: UserSliderParams) {
+  public init(params: SliderParams) {
     this.params = params;
     this.view.thumbView.thumbs = [];
     this.view.tipView.tips = [];
@@ -96,7 +91,7 @@ class Presenter {
     this.clearHTML();
     this.removeListeners();
 
-    this.addSliderClasses('horizontal')
+    this.addSliderClasses(params.direction)
       .setModelState()
       .setSliderParams()
       .setViewState()

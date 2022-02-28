@@ -1,4 +1,5 @@
 import {
+  DEFAULT_SLIDER_PARAMS,
   FIRST_OFFSET,
   FIRST_THUMB_STANCE,
   FIRST_VALUE,
@@ -9,12 +10,15 @@ import {
 } from '../../src/constants/slider';
 import { Directions, Params, SubscribersNames } from '../../src/types/slider';
 import Slider from '../../src/Slider';
+import '../../src/slider-plugin';
 
 describe('Presenter test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
   const root = '#slider-1';
   const DOMroot = <HTMLElement>document.querySelector(root);
-  const slider = new Slider(DOMroot, { isRange: true });
+  const params = DEFAULT_SLIDER_PARAMS;
+  params.isRange = true;
+  const slider = new Slider(DOMroot, params);
   const { presenter } = slider;
 
   test('constructor test', () => {
@@ -22,7 +26,9 @@ describe('Presenter test', () => {
   });
 
   test('expect horizontal modifier', () => {
-    expect(presenter.DOMroot.classList.contains(`${MAIN_CLASS}_horizontal`)).toBeTruthy();
+    expect(
+      presenter.DOMroot.classList.contains(`${MAIN_CLASS}_${Directions.horizontal}`),
+    ).toBeTruthy();
   });
 
   test('expect change thumb offset to 80 after notify model when drag first thumb', () => {

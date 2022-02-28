@@ -1,6 +1,4 @@
 import { FIRST_VALUE } from '../../../src/constants/slider';
-
-import Slider from '../../../src/Slider';
 import { Directions, Params, SubscribersNames } from '../../../src/types/slider';
 import Panel from '../../../src/View/SubViews/panel/Panel';
 import handleDirectionChange from '../../../src/View/SubViews/panel/utils/handleDirectionChange';
@@ -12,7 +10,7 @@ describe('Panel test', () => {
   document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';
   const root = '#slider-1';
   const DOMroot = <HTMLElement>document.querySelector(root);
-  const DOMparent = <HTMLElement>DOMroot.nextElementSibling;
+  const DOMparent = <HTMLElement>DOMroot.parentElement;
   const view = new View(DOMroot);
   const panel = new Panel(view);
   const subscriberFn = jest.fn();
@@ -21,7 +19,7 @@ describe('Panel test', () => {
   panel.subscribe(SubscribersNames.updateParams, subscriberFn);
 
   test('constructor test', () => {
-    expect(panel.view).toBeInstanceOf(Slider);
+    expect(panel.view).toBeInstanceOf(View);
   });
 
   test('create panel test', () => {
@@ -89,9 +87,7 @@ describe('Panel test', () => {
   });
 
   // test('expect initialize only first value input if isRange equal false', () => {
-  //   view.setParams(
-  //     view.presenter.model.validateParams({ isRange: false, value: [10] }),
-  //   );
+  //   view.setParams();
   //   panel.createPanel(DOMparent);
   //   expect(panel.firstValueInput.value).toBe('10');
   //   expect(panel.secondValueInput.value).toBe('');
@@ -99,9 +95,7 @@ describe('Panel test', () => {
   // });
 
   // test('expect initialize both value inputs if isRange equal true', () => {
-  //   view.setParams(
-  //     view.presenter.model.validateParams({ isRange: true, value: [10, 20] }),
-  //   );
+  //   view.setParams();
   //   panel.createPanel(DOMparent);
   //   expect(panel.firstValueInput.value).toBe('10');
   //   expect(panel.secondValueInput.value).toBe('20');

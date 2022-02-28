@@ -8,7 +8,6 @@ import {
 } from '../../src/constants/slider';
 import { Directions, Params, SubscribersNames } from '../../src/types/slider';
 import validateStep from '../../src/Model/ModelModules/validationParamsMethods/validateStep';
-import validateValue from '../../src/Model/ModelModules/validationParamsMethods/validateValue';
 import validateMin from '../../src/Model/ModelModules/validationParamsMethods/validateMin';
 import validateDecimalPlaces from '../../src/Model/ModelModules/validationParamsMethods/validateDecimalPlaces';
 
@@ -146,16 +145,6 @@ describe('Model test', () => {
   test('expect validate and change step to 1 before set step equal 0', () => {
     const step = validateStep(0, 0, 100);
     expect(step).toBe(1);
-  });
-
-  test('expect validate and push number value to array for interaction in view and model', () => {
-    const value = validateValue(3);
-    expect(value).toEqual([3]);
-  });
-
-  test('expect trim values to 2', () => {
-    const values = validateValue([1, 2, 3, 4, 5]);
-    expect(values).toEqual([1, 2]);
   });
 
   test('expect  min value not be bigger min when step equal 2', () => {

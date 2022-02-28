@@ -5,18 +5,19 @@ import {
 } from '../src/constants/slider';
 
 import Slider from '../src/Slider';
-import { SubscribersNames } from '../src/types/slider';
+import '../src/slider-plugin';
 
 describe('Slider test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
   const root = '#slider-1';
   const DOMroot = <HTMLElement>document.querySelector(root);
+  const slider = new Slider(DOMroot, DEFAULT_SLIDER_PARAMS);
+
   test('expect set default params if don`t pass params', () => {
-    const slider = new Slider(DOMroot);
     expect(slider.getParams()).toEqual(DEFAULT_SLIDER_PARAMS);
   });
 
-  const slider = new Slider(DOMroot, { isRange: true, panel: true });
+  $('#slider-1').slider({ isRange: true, panel: true });
 
   test('correct set/get params ', () => {
     slider.setParams(DEFAULT_SLIDER_PARAMS);

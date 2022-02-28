@@ -1,7 +1,6 @@
-import { SliderParams, SubscribersNames, UserSliderParams } from './types/slider';
+import { SliderParams, SubscribersNames } from './types/slider';
 import Presenter from './Presenter/Presenter';
 import Observer from './Observer/Observer';
-import { DEFAULT_SLIDER_PARAMS } from './constants/slider';
 
 class Slider extends Observer {
   public presenter: Presenter;
@@ -12,13 +11,13 @@ class Slider extends Observer {
 
   private params: SliderParams;
 
-  constructor(DOMroot: HTMLElement, params?: UserSliderParams) {
+  constructor(DOMroot: HTMLElement, params: SliderParams) {
     super();
-    this.params = DEFAULT_SLIDER_PARAMS;
+    this.params = params;
     this.DOMroot = DOMroot;
     this.DOMparent = <HTMLElement>DOMroot.parentElement;
-    this.presenter = new Presenter(params || this.params, this);
-    this.init(params || this.params);
+    this.presenter = new Presenter(this.params, this);
+    this.init(this.params);
   }
 
   public setParams(params: SliderParams) {
@@ -33,7 +32,7 @@ class Slider extends Observer {
     this.presenter.unsubscribe();
   }
 
-  private init(params: UserSliderParams) {
+  private init(params: SliderParams) {
     this.presenter.init(params);
     this.presenter.model.subscribe(
       SubscribersNames.updateThumbView,

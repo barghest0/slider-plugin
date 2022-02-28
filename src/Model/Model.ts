@@ -21,7 +21,7 @@ import validateParams from './ModelModules/validateParams';
 class Model extends Observer {
   public DOMroot: HTMLElement;
 
-  public validateParams: (param: UserSliderParams) => SliderParams;
+  public validateParams: (param: SliderParams) => SliderParams;
 
   public endsValidation: (stance: number) => void;
 
@@ -47,12 +47,12 @@ class Model extends Observer {
     this.validateParams = validateParams.bind(this);
   }
 
-  public setParams(params: UserSliderParams) {
-    this.params = this.validateParams(params);
+  public setParams(params: SliderParams) {
+    this.params = params;
   }
 
-  public updateParams(params: UserSliderParams) {
-    this.params = this.validateParams(params);
+  public updateParams(params: SliderParams) {
+    this.setParams(this.validateParams(params));
     this.notify(SubscribersNames.updateParams, this.getParams());
   }
 
