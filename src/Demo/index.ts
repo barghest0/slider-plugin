@@ -40,7 +40,7 @@ $('#slider-4').slider({
   min: -100,
   max: 100,
   step: 10,
-  value: -50,
+  value: 0,
   isRange: false,
   direction: 'vertical',
   hasFill: true,

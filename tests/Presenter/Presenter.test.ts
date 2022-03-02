@@ -1,4 +1,5 @@
 import {
+  DEFAULT_SLIDER_PARAMS,
   FIRST_OFFSET,
   FIRST_THUMB_STANCE,
   FIRST_VALUE,
@@ -14,7 +15,7 @@ describe('Presenter test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
   const root = '#slider-1';
 
-  const { presenter } = $(root).slider({ isRange: true, value: [0, 100] });
+  const { presenter } = $(root).slider({ isRange: true, value: [0, 100], panel: true });
 
   test('constructor test', () => {
     expect(presenter).toHaveProperty('view');
@@ -114,6 +115,13 @@ describe('Presenter test', () => {
     expect(presenter.view.fillView.getState().fillOffset).toBe(30);
   });
 
+  test('expect change view isRange param true after change panel param', () => {
+    const params = DEFAULT_SLIDER_PARAMS;
+    params.isRange = true;
+    presenter.view.panelView.notify(SubscribersNames.updateParams, params);
+    expect(presenter.model.getParams()).toEqual(params);
+  });
+
   test('correct clear HTML', () => {
     presenter.model.setParam(Params.direction, Directions.horizontal);
     presenter.clearHTML();
@@ -127,6 +135,9 @@ describe('Presenter test', () => {
     presenter.unsubscribe();
     expect(
       presenter.view.thumbView.getSubscribers()[SubscribersNames.updateThumb],
+    ).toEqual([]);
+    expect(
+      presenter.view.panelView.getSubscribers()[SubscribersNames.updateParams],
     ).toEqual([]);
   });
 });
