@@ -43,13 +43,9 @@ describe('View test', () => {
   });
 
   test('expect offset equal 100 when cursorOffset equal 100 in horizontal/vertical direction', () => {
-    expect(
-      view.calculateCursorOffset(200, Directions.horizontal, root, 200),
-    ).toBe(100);
+    expect(view.calculateCursorOffset(200, Directions.horizontal, root, 200)).toBe(100);
 
-    expect(
-      view.calculateCursorOffset(200, Directions.vertical, root, 200),
-    ).toBe(100);
+    expect(view.calculateCursorOffset(200, Directions.vertical, root, 200)).toBe(100);
   });
 
   test('expect fill direction equal width, offset direction equal left in horizontal direction', () => {

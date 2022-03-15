@@ -7,6 +7,7 @@ import {
   SECOND_OFFSET,
   SECOND_THUMB_STANCE,
   SECOND_VALUE,
+  SINGLE_SLIDER,
 } from '../../src/constants/slider';
 import { Directions, Params, SubscribersNames } from '../../src/types/slider';
 import '../../src/slider-plugin';
@@ -19,7 +20,7 @@ describe('Presenter test', () => {
     isRange: true,
     value: [0, 100],
     panel: true,
-  })[0];
+  })[SINGLE_SLIDER];
 
   test('constructor test', () => {
     expect(presenter).toHaveProperty('view');

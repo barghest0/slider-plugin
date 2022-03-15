@@ -2,6 +2,18 @@
 
 [Пример реализации](https://barghest0.github.io/slider-plugin/dist)
 
+
+## Библиотеки
+
+* Node - 16.13.1
+* Typescript - 4.5.4
+* JQuery - 3.6.0
+* Webpack - 5.66.0
+* SASS - 1.49.0
+* Jest - 27.4.7
+* Jsdom - 19.0.0
+* Eslint(air-bnb) - 8.8.0
+
 ## Команды
 
 Команды могут осуществлятсья с помощью `npm` или `yarn` пакетных менеджеров:
@@ -24,7 +36,6 @@
 
 ```javascript
 import 'slider-plugin'
-import 'slider-plugin.css'
 
 $('#slider').slider(params)
 ```
@@ -61,5 +72,10 @@ $('#slider').slider(params)
 ```
 
 ## Архитектура
+
+Архитектура плагина основана на [MVP](https://ru.wikipedia.org/wiki/Model-View-Presenter) шаблоне с passive view.
+Приложение разделено на `Model`, `View`, `Presenter`, которые общаются между собой с помощью подписок, используя поведенческий паттерн [Observer](https://refactoring.guru/ru/design-patterns/observer).
+`Presenter` - проводник между `Model` и `View`, в котором производятся подписки.
+При изменении `View` происходит уведомление `Model`, которая в свою очередь производит нужные вычисления и уведомляет `View` и его дочерние элементы: `Fill`,`Panel`,`Scale`, `Thumb`,`Tip`,`Track`.
 
 ![UML](uml.png)

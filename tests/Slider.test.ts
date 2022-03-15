@@ -1,11 +1,11 @@
-import { DEFAULT_SLIDER_PARAMS } from '../src/constants/slider';
+import { DEFAULT_SLIDER_PARAMS, SINGLE_SLIDER } from '../src/constants/slider';
 
 import '../src/slider-plugin';
 
 describe('Slider test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
   const root = '#slider-1';
-  const slider = $(root).slider()[0];
+  const slider = $(root).slider()[SINGLE_SLIDER];
 
   test('correct set/get params ', () => {
     expect(slider.getParams()).toEqual(DEFAULT_SLIDER_PARAMS);
