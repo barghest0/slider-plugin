@@ -15,7 +15,11 @@ describe('Presenter test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
   const root = '#slider-1';
 
-  const { presenter } = $(root).slider({ isRange: true, value: [0, 100], panel: true });
+  const { presenter } = $(root).slider({
+    isRange: true,
+    value: [0, 100],
+    panel: true,
+  })[0];
 
   test('constructor test', () => {
     expect(presenter).toHaveProperty('view');

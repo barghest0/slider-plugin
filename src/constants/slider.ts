@@ -45,6 +45,8 @@ const SCALE_CLASS = 'slider__scale';
 
 const TIP_CLASS = 'slider__tip';
 
+const SINGLE_SLIDER = 0;
+
 export {
   DEFAULT_SLIDER_PARAMS,
   FIRST_THUMB_STANCE,
@@ -62,4 +64,5 @@ export {
   FILL_CLASS,
   SCALE_CLASS,
   TIP_CLASS,
+  SINGLE_SLIDER,
 };

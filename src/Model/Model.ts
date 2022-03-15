@@ -91,6 +91,7 @@ class Model extends Observer {
 
   public calculateOffset(stance: number) {
     const { min, max, value } = this.params;
+
     return this.prepareOffset((value[stance] - min) / ((max - min) / 100));
   }
 
@@ -100,9 +101,7 @@ class Model extends Observer {
     const stepOffset = Math.round(directionalCursorOffset / stepPercent) * stepPercent;
 
     this.setValue(stance, this.calculateValue(stepOffset, stepPercent));
-
     this.setOffset(stance, this.calculateOffset(stance));
-
     this.endsValidation(stance);
 
     this.notify(SubscribersNames.updateThumbView, stance);
@@ -114,6 +113,7 @@ class Model extends Observer {
   public updateThumbAfterTrackClick(cursorOffset: number) {
     const { direction, isRange } = this.params;
     const { fillOffset, fillSize } = this.getFillState();
+
     let stance = FIRST_THUMB_STANCE;
 
     const isSecondThumbNearest = cursorOffset > fillSize / 2 + fillOffset;
@@ -121,7 +121,6 @@ class Model extends Observer {
     if (isSecondThumbNearest) stance = SECOND_THUMB_STANCE;
 
     const reversedStance = Number(!stance);
-
     if (direction === Directions.vertical) stance = reversedStance;
 
     if (!isRange) stance = FIRST_THUMB_STANCE;

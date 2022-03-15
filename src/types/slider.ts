@@ -9,13 +9,13 @@ type onChange<T> = (params: T) => void;
 
 type SliderParams = {
   [index: string]:
-  | number
-  | string
-  | number[]
-  | Direction
-  | boolean
-  | onChange<SliderParams>
-  | undefined;
+    | number
+    | string
+    | number[]
+    | Direction
+    | boolean
+    | onChange<SliderParams>
+    | undefined;
   min: number;
   max: number;
   step: number;
@@ -33,13 +33,13 @@ type SliderParams = {
 
 type UserSliderParams = {
   [index: string]:
-  | number
-  | string
-  | number[]
-  | Direction
-  | boolean
-  | onChange<SliderParams>
-  | undefined;
+    | number
+    | string
+    | number[]
+    | Direction
+    | boolean
+    | onChange<SliderParams>
+    | undefined;
   min?: number;
   max?: number;
   step?: number;

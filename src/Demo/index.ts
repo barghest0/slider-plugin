@@ -10,7 +10,7 @@ $('#slider-2').slider({
   min: -6,
   max: 6,
   step: 1.5,
-  value: [3],
+  value: [-3, 3],
   isRange: true,
   direction: 'horizontal',
   hasFill: true,

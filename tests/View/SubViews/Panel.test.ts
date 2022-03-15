@@ -106,7 +106,7 @@ describe('Panel test', () => {
     expect(panel.secondValueInput.value).toBe('20');
   });
 
-  const slider = $(root).slider({ isRange: true, panel: true });
+  const slider = $(root).slider({ isRange: true, panel: true })[0];
   const { presenter } = slider;
 
   test('expect change first value input values to 20 after drag first thumb', () => {

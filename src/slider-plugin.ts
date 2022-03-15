@@ -5,7 +5,7 @@ import './Style/slider.scss';
 
 declare global {
   interface JQuery {
-    slider(params?: UserSliderParams): Slider;
+    slider(params?: UserSliderParams): Slider[];
   }
 }
 

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -18,7 +19,7 @@ body {
   margin: 0 auto;
   margin-bottom: 20px;
   display: grid;
-  grid-template-rows: 350px 220px;
+  grid-template-rows: 350px minmax(220px, 1fr);
   row-gap: 50px;
   width: 80%;
 }
