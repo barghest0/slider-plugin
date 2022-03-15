@@ -96,11 +96,16 @@ function getValidatedParams({
 }
 
 function slider(this: JQuery, params?: UserSliderParams) {
-  const dataParams = getParamsFromDataset(this, params || DEFAULT_SLIDER_PARAMS);
-  const validatedParams = getValidatedParams(dataParams);
+  const sliderInstances: Slider[] = [];
 
-  const sliderInstance = new Slider(this[0], validatedParams);
-  return sliderInstance;
+  this.each((_index, sliderItem) => {
+    const dataParams = getParamsFromDataset(this, params || DEFAULT_SLIDER_PARAMS);
+    const validatedParams = getValidatedParams(dataParams);
+    const sliderInstance = new Slider(sliderItem, validatedParams);
+    sliderInstances.push(sliderInstance);
+  });
+
+  return sliderInstances;
 }
 
 export default slider;
