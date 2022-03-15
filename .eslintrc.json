@@ -32,10 +32,7 @@
     "prettier/prettier": ["error"],
     "import/extensions": ["error", "ignorePackages", {
       "js": "never",
-      "jsx": "never",
-      "ts": "never",
-      "tsx": "never",
-      "mjs": "never"
+      "ts": "never"
     }],
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": ["error"]

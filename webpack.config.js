@@ -14,39 +14,26 @@ const config = {
     path: PATHS,
   },
   entry: {
-    app: './src/Demo/index.ts',
-    slider: './src/Slider.ts',
+    index: './src/Demo/index.ts',
+    slider: './src/slider-plugin.ts',
   },
-
-  // optimization: {
-  // 	splitChunks: {
-  // 		cacheGroups: {
-  // 			vendor: {
-  // 				name: 'vendors',
-  // 				test: /node_modules/,
-  // 				chunks: 'all',
-  // 				enforce: true,
-  // 			},
-  // 		},
-  // 	},
-  // },
 
   optimization: {
     splitChunks: {
       cacheGroups: {
-        index: {
+        style: {
           type: 'css/mini-extract',
-          name: 'index',
+          name: 'style',
           chunks: chunk => {
-            return chunk.name === 'index';
+            return chunk.name === 'style';
           },
           enforce: true,
         },
-        Slider: {
+        slider: {
           type: 'css/mini-extract',
-          name: 'Slider',
+          name: 'slider',
           chunks: chunk => {
-            return chunk.name === 'Slider';
+            return chunk.name === 'slider';
           },
           enforce: true,
         },
@@ -70,8 +57,8 @@ const config = {
       {
         test: /\.(scss|css)$/,
         use: [
-          // MiniCssExtractPlugin.loader,
-          'style-loader',
+          MiniCssExtractPlugin.loader,
+          // 'style-loader',
           'css-loader',
           {
             loader: 'postcss-loader',
@@ -96,7 +83,8 @@ const config = {
 
   plugins: [
     new MiniCssExtractPlugin({
-      filename: `${PATHS.assets}css/[name].[fullhash].css`,
+      filename: `${PATHS.assets}css/[name].css`,
+      // chunkFilename: `[name].[contenthash].css`,
     }),
     new ProvidePlugin({
       $: 'jquery',
