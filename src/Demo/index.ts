@@ -1,12 +1,12 @@
 import '../Style/style.scss';
 import '../slider-plugin';
 
-$('#slider-1').slider({
+$('.js-slider-1').slider({
   panel: true,
   onChange: params => console.log(params),
 });
 
-$('#slider-2').slider({
+$('.js-slider-2').slider({
   min: -6,
   max: 6,
   step: 1.5,
@@ -21,7 +21,7 @@ $('#slider-2').slider({
   panel: true,
 });
 
-$('#slider-3').slider({
+$('.js-slider-3').slider({
   min: -15000,
   max: 15000,
   step: 500,
@@ -36,7 +36,7 @@ $('#slider-3').slider({
   panel: true,
 });
 
-$('#slider-4').slider({
+$('.js-slider-4').slider({
   min: -100,
   max: 100,
   step: 10,
@@ -50,3 +50,4 @@ $('#slider-4').slider({
   decimalPlaces: 0,
   panel: true,
 });
+$('.js-slider-5').slider();

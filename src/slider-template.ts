@@ -97,10 +97,13 @@ function getValidatedParams({
 
 function slider(this: JQuery, params?: UserSliderParams) {
   const sliderInstances: Slider[] = [];
+
   this.each((_index, sliderItem) => {
-    const dataParams = getParamsFromDataset(this, params || DEFAULT_SLIDER_PARAMS);
+    const dataParams = getParamsFromDataset(this, params || {});
     const validatedParams = getValidatedParams(dataParams);
     const sliderInstance = new Slider(sliderItem, validatedParams);
+    console.log(validatedParams);
+
     sliderInstances.push(sliderInstance);
   });
 
