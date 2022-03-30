@@ -1,3 +1,5 @@
+import { CHECKBOX_TYPE } from '../../../../constants/panel';
+
 function renderInput(
   text: string,
   type: string,
@@ -19,7 +21,7 @@ function renderInput(
 
   parent.appendChild(label);
 
-  if (type === 'checkbox') {
+  if (type === CHECKBOX_TYPE) {
     label.appendChild(input);
     label.appendChild(custom);
   } else {

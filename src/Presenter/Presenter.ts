@@ -116,7 +116,6 @@ class Presenter {
   private createSlider() {
     this.addSliderClasses(this.params.direction)
       .setModelState()
-      .setSliderParams()
       .setViewState()
       .setSubViewsState()
       .renderSlider();
@@ -138,16 +137,10 @@ class Presenter {
         : this.DOMroot.offsetHeight;
 
     this.model.setSize(size);
-    this.model.getParams().value.forEach((_, index) => {
-      this.model.setOffset(index, this.model.calculateOffset(index));
+    this.model.getParams().value.forEach((_, stance) => {
+      this.model.setOffset(stance, this.model.calculateOffset(stance));
     });
     this.model.setFillState(this.model.calculateFillState());
-
-    return this;
-  }
-
-  private setSliderParams() {
-    this.slider.setParams(this.model.getParams());
 
     return this;
   }

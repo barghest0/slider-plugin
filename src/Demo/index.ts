@@ -1,10 +1,12 @@
 import '../Style/style.scss';
 import '../slider-plugin';
 
-$('.js-slider-1').slider({
+const slider = $('.js-slider-1').slider({
   panel: true,
   onChange: params => console.log(params),
 });
+
+slider[0].unsubscribe();
 
 $('.js-slider-2').slider({
   min: -6,

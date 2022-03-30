@@ -17,7 +17,7 @@ class Slider extends Observer {
     this.DOMroot = DOMroot;
     this.DOMparent = <HTMLElement>DOMroot.parentElement;
     this.presenter = new Presenter(this.params, this);
-    window.addEventListener('load', () => this.init(params));
+    this.init(params);
   }
 
   public setParams(params: SliderParams) {

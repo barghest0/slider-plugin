@@ -18,15 +18,12 @@ function prepareScaleData(min: number, max: number, step: number, direction: Dir
   const delimiter = getDelimiter(lastIndex, primes);
 
   let multiplier = Math.max(Math.floor(lastIndex / delimiter), 1);
-
   multiplier = multiplier < 15 ? Math.min(multiplier, delimiter) : multiplier;
 
   const linesCount = Math.ceil(length / multiplier);
 
   const range = Math.abs(max - min);
-
   const isCountBigThanScalePoint = Math.floor(range / step) > linesCount;
-
   const actualScaleSize = isCountBigThanScalePoint
     ? Math.round(Math.round(range / step) / (linesCount - 1)) * step
     : step;

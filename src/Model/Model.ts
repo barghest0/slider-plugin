@@ -117,12 +117,15 @@ class Model extends Observer {
 
     let stance = FIRST_THUMB_STANCE;
 
-    const isSecondThumbNearest = cursorOffset > fillSize / 2 + fillOffset;
+    const halfTrack = fillSize / 2;
+    const isSecondThumbNearest = cursorOffset > halfTrack + fillOffset;
 
     if (isSecondThumbNearest) stance = SECOND_THUMB_STANCE;
 
-    const reversedStance = Number(!stance);
-    if (direction === Directions.vertical) stance = reversedStance;
+    if (direction === Directions.vertical) {
+      const reversedStance = Number(!stance);
+      stance = reversedStance;
+    }
 
     if (!isRange) stance = FIRST_THUMB_STANCE;
 
@@ -143,23 +146,27 @@ class Model extends Observer {
   }
 
   public calculateFillState() {
+    return { fillOffset: this.calculateFillOffset(), fillSize: this.calculateFillSize() };
+  }
+
+  private calculateFillSize() {
     const { isRange, direction } = this.params;
-    let fillOffset = 0;
-    let fillSize = 0;
     if (isRange) {
-      fillSize =
-        direction === Directions.horizontal
-          ? this.thumbsOffset[SECOND_OFFSET] - this.thumbsOffset[FIRST_OFFSET]
-          : this.thumbsOffset[FIRST_OFFSET] - this.thumbsOffset[SECOND_OFFSET];
-      fillOffset =
-        direction === Directions.horizontal
-          ? this.thumbsOffset[FIRST_OFFSET]
-          : this.thumbsOffset[SECOND_OFFSET];
-    } else {
-      fillOffset = MIN_OFFSET;
-      fillSize = this.prepareOffset(this.thumbsOffset[FIRST_OFFSET]);
+      return direction === Directions.horizontal
+        ? this.thumbsOffset[SECOND_OFFSET] - this.thumbsOffset[FIRST_OFFSET]
+        : this.thumbsOffset[FIRST_OFFSET] - this.thumbsOffset[SECOND_OFFSET];
     }
-    return { fillOffset, fillSize };
+    return this.prepareOffset(this.thumbsOffset[FIRST_OFFSET]);
+  }
+
+  private calculateFillOffset() {
+    const { isRange, direction } = this.params;
+    if (isRange) {
+      return direction === Directions.horizontal
+        ? this.thumbsOffset[FIRST_OFFSET]
+        : this.thumbsOffset[SECOND_OFFSET];
+    }
+    return MIN_OFFSET;
   }
 
   private calculateStepPercent() {

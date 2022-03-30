@@ -9,13 +9,23 @@ function unsubscribe(this: Presenter) {
     this.updateThumbAfterTrackClick,
   );
   this.view.trackView.unsubscribe(SubscribersNames.updateFill, this.updateFill);
-
-  this.view.panelView.unsubscribe(SubscribersNames.updateParams, this.updateModelParams);
-  this.model.unsubscribe(SubscribersNames.updateParams, this.updateViewParams);
-
   this.model.unsubscribe(SubscribersNames.updateThumbView, this.updateThumbView);
-  this.model.unsubscribe(SubscribersNames.updateThumbView, this.updateTipView);
   this.model.unsubscribe(SubscribersNames.updateFillView, this.updateFillView);
+
+  if (this.model.getParams().hasTips) {
+    this.model.unsubscribe(SubscribersNames.updateThumbView, this.updateTipView);
+  }
+  if (this.model.getParams().panel) {
+    this.view.panelView.unsubscribe(
+      SubscribersNames.updateParams,
+      this.updateModelParams,
+    );
+    this.model.unsubscribe(SubscribersNames.updateParams, this.updateViewParams);
+    this.model.unsubscribe(
+      SubscribersNames.updatePanelValues,
+      this.updatePanelValuesAfterThumbDrag,
+    );
+  }
 }
 
 export default unsubscribe;
