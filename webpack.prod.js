@@ -5,17 +5,16 @@ const prodConfig = merge(config, {
   mode: 'production',
 
   output: {
-    filename: `${config.externals.path.assets}js/[name].[fullhash].js`,
     path: config.externals.path.dist,
+    filename: `${config.externals.path.assets}js/[name].js`,
     clean: true,
     library: {
-      name: 'slider',
+      name: 'slider-plugin',
       type: 'umd',
-      export: 'default',
     },
   },
 });
 
-module.exports = new Promise(resolve => {
-  resolve(prodConfig);
-});
+module.exports = prodConfig
+
+

@@ -17,6 +17,4 @@ const devConfig = merge(config, {
   },
 });
 
-module.exports = new Promise(resolve => {
-  resolve(devConfig);
-});
+module.exports = devConfig 

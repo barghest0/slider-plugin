@@ -1,6 +1,6 @@
 # slider-plugin
 
-[Пример реализации](https://barghest0.github.io/slider-plugin/dist)
+[Пример реализации](https://barghest0.github.io/slider-plugin/)
 
 
 ## Библиотеки
