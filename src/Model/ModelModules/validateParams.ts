@@ -1,4 +1,8 @@
-import { FIRST_THUMB_STANCE, SECOND_THUMB_STANCE } from '../../constants/slider';
+import {
+  FIRST_THUMB_STANCE,
+  MAX_DECIMAL_PLACES,
+  SECOND_THUMB_STANCE,
+} from '../../constants/slider';
 import { SliderParams } from '../../types/slider';
 
 import validateDecimalPlaces from './validationParamsMethods/validateDecimalPlaces';
@@ -29,7 +33,11 @@ function validateParams(
   const validatedValue = value;
   const validatedStep = validateStep(step, min, max);
   const validatedMin = validateMin(min, max, validatedStep);
-  const validatedDecimalPlaces = validateDecimalPlaces(decimalPlaces, 3, isDecimal);
+  const validatedDecimalPlaces = validateDecimalPlaces(
+    decimalPlaces,
+    MAX_DECIMAL_PLACES,
+    isDecimal,
+  );
 
   validatedValue[FIRST_THUMB_STANCE] = validateFirstThumb(validatedValue, min, max);
 

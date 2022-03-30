@@ -9,6 +9,7 @@ import {
   DEFAULT_SLIDER_PARAMS,
   FIRST_OFFSET,
   FIRST_THUMB_STANCE,
+  MAX_PERCENTS,
   MIN_OFFSET,
   SECOND_OFFSET,
   SECOND_THUMB_STANCE,
@@ -164,7 +165,7 @@ class Model extends Observer {
   private calculateStepPercent() {
     const { max, min, step } = this.params;
     const stepCount = (max - min) / step;
-    return 100 / stepCount;
+    return MAX_PERCENTS / stepCount;
   }
 
   private calculateValue(stepOffset: number, stepPercent: number) {

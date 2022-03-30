@@ -16,40 +16,37 @@ const DEFAULT_SLIDER_PARAMS: SliderParams = {
 };
 
 const FIRST_THUMB_STANCE = 0;
-
 const SECOND_THUMB_STANCE = 1;
-
+const SINGLE_THUMB = 1;
 const FIRST_VALUE = 0;
-
 const SECOND_VALUE = 1;
-
 const FIRST_OFFSET = 0;
-
 const SECOND_OFFSET = 1;
-
 const MAX_OFFSET = 100;
-
 const MIN_OFFSET = 0;
+const MIN_STEP = 0;
+const MAX_DECIMAL_PLACES = 3;
+const MIN_DECIMAL_PLACES = 0;
 
 const PARENT_CLASS = 'slider-parent';
-
 const MAIN_CLASS = 'slider';
-
 const TRACK_CLASS = 'slider__track';
-
 const THUMB_CLASS = 'slider__thumb';
-
 const FILL_CLASS = 'slider__fill';
-
 const SCALE_CLASS = 'slider__scale';
-
 const TIP_CLASS = 'slider__tip';
-
 const SINGLE_SLIDER = 0;
+
+const MAX_PERCENTS = 100;
 
 export {
   DEFAULT_SLIDER_PARAMS,
+  MAX_DECIMAL_PLACES,
+  MIN_DECIMAL_PLACES,
   FIRST_THUMB_STANCE,
+  MAX_PERCENTS,
+  MIN_STEP,
+  SINGLE_THUMB,
   SECOND_THUMB_STANCE,
   FIRST_VALUE,
   SECOND_VALUE,
