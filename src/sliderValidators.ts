@@ -30,7 +30,7 @@ function getParamsFromDataset(element: JQuery, params: UserSliderParams) {
   return {
     min,
     max,
-    value: Array.isArray(value) ? value : [value],
+    value,
     decimalPlaces,
     step,
     isRange,
@@ -58,9 +58,15 @@ function getValidatedParams({
   isDecimal,
   panel,
   onChange,
-}: SliderParams) {
-  const isValuesValid = value[FIRST_VALUE] || value[SECOND_VALUE];
-  const validatedValue = isValuesValid ? value : DEFAULT_SLIDER_PARAMS.value;
+}: UserSliderParams) {
+  let validatedValue: number[] = [];
+  if (Array.isArray(value)) {
+    const isValuesValid = value[FIRST_VALUE] || value[SECOND_VALUE];
+    validatedValue = isValuesValid ? value : DEFAULT_SLIDER_PARAMS.value;
+  } else {
+    validatedValue = DEFAULT_SLIDER_PARAMS.value;
+  }
+
   if (isRange && validatedValue.length === 1) {
     validatedValue.push(validatedValue[FIRST_VALUE]);
   }

@@ -9,15 +9,17 @@ function subscribe(this: Presenter) {
     this.updateThumbAfterTrackClick,
   );
   this.view.trackView.subscribe(SubscribersNames.updateFill, this.updateFill);
+
   this.model.subscribe(SubscribersNames.updateFillView, this.updateFillView);
   this.model.subscribe(SubscribersNames.updateThumbView, this.updateThumbView);
+  this.model.subscribe(SubscribersNames.updateParams, this.updateViewParams);
 
   if (this.model.getParams().hasTips) {
     this.model.subscribe(SubscribersNames.updateThumbView, this.updateTipView);
   }
+
   if (this.model.getParams().panel) {
     this.view.panelView.subscribe(SubscribersNames.updateParams, this.updateModelParams);
-    this.model.subscribe(SubscribersNames.updateParams, this.updateViewParams);
     this.model.subscribe(
       SubscribersNames.updatePanelValues,
       this.updatePanelValuesAfterThumbDrag,

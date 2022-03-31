@@ -5,8 +5,7 @@ const slider = $('.js-slider-1').slider({
   panel: true,
   onChange: params => console.log(params),
 });
-
-slider[0].unsubscribe();
+slider[0].updateParams({ min: 90 });
 
 $('.js-slider-2').slider({
   min: -6,

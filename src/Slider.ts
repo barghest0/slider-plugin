@@ -1,6 +1,7 @@
-import { SliderParams, SubscribersNames } from './types/slider';
+import { SliderParams, SubscribersNames, UserSliderParams } from './types/slider';
 import Presenter from './Presenter/Presenter';
 import Observer from './Observer/Observer';
+import { getValidatedParams } from './sliderValidators';
 
 class Slider extends Observer {
   public presenter: Presenter;
@@ -30,6 +31,13 @@ class Slider extends Observer {
 
   public unsubscribe() {
     this.presenter.unsubscribe();
+  }
+
+  public updateParams(params: UserSliderParams) {
+    this.setParams(getValidatedParams(params));
+    console.log(this.getParams());
+
+    this.presenter.model.updateParams(this.getParams());
   }
 
   private init(params: SliderParams) {
