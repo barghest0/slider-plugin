@@ -48,7 +48,7 @@ class Model extends Observer {
   }
 
   public setParams(params: SliderParams) {
-    this.params = params;
+    this.params = this.validateParams(params);
   }
 
   public updateParams(params: SliderParams) {

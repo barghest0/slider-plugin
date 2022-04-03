@@ -35,7 +35,6 @@ class Slider extends Observer {
 
   public updateParams(params: UserSliderParams) {
     this.setParams(getValidatedParams(params));
-
     this.presenter.model.updateParams(this.getParams());
   }
 

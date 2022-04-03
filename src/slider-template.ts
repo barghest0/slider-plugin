@@ -7,9 +7,10 @@ function slider(this: JQuery, params?: UserSliderParams) {
   const sliderInstances: Slider[] = [];
 
   this.each((_index, sliderItem) => {
-    const dataParams = getParamsFromDataset(this, params || {});
-    const validatedParams = getValidatedParams(dataParams);
-    const sliderInstance = new Slider(sliderItem, validatedParams);
+    const validatedParams = getValidatedParams(params || {});
+    const paramsFromDataset = getParamsFromDataset(this, validatedParams);
+
+    const sliderInstance = new Slider(sliderItem, paramsFromDataset);
     sliderInstances.push(sliderInstance);
   });
 

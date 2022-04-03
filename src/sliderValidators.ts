@@ -1,31 +1,36 @@
-import { DEFAULT_SLIDER_PARAMS, FIRST_VALUE, SECOND_VALUE } from './constants/slider';
+import {
+  DEFAULT_SLIDER_PARAMS,
+  FIRST_VALUE,
+  SECOND_VALUE,
+  SINGLE_THUMB,
+} from './constants/slider';
 import { Direction, SliderParams, UserSliderParams } from './types/slider';
 
-function getParamsFromDataset(element: JQuery, params: UserSliderParams) {
+function getParamsFromDataset(element: JQuery, params: SliderParams) {
   let dataValue;
 
   if (element.data('firstValue') && element.data('secondValue')) {
     dataValue = [Number(element.data('firstValue')), Number(element.data('secondValue'))];
+  } else if (Number(element.data('firstValue')) || Number(element.data('secondValue'))) {
+    dataValue = [Number(element.data('firstValue'))] || [
+      Number(element.data('secondValue')),
+    ];
   } else {
-    dataValue =
-      [Number(element.data('firstValue'))] || [Number(element.data('secondValue'))] ||
-      DEFAULT_SLIDER_PARAMS.value;
+    dataValue = params.value;
   }
-  const {
-    min = Number(element.data('min')),
-    max = Number(element.data('max')),
-    value = dataValue,
-    decimalPlaces = Number(element.data('decimalPlaces')),
-    step = Number(element.data('step')),
-    isRange = Boolean(element.data('isRange')),
-    direction = <Direction>element.data('direction'),
-    hasFill = Boolean(element.data('hasFill')),
-    hasTips = Boolean(element.data('hasTips')),
-    hasScale = Boolean(element.data('hasScale')),
-    isDecimal = Boolean(element.data('isDecimal')),
-    panel = Boolean(element.data('panel')),
-    onChange,
-  } = params;
+
+  const min = Number(element.data('min')) || params.min;
+  const max = Number(element.data('max')) || params.max;
+  const value = dataValue;
+  const decimalPlaces = Number(element.data('decimalPlaces')) || params.decimalPlaces;
+  const step = Number(element.data('step')) || params.step;
+  const isRange = Boolean(element.data('isRange')) || params.isRange;
+  const direction = <Direction>element.data('direction') || params.direction;
+  const hasFill = Boolean(element.data('hasFill')) || params.hasFill;
+  const hasTips = Boolean(element.data('hasTips')) || params.hasTips;
+  const hasScale = Boolean(element.data('hasScale')) || params.hasScale;
+  const isDecimal = Boolean(element.data('isDecimal')) || params.isDecimal;
+  const panel = Boolean(element.data('panel')) || params.panel;
 
   return {
     min,
@@ -40,7 +45,7 @@ function getParamsFromDataset(element: JQuery, params: UserSliderParams) {
     hasScale,
     isDecimal,
     panel,
-    onChange,
+    onChange: params.onChange,
   };
 }
 
@@ -59,29 +64,28 @@ function getValidatedParams({
   panel,
   onChange,
 }: UserSliderParams) {
-  let validatedValue: number[] = [];
-  if (Array.isArray(value)) {
-    const isValuesValid = value[FIRST_VALUE] || value[SECOND_VALUE];
-    validatedValue = isValuesValid ? value : DEFAULT_SLIDER_PARAMS.value;
-  } else {
-    validatedValue = DEFAULT_SLIDER_PARAMS.value;
+  const validatedMin = min ?? DEFAULT_SLIDER_PARAMS.min;
+  const validatedMax = max ?? DEFAULT_SLIDER_PARAMS.max;
+  const validatedDecimalPlaces = decimalPlaces ?? DEFAULT_SLIDER_PARAMS.decimalPlaces;
+  const validatedStep = step ?? DEFAULT_SLIDER_PARAMS.step;
+  const validatedIsRange = isRange ?? DEFAULT_SLIDER_PARAMS.isRange;
+  const validatedDirection = direction ?? DEFAULT_SLIDER_PARAMS.direction;
+  const validatedHasFill = hasFill ?? DEFAULT_SLIDER_PARAMS.hasFill;
+  const validatedHasTips = hasTips ?? DEFAULT_SLIDER_PARAMS.hasTips;
+  const validatedHasScale = hasScale ?? DEFAULT_SLIDER_PARAMS.hasScale;
+  const validatedIsDecimal = isDecimal ?? DEFAULT_SLIDER_PARAMS.isDecimal;
+  const validatedPanel = panel ?? DEFAULT_SLIDER_PARAMS.panel;
+  const validatedOnChange = onChange ?? DEFAULT_SLIDER_PARAMS.onChange;
+
+  let validatedValue = value ?? DEFAULT_SLIDER_PARAMS.value;
+
+  if (!Array.isArray(validatedValue)) {
+    validatedValue = [validatedValue];
   }
 
-  if (isRange && validatedValue.length === 1) {
+  if (isRange && validatedValue.length === SINGLE_THUMB) {
     validatedValue.push(validatedValue[FIRST_VALUE]);
   }
-  const validatedMin = min || DEFAULT_SLIDER_PARAMS.min;
-  const validatedMax = max || DEFAULT_SLIDER_PARAMS.max;
-  const validatedDecimalPlaces = decimalPlaces || DEFAULT_SLIDER_PARAMS.decimalPlaces;
-  const validatedStep = step || DEFAULT_SLIDER_PARAMS.step;
-  const validatedIsRange = isRange || DEFAULT_SLIDER_PARAMS.isRange;
-  const validatedDirection = direction || DEFAULT_SLIDER_PARAMS.direction;
-  const validatedHasFill = hasFill || DEFAULT_SLIDER_PARAMS.hasFill;
-  const validatedHasTips = hasTips || DEFAULT_SLIDER_PARAMS.hasTips;
-  const validatedHasScale = hasScale || DEFAULT_SLIDER_PARAMS.hasScale;
-  const validatedIsDecimal = isDecimal || DEFAULT_SLIDER_PARAMS.isDecimal;
-  const validatedPanel = panel || DEFAULT_SLIDER_PARAMS.panel;
-  const validatedOnChange = onChange || DEFAULT_SLIDER_PARAMS.onChange;
 
   return {
     min: validatedMin,
