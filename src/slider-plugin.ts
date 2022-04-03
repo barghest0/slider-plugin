@@ -1,14 +1,20 @@
 import Slider from './Slider';
 import slider from './slider-template';
-import { UserSliderParams } from './types/slider';
+import { getParamsFromDataset, getValidatedParams } from './sliderValidators';
 import './Style/slider.scss';
+import { UserSliderParams } from './types/slider';
 
-declare global {
-  interface JQuery {
-    slider(params?: UserSliderParams): Slider[];
-  }
-}
+// (function f($: JQuery) {
+$.fn.slider = function sliderTemplate(this: JQuery, params?: UserSliderParams) {
+  const sliderInstances: Slider[] = [];
 
-$.fn.extend({
-  slider,
-});
+  this.each((_index, sliderItem) => {
+    const dataParams = getParamsFromDataset(this, params || {});
+    const validatedParams = getValidatedParams(dataParams);
+    const sliderInstance = new Slider(sliderItem, validatedParams);
+    sliderInstances.push(sliderInstance);
+  });
+
+  return sliderInstances;
+};
+// })(jQuery);

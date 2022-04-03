@@ -13,11 +13,7 @@ function slider(this: JQuery, params?: UserSliderParams) {
     sliderInstances.push(sliderInstance);
   });
 
-  if (sliderInstances.length > SINGLE_SLIDER) {
-    return sliderInstances;
-  }
-
-  return sliderInstances[SINGLE_SLIDER];
+  return sliderInstances;
 }
 
 export default slider;

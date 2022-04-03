@@ -18,6 +18,12 @@ const config = {
     slider: './src/slider-plugin.ts',
   },
 
+  output: {
+    path: PATHS.dist,
+    filename: `${PATHS.assets}js/[name].js`,
+    clean: true,
+  },
+
   optimization: {
     splitChunks: {
       cacheGroups: {
@@ -83,12 +89,14 @@ const config = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: `${PATHS.assets}css/[name].css`,
-      // chunkFilename: `[name].[contenthash].css`,
+      chunkFilename: `[name].[contenthash].css`,
     }),
-    new ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-    }),
+    // new ProvidePlugin({
+    // $: 'jquery',
+    // jQuery: 'jquery',
+    // 'window.jQuery': 'jquery',
+    // 'window.$': 'jquery'
+    // }),
     new HtmlWebpackPlugin({
       template: `${PATHS.src}/Demo/index.html`,
       filename: `./index.html`,

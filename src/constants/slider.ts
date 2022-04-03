@@ -35,6 +35,7 @@ const THUMB_CLASS = 'slider__thumb';
 const FILL_CLASS = 'slider__fill';
 const SCALE_CLASS = 'slider__scale';
 const TIP_CLASS = 'slider__tip';
+
 const SINGLE_SLIDER = 0;
 
 const MAX_PERCENTS = 100;

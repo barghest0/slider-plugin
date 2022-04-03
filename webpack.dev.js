@@ -3,10 +3,6 @@ const config = require('./webpack.config');
 
 const devConfig = merge(config, {
   mode: 'development',
-  output: {
-    filename: `${config.externals.path.assets}js/[name].[fullhash].js`,
-    path: config.externals.path.dist,
-  },
   devServer: {
     static: {
       directory: config.externals.path.dist,
@@ -17,4 +13,4 @@ const devConfig = merge(config, {
   },
 });
 
-module.exports = devConfig 
+module.exports = devConfig;
