@@ -1,6 +1,5 @@
 import { DEFAULT_SLIDER_PARAMS, SINGLE_SLIDER } from '../src/constants/slider';
-
-import '../src/slider-plugin';
+import '../src/Plugin/plugin';
 
 describe('Slider test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;

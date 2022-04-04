@@ -10,7 +10,7 @@ import handleDirectionChange from '../../../src/View/SubViews/Panel/utils/handle
 import handleOtherParamChange from '../../../src/View/SubViews/Panel/utils/handleOtherParamChange';
 import handleValueChange from '../../../src/View/SubViews/Panel/utils/handleValueChange';
 import View from '../../../src/View/View';
-import '../../../src/slider-plugin';
+import '../../../src/Plugin/plugin';
 
 describe('Panel test', () => {
   document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';

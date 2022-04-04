@@ -1,7 +1,7 @@
-import { SliderParams, SubscribersNames, UserSliderParams } from './types/slider';
-import Presenter from './Presenter/Presenter';
-import Observer from './Observer/Observer';
-import { getValidatedParams } from './sliderValidators';
+import { SliderParams, SubscribersNames, UserSliderParams } from '../types/slider';
+import Presenter from '../Presenter/Presenter';
+import Observer from '../Observer/Observer';
+import { getValidatedParams } from '../utils/validators';
 
 class Slider extends Observer {
   public presenter: Presenter;

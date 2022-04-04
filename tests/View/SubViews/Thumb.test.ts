@@ -1,18 +1,12 @@
 import View from '../../../src/View/View';
 import Thumb from '../../../src/View/SubViews/Thumb/Thumb';
 
-import {
-  Directions,
-  Params,
-  SubscribersNames,
-} from '../../../src/types/slider';
+import { Directions, Params, SubscribersNames } from '../../../src/types/slider';
 import {
   FIRST_OFFSET,
   FIRST_THUMB_STANCE,
-  FIRST_VALUE,
   SECOND_OFFSET,
   SECOND_THUMB_STANCE,
-  SECOND_VALUE,
 } from '../../../src/constants/slider';
 import Model from '../../../src/Model/Model';
 
@@ -47,25 +41,19 @@ describe('Thumb test', () => {
   test('expect return initial stance thumb if first value less than second', () => {
     thumb.view.setValue(FIRST_THUMB_STANCE, 60);
     thumb.view.setValue(SECOND_THUMB_STANCE, 100);
-    expect(thumb.validateCollision(FIRST_THUMB_STANCE)).toBe(
-      FIRST_THUMB_STANCE,
-    );
+    expect(thumb.validateCollision(FIRST_THUMB_STANCE)).toBe(FIRST_THUMB_STANCE);
   });
 
   test('expect return reverse stance thumb if first value bigger than second', () => {
     thumb.view.setValue(FIRST_THUMB_STANCE, 150);
     thumb.view.setValue(SECOND_THUMB_STANCE, 100);
-    expect(thumb.validateCollision(FIRST_THUMB_STANCE)).toBe(
-      SECOND_THUMB_STANCE,
-    );
+    expect(thumb.validateCollision(FIRST_THUMB_STANCE)).toBe(SECOND_THUMB_STANCE);
   });
 
   test('expect return reverse stance thumb if first value bigger than second', () => {
     thumb.view.setValue(FIRST_THUMB_STANCE, 150);
     thumb.view.setValue(SECOND_THUMB_STANCE, 100);
-    expect(thumb.validateCollision(SECOND_THUMB_STANCE)).toBe(
-      FIRST_THUMB_STANCE,
-    );
+    expect(thumb.validateCollision(SECOND_THUMB_STANCE)).toBe(FIRST_THUMB_STANCE);
   });
 
   const DOMthumb = thumb.thumbs[FIRST_THUMB_STANCE];

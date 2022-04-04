@@ -1,12 +1,11 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ProvidePlugin } = require('webpack');
 
 const PATHS = {
   src: path.join(__dirname, './src'),
   dist: path.join(__dirname, './dist'),
-  assets: 'assets/',
+  assets: 'assets',
 };
 
 const config = {
@@ -16,8 +15,8 @@ const config = {
   },
 
   entry: {
-    index: './src/Demo/index.ts',
-    slider: './src/slider-plugin.ts',
+    index: `${PATHS.src}/Demo/index.ts`,
+    slider: `${PATHS.src}/Plugin/plugin.ts`,
   },
 
   output: {
@@ -67,7 +66,7 @@ const config = {
 
   plugins: [
     new MiniCssExtractPlugin({
-      filename: `${PATHS.assets}css/[name].css`,
+      filename: `${PATHS.assets}/css/[name].css`,
       chunkFilename: `[name].[contenthash].css`,
     }),
 

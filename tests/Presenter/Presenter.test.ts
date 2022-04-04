@@ -10,7 +10,7 @@ import {
   SINGLE_SLIDER,
 } from '../../src/constants/slider';
 import { Directions, Params, SubscribersNames } from '../../src/types/slider';
-import '../../src/slider-plugin';
+import '../../src/Plugin/plugin';
 
 describe('Presenter test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;

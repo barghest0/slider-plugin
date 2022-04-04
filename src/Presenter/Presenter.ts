@@ -18,7 +18,7 @@ import updateThumb from './PresenterModules/notifyModelMethods/updateThumb';
 import updateFill from './PresenterModules/notifyModelMethods/updateFill';
 import updateThumbView from './PresenterModules/notifyViewMethods/updateThumbView';
 import unsubscribe from './PresenterModules/unsubscribe';
-import Slider from '../Slider';
+import Slider from '../Slider/Slider';
 import updateModelParams from './PresenterModules/notifyModelMethods/updateModelParams';
 import updateViewParams from './PresenterModules/notifyViewMethods/updateViewParams';
 import updatePanelValuesAfterThumbDrag from './PresenterModules/notifyModelMethods/updatePanelValuesAfterThumbDrag';
