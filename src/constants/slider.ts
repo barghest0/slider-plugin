@@ -24,7 +24,7 @@ const FIRST_OFFSET = 0;
 const SECOND_OFFSET = 1;
 const MAX_OFFSET = 100;
 const MIN_OFFSET = 0;
-const MIN_STEP = 0;
+const MIN_STEP = 1;
 const MAX_DECIMAL_PLACES = 3;
 const MIN_DECIMAL_PLACES = 0;
 

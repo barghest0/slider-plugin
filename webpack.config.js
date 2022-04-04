@@ -12,7 +12,9 @@ const PATHS = {
 const config = {
   externals: {
     path: PATHS,
+    jquery: 'jQuery',
   },
+
   entry: {
     index: './src/Demo/index.ts',
     slider: './src/slider-plugin.ts',
@@ -22,29 +24,6 @@ const config = {
     path: PATHS.dist,
     filename: `${PATHS.assets}js/[name].js`,
     clean: true,
-  },
-
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        style: {
-          type: 'css/mini-extract',
-          name: 'style',
-          chunks: chunk => {
-            return chunk.name === 'style';
-          },
-          enforce: true,
-        },
-        slider: {
-          type: 'css/mini-extract',
-          name: 'slider',
-          chunks: chunk => {
-            return chunk.name === 'slider';
-          },
-          enforce: true,
-        },
-      },
-    },
   },
 
   module: {
@@ -91,12 +70,7 @@ const config = {
       filename: `${PATHS.assets}css/[name].css`,
       chunkFilename: `[name].[contenthash].css`,
     }),
-    // new ProvidePlugin({
-    // $: 'jquery',
-    // jQuery: 'jquery',
-    // 'window.jQuery': 'jquery',
-    // 'window.$': 'jquery'
-    // }),
+
     new HtmlWebpackPlugin({
       template: `${PATHS.src}/Demo/index.html`,
       filename: `./index.html`,

@@ -130,19 +130,20 @@ describe('Presenter test', () => {
   test('correct clear HTML', () => {
     presenter.model.setParam(Params.direction, Directions.horizontal);
     presenter.clearHTML();
-    expect(presenter.DOMroot.classList.contains(`${MAIN_CLASS}_vertical`)).toBe(false);
+    expect(
+      presenter.DOMroot.classList.contains(`${MAIN_CLASS}_${Directions.vertical}`),
+    ).toBe(false);
     presenter.model.setParam(Params.direction, Directions.vertical);
     presenter.clearHTML();
-    expect(presenter.DOMroot.classList.contains(`${MAIN_CLASS}_horizontal`)).toBe(false);
+    expect(
+      presenter.DOMroot.classList.contains(`${MAIN_CLASS}_${Directions.horizontal}`),
+    ).toBe(false);
   });
 
   test('correct unsubscribe', () => {
     presenter.unsubscribe();
     expect(
       presenter.view.thumbView.getSubscribers()[SubscribersNames.updateThumb],
-    ).toEqual([]);
-    expect(
-      presenter.view.panelView.getSubscribers()[SubscribersNames.updateParams],
     ).toEqual([]);
   });
 });

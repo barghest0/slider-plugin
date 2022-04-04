@@ -93,7 +93,7 @@ class Model extends Observer {
   public calculateOffset(stance: number) {
     const { min, max, value } = this.params;
 
-    return this.prepareOffset((value[stance] - min) / ((max - min) / 100));
+    return this.prepareOffset((value[stance] - min) / ((max - min) / MAX_PERCENTS));
   }
 
   public updateThumb(stance: number, cursorOffset: number) {
@@ -103,6 +103,7 @@ class Model extends Observer {
 
     this.setValue(stance, this.calculateValue(stepOffset, stepPercent));
     this.setOffset(stance, this.calculateOffset(stance));
+
     this.endsValidation(stance);
 
     this.notify(SubscribersNames.updateThumbView, stance);
@@ -112,7 +113,6 @@ class Model extends Observer {
   }
 
   public updateThumbAfterTrackClick(cursorOffset: number) {
-    const { direction, isRange } = this.params;
     const { fillOffset, fillSize } = this.getFillState();
 
     let stance = FIRST_THUMB_STANCE;
@@ -122,12 +122,7 @@ class Model extends Observer {
 
     if (isSecondThumbNearest) stance = SECOND_THUMB_STANCE;
 
-    if (direction === Directions.vertical) {
-      const reversedStance = Number(!stance);
-      stance = reversedStance;
-    }
-
-    if (!isRange) stance = FIRST_THUMB_STANCE;
+    stance = this.chooseCorrectStance(stance);
 
     this.updateThumb(stance, cursorOffset);
   }
@@ -149,14 +144,35 @@ class Model extends Observer {
     return { fillOffset: this.calculateFillOffset(), fillSize: this.calculateFillSize() };
   }
 
+  private chooseCorrectStance(stance: number) {
+    const { isRange, direction } = this.getParams();
+    if (direction === Directions.vertical) {
+      const reversedStance = Number(!stance);
+      return reversedStance;
+    }
+    if (!isRange) {
+      return FIRST_THUMB_STANCE;
+    }
+    return stance;
+  }
+
   private calculateFillSize() {
-    const { isRange, direction } = this.params;
+    const { isRange } = this.params;
     if (isRange) {
-      return direction === Directions.horizontal
-        ? this.thumbsOffset[SECOND_OFFSET] - this.thumbsOffset[FIRST_OFFSET]
-        : this.thumbsOffset[FIRST_OFFSET] - this.thumbsOffset[SECOND_OFFSET];
+      return this.calculateBasedOnDirection(
+        this.thumbsOffset[FIRST_OFFSET],
+        this.thumbsOffset[SECOND_OFFSET],
+      );
     }
     return this.prepareOffset(this.thumbsOffset[FIRST_OFFSET]);
+  }
+
+  private calculateBasedOnDirection(firstValue: number, secondValue: number) {
+    const { direction } = this.getParams();
+    if (direction === Directions.horizontal) {
+      return secondValue - firstValue;
+    }
+    return firstValue - secondValue;
   }
 
   private calculateFillOffset() {

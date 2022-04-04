@@ -1,4 +1,3 @@
-import { SINGLE_SLIDER } from './constants/slider';
 import Slider from './Slider';
 import { getParamsFromDataset, getValidatedParams } from './sliderValidators';
 import { UserSliderParams } from './types/slider';
