@@ -37,6 +37,13 @@ const config = {
         use: 'ts-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.(woff(2)?|ttf|eot)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: `${PATHS.assets}fonts/[name][ext]`,
+        },
+      },
 
       {
         test: /\.(scss|css)$/,
