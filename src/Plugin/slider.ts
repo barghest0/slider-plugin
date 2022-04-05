@@ -3,17 +3,12 @@ import { getParamsFromDataset, getValidatedParams } from '../utils/validators';
 import { UserSliderParams } from '../types/slider';
 
 function slider(this: JQuery, params?: UserSliderParams) {
-  const sliderInstances: Slider[] = [];
+  const sliderItem = this[0];
+  const validatedParams = getValidatedParams(params || {});
+  const paramsFromDataset = getParamsFromDataset($(sliderItem), validatedParams);
+  const sliderInstance = new Slider(sliderItem, paramsFromDataset);
 
-  this.each((_index, sliderItem) => {
-    const validatedParams = getValidatedParams(params || {});
-    const paramsFromDataset = getParamsFromDataset(this, validatedParams);
-
-    const sliderInstance = new Slider(sliderItem, paramsFromDataset);
-    sliderInstances.push(sliderInstance);
-  });
-
-  return sliderInstances;
+  return sliderInstance;
 }
 
 export default slider;

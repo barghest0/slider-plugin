@@ -2,7 +2,6 @@ import {
   FIRST_THUMB_STANCE,
   FIRST_VALUE,
   SECOND_THUMB_STANCE,
-  SINGLE_SLIDER,
 } from '../../../src/constants/slider';
 import { Directions, Params, SubscribersNames } from '../../../src/types/slider';
 import Panel from '../../../src/View/SubViews/Panel/Panel';
@@ -107,7 +106,7 @@ describe('Panel test', () => {
     expect(panel.secondValueInput.value).toBe('20');
   });
 
-  const slider = $(root).slider({ isRange: true, panel: true })[SINGLE_SLIDER];
+  const slider = $(root).slider({ isRange: true, panel: true });
   const { presenter } = slider;
 
   test('expect change first value input values to 20 after drag first thumb', () => {

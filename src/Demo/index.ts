@@ -2,7 +2,7 @@ import '../Style/style.scss';
 import '../Plugin/plugin';
 
 window.addEventListener('load', () => {
-  $('.js-slider-1').slider({
+  const slider = $('.js-slider-1').slider({
     panel: true,
     onChange: params => console.log(params),
   });
