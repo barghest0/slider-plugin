@@ -1,4 +1,5 @@
 import { SubscribersNames } from '../../types/slider';
+
 import Presenter from '../Presenter';
 
 function unsubscribe(this: Presenter) {

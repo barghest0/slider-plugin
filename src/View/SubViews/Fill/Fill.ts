@@ -1,8 +1,11 @@
-import { Direction, SliderFillState } from '../../../types/slider';
 import Observer from '../../../Observer/Observer';
 import View from '../../View';
-import updateFillStyle from './utils/updateFillStyle';
+
+import { Direction, SliderFillState } from '../../../types/slider';
+
 import { FILL_CLASS } from '../../../constants/slider';
+
+import updateFillStyle from './utils/updateFillStyle';
 
 class Fill extends Observer {
   public view: View;

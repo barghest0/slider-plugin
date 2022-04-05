@@ -1,9 +1,10 @@
+import Thumb from '../Thumb';
+
 import {
   FIRST_THUMB_STANCE,
   FIRST_VALUE,
   SECOND_VALUE,
 } from '../../../../constants/slider';
-import Thumb from '../Thumb';
 
 const validateCollision = function validateCollision(this: Thumb, stance: number) {
   const reverseStance = +!stance;

@@ -1,3 +1,6 @@
+import Observer from '../../../Observer/Observer';
+import View from '../../View';
+
 import {
   DECIMAL_PLACES_CLASS,
   FIRST_VALUE_CLASS,
@@ -12,8 +15,7 @@ import {
   SECOND_VALUE_CLASS,
   STEP_CLASS,
 } from '../../../constants/panel';
-import Observer from '../../../Observer/Observer';
-import View from '../../View';
+
 import addInputListeners from './utils/addInputListeners';
 import initializeInputs from './utils/initializeInputs';
 import initializePanelsParams from './utils/initializePanelParams';

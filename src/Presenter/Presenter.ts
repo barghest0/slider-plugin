@@ -1,27 +1,30 @@
 import View from '../View/View';
+import Model from '../Model/Model';
+import Slider from '../Slider/Slider';
+
 import { Direction, Directions, SliderFillState, SliderParams } from '../types/slider';
+
 import clearHTML from './PresenterModules/clearHTML';
 import removeListeners from './PresenterModules/removeListeners';
 import subscribe from './PresenterModules/subscribe';
 import updateTipView from './PresenterModules/notifyViewMethods/updateTipView';
 import updateFillView from './PresenterModules/notifyViewMethods/updateFillView';
 import addListeners from './PresenterModules/addListeners';
+import updateThumbAfterTrackClick from './PresenterModules/notifyModelMethods/updateThumbAfterTrackClick';
+import updateThumb from './PresenterModules/notifyModelMethods/updateThumb';
+import updateFill from './PresenterModules/notifyModelMethods/updateFill';
+import updateThumbView from './PresenterModules/notifyViewMethods/updateThumbView';
+import unsubscribe from './PresenterModules/unsubscribe';
+import updateModelParams from './PresenterModules/notifyModelMethods/updateModelParams';
+import updateViewParams from './PresenterModules/notifyViewMethods/updateViewParams';
+import updatePanelValuesAfterThumbDrag from './PresenterModules/notifyModelMethods/updatePanelValuesAfterThumbDrag';
+
 import {
   FIRST_THUMB_STANCE,
   MAIN_CLASS,
   PARENT_CLASS,
   SECOND_THUMB_STANCE,
 } from '../constants/slider';
-import Model from '../Model/Model';
-import updateThumbAfterTrackClick from './PresenterModules/notifyModelMethods/updateThumbAfterTrackClick';
-import updateThumb from './PresenterModules/notifyModelMethods/updateThumb';
-import updateFill from './PresenterModules/notifyModelMethods/updateFill';
-import updateThumbView from './PresenterModules/notifyViewMethods/updateThumbView';
-import unsubscribe from './PresenterModules/unsubscribe';
-import Slider from '../Slider/Slider';
-import updateModelParams from './PresenterModules/notifyModelMethods/updateModelParams';
-import updateViewParams from './PresenterModules/notifyViewMethods/updateViewParams';
-import updatePanelValuesAfterThumbDrag from './PresenterModules/notifyModelMethods/updatePanelValuesAfterThumbDrag';
 
 class Presenter {
   public slider: Slider;

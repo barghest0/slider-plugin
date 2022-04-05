@@ -1,8 +1,11 @@
-import { Direction } from '../../../types/slider';
 import View from '../../View';
-import handleTrackClick from './utils/handleTrackClick';
 import Observer from '../../../Observer/Observer';
+
+import { Direction } from '../../../types/slider';
+
 import { TRACK_CLASS } from '../../../constants/slider';
+
+import handleTrackClick from './utils/handleTrackClick';
 
 class Track extends Observer {
   public view: View;

@@ -1,5 +1,7 @@
 import { MAIN_CLASS, PARENT_CLASS } from '../../constants/slider';
+
 import { Directions } from '../../types/slider';
+
 import Presenter from '../Presenter';
 
 function clearHTML(this: Presenter) {

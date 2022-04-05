@@ -1,8 +1,12 @@
 import Thumb from './SubViews/Thumb/Thumb';
-import Track from './SubViews/Track/Track';
-import Observer from '../Observer/Observer';
 import Scale from './SubViews/Scale/Scale';
 import Fill from './SubViews/Fill/Fill';
+import Track from './SubViews/Track/Track';
+import Tip from './SubViews/Tip/Tip';
+import Panel from './SubViews/Panel/Panel';
+
+import Observer from '../Observer/Observer';
+
 import {
   Direction,
   FillDirection,
@@ -12,11 +16,10 @@ import {
   SliderParams,
 } from '../types/slider';
 
-import prepareDirectionForInteraction from './ViewModules/prepareDirectionForInteraction';
 import { DEFAULT_SLIDER_PARAMS } from '../constants/slider';
+
+import prepareDirectionForInteraction from './ViewModules/prepareDirectionForInteraction';
 import calculateCursorOffset from './ViewModules/calculateCursorOffset';
-import Tip from './SubViews/Tip/Tip';
-import Panel from './SubViews/Panel/Panel';
 
 class View extends Observer {
   public thumbView: Thumb;

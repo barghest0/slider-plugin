@@ -1,4 +1,5 @@
 import { FIRST_THUMB_STANCE } from '../../../constants/slider';
+
 import Presenter from '../../Presenter';
 
 function updatePanelValuesAfterThumbDrag(this: Presenter, stance: number) {

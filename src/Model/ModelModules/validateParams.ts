@@ -2,6 +2,7 @@ import {
   FIRST_THUMB_STANCE,
   MAX_DECIMAL_PLACES,
   SECOND_THUMB_STANCE,
+  SINGLE_THUMB,
 } from '../../constants/slider';
 import { SliderParams } from '../../types/slider';
 
@@ -10,6 +11,7 @@ import validateFirstThumb from './validationParamsMethods/validateFirstThumb';
 import validateMin from './validationParamsMethods/validateMin';
 import validateSecondThumb from './validationParamsMethods/validateSecondThumb';
 import validateStep from './validationParamsMethods/validateStep';
+
 import Model from '../Model';
 
 function validateParams(
@@ -42,7 +44,7 @@ function validateParams(
   validatedValue[FIRST_THUMB_STANCE] = validateFirstThumb(validatedValue, min, max);
 
   if (isRange) {
-    const isSingleThumb = validatedValue.length === 1;
+    const isSingleThumb = validatedValue.length === SINGLE_THUMB;
     if (isSingleThumb) {
       validatedValue.push(validatedValue[FIRST_THUMB_STANCE]);
     }

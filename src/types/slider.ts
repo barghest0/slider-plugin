@@ -1,7 +1,3 @@
-type Ends = {
-  min: number;
-  max: number;
-};
 type Direction = 'vertical' | 'horizontal';
 type OffsetDirection = 'left' | 'top';
 type FillDirection = 'width' | 'height';
@@ -55,27 +51,6 @@ type UserSliderParams = {
   onChange?: onChange<SliderParams>;
 };
 
-type SliderTrackState = {
-  ends: Ends;
-  size: number;
-  isRange: boolean;
-  direction: Direction;
-  hasFill: boolean;
-  hasTips: boolean;
-  hasScale: boolean;
-};
-
-type SliderThumbState = {
-  step: number;
-  value: number;
-  isDecimal: boolean;
-  decimalPlaces: number;
-  stepCount: number;
-  stepPercent: number;
-  offset: number;
-  stepOffset: number;
-};
-
 type SliderFillState = {
   fillOffset: number;
   fillSize: number;
@@ -110,11 +85,6 @@ enum Params {
   decimalPlaces = 'decimalPlaces',
 }
 
-enum InitMods {
-  init = 'init',
-  rebuild = 'rebuild',
-}
-
 enum OffsetDirections {
   left = 'left',
   top = 'top',
@@ -124,19 +94,15 @@ enum FillDirections {
   height = 'height',
 }
 export {
-  Ends,
   SliderParams,
   UserSliderParams,
   Direction,
-  SliderTrackState,
-  SliderThumbState,
   SliderFillState,
   SubscribersNames,
   FillDirection,
   OffsetDirection,
   Directions,
   Params,
-  InitMods,
   OffsetDirections,
   FillDirections,
 };

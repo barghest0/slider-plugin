@@ -1,4 +1,5 @@
 import Thumb from '../Thumb';
+
 import handleThumbDrag from './handleThumbDrag';
 
 function dragAndDropThumb(this: Thumb, stance: number) {

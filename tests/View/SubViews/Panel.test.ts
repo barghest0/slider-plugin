@@ -3,12 +3,15 @@ import {
   FIRST_VALUE,
   SECOND_THUMB_STANCE,
 } from '../../../src/constants/slider';
+
 import { Directions, Params, SubscribersNames } from '../../../src/types/slider';
+
 import Panel from '../../../src/View/SubViews/Panel/Panel';
 import handleDirectionChange from '../../../src/View/SubViews/Panel/utils/handleDirectionChange';
 import handleOtherParamChange from '../../../src/View/SubViews/Panel/utils/handleOtherParamChange';
 import handleValueChange from '../../../src/View/SubViews/Panel/utils/handleValueChange';
 import View from '../../../src/View/View';
+
 import '../../../src/Plugin/plugin';
 
 describe('Panel test', () => {

@@ -1,10 +1,12 @@
 import Observer from '../Observer/Observer';
+
 import {
   Directions,
   SliderFillState,
   SliderParams,
   SubscribersNames,
 } from '../types/slider';
+
 import {
   DEFAULT_SLIDER_PARAMS,
   FIRST_OFFSET,
@@ -14,6 +16,7 @@ import {
   SECOND_OFFSET,
   SECOND_THUMB_STANCE,
 } from '../constants/slider';
+
 import prepareOffset from './ModelModules/prepareOffset';
 import endsValidation from './ModelModules/endsValidation';
 import validateParams from './ModelModules/validateParams';

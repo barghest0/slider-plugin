@@ -1,5 +1,6 @@
-import { Directions, SubscribersNames } from '../../../../types/slider';
 import Thumb from '../Thumb';
+
+import { Directions, SubscribersNames } from '../../../../types/slider';
 
 function handleThumbDrag(event: PointerEvent, thisThumb: Thumb, stance: number) {
   const { direction, isRange, hasFill } = thisThumb.view.getParams();

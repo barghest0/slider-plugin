@@ -1,8 +1,10 @@
 import Observer from '../../../Observer/Observer';
 import View from '../../View';
+
 import updateThumbStyle from './utils/updateThumbStyle';
 import validateCollision from './utils/validateCollision';
 import dragAndDropThumb from './utils/dragAndDropThumb';
+
 import { THUMB_CLASS } from '../../../constants/slider';
 
 class Thumb extends Observer {

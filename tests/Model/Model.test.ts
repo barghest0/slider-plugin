@@ -1,4 +1,8 @@
 import Model from '../../src/Model/Model';
+import validateStep from '../../src/Model/ModelModules/validationParamsMethods/validateStep';
+import validateMin from '../../src/Model/ModelModules/validationParamsMethods/validateMin';
+import validateDecimalPlaces from '../../src/Model/ModelModules/validationParamsMethods/validateDecimalPlaces';
+
 import {
   DEFAULT_SLIDER_PARAMS,
   FIRST_THUMB_STANCE,
@@ -6,10 +10,8 @@ import {
   MIN_OFFSET,
   SECOND_THUMB_STANCE,
 } from '../../src/constants/slider';
+
 import { Directions, Params, SubscribersNames } from '../../src/types/slider';
-import validateStep from '../../src/Model/ModelModules/validationParamsMethods/validateStep';
-import validateMin from '../../src/Model/ModelModules/validationParamsMethods/validateMin';
-import validateDecimalPlaces from '../../src/Model/ModelModules/validationParamsMethods/validateDecimalPlaces';
 
 describe('Model test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1" ></div>`;

@@ -5,6 +5,7 @@ import {
   SCALE_NUMBER_DECIMAL_PLACES,
 } from '../../../../constants/scale';
 import { MAX_PERCENTS } from '../../../../constants/slider';
+
 import { Direction, Directions } from '../../../../types/slider';
 
 function getDelimiter(dividend: number, delimiters: number[]): number {

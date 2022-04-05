@@ -1,4 +1,5 @@
 import { SubscribersNames } from '../../types/slider';
+
 import Presenter from '../Presenter';
 
 function subscribe(this: Presenter) {
@@ -10,7 +11,6 @@ function subscribe(this: Presenter) {
 
   this.model.subscribe(SubscribersNames.updateThumbView, this.updateThumbView);
   this.model.subscribe(SubscribersNames.updateParams, this.updateViewParams);
-
 
   if (this.model.getParams().hasFill) {
     this.model.subscribe(SubscribersNames.updateFillView, this.updateFillView);

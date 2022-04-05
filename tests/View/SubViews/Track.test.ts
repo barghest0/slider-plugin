@@ -1,5 +1,6 @@
 import View from '../../../src/View/View';
 import Track from '../../../src/View/SubViews/Track/Track';
+
 import { Directions, Params, SubscribersNames } from '../../../src/types/slider';
 
 describe('Track test', () => {

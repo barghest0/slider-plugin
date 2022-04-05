@@ -8,7 +8,9 @@ import {
   SECOND_THUMB_STANCE,
   SECOND_VALUE,
 } from '../../src/constants/slider';
+
 import { Directions, Params, SubscribersNames } from '../../src/types/slider';
+
 import '../../src/Plugin/plugin';
 
 describe('Presenter test', () => {

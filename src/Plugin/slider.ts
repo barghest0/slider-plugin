@@ -1,5 +1,7 @@
 import Slider from '../Slider/Slider';
+
 import { getParamsFromDataset, getValidatedParams } from '../utils/validators';
+
 import { UserSliderParams } from '../types/slider';
 
 function slider(this: JQuery, params?: UserSliderParams) {
