@@ -21,10 +21,6 @@ class Slider extends Observer {
     this.init(params);
   }
 
-  public setParams(params: SliderParams) {
-    this.params = params;
-  }
-
   public getParams() {
     return this.params;
   }
@@ -34,7 +30,7 @@ class Slider extends Observer {
   }
 
   public updateParams(params: UserSliderParams) {
-    this.setParams(getValidatedParams(params));
+    this.params = getValidatedParams(params);
     this.presenter.model.updateParams(this.getParams());
   }
 

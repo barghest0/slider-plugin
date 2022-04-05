@@ -2,17 +2,16 @@
 
 [Пример реализации](https://barghest0.github.io/slider-plugin/)
 
-
 ## Библиотеки
 
-* Node - 16.13.1
-* Typescript - 4.5.4
-* JQuery - 3.6.0
-* Webpack - 5.66.0
-* SASS - 1.49.0
-* Jest - 27.4.7
-* Jsdom - 19.0.0
-* Eslint(air-bnb) - 8.8.0
+- Node - 16.13.1
+- Typescript - 4.5.4
+- JQuery - 3.6.0
+- Webpack - 5.66.0
+- SASS - 1.49.0
+- Jest - 27.4.7
+- Jsdom - 19.0.0
+- Eslint(air-bnb) - 8.8.0
 
 ## Команды
 
@@ -35,9 +34,9 @@
 Инициализация:
 
 ```javascript
-import 'slider-plugin'
+import 'slider-plugin';
 
-$('#slider').slider(params)
+$('#slider').slider(params);
 ```
 
 Пользовательские параметры:
@@ -57,7 +56,6 @@ $('#slider').slider(params)
 | hasFill       | boolean                 | true                  | Отображение прогресс бара                          |
 | panel         | boolean                 | false                 | Отображение контроль панели                        |
 
-
 Альтернативный вариант установки параметров через `data` атрибуты:
 
 ```html
@@ -69,6 +67,32 @@ $('#slider').slider(params)
   data-first-value="-10"
   data-second-value="10"
 ></div>
+```
+
+## API
+
+После инициализации слайдера с заданными параметрами возвращается инстанс, с котором можно взаимодйствовать(изменять параметры, отписываться от событий, получать текущие параметры)
+
+```javascript
+const $slider = $('#slider').slider(params);
+```
+
+- `$slider.getParams()` - возвращает текущие параметры
+
+```javascript
+$slider.getParams();
+```
+
+- `$slider.updateParams()` - позволяет обновить текущие настройки слайдера
+
+```javascript
+$slider.updateParams();
+```
+
+- `$slider.unsubscribe()` - позволяет отписываться от событий слайдера
+
+```javascript
+$slider.unsubscribe();
 ```
 
 ## Архитектура
