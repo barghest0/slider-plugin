@@ -9,7 +9,7 @@ class Slider extends Observer {
 
   public DOMparent: HTMLElement;
 
-  public presenter: Presenter;
+  private presenter: Presenter;
 
   private params: SliderParams;
 
@@ -18,8 +18,8 @@ class Slider extends Observer {
     this.params = params;
     this.DOMroot = DOMroot;
     this.DOMparent = <HTMLElement>DOMroot.parentElement;
-    this.presenter = new Presenter(this.params, this);
-    this.init(params);
+    this.presenter = new Presenter(this.params, this.DOMroot, this.DOMparent);
+    this.init();
   }
 
   public getParams() {
@@ -43,8 +43,8 @@ class Slider extends Observer {
     this.presenter.model.updateParams(this.getParams());
   }
 
-  private init(params: SliderParams) {
-    this.presenter.init(params);
+  private init() {
+    this.presenter.init();
     this.presenter.model.subscribe(
       SubscribersNames.updateThumbView,
       this.handleThumbChange.bind(this),

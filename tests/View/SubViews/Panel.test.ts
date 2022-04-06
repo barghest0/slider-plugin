@@ -13,6 +13,8 @@ import handleValueChange from '../../../src/View/SubViews/Panel/utils/handleValu
 import View from '../../../src/View/View';
 
 import '../../../src/Plugin/plugin';
+import { getValidatedParams } from '../../../src/utils/validators';
+import Presenter from '../../../src/Presenter/Presenter';
 
 describe('Panel test', () => {
   document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';
@@ -110,9 +112,9 @@ describe('Panel test', () => {
     expect(panel.firstValueInput.value).toBe('10');
     expect(panel.secondValueInput.value).toBe('20');
   });
-
-  const slider = $(root).slider({ isRange: true, panel: true });
-  const { presenter } = slider;
+  const params = getValidatedParams({ isRange: true, panel: true });
+  const presenter = new Presenter(params, DOMroot, DOMparent);
+  presenter.init();
 
   test('expect change first value input values to 20 after drag first thumb', () => {
     presenter.model.setValue(FIRST_THUMB_STANCE, 20);
@@ -128,8 +130,8 @@ describe('Panel test', () => {
 
   test('expect calling onChange after notify view', () => {
     const onChange = jest.fn();
-    slider.getParams().onChange = onChange;
+    presenter.getParams().onChange = onChange;
     presenter.model.notify(SubscribersNames.updateThumbView, SECOND_THUMB_STANCE);
-    expect(slider.getParams().onChange).toBeDefined();
+    expect(presenter.getParams().onChange).toBeDefined();
   });
 });

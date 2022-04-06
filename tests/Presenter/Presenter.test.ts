@@ -12,16 +12,18 @@ import {
 import { Directions, Params, SubscribersNames } from '../../src/types/slider';
 
 import '../../src/Plugin/plugin';
+import Slider from '../../src/Slider/Slider';
+import { getValidatedParams } from '../../src/utils/validators';
+import Presenter from '../../src/Presenter/Presenter';
 
 describe('Presenter test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
   const root = '#slider-1';
-
-  const { presenter } = $(root).slider({
-    isRange: true,
-    value: [0, 100],
-    panel: true,
-  });
+  const DOMroot = <HTMLElement>document.querySelector(root);
+  const DOMparent = <HTMLElement>DOMroot.parentElement;
+  const params = getValidatedParams({ isRange: true, value: [0, 100], panel: true });
+  const presenter = new Presenter(params, DOMroot, DOMparent);
+  presenter.init();
 
   test('constructor test', () => {
     expect(presenter).toHaveProperty('view');

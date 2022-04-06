@@ -27,8 +27,6 @@ import {
 } from '../constants/slider';
 
 class Presenter {
-  public slider: Slider;
-
   public DOMroot: HTMLElement;
 
   public DOMparent: HTMLElement;
@@ -67,10 +65,9 @@ class Presenter {
 
   private removeListeners: () => void;
 
-  constructor(params: SliderParams, slider: Slider) {
-    this.slider = slider;
-    this.DOMroot = this.slider.DOMroot;
-    this.DOMparent = this.slider.DOMparent;
+  constructor(params: SliderParams, DOMroot: HTMLElement, DOMparent: HTMLElement) {
+    this.DOMroot = DOMroot;
+    this.DOMparent = DOMparent;
     this.model = new Model(this.DOMroot);
     this.view = new View(this.DOMroot);
     this.params = params;
@@ -90,11 +87,11 @@ class Presenter {
     this.addListeners = addListeners.bind(this);
   }
 
-  public init(params: SliderParams) {
-    this.setParams(params);
+  public init() {
+    this.setParams(this.params);
 
     this.createSlider();
-    if (params.panel) {
+    if (this.params.panel) {
       this.renderPanel();
     }
     this.subscribe();
