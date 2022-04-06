@@ -12,6 +12,8 @@ import {
 } from '../../src/constants/slider';
 
 import { Directions, Params, SubscribersNames } from '../../src/types/slider';
+import validateFirstThumb from '../../src/Model/ModelModules/validationParamsMethods/validateFirstThumb';
+import validateSecondThumb from '../../src/Model/ModelModules/validationParamsMethods/validateSecondThumb';
 
 describe('Model test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1" ></div>`;
@@ -19,6 +21,7 @@ describe('Model test', () => {
   const DOMroot = <HTMLElement>document.querySelector(root);
   const model = new Model(DOMroot);
   model.setParams(DEFAULT_SLIDER_PARAMS);
+
   test('correct set/get default params', () => {
     expect(model.getParams()).toEqual(DEFAULT_SLIDER_PARAMS);
   });
@@ -149,7 +152,7 @@ describe('Model test', () => {
     expect(step).toBe(1);
   });
 
-  test('expect  min value not be bigger min when step equal 2', () => {
+  test('expect min value not be bigger min when step equal 2', () => {
     const min = validateMin(15, 10, 2);
     expect(min).toEqual(8);
   });
@@ -157,5 +160,15 @@ describe('Model test', () => {
   test('expect decimal places not be bigger 3', () => {
     const decimalPlaces = validateDecimalPlaces(231, 3, true);
     expect(decimalPlaces).toEqual(3);
+  });
+
+  test('expect first thumb value not be less min', () => {
+    const value = validateFirstThumb([-10], 0, 20);
+    expect(value).toEqual(0);
+  });
+
+  test('expect first thumb value not be bigger max', () => {
+    const value = validateFirstThumb([30], 0, 20);
+    expect(value).toEqual(20);
   });
 });

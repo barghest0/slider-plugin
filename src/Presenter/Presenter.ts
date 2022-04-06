@@ -103,7 +103,9 @@ class Presenter {
 
     this.view.thumbView.thumbs = [];
     this.view.tipView.tips = [];
-    this.view.panelView.initializePanelsParams();
+    if (params.panel) {
+      this.view.panelView.initializePanelsParams();
+    }
     this.unsubscribe();
     this.clearHTML();
     this.removeListeners();

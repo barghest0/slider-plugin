@@ -55,7 +55,7 @@ class Model extends Observer {
   }
 
   public updateParams(params: SliderParams) {
-    this.setParams(this.validateParams(params));
+    this.params = this.validateParams(params);
     this.notify(SubscribersNames.updateParams, this.getParams());
   }
 

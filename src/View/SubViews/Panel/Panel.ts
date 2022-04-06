@@ -12,6 +12,7 @@ import {
   IS_VERTICAL_CLASS,
   MAX_CLASS,
   MIN_CLASS,
+  PANEL_CLASS,
   SECOND_VALUE_CLASS,
   STEP_CLASS,
 } from '../../../constants/panel';
@@ -61,7 +62,7 @@ class Panel extends Observer {
   constructor(view: View) {
     super();
     this.view = view;
-    this.panel = <HTMLElement>document.querySelector('.slider-panel');
+    this.panel = <HTMLElement>document.querySelector(`.${PANEL_CLASS}`);
     this.minValueInput = <HTMLInputElement>document.querySelector(`.js-${MIN_CLASS}`);
     this.maxValueInput = <HTMLInputElement>document.querySelector(`.js-${MAX_CLASS}`);
     this.firstValueInput = <HTMLInputElement>(
@@ -89,7 +90,7 @@ class Panel extends Observer {
   }
 
   public initializePanel(DOMparent: HTMLElement) {
-    this.panel = <HTMLElement>DOMparent.querySelector('.slider-panel');
+    this.panel = <HTMLElement>DOMparent.querySelector(`.${PANEL_CLASS}`);
     this.initializeInputs();
     this.initializePanelsParams();
     this.addInputListeners();
