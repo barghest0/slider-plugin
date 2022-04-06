@@ -1,4 +1,4 @@
-import '../Style/style.scss';
+import '../style/style.scss';
 
 window.addEventListener('load', () => {
   $('.js-slider-1').slider({

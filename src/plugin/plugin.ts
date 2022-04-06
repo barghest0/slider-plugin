@@ -1,6 +1,6 @@
 import slider from './slider';
 
-import '../Style/slider.scss';
+import '../style/slider.scss';
 
 $.fn.extend({
   slider,

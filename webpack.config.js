@@ -15,8 +15,8 @@ const config = {
   },
 
   entry: {
-    index: `${PATHS.src}/Demo/index.ts`,
-    slider: `${PATHS.src}/Plugin/plugin.ts`,
+    index: `${PATHS.src}/demo/index.ts`,
+    slider: `${PATHS.src}/plugin/plugin.ts`,
   },
 
   output: {
@@ -86,9 +86,9 @@ const config = {
     }),
 
     new HtmlWebpackPlugin({
-      template: `${PATHS.src}/Demo/index.html`,
+      template: `${PATHS.src}/demo/index.html`,
       filename: `./index.html`,
-      favicon: `static/favicon.ico`,
+      favicon: `${PATHS.src}/static/favicon.ico`,
     }),
   ],
 };
