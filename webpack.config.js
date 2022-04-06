@@ -64,6 +64,14 @@ const config = {
           },
         ],
       },
+
+      {
+        test: /\.ico$/,
+        type: 'asset/resource',
+        generator: {
+          filename: `[name][ext]`,
+        },
+      },
     ],
   },
 
@@ -80,6 +88,7 @@ const config = {
     new HtmlWebpackPlugin({
       template: `${PATHS.src}/Demo/index.html`,
       filename: `./index.html`,
+      favicon: `static/favicon.ico`,
     }),
   ],
 };
