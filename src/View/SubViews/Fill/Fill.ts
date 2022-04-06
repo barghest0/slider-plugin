@@ -33,7 +33,7 @@ class Fill extends Observer {
     return this.state;
   }
 
-  public createFill(direction: Direction) {
+  public renderFill(direction: Direction) {
     const fill = document.createElement('div');
     fill.classList.add(FILL_CLASS);
     fill.classList.add(`js-${FILL_CLASS}`);

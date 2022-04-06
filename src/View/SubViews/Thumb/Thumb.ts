@@ -41,7 +41,7 @@ class Thumb extends Observer {
     return this.offset;
   }
 
-  public createThumb(stance: number) {
+  public renderThumb(stance: number) {
     const thumb = document.createElement('div');
     thumb.classList.add(THUMB_CLASS);
     thumb.classList.add(`js-${THUMB_CLASS}-${stance}`);

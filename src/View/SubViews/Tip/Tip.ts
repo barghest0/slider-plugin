@@ -32,7 +32,7 @@ class Tip extends Observer {
     return this.offset;
   }
 
-  public createTip(stance: number, direction: Direction) {
+  public renderTip(stance: number, direction: Direction) {
     const tip = document.createElement('div');
     tip.classList.add(TIP_CLASS);
     tip.classList.add(`js-${TIP_CLASS}-${stance}`);

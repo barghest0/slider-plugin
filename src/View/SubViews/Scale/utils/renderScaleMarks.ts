@@ -6,7 +6,7 @@ import Scale from '../Scale';
 
 import prepareScaleData from './prepareScaleData';
 
-function createScaleMarks(
+function renderScaleMarks(
   this: Scale,
   step: number,
   max: number,
@@ -33,4 +33,4 @@ function createScaleMarks(
   }
 }
 
-export default createScaleMarks;
+export default renderScaleMarks;

@@ -18,7 +18,7 @@ class Track extends Observer {
     this.track = <HTMLElement>document.querySelector(`.${TRACK_CLASS}`);
   }
 
-  public createTrack(direction: Direction) {
+  public renderTrack(direction: Direction) {
     const track = document.createElement('div');
     track.classList.add(TRACK_CLASS);
     track.classList.add(`js-${TRACK_CLASS}`);

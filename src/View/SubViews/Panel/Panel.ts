@@ -52,11 +52,11 @@ class Panel extends Observer {
 
   public initializePanelsParams: () => void;
 
+  public renderPanel: (DOMParent: HTMLElement) => void;
+
   private initializeInputs: () => void;
 
   private addInputListeners: () => void;
-
-  private renderPanel: (DOMParent: HTMLElement) => void;
 
   constructor(view: View) {
     super();
@@ -88,8 +88,7 @@ class Panel extends Observer {
     this.renderPanel = renderPanel.bind(this);
   }
 
-  public createPanel(DOMparent: HTMLElement) {
-    this.renderPanel(DOMparent);
+  public initializePanel(DOMparent: HTMLElement) {
     this.panel = <HTMLElement>DOMparent.querySelector('.slider-panel');
     this.initializeInputs();
     this.initializePanelsParams();

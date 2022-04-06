@@ -204,29 +204,30 @@ class Presenter {
   }
 
   private renderTrack(direction: Direction) {
-    this.view.trackView.createTrack(direction);
+    this.view.trackView.renderTrack(direction);
   }
 
   private renderThumb(stance: number) {
-    this.view.thumbView.createThumb(stance);
+    this.view.thumbView.renderThumb(stance);
   }
 
   private renderTip(stance: number, direction: Direction) {
-    this.view.tipView.createTip(stance, direction);
+    this.view.tipView.renderTip(stance, direction);
   }
 
   private renderFill(direction: Direction) {
-    this.view.fillView.createFill(direction);
+    this.view.fillView.renderFill(direction);
   }
 
   private renderScale(direction: Direction) {
     const { step, max, min } = this.model.getParams();
-    this.view.scaleView.createScale(direction);
-    this.view.scaleView.createScaleMarks(step, max, min, direction);
+    this.view.scaleView.renderScale(direction);
+    this.view.scaleView.renderScaleMarks(step, max, min, direction);
   }
 
   private renderPanel() {
-    this.view.panelView.createPanel(this.DOMparent);
+    this.view.panelView.renderPanel(this.DOMparent);
+    this.view.panelView.initializePanel(this.DOMparent)
   }
 }
 
