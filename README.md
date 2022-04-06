@@ -42,6 +42,12 @@ import 'slider-plugin';
 $('#slider').slider(params);
 ```
 
+Альтернативный вариант инициализации с помощь `data` атрибута `slider`
+
+```html
+<div data-slider="true"></div>
+```
+
 Пользовательские параметры:
 
 | Параметр      | Тип                     | Значение по умолчанию | Описание                                           |
@@ -74,25 +80,37 @@ $('#slider').slider(params);
 
 ## API
 
-После инициализации слайдера с заданными параметрами возвращается инстанс, с котором можно взаимодйствовать(изменять параметры, отписываться от событий, получать текущие параметры)
+После инициализации слайдера с заданными параметрами возвращается инстанс, с котором можно взаимодйствовать
 
 ```javascript
 const $slider = $('#slider').slider(params);
 ```
 
-- `$slider.getParams()` - возвращает текущие параметры
+`$slider.getParams()` - возвращает текущие параметры
 
 ```javascript
 $slider.getParams();
 ```
 
-- `$slider.updateParams()` - позволяет обновить текущие настройки слайдера
+`$slider.getContainer()` - возвращает элемент, на котором использован слайдер
+
+```javascript
+$slider.getContainer();
+```
+
+`$slider.getParent()` - возвращает родительский элемент контейнера, указанного выше
+
+```javascript
+$slider.getParent();
+```
+
+`$slider.updateParams()` - позволяет обновить текущие настройки слайдера
 
 ```javascript
 $slider.updateParams();
 ```
 
-- `$slider.unsubscribe()` - позволяет отписываться от событий слайдера
+`$slider.unsubscribe()` - позволяет отписываться от событий слайдера
 
 ```javascript
 $slider.unsubscribe();
