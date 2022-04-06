@@ -1,5 +1,5 @@
-import { UserSliderParams } from './Slider/types';
-import Slider from './Slider/Slider';
+import { UserSliderParams } from './components/Slider/types';
+import Slider from './components/Slider/Slider';
 
 declare global {
   interface JQuery {

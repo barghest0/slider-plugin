@@ -1,14 +1,14 @@
-import View from '../../../src/View/View';
-import Thumb from '../../../src/View/SubViews/Thumb/Thumb';
+import View from '../../../src/components/View/View';
+import Thumb from '../../../src/components/View/SubViews/Thumb/Thumb';
 
-import { Directions, Params, SubscribersNames } from '../../../src/Slider/types';
+import { Directions, Params, SubscribersNames } from '../../../src/components/Slider/types';
 import {
   FIRST_OFFSET,
   FIRST_THUMB_STANCE,
   SECOND_OFFSET,
   SECOND_THUMB_STANCE,
-} from '../../../src/Slider/constants';
-import Model from '../../../src/Model/Model';
+} from '../../../src/components/Slider/constants';
+import Model from '../../../src/components/Model/Model';
 
 describe('Thumb test', () => {
   document.body.innerHTML =

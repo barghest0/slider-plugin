@@ -7,14 +7,14 @@ import {
   SECOND_OFFSET,
   SECOND_THUMB_STANCE,
   SECOND_VALUE,
-} from '../../src/Slider/constants';
+} from '../../src/components/Slider/constants';
 
-import { Directions, Params, SubscribersNames } from '../../src/Slider/types';
+import { Directions, Params, SubscribersNames } from '../../src/components/Slider/types';
 
 import '../../src/Plugin/plugin';
-import Slider from '../../src/Slider/Slider';
+import Slider from '../../src/components/Slider/Slider';
 import { getValidatedParams } from '../../src/utils/validators';
-import Presenter from '../../src/Presenter/Presenter';
+import Presenter from '../../src/components/Presenter/Presenter';
 
 describe('Presenter test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;

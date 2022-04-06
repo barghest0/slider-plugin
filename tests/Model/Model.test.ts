@@ -1,7 +1,7 @@
-import Model from '../../src/Model/Model';
-import validateStep from '../../src/Model/ModelModules/validationParamsMethods/validateStep';
-import validateMin from '../../src/Model/ModelModules/validationParamsMethods/validateMin';
-import validateDecimalPlaces from '../../src/Model/ModelModules/validationParamsMethods/validateDecimalPlaces';
+import Model from '../../src/components/Model/Model';
+import validateStep from '../../src/components/Model/ModelModules/validationParamsMethods/validateStep';
+import validateMin from '../../src/components/Model/ModelModules/validationParamsMethods/validateMin';
+import validateDecimalPlaces from '../../src/components/Model/ModelModules/validationParamsMethods/validateDecimalPlaces';
 
 import {
   DEFAULT_SLIDER_PARAMS,
@@ -9,11 +9,11 @@ import {
   MAX_OFFSET,
   MIN_OFFSET,
   SECOND_THUMB_STANCE,
-} from '../../src/Slider/constants';
+} from '../../src/components/Slider/constants';
 
-import { Directions, Params, SubscribersNames } from '../../src/Slider/types';
-import validateFirstThumb from '../../src/Model/ModelModules/validationParamsMethods/validateFirstThumb';
-import validateSecondThumb from '../../src/Model/ModelModules/validationParamsMethods/validateSecondThumb';
+import { Directions, Params, SubscribersNames } from '../../src/components/Slider/types';
+import validateFirstThumb from '../../src/components/Model/ModelModules/validationParamsMethods/validateFirstThumb';
+import validateSecondThumb from '../../src/components/Model/ModelModules/validationParamsMethods/validateSecondThumb';
 
 describe('Model test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1" ></div>`;

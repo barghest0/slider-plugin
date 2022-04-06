@@ -1,7 +1,7 @@
-import View from '../../../src/View/View';
-import Track from '../../../src/View/SubViews/Track/Track';
+import View from '../../../src/components/View/View';
+import Track from '../../../src/components/View/SubViews/Track/Track';
 
-import { Directions, Params, SubscribersNames } from '../../../src/Slider/types';
+import { Directions, Params, SubscribersNames } from '../../../src/components/Slider/types';
 
 describe('Track test', () => {
   document.body.innerHTML =

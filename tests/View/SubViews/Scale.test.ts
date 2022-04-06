@@ -1,8 +1,8 @@
-import View from '../../../src/View/View';
-import Scale from '../../../src/View/SubViews/Scale/Scale';
-import prepareScaleData from '../../../src/View/SubViews/Scale/utils/prepareScaleData';
+import View from '../../../src/components/View/View';
+import Scale from '../../../src/components/View/SubViews/Scale/Scale';
+import prepareScaleData from '../../../src/components/View/SubViews/Scale/utils/prepareScaleData';
 
-import { Directions } from '../../../src/Slider/types';
+import { Directions } from '../../../src/components/Slider/types';
 
 describe('Scale test', () => {
   document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';

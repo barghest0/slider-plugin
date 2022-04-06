@@ -2,19 +2,19 @@ import {
   FIRST_THUMB_STANCE,
   FIRST_VALUE,
   SECOND_THUMB_STANCE,
-} from '../../../src/Slider/constants';
+} from '../../../src/components/Slider/constants';
 
-import { Directions, Params, SubscribersNames } from '../../../src/Slider/types';
+import { Directions, Params, SubscribersNames } from '../../../src/components/Slider/types';
 
-import Panel from '../../../src/View/SubViews/Panel/Panel';
-import handleDirectionChange from '../../../src/View/SubViews/Panel/utils/handleDirectionChange';
-import handleOtherParamChange from '../../../src/View/SubViews/Panel/utils/handleOtherParamChange';
-import handleValueChange from '../../../src/View/SubViews/Panel/utils/handleValueChange';
-import View from '../../../src/View/View';
+import Panel from '../../../src/components/View/SubViews/Panel/Panel';
+import handleDirectionChange from '../../../src/components/View/SubViews/Panel/utils/handleDirectionChange';
+import handleOtherParamChange from '../../../src/components/View/SubViews/Panel/utils/handleOtherParamChange';
+import handleValueChange from '../../../src/components/View/SubViews/Panel/utils/handleValueChange';
+import View from '../../../src/components/View/View';
 
 import '../../../src/Plugin/plugin';
 import { getValidatedParams } from '../../../src/utils/validators';
-import Presenter from '../../../src/Presenter/Presenter';
+import Presenter from '../../../src/components/Presenter/Presenter';
 
 describe('Panel test', () => {
   document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';
