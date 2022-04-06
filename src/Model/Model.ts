@@ -24,7 +24,7 @@ import validateParams from './ModelModules/validateParams';
 class Model extends Observer {
   public DOMroot: HTMLElement;
 
-  public validateParams: (param: SliderParams) => SliderParams;
+  public validateParams: (params: SliderParams) => SliderParams;
 
   public endsValidation: (stance: number) => void;
 

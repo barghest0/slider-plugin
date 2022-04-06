@@ -18,8 +18,8 @@ describe('Thumb test', () => {
   const view = new View(root);
   const thumb = new Thumb(view);
   const model = new Model(root);
-  thumb.createThumb(FIRST_THUMB_STANCE);
-  thumb.createThumb(SECOND_THUMB_STANCE);
+  thumb.renderThumb(FIRST_THUMB_STANCE);
+  thumb.renderThumb(SECOND_THUMB_STANCE);
 
   test('is DOM first thumb instance of HTMLElement test', () => {
     expect(thumb.thumbs[FIRST_THUMB_STANCE]).toBeInstanceOf(HTMLElement);

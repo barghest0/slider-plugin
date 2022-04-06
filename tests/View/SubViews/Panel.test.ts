@@ -22,7 +22,8 @@ describe('Panel test', () => {
   const view = new View(DOMroot);
   const panel = new Panel(view);
   const subscriberFn = jest.fn();
-  panel.createPanel(DOMparent);
+  panel.renderPanel(DOMparent);
+  panel.initializePanel(DOMparent);
   panel.subscribe(SubscribersNames.updateParams, subscriberFn);
 
   test('constructor test', () => {
@@ -45,7 +46,8 @@ describe('Panel test', () => {
     expect(panel.firstValueInput.value).toBe('0');
     expect(panel.firstValueInput).toBeInstanceOf(HTMLInputElement);
 
-    panel.createPanel(DOMparent);
+    panel.renderPanel(DOMparent);
+    panel.initializePanel(DOMparent);
     panel.view.getParams().isRange = true;
   });
 

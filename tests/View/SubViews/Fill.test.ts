@@ -10,7 +10,7 @@ describe('Fill test', () => {
   const view = new View(root);
   const fill = new Fill(view);
 
-  fill.createFill(Directions.horizontal);
+  fill.renderFill(Directions.horizontal);
 
   test('is DOM fill instance of HTMLElement test', () => {
     expect(fill.fill).toBeInstanceOf(HTMLElement);

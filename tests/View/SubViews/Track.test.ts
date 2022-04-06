@@ -10,7 +10,7 @@ describe('Track test', () => {
   const root = <HTMLElement>document.querySelector(rootClass);
   const view = new View(root);
   const track = new Track(view);
-  track.createTrack(Directions.horizontal);
+  track.renderTrack(Directions.horizontal);
   track.clickTrack();
 
   test('is DOM track instance of HTMLElement test', () => {
