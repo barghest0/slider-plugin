@@ -116,20 +116,20 @@ class Presenter {
     this.addListeners();
   }
 
-  private createSlider() {
-    this.addSliderClasses(this.params.direction)
-      .setModelState()
-      .setViewState()
-      .setSubViewsState()
-      .renderSlider();
-  }
-
   public setParams(params: SliderParams) {
     this.params = params;
   }
 
   public getParams() {
     return this.params;
+  }
+
+  private createSlider() {
+    this.addSliderClasses(this.params.direction)
+      .setModelState()
+      .setViewState()
+      .setSubViewsState()
+      .renderSlider();
   }
 
   private setModelState() {
@@ -227,7 +227,7 @@ class Presenter {
 
   private renderPanel() {
     this.view.panelView.renderPanel(this.DOMparent);
-    this.view.panelView.initializePanel(this.DOMparent)
+    this.view.panelView.initializePanel(this.DOMparent);
   }
 }
 

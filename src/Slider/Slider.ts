@@ -5,11 +5,11 @@ import { getValidatedParams } from '../utils/validators';
 import { SliderParams, SubscribersNames, UserSliderParams } from '../types/slider';
 
 class Slider extends Observer {
-  public presenter: Presenter;
-
   public DOMroot: HTMLElement;
 
   public DOMparent: HTMLElement;
+
+  public presenter: Presenter;
 
   private params: SliderParams;
 
@@ -24,6 +24,14 @@ class Slider extends Observer {
 
   public getParams() {
     return this.params;
+  }
+
+  public getContainer() {
+    return this.DOMroot;
+  }
+
+  public getParent() {
+    return this.DOMparent;
   }
 
   public unsubscribe() {
