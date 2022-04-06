@@ -45,6 +45,7 @@ class Slider extends Observer {
 
   private init() {
     this.presenter.init();
+    window.addEventListener('resize', () => this.presenter.rerender(this.params));
     this.presenter.model.subscribe(
       SubscribersNames.updateThumbView,
       this.handleThumbChange.bind(this),
