@@ -39,6 +39,7 @@
     "eslint": "^8.8.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-fsd": "^1.0.1",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-prettier": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
@@ -55,12 +56,12 @@
     "webpack-dev-server": "^4.7.3"
   },
   "dependencies": {
-    "webpack-merge": "^5.8.0",
     "gh-pages": "^3.2.3",
     "jquery": "^3.6.0",
     "node-sass": "^6.0.1",
     "prettier": "^2.5.1",
     "sass": "^1.49.0",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.4",
+    "webpack-merge": "^5.8.0"
   }
 }

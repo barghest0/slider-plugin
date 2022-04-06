@@ -148,7 +148,10 @@ class Presenter {
   }
 
   private addSliderClasses(direction: Direction) {
+    this.DOMroot.classList.add(MAIN_CLASS);
+    this.DOMroot.classList.add(`js-${MAIN_CLASS}`);
     this.DOMroot.classList.add(`${MAIN_CLASS}_${direction}`);
+    this.DOMroot.classList.add(`js-${MAIN_CLASS}_${direction}`);
     this.DOMparent.classList.add(`${PARENT_CLASS}_${direction}`);
 
     return this;
