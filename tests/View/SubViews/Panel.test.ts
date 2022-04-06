@@ -2,9 +2,9 @@ import {
   FIRST_THUMB_STANCE,
   FIRST_VALUE,
   SECOND_THUMB_STANCE,
-} from '../../../src/constants/slider';
+} from '../../../src/Slider/constants';
 
-import { Directions, Params, SubscribersNames } from '../../../src/types/slider';
+import { Directions, Params, SubscribersNames } from '../../../src/Slider/types';
 
 import Panel from '../../../src/View/SubViews/Panel/Panel';
 import handleDirectionChange from '../../../src/View/SubViews/Panel/utils/handleDirectionChange';

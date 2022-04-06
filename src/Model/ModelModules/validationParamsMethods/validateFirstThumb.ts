@@ -1,4 +1,4 @@
-import { FIRST_THUMB_STANCE } from '../../../constants/slider';
+import { FIRST_THUMB_STANCE } from '../../../Slider/constants';
 
 function validateFirstThumb(value: number[], min: number, max: number) {
   const validatedValue = value;

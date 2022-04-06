@@ -1,4 +1,4 @@
-import { SubscriberFn, Subscribers } from './types/observer';
+import { SubscriberFn, Subscribers } from './types';
 
 class Observer {
   private subscribers: Subscribers;

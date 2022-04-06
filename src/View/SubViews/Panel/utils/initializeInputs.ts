@@ -11,7 +11,7 @@ import {
   MIN_CLASS,
   SECOND_VALUE_CLASS,
   STEP_CLASS,
-} from '../../../../constants/panel';
+} from '../constants';
 import Panel from '../Panel';
 
 function initializeInputs(this: Panel) {

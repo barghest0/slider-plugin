@@ -1,4 +1,4 @@
-import { INVALID_STEP, MIN_STEP } from '../../../constants/slider';
+import { INVALID_STEP, MIN_STEP } from '../../../Slider/constants';
 
 function validateStep(step: number, min: number, max: number) {
   let validatedStep = Math.min(Math.abs(min - max), Math.abs(step));

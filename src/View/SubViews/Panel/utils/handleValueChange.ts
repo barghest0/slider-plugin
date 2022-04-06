@@ -1,4 +1,4 @@
-import { SubscribersNames } from '../../../../types/slider';
+import { SubscribersNames } from '../../../../Slider/types';
 import Panel from '../Panel';
 
 function handleValueChange(this: Panel, event: Event, valueIndex: number) {

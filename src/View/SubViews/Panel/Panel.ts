@@ -15,7 +15,7 @@ import {
   PANEL_CLASS,
   SECOND_VALUE_CLASS,
   STEP_CLASS,
-} from '../../../constants/panel';
+} from './constants';
 
 import addInputListeners from './utils/addInputListeners';
 import initializeInputs from './utils/initializeInputs';

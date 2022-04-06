@@ -1,4 +1,4 @@
-import { MIN_DECIMAL_PLACES } from '../../../constants/slider';
+import { MIN_DECIMAL_PLACES } from '../../../Slider/constants';
 
 function validateDecimalPlaces(
   decimalPlaces: number,

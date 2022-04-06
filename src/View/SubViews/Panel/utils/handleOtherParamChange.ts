@@ -1,5 +1,5 @@
-import { NUMBER_TYPE } from '../../../../constants/panel';
-import { SubscribersNames } from '../../../../types/slider';
+import { NUMBER_TYPE } from '../constants';
+import { SubscribersNames } from '../../../../Slider/types';
 import Panel from '../Panel';
 
 function handleOtherParamChange(this: Panel, event: Event, param: string) {

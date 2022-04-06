@@ -1,6 +1,6 @@
-import { MAIN_CLASS, PARENT_CLASS } from '../../constants/slider';
+import { MAIN_CLASS, PARENT_CLASS } from '../../Slider/constants';
 
-import { Directions } from '../../types/slider';
+import { Directions } from '../../Slider/types';
 
 import Presenter from '../Presenter';
 

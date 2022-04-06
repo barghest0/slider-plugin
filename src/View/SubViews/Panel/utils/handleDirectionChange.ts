@@ -1,4 +1,4 @@
-import { Directions, SubscribersNames } from '../../../../types/slider';
+import { Directions, SubscribersNames } from '../../../../Slider/types';
 import Panel from '../Panel';
 
 function handleDirectionChange(this: Panel, event: Event) {

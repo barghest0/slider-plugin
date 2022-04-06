@@ -1,5 +1,5 @@
-import { FIRST_VALUE, SECOND_VALUE } from '../../../../constants/slider';
-import { Params } from '../../../../types/slider';
+import { FIRST_VALUE, SECOND_VALUE } from '../../../../Slider/constants';
+import { Params } from '../../../../Slider/types';
 import Panel from '../Panel';
 import handleDirectionChange from './handleDirectionChange';
 import handleOtherParamChange from './handleOtherParamChange';

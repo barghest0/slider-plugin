@@ -1,13 +1,13 @@
 import View from '../../../src/View/View';
 import Thumb from '../../../src/View/SubViews/Thumb/Thumb';
 
-import { Directions, Params, SubscribersNames } from '../../../src/types/slider';
+import { Directions, Params, SubscribersNames } from '../../../src/Slider/types';
 import {
   FIRST_OFFSET,
   FIRST_THUMB_STANCE,
   SECOND_OFFSET,
   SECOND_THUMB_STANCE,
-} from '../../../src/constants/slider';
+} from '../../../src/Slider/constants';
 import Model from '../../../src/Model/Model';
 
 describe('Thumb test', () => {

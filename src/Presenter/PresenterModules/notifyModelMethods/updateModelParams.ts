@@ -1,4 +1,4 @@
-import { SliderParams } from '../../../types/slider';
+import { SliderParams } from '../../../Slider/types';
 
 import Presenter from '../../Presenter';
 

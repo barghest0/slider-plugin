@@ -1,9 +1,9 @@
 import View from '../../View';
 import Observer from '../../../Observer/Observer';
 
-import { Direction } from '../../../types/slider';
+import { Direction } from '../../../Slider/types';
 
-import { TRACK_CLASS } from '../../../constants/slider';
+import { TRACK_CLASS } from '../../../Slider/constants';
 
 import handleTrackClick from './utils/handleTrackClick';
 

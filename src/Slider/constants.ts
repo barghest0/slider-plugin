@@ -1,4 +1,4 @@
-import { SliderParams } from '../types/slider';
+import { SliderParams } from './types';
 
 const DEFAULT_SLIDER_PARAMS: SliderParams = {
   min: 0,

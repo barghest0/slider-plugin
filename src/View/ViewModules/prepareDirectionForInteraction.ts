@@ -5,7 +5,7 @@ import {
   Directions,
   FillDirections,
   OffsetDirections,
-} from '../../types/slider';
+} from '../../Slider/types';
 
 function prepareDirectionForInteraction(this: View, direction: Direction) {
   this.offsetDirection =

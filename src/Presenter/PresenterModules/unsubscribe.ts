@@ -1,4 +1,4 @@
-import { SubscribersNames } from '../../types/slider';
+import { SubscribersNames } from '../../Slider/types';
 
 import Presenter from '../Presenter';
 

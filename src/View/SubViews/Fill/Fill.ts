@@ -1,9 +1,9 @@
 import Observer from '../../../Observer/Observer';
 import View from '../../View';
 
-import { Direction, SliderFillState } from '../../../types/slider';
+import { Direction, SliderFillState } from '../../../Slider/types';
 
-import { FILL_CLASS } from '../../../constants/slider';
+import { FILL_CLASS } from '../../../Slider/constants';
 
 import updateFillStyle from './utils/updateFillStyle';
 

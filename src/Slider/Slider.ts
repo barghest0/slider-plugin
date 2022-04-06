@@ -2,7 +2,7 @@ import Presenter from '../Presenter/Presenter';
 import Observer from '../Observer/Observer';
 
 import { getValidatedParams } from '../utils/validators';
-import { SliderParams, SubscribersNames, UserSliderParams } from '../types/slider';
+import { SliderParams, SubscribersNames, UserSliderParams } from './types';
 
 class Slider extends Observer {
   public DOMroot: HTMLElement;

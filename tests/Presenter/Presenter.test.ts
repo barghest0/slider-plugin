@@ -7,9 +7,9 @@ import {
   SECOND_OFFSET,
   SECOND_THUMB_STANCE,
   SECOND_VALUE,
-} from '../../src/constants/slider';
+} from '../../src/Slider/constants';
 
-import { Directions, Params, SubscribersNames } from '../../src/types/slider';
+import { Directions, Params, SubscribersNames } from '../../src/Slider/types';
 
 import '../../src/Plugin/plugin';
 import Slider from '../../src/Slider/Slider';

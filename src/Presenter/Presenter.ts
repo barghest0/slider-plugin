@@ -2,7 +2,7 @@ import View from '../View/View';
 import Model from '../Model/Model';
 import Slider from '../Slider/Slider';
 
-import { Direction, Directions, SliderFillState, SliderParams } from '../types/slider';
+import { Direction, Directions, SliderFillState, SliderParams } from '../Slider/types';
 
 import clearHTML from './PresenterModules/clearHTML';
 import removeListeners from './PresenterModules/removeListeners';
@@ -24,7 +24,7 @@ import {
   MAIN_CLASS,
   PARENT_CLASS,
   SECOND_THUMB_STANCE,
-} from '../constants/slider';
+} from '../Slider/constants';
 
 class Presenter {
   public DOMroot: HTMLElement;

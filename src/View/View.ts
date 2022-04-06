@@ -14,9 +14,9 @@ import {
   OffsetDirection,
   OffsetDirections,
   SliderParams,
-} from '../types/slider';
+} from '../Slider/types';
 
-import { DEFAULT_SLIDER_PARAMS } from '../constants/slider';
+import { DEFAULT_SLIDER_PARAMS } from '../Slider/constants';
 
 import prepareDirectionForInteraction from './ViewModules/prepareDirectionForInteraction';
 import calculateCursorOffset from './ViewModules/calculateCursorOffset';

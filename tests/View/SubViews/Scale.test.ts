@@ -2,7 +2,7 @@ import View from '../../../src/View/View';
 import Scale from '../../../src/View/SubViews/Scale/Scale';
 import prepareScaleData from '../../../src/View/SubViews/Scale/utils/prepareScaleData';
 
-import { Directions } from '../../../src/types/slider';
+import { Directions } from '../../../src/Slider/types';
 
 describe('Scale test', () => {
   document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';

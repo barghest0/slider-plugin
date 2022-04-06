@@ -1,4 +1,4 @@
-import { CHECKBOX_TYPE } from '../../../../constants/panel';
+import { CHECKBOX_TYPE } from '../constants';
 
 function renderInput(
   text: string,

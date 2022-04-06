@@ -17,7 +17,7 @@ import {
   SECOND_VALUE_CLASS,
   STEP_CLASS,
   TEXT_LABEL_CLASS,
-} from '../../../../constants/panel';
+} from '../constants';
 import Panel from '../Panel';
 import renderInput from './renderInput';
 

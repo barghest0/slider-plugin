@@ -9,9 +9,9 @@ import {
   MAX_OFFSET,
   MIN_OFFSET,
   SECOND_THUMB_STANCE,
-} from '../../src/constants/slider';
+} from '../../src/Slider/constants';
 
-import { Directions, Params, SubscribersNames } from '../../src/types/slider';
+import { Directions, Params, SubscribersNames } from '../../src/Slider/types';
 import validateFirstThumb from '../../src/Model/ModelModules/validationParamsMethods/validateFirstThumb';
 import validateSecondThumb from '../../src/Model/ModelModules/validationParamsMethods/validateSecondThumb';
 

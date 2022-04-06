@@ -1,7 +1,7 @@
 import View from '../../../src/View/View';
 import Fill from '../../../src/View/SubViews/Fill/Fill';
 
-import { Directions } from '../../../src/types/slider';
+import { Directions } from '../../../src/Slider/types';
 
 describe('Fill test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;

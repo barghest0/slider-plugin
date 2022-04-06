@@ -1,6 +1,6 @@
-import { MAX_OFFSET, MIN_OFFSET } from '../../constants/slider';
+import { MAX_OFFSET, MIN_OFFSET } from '../../Slider/constants';
 
-import { Directions } from '../../types/slider';
+import { Directions } from '../../Slider/types';
 
 import Model from '../Model';
 

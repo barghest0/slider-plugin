@@ -3,8 +3,8 @@ import {
   MAX_DECIMAL_PLACES,
   SECOND_THUMB_STANCE,
   SINGLE_THUMB,
-} from '../../constants/slider';
-import { SliderParams } from '../../types/slider';
+} from '../../Slider/constants';
+import { SliderParams } from '../../Slider/types';
 
 import validateDecimalPlaces from './validationParamsMethods/validateDecimalPlaces';
 import validateFirstThumb from './validationParamsMethods/validateFirstThumb';
