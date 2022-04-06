@@ -5,8 +5,9 @@
 ## Библиотеки
 
 - Node - 16.13.1
-- Typescript - 4.5.4
+- Npm - 8.3.1
 - JQuery - 3.6.0
+- Typescript - 4.5.4
 - Webpack - 5.66.0
 - SASS - 1.49.0
 - Jest - 27.4.7
@@ -21,9 +22,11 @@
 
 - Запуск сервера для разработки - `npm run dev` или `yarn dev`
 
+Сборка запускается на локальной сервере по адресу http://localhost:8080, храниться в браузере в дериктории `dist`
+
 - Сборка проекта - `npm run build` или `yarn build`
 
-- Деплой github pages - `npm run build` или `yarn build`
+Продакшн сборка производится с помощью `webpack`, сохраняется в папке `dist`
 
 - Запуск тестов jest - `npm run test` или `yarn test`
 
