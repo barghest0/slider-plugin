@@ -19,6 +19,29 @@ const config = {
     slider: `${PATHS.src}/plugin/plugin.ts`,
   },
 
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        index: {
+          type: 'css/mini-extract',
+          name: 'index',
+          chunks: chunk => {
+            return chunk.name === 'index';
+          },
+          enforce: true,
+        },
+        slider: {
+          type: 'css/mini-extract',
+          name: 'slider',
+          chunks: chunk => {
+            return chunk.name === 'slider';
+          },
+          enforce: true,
+        },
+      },
+    },
+  },
+
   output: {
     path: PATHS.dist,
     filename: `${PATHS.assets}js/[name].js`,
