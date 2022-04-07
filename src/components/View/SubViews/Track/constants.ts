@@ -1,3 +1,3 @@
 const TRACK_CLASS = 'slider__track';
 
-export { TRACK_CLASS };
+export default TRACK_CLASS;

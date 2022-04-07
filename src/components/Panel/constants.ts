@@ -14,6 +14,7 @@ const HAS_SCALE_CLASS = 'has-scale';
 const HAS_FILL_CLASS = 'has-fill';
 const HAS_TIPS_CLASS = 'has-tips';
 const IS_DECIMAL_CLASS = 'is-decimal';
+const CUSTOM_CLASS = 'custom';
 
 const CHECKBOX_TYPE = 'checkbox';
 const NUMBER_TYPE = 'number';
@@ -37,4 +38,5 @@ export {
   IS_DECIMAL_CLASS,
   HAS_TIPS_CLASS,
   CHECKBOX_PANEL_CLASS,
+  CUSTOM_CLASS,
 };

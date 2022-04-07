@@ -1,4 +1,5 @@
-import { CHECKBOX_TYPE } from '../constants';
+import { PREFIX } from '../../Slider/constants';
+import { CHECKBOX_TYPE, CUSTOM_CLASS } from '../constants';
 
 function renderInput(
   text: string,
@@ -8,7 +9,7 @@ function renderInput(
   parent: HTMLElement,
 ) {
   const custom = document.createElement('div');
-  custom.classList.add('custom');
+  custom.classList.add(CUSTOM_CLASS);
 
   const label = document.createElement('label');
   label.classList.add(labelClass);
@@ -16,7 +17,7 @@ function renderInput(
   const input = document.createElement('input');
   input.type = type;
   input.classList.add(inputClass);
-  input.classList.add(`js-${inputClass}`);
+  input.classList.add(`${PREFIX}-${inputClass}`);
   label.innerHTML = text;
 
   parent.appendChild(label);

@@ -3,7 +3,7 @@ import Observer from '../../../Observer/Observer';
 
 import { Direction } from '../../../Slider/types';
 
-import { TRACK_CLASS } from './constants';
+import TRACK_CLASS from './constants';
 
 import handleTrackClick from './utils/handleTrackClick';
 import { PREFIX } from '../../../Slider/constants';

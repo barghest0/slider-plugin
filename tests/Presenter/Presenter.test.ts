@@ -1,5 +1,4 @@
 import {
-  DEFAULT_SLIDER_PARAMS,
   FIRST_OFFSET,
   FIRST_THUMB_STANCE,
   FIRST_VALUE,
@@ -120,13 +119,6 @@ describe('Presenter test', () => {
     presenter.model.notify(SubscribersNames.updateFillView);
     expect(presenter.view.fillView.getState().fillSize).toBe(30);
     expect(presenter.view.fillView.getState().fillOffset).toBe(30);
-  });
-
-  test('expect change view isRange param true after change panel param', () => {
-    const params = DEFAULT_SLIDER_PARAMS;
-    params.isRange = true;
-    presenter.view.panelView.notify(SubscribersNames.updateParams, params);
-    expect(presenter.model.getParams()).toEqual(params);
   });
 
   test('correct clear HTML', () => {

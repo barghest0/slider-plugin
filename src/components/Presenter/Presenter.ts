@@ -1,6 +1,5 @@
 import View from '../View/View';
 import Model from '../Model/Model';
-import Slider from '../Slider/Slider';
 
 import { Direction, Directions, SliderFillState, SliderParams } from '../Slider/types';
 
@@ -15,9 +14,6 @@ import updateThumb from './PresenterModules/notifyModelMethods/updateThumb';
 import updateFill from './PresenterModules/notifyModelMethods/updateFill';
 import updateThumbView from './PresenterModules/notifyViewMethods/updateThumbView';
 import unsubscribe from './PresenterModules/unsubscribe';
-import updateModelParams from './PresenterModules/notifyModelMethods/updateModelParams';
-import updateViewParams from './PresenterModules/notifyViewMethods/updateViewParams';
-import updatePanelValuesAfterThumbDrag from './PresenterModules/notifyModelMethods/updatePanelValuesAfterThumbDrag';
 
 import {
   FIRST_THUMB_STANCE,
@@ -47,12 +43,6 @@ class Presenter {
 
   public updateFillView: (state: SliderFillState) => void;
 
-  public updatePanelValuesAfterThumbDrag: (stance: number) => void;
-
-  public updateModelParams: (params: SliderParams) => void;
-
-  public updateViewParams: () => void;
-
   public subscribe: () => void;
 
   public unsubscribe: () => void;
@@ -81,9 +71,6 @@ class Presenter {
     this.updateThumbView = updateThumbView.bind(this);
     this.updateTipView = updateTipView.bind(this);
     this.updateFillView = updateFillView.bind(this);
-    this.updateModelParams = updateModelParams.bind(this);
-    this.updateViewParams = updateViewParams.bind(this);
-    this.updatePanelValuesAfterThumbDrag = updatePanelValuesAfterThumbDrag.bind(this);
     this.addListeners = addListeners.bind(this);
   }
 
@@ -91,9 +78,6 @@ class Presenter {
     this.setParams(this.params);
 
     this.createSlider();
-    if (this.params.panel) {
-      this.renderPanel();
-    }
     this.subscribe();
     this.addListeners();
   }
@@ -103,14 +87,11 @@ class Presenter {
 
     this.view.thumbView.thumbs = [];
     this.view.tipView.tips = [];
-    if (params.panel) {
-      this.view.panelView.initializePanelsParams();
-    }
     this.unsubscribe();
     this.clearHTML();
     this.removeListeners();
-    this.createSlider();
 
+    this.createSlider();
     this.subscribe();
     this.addListeners();
   }
@@ -225,11 +206,6 @@ class Presenter {
     const { step, max, min } = this.model.getParams();
     this.view.scaleView.renderScale(direction);
     this.view.scaleView.renderScaleMarks(step, max, min, direction);
-  }
-
-  private renderPanel() {
-    this.view.panelView.renderPanel(this.DOMparent);
-    this.view.panelView.initializePanel(this.DOMparent);
   }
 }
 

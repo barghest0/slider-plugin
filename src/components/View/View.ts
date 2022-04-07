@@ -3,7 +3,6 @@ import Scale from './SubViews/Scale/Scale';
 import Fill from './SubViews/Fill/Fill';
 import Track from './SubViews/Track/Track';
 import Tip from './SubViews/Tip/Tip';
-import Panel from './SubViews/Panel/Panel';
 
 import Observer from '../Observer/Observer';
 
@@ -32,8 +31,6 @@ class View extends Observer {
 
   public fillView: Fill;
 
-  public panelView: Panel;
-
   public DOMroot: HTMLElement;
 
   public offsetDirection: OffsetDirection;
@@ -61,7 +58,6 @@ class View extends Observer {
     this.scaleView = new Scale(this);
     this.fillView = new Fill(this);
     this.tipView = new Tip(this);
-    this.panelView = new Panel(this);
     this.params = DEFAULT_SLIDER_PARAMS;
     this.size = 0;
     this.offsetDirection = OffsetDirections.left;

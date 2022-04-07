@@ -5,7 +5,7 @@ import updateThumbStyle from './utils/updateThumbStyle';
 import validateCollision from './utils/validateCollision';
 import dragAndDropThumb from './utils/dragAndDropThumb';
 
-import { THUMB_CLASS } from './constants';
+import THUMB_CLASS from './constants';
 import { PREFIX } from '../../../Slider/constants';
 
 class Thumb extends Observer {

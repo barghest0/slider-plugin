@@ -44,7 +44,7 @@ const config = {
 
   output: {
     path: PATHS.dist,
-    filename: `${PATHS.assets}js/[name].js`,
+    filename: `${PATHS.assets}/js/[name].js`,
     clean: true,
   },
 
@@ -64,7 +64,7 @@ const config = {
         test: /\.(woff(2)?|ttf|eot)$/,
         type: 'asset/resource',
         generator: {
-          filename: `${PATHS.assets}fonts/[name][ext]`,
+          filename: `${PATHS.assets}/fonts/[name][ext]`,
         },
       },
 

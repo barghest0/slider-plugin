@@ -1,3 +1,4 @@
+import { PREFIX } from '../../Slider/constants';
 import {
   CHECKBOX_LABEL_CLASS,
   CHECKBOX_PANEL_CLASS,
@@ -21,10 +22,10 @@ import {
 import Panel from '../Panel';
 import renderInput from './renderInput';
 
-function renderPanel(this: Panel, DOMParent: HTMLElement) {
+function renderPanel(this: Panel) {
   const panel = document.createElement('div');
   panel.classList.add(PANEL_CLASS);
-  panel.classList.add(`js-${PANEL_CLASS}`);
+  panel.classList.add(`${PREFIX}-${PANEL_CLASS}`);
 
   renderInput('Min Value', NUMBER_TYPE, MIN_CLASS, TEXT_LABEL_CLASS, panel);
   renderInput('Max Value', NUMBER_TYPE, MAX_CLASS, TEXT_LABEL_CLASS, panel);
@@ -84,7 +85,7 @@ function renderPanel(this: Panel, DOMParent: HTMLElement) {
     checkboxesPanel,
   );
 
-  DOMParent.appendChild(panel);
+  this.DOMparent.appendChild(panel);
   panel.appendChild(checkboxesPanel);
 }
 

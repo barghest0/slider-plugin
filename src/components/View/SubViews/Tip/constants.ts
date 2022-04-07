@@ -1,3 +1,3 @@
 const TIP_CLASS = 'slider__tip';
 
-export { TIP_CLASS };
+export default TIP_CLASS;

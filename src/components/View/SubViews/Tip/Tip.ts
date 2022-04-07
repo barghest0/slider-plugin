@@ -5,7 +5,7 @@ import { Direction } from '../../../Slider/types';
 
 import updateTipStyle from './utils/updateTipStyle';
 
-import { TIP_CLASS } from './constants';
+import TIP_CLASS from './constants';
 import { PREFIX } from '../../../Slider/constants';
 
 class Tip extends Observer {

@@ -54,11 +54,6 @@ class Model extends Observer {
     this.params = this.validateParams(params);
   }
 
-  public updateParams(params: SliderParams) {
-    this.params = this.validateParams(params);
-    this.notify(SubscribersNames.updateParams, this.getParams());
-  }
-
   public setParam(param: string, value: string | number | number[] | boolean) {
     this.params[param] = value;
   }
@@ -109,10 +104,7 @@ class Model extends Observer {
 
     this.endsValidation(stance);
 
-    this.notify(SubscribersNames.updateThumbView, stance);
-    if (this.getParams().panel) {
-      this.notify(SubscribersNames.updatePanelValues, stance);
-    }
+    this.notify(SubscribersNames.updateThumbView, stance, this.getParams());
   }
 
   public updateThumbAfterTrackClick(cursorOffset: number) {

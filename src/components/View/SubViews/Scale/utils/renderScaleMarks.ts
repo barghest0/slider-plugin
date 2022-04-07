@@ -1,4 +1,4 @@
-import { MARK_CLASS, MARK_NUMBER_CLASS, SCALE_CLASS } from '../constants';
+import { MARK_CLASS, MARK_NUMBER_CLASS } from '../constants';
 
 import { Direction } from '../../../../Slider/types';
 

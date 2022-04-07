@@ -3,7 +3,7 @@ import View from '../../View';
 
 import { Direction, SliderFillState } from '../../../Slider/types';
 
-import { FILL_CLASS } from './constants';
+import FILL_CLASS from './constants';
 
 import updateFillStyle from './utils/updateFillStyle';
 import { PREFIX } from '../../../Slider/constants';

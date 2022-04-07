@@ -1,3 +1,3 @@
 const DEFAULT_SELECTOR = '[data-slider="true"]';
 
-export { DEFAULT_SELECTOR };
+export default DEFAULT_SELECTOR;

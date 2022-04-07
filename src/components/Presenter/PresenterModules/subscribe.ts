@@ -10,7 +10,6 @@ function subscribe(this: Presenter) {
   );
 
   this.model.subscribe(SubscribersNames.updateThumbView, this.updateThumbView);
-  this.model.subscribe(SubscribersNames.updateParams, this.updateViewParams);
 
   if (this.model.getParams().hasFill) {
     this.model.subscribe(SubscribersNames.updateFillView, this.updateFillView);
@@ -20,14 +19,6 @@ function subscribe(this: Presenter) {
 
   if (this.model.getParams().hasTips) {
     this.model.subscribe(SubscribersNames.updateThumbView, this.updateTipView);
-  }
-
-  if (this.model.getParams().panel) {
-    this.view.panelView.subscribe(SubscribersNames.updateParams, this.updateModelParams);
-    this.model.subscribe(
-      SubscribersNames.updatePanelValues,
-      this.updatePanelValuesAfterThumbDrag,
-    );
   }
 
   return this;

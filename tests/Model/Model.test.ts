@@ -13,7 +13,6 @@ import {
 
 import { Directions, Params, SubscribersNames } from '../../src/components/Slider/types';
 import validateFirstThumb from '../../src/components/Model/ModelModules/validationParamsMethods/validateFirstThumb';
-import validateSecondThumb from '../../src/components/Model/ModelModules/validationParamsMethods/validateSecondThumb';
 
 describe('Model test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1" ></div>`;
