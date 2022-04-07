@@ -91,11 +91,6 @@ const $slider = $('#slider').slider(params);
 $slider.getParams();
 ```
 
-`$slider.subscribeSlider({thumb,params})` - позволяет подписаться на изменение бегунка, возвращает индекс бегунка `thumb` и параметры `params` в текущем положении
-
-```javascript
-$slider.subscribeSlider(someFunc);
-```
 
 `$slider.getContainer()` - возвращает элемент, на котором использован слайдер
 
@@ -113,6 +108,12 @@ $slider.getParent();
 
 ```javascript
 $slider.updateParams();
+```
+
+`$slider.subscribe({thumb,params})` - позволяет подписаться на изменение бегунка, возвращает индекс бегунка `thumb` и параметры `params` в текущем положении
+
+```javascript
+$slider.subscribe(someFunc);
 ```
 
 `$slider.unsubscribe()` - позволяет отписываться от событий слайдера

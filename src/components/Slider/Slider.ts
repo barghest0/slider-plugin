@@ -5,7 +5,7 @@ import { getValidatedParams } from '../../utils/validators';
 import { SliderParams, SubscribersNames, UserSliderParams } from './types';
 import { SubscriberFn } from '../Observer/types';
 
-class Slider extends Observer {
+class Slider {
   private DOMroot: HTMLElement;
 
   private DOMparent: HTMLElement;
@@ -15,7 +15,6 @@ class Slider extends Observer {
   private params: SliderParams;
 
   constructor(DOMroot: HTMLElement, params: SliderParams) {
-    super();
     this.params = params;
     this.DOMroot = DOMroot;
     this.DOMparent = <HTMLElement>DOMroot.parentElement;
@@ -44,7 +43,7 @@ class Slider extends Observer {
     this.params = this.presenter.model.getParams();
   }
 
-  public subscribeSlider(onChangeFuntion: SubscriberFn) {
+  public subscribe(onChangeFuntion: SubscriberFn) {
     this.presenter.model.subscribe(SubscribersNames.updateThumbView, onChangeFuntion);
   }
 
