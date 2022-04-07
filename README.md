@@ -63,7 +63,6 @@ $('#slider').slider(params);
 | hasScale      | boolean                 | true                  | Отображение шкалы                                  |
 | hasTips       | boolean                 | true                  | Отображение подсказок над бегунками                |
 | hasFill       | boolean                 | true                  | Отображение прогресс бара                          |
-| panel         | boolean                 | false                 | Отображение контроль панели                        |
 
 Альтернативный вариант установки параметров через `data` атрибуты:
 
@@ -90,6 +89,12 @@ const $slider = $('#slider').slider(params);
 
 ```javascript
 $slider.getParams();
+```
+
+`$slider.subscribeSlider({thumb,params})` - позволяет подписаться на изменение бегунка, возвращает индекс бегунка `thumb` и параметры `params` в текущем положении
+
+```javascript
+$slider.subscribeSlider(someFunc);
 ```
 
 `$slider.getContainer()` - возвращает элемент, на котором использован слайдер
