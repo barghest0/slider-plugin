@@ -11,8 +11,7 @@ import {
 
 import { Directions, Params, SubscribersNames } from '../../src/components/Slider/types';
 
-import '../../src/Plugin/plugin';
-import Slider from '../../src/components/Slider/Slider';
+import '../../src/plugin/plugin';
 import { getValidatedParams } from '../../src/utils/validators';
 import Presenter from '../../src/components/Presenter/Presenter';
 

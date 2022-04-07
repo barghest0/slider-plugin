@@ -1,4 +1,4 @@
-import '../src/Plugin/plugin';
+import '../src/plugin/plugin';
 
 import { DEFAULT_SLIDER_PARAMS } from '../src/components/Slider/constants';
 

@@ -4,7 +4,11 @@ import {
   SECOND_THUMB_STANCE,
 } from '../../../src/components/Slider/constants';
 
-import { Directions, Params, SubscribersNames } from '../../../src/components/Slider/types';
+import {
+  Directions,
+  Params,
+  SubscribersNames,
+} from '../../../src/components/Slider/types';
 
 import Panel from '../../../src/components/View/SubViews/Panel/Panel';
 import handleDirectionChange from '../../../src/components/View/SubViews/Panel/utils/handleDirectionChange';
@@ -12,7 +16,7 @@ import handleOtherParamChange from '../../../src/components/View/SubViews/Panel/
 import handleValueChange from '../../../src/components/View/SubViews/Panel/utils/handleValueChange';
 import View from '../../../src/components/View/View';
 
-import '../../../src/Plugin/plugin';
+import '../../../src/plugin/plugin';
 import { getValidatedParams } from '../../../src/utils/validators';
 import Presenter from '../../../src/components/Presenter/Presenter';
 

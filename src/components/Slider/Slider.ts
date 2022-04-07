@@ -5,9 +5,9 @@ import { getValidatedParams } from '../../utils/validators';
 import { SliderParams, SubscribersNames, UserSliderParams } from './types';
 
 class Slider extends Observer {
-  public DOMroot: HTMLElement;
+  private DOMroot: HTMLElement;
 
-  public DOMparent: HTMLElement;
+  private DOMparent: HTMLElement;
 
   private presenter: Presenter;
 
@@ -45,11 +45,15 @@ class Slider extends Observer {
 
   private init() {
     this.presenter.init();
-    window.addEventListener('resize', () => this.presenter.rerender(this.params));
+    this.attachResizeListener();
     this.presenter.model.subscribe(
       SubscribersNames.updateThumbView,
       this.handleThumbChange.bind(this),
     );
+  }
+
+  private attachResizeListener() {
+    window.addEventListener('resize', () => this.presenter.rerender(this.params));
   }
 
   private handleThumbChange() {

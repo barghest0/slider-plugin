@@ -3,9 +3,10 @@ import View from '../../View';
 
 import { Direction, SliderFillState } from '../../../Slider/types';
 
-import { FILL_CLASS } from '../../../Slider/constants';
+import { FILL_CLASS } from './constants';
 
 import updateFillStyle from './utils/updateFillStyle';
+import { PREFIX } from '../../../Slider/constants';
 
 class Fill extends Observer {
   public view: View;
@@ -36,7 +37,7 @@ class Fill extends Observer {
   public renderFill(direction: Direction) {
     const fill = document.createElement('div');
     fill.classList.add(FILL_CLASS);
-    fill.classList.add(`js-${FILL_CLASS}`);
+    fill.classList.add(`${PREFIX}-${FILL_CLASS}`);
     fill.classList.add(`${FILL_CLASS}_${direction}`);
     this.fill = fill;
     this.view.DOMroot.appendChild(fill);

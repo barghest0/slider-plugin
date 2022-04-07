@@ -5,7 +5,8 @@ import updateThumbStyle from './utils/updateThumbStyle';
 import validateCollision from './utils/validateCollision';
 import dragAndDropThumb from './utils/dragAndDropThumb';
 
-import { THUMB_CLASS } from '../../../Slider/constants';
+import { THUMB_CLASS } from './constants';
+import { PREFIX } from '../../../Slider/constants';
 
 class Thumb extends Observer {
   public view: View;
@@ -44,7 +45,7 @@ class Thumb extends Observer {
   public renderThumb(stance: number) {
     const thumb = document.createElement('div');
     thumb.classList.add(THUMB_CLASS);
-    thumb.classList.add(`js-${THUMB_CLASS}-${stance}`);
+    thumb.classList.add(`${PREFIX}-${THUMB_CLASS}-${stance}`);
     thumb.classList.add(`${THUMB_CLASS}-${stance}`);
     this.thumbs.push(thumb);
     this.view.DOMroot.appendChild(thumb);

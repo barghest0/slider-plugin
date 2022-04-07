@@ -31,11 +31,7 @@ const MIN_DECIMAL_PLACES = 0;
 
 const PARENT_CLASS = 'slider-parent';
 const MAIN_CLASS = 'slider';
-const TRACK_CLASS = 'slider__track';
-const THUMB_CLASS = 'slider__thumb';
-const FILL_CLASS = 'slider__fill';
-const SCALE_CLASS = 'slider__scale';
-const TIP_CLASS = 'slider__tip';
+const PREFIX = 'js';
 
 const SINGLE_SLIDER = 0;
 
@@ -58,11 +54,7 @@ export {
   SECOND_OFFSET,
   PARENT_CLASS,
   MAIN_CLASS,
-  TRACK_CLASS,
-  THUMB_CLASS,
-  FILL_CLASS,
-  SCALE_CLASS,
-  TIP_CLASS,
   INVALID_STEP,
   SINGLE_SLIDER,
+  PREFIX,
 };

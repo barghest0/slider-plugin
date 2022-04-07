@@ -1,4 +1,5 @@
 import Observer from '../../../Observer/Observer';
+import { PREFIX } from '../../../Slider/constants';
 import View from '../../View';
 
 import {
@@ -63,26 +64,40 @@ class Panel extends Observer {
     super();
     this.view = view;
     this.panel = <HTMLElement>document.querySelector(`.${PANEL_CLASS}`);
-    this.minValueInput = <HTMLInputElement>document.querySelector(`.js-${MIN_CLASS}`);
-    this.maxValueInput = <HTMLInputElement>document.querySelector(`.js-${MAX_CLASS}`);
+    this.minValueInput = <HTMLInputElement>(
+      document.querySelector(`.${PREFIX}-${MIN_CLASS}`)
+    );
+    this.maxValueInput = <HTMLInputElement>(
+      document.querySelector(`.${PREFIX}-${MAX_CLASS}`)
+    );
     this.firstValueInput = <HTMLInputElement>(
-      document.querySelector(`.js-${FIRST_VALUE_CLASS}`)
+      document.querySelector(`.${PREFIX}-${FIRST_VALUE_CLASS}`)
     );
     this.secondValueInput = <HTMLInputElement>(
-      document.querySelector(`.js-${SECOND_VALUE_CLASS}`)
+      document.querySelector(`.${PREFIX}-${SECOND_VALUE_CLASS}`)
     );
     this.decimalPlacesInput = <HTMLInputElement>(
-      document.querySelector(`.js-${DECIMAL_PLACES_CLASS}`)
+      document.querySelector(`.${PREFIX}-${DECIMAL_PLACES_CLASS}`)
     );
-    this.stepInput = <HTMLInputElement>document.querySelector(`.js-${STEP_CLASS}`);
-    this.isRange = <HTMLInputElement>document.querySelector(`.js-${IS_RANGE_CLASS}`);
+    this.stepInput = <HTMLInputElement>document.querySelector(`.${PREFIX}-${STEP_CLASS}`);
+    this.isRange = <HTMLInputElement>(
+      document.querySelector(`.${PREFIX}-${IS_RANGE_CLASS}`)
+    );
     this.isVertical = <HTMLInputElement>(
-      document.querySelector(`.js-${IS_VERTICAL_CLASS}`)
+      document.querySelector(`.${PREFIX}-${IS_VERTICAL_CLASS}`)
     );
-    this.hasFill = <HTMLInputElement>document.querySelector(`.js-${HAS_FILL_CLASS}`);
-    this.hasTips = <HTMLInputElement>document.querySelector(`.js-${HAS_TIPS_CLASS}`);
-    this.hasScale = <HTMLInputElement>document.querySelector(`.js-${HAS_SCALE_CLASS}`);
-    this.isDecimal = <HTMLInputElement>document.querySelector(`.js-${IS_DECIMAL_CLASS}`);
+    this.hasFill = <HTMLInputElement>(
+      document.querySelector(`.${PREFIX}-${HAS_FILL_CLASS}`)
+    );
+    this.hasTips = <HTMLInputElement>(
+      document.querySelector(`.${PREFIX}-${HAS_TIPS_CLASS}`)
+    );
+    this.hasScale = <HTMLInputElement>(
+      document.querySelector(`.${PREFIX}-${HAS_SCALE_CLASS}`)
+    );
+    this.isDecimal = <HTMLInputElement>(
+      document.querySelector(`.${PREFIX}-${IS_DECIMAL_CLASS}`)
+    );
     this.initializePanelsParams = initializePanelsParams.bind(this);
     this.initializeInputs = initializeInputs.bind(this);
     this.addInputListeners = addInputListeners.bind(this);

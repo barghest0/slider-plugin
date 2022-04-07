@@ -1,32 +1,43 @@
-import { DEFAULT_SLIDER_PARAMS, FIRST_VALUE, SINGLE_THUMB } from '../components/Slider/constants';
+import {
+  DEFAULT_SLIDER_PARAMS,
+  FIRST_VALUE,
+  SINGLE_THUMB,
+} from '../components/Slider/constants';
 
-import { Direction, SliderParams, UserSliderParams } from '../components/Slider/types';
+import { Params, SliderParams, UserSliderParams } from '../components/Slider/types';
 
 function getParamsFromDataset(element: JQuery, params: SliderParams) {
   let dataValue;
 
-  if (element.data('firstValue') && element.data('secondValue')) {
-    dataValue = [Number(element.data('firstValue')), Number(element.data('secondValue'))];
-  } else if (Number(element.data('firstValue')) || Number(element.data('secondValue'))) {
-    dataValue = [Number(element.data('firstValue'))] || [
-      Number(element.data('secondValue')),
+  if (element.data(Params.datafirstValue) && element.data(Params.dataSecondValue)) {
+    dataValue = [
+      Number(element.data(Params.datafirstValue)),
+      Number(element.data(Params.dataSecondValue)),
+    ];
+  } else if (
+    Number(element.data(Params.datafirstValue)) ||
+    Number(element.data(Params.dataSecondValue))
+  ) {
+    dataValue = [Number(element.data(Params.datafirstValue))] || [
+      Number(element.data(Params.dataSecondValue)),
     ];
   } else {
     dataValue = params.value;
   }
 
-  const min = Number(element.data('min')) || params.min;
-  const max = Number(element.data('max')) || params.max;
+  const min = Number(element.data(Params.min)) || params.min;
+  const max = Number(element.data(Params.max)) || params.max;
   const value = dataValue;
-  const decimalPlaces = Number(element.data('decimalPlaces')) || params.decimalPlaces;
-  const step = Number(element.data('step')) || params.step;
-  const isRange = Boolean(element.data('isRange')) || params.isRange;
-  const direction = <Direction>element.data('direction') || params.direction;
-  const hasFill = Boolean(element.data('hasFill')) || params.hasFill;
-  const hasTips = Boolean(element.data('hasTips')) || params.hasTips;
-  const hasScale = Boolean(element.data('hasScale')) || params.hasScale;
-  const isDecimal = Boolean(element.data('isDecimal')) || params.isDecimal;
-  const panel = Boolean(element.data('panel')) || params.panel;
+  const decimalPlaces =
+    Number(element.data(Params.decimalPlaces)) || params.decimalPlaces;
+  const step = Number(element.data(Params.step)) || params.step;
+  const isRange = Boolean(element.data(Params.isRange)) || params.isRange;
+  const direction = element.data(Params.direction) || params.direction;
+  const hasFill = Boolean(element.data(Params.hasFill)) || params.hasFill;
+  const hasTips = Boolean(element.data(Params.hasTips)) || params.hasTips;
+  const hasScale = Boolean(element.data(Params.hasScale)) || params.hasScale;
+  const isDecimal = Boolean(element.data(Params.isDecimal)) || params.isDecimal;
+  const panel = Boolean(element.data(Params.panel)) || params.panel;
 
   return {
     min,

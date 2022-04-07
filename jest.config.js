@@ -138,7 +138,7 @@ module.exports = {
   // The test environment that will be used for testing
   testEnvironment: 'jsdom',
   moduleNameMapper: {
-    '.*\\.scss$': '<rootDir>/src/Plugin/plugin.ts',
+    '.*\\.scss$': '<rootDir>/src/plugin/plugin.ts',
   },
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},

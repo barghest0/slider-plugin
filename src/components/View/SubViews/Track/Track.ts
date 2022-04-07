@@ -3,9 +3,10 @@ import Observer from '../../../Observer/Observer';
 
 import { Direction } from '../../../Slider/types';
 
-import { TRACK_CLASS } from '../../../Slider/constants';
+import { TRACK_CLASS } from './constants';
 
 import handleTrackClick from './utils/handleTrackClick';
+import { PREFIX } from '../../../Slider/constants';
 
 class Track extends Observer {
   public view: View;
@@ -21,7 +22,7 @@ class Track extends Observer {
   public renderTrack(direction: Direction) {
     const track = document.createElement('div');
     track.classList.add(TRACK_CLASS);
-    track.classList.add(`js-${TRACK_CLASS}`);
+    track.classList.add(`${PREFIX}-${TRACK_CLASS}`);
     track.classList.add(`${TRACK_CLASS}_${direction}`);
     this.track = track;
     this.view.DOMroot.appendChild(track);

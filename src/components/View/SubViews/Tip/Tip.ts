@@ -5,7 +5,8 @@ import { Direction } from '../../../Slider/types';
 
 import updateTipStyle from './utils/updateTipStyle';
 
-import { TIP_CLASS } from '../../../Slider/constants';
+import { TIP_CLASS } from './constants';
+import { PREFIX } from '../../../Slider/constants';
 
 class Tip extends Observer {
   public view: View;
@@ -35,7 +36,7 @@ class Tip extends Observer {
   public renderTip(stance: number, direction: Direction) {
     const tip = document.createElement('div');
     tip.classList.add(TIP_CLASS);
-    tip.classList.add(`js-${TIP_CLASS}-${stance}`);
+    tip.classList.add(`${PREFIX}-${TIP_CLASS}-${stance}`);
     tip.classList.add(`${TIP_CLASS}-${stance}`);
     tip.classList.add(`${TIP_CLASS}_${direction}`);
     this.tips.push(tip);

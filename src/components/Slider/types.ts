@@ -83,16 +83,21 @@ enum Params {
   hasScale = 'hasScale',
   isDecimal = 'isDecimal',
   decimalPlaces = 'decimalPlaces',
+  datafirstValue = 'firstValue',
+  dataSecondValue = 'secondValue',
+  panel = 'panel',
 }
 
 enum OffsetDirections {
   left = 'left',
   top = 'top',
 }
+
 enum FillDirections {
   width = 'width',
   height = 'height',
 }
+
 export {
   SliderParams,
   UserSliderParams,

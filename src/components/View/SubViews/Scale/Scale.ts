@@ -1,10 +1,11 @@
 import View from '../../View';
 
-import { SCALE_CLASS } from '../../../Slider/constants';
+import { SCALE_CLASS } from './constants';
 
 import { Direction } from '../../../Slider/types';
 
 import renderScaleMarks from './utils/renderScaleMarks';
+import { PREFIX } from '../../../Slider/constants';
 
 class Scale {
   public scale: HTMLElement;
@@ -27,7 +28,7 @@ class Scale {
   public renderScale(direction: Direction) {
     const scale = document.createElement('div');
     scale.classList.add(SCALE_CLASS);
-    scale.classList.add(`js-${SCALE_CLASS}`);
+    scale.classList.add(`${PREFIX}-${SCALE_CLASS}`);
     scale.classList.add(`${SCALE_CLASS}_${direction}`);
     this.scale = scale;
     this.view.DOMroot.appendChild(scale);
