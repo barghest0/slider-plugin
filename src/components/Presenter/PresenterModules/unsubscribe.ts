@@ -11,13 +11,13 @@ function unsubscribe(this: Presenter) {
 
   this.model.unsubscribe(SubscribersNames.updateThumbView, this.updateThumbView);
 
-  if (this.model.getParams().hasFill) {
+  if (!this.getParams().hasFill) {
     this.model.unsubscribe(SubscribersNames.updateFillView, this.updateFillView);
     this.view.thumbView.unsubscribe(SubscribersNames.updateFill, this.updateFill);
     this.view.trackView.unsubscribe(SubscribersNames.updateFill, this.updateFill);
   }
 
-  if (this.model.getParams().hasTips) {
+  if (!this.getParams().hasTips) {
     this.model.unsubscribe(SubscribersNames.updateThumbView, this.updateTipView);
   }
 

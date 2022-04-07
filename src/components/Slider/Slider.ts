@@ -45,9 +45,7 @@ class Slider extends Observer {
   }
 
   public subscribeSlider(onChangeFuntion: SubscriberFn) {
-    if (onChangeFuntion) {
-      this.presenter.model.subscribe(SubscribersNames.updateThumbView, onChangeFuntion);
-    }
+    this.presenter.model.subscribe(SubscribersNames.updateThumbView, onChangeFuntion);
   }
 
   private init() {
