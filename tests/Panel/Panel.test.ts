@@ -2,7 +2,7 @@ import Slider from '../../src/components/Slider/Slider';
 
 import { FIRST_VALUE, SECOND_THUMB_STANCE } from '../../src/components/Slider/constants';
 
-import { Directions, Params, SubscribersNames } from '../../src/components/Slider/types';
+import { Directions, Params } from '../../src/components/Slider/types';
 
 import Panel from '../../src/components/Panel/Panel';
 import {
@@ -17,9 +17,6 @@ import {
 import handleDirectionChange from '../../src/components/Panel/utils/handleDirectionChange';
 import handleOtherParamChange from '../../src/components/Panel/utils/handleOtherParamChange';
 import handleValueChange from '../../src/components/Panel/utils/handleValueChange';
-import Presenter from '../../src/components/Presenter/Presenter';
-
-import { getValidatedParams } from '../../src/utils/validators';
 
 import '../../src/plugin/plugin';
 
@@ -27,8 +24,6 @@ describe('Panel test', () => {
   document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';
   const root = '#slider-1';
   const slider = $(root).slider({});
-  const DOMparent = slider.getParent();
-  const DOMroot = slider.getContainer();
   const panel = new Panel(slider);
 
   test('constructor test', () => {
@@ -108,26 +103,5 @@ describe('Panel test', () => {
 
     expect(panel.inputs.firstValueInput.value).toBe('10');
     expect(panel.inputs.secondValueInput.value).toBe('20');
-  });
-
-  const params = getValidatedParams({ isRange: true, panel: true });
-  const presenter = new Presenter(params, DOMroot, DOMparent);
-  presenter.init();
-
-  // test('expect change first value input values to 20 after drag first thumb', () => {
-  //   presenter.model.setValue(FIRST_THUMB_STANCE, 20);
-  //   expect(panel.inputs.firstValueInput.value).toBe('20');
-  // });
-
-  // test('expect change second value input values to 30 after drag first thumb', () => {
-  //   presenter.model.setValue(SECOND_THUMB_STANCE, 30);
-  //   expect(panel.inputs.secondValueInput.value).toBe('30');
-  // });
-
-  test('expect calling onChange after notify view', () => {
-    const onChange = jest.fn();
-    presenter.getParams().onChange = onChange;
-    presenter.model.notify(SubscribersNames.updateThumbView, SECOND_THUMB_STANCE);
-    expect(presenter.getParams().onChange).toBeDefined();
   });
 });

@@ -37,7 +37,6 @@ function getParamsFromDataset(element: JQuery, params: SliderParams) {
   const hasTips = Boolean(element.data(Params.hasTips)) || params.hasTips;
   const hasScale = Boolean(element.data(Params.hasScale)) || params.hasScale;
   const isDecimal = Boolean(element.data(Params.isDecimal)) || params.isDecimal;
-  const panel = Boolean(element.data(Params.panel)) || params.panel;
 
   return {
     min,
@@ -51,8 +50,6 @@ function getParamsFromDataset(element: JQuery, params: SliderParams) {
     hasTips,
     hasScale,
     isDecimal,
-    panel,
-    onChange: params.onChange,
   };
 }
 
@@ -69,7 +66,6 @@ function getValidatedParams({
   hasScale,
   isDecimal,
   panel,
-  onChange,
 }: UserSliderParams) {
   const validatedMin = min ?? DEFAULT_SLIDER_PARAMS.min;
   const validatedMax = max ?? DEFAULT_SLIDER_PARAMS.max;
@@ -82,7 +78,6 @@ function getValidatedParams({
   const validatedHasScale = hasScale ?? DEFAULT_SLIDER_PARAMS.hasScale;
   const validatedIsDecimal = isDecimal ?? DEFAULT_SLIDER_PARAMS.isDecimal;
   const validatedPanel = panel ?? DEFAULT_SLIDER_PARAMS.panel;
-  const validatedOnChange = onChange ?? DEFAULT_SLIDER_PARAMS.onChange;
 
   let validatedValue = value ?? DEFAULT_SLIDER_PARAMS.value;
 
@@ -107,7 +102,6 @@ function getValidatedParams({
     hasScale: validatedHasScale,
     isDecimal: validatedIsDecimal,
     panel: validatedPanel,
-    onChange: validatedOnChange,
   };
 }
 

@@ -1,4 +1,4 @@
-import { FIRST_THUMB_STANCE, SECOND_THUMB_STANCE } from '../Slider/constants';
+import { FIRST_THUMB_STANCE } from '../Slider/constants';
 import Slider from '../Slider/Slider';
 import { SliderParams, UserSliderParams } from '../Slider/types';
 import { PANEL_CLASS } from './constants';

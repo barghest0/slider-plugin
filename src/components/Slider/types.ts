@@ -1,17 +1,9 @@
 type Direction = 'vertical' | 'horizontal';
 type OffsetDirection = 'left' | 'top';
 type FillDirection = 'width' | 'height';
-type onChange<T> = (params: T) => void;
 
 type SliderParams = {
-  [index: string]:
-    | number
-    | string
-    | number[]
-    | Direction
-    | boolean
-    | onChange<SliderParams>
-    | undefined;
+  [index: string]: number | string | number[] | Direction | boolean | undefined;
   min: number;
   max: number;
   step: number;
@@ -23,19 +15,10 @@ type SliderParams = {
   hasScale: boolean;
   isDecimal: boolean;
   decimalPlaces: number;
-  onChange?: onChange<SliderParams>;
-  panel: boolean;
 };
 
 type UserSliderParams = {
-  [index: string]:
-    | number
-    | string
-    | number[]
-    | Direction
-    | boolean
-    | onChange<SliderParams>
-    | undefined;
+  [index: string]: number | string | number[] | Direction | boolean | undefined;
   min?: number;
   max?: number;
   step?: number;
@@ -48,7 +31,6 @@ type UserSliderParams = {
   isDecimal?: boolean;
   panel?: boolean;
   decimalPlaces?: number;
-  onChange?: onChange<SliderParams>;
 };
 
 type SliderFillState = {
@@ -85,7 +67,6 @@ enum Params {
   decimalPlaces = 'decimalPlaces',
   datafirstValue = 'firstValue',
   dataSecondValue = 'secondValue',
-  panel = 'panel',
 }
 
 enum OffsetDirections {
