@@ -1,5 +1,5 @@
 import slider from './slider';
-import '../style/slider.scss';
+import '../assets/style/slider.scss';
 
 import DEFAULT_SELECTOR from './constants';
 

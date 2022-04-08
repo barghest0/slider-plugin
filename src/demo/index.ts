@@ -1,10 +1,9 @@
 import Panel from '../components/Panel/Panel';
-import '../style/style.scss';
+import '../assets/style/style.scss';
 
 window.addEventListener('load', () => {
   const slider1 = $('.js-slider-1').slider();
-
-  new Panel(slider1);
+  const panel1 = new Panel(slider1);
 
   const slider2 = $('.js-slider-2').slider({
     min: -6,
@@ -19,8 +18,7 @@ window.addEventListener('load', () => {
     isDecimal: true,
     decimalPlaces: 1,
   });
-
-  new Panel(slider2);
+  const panel2 = new Panel(slider2);
 
   const slider3 = $('.js-slider-3').slider({
     min: -15000,
@@ -35,8 +33,7 @@ window.addEventListener('load', () => {
     isDecimal: false,
     decimalPlaces: 0,
   });
-
-  new Panel(slider3);
+  const panel3 = new Panel(slider3);
 
   const slider4 = $('.js-slider-4').slider({
     min: -100,
@@ -51,8 +48,9 @@ window.addEventListener('load', () => {
     isDecimal: false,
     decimalPlaces: 0,
   });
+  const panel4 = new Panel(slider4);
 
-  new Panel(slider4);
+  const slider5 = $('.js-slider-5').slider();
+  const panel5 = new Panel(slider5);
 
-  $('.js-slider-5').slider();
 });

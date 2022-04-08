@@ -111,7 +111,7 @@ const config = {
     new HtmlWebpackPlugin({
       template: `${PATHS.src}/demo/index.html`,
       filename: `./index.html`,
-      favicon: `${PATHS.src}/static/favicon.ico`,
+      favicon: `${PATHS.src}/assets/static/favicon.ico`,
     }),
   ],
 };
