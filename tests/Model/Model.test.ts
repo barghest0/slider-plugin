@@ -13,6 +13,7 @@ import {
 
 import { Directions, Params, SubscribersNames } from '../../src/components/Slider/types';
 import validateFirstThumb from '../../src/components/Model/ModelModules/validationParamsMethods/validateFirstThumb';
+import { getValidatedParams } from '../../src/utils/validators';
 
 describe('Model test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1" ></div>`;
@@ -161,6 +162,11 @@ describe('Model test', () => {
     expect(decimalPlaces).toEqual(3);
   });
 
+  test('expect decimal places equal 0 if isDecimal equal false', () => {
+    const decimalPlaces = validateDecimalPlaces(231, 3, false);
+    expect(decimalPlaces).toEqual(0);
+  });
+
   test('expect first thumb value not be less min', () => {
     const value = validateFirstThumb([-10], 0, 20);
     expect(value).toEqual(0);
@@ -169,5 +175,10 @@ describe('Model test', () => {
   test('expect first thumb value not be bigger max', () => {
     const value = validateFirstThumb([30], 0, 20);
     expect(value).toEqual(20);
+  });
+  test('expect push second thumb if isRange equal true', () => {
+    const sliderParams = getValidatedParams({ isRange: true, value: [0] });
+    const params = model.validateParams(sliderParams);
+    expect(params.value).toEqual([0, 0]);
   });
 });

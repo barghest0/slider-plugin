@@ -19,7 +19,7 @@ describe('Presenter test', () => {
   const root = '#slider-1';
   const DOMroot = <HTMLElement>document.querySelector(root);
   const DOMparent = <HTMLElement>DOMroot.parentElement;
-  const params = getValidatedParams({ isRange: true, value: [0, 100], panel: true });
+  const params = getValidatedParams({ isRange: true, value: [0, 100] });
   const presenter = new Presenter(params, DOMroot, DOMparent);
   presenter.init();
 
@@ -139,5 +139,22 @@ describe('Presenter test', () => {
     expect(
       presenter.view.thumbView.getSubscribers()[SubscribersNames.updateThumb],
     ).toEqual([]);
+  });
+
+  const paramsWithoutTips = getValidatedParams({
+    isRange: true,
+    value: [0, 100],
+    hasTips: false,
+  });
+  const presenterWithoutTips = new Presenter(paramsWithoutTips, DOMroot, DOMparent);
+  presenterWithoutTips.init();
+
+  test('correct unsubscribe without tips', () => {
+    const fn = jest.fn();
+    presenter.updateTipView = fn;
+    presenterWithoutTips.unsubscribe();
+    expect(
+      presenterWithoutTips.model.getSubscribers()[SubscribersNames.updateThumbView],
+    ).toEqual(expect.not.arrayContaining([fn]));
   });
 });

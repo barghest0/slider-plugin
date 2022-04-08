@@ -40,7 +40,7 @@ class Panel {
     this.initializePanelsParams();
   }
 
-  private updatePanelValue(stance: number, { value }: SliderParams) {
+  public updatePanelValue(stance: number, { value }: SliderParams) {
     if (stance === FIRST_THUMB_STANCE) {
       this.inputs.firstValueInput.value = String(value[stance]);
     } else {
@@ -53,11 +53,11 @@ class Panel {
     this.setInputs(getInputs(this.DOMparent));
     this.initializePanelsParams();
     this.addInputListeners();
-    this.subscribePanel();
+    this.subscribe();
   }
 
-  private subscribePanel() {
-    this.slider.subscribeSlider(this.updatePanelValue.bind(this));
+  private subscribe() {
+    this.slider.subscribe(this.updatePanelValue.bind(this));
   }
 
   private setInputs(inputs: PanelInputs) {

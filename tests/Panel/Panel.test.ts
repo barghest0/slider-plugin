@@ -1,6 +1,10 @@
 import Slider from '../../src/components/Slider/Slider';
 
-import { FIRST_VALUE, SECOND_THUMB_STANCE } from '../../src/components/Slider/constants';
+import {
+  FIRST_THUMB_STANCE,
+  FIRST_VALUE,
+  SECOND_THUMB_STANCE,
+} from '../../src/components/Slider/constants';
 
 import { Directions, Params } from '../../src/components/Slider/types';
 
@@ -19,6 +23,7 @@ import handleOtherParamChange from '../../src/components/Panel/utils/handleOther
 import handleValueChange from '../../src/components/Panel/utils/handleValueChange';
 
 import '../../src/plugin/plugin';
+import { getValidatedParams } from '../../src/utils/validators';
 
 describe('Panel test', () => {
   document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';
@@ -103,5 +108,17 @@ describe('Panel test', () => {
 
     expect(panel.inputs.firstValueInput.value).toBe('10');
     expect(panel.inputs.secondValueInput.value).toBe('20');
+  });
+
+  test('expect set first value input to 30', () => {
+    const params = getValidatedParams({ value: [30] });
+    panel.updatePanelValue(FIRST_THUMB_STANCE, params);
+    expect(panel.inputs.firstValueInput.value).toBe('30');
+  });
+
+  test('expect set second value input to 40', () => {
+    const params = getValidatedParams({ value: [10, 40] });
+    panel.updatePanelValue(SECOND_THUMB_STANCE, params);
+    expect(panel.inputs.secondValueInput.value).toBe('40');
   });
 });

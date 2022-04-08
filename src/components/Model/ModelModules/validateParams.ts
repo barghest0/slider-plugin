@@ -29,7 +29,6 @@ function validateParams(
     hasScale,
     isDecimal,
     panel,
-    onChange,
   }: SliderParams,
 ) {
   const validatedValue = value;
@@ -45,9 +44,9 @@ function validateParams(
 
   if (isRange) {
     const isSingleThumb = validatedValue.length === SINGLE_THUMB;
-    if (isSingleThumb) {
-      validatedValue.push(validatedValue[FIRST_THUMB_STANCE]);
-    }
+    // if (isSingleThumb) {
+    //   validatedValue.push(validatedValue[FIRST_THUMB_STANCE]);
+    // }
 
     validatedValue[SECOND_THUMB_STANCE] = validateSecondThumb(validatedValue, min, max);
   }
@@ -66,8 +65,6 @@ function validateParams(
     hasScale,
     panel,
   };
-
-  if (onChange) validatedParams.onChange = onChange;
 
   return validatedParams;
 }
