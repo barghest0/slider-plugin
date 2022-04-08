@@ -9,11 +9,11 @@ import updateFillStyle from './utils/updateFillStyle';
 import { PREFIX } from '../../../Slider/constants';
 
 class Fill extends Observer {
-  public view: View;
+  view: View;
 
-  public fill: HTMLElement;
+  fill: HTMLElement;
 
-  public updateFillStyle: () => void;
+  updateFillStyle: () => void;
 
   private state: SliderFillState;
 
@@ -25,16 +25,16 @@ class Fill extends Observer {
     this.updateFillStyle = updateFillStyle.bind(this);
   }
 
-  public setState({ fillOffset, fillSize }: SliderFillState) {
+  setState({ fillOffset, fillSize }: SliderFillState) {
     this.state.fillOffset = fillOffset;
     this.state.fillSize = fillSize;
   }
 
-  public getState() {
+  getState() {
     return this.state;
   }
 
-  public renderFill(direction: Direction) {
+  renderFill(direction: Direction) {
     const fill = document.createElement('div');
     fill.classList.add(FILL_CLASS);
     fill.classList.add(`${PREFIX}-${FILL_CLASS}`);

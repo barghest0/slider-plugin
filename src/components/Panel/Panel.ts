@@ -10,13 +10,13 @@ import initializePanelsParams from './utils/initializePanelParams';
 import renderPanel from './utils/renderPanel';
 
 class Panel {
-  public slider: Slider;
+  slider: Slider;
 
-  public panel: HTMLElement;
+  panel: HTMLElement;
 
-  public inputs: PanelInputs;
+  inputs: PanelInputs;
 
-  public DOMparent: HTMLElement;
+  DOMparent: HTMLElement;
 
   private initializePanelsParams: () => void;
 
@@ -35,12 +35,12 @@ class Panel {
     this.init();
   }
 
-  public updatePanelParams(params: UserSliderParams) {
+  updatePanelParams(params: UserSliderParams) {
     this.slider.updateParams(params);
     this.initializePanelsParams();
   }
 
-  public updatePanelValue(stance: number, { value }: SliderParams) {
+  updatePanelValue(stance: number, { value }: SliderParams) {
     if (stance === FIRST_THUMB_STANCE) {
       this.inputs.firstValueInput.value = String(value[stance]);
     } else {

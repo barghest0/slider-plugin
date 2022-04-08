@@ -8,11 +8,11 @@ import renderScaleMarks from './utils/renderScaleMarks';
 import { PREFIX } from '../../../Slider/constants';
 
 class Scale {
-  public scale: HTMLElement;
+  scale: HTMLElement;
 
-  public view: View;
+  view: View;
 
-  public renderScaleMarks: (
+  renderScaleMarks: (
     step: number,
     max: number,
     min: number,
@@ -25,7 +25,7 @@ class Scale {
     this.renderScaleMarks = renderScaleMarks.bind(this);
   }
 
-  public renderScale(direction: Direction) {
+  renderScale(direction: Direction) {
     const scale = document.createElement('div');
     scale.classList.add(SCALE_CLASS);
     scale.classList.add(`${PREFIX}-${SCALE_CLASS}`);

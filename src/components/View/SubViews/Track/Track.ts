@@ -5,33 +5,34 @@ import { Direction } from '../../../Slider/types';
 
 import TRACK_CLASS from './constants';
 
-import handleTrackClick from './utils/handleTrackClick';
 import { PREFIX } from '../../../Slider/constants';
+import clickTrack from './utils/clickTrack';
+import handleTrackClick from './utils/handleTrackClick';
 
 class Track extends Observer {
-  public view: View;
+  view: View;
 
-  public track: HTMLElement;
+  track: HTMLElement;
+
+  clickTrack: () => void;
+
+  handleTrackClick: (event: PointerEvent) => void;
 
   constructor(view: View) {
     super();
     this.view = view;
     this.track = <HTMLElement>document.querySelector(`.${TRACK_CLASS}`);
+    this.clickTrack = clickTrack.bind(this);
+    this.handleTrackClick = handleTrackClick.bind(this);
   }
 
-  public renderTrack(direction: Direction) {
+  renderTrack(direction: Direction) {
     const track = document.createElement('div');
     track.classList.add(TRACK_CLASS);
     track.classList.add(`${PREFIX}-${TRACK_CLASS}`);
     track.classList.add(`${TRACK_CLASS}_${direction}`);
     this.track = track;
     this.view.DOMroot.appendChild(track);
-  }
-
-  public clickTrack() {
-    this.view.DOMroot.addEventListener('pointerdown', event =>
-      handleTrackClick(event, this),
-    );
   }
 }
 

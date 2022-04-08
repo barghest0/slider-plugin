@@ -9,11 +9,11 @@ import TIP_CLASS from './constants';
 import { PREFIX } from '../../../Slider/constants';
 
 class Tip extends Observer {
-  public view: View;
+  view: View;
 
-  public tips: HTMLElement[];
+  tips: HTMLElement[];
 
-  public updateTipStyle: (stance: number) => void;
+  updateTipStyle: (stance: number) => void;
 
   private offset: number[];
 
@@ -25,15 +25,15 @@ class Tip extends Observer {
     this.updateTipStyle = updateTipStyle.bind(this);
   }
 
-  public setOffset(stance: number, offset: number) {
+  setOffset(stance: number, offset: number) {
     this.offset[stance] = offset;
   }
 
-  public getOffset() {
+  getOffset() {
     return this.offset;
   }
 
-  public renderTip(stance: number, direction: Direction) {
+  renderTip(stance: number, direction: Direction) {
     const tip = document.createElement('div');
     tip.classList.add(TIP_CLASS);
     tip.classList.add(`${PREFIX}-${TIP_CLASS}-${stance}`);

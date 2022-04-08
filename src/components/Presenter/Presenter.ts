@@ -23,31 +23,31 @@ import {
 } from '../Slider/constants';
 
 class Presenter {
-  public DOMroot: HTMLElement;
+  DOMroot: HTMLElement;
 
-  public DOMparent: HTMLElement;
+  DOMparent: HTMLElement;
 
-  public view: View;
+  view: View;
 
-  public model: Model;
+  model: Model;
 
-  public updateThumb: (stance: number, cursorOffset: number) => void;
+  updateThumb: (stance: number, cursorOffset: number) => void;
 
-  public updateFill: (offset: number[]) => void;
+  updateFill: (offset: number[]) => void;
 
-  public updateThumbAfterTrackClick: (cursorOffset: number) => void;
+  updateThumbAfterTrackClick: (cursorOffset: number) => void;
 
-  public updateThumbView: (stance: number) => void;
+  updateThumbView: (stance: number) => void;
 
-  public updateTipView: (stance: number) => void;
+  updateTipView: (stance: number) => void;
 
-  public updateFillView: (state: SliderFillState) => void;
+  updateFillView: (state: SliderFillState) => void;
 
-  public subscribe: () => void;
+  subscribe: () => void;
 
-  public unsubscribe: () => void;
+  unsubscribe: () => void;
 
-  public clearHTML: () => void;
+  clearHTML: () => void;
 
   private params: SliderParams;
 
@@ -74,7 +74,7 @@ class Presenter {
     this.addListeners = addListeners.bind(this);
   }
 
-  public init() {
+  init() {
     this.setParams(this.params);
 
     this.createSlider();
@@ -82,7 +82,7 @@ class Presenter {
     this.addListeners();
   }
 
-  public rerender(params: SliderParams) {
+  rerender(params: SliderParams) {
     this.setParams(params);
 
     this.view.thumbView.thumbs = [];
@@ -96,11 +96,11 @@ class Presenter {
     this.addListeners();
   }
 
-  public setParams(params: SliderParams) {
+  setParams(params: SliderParams) {
     this.params = params;
   }
 
-  public getParams() {
+  getParams() {
     return this.params;
   }
 

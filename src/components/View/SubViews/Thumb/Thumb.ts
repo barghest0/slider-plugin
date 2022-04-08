@@ -7,19 +7,22 @@ import dragAndDropThumb from './utils/dragAndDropThumb';
 
 import THUMB_CLASS from './constants';
 import { PREFIX } from '../../../Slider/constants';
+import handleThumbDrag from './utils/handleThumbDrag';
 
 class Thumb extends Observer {
-  public view: View;
+  view: View;
 
-  public thumbs: HTMLElement[];
+  thumbs: HTMLElement[];
 
-  public activeStance: number;
+  activeStance: number;
 
-  public updateThumbStyle: (stance: number) => void;
+  updateThumbStyle: (stance: number) => void;
 
-  public validateCollision: (stance: number) => number;
+  validateCollision: (stance: number) => number;
 
-  public dragAndDropThumb: (stance: number) => void;
+  dragAndDropThumb: (stance: number) => void;
+
+  handleThumbDrag: (event: PointerEvent, stance: number) => void;
 
   private offset: number[];
 
@@ -32,17 +35,18 @@ class Thumb extends Observer {
     this.updateThumbStyle = updateThumbStyle.bind(this);
     this.validateCollision = validateCollision.bind(this);
     this.dragAndDropThumb = dragAndDropThumb.bind(this);
+    this.handleThumbDrag = handleThumbDrag.bind(this);
   }
 
-  public setOffset(stance: number, offset: number) {
+  setOffset(stance: number, offset: number) {
     this.offset[stance] = offset;
   }
 
-  public getOffset() {
+  getOffset() {
     return this.offset;
   }
 
-  public renderThumb(stance: number) {
+  renderThumb(stance: number) {
     const thumb = document.createElement('div');
     thumb.classList.add(THUMB_CLASS);
     thumb.classList.add(`${PREFIX}-${THUMB_CLASS}-${stance}`);

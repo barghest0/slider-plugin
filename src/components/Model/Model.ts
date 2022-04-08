@@ -22,11 +22,11 @@ import endsValidation from './ModelModules/endsValidation';
 import validateParams from './ModelModules/validateParams';
 
 class Model extends Observer {
-  public DOMroot: HTMLElement;
+  DOMroot: HTMLElement;
 
-  public validateParams: (params: SliderParams) => SliderParams;
+  validateParams: (params: SliderParams) => SliderParams;
 
-  public endsValidation: (stance: number) => void;
+  endsValidation: (stance: number) => void;
 
   private prepareOffset: (offset: number) => number;
 
@@ -50,51 +50,51 @@ class Model extends Observer {
     this.validateParams = validateParams.bind(this);
   }
 
-  public setParams(params: SliderParams) {
+  setParams(params: SliderParams) {
     this.params = this.validateParams(params);
   }
 
-  public setParam(param: string, value: string | number | number[] | boolean) {
+  setParam(param: string, value: string | number | number[] | boolean) {
     this.params[param] = value;
   }
 
-  public getParams() {
+  getParams() {
     return this.params;
   }
 
-  public setSize(size: number) {
+  setSize(size: number) {
     this.size = size;
   }
 
-  public getSize() {
+  getSize() {
     return this.size;
   }
 
-  public setValue(stance: number, value: number) {
+  setValue(stance: number, value: number) {
     const { decimalPlaces } = this.params;
     this.params.value[stance] = Number(value.toFixed(decimalPlaces));
   }
 
-  public getValue() {
+  getValue() {
     const { value } = this.params;
     return value;
   }
 
-  public setOffset(stance: number, offset: number) {
+  setOffset(stance: number, offset: number) {
     this.thumbsOffset[stance] = offset;
   }
 
-  public getOffset() {
+  getOffset() {
     return this.thumbsOffset;
   }
 
-  public calculateOffset(stance: number) {
+  calculateOffset(stance: number) {
     const { min, max, value } = this.params;
 
     return this.prepareOffset((value[stance] - min) / ((max - min) / MAX_PERCENTS));
   }
 
-  public updateThumb(stance: number, cursorOffset: number) {
+  updateThumb(stance: number, cursorOffset: number) {
     const directionalCursorOffset = this.prepareOffset(cursorOffset);
     const stepPercent = this.calculateStepPercent();
     const stepOffset = Math.round(directionalCursorOffset / stepPercent) * stepPercent;
@@ -107,7 +107,7 @@ class Model extends Observer {
     this.notify(SubscribersNames.updateThumbView, stance, this.getParams());
   }
 
-  public updateThumbAfterTrackClick(cursorOffset: number) {
+  updateThumbAfterTrackClick(cursorOffset: number) {
     const { fillOffset, fillSize } = this.getFillState();
 
     let stance = FIRST_THUMB_STANCE;
@@ -122,20 +122,20 @@ class Model extends Observer {
     this.updateThumb(stance, cursorOffset);
   }
 
-  public updateFill() {
+  updateFill() {
     this.setFillState(this.calculateFillState());
     this.notify(SubscribersNames.updateFillView);
   }
 
-  public setFillState(fillState: SliderFillState) {
+  setFillState(fillState: SliderFillState) {
     this.fillState = fillState;
   }
 
-  public getFillState() {
+  getFillState() {
     return this.fillState;
   }
 
-  public calculateFillState() {
+  calculateFillState() {
     return { fillOffset: this.calculateFillOffset(), fillSize: this.calculateFillSize() };
   }
 

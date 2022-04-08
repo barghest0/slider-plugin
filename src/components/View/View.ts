@@ -21,25 +21,25 @@ import prepareDirectionForInteraction from './ViewModules/prepareDirectionForInt
 import calculateCursorOffset from './ViewModules/calculateCursorOffset';
 
 class View extends Observer {
-  public thumbView: Thumb;
+  thumbView: Thumb;
 
-  public trackView: Track;
+  trackView: Track;
 
-  public scaleView: Scale;
+  scaleView: Scale;
 
-  public tipView: Tip;
+  tipView: Tip;
 
-  public fillView: Fill;
+  fillView: Fill;
 
-  public DOMroot: HTMLElement;
+  DOMroot: HTMLElement;
 
-  public offsetDirection: OffsetDirection;
+  offsetDirection: OffsetDirection;
 
-  public fillDirection: FillDirection;
+  fillDirection: FillDirection;
 
-  public prepareDirectionForInteraction: (direction: Direction) => void;
+  prepareDirectionForInteraction: (direction: Direction) => void;
 
-  public calculateCursorOffset: (
+  calculateCursorOffset: (
     coordinate: number,
     direction: Direction,
     DOMroot: HTMLElement,
@@ -66,31 +66,31 @@ class View extends Observer {
     this.calculateCursorOffset = calculateCursorOffset.bind(this);
   }
 
-  public setParams(params: SliderParams) {
+  setParams(params: SliderParams) {
     this.params = params;
   }
 
-  public setParam(param: string, value: string | number | number[] | boolean) {
+  setParam(param: string, value: string | number | number[] | boolean) {
     this.params[param] = value;
   }
 
-  public setSize(size: number) {
+  setSize(size: number) {
     this.size = size;
   }
 
-  public getParams() {
+  getParams() {
     return this.params;
   }
 
-  public getSize() {
+  getSize() {
     return this.size;
   }
 
-  public setValue(stance: number, value: number) {
+  setValue(stance: number, value: number) {
     this.params.value[stance] = value;
   }
 
-  public getValue() {
+  getValue() {
     return this.params.value;
   }
 }

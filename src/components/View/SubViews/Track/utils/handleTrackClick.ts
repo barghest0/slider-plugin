@@ -1,20 +1,20 @@
 import { Directions, SubscribersNames } from '../../../../Slider/types';
 import Track from '../Track';
 
-function handleTrackClick(event: PointerEvent, thisTrack: Track) {
-  const { direction, hasFill } = thisTrack.view.getParams();
-  const { DOMroot } = thisTrack.view;
-  const size = thisTrack.view.getSize();
+function handleTrackClick(this: Track, event: PointerEvent) {
+  const { direction, hasFill } = this.view.getParams();
+  const { DOMroot } = this.view;
+  const size = this.view.getSize();
   const coordinate = direction === Directions.horizontal ? event.pageX : event.pageY;
-  const cursorOffset = thisTrack.view.calculateCursorOffset(
+  const cursorOffset = this.view.calculateCursorOffset(
     coordinate,
     direction,
     DOMroot,
     size,
   );
-  thisTrack.notify(SubscribersNames.updateThumbAfterTrackClick, cursorOffset);
+  this.notify(SubscribersNames.updateThumbAfterTrackClick, cursorOffset);
   if (hasFill) {
-    thisTrack.notify(SubscribersNames.updateFill);
+    this.notify(SubscribersNames.updateFill);
   }
 }
 

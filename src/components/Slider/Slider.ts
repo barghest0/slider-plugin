@@ -1,5 +1,4 @@
 import Presenter from '../Presenter/Presenter';
-import Observer from '../Observer/Observer';
 
 import { getValidatedParams } from '../../utils/validators';
 import { SliderParams, SubscribersNames, UserSliderParams } from './types';
@@ -22,29 +21,29 @@ class Slider {
     this.init();
   }
 
-  public getParams() {
+  getParams() {
     return this.params;
   }
 
-  public getContainer() {
+  getContainer() {
     return this.DOMroot;
   }
 
-  public getParent() {
+  getParent() {
     return this.DOMparent;
   }
 
-  public unsubscribe() {
+  unsubscribe() {
     this.presenter.unsubscribe();
   }
 
-  public updateParams(params: UserSliderParams) {
+  updateParams(params: UserSliderParams) {
     this.presenter.rerender(getValidatedParams(params));
     this.params = this.presenter.model.getParams();
   }
 
-  public subscribe(onChangeFuntion: SubscriberFn) {
-    this.presenter.model.subscribe(SubscribersNames.updateThumbView, onChangeFuntion);
+  subscribe(onChangeFunction: SubscriberFn) {
+    this.presenter.model.subscribe(SubscribersNames.updateThumbView, onChangeFunction);
   }
 
   private init() {

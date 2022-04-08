@@ -2,25 +2,25 @@ import Thumb from '../Thumb';
 
 import { Directions, SubscribersNames } from '../../../../Slider/types';
 
-function handleThumbDrag(event: PointerEvent, thisThumb: Thumb, stance: number) {
-  const { direction, isRange, hasFill } = thisThumb.view.getParams();
-  const { DOMroot } = thisThumb.view;
-  const size = thisThumb.view.getSize();
+function handleThumbDrag(this: Thumb, event: PointerEvent, stance: number) {
+  const { direction, isRange, hasFill } = this.view.getParams();
+  const { DOMroot } = this.view;
+  const size = this.view.getSize();
 
   const coordinate = direction === Directions.horizontal ? event.pageX : event.pageY;
 
-  const cursorOffset = thisThumb.view.calculateCursorOffset(
+  const cursorOffset = this.view.calculateCursorOffset(
     coordinate,
     direction,
     DOMroot,
     size,
   );
 
-  const currentStance = isRange ? thisThumb.validateCollision(stance) : stance;
+  const currentStance = isRange ? this.validateCollision(stance) : stance;
 
-  thisThumb.notify(SubscribersNames.updateThumb, currentStance, cursorOffset);
+  this.notify(SubscribersNames.updateThumb, currentStance, cursorOffset);
   if (hasFill) {
-    thisThumb.notify(SubscribersNames.updateFill);
+    this.notify(SubscribersNames.updateFill);
   }
 }
 

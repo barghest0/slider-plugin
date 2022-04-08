@@ -7,24 +7,24 @@ class Observer {
     this.subscribers = subscribers;
   }
 
-  public subscribe(name: string, fn: SubscriberFn) {
+  subscribe(name: string, fn: SubscriberFn) {
     this.subscribers[name] = this.subscribers[name] || [];
     this.subscribers[name].push(fn);
   }
 
-  public unsubscribe(name: string, fn: SubscriberFn) {
+  unsubscribe(name: string, fn: SubscriberFn) {
     this.subscribers[name] = this.subscribers[name].filter(
       (subscriberFunc: SubscriberFn) => fn !== subscriberFunc,
     );
   }
 
-  public notify(name: string, ...args: any[]) {
+  notify(name: string, ...args: any[]) {
     this.subscribers[name].forEach((subscriberFunc: SubscriberFn) => {
       subscriberFunc(...args);
     });
   }
 
-  public getSubscribers() {
+  getSubscribers() {
     return this.subscribers;
   }
 }

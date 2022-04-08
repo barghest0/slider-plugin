@@ -8,7 +8,9 @@ import {
 
 const validateCollision = function validateCollision(this: Thumb, stance: number) {
   const reverseStance = +!stance;
+
   const isFirstStanceCurrent = stance === FIRST_THUMB_STANCE;
+
   const isFirstValueBiggerSecond =
     this.view.getValue()[FIRST_VALUE] > this.view.getValue()[SECOND_VALUE];
   const isSecondValueLessFirst =
