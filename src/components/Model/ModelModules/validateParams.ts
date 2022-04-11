@@ -44,9 +44,9 @@ function validateParams(
 
   if (isRange) {
     const isSingleThumb = validatedValue.length === SINGLE_THUMB;
-    // if (isSingleThumb) {
-    //   validatedValue.push(validatedValue[FIRST_THUMB_STANCE]);
-    // }
+    if (isSingleThumb) {
+      validatedValue.push(validatedValue[FIRST_THUMB_STANCE]);
+    }
 
     validatedValue[SECOND_THUMB_STANCE] = validateSecondThumb(validatedValue, min, max);
   }

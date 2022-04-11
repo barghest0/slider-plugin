@@ -5,7 +5,7 @@
 ## Библиотеки
 
 - Node - 16.13.1
-- Npm - 8.3.1
+- Npm - 8.3.0
 - JQuery - 3.6.0
 - Typescript - 4.5.4
 - Webpack - 5.66.0
@@ -91,7 +91,6 @@ const $slider = $('#slider').slider(params);
 $slider.getParams();
 ```
 
-
 `$slider.getContainer()` - возвращает элемент, на котором использован слайдер
 
 ```javascript
@@ -129,4 +128,4 @@ $slider.unsubscribe();
 `Presenter` - проводник между `Model` и `View`, в котором производятся подписки.
 При изменении `View` происходит уведомление `Model`, которая в свою очередь производит нужные вычисления и уведомляет `View` и его дочерние элементы: `Fill`,`Panel`,`Scale`, `Thumb`,`Tip`,`Track`.
 
-![UML](uml.png)
+![UML](./docs/uml.png)
