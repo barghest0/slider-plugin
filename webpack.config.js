@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const PATHS = {
   src: path.join(__dirname, './src'),
   dist: path.join(__dirname, './dist'),
-  assets: 'assets',
+  assets: './src/demo/assets',
 };
 
 const config = {
@@ -61,6 +61,10 @@ const config = {
         exclude: /node_modules/,
       },
       {
+        test: /\.pug$/,
+        use: ['pug-loader'],
+      },
+      {
         test: /\.(woff(2)?|ttf|eot)$/,
         type: 'asset/resource',
         generator: {
@@ -109,9 +113,9 @@ const config = {
     }),
 
     new HtmlWebpackPlugin({
-      template: `${PATHS.src}/demo/index.html`,
+      template: `${PATHS.src}/demo/index.pug`,
       filename: `./index.html`,
-      favicon: `${PATHS.src}/assets/static/favicon.ico`,
+      favicon: `${PATHS.assets}/static/favicon.ico`,
     }),
   ],
 };

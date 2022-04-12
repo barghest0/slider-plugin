@@ -1,0 +1,10 @@
+
+mixin panel({instance=1,isInline=false}={})
+  .panel 
+    .slider-parent 
+      if isInline 
+        div(data-slider="true")
+      else
+        div(class=`slider-${instance} js-slider-${instance}` )
+
+

@@ -9,6 +9,7 @@ function unsubscribe(this: Presenter) {
     this.updateThumbAfterTrackClick,
   );
 
+  this.model.unsubscribe(SubscribersNames.getSliderParams, this.getSliderParams);
   this.model.unsubscribe(SubscribersNames.updateThumbView, this.updateThumbView);
 
   if (!this.getParams().hasFill) {

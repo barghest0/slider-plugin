@@ -109,7 +109,7 @@ $slider.getParent();
 $slider.updateParams();
 ```
 
-`$slider.subscribe({thumb,params})` - позволяет подписаться на изменение бегунка, возвращает индекс бегунка `thumb` и параметры `params` в текущем положении
+`$slider.subscribe(params)` - позволяет подписаться на изменение бегунка, возвращает параметры `params` в текущем положении
 
 ```javascript
 $slider.subscribe(someFunc);

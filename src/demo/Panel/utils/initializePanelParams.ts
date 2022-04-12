@@ -1,5 +1,5 @@
-import { FIRST_VALUE, SECOND_VALUE } from '../../Slider/constants';
-import { Directions, SliderParams } from '../../Slider/types';
+import { FIRST_VALUE, SECOND_VALUE } from '../../../components/Slider/constants';
+import { Directions, SliderParams } from '../../../components/Slider/types';
 
 import Panel from '../Panel';
 

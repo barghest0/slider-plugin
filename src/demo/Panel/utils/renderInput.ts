@@ -1,4 +1,4 @@
-import { PREFIX } from '../../Slider/constants';
+import { PREFIX } from '../../../components/Slider/constants';
 import { CHECKBOX_TYPE, CUSTOM_CLASS } from '../constants';
 
 function renderInput(

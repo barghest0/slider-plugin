@@ -9,6 +9,7 @@ function subscribe(this: Presenter) {
     this.updateThumbAfterTrackClick,
   );
 
+  this.model.subscribe(SubscribersNames.getSliderParams, this.getSliderParams);
   this.model.subscribe(SubscribersNames.updateThumbView, this.updateThumbView);
 
   if (this.model.getParams().hasFill) {

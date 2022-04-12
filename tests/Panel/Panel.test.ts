@@ -4,7 +4,7 @@ import { FIRST_VALUE } from '../../src/components/Slider/constants';
 
 import { Directions, Params } from '../../src/components/Slider/types';
 
-import Panel from '../../src/components/Panel/Panel';
+import Panel from '../../src/demo/Panel/Panel';
 import {
   CHECKBOX_LABEL_CLASS,
   CHECKBOX_TYPE,
@@ -12,11 +12,11 @@ import {
   FIRST_VALUE_CLASS,
   IS_RANGE_CLASS,
   NUMBER_TYPE,
-} from '../../src/components/Panel/constants';
+} from '../../src/demo/Panel/constants';
 
-import handleDirectionChange from '../../src/components/Panel/utils/handleDirectionChange';
-import handleOtherParamChange from '../../src/components/Panel/utils/handleOtherParamChange';
-import handleValueChange from '../../src/components/Panel/utils/handleValueChange';
+import handleDirectionChange from '../../src/demo/Panel/utils/handleDirectionChange';
+import handleOtherParamChange from '../../src/demo/Panel/utils/handleOtherParamChange';
+import handleValueChange from '../../src/demo/Panel/utils/handleValueChange';
 
 import '../../src/plugin/plugin';
 import { getValidatedParams } from '../../src/utils/validators';

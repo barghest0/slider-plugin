@@ -1,4 +1,4 @@
-import { Directions } from '../../Slider/types';
+import { Directions } from '../../../components/Slider/types';
 
 import Panel from '../Panel';
 

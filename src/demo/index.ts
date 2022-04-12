@@ -1,5 +1,5 @@
-import Panel from '../components/Panel/Panel';
-import '../assets/style/style.scss';
+import Panel from './Panel/Panel';
+import './assets/style/index.scss';
 
 window.addEventListener('load', () => {
   const slider1 = $('.js-slider-1').slider();
@@ -49,7 +49,4 @@ window.addEventListener('load', () => {
     decimalPlaces: 0,
   });
   const panel4 = new Panel(slider4);
-
-  const slider5 = $('.js-slider-5').slider();
-  const panel5 = new Panel(slider5);
 });

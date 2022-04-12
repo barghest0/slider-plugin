@@ -3,6 +3,7 @@
   width: 100%;
   align-self: center;
   justify-self: center;
+
   &_vertical {
     width: auto;
     height: 100%;
@@ -20,6 +21,7 @@
       width: 4px;
     }
   }
+
   &__thumb {
     background-color: rgb(43, 177, 166);
     display: inline-block;
@@ -37,6 +39,7 @@
     -webkit-user-drag: none;
     -webkit-app-region: no-drag;
   }
+
   &__tip {
     position: absolute;
     width: auto;
@@ -49,18 +52,22 @@
     font-size: 16px;
     left: 0;
     transform: translate(-50%, 0);
+
     &_horizontal {
       top: -40px;
     }
+
     &_vertical {
       height: 0;
       left: -30px;
     }
   }
+
   &__scale {
     display: flex;
     cursor: pointer;
     top: 5px;
+
     &-mark {
       background-color: rgb(43, 177, 166);
       position: absolute;
@@ -70,12 +77,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
+
       &_vertical {
         left: 7px;
         height: 1px;
         width: 10px;
       }
     }
+
     &-number {
       font-size: 12px;
       position: relative;
@@ -83,11 +92,13 @@
       font-weight: bold;
       opacity: 0.5;
       transition: 0.1s linear;
+
       &_vertical {
         left: 15px;
         top: 0;
         margin-left: 5px;
       }
+
       &:hover {
         opacity: 1;
       }
@@ -101,6 +112,7 @@
       top: 0;
     }
   }
+
   &__fill {
     background-color: rgb(43, 177, 166);
     z-index: 10;
@@ -110,6 +122,7 @@
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.2s ease;
+
     &_vertical {
       height: 100%;
       width: 4px;
@@ -117,98 +130,5 @@
       top: auto;
     }
   }
-  &-panel {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(50px, 1fr));
-
-    grid-row-gap: 20px;
-    column-gap: 20px;
-  }
 }
 
-.custom {
-  display: flex;
-  min-height: 35px;
-
-  [type='number'] {
-    padding: 0 10px;
-    border-radius: 4px;
-    background-color: rgb(36, 36, 36);
-    color: #fff;
-    width: 100%;
-    height: 100%;
-    border: none;
-    outline: none;
-  }
-
-  input {
-    background-color: transparent;
-  }
-}
-
-.text-label {
-  display: flex;
-  flex-direction: column;
-}
-
-.checkbox-label {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  column-gap: 10px;
-  [type='checkbox'] {
-    appearance: none;
-  }
-
-  .custom {
-    padding: 0 2px;
-    width: 50px;
-    min-height: 20px;
-    background-color: rgb(36, 36, 36);
-    border-radius: 20px;
-    position: relative;
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
-    &::after {
-      content: '';
-      z-index: 100;
-      top: 2.5px;
-      position: absolute;
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      background-color: rgb(94, 94, 94);
-      transition: all 0.2s ease-in-out;
-    }
-  }
-  input:checked + .custom {
-    background-color: rgb(43, 177, 166);
-  }
-  input:checked + .custom::after {
-    background-color: rgb(255, 255, 255);
-    transform: translateX(30px);
-  }
-}
-
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  margin: 0;
-}
-
-input[type='number'] {
-  -moz-appearance: textfield;
-}
-
-.checkbox-panel {
-  display: flex;
-  flex-wrap: wrap;
-  justify-self: center;
-  column-gap: 20px;
-  row-gap: 10px;
-  grid-column: 1/-1;
-}

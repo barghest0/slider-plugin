@@ -14,6 +14,7 @@ import updateThumb from './PresenterModules/notifyModelMethods/updateThumb';
 import updateFill from './PresenterModules/notifyModelMethods/updateFill';
 import updateThumbView from './PresenterModules/notifyViewMethods/updateThumbView';
 import unsubscribe from './PresenterModules/unsubscribe';
+import getSliderParams from './PresenterModules/getSliderParams';
 
 import {
   FIRST_THUMB_STANCE,
@@ -42,6 +43,8 @@ class Presenter {
   updateTipView: (stance: number) => void;
 
   updateFillView: (state: SliderFillState) => void;
+
+  getSliderParams: (params: SliderParams) => SliderParams;
 
   subscribe: () => void;
 
@@ -72,6 +75,7 @@ class Presenter {
     this.updateTipView = updateTipView.bind(this);
     this.updateFillView = updateFillView.bind(this);
     this.addListeners = addListeners.bind(this);
+    this.getSliderParams = getSliderParams.bind(this);
   }
 
   init() {

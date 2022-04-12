@@ -1,4 +1,4 @@
-import { PREFIX } from '../../Slider/constants';
+import { PREFIX } from '../../../components/Slider/constants';
 
 import {
   DECIMAL_PLACES_CLASS,
