@@ -43,7 +43,7 @@ class Slider {
   }
 
   subscribe(onChangeFunction: SubscriberFn) {
-    this.presenter.model.subscribe(SubscribersNames.updateThumbView, onChangeFunction);
+    this.presenter.model.subscribe(SubscribersNames.getSliderParams, onChangeFunction);
   }
 
   private init() {

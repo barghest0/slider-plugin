@@ -52,5 +52,4 @@ window.addEventListener('load', () => {
 
   const slider5 = $('.js-slider-5').slider();
   const panel5 = new Panel(slider5);
-
 });

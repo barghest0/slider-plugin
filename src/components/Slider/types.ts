@@ -46,6 +46,7 @@ enum SubscribersNames {
   updateFillView = 'UpdateFillView',
   updateParams = 'UpdateParams',
   updatePanelValues = 'UpdatePanelValues',
+  getSliderParams = 'GetSliderParams',
 }
 
 enum Directions {
