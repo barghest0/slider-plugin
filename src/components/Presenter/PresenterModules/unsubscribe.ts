@@ -14,8 +14,6 @@ function unsubscribe(this: Presenter) {
 
   if (!this.getParams().hasFill) {
     this.model.unsubscribe(SubscribersNames.updateFillView, this.updateFillView);
-    this.view.thumbView.unsubscribe(SubscribersNames.updateFill, this.updateFill);
-    this.view.trackView.unsubscribe(SubscribersNames.updateFill, this.updateFill);
   }
 
   if (!this.getParams().hasTips) {

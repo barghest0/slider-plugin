@@ -25,12 +25,11 @@ describe('Track test', () => {
     const subscriberFn = jest.fn();
     jest.spyOn(track, 'notify');
     track.subscribe(SubscribersNames.updateThumbAfterTrackClick, subscriberFn);
-    track.subscribe(SubscribersNames.updateFill, subscriberFn);
 
     view.setParam(Params.direction, Directions.horizontal);
     root.dispatchEvent(new MouseEvent('pointerdown'));
     expect(track.notify).toBeCalled();
-
+``
     view.setParam(Params.direction, Directions.vertical);
     root.dispatchEvent(new MouseEvent('pointerdown'));
     expect(track.notify).toBeCalled();

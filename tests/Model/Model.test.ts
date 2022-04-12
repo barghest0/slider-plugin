@@ -116,12 +116,13 @@ describe('Model test', () => {
     });
   });
 
-  test('expect notify thumb view after calling updateThumb', () => {
+  test('expect notify thumb and fill view after calling updateThumb', () => {
     const subscriberFn = jest.fn();
     model.subscribe(SubscribersNames.updateThumbView, subscriberFn);
+    model.subscribe(SubscribersNames.updateFillView, subscriberFn);
     model.subscribe(SubscribersNames.getSliderParams, subscriberFn);
     model.updateThumb(FIRST_THUMB_STANCE, 20);
-    expect(subscriberFn).toBeCalledTimes(2);
+    expect(subscriberFn).toBeCalledTimes(3);
   });
 
   test('expect updateThumb called after calling updateThumbAfterTrackClick ', () => {

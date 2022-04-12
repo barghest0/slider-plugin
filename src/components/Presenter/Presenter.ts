@@ -11,7 +11,6 @@ import updateFillView from './PresenterModules/notifyViewMethods/updateFillView'
 import addListeners from './PresenterModules/addListeners';
 import updateThumbAfterTrackClick from './PresenterModules/notifyModelMethods/updateThumbAfterTrackClick';
 import updateThumb from './PresenterModules/notifyModelMethods/updateThumb';
-import updateFill from './PresenterModules/notifyModelMethods/updateFill';
 import updateThumbView from './PresenterModules/notifyViewMethods/updateThumbView';
 import unsubscribe from './PresenterModules/unsubscribe';
 import getSliderParams from './PresenterModules/getSliderParams';
@@ -33,8 +32,6 @@ class Presenter {
   model: Model;
 
   updateThumb: (stance: number, cursorOffset: number) => void;
-
-  updateFill: (offset: number[]) => void;
 
   updateThumbAfterTrackClick: (cursorOffset: number) => void;
 
@@ -70,7 +67,6 @@ class Presenter {
     this.unsubscribe = unsubscribe.bind(this);
     this.updateThumbAfterTrackClick = updateThumbAfterTrackClick.bind(this);
     this.updateThumb = updateThumb.bind(this);
-    this.updateFill = updateFill.bind(this);
     this.updateThumbView = updateThumbView.bind(this);
     this.updateTipView = updateTipView.bind(this);
     this.updateFillView = updateFillView.bind(this);

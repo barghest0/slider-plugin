@@ -104,7 +104,6 @@ describe('Presenter test', () => {
       SECOND_THUMB_STANCE,
       60,
     );
-    presenter.view.thumbView.notify(SubscribersNames.updateFill);
     expect(presenter.model.getFillState()).toEqual({
       fillOffset: 30,
       fillSize: 30,

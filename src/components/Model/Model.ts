@@ -105,6 +105,9 @@ class Model extends Observer {
     this.endsValidation(stance);
 
     this.notify(SubscribersNames.updateThumbView, stance);
+    if (this.params.hasFill) {
+      this.updateFill();
+    }
     this.notify(SubscribersNames.getSliderParams, this.getParams());
   }
 
