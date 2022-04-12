@@ -54,7 +54,7 @@ class Model extends Observer {
     this.params = this.validateParams(params);
   }
 
-  setParam(param: string, value: string | number | number[] | boolean) {
+  setParam<T extends keyof SliderParams>(param: T, value: SliderParams[T]) {
     this.params[param] = value;
   }
 

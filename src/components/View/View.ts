@@ -70,7 +70,7 @@ class View extends Observer {
     this.params = params;
   }
 
-  setParam(param: string, value: string | number | number[] | boolean) {
+  setParam<T extends keyof SliderParams>(param: T, value: SliderParams[T]) {
     this.params[param] = value;
   }
 
