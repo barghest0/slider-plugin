@@ -18,12 +18,23 @@ class Track extends Observer {
 
   handleTrackClick: (event: PointerEvent) => void;
 
+  private cursorOffset: number;
+
   constructor(view: View) {
     super();
     this.view = view;
+    this.cursorOffset = 0;
     this.track = <HTMLElement>document.querySelector(`.${TRACK_CLASS}`);
     this.clickTrack = clickTrack.bind(this);
     this.handleTrackClick = handleTrackClick.bind(this);
+  }
+
+  setCursorOffset(cursorOffset: number) {
+    this.cursorOffset = cursorOffset;
+  }
+
+  getCursorOffset() {
+    return this.cursorOffset;
   }
 
   renderTrack(direction: Direction) {

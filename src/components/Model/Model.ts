@@ -28,6 +28,8 @@ class Model extends Observer {
 
   endsValidation: (stance: number) => void;
 
+  private activeStance: number;
+
   private prepareOffset: (offset: number) => number;
 
   private thumbsOffset: number[];
@@ -45,6 +47,7 @@ class Model extends Observer {
     this.thumbsOffset = [];
     this.fillState = { fillOffset: 0, fillSize: 0 };
     this.size = 0;
+    this.activeStance = 0;
     this.endsValidation = endsValidation.bind(this);
     this.prepareOffset = prepareOffset.bind(this);
     this.validateParams = validateParams.bind(this);
@@ -88,6 +91,14 @@ class Model extends Observer {
     return this.thumbsOffset;
   }
 
+  setActiveStance(stance: number) {
+    this.activeStance = stance;
+  }
+
+  getActiveStance() {
+    return this.activeStance;
+  }
+
   calculateOffset(stance: number) {
     const { min, max, value } = this.params;
 
@@ -104,7 +115,9 @@ class Model extends Observer {
 
     this.endsValidation(stance);
 
-    this.notify(SubscribersNames.updateThumbView, stance);
+    this.setActiveStance(stance);
+
+    this.notify(SubscribersNames.updateThumbView);
     if (this.params.hasFill) {
       this.updateFill();
     }

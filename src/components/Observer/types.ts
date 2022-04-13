@@ -1,7 +1,8 @@
-type SubscriberFn = (...data: any[]) => void;
+import { SliderParams } from "../Slider/types";
 
-type Subscribers = {
-  [key: string]: SubscriberFn[];
-};
+type SubscriberFn = (params:SliderParams) => void;
 
-export { SubscriberFn, Subscribers };
+type Subscribers = Record<string,SubscriberFn[]> 
+
+
+export { SubscriberFn, Subscribers};

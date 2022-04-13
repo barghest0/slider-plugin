@@ -14,8 +14,6 @@ class Thumb extends Observer {
 
   thumbs: HTMLElement[];
 
-  activeStance: number;
-
   updateThumbStyle: (stance: number) => void;
 
   validateCollision: (stance: number) => number;
@@ -24,6 +22,10 @@ class Thumb extends Observer {
 
   handleThumbDrag: (event: PointerEvent, stance: number) => void;
 
+  private cursorOffset: number;
+
+  private activeStance: number;
+
   private offset: number[];
 
   constructor(view: View) {
@@ -31,6 +33,7 @@ class Thumb extends Observer {
     this.view = view;
     this.offset = [];
     this.activeStance = 0;
+    this.cursorOffset = 0;
     this.thumbs = [];
     this.updateThumbStyle = updateThumbStyle.bind(this);
     this.validateCollision = validateCollision.bind(this);
@@ -44,6 +47,22 @@ class Thumb extends Observer {
 
   getOffset() {
     return this.offset;
+  }
+
+  setCursorOffset(cursorOffset: number) {
+    this.cursorOffset = cursorOffset;
+  }
+
+  getCursorOffset() {
+    return this.cursorOffset;
+  }
+
+  setActiveStance(activeStance: number) {
+    this.activeStance = activeStance;
+  }
+
+  getActiveStance() {
+    return this.activeStance;
   }
 
   renderThumb(stance: number) {

@@ -178,6 +178,7 @@ describe('Model test', () => {
     const value = validateFirstThumb([30], 0, 20);
     expect(value).toEqual(20);
   });
+
   test('expect push second thumb if isRange equal true', () => {
     const sliderParams = getValidatedParams({ isRange: true, value: [0] });
     const params = model.validateParams(sliderParams);

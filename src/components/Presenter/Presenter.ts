@@ -31,15 +31,15 @@ class Presenter {
 
   model: Model;
 
-  updateThumb: (stance: number, cursorOffset: number) => void;
+  updateThumb: () => void;
 
-  updateThumbAfterTrackClick: (cursorOffset: number) => void;
+  updateThumbAfterTrackClick: () => void;
 
-  updateThumbView: (stance: number) => void;
+  updateThumbView: () => void;
 
-  updateTipView: (stance: number) => void;
+  updateTipView: () => void;
 
-  updateFillView: (state: SliderFillState) => void;
+  updateFillView: () => void;
 
   getSliderParams: (params: SliderParams) => SliderParams;
 

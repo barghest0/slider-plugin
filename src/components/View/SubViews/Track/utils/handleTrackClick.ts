@@ -12,7 +12,10 @@ function handleTrackClick(this: Track, event: PointerEvent) {
     DOMroot,
     size,
   );
-  this.notify(SubscribersNames.updateThumbAfterTrackClick, cursorOffset);
+
+  this.setCursorOffset(cursorOffset);
+
+  this.notify(SubscribersNames.updateThumbAfterTrackClick);
 }
 
 export default handleTrackClick;

@@ -1,4 +1,6 @@
 import { SubscriberFn, Subscribers } from './types';
+import { SliderParams } from '../Slider/types';
+import { DEFAULT_SLIDER_PARAMS } from '../Slider/constants';
 
 class Observer {
   private subscribers: Subscribers;
@@ -14,13 +16,13 @@ class Observer {
 
   unsubscribe(name: string, fn: SubscriberFn) {
     this.subscribers[name] = this.subscribers[name].filter(
-      (subscriberFunc: SubscriberFn) => fn !== subscriberFunc,
+      (subscriberFunction: SubscriberFn) => fn !== subscriberFunction,
     );
   }
 
-  notify(name: string, ...args: any[]) {
-    this.subscribers[name].forEach((subscriberFunc: SubscriberFn) => {
-      subscriberFunc(...args);
+  notify(name: string, params: SliderParams = DEFAULT_SLIDER_PARAMS) {
+    this.subscribers[name].forEach((subscriberFunction: SubscriberFn) => {
+      subscriberFunction(params);
     });
   }
 

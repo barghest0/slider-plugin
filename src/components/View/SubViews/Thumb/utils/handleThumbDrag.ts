@@ -18,7 +18,10 @@ function handleThumbDrag(this: Thumb, event: PointerEvent, stance: number) {
 
   const currentStance = isRange ? this.validateCollision(stance) : stance;
 
-  this.notify(SubscribersNames.updateThumb, currentStance, cursorOffset);
+  this.setCursorOffset(cursorOffset);
+  this.setActiveStance(currentStance);
+
+  this.notify(SubscribersNames.updateThumb);
 }
 
 export default handleThumbDrag;
