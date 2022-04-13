@@ -2,6 +2,7 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   background-color: rgba(10, 10, 10);
   margin: 0;
@@ -9,6 +10,17 @@ body {
   height: 1000px;
   color: #fff;
   font-family: 'Montserrat', Arial;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sliders {
+  display: flex;
+  flex-direction: column;
+  row-gap: 100px;
 }
 
 .title {
@@ -98,7 +110,7 @@ body {
       transition: all 0.2s ease-in-out;
     }
   }
-  
+
   input:checked + .custom {
     background-color: rgb(43, 177, 166);
   }

@@ -12,9 +12,10 @@ html(lang="en")
   body 
     include ./mixins/panel.pug
     .container
-      +panel({instance:1})
-      +panel({instance:2})
-      +panel({instance:3})
-      +panel({instance:4})
-      +panel({instance:5,isInline:true})
+      .sliders
+        +panel({instance:1})
+        +panel({instance:2})
+        +panel({instance:3})
+        +panel({instance:4})
+        +panel({instance:5,isInline:true})
 
