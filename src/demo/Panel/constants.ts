@@ -1,6 +1,6 @@
 const PANEL_CLASS = 'slider-panel';
 const CHECKBOX_PANEL_CLASS = 'checkbox-panel';
-const TEXT_LABEL_CLASS = 'text-label';
+const TEXT_LABEL_CLASS = 'text-field';
 const CHECKBOX_LABEL_CLASS = 'checkbox-label';
 const MIN_CLASS = 'min-value';
 const MAX_CLASS = 'max-value';
@@ -15,6 +15,7 @@ const HAS_FILL_CLASS = 'has-fill';
 const HAS_TIPS_CLASS = 'has-tips';
 const IS_DECIMAL_CLASS = 'is-decimal';
 const CUSTOM_CLASS = 'custom';
+const CUSTOM_CHECKBOX_CLASS = 'custom-checkbox';
 
 const CHECKBOX_TYPE = 'checkbox';
 const NUMBER_TYPE = 'number';
@@ -24,6 +25,7 @@ export {
   MAX_CLASS,
   TEXT_LABEL_CLASS,
   CHECKBOX_LABEL_CLASS,
+  CUSTOM_CHECKBOX_CLASS,
   STEP_CLASS,
   PANEL_CLASS,
   CHECKBOX_TYPE,

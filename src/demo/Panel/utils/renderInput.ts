@@ -4,20 +4,21 @@ import { CHECKBOX_TYPE, CUSTOM_CLASS } from '../constants';
 function renderInput(
   text: string,
   type: string,
-  inputClass: string,
+  inputTypeClass: string,
   labelClass: string,
   parent: HTMLElement,
 ) {
   const custom = document.createElement('div');
-  custom.classList.add(CUSTOM_CLASS);
+  custom.classList.add(`${CUSTOM_CLASS}-${type}`);
 
   const label = document.createElement('label');
   label.classList.add(labelClass);
 
   const input = document.createElement('input');
   input.type = type;
-  input.classList.add(inputClass);
-  input.classList.add(`${PREFIX}-${inputClass}`);
+  input.classList.add(type);
+  input.classList.add(inputTypeClass);
+  input.classList.add(`${PREFIX}-${inputTypeClass}`);
   label.innerHTML = text;
 
   parent.appendChild(label);
