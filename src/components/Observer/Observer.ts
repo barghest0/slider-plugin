@@ -1,26 +1,26 @@
-import { SubscriberFn, Subscribers } from './types';
+import { ModelObserver, SubscriberFn, Subscribers, ViewObserver } from './types';
 import { SliderParams } from '../Slider/types';
 import { DEFAULT_SLIDER_PARAMS } from '../Slider/constants';
 
-class Observer {
-  private subscribers: Subscribers;
+class Observer<T extends ViewObserver | ModelObserver> {
+  private subscribers: Subscribers<T>;
 
-  constructor(subscribers: Subscribers = {}) {
+  constructor(subscribers: Subscribers<T> = {} as Subscribers<T>) {
     this.subscribers = subscribers;
   }
 
-  subscribe(name: string, fn: SubscriberFn) {
+  subscribe(name: T, fn: SubscriberFn) {
     this.subscribers[name] = this.subscribers[name] || [];
     this.subscribers[name].push(fn);
   }
 
-  unsubscribe(name: string, fn: SubscriberFn) {
+  unsubscribe(name: T, fn: SubscriberFn) {
     this.subscribers[name] = this.subscribers[name].filter(
       (subscriberFunction: SubscriberFn) => fn !== subscriberFunction,
     );
   }
 
-  notify(name: string, params: SliderParams = DEFAULT_SLIDER_PARAMS) {
+  notify(name: T, params: SliderParams = DEFAULT_SLIDER_PARAMS) {
     this.subscribers[name].forEach((subscriberFunction: SubscriberFn) => {
       subscriberFunction(params);
     });

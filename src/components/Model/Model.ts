@@ -1,4 +1,5 @@
 import Observer from '../Observer/Observer';
+import { ModelObserver } from '../Observer/types';
 
 import {
   Directions,
@@ -21,7 +22,7 @@ import prepareOffset from './ModelModules/prepareOffset';
 import endsValidation from './ModelModules/endsValidation';
 import validateParams from './ModelModules/validateParams';
 
-class Model extends Observer {
+class Model extends Observer<ModelObserver> {
   DOMroot: HTMLElement;
 
   validateParams: (params: SliderParams) => SliderParams;

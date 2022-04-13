@@ -1,4 +1,3 @@
-import Observer from '../../../Observer/Observer';
 import View from '../../View';
 
 import { Direction } from '../../../Slider/types';
@@ -8,7 +7,7 @@ import updateTipStyle from './utils/updateTipStyle';
 import TIP_CLASS from './constants';
 import { PREFIX } from '../../../Slider/constants';
 
-class Tip extends Observer {
+class Tip {
   view: View;
 
   tips: HTMLElement[];
@@ -18,7 +17,6 @@ class Tip extends Observer {
   private offset: number[];
 
   constructor(view: View) {
-    super();
     this.view = view;
     this.offset = [];
     this.tips = [];

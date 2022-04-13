@@ -4,8 +4,6 @@ import Fill from './SubViews/Fill/Fill';
 import Track from './SubViews/Track/Track';
 import Tip from './SubViews/Tip/Tip';
 
-import Observer from '../Observer/Observer';
-
 import {
   Direction,
   FillDirection,
@@ -20,7 +18,7 @@ import { DEFAULT_SLIDER_PARAMS } from '../Slider/constants';
 import prepareDirectionForInteraction from './ViewModules/prepareDirectionForInteraction';
 import calculateCursorOffset from './ViewModules/calculateCursorOffset';
 
-class View extends Observer {
+class View {
   thumbView: Thumb;
 
   trackView: Track;
@@ -51,7 +49,6 @@ class View extends Observer {
   private size: number;
 
   constructor(DOMroot: HTMLElement) {
-    super();
     this.DOMroot = DOMroot;
     this.thumbView = new Thumb(this);
     this.trackView = new Track(this);

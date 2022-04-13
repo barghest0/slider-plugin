@@ -1,5 +1,6 @@
 import Observer from '../../../Observer/Observer';
 import View from '../../View';
+import { ViewObserver } from '../../../Observer/types';
 
 import updateThumbStyle from './utils/updateThumbStyle';
 import validateCollision from './utils/validateCollision';
@@ -9,7 +10,7 @@ import THUMB_CLASS from './constants';
 import { PREFIX } from '../../../Slider/constants';
 import handleThumbDrag from './utils/handleThumbDrag';
 
-class Thumb extends Observer {
+class Thumb extends Observer<ViewObserver> {
   view: View;
 
   thumbs: HTMLElement[];

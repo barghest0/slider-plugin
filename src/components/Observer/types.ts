@@ -1,8 +1,14 @@
-import { SliderParams } from "../Slider/types";
+import { SliderParams } from '../Slider/types';
 
-type SubscriberFn = (params:SliderParams) => void;
+type SubscriberFn = (params: SliderParams) => void;
 
-type Subscribers = Record<string,SubscriberFn[]> 
+type Subscribers<T extends string> = Record<T, SubscriberFn[]>;
 
+type ViewObserver = 'UpdateThumb' | 'UpdateThumbAfterTrackClick';
 
-export { SubscriberFn, Subscribers};
+type ModelObserver =
+  | 'UpdateThumbView'
+  | 'UpdateTipView'
+  | 'UpdateFillView'
+  | 'GetSliderParams';
+export { SubscriberFn, Subscribers, ViewObserver, ModelObserver };

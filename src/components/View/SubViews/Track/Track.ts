@@ -1,5 +1,6 @@
 import View from '../../View';
 import Observer from '../../../Observer/Observer';
+import { ViewObserver } from '../../../Observer/types';
 
 import { Direction } from '../../../Slider/types';
 
@@ -9,7 +10,7 @@ import { PREFIX } from '../../../Slider/constants';
 import clickTrack from './utils/clickTrack';
 import handleTrackClick from './utils/handleTrackClick';
 
-class Track extends Observer {
+class Track extends Observer<ViewObserver> {
   view: View;
 
   track: HTMLElement;
