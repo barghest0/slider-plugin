@@ -25,10 +25,12 @@ describe('Track test', () => {
 
     view.setParam(Params.direction, Directions.horizontal);
     root.dispatchEvent(new MouseEvent('pointerdown'));
+
     expect(track.notify).toBeCalled();
 
     view.setParam(Params.direction, Directions.vertical);
     root.dispatchEvent(new MouseEvent('pointerdown'));
+
     expect(track.notify).toBeCalled();
   });
 });

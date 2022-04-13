@@ -41,6 +41,7 @@ describe('Presenter test', () => {
     presenter.view.thumbView.setActiveStance(FIRST_THUMB_STANCE);
     presenter.view.thumbView.setCursorOffset(80);
     presenter.view.thumbView.notify(ViewSubscribersNames.updateThumb);
+
     expect(presenter.model.getOffset()[FIRST_OFFSET]).toBe(80);
   });
 
@@ -48,6 +49,7 @@ describe('Presenter test', () => {
     presenter.view.thumbView.setActiveStance(SECOND_THUMB_STANCE);
     presenter.view.thumbView.setCursorOffset(90);
     presenter.view.thumbView.notify(ViewSubscribersNames.updateThumb);
+
     expect(presenter.model.getOffset()[SECOND_OFFSET]).toBe(90);
   });
 
@@ -57,6 +59,7 @@ describe('Presenter test', () => {
     presenter.model.setOffset(SECOND_THUMB_STANCE, 50);
     presenter.view.trackView.setCursorOffset(90);
     presenter.view.trackView.notify(ViewSubscribersNames.updateThumbAfterTrackClick);
+
     expect(presenter.model.getOffset()[SECOND_OFFSET]).toBe(90);
   });
 
@@ -66,6 +69,7 @@ describe('Presenter test', () => {
     presenter.model.setOffset(SECOND_THUMB_STANCE, 50);
     presenter.view.trackView.setCursorOffset(10);
     presenter.view.trackView.notify(ViewSubscribersNames.updateThumbAfterTrackClick);
+
     expect(presenter.model.getOffset()[FIRST_OFFSET]).toBe(10);
   });
 
@@ -129,6 +133,7 @@ describe('Presenter test', () => {
       fillOffset: 30,
     });
     presenter.model.notify(ModelSubscribersNames.updateFillView);
+
     expect(presenter.view.fillView.getState().fillSize).toBe(30);
     expect(presenter.view.fillView.getState().fillOffset).toBe(30);
   });
@@ -136,11 +141,14 @@ describe('Presenter test', () => {
   test('correct clear HTML', () => {
     presenter.model.setParam(Params.direction, Directions.horizontal);
     presenter.clearHTML();
+
     expect(
       presenter.DOMroot.classList.contains(`${MAIN_CLASS}_${Directions.vertical}`),
     ).toBe(false);
     presenter.model.setParam(Params.direction, Directions.vertical);
+
     presenter.clearHTML();
+
     expect(
       presenter.DOMroot.classList.contains(`${MAIN_CLASS}_${Directions.horizontal}`),
     ).toBe(false);
@@ -148,6 +156,7 @@ describe('Presenter test', () => {
 
   test('correct unsubscribe', () => {
     presenter.unsubscribe();
+
     expect(
       presenter.view.thumbView.getSubscribers()[ViewSubscribersNames.updateThumb],
     ).toEqual([]);
@@ -165,6 +174,7 @@ describe('Presenter test', () => {
     const fn = jest.fn();
     presenter.updateTipView = fn;
     presenterWithoutTips.unsubscribe();
+
     expect(
       presenterWithoutTips.model.getSubscribers()[ModelSubscribersNames.updateThumbView],
     ).toEqual(expect.not.arrayContaining([fn]));

@@ -4,16 +4,16 @@ import { Params } from '../../../components/Slider/types';
 import Panel from '../Panel';
 
 import handleDirectionChange from './handleDirectionChange';
-import handleOtherParamChange from './handleOtherParamChange';
+import handleCommonParamChange from './handleCommonParamChange';
 import handleValueChange from './handleValueChange';
 
 function addInputListeners(this: Panel) {
   this.inputs.minValueInput.addEventListener('change', event =>
-    handleOtherParamChange.call(this, event, Params.min),
+    handleCommonParamChange.call(this, event, Params.min),
   );
 
   this.inputs.maxValueInput.addEventListener('change', event =>
-    handleOtherParamChange.call(this, event, Params.max),
+    handleCommonParamChange.call(this, event, Params.max),
   );
 
   this.inputs.firstValueInput.addEventListener('change', event =>
@@ -29,31 +29,31 @@ function addInputListeners(this: Panel) {
   );
 
   this.inputs.decimalPlacesInput.addEventListener('change', event =>
-    handleOtherParamChange.call(this, event, Params.decimalPlaces),
+    handleCommonParamChange.call(this, event, Params.decimalPlaces),
   );
 
   this.inputs.stepInput.addEventListener('change', event =>
-    handleOtherParamChange.call(this, event, Params.step),
+    handleCommonParamChange.call(this, event, Params.step),
   );
 
   this.inputs.isRange.addEventListener('change', event =>
-    handleOtherParamChange.call(this, event, Params.isRange),
+    handleCommonParamChange.call(this, event, Params.isRange),
   );
 
   this.inputs.hasFill.addEventListener('change', event =>
-    handleOtherParamChange.call(this, event, Params.hasFill),
+    handleCommonParamChange.call(this, event, Params.hasFill),
   );
 
   this.inputs.hasTips.addEventListener('change', event =>
-    handleOtherParamChange.call(this, event, Params.hasTips),
+    handleCommonParamChange.call(this, event, Params.hasTips),
   );
 
   this.inputs.hasScale.addEventListener('change', event =>
-    handleOtherParamChange.call(this, event, Params.hasScale),
+    handleCommonParamChange.call(this, event, Params.hasScale),
   );
 
   this.inputs.isDecimal.addEventListener('change', event =>
-    handleOtherParamChange.call(this, event, Params.isDecimal),
+    handleCommonParamChange.call(this, event, Params.isDecimal),
   );
 }
 

@@ -1,7 +1,6 @@
 import {
   FIRST_THUMB_STANCE,
   SECOND_THUMB_STANCE,
-  SINGLE_THUMB,
 } from '../../components/Slider/constants';
 import Slider from '../../components/Slider/Slider';
 import { SliderParams, UserSliderParams } from '../../components/Slider/types';
@@ -44,7 +43,7 @@ class Panel {
     this.initializePanelsParams();
   }
 
-  updatePanelValue({value}:SliderParams) {
+  updatePanelValue({ value }: SliderParams) {
     this.inputs.firstValueInput.value = String(value[FIRST_THUMB_STANCE]);
     if (value[SECOND_THUMB_STANCE]) {
       this.inputs.secondValueInput.value = String(value[SECOND_THUMB_STANCE]);

@@ -18,6 +18,7 @@ describe('Fill test', () => {
 
   test('correct set/get 100 size and 100 offset', () => {
     fill.setState({ fillOffset: 100, fillSize: 100 });
+
     expect(fill.getState()).toEqual({ fillOffset: 100, fillSize: 100 });
   });
 
@@ -25,11 +26,13 @@ describe('Fill test', () => {
     view.prepareDirectionForInteraction(Directions.horizontal);
     fill.setState({ fillOffset: 50, fillSize: 50 });
     fill.updateFillStyle();
+
     expect(fill.fill.style.width).toBe('50%');
 
     view.prepareDirectionForInteraction(Directions.vertical);
     fill.setState({ fillOffset: 50, fillSize: 50 });
     fill.updateFillStyle();
+
     expect(fill.fill.style.height).toBe('50%');
   });
 });

@@ -22,6 +22,7 @@ describe('Slider test', () => {
 
   test('expect change isRange to true after updateParams call', () => {
     slider.updateParams({ isRange: true });
+
     expect(slider.getParams().isRange).toEqual(true);
   });
 

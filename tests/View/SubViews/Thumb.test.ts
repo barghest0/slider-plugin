@@ -72,11 +72,13 @@ describe('Thumb test', () => {
     view.setParam(Params.direction, Directions.horizontal);
     DOMthumb.dispatchEvent(new Event('pointerdown'));
     document.dispatchEvent(new Event('pointermove'));
+
     expect(notify).toBeCalled();
 
     view.setParam(Params.direction, Directions.vertical);
     DOMthumb.dispatchEvent(new Event('pointerdown'));
     document.dispatchEvent(new Event('pointermove'));
+
     expect(notify).toBeCalled();
   });
 
@@ -85,6 +87,7 @@ describe('Thumb test', () => {
     view.setParam(Params.isRange, true);
     DOMthumb.dispatchEvent(new Event('pointerdown'));
     document.dispatchEvent(new Event('pointermove'));
+
     expect(validateCollision).toBeCalled();
   });
 });
