@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Panel from './Panel/Panel';
 import './assets/style/index.scss';
 
@@ -18,6 +19,7 @@ window.addEventListener('load', () => {
     isDecimal: true,
     decimalPlaces: 1,
   });
+
   const panel2 = new Panel(slider2);
 
   const slider3 = $('.js-slider-3').slider({

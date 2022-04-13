@@ -5,7 +5,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const PATHS = {
   src: path.join(__dirname, './src'),
   dist: path.join(__dirname, './dist'),
-  assets: './src/demo/assets',
+  demo: path.join(__dirname, './src/demo'),
+  assets: 'assets',
 };
 
 const config = {
@@ -113,9 +114,9 @@ const config = {
     }),
 
     new HtmlWebpackPlugin({
-      template: `${PATHS.src}/demo/index.pug`,
+      template: `${PATHS.demo}/index.pug`,
       filename: `./index.html`,
-      favicon: `${PATHS.assets}/static/favicon.ico`,
+      favicon: `${PATHS.demo}/assets/static/favicon.ico`,
     }),
   ],
 };

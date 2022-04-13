@@ -9,6 +9,7 @@
     "test:coverage": " jest --coverage ",
     "dev": "webpack serve --config webpack.dev.js",
     "build": "webpack --config ./webpack.prod.js",
+    "lint":"eslint \"src/**/*.{ts,js}\"",
     "deploy": "gh-pages -d dist"
   },
   "repository": {
