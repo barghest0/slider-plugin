@@ -67,7 +67,7 @@ class View {
     this.params = params;
   }
 
-  setParam<T extends keyof SliderParams>(param: T, value: SliderParams[T]) {
+  setParam<K extends keyof SliderParams>(param: K, value: SliderParams[K]) {
     this.params[param] = value;
   }
 

@@ -1,4 +1,5 @@
-import { Directions, SubscribersNames } from '../../../../Slider/types';
+import { ViewSubscribersNames } from '../../../../Observer/types';
+import { Directions } from '../../../../Slider/types';
 import Track from '../Track';
 
 function handleTrackClick(this: Track, event: PointerEvent) {
@@ -15,7 +16,7 @@ function handleTrackClick(this: Track, event: PointerEvent) {
 
   this.setCursorOffset(cursorOffset);
 
-  this.notify(SubscribersNames.updateThumbAfterTrackClick);
+  this.notify(ViewSubscribersNames.updateThumbAfterTrackClick);
 }
 
 export default handleTrackClick;

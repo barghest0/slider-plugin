@@ -11,9 +11,10 @@ import {
   SECOND_THUMB_STANCE,
 } from '../../src/components/Slider/constants';
 
-import { Directions, Params, SubscribersNames } from '../../src/components/Slider/types';
+import { Directions, Params } from '../../src/components/Slider/types';
 import validateFirstThumb from '../../src/components/Model/ModelModules/validationParamsMethods/validateFirstThumb';
 import { getValidatedParams } from '../../src/utils/validators';
+import { ModelSubscribersNames } from '../../src/components/Observer/types';
 
 describe('Model test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1" ></div>`;
@@ -118,9 +119,9 @@ describe('Model test', () => {
 
   test('expect notify thumb and fill view after calling updateThumb', () => {
     const subscriberFn = jest.fn();
-    model.subscribe(SubscribersNames.updateThumbView, subscriberFn);
-    model.subscribe(SubscribersNames.updateFillView, subscriberFn);
-    model.subscribe(SubscribersNames.getSliderParams, subscriberFn);
+    model.subscribe(ModelSubscribersNames.updateThumbView, subscriberFn);
+    model.subscribe(ModelSubscribersNames.updateFillView, subscriberFn);
+    model.subscribe(ModelSubscribersNames.getSliderParams, subscriberFn);
     model.updateThumb(FIRST_THUMB_STANCE, 20);
     expect(subscriberFn).toBeCalledTimes(3);
   });
@@ -134,7 +135,7 @@ describe('Model test', () => {
 
   test('expect notify fill view after calling updateFill', () => {
     const subscriberFn = jest.fn();
-    model.subscribe(SubscribersNames.updateFillView, subscriberFn);
+    model.subscribe(ModelSubscribersNames.updateFillView, subscriberFn);
     model.updateFill();
     expect(subscriberFn).toBeCalled();
   });

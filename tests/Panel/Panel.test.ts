@@ -8,7 +8,6 @@ import Panel from '../../src/demo/Panel/Panel';
 import {
   CHECKBOX_LABEL_CLASS,
   CHECKBOX_TYPE,
-  CUSTOM_CLASS,
   FIRST_VALUE_CLASS,
   IS_RANGE_CLASS,
   NUMBER_TYPE,
@@ -33,11 +32,11 @@ describe('Panel test', () => {
 
   test('create panel test', () => {
     const input = <HTMLInputElement>document.querySelector(`.${FIRST_VALUE_CLASS}`);
-    const inputParent = <HTMLElement>input.parentElement;
     expect(input.type).toBe(NUMBER_TYPE);
-    expect(inputParent.classList.contains(CUSTOM_CLASS)).toBeTruthy();
+
     const checkbox = <HTMLInputElement>document.querySelector(`.${IS_RANGE_CLASS}`);
     const checkboxParent = <HTMLElement>checkbox.parentElement;
+
     expect(checkbox.type).toBe(CHECKBOX_TYPE);
     expect(checkboxParent.classList.contains(CHECKBOX_LABEL_CLASS)).toBeTruthy();
   });

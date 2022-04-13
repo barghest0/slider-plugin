@@ -1,8 +1,8 @@
 import Presenter from '../Presenter/Presenter';
 
 import { getValidatedParams } from '../../utils/validators';
-import { SliderParams, SubscribersNames, UserSliderParams } from './types';
-import { SubscriberFn } from '../Observer/types';
+import { SliderParams, UserSliderParams } from './types';
+import { ModelSubscribersNames, SubscriberFn } from '../Observer/types';
 
 class Slider {
   private DOMroot: HTMLElement;
@@ -43,7 +43,10 @@ class Slider {
   }
 
   subscribe(onChangeFunction: SubscriberFn) {
-    this.presenter.model.subscribe(SubscribersNames.getSliderParams, onChangeFunction);
+    this.presenter.model.subscribe(
+      ModelSubscribersNames.getSliderParams,
+      onChangeFunction,
+    );
   }
 
   private init() {

@@ -4,11 +4,28 @@ type SubscriberFn = (params: SliderParams) => void;
 
 type Subscribers<T extends string> = Record<T, SubscriberFn[]>;
 
-type ViewObserver = 'UpdateThumb' | 'UpdateThumbAfterTrackClick';
+enum ModelSubscribersNames {
+  updateThumbView = 'UpdateThumbView',
+  updateFillView = 'UpdateFillView',
+  updateParams = 'UpdateParams',
+  updatePanelValues = 'UpdatePanelValues',
+  getSliderParams = 'GetSliderParams',
+}
 
-type ModelObserver =
-  | 'UpdateThumbView'
-  | 'UpdateTipView'
-  | 'UpdateFillView'
-  | 'GetSliderParams';
-export { SubscriberFn, Subscribers, ViewObserver, ModelObserver };
+enum ViewSubscribersNames {
+  updateThumb = 'UpdateThumb',
+  updateThumbAfterTrackClick = 'UpdateThumbAfterTrackClick',
+}
+
+type ViewObserver = ViewSubscribersNames;
+
+type ModelObserver = ModelSubscribersNames;
+
+export {
+  SubscriberFn,
+  Subscribers,
+  ViewObserver,
+  ModelObserver,
+  ModelSubscribersNames,
+  ViewSubscribersNames,
+};

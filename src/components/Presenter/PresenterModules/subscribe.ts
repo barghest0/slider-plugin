@@ -1,23 +1,22 @@
-import { SubscribersNames } from '../../Slider/types';
-
+import { ModelSubscribersNames, ViewSubscribersNames } from '../../Observer/types';
 import Presenter from '../Presenter';
 
 function subscribe(this: Presenter) {
-  this.view.thumbView.subscribe(SubscribersNames.updateThumb, this.updateThumb);
+  this.view.thumbView.subscribe(ViewSubscribersNames.updateThumb, this.updateThumb);
   this.view.trackView.subscribe(
-    SubscribersNames.updateThumbAfterTrackClick,
+    ViewSubscribersNames.updateThumbAfterTrackClick,
     this.updateThumbAfterTrackClick,
   );
 
-  this.model.subscribe(SubscribersNames.getSliderParams, this.getSliderParams);
-  this.model.subscribe(SubscribersNames.updateThumbView, this.updateThumbView);
+  this.model.subscribe(ModelSubscribersNames.getSliderParams, this.getSliderParams);
+  this.model.subscribe(ModelSubscribersNames.updateThumbView, this.updateThumbView);
 
   if (this.model.getParams().hasFill) {
-    this.model.subscribe(SubscribersNames.updateFillView, this.updateFillView);
+    this.model.subscribe(ModelSubscribersNames.updateFillView, this.updateFillView);
   }
 
   if (this.model.getParams().hasTips) {
-    this.model.subscribe(SubscribersNames.updateThumbView, this.updateTipView);
+    this.model.subscribe(ModelSubscribersNames.updateThumbView, this.updateTipView);
   }
 
   return this;

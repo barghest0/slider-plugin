@@ -9,16 +9,18 @@ import { Params, SliderParams, UserSliderParams } from '../components/Slider/typ
 function getParamsFromDataset(element: JQuery, params: SliderParams) {
   let dataValue;
 
-  if (element.data(Params.datafirstValue) && element.data(Params.dataSecondValue)) {
+  const isBothDataValuesExist =
+    element.data(Params.dataFirstValue) && element.data(Params.dataSecondValue);
+  const isSingleDataValueExist =
+    element.data(Params.dataFirstValue) || element.data(Params.dataSecondValue);
+
+  if (isBothDataValuesExist) {
     dataValue = [
-      Number(element.data(Params.datafirstValue)),
+      Number(element.data(Params.dataFirstValue)),
       Number(element.data(Params.dataSecondValue)),
     ];
-  } else if (
-    Number(element.data(Params.datafirstValue)) ||
-    Number(element.data(Params.dataSecondValue))
-  ) {
-    dataValue = [Number(element.data(Params.datafirstValue))] || [
+  } else if (isSingleDataValueExist) {
+    dataValue = [Number(element.data(Params.dataFirstValue))] || [
       Number(element.data(Params.dataSecondValue)),
     ];
   } else {

@@ -1,12 +1,7 @@
 import Observer from '../Observer/Observer';
-import { ModelObserver } from '../Observer/types';
+import { ModelObserver, ModelSubscribersNames } from '../Observer/types';
 
-import {
-  Directions,
-  SliderFillState,
-  SliderParams,
-  SubscribersNames,
-} from '../Slider/types';
+import { Directions, SliderFillState, SliderParams } from '../Slider/types';
 
 import {
   DEFAULT_SLIDER_PARAMS,
@@ -58,7 +53,7 @@ class Model extends Observer<ModelObserver> {
     this.params = this.validateParams(params);
   }
 
-  setParam<T extends keyof SliderParams>(param: T, value: SliderParams[T]) {
+  setParam<K extends keyof SliderParams>(param: K, value: SliderParams[K]) {
     this.params[param] = value;
   }
 
@@ -118,11 +113,11 @@ class Model extends Observer<ModelObserver> {
 
     this.setActiveStance(stance);
 
-    this.notify(SubscribersNames.updateThumbView);
+    this.notify(ModelSubscribersNames.updateThumbView);
     if (this.params.hasFill) {
       this.updateFill();
     }
-    this.notify(SubscribersNames.getSliderParams, this.getParams());
+    this.notify(ModelSubscribersNames.getSliderParams, this.getParams());
   }
 
   updateThumbAfterTrackClick(cursorOffset: number) {
@@ -142,7 +137,7 @@ class Model extends Observer<ModelObserver> {
 
   updateFill() {
     this.setFillState(this.calculateFillState());
-    this.notify(SubscribersNames.updateFillView);
+    this.notify(ModelSubscribersNames.updateFillView);
   }
 
   setFillState(fillState: SliderFillState) {

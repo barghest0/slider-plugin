@@ -8,11 +8,15 @@ import {
   SECOND_VALUE,
 } from '../../src/components/Slider/constants';
 
-import { Directions, Params, SubscribersNames } from '../../src/components/Slider/types';
+import { Directions, Params } from '../../src/components/Slider/types';
 
 import '../../src/plugin/plugin';
 import { getValidatedParams } from '../../src/utils/validators';
 import Presenter from '../../src/components/Presenter/Presenter';
+import {
+  ModelSubscribersNames,
+  ViewSubscribersNames,
+} from '../../src/components/Observer/types';
 
 describe('Presenter test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
@@ -36,14 +40,14 @@ describe('Presenter test', () => {
   test('expect change thumb offset to 80 after notify model when drag first thumb', () => {
     presenter.view.thumbView.setActiveStance(FIRST_THUMB_STANCE);
     presenter.view.thumbView.setCursorOffset(80);
-    presenter.view.thumbView.notify(SubscribersNames.updateThumb);
+    presenter.view.thumbView.notify(ViewSubscribersNames.updateThumb);
     expect(presenter.model.getOffset()[FIRST_OFFSET]).toBe(80);
   });
 
   test('expect change thumb offset to 90 after notify model when drag second thumb', () => {
     presenter.view.thumbView.setActiveStance(SECOND_THUMB_STANCE);
     presenter.view.thumbView.setCursorOffset(90);
-    presenter.view.thumbView.notify(SubscribersNames.updateThumb);
+    presenter.view.thumbView.notify(ViewSubscribersNames.updateThumb);
     expect(presenter.model.getOffset()[SECOND_OFFSET]).toBe(90);
   });
 
@@ -52,7 +56,7 @@ describe('Presenter test', () => {
     presenter.model.setOffset(FIRST_THUMB_STANCE, 20);
     presenter.model.setOffset(SECOND_THUMB_STANCE, 50);
     presenter.view.trackView.setCursorOffset(90);
-    presenter.view.trackView.notify(SubscribersNames.updateThumbAfterTrackClick);
+    presenter.view.trackView.notify(ViewSubscribersNames.updateThumbAfterTrackClick);
     expect(presenter.model.getOffset()[SECOND_OFFSET]).toBe(90);
   });
 
@@ -61,7 +65,7 @@ describe('Presenter test', () => {
     presenter.model.setOffset(FIRST_THUMB_STANCE, 20);
     presenter.model.setOffset(SECOND_THUMB_STANCE, 50);
     presenter.view.trackView.setCursorOffset(10);
-    presenter.view.trackView.notify(SubscribersNames.updateThumbAfterTrackClick);
+    presenter.view.trackView.notify(ViewSubscribersNames.updateThumbAfterTrackClick);
     expect(presenter.model.getOffset()[FIRST_OFFSET]).toBe(10);
   });
 
@@ -69,7 +73,7 @@ describe('Presenter test', () => {
     presenter.model.setValue(FIRST_THUMB_STANCE, 100);
     presenter.model.setOffset(FIRST_THUMB_STANCE, 50);
     presenter.model.setActiveStance(FIRST_THUMB_STANCE);
-    presenter.model.notify(SubscribersNames.updateThumbView);
+    presenter.model.notify(ModelSubscribersNames.updateThumbView);
 
     expect(presenter.view.getValue()[FIRST_VALUE]).toBe(100);
     expect(presenter.view.thumbView.getOffset()[FIRST_OFFSET]).toBe(50);
@@ -80,7 +84,7 @@ describe('Presenter test', () => {
     presenter.model.setValue(SECOND_THUMB_STANCE, 150);
     presenter.model.setOffset(SECOND_THUMB_STANCE, 70);
     presenter.model.setActiveStance(SECOND_THUMB_STANCE);
-    presenter.model.notify(SubscribersNames.updateThumbView);
+    presenter.model.notify(ModelSubscribersNames.updateThumbView);
 
     expect(presenter.view.getValue()[SECOND_VALUE]).toBe(150);
     expect(presenter.view.thumbView.getOffset()[SECOND_OFFSET]).toBe(70);
@@ -90,7 +94,7 @@ describe('Presenter test', () => {
   test('expect change tip value to 50 and offset to 50 after notify view when drag first thumb', () => {
     presenter.model.setValue(FIRST_THUMB_STANCE, 50);
     presenter.model.setOffset(FIRST_THUMB_STANCE, 50);
-    presenter.model.notify(SubscribersNames.updateThumbView);
+    presenter.model.notify(ModelSubscribersNames.updateThumbView);
 
     expect(presenter.view.getValue()[FIRST_VALUE]).toBe(50);
     expect(presenter.view.tipView.getOffset()[FIRST_OFFSET]).toBe(50);
@@ -99,7 +103,7 @@ describe('Presenter test', () => {
   test('expect change tip value to 100 and offset to 100 after notify view when drag second thumb', () => {
     presenter.model.setValue(SECOND_THUMB_STANCE, 100);
     presenter.model.setOffset(SECOND_THUMB_STANCE, 100);
-    presenter.model.notify(SubscribersNames.updateThumbView);
+    presenter.model.notify(ModelSubscribersNames.updateThumbView);
 
     expect(presenter.view.getValue()[SECOND_VALUE]).toBe(100);
     expect(presenter.view.tipView.getOffset()[SECOND_OFFSET]).toBe(100);
@@ -108,10 +112,10 @@ describe('Presenter test', () => {
   test('expect change fill size to 30 and offset to 30 after notify model when drag two thumbs', () => {
     presenter.view.thumbView.setActiveStance(FIRST_THUMB_STANCE);
     presenter.view.thumbView.setCursorOffset(30);
-    presenter.view.thumbView.notify(SubscribersNames.updateThumb);
+    presenter.view.thumbView.notify(ViewSubscribersNames.updateThumb);
     presenter.view.thumbView.setActiveStance(SECOND_THUMB_STANCE);
     presenter.view.thumbView.setCursorOffset(60);
-    presenter.view.thumbView.notify(SubscribersNames.updateThumb);
+    presenter.view.thumbView.notify(ViewSubscribersNames.updateThumb);
 
     expect(presenter.model.getFillState()).toEqual({
       fillOffset: 30,
@@ -124,7 +128,7 @@ describe('Presenter test', () => {
       fillSize: 30,
       fillOffset: 30,
     });
-    presenter.model.notify(SubscribersNames.updateFillView);
+    presenter.model.notify(ModelSubscribersNames.updateFillView);
     expect(presenter.view.fillView.getState().fillSize).toBe(30);
     expect(presenter.view.fillView.getState().fillOffset).toBe(30);
   });
@@ -145,7 +149,7 @@ describe('Presenter test', () => {
   test('correct unsubscribe', () => {
     presenter.unsubscribe();
     expect(
-      presenter.view.thumbView.getSubscribers()[SubscribersNames.updateThumb],
+      presenter.view.thumbView.getSubscribers()[ViewSubscribersNames.updateThumb],
     ).toEqual([]);
   });
 
@@ -162,7 +166,7 @@ describe('Presenter test', () => {
     presenter.updateTipView = fn;
     presenterWithoutTips.unsubscribe();
     expect(
-      presenterWithoutTips.model.getSubscribers()[SubscribersNames.updateThumbView],
+      presenterWithoutTips.model.getSubscribers()[ModelSubscribersNames.updateThumbView],
     ).toEqual(expect.not.arrayContaining([fn]));
   });
 });

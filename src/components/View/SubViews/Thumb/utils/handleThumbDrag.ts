@@ -1,6 +1,7 @@
 import Thumb from '../Thumb';
 
-import { Directions, SubscribersNames } from '../../../../Slider/types';
+import { Directions } from '../../../../Slider/types';
+import { ViewSubscribersNames } from '../../../../Observer/types';
 
 function handleThumbDrag(this: Thumb, event: PointerEvent, stance: number) {
   const { direction, isRange } = this.view.getParams();
@@ -21,7 +22,7 @@ function handleThumbDrag(this: Thumb, event: PointerEvent, stance: number) {
   this.setCursorOffset(cursorOffset);
   this.setActiveStance(currentStance);
 
-  this.notify(SubscribersNames.updateThumb);
+  this.notify(ViewSubscribersNames.updateThumb);
 }
 
 export default handleThumbDrag;

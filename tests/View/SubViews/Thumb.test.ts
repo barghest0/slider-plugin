@@ -1,11 +1,7 @@
 import View from '../../../src/components/View/View';
 import Thumb from '../../../src/components/View/SubViews/Thumb/Thumb';
 
-import {
-  Directions,
-  Params,
-  SubscribersNames,
-} from '../../../src/components/Slider/types';
+import { Directions, Params } from '../../../src/components/Slider/types';
 import {
   FIRST_OFFSET,
   FIRST_THUMB_STANCE,
@@ -13,6 +9,10 @@ import {
   SECOND_THUMB_STANCE,
 } from '../../../src/components/Slider/constants';
 import Model from '../../../src/components/Model/Model';
+import {
+  ModelSubscribersNames,
+  ViewSubscribersNames,
+} from '../../../src/components/Observer/types';
 
 describe('Thumb test', () => {
   document.body.innerHTML =
@@ -62,9 +62,9 @@ describe('Thumb test', () => {
 
   const DOMthumb = thumb.thumbs[FIRST_THUMB_STANCE];
   const subscriberFn = jest.fn();
-  thumb.subscribe(SubscribersNames.updateThumb, subscriberFn);
-  model.subscribe(SubscribersNames.updateThumbView, subscriberFn);
-  model.subscribe(SubscribersNames.updateFillView, subscriberFn);
+  thumb.subscribe(ViewSubscribersNames.updateThumb, subscriberFn);
+  model.subscribe(ModelSubscribersNames.updateThumbView, subscriberFn);
+  model.subscribe(ModelSubscribersNames.updateFillView, subscriberFn);
   thumb.dragAndDropThumb(FIRST_THUMB_STANCE);
 
   test('expect notify model before drag first thumb in horizontal/vertical direction', () => {

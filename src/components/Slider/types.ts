@@ -18,7 +18,6 @@ type SliderParams = {
 };
 
 type UserSliderParams = {
-  [index: string]: number | string | number[] | Direction | boolean | undefined;
   min?: number;
   max?: number;
   step?: number;
@@ -38,16 +37,6 @@ type SliderFillState = {
   fillSize: number;
 };
 
-enum SubscribersNames {
-  updateThumb = 'UpdateThumb',
-  updateThumbAfterTrackClick = 'UpdateThumbAfterTrackClick',
-  updateThumbView = 'UpdateThumbView',
-  updateFillView = 'UpdateFillView',
-  updateParams = 'UpdateParams',
-  updatePanelValues = 'UpdatePanelValues',
-  getSliderParams = 'GetSliderParams',
-}
-
 enum Directions {
   horizontal = 'horizontal',
   vertical = 'vertical',
@@ -65,7 +54,7 @@ enum Params {
   hasScale = 'hasScale',
   isDecimal = 'isDecimal',
   decimalPlaces = 'decimalPlaces',
-  datafirstValue = 'firstValue',
+  dataFirstValue = 'firstValue',
   dataSecondValue = 'secondValue',
 }
 
@@ -84,7 +73,6 @@ export {
   UserSliderParams,
   Direction,
   SliderFillState,
-  SubscribersNames,
   FillDirection,
   OffsetDirection,
   Directions,

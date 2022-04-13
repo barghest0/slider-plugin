@@ -1,11 +1,8 @@
 import View from '../../../src/components/View/View';
 import Track from '../../../src/components/View/SubViews/Track/Track';
 
-import {
-  Directions,
-  Params,
-  SubscribersNames,
-} from '../../../src/components/Slider/types';
+import { Directions, Params } from '../../../src/components/Slider/types';
+import { ViewSubscribersNames } from '../../../src/components/Observer/types';
 
 describe('Track test', () => {
   document.body.innerHTML =
@@ -24,12 +21,12 @@ describe('Track test', () => {
   test('expect notify model after click track in horizontal/vertical direction', () => {
     const subscriberFn = jest.fn();
     jest.spyOn(track, 'notify');
-    track.subscribe(SubscribersNames.updateThumbAfterTrackClick, subscriberFn);
+    track.subscribe(ViewSubscribersNames.updateThumbAfterTrackClick, subscriberFn);
 
     view.setParam(Params.direction, Directions.horizontal);
     root.dispatchEvent(new MouseEvent('pointerdown'));
     expect(track.notify).toBeCalled();
-``
+
     view.setParam(Params.direction, Directions.vertical);
     root.dispatchEvent(new MouseEvent('pointerdown'));
     expect(track.notify).toBeCalled();
