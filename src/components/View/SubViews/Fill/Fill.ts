@@ -10,14 +10,13 @@ import { PREFIX } from '../../../Slider/constants';
 class Fill {
   view: View;
 
-  fill: HTMLElement;
+  fill!: HTMLElement;
 
   updateFillStyle: () => void;
 
   private state: SliderFillState;
 
   constructor(view: View) {
-    this.fill = <HTMLElement>document.querySelector(`.${FILL_CLASS}`);
     this.view = view;
     this.state = { fillOffset: 0, fillSize: 0 };
     this.updateFillStyle = updateFillStyle.bind(this);

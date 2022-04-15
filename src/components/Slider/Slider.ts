@@ -54,8 +54,12 @@ class Slider {
     this.attachResizeListener();
   }
 
+  private handleWindowResize() {
+    this.presenter.rerender(this.params);
+  }
+
   private attachResizeListener() {
-    window.addEventListener('resize', () => this.presenter.rerender(this.params));
+    window.addEventListener('resize', this.handleWindowResize.bind(this));
   }
 }
 

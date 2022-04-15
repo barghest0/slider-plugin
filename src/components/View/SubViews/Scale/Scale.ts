@@ -8,7 +8,7 @@ import renderScaleMarks from './utils/renderScaleMarks';
 import { PREFIX } from '../../../Slider/constants';
 
 class Scale {
-  scale: HTMLElement;
+  scale!: HTMLElement;
 
   view: View;
 
@@ -21,7 +21,6 @@ class Scale {
 
   constructor(view: View) {
     this.view = view;
-    this.scale = <HTMLElement>document.querySelector(`.${SCALE_CLASS}`);
     this.renderScaleMarks = renderScaleMarks.bind(this);
   }
 

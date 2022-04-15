@@ -13,7 +13,7 @@ import handleTrackClick from './utils/handleTrackClick';
 class Track extends Observer<ViewObserver> {
   view: View;
 
-  track: HTMLElement;
+  track!: HTMLElement;
 
   clickTrack: () => void;
 
@@ -25,7 +25,6 @@ class Track extends Observer<ViewObserver> {
     super();
     this.view = view;
     this.cursorOffset = 0;
-    this.track = <HTMLElement>document.querySelector(`.${TRACK_CLASS}`);
     this.clickTrack = clickTrack.bind(this);
     this.handleTrackClick = handleTrackClick.bind(this);
   }

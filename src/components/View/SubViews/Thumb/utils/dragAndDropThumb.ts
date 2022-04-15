@@ -7,6 +7,10 @@ function dragAndDropThumb(this: Thumb, stance: number) {
     this.handleThumbDrag(event, stance);
   };
 
+  const handlePointerUp = () => {
+    document.removeEventListener('pointermove', handlePointerMove);
+  };
+
   const handlePointerDown = (event: PointerEvent | TouchEvent) => {
     event.preventDefault();
     event.stopPropagation();
@@ -17,9 +21,7 @@ function dragAndDropThumb(this: Thumb, stance: number) {
 
   DOMthumb.addEventListener('touchstart', handlePointerDown);
 
-  document.addEventListener('pointerup', () => {
-    document.removeEventListener('pointermove', handlePointerMove);
-  });
+  document.addEventListener('pointerup', handlePointerUp);
 }
 
 export default dragAndDropThumb;

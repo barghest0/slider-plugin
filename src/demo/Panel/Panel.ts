@@ -4,7 +4,6 @@ import {
 } from '../../components/Slider/constants';
 import Slider from '../../components/Slider/Slider';
 import { SliderParams, UserSliderParams } from '../../components/Slider/types';
-import { PANEL_CLASS } from './constants';
 import PanelInputs from './types';
 
 import addInputListeners from './utils/addInputListeners';
@@ -15,7 +14,7 @@ import renderPanel from './utils/renderPanel';
 class Panel {
   slider: Slider;
 
-  panel: HTMLElement;
+  panel!: HTMLElement;
 
   inputs: PanelInputs;
 
@@ -30,7 +29,6 @@ class Panel {
   constructor(slider: Slider) {
     this.slider = slider;
     this.DOMparent = slider.getParent();
-    this.panel = <HTMLElement>this.DOMparent.querySelector(`.${PANEL_CLASS}`);
     this.inputs = getInputs(this.DOMparent);
     this.initializePanelsParams = initializePanelsParams.bind(this);
     this.addInputListeners = addInputListeners.bind(this);
