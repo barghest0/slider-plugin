@@ -2,7 +2,7 @@
 import Panel from './Panel/Panel';
 import './assets/style/index.scss';
 
-window.addEventListener('load', () => {
+const initSlider = () => {
   const slider1 = $('.js-slider-1').slider();
   const panel1 = new Panel(slider1);
 
@@ -51,4 +51,6 @@ window.addEventListener('load', () => {
     decimalPlaces: 0,
   });
   const panel4 = new Panel(slider4);
-});
+};
+
+window.addEventListener('load', initSlider);
