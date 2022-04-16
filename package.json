@@ -22,6 +22,7 @@
     "url": "https://github.com/barghest0/MetaLampSliderPlugin/issues"
   },
   "homepage": "https://github.com/barghest0/MetaLampSliderPlugin#readme",
+  
   "devDependencies": {
     "@babel/cli": "^7.17.6",
     "@babel/core": "^7.17.9",

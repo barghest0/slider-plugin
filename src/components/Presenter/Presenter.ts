@@ -123,6 +123,7 @@ class Presenter {
     this.model.getParams().value.forEach((_, stance) => {
       this.model.setOffset(stance, this.model.calculateOffset(stance));
     });
+
     this.model.setFillState(this.model.calculateFillState());
 
     return this;
@@ -150,10 +151,12 @@ class Presenter {
     const { hasTips, hasFill } = this.model.getParams();
     const value = this.model.getValue();
     const fillState = this.model.getFillState();
+
     value.forEach((_, stance) => {
       this.setThumbViewState(stance);
       if (hasTips) this.setTipViewState(stance);
     });
+
     if (hasFill) this.setFillViewState(fillState);
 
     return this;
@@ -177,6 +180,7 @@ class Presenter {
     const { direction, hasFill, hasScale, hasTips, isRange } = this.model.getParams();
     this.renderTrack(direction);
     this.renderThumb(FIRST_THUMB_STANCE);
+
     if (hasTips) this.renderTip(FIRST_THUMB_STANCE, direction);
     if (hasScale) this.renderScale(direction);
     if (hasFill) this.renderFill(direction);

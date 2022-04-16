@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import Panel from './Panel/Panel';
+import './components/components';
 import './assets/style/index.scss';
 
 const initSlider = () => {

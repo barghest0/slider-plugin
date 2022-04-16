@@ -1,0 +1,43 @@
+.checkbox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10px;
+
+    .target{
+      appearance: none;
+    }
+
+    &__target {
+      padding: 0 2px;
+      width: 50px;
+      min-height: 20px;
+      background-color: rgb(36, 36, 36);
+      border-radius: 20px;
+      position: relative;
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+
+      &::after {
+        content: '';
+        z-index: 100;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: rgb(94, 94, 94);
+        transition: all 0.2s ease-in-out;
+      }
+    }
+    
+    .target:checked + &__target {
+      background-color: rgb(43, 177, 166);
+    }
+  
+    .target:checked + &__target::after {
+      background-color: rgb(255, 255, 255);
+      transform: translate(30px,-50%);
+    }
+  }

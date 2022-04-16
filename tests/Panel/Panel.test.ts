@@ -6,7 +6,7 @@ import { Directions, Params } from '../../src/components/Slider/types';
 
 import Panel from '../../src/demo/Panel/Panel';
 import {
-  CHECKBOX_LABEL_CLASS,
+  CHECKBOX_PARENT_CLASS,
   CHECKBOX_TYPE,
   FIRST_VALUE_CLASS,
   IS_RANGE_CLASS,
@@ -39,7 +39,7 @@ describe('Panel test', () => {
     const checkboxParent = <HTMLElement>checkbox.parentElement;
 
     expect(checkbox.type).toBe(CHECKBOX_TYPE);
-    expect(checkboxParent.classList.contains(CHECKBOX_LABEL_CLASS)).toBeTruthy();
+    expect(checkboxParent.classList.contains(CHECKBOX_PARENT_CLASS)).toBeTruthy();
   });
 
   test('init test', () => {

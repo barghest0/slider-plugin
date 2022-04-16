@@ -1,24 +1,24 @@
 import { PREFIX } from '../../../components/Slider/constants';
-import { CHECKBOX_TYPE, CUSTOM_CLASS } from '../constants';
+import { CHECKBOX_TYPE, CUSTOM_CLASS, TARGET_CLASS } from '../constants';
 
 function renderInput(
   text: string,
   type: string,
-  inputTypeClass: string,
-  labelClass: string,
+  paramClass: string,
+  parentClass: string,
   parent: HTMLElement,
 ) {
   const custom = document.createElement('div');
-  custom.classList.add(`${CUSTOM_CLASS}-${type}`);
+  custom.classList.add(`${parentClass}__${TARGET_CLASS}`);
 
   const label = document.createElement('label');
-  label.classList.add(labelClass);
+  label.classList.add(parentClass);
 
   const input = document.createElement('input');
   input.type = type;
-  input.classList.add(type);
-  input.classList.add(inputTypeClass);
-  input.classList.add(`${PREFIX}-${inputTypeClass}`);
+  input.classList.add(TARGET_CLASS);
+  input.classList.add(paramClass);
+  input.classList.add(`${PREFIX}-${paramClass}`);
   label.innerHTML = text;
 
   parent.appendChild(label);

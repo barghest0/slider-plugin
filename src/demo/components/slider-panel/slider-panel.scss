@@ -1,0 +1,27 @@
+.slider-panel {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(50px, 1fr));
+    grid-row-gap: 20px;
+    column-gap: 20px;
+
+
+    &__checkbox-panel {
+      display: flex;
+      flex-wrap: wrap;
+      justify-self: center;
+      column-gap: 20px;
+      row-gap: 10px;
+      grid-column: 1/-1;
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
+ 
+  

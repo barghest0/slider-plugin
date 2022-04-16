@@ -1,6 +1,7 @@
 import { PREFIX } from '../../../components/Slider/constants';
+
 import {
-  CHECKBOX_LABEL_CLASS,
+  CHECKBOX_PARENT_CLASS,
   CHECKBOX_PANEL_CLASS,
   CHECKBOX_TYPE,
   DECIMAL_PLACES_CLASS,
@@ -17,9 +18,11 @@ import {
   PANEL_CLASS,
   SECOND_VALUE_CLASS,
   STEP_CLASS,
-  TEXT_LABEL_CLASS,
+  TEXT_PARENT_CLASS,
 } from '../constants';
+
 import Panel from '../Panel';
+
 import renderInput from './renderInput';
 
 function renderPanel(this: Panel) {
@@ -27,61 +30,67 @@ function renderPanel(this: Panel) {
   panel.classList.add(PANEL_CLASS);
   panel.classList.add(`${PREFIX}-${PANEL_CLASS}`);
 
-  renderInput('Min Value', NUMBER_TYPE, MIN_CLASS, TEXT_LABEL_CLASS, panel);
-  renderInput('Max Value', NUMBER_TYPE, MAX_CLASS, TEXT_LABEL_CLASS, panel);
-  renderInput('First Value', NUMBER_TYPE, FIRST_VALUE_CLASS, TEXT_LABEL_CLASS, panel);
-  renderInput('Second Value', NUMBER_TYPE, SECOND_VALUE_CLASS, TEXT_LABEL_CLASS, panel);
-  renderInput('Step', NUMBER_TYPE, STEP_CLASS, TEXT_LABEL_CLASS, panel);
+  renderInput('Min Value', NUMBER_TYPE, MIN_CLASS, TEXT_PARENT_CLASS, panel);
+  renderInput('Max Value', NUMBER_TYPE, MAX_CLASS, TEXT_PARENT_CLASS, panel);
+  renderInput('First Value', NUMBER_TYPE, FIRST_VALUE_CLASS, TEXT_PARENT_CLASS, panel);
+  renderInput('Second Value', NUMBER_TYPE, SECOND_VALUE_CLASS, TEXT_PARENT_CLASS, panel);
+  renderInput('Step', NUMBER_TYPE, STEP_CLASS, TEXT_PARENT_CLASS, panel);
   renderInput(
     'Decimal Places',
     NUMBER_TYPE,
     DECIMAL_PLACES_CLASS,
-    TEXT_LABEL_CLASS,
+    TEXT_PARENT_CLASS,
     panel,
   );
 
   const checkboxesPanel = document.createElement('div');
-  checkboxesPanel.classList.add(CHECKBOX_PANEL_CLASS);
+  checkboxesPanel.classList.add(`${PANEL_CLASS}__${CHECKBOX_PANEL_CLASS}`);
+
   renderInput(
     'Range',
     CHECKBOX_TYPE,
     IS_RANGE_CLASS,
-    CHECKBOX_LABEL_CLASS,
+    CHECKBOX_PARENT_CLASS,
     checkboxesPanel,
   );
+
   renderInput(
     'Vertical',
     CHECKBOX_TYPE,
     IS_VERTICAL_CLASS,
-    CHECKBOX_LABEL_CLASS,
+    CHECKBOX_PARENT_CLASS,
     checkboxesPanel,
   );
+
   renderInput(
     'Fill',
     CHECKBOX_TYPE,
     HAS_FILL_CLASS,
-    CHECKBOX_LABEL_CLASS,
+    CHECKBOX_PARENT_CLASS,
     checkboxesPanel,
   );
+
   renderInput(
     'Tips',
     CHECKBOX_TYPE,
     HAS_TIPS_CLASS,
-    CHECKBOX_LABEL_CLASS,
+    CHECKBOX_PARENT_CLASS,
     checkboxesPanel,
   );
+
   renderInput(
     'Scale',
     CHECKBOX_TYPE,
     HAS_SCALE_CLASS,
-    CHECKBOX_LABEL_CLASS,
+    CHECKBOX_PARENT_CLASS,
     checkboxesPanel,
   );
+  
   renderInput(
     'Decimal',
     CHECKBOX_TYPE,
     IS_DECIMAL_CLASS,
-    CHECKBOX_LABEL_CLASS,
+    CHECKBOX_PARENT_CLASS,
     checkboxesPanel,
   );
 
