@@ -1,5 +1,6 @@
-import { ModelSubscribersNames, ViewSubscribersNames } from '../../Observer/types';
 import Presenter from '../Presenter';
+
+import { ModelSubscribersNames, ViewSubscribersNames } from '../../Observer/types';
 
 function subscribe(this: Presenter) {
   this.view.thumbView.subscribe(ViewSubscribersNames.updateThumb, this.updateThumb);

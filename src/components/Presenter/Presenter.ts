@@ -1,8 +1,3 @@
-import View from '../View/View';
-import Model from '../Model/Model';
-
-import { Direction, Directions, SliderFillState, SliderParams } from '../Slider/types';
-
 import clearHTML from './PresenterModules/clearHTML';
 import removeListeners from './PresenterModules/removeListeners';
 import subscribe from './PresenterModules/subscribe';
@@ -15,6 +10,11 @@ import updateThumbView from './PresenterModules/notifyViewMethods/updateThumbVie
 import unsubscribe from './PresenterModules/unsubscribe';
 import getSliderParams from './PresenterModules/getSliderParams';
 
+
+import View from '../View/View';
+import Model from '../Model/Model';
+
+import { Direction, Directions, SliderFillState, SliderParams } from '../Slider/types';
 import {
   FIRST_THUMB_STANCE,
   MAIN_CLASS,

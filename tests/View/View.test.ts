@@ -1,7 +1,5 @@
 import View from '../../src/components/View/View';
-
 import { Directions, Params } from '../../src/components/Slider/types';
-
 import {
   DEFAULT_SLIDER_PARAMS,
   FIRST_THUMB_STANCE,

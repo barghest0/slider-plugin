@@ -1,10 +1,9 @@
+import { SCALE_CLASS } from './constants';
+import renderScaleMarks from './utils/renderScaleMarks';
+
 import View from '../../View';
 
-import { SCALE_CLASS } from './constants';
-
 import { Direction } from '../../../Slider/types';
-
-import renderScaleMarks from './utils/renderScaleMarks';
 import { PREFIX } from '../../../Slider/constants';
 
 class Scale {

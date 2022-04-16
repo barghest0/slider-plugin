@@ -1,6 +1,6 @@
-import { ModelSubscribersNames, ViewSubscribersNames } from '../../Observer/types';
-
 import Presenter from '../Presenter';
+
+import { ModelSubscribersNames, ViewSubscribersNames } from '../../Observer/types';
 
 function unsubscribe(this: Presenter) {
   this.view.thumbView.unsubscribe(ViewSubscribersNames.updateThumb, this.updateThumb);

@@ -2,7 +2,6 @@ import Model from '../../src/components/Model/Model';
 import validateStep from '../../src/components/Model/ModelModules/validationParamsMethods/validateStep';
 import validateMin from '../../src/components/Model/ModelModules/validationParamsMethods/validateMin';
 import validateDecimalPlaces from '../../src/components/Model/ModelModules/validationParamsMethods/validateDecimalPlaces';
-
 import {
   DEFAULT_SLIDER_PARAMS,
   FIRST_THUMB_STANCE,
@@ -10,7 +9,6 @@ import {
   MIN_OFFSET,
   SECOND_THUMB_STANCE,
 } from '../../src/components/Slider/constants';
-
 import { Directions, Params } from '../../src/components/Slider/types';
 import validateFirstThumb from '../../src/components/Model/ModelModules/validationParamsMethods/validateFirstThumb';
 import { getValidatedParams } from '../../src/utils/validators';

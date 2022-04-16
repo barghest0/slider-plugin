@@ -1,5 +1,4 @@
 import { MAX_PERCENTS } from '../../Slider/constants';
-
 import { Direction, Directions } from '../../Slider/types';
 
 function calculateCursorOffset(

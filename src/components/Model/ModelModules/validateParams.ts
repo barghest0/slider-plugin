@@ -1,10 +1,3 @@
-import {
-  FIRST_THUMB_STANCE,
-  MAX_DECIMAL_PLACES,
-  SECOND_THUMB_STANCE,
-} from '../../Slider/constants';
-import { SliderParams } from '../../Slider/types';
-
 import validateDecimalPlaces from './validationParamsMethods/validateDecimalPlaces';
 import validateFirstThumb from './validationParamsMethods/validateFirstThumb';
 import validateMin from './validationParamsMethods/validateMin';
@@ -12,6 +5,14 @@ import validateSecondThumb from './validationParamsMethods/validateSecondThumb';
 import validateStep from './validationParamsMethods/validateStep';
 
 import Model from '../Model';
+
+import {
+  FIRST_THUMB_STANCE,
+  MAX_DECIMAL_PLACES,
+  SECOND_THUMB_STANCE,
+} from '../../Slider/constants';
+import { SliderParams } from '../../Slider/types';
+
 
 function validateParams(
   this: Model,

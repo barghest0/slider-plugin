@@ -1,8 +1,10 @@
+import { SliderParams, UserSliderParams } from './types';
+
 import Presenter from '../Presenter/Presenter';
 
-import { getValidatedParams } from '../../utils/validators';
-import { SliderParams, UserSliderParams } from './types';
 import { ModelSubscribersNames, SubscriberFn } from '../Observer/types';
+
+import { getValidatedParams } from '../../utils/validators';
 
 class Slider {
   private DOMroot: HTMLElement;

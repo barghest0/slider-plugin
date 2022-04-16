@@ -1,5 +1,3 @@
-import { PREFIX } from '../../../components/Slider/constants';
-
 import {
   DECIMAL_PLACES_CLASS,
   FIRST_VALUE_CLASS,
@@ -14,6 +12,10 @@ import {
   SECOND_VALUE_CLASS,
   STEP_CLASS,
 } from '../constants';
+
+import { PREFIX } from '../../../components/Slider/constants';
+
+
 
 function getInputs(DOMparent: HTMLElement) {
   const minValueInput = <HTMLInputElement>(

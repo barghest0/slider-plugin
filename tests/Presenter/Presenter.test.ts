@@ -7,16 +7,14 @@ import {
   SECOND_THUMB_STANCE,
   SECOND_VALUE,
 } from '../../src/components/Slider/constants';
-
 import { Directions, Params } from '../../src/components/Slider/types';
-
-import '../../src/plugin/plugin';
-import { getValidatedParams } from '../../src/utils/validators';
 import Presenter from '../../src/components/Presenter/Presenter';
 import {
   ModelSubscribersNames,
   ViewSubscribersNames,
 } from '../../src/components/Observer/types';
+import { getValidatedParams } from '../../src/utils/validators';
+import '../../src/plugin/plugin';
 
 describe('Presenter test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;

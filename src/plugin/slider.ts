@@ -1,7 +1,5 @@
 import Slider from '../components/Slider/Slider';
-
 import { getParamsFromDataset, getValidatedParams } from '../utils/validators';
-
 import { UserSliderParams } from '../components/Slider/types';
 import { SINGLE_SLIDER } from '../components/Slider/constants';
 

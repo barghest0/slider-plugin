@@ -4,8 +4,8 @@ import {
   PRIMES,
   SCALE_NUMBER_DECIMAL_PLACES,
 } from '../constants';
-import { MAX_PERCENTS } from '../../../../Slider/constants';
 
+import { MAX_PERCENTS } from '../../../../Slider/constants';
 import { Direction, Directions } from '../../../../Slider/types';
 
 function getDelimiter(dividend: number, delimiters: number[]): number {

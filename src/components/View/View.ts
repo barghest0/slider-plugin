@@ -3,6 +3,8 @@ import Scale from './SubViews/Scale/Scale';
 import Fill from './SubViews/Fill/Fill';
 import Track from './SubViews/Track/Track';
 import Tip from './SubViews/Tip/Tip';
+import prepareDirectionForInteraction from './ViewModules/prepareDirectionForInteraction';
+import calculateCursorOffset from './ViewModules/calculateCursorOffset';
 
 import {
   Direction,
@@ -12,11 +14,9 @@ import {
   OffsetDirections,
   SliderParams,
 } from '../Slider/types';
-
 import { DEFAULT_SLIDER_PARAMS } from '../Slider/constants';
 
-import prepareDirectionForInteraction from './ViewModules/prepareDirectionForInteraction';
-import calculateCursorOffset from './ViewModules/calculateCursorOffset';
+
 
 class View {
   thumbView: Thumb;

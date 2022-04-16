@@ -1,7 +1,6 @@
 import View from '../../../src/components/View/View';
 import Scale from '../../../src/components/View/SubViews/Scale/Scale';
 import prepareScaleData from '../../../src/components/View/SubViews/Scale/utils/prepareScaleData';
-
 import { Directions } from '../../../src/components/Slider/types';
 
 describe('Scale test', () => {

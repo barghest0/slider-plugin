@@ -1,9 +1,6 @@
 import Slider from '../../src/components/Slider/Slider';
-
 import { FIRST_VALUE } from '../../src/components/Slider/constants';
-
 import { Directions, Params } from '../../src/components/Slider/types';
-
 import Panel from '../../src/demo/Panel/Panel';
 import {
   CHECKBOX_PARENT_CLASS,
@@ -12,13 +9,11 @@ import {
   IS_RANGE_CLASS,
   NUMBER_TYPE,
 } from '../../src/demo/Panel/constants';
-
 import handleDirectionChange from '../../src/demo/Panel/utils/handleDirectionChange';
 import handleCommonParamChange from '../../src/demo/Panel/utils/handleCommonParamChange';
 import handleValueChange from '../../src/demo/Panel/utils/handleValueChange';
-
-import '../../src/plugin/plugin';
 import { getValidatedParams } from '../../src/utils/validators';
+import '../../src/plugin/plugin';
 
 describe('Panel test', () => {
   document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';

@@ -1,6 +1,5 @@
 import View from '../../../src/components/View/View';
 import Thumb from '../../../src/components/View/SubViews/Thumb/Thumb';
-
 import { Directions, Params } from '../../../src/components/Slider/types';
 import {
   FIRST_OFFSET,

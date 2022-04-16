@@ -1,6 +1,8 @@
-import { ViewSubscribersNames } from '../../../../Observer/types';
-import { Directions } from '../../../../Slider/types';
 import Track from '../Track';
+
+import { ViewSubscribersNames } from '../../../../Observer/types';
+
+import { Directions } from '../../../../Slider/types';
 
 function handleTrackClick(this: Track, event: PointerEvent) {
   const { direction } = this.view.getParams();

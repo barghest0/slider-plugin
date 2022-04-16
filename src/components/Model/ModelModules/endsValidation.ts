@@ -1,8 +1,8 @@
-import { MAX_OFFSET, MIN_OFFSET } from '../../Slider/constants';
+import Model from '../Model';
 
+import { MAX_OFFSET, MIN_OFFSET } from '../../Slider/constants';
 import { Directions } from '../../Slider/types';
 
-import Model from '../Model';
 
 function endsValidation(this: Model, stance: number) {
   const { min, max, direction } = this.getParams();

@@ -1,6 +1,5 @@
 import View from '../../../src/components/View/View';
 import Fill from '../../../src/components/View/SubViews/Fill/Fill';
-
 import { Directions } from '../../../src/components/Slider/types';
 
 describe('Fill test', () => {

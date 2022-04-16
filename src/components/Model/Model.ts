@@ -1,8 +1,11 @@
+import prepareOffset from './ModelModules/prepareOffset';
+import endsValidation from './ModelModules/endsValidation';
+import validateParams from './ModelModules/validateParams';
+
 import Observer from '../Observer/Observer';
 import { ModelObserver, ModelSubscribersNames } from '../Observer/types';
 
 import { Directions, SliderFillState, SliderParams } from '../Slider/types';
-
 import {
   DEFAULT_SLIDER_PARAMS,
   FIRST_OFFSET,
@@ -13,9 +16,6 @@ import {
   SECOND_THUMB_STANCE,
 } from '../Slider/constants';
 
-import prepareOffset from './ModelModules/prepareOffset';
-import endsValidation from './ModelModules/endsValidation';
-import validateParams from './ModelModules/validateParams';
 
 class Model extends Observer<ModelObserver> {
   DOMroot: HTMLElement;

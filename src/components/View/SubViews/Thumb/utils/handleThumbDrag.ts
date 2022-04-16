@@ -1,6 +1,7 @@
 import Thumb from '../Thumb';
 
 import { Directions } from '../../../../Slider/types';
+
 import { ViewSubscribersNames } from '../../../../Observer/types';
 
 function handleThumbDrag(this: Thumb, event: PointerEvent, stance: number) {
