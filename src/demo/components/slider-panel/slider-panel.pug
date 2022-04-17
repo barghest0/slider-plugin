@@ -1,0 +1,20 @@
+include ../text-field/text-field.pug
+include ../checkbox/checkbox.pug
+
+
+mixin slider-panel()
+  .slider-panel.js-slider-panel
+      .slider-panel__text-fields
+        +text-field({label:'Min Value',param:'min-value'}) 
+        +text-field({label:'Min Value',param:'max-value'}) 
+        +text-field({label:'First Value',param:'first-value'}) 
+        +text-field({label:'Second Value',param:'second-value'}) 
+        +text-field({label:'Step',param:'step'}) 
+        +text-field({label:'Decimal Places',param:'decimal-places'}) 
+      .slider-panel__checkboxes
+        +checkbox({label:'Range',param:'is-range'})
+        +checkbox({label:'Vertical',param:'is-vertical'})
+        +checkbox({label:'Fill',param:'has-fill'})
+        +checkbox({label:'Tips',param:'has-tips'})
+        +checkbox({label:'Scale',param:'has-scale'})
+        +checkbox({label:'Decimal',param:'is-decimal'})
