@@ -10,29 +10,30 @@
 - Typescript - 4.5.4
 - Webpack - 5.66.0
 - SASS - 1.49.0
+- Pug - 3.0.2
 - Jest - 27.4.7
 - Jsdom - 19.0.0
-- ESlint(air-bnb, fsd) - 7.32.0 
+- ESlint(air-bnb, fsd) - 7.32.0
 
 ## Команды
 
 Команды могут осуществляться с помощью `npm` или `yarn` пакетных менеджеров:
 
-Установка зависимостей - `npm i` или `yarn install`
+Установка зависимостей - `npm i` или `yarn`
+
+Запуск ESlint - `npm run lint` или `yarn lint`
+
+Запуск тестов jest - `npm run test` или `yarn test`
+
+Процентное покрытие тестами - `npm run test:coverage` или `yarn test:coverage`
 
 Запуск сервера для разработки - `npm run dev` или `yarn dev`
 
 > Сборка запускается на локальной сервере по адресу http://localhost:8080, храниться в браузере в директории `dist`
 
-Запуск ESlint - `npm run lint` или `yarn lint`
-
 Сборка проекта - `npm run build` или `yarn build`
 
 > Продакшн сборка производится с помощью `webpack`, сохраняется в папке `dist`
-
-Запуск тестов jest - `npm run test` или `yarn test`
-
-Процентное покрытие тестами - `npm run test:coverage` или `yarn test:coverage`
 
 ## Создание слайдера
 
@@ -114,6 +115,10 @@ $slider.updateParams();
 `$slider.subscribe(params)` - позволяет подписаться на изменение бегунка, возвращает параметры `params` в текущем положении
 
 ```javascript
+const someFunc = params => {
+  someAction(params);
+};
+
 $slider.subscribe(someFunc);
 ```
 
