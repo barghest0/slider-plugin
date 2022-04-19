@@ -10,7 +10,6 @@ import updateThumbView from './PresenterModules/notifyViewMethods/updateThumbVie
 import unsubscribe from './PresenterModules/unsubscribe';
 import getSliderParams from './PresenterModules/getSliderParams';
 
-
 import View from '../View/View';
 import Model from '../Model/Model';
 

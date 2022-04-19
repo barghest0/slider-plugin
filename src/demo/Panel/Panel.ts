@@ -9,7 +9,6 @@ import {
 } from '../../components/Slider/constants';
 import Slider from '../../components/Slider/Slider';
 import { SliderParams, UserSliderParams } from '../../components/Slider/types';
-import { PANEL_SELECTOR } from './constants';
 
 class Panel {
   slider: Slider;

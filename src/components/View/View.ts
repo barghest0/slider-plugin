@@ -16,8 +16,6 @@ import {
 } from '../Slider/types';
 import { DEFAULT_SLIDER_PARAMS } from '../Slider/constants';
 
-
-
 class View {
   thumbView: Thumb;
 
