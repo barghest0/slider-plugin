@@ -2,7 +2,6 @@ import PanelInputs from './types';
 import addInputListeners from './utils/addInputListeners';
 import getInputs from './utils/getInputs';
 import initializePanelsParams from './utils/initializePanelParams';
-import renderPanel from './utils/renderPanel';
 
 import {
   FIRST_THUMB_STANCE,
@@ -10,7 +9,6 @@ import {
 } from '../../components/Slider/constants';
 import Slider from '../../components/Slider/Slider';
 import { SliderParams, UserSliderParams } from '../../components/Slider/types';
-
 
 class Panel {
   slider: Slider;
@@ -23,8 +21,6 @@ class Panel {
 
   private initializePanelsParams: () => void;
 
-  private renderPanel: () => void;
-
   private addInputListeners: () => void;
 
   constructor(slider: Slider) {
@@ -33,7 +29,6 @@ class Panel {
     this.inputs = getInputs(this.DOMparent);
     this.initializePanelsParams = initializePanelsParams.bind(this);
     this.addInputListeners = addInputListeners.bind(this);
-    this.renderPanel = renderPanel.bind(this);
     this.init();
   }
 
@@ -50,8 +45,8 @@ class Panel {
   }
 
   private init() {
-    this.renderPanel();
-    this.setInputs(getInputs(this.DOMparent));
+    this.setPanel();
+    this.setInputs(getInputs(this.panel));
     this.initializePanelsParams();
     this.addInputListeners();
     this.subscribe();
@@ -63,6 +58,10 @@ class Panel {
 
   private setInputs(inputs: PanelInputs) {
     this.inputs = inputs;
+  }
+
+  private setPanel() {
+    this.panel = <HTMLElement>this.DOMparent.nextElementSibling;
   }
 }
 

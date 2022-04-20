@@ -3,7 +3,6 @@ import prepareScaleData from './prepareScaleData';
 import Scale from '../Scale';
 import { MARK_CLASS, MARK_NUMBER_CLASS } from '../constants';
 
-
 import { Direction } from '../../../../Slider/types';
 import { PREFIX } from '../../../../Slider/constants';
 

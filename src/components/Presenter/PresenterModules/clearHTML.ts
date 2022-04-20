@@ -3,7 +3,6 @@ import Presenter from '../Presenter';
 import { MAIN_CLASS, PARENT_CLASS } from '../../Slider/constants';
 import { Directions } from '../../Slider/types';
 
-
 function clearHTML(this: Presenter) {
   const { direction } = this.model.getParams();
   const prevDirection =

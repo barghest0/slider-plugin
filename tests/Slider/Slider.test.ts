@@ -13,7 +13,6 @@ describe('Slider test', () => {
     slider.updateParams(DEFAULT_SLIDER_PARAMS)
   })
 
-
   test('correct set/get params ', () => {
     expect(slider.getParams()).toEqual(DEFAULT_SLIDER_PARAMS);
   });

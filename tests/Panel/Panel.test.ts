@@ -1,3 +1,5 @@
+import panelTemplate from './constants';
+
 import Slider from '../../src/components/Slider/Slider';
 import { FIRST_VALUE, DEFAULT_SLIDER_PARAMS } from '../../src/components/Slider/constants';
 import { Directions, Params } from '../../src/components/Slider/types';
@@ -5,8 +7,8 @@ import Panel from '../../src/demo/Panel/Panel';
 import {
   CHECKBOX_PARENT_CLASS,
   CHECKBOX_TYPE,
-  FIRST_VALUE_CLASS,
-  IS_RANGE_CLASS,
+  FIRST_VALUE_SELECTOR,
+  IS_RANGE_SELECTOR,
   NUMBER_TYPE,
 } from '../../src/demo/Panel/constants';
 import handleDirectionChange from '../../src/demo/Panel/utils/handleDirectionChange';
@@ -16,8 +18,8 @@ import { getValidatedParams } from '../../src/utils/validators';
 import '../../src/plugin/plugin';
 
 describe('Panel test', () => {
-  document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';
-  const root = '#slider-1';
+  document.body.innerHTML = panelTemplate;
+  const root = '.slider-1';
   const slider = $(root).slider({});
   const panel = new Panel(slider);
 
@@ -30,11 +32,11 @@ describe('Panel test', () => {
   });
 
   test('create panel test', () => {
-    const input = <HTMLInputElement>document.querySelector(`.${FIRST_VALUE_CLASS}`);
+    const input = <HTMLInputElement>document.querySelector(FIRST_VALUE_SELECTOR);
 
     expect(input.type).toBe(NUMBER_TYPE);
 
-    const checkbox = <HTMLInputElement>document.querySelector(`.${IS_RANGE_CLASS}`);
+    const checkbox = <HTMLInputElement>document.querySelector(IS_RANGE_SELECTOR);
     const checkboxParent = <HTMLElement>checkbox.parentElement;
 
     expect(checkbox.type).toBe(CHECKBOX_TYPE);

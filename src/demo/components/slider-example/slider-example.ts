@@ -1,1 +1,1 @@
-import './slider-example.scss'
+import './slider-example.scss';

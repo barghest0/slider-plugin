@@ -16,7 +16,6 @@ import {
   SECOND_THUMB_STANCE,
 } from '../Slider/constants';
 
-
 class Model extends Observer<ModelObserver> {
   DOMroot: HTMLElement;
 

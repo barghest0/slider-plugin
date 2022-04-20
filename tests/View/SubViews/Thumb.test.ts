@@ -35,6 +35,10 @@ describe('Thumb test', () => {
     DOMthumb = thumb.thumbs[FIRST_THUMB_STANCE];
   })
 
+  beforeEach(()=>{
+    jest.clearAllMocks()
+  })
+
  
 
   test('is DOM first thumb instance of HTMLElement test', () => {

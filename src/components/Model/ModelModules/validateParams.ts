@@ -13,7 +13,6 @@ import {
 } from '../../Slider/constants';
 import { SliderParams } from '../../Slider/types';
 
-
 function validateParams(
   this: Model,
   {

@@ -14,6 +14,9 @@ import validateFirstThumb from '../../src/components/Model/ModelModules/validati
 import { getValidatedParams } from '../../src/utils/validators';
 import { ModelSubscribersNames } from '../../src/components/Observer/types';
 
+
+
+
 describe('Model test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1" ></div>`;
   const root = '.slider-1';
@@ -26,12 +29,12 @@ describe('Model test', () => {
     model.subscribe(ModelSubscribersNames.updateFillView, subscriberMockFunction);
     model.subscribe(ModelSubscribersNames.getSliderParams, subscriberMockFunction);
   })
-
+  
   beforeEach(()=>{
     model.setParams(DEFAULT_SLIDER_PARAMS);
     jest.clearAllMocks()
   })
-
+  
   test('correct set/get default params', () => {
     expect(model.getParams()).toEqual(DEFAULT_SLIDER_PARAMS);
   });

@@ -5,8 +5,9 @@ function handleCommonParamChange(this: Panel, event: Event, param: string) {
   const target = <HTMLInputElement>event.target;
   const { value } = target;
   const isNumberParam = target.type === NUMBER_TYPE;
-  this.slider.getParams()[param] = isNumberParam ? Number(value) : target.checked;
+  const params = this.slider.getParams();
+  params[param] = isNumberParam ? Number(value) : target.checked;
 
-  this.updatePanelParams(this.slider.getParams());
+  this.updatePanelParams(params);
 }
 export default handleCommonParamChange;
