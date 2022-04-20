@@ -19,7 +19,18 @@ describe('Model test', () => {
   const root = '.slider-1';
   const DOMroot = <HTMLElement>document.querySelector(root);
   const model = new Model(DOMroot);
-  model.setParams(DEFAULT_SLIDER_PARAMS);
+
+  const subscriberMockFunction = jest.fn();
+  beforeAll(()=> {
+    model.subscribe(ModelSubscribersNames.updateThumbView, subscriberMockFunction);
+    model.subscribe(ModelSubscribersNames.updateFillView, subscriberMockFunction);
+    model.subscribe(ModelSubscribersNames.getSliderParams, subscriberMockFunction);
+  })
+
+  beforeEach(()=>{
+    model.setParams(DEFAULT_SLIDER_PARAMS);
+    jest.clearAllMocks()
+  })
 
   test('correct set/get default params', () => {
     expect(model.getParams()).toEqual(DEFAULT_SLIDER_PARAMS);
@@ -129,13 +140,9 @@ describe('Model test', () => {
   });
 
   test('expect notify thumb and fill view after calling updateThumb', () => {
-    const subscriberFn = jest.fn();
-    model.subscribe(ModelSubscribersNames.updateThumbView, subscriberFn);
-    model.subscribe(ModelSubscribersNames.updateFillView, subscriberFn);
-    model.subscribe(ModelSubscribersNames.getSliderParams, subscriberFn);
     model.updateThumb(FIRST_THUMB_STANCE, 20);
 
-    expect(subscriberFn).toBeCalledTimes(3);
+    expect(subscriberMockFunction).toBeCalledTimes(3);
   });
 
   test('expect updateThumb called after calling updateThumbAfterTrackClick ', () => {
@@ -147,11 +154,9 @@ describe('Model test', () => {
   });
 
   test('expect notify fill view after calling updateFill', () => {
-    const subscriberFn = jest.fn();
-    model.subscribe(ModelSubscribersNames.updateFillView, subscriberFn);
     model.updateFill();
 
-    expect(subscriberFn).toBeCalled();
+    expect(subscriberMockFunction).toBeCalled();
   });
 
   test('expect validate and change step to 100 before set step more then delta ends', () => {

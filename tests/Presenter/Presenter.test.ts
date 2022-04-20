@@ -6,6 +6,7 @@ import {
   SECOND_OFFSET,
   SECOND_THUMB_STANCE,
   SECOND_VALUE,
+  DEFAULT_SLIDER_PARAMS,
 } from '../../src/components/Slider/constants';
 import { Directions, Params } from '../../src/components/Slider/types';
 import Presenter from '../../src/components/Presenter/Presenter';
@@ -23,7 +24,14 @@ describe('Presenter test', () => {
   const DOMparent = <HTMLElement>DOMroot.parentElement;
   const params = getValidatedParams({ isRange: true, value: [0, 100] });
   const presenter = new Presenter(params, DOMroot, DOMparent);
-  presenter.init();
+
+  beforeAll(()=>{
+    presenter.init();
+  })
+
+  beforeEach(()=>{
+    presenter.setParams(DEFAULT_SLIDER_PARAMS)
+  })
 
   test('constructor test', () => {
     expect(presenter).toHaveProperty('view');
@@ -31,8 +39,8 @@ describe('Presenter test', () => {
 
   test('expect horizontal modifier', () => {
     expect(
-      presenter.DOMroot.classList.contains(`${MAIN_CLASS}_${Directions.horizontal}`),
-    ).toBeTruthy();
+      presenter.DOMroot.classList
+    ).toContain(`${MAIN_CLASS}_${Directions.horizontal}`);
   });
 
   test('expect change thumb offset to 80 after notify model when drag first thumb', () => {
@@ -141,15 +149,15 @@ describe('Presenter test', () => {
     presenter.clearHTML();
 
     expect(
-      presenter.DOMroot.classList.contains(`${MAIN_CLASS}_${Directions.vertical}`),
-    ).toBe(false);
+      presenter.DOMroot.classList
+    ).not.toContain(`${MAIN_CLASS}_${Directions.vertical}`);
     presenter.model.setParam(Params.direction, Directions.vertical);
 
     presenter.clearHTML();
 
     expect(
-      presenter.DOMroot.classList.contains(`${MAIN_CLASS}_${Directions.horizontal}`),
-    ).toBe(false);
+      presenter.DOMroot.classList
+    ).not.toContain(`${MAIN_CLASS}_${Directions.horizontal}`);
   });
 
   test('correct unsubscribe', () => {
@@ -169,12 +177,12 @@ describe('Presenter test', () => {
   presenterWithoutTips.init();
 
   test('correct unsubscribe without tips', () => {
-    const fn = jest.fn();
-    presenter.updateTipView = fn;
+    const updateTipView = jest.fn();
+    presenter.updateTipView = updateTipView;
     presenterWithoutTips.unsubscribe();
 
     expect(
       presenterWithoutTips.model.getSubscribers()[ModelSubscribersNames.updateThumbView],
-    ).toEqual(expect.not.arrayContaining([fn]));
+    ).toEqual(expect.not.arrayContaining([updateTipView]));
   });
 });

@@ -14,6 +14,10 @@ describe('View test', () => {
   const root = <HTMLElement>document.querySelector(rootClass);
   const view = new View(root);
 
+  beforeEach(()=>{
+    view.setParams(DEFAULT_SLIDER_PARAMS)
+  })
+
   test('constructor test', () => {
     expect(view.DOMroot).toBeInstanceOf(HTMLElement);
   });

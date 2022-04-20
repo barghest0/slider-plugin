@@ -1,5 +1,5 @@
 import Slider from '../../src/components/Slider/Slider';
-import { FIRST_VALUE } from '../../src/components/Slider/constants';
+import { FIRST_VALUE, DEFAULT_SLIDER_PARAMS } from '../../src/components/Slider/constants';
 import { Directions, Params } from '../../src/components/Slider/types';
 import Panel from '../../src/demo/Panel/Panel';
 import {
@@ -21,6 +21,10 @@ describe('Panel test', () => {
   const slider = $(root).slider({});
   const panel = new Panel(slider);
 
+  beforeEach(()=>{
+    panel.updatePanelParams(DEFAULT_SLIDER_PARAMS)
+  })
+
   test('constructor test', () => {
     expect(panel.slider).toBeInstanceOf(Slider);
   });
@@ -34,7 +38,7 @@ describe('Panel test', () => {
     const checkboxParent = <HTMLElement>checkbox.parentElement;
 
     expect(checkbox.type).toBe(CHECKBOX_TYPE);
-    expect(checkboxParent.classList.contains(CHECKBOX_PARENT_CLASS)).toBeTruthy();
+    expect(checkboxParent.classList).toContain(CHECKBOX_PARENT_CLASS);
   });
 
   test('init test', () => {
