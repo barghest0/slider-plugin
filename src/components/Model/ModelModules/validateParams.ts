@@ -39,10 +39,18 @@ function validateParams(
     isDecimal,
   );
 
-  validatedValue[FIRST_THUMB_STANCE] = validateFirstThumb(validatedValue, min, max);
+  validatedValue[FIRST_THUMB_STANCE] = validateFirstThumb(
+    validatedValue,
+    min,
+    max,
+  );
 
   if (isRange) {
-    validatedValue[SECOND_THUMB_STANCE] = validateSecondThumb(validatedValue, min, max);
+    validatedValue[SECOND_THUMB_STANCE] = validateSecondThumb(
+      validatedValue,
+      min,
+      max,
+    );
   }
 
   const validatedParams: SliderParams = {

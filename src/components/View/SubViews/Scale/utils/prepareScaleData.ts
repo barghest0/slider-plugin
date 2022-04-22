@@ -17,7 +17,12 @@ function getDelimiter(dividend: number, delimiters: number[]): number {
   return getDelimiter(dividend - 1, delimiters);
 }
 
-function prepareScaleData(min: number, max: number, step: number, direction: Direction) {
+function prepareScaleData(
+  min: number,
+  max: number,
+  step: number,
+  direction: Direction,
+) {
   const size = Math.round((max - min) / step + 1);
   const lastIndex = size - 1;
 
@@ -25,7 +30,9 @@ function prepareScaleData(min: number, max: number, step: number, direction: Dir
 
   let multiplier = Math.max(Math.floor(lastIndex / delimiter), MIN_MULTIPLIER);
   const isLessThenMaxMultiplier = multiplier < MAX_MULTIPLIER;
-  multiplier = isLessThenMaxMultiplier ? Math.min(multiplier, delimiter) : multiplier;
+  multiplier = isLessThenMaxMultiplier
+    ? Math.min(multiplier, delimiter)
+    : multiplier;
 
   const range = Math.abs(max - min);
   const marksCount = Math.ceil(size / multiplier);
@@ -47,7 +54,8 @@ function prepareScaleData(min: number, max: number, step: number, direction: Dir
     let offset = Math.abs(gapSize / range) * index * MAX_PERCENTS;
     offset = Math.min(MAX_PERCENTS, offset);
     if (index === lastMark) offset = MAX_PERCENTS;
-    if (direction === Directions.vertical) offset = Math.abs(MAX_PERCENTS - offset);
+    if (direction === Directions.vertical)
+      offset = Math.abs(MAX_PERCENTS - offset);
     return Number(offset.toFixed(SCALE_NUMBER_DECIMAL_PLACES));
   });
 

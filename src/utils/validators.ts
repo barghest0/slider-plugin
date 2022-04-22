@@ -3,7 +3,11 @@ import {
   FIRST_VALUE,
   SINGLE_THUMB,
 } from '../components/Slider/constants';
-import { Params, SliderParams, UserSliderParams } from '../components/Slider/types';
+import {
+  Params,
+  SliderParams,
+  UserSliderParams,
+} from '../components/Slider/types';
 
 function getParamsFromDataset(element: JQuery, params: SliderParams) {
   let dataValue;
@@ -70,7 +74,8 @@ function getValidatedParams({
 }: UserSliderParams) {
   const validatedMin = min ?? DEFAULT_SLIDER_PARAMS.min;
   const validatedMax = max ?? DEFAULT_SLIDER_PARAMS.max;
-  const validatedDecimalPlaces = decimalPlaces ?? DEFAULT_SLIDER_PARAMS.decimalPlaces;
+  const validatedDecimalPlaces =
+    decimalPlaces ?? DEFAULT_SLIDER_PARAMS.decimalPlaces;
   const validatedStep = step ?? DEFAULT_SLIDER_PARAMS.step;
   const validatedIsRange = isRange ?? DEFAULT_SLIDER_PARAMS.isRange;
   const validatedDirection = direction ?? DEFAULT_SLIDER_PARAMS.direction;

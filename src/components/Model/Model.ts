@@ -97,13 +97,16 @@ class Model extends Observer<ModelObserver> {
   calculateOffset(stance: number) {
     const { min, max, value } = this.params;
 
-    return this.prepareOffset((value[stance] - min) / ((max - min) / MAX_PERCENTS));
+    return this.prepareOffset(
+      (value[stance] - min) / ((max - min) / MAX_PERCENTS),
+    );
   }
 
   updateThumb(stance: number, cursorOffset: number) {
     const directionalCursorOffset = this.prepareOffset(cursorOffset);
     const stepPercent = this.calculateStepPercent();
-    const stepOffset = Math.round(directionalCursorOffset / stepPercent) * stepPercent;
+    const stepOffset =
+      Math.round(directionalCursorOffset / stepPercent) * stepPercent;
 
     this.setValue(stance, this.calculateValue(stepOffset, stepPercent));
     this.setOffset(stance, this.calculateOffset(stance));
@@ -148,7 +151,10 @@ class Model extends Observer<ModelObserver> {
   }
 
   calculateFillState() {
-    return { fillOffset: this.calculateFillOffset(), fillSize: this.calculateFillSize() };
+    return {
+      fillOffset: this.calculateFillOffset(),
+      fillSize: this.calculateFillSize(),
+    };
   }
 
   private chooseCorrectStance(stance: number) {

@@ -4,7 +4,10 @@ import handleValueChange from './handleValueChange';
 
 import Panel from '../Panel';
 
-import { FIRST_VALUE, SECOND_VALUE } from '../../../components/Slider/constants';
+import {
+  FIRST_VALUE,
+  SECOND_VALUE,
+} from '../../../components/Slider/constants';
 import { Params } from '../../../components/Slider/types';
 
 function addInputListeners(this: Panel) {
@@ -44,7 +47,10 @@ function addInputListeners(this: Panel) {
     makeHandleValueChange(SECOND_VALUE),
   );
 
-  this.inputs.isVertical.addEventListener('change', makeHandleDirectionChange());
+  this.inputs.isVertical.addEventListener(
+    'change',
+    makeHandleDirectionChange(),
+  );
 
   this.inputs.decimalPlacesInput.addEventListener(
     'change',

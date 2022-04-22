@@ -1,4 +1,9 @@
-import { ModelObserver, SubscriberFn, Subscribers, ViewObserver } from './types';
+import {
+  ModelObserver,
+  SubscriberFn,
+  Subscribers,
+  ViewObserver,
+} from './types';
 
 import { SliderParams } from '../Slider/types';
 import { DEFAULT_SLIDER_PARAMS } from '../Slider/constants';

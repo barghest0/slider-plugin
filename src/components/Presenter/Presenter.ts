@@ -13,7 +13,12 @@ import getSliderParams from './PresenterModules/getSliderParams';
 import View from '../View/View';
 import Model from '../Model/Model';
 
-import { Direction, Directions, SliderFillState, SliderParams } from '../Slider/types';
+import {
+  Direction,
+  Directions,
+  SliderFillState,
+  SliderParams,
+} from '../Slider/types';
 import {
   FIRST_THUMB_STANCE,
   MAIN_CLASS,
@@ -54,7 +59,11 @@ class Presenter {
 
   private removeListeners: () => void;
 
-  constructor(params: SliderParams, DOMroot: HTMLElement, DOMparent: HTMLElement) {
+  constructor(
+    params: SliderParams,
+    DOMroot: HTMLElement,
+    DOMparent: HTMLElement,
+  ) {
     this.DOMroot = DOMroot;
     this.DOMparent = DOMparent;
     this.model = new Model(this.DOMroot);
@@ -176,7 +185,8 @@ class Presenter {
   }
 
   private renderSlider() {
-    const { direction, hasFill, hasScale, hasTips, isRange } = this.model.getParams();
+    const { direction, hasFill, hasScale, hasTips, isRange } =
+      this.model.getParams();
     this.renderTrack(direction);
     this.renderThumb(FIRST_THUMB_STANCE);
 

@@ -1,6 +1,9 @@
 import Presenter from '../Presenter';
 
-import { FIRST_THUMB_STANCE, SECOND_THUMB_STANCE } from '../../Slider/constants';
+import {
+  FIRST_THUMB_STANCE,
+  SECOND_THUMB_STANCE,
+} from '../../Slider/constants';
 
 function addListeners(this: Presenter) {
   const { isRange } = this.model.getParams();

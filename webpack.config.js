@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const PATHS = {
   src: path.join(__dirname, './src'),
@@ -116,7 +117,15 @@ const config = {
     new HtmlWebpackPlugin({
       template: `${PATHS.demo}/index.pug`,
       filename: `./index.html`,
-      favicon: `${PATHS.demo}/assets/static/favicon.ico`,
+    }),
+
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: `${PATHS.demo}/assets/static`,
+          to: `${PATHS.assets}/favicons`,
+        },
+      ],
     }),
   ],
 };

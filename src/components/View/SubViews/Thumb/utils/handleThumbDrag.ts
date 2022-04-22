@@ -9,7 +9,8 @@ function handleThumbDrag(this: Thumb, event: PointerEvent, stance: number) {
   const { DOMroot } = this.view;
   const size = this.view.getSize();
 
-  const coordinate = direction === Directions.horizontal ? event.pageX : event.pageY;
+  const coordinate =
+    direction === Directions.horizontal ? event.pageX : event.pageY;
 
   const cursorOffset = this.view.calculateCursorOffset(
     coordinate,

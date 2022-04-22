@@ -57,7 +57,8 @@ class View {
     this.size = 0;
     this.offsetDirection = OffsetDirections.left;
     this.fillDirection = FillDirections.width;
-    this.prepareDirectionForInteraction = prepareDirectionForInteraction.bind(this);
+    this.prepareDirectionForInteraction =
+      prepareDirectionForInteraction.bind(this);
     this.calculateCursorOffset = calculateCursorOffset.bind(this);
   }
 

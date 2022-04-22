@@ -6,7 +6,10 @@ import {
   SECOND_VALUE,
 } from '../../../../Slider/constants';
 
-const validateCollision = function validateCollision(this: Thumb, stance: number) {
+const validateCollision = function validateCollision(
+  this: Thumb,
+  stance: number,
+) {
   const reverseStance = Number(!stance);
 
   const isFirstStanceCurrent = stance === FIRST_THUMB_STANCE;
