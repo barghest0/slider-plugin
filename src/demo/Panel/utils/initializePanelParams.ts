@@ -17,13 +17,10 @@ function initializePanelsParams(this: Panel) {
     hasFill,
     hasTips,
     hasScale,
-    decimalPlaces,
-    isDecimal,
   }: SliderParams = this.slider.getParams();
 
   this.inputs.minValueInput.value = min.toString();
   this.inputs.maxValueInput.value = max.toString();
-  this.inputs.decimalPlacesInput.value = decimalPlaces.toString();
   if (isRange) {
     this.inputs.firstValueInput.value = value[FIRST_VALUE].toString();
     this.inputs.secondValueInput.value = value[SECOND_VALUE].toString();
@@ -38,7 +35,6 @@ function initializePanelsParams(this: Panel) {
   this.inputs.hasFill.checked = hasFill;
   this.inputs.hasTips.checked = hasTips;
   this.inputs.hasScale.checked = hasScale;
-  this.inputs.isDecimal.checked = isDecimal;
 }
 
 export default initializePanelsParams;

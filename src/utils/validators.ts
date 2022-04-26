@@ -62,28 +62,21 @@ function getValidatedParams({
   min,
   max,
   value,
-  decimalPlaces,
   step,
   isRange,
   direction,
   hasFill,
   hasTips,
   hasScale,
-  isDecimal,
-  panel,
 }: UserSliderParams) {
   const validatedMin = min ?? DEFAULT_SLIDER_PARAMS.min;
   const validatedMax = max ?? DEFAULT_SLIDER_PARAMS.max;
-  const validatedDecimalPlaces =
-    decimalPlaces ?? DEFAULT_SLIDER_PARAMS.decimalPlaces;
   const validatedStep = step ?? DEFAULT_SLIDER_PARAMS.step;
   const validatedIsRange = isRange ?? DEFAULT_SLIDER_PARAMS.isRange;
   const validatedDirection = direction ?? DEFAULT_SLIDER_PARAMS.direction;
   const validatedHasFill = hasFill ?? DEFAULT_SLIDER_PARAMS.hasFill;
   const validatedHasTips = hasTips ?? DEFAULT_SLIDER_PARAMS.hasTips;
   const validatedHasScale = hasScale ?? DEFAULT_SLIDER_PARAMS.hasScale;
-  const validatedIsDecimal = isDecimal ?? DEFAULT_SLIDER_PARAMS.isDecimal;
-  const validatedPanel = panel ?? DEFAULT_SLIDER_PARAMS.panel;
 
   let validatedValue = value ?? DEFAULT_SLIDER_PARAMS.value;
 
@@ -99,15 +92,12 @@ function getValidatedParams({
     min: validatedMin,
     max: validatedMax,
     value: validatedValue,
-    decimalPlaces: validatedDecimalPlaces,
     step: validatedStep,
     isRange: validatedIsRange,
     direction: validatedDirection,
     hasFill: validatedHasFill,
     hasTips: validatedHasTips,
     hasScale: validatedHasScale,
-    isDecimal: validatedIsDecimal,
-    panel: validatedPanel,
   };
 }
 

@@ -1,7 +1,6 @@
 import Model from '../../src/components/Model/Model';
 import validateStep from '../../src/components/Model/ModelModules/validationParamsMethods/validateStep';
 import validateMin from '../../src/components/Model/ModelModules/validationParamsMethods/validateMin';
-import validateDecimalPlaces from '../../src/components/Model/ModelModules/validationParamsMethods/validateDecimalPlaces';
 import {
   DEFAULT_SLIDER_PARAMS,
   FIRST_THUMB_STANCE,
@@ -14,9 +13,6 @@ import validateFirstThumb from '../../src/components/Model/ModelModules/validati
 import { getValidatedParams } from '../../src/utils/validators';
 import { ModelSubscribersNames } from '../../src/components/Observer/types';
 
-
-
-
 describe('Model test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1" ></div>`;
   const root = '.slider-1';
@@ -24,17 +20,26 @@ describe('Model test', () => {
   const model = new Model(DOMroot);
 
   const subscriberMockFunction = jest.fn();
-  beforeAll(()=> {
-    model.subscribe(ModelSubscribersNames.updateThumbView, subscriberMockFunction);
-    model.subscribe(ModelSubscribersNames.updateFillView, subscriberMockFunction);
-    model.subscribe(ModelSubscribersNames.getSliderParams, subscriberMockFunction);
-  })
-  
-  beforeEach(()=>{
+  beforeAll(() => {
+    model.subscribe(
+      ModelSubscribersNames.updateThumbView,
+      subscriberMockFunction,
+    );
+    model.subscribe(
+      ModelSubscribersNames.updateFillView,
+      subscriberMockFunction,
+    );
+    model.subscribe(
+      ModelSubscribersNames.getSliderParams,
+      subscriberMockFunction,
+    );
+  });
+
+  beforeEach(() => {
     model.setParams(DEFAULT_SLIDER_PARAMS);
-    jest.clearAllMocks()
-  })
-  
+    jest.clearAllMocks();
+  });
+
   test('correct set/get default params', () => {
     expect(model.getParams()).toEqual(DEFAULT_SLIDER_PARAMS);
   });
@@ -104,8 +109,14 @@ describe('Model test', () => {
     model.setParam(Params.direction, Directions.horizontal);
     model.setParam(Params.value, [20, 40]);
     model.setParam(Params.isRange, true);
-    model.setOffset(FIRST_THUMB_STANCE, model.calculateOffset(FIRST_THUMB_STANCE));
-    model.setOffset(SECOND_THUMB_STANCE, model.calculateOffset(SECOND_THUMB_STANCE));
+    model.setOffset(
+      FIRST_THUMB_STANCE,
+      model.calculateOffset(FIRST_THUMB_STANCE),
+    );
+    model.setOffset(
+      SECOND_THUMB_STANCE,
+      model.calculateOffset(SECOND_THUMB_STANCE),
+    );
 
     expect(model.calculateFillState()).toEqual({
       fillOffset: 20,
@@ -113,8 +124,14 @@ describe('Model test', () => {
     });
 
     model.setParam(Params.direction, Directions.vertical);
-    model.setOffset(FIRST_THUMB_STANCE, model.calculateOffset(FIRST_THUMB_STANCE));
-    model.setOffset(SECOND_THUMB_STANCE, model.calculateOffset(SECOND_THUMB_STANCE));
+    model.setOffset(
+      FIRST_THUMB_STANCE,
+      model.calculateOffset(FIRST_THUMB_STANCE),
+    );
+    model.setOffset(
+      SECOND_THUMB_STANCE,
+      model.calculateOffset(SECOND_THUMB_STANCE),
+    );
 
     expect(model.calculateFillState()).toEqual({
       fillOffset: 60,
@@ -126,7 +143,10 @@ describe('Model test', () => {
     model.setParam(Params.direction, Directions.horizontal);
     model.setParam(Params.value, [20]);
     model.setParam(Params.isRange, false);
-    model.setOffset(FIRST_THUMB_STANCE, model.calculateOffset(FIRST_THUMB_STANCE));
+    model.setOffset(
+      FIRST_THUMB_STANCE,
+      model.calculateOffset(FIRST_THUMB_STANCE),
+    );
 
     expect(model.calculateFillState()).toEqual({
       fillOffset: 0,
@@ -134,7 +154,10 @@ describe('Model test', () => {
     });
 
     model.setParam(Params.direction, Directions.vertical);
-    model.setOffset(FIRST_THUMB_STANCE, model.calculateOffset(FIRST_THUMB_STANCE));
+    model.setOffset(
+      FIRST_THUMB_STANCE,
+      model.calculateOffset(FIRST_THUMB_STANCE),
+    );
 
     expect(model.calculateFillState()).toEqual({
       fillOffset: 0,
@@ -184,18 +207,6 @@ describe('Model test', () => {
     const min = validateMin(15, 10, 2);
 
     expect(min).toEqual(8);
-  });
-
-  test('expect decimal places not be bigger 3', () => {
-    const decimalPlaces = validateDecimalPlaces(231, 3, true);
-
-    expect(decimalPlaces).toEqual(3);
-  });
-
-  test('expect decimal places equal 0 if isDecimal equal false', () => {
-    const decimalPlaces = validateDecimalPlaces(231, 3, false);
-
-    expect(decimalPlaces).toEqual(0);
   });
 
   test('expect first thumb value not be less min', () => {

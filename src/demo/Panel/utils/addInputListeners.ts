@@ -52,11 +52,6 @@ function addInputListeners(this: Panel) {
     makeHandleDirectionChange(),
   );
 
-  this.inputs.decimalPlacesInput.addEventListener(
-    'change',
-    makeHandleCommonParamChange(Params.decimalPlaces),
-  );
-
   this.inputs.stepInput.addEventListener(
     'change',
     makeHandleCommonParamChange(Params.step),
@@ -80,11 +75,6 @@ function addInputListeners(this: Panel) {
   this.inputs.hasScale.addEventListener(
     'change',
     makeHandleCommonParamChange(Params.hasScale),
-  );
-
-  this.inputs.isDecimal.addEventListener(
-    'change',
-    makeHandleCommonParamChange(Params.isDecimal),
   );
 }
 

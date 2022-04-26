@@ -17,8 +17,6 @@ const initSlider = () => {
     hasFill: true,
     hasTips: true,
     hasScale: true,
-    isDecimal: true,
-    decimalPlaces: 1,
   });
 
   const panel2 = new Panel(slider2);
@@ -33,8 +31,6 @@ const initSlider = () => {
     hasFill: true,
     hasTips: true,
     hasScale: true,
-    isDecimal: false,
-    decimalPlaces: 0,
   });
   const panel3 = new Panel(slider3);
 
@@ -48,8 +44,6 @@ const initSlider = () => {
     hasFill: true,
     hasTips: true,
     hasScale: true,
-    isDecimal: false,
-    decimalPlaces: 0,
   });
   const panel4 = new Panel(slider4);
 };

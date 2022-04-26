@@ -13,8 +13,6 @@ type SliderParams = {
   hasFill: boolean;
   hasTips: boolean;
   hasScale: boolean;
-  isDecimal: boolean;
-  decimalPlaces: number;
 };
 
 type UserSliderParams = {
@@ -27,9 +25,6 @@ type UserSliderParams = {
   hasFill?: boolean;
   hasTips?: boolean;
   hasScale?: boolean;
-  isDecimal?: boolean;
-  panel?: boolean;
-  decimalPlaces?: number;
 };
 
 type SliderFillState = {

@@ -1,9 +1,9 @@
 include ../slider-example/slider-example.pug 
 include ../slider-panel/slider-panel.pug
 
-mixin panel({instance=1,isInline=false}={})
+mixin panel({ instance = 1, isInline = false } = {})
   .panel 
-    +slider-example({instance,isInline})
+    +slider-example({ instance, isInline })
     if !isInline
       +slider-panel
 

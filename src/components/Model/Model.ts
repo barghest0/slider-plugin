@@ -10,6 +10,7 @@ import {
   DEFAULT_SLIDER_PARAMS,
   FIRST_OFFSET,
   FIRST_THUMB_STANCE,
+  MAX_DECIMAL_PLACES,
   MAX_PERCENTS,
   MIN_OFFSET,
   SECOND_OFFSET,
@@ -69,8 +70,7 @@ class Model extends Observer<ModelObserver> {
   }
 
   setValue(stance: number, value: number) {
-    const { decimalPlaces } = this.params;
-    this.params.value[stance] = Number(value.toFixed(decimalPlaces));
+    this.params.value[stance] = Number(value.toFixed(MAX_DECIMAL_PLACES));
   }
 
   getValue() {
