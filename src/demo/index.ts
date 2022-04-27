@@ -35,10 +35,10 @@ const initSlider = () => {
   const panel3 = new Panel(slider3);
 
   const slider4 = $('.js-slider-4').slider({
-    min: -100,
-    max: 100,
-    step: 10,
-    value: 0,
+    min: -10000000000000,
+    max: 10000000000000,
+    step: 10000000,
+    value: 10000000,
     isRange: false,
     direction: 'vertical',
     hasFill: true,
