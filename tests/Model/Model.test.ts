@@ -105,6 +105,26 @@ describe('Model test', () => {
     expect(model.getValue()[FIRST_THUMB_STANCE]).toBe(100);
   });
 
+  test('expect set second offset equal first offset after validate collision', () => {
+    model.setParam(Params.isRange, true);
+    model.setOffset(SECOND_THUMB_STANCE, 50);
+    model.updateThumb(FIRST_THUMB_STANCE, 100);
+
+    expect(model.getOffset()[FIRST_THUMB_STANCE]).toBe(
+      model.getOffset()[SECOND_THUMB_STANCE],
+    );
+  });
+
+  test('expect set first offset equal seconf offset after validate collision', () => {
+    model.setParam(Params.isRange, true);
+    model.setOffset(FIRST_THUMB_STANCE, 80);
+    model.updateThumb(SECOND_THUMB_STANCE, 10);
+
+    expect(model.getOffset()[SECOND_THUMB_STANCE]).toBe(
+      model.getOffset()[FIRST_THUMB_STANCE],
+    );
+  });
+
   test('check calculate fill state with value equal 20-40 in horizontal/vertical direction', () => {
     model.setParam(Params.direction, Directions.horizontal);
     model.setParam(Params.value, [20, 40]);

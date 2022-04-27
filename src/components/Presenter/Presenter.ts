@@ -156,13 +156,12 @@ class Presenter {
   }
 
   private setSubViewsState() {
-    const { hasTips, hasFill } = this.model.getParams();
+    const { hasFill } = this.model.getParams();
     const value = this.model.getValue();
     const fillState = this.model.getFillState();
 
     value.forEach((_, stance) => {
       this.setThumbViewState(stance);
-      if (hasTips) this.setTipViewState(stance);
     });
 
     if (hasFill) this.setFillViewState(fillState);
@@ -177,11 +176,6 @@ class Presenter {
 
   private setFillViewState(state: SliderFillState) {
     this.view.fillView.setState(state);
-  }
-
-  private setTipViewState(stance: number) {
-    const offset = this.model.getOffset()[stance];
-    this.view.tipView.setOffset(stance, offset);
   }
 
   private renderSlider() {

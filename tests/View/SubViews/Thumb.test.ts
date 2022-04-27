@@ -22,24 +22,28 @@ describe('Thumb test', () => {
   const thumb = new Thumb(view);
   const model = new Model(root);
 
-  let DOMthumb:HTMLElement
+  let DOMthumb: HTMLElement;
   const subscriberMockFunction = jest.fn();
-  beforeAll(()=>{
+  beforeAll(() => {
     thumb.renderThumb(FIRST_THUMB_STANCE);
     thumb.renderThumb(SECOND_THUMB_STANCE);
     thumb.dragAndDropThumb(FIRST_THUMB_STANCE);
 
     thumb.subscribe(ViewSubscribersNames.updateThumb, subscriberMockFunction);
-    model.subscribe(ModelSubscribersNames.updateThumbView, subscriberMockFunction);
-    model.subscribe(ModelSubscribersNames.updateFillView, subscriberMockFunction);
+    model.subscribe(
+      ModelSubscribersNames.updateThumbView,
+      subscriberMockFunction,
+    );
+    model.subscribe(
+      ModelSubscribersNames.updateFillView,
+      subscriberMockFunction,
+    );
     DOMthumb = thumb.thumbs[FIRST_THUMB_STANCE];
-  })
+  });
 
-  beforeEach(()=>{
-    jest.clearAllMocks()
-  })
-
- 
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
   test('is DOM first thumb instance of HTMLElement test', () => {
     expect(thumb.thumbs[FIRST_THUMB_STANCE]).toBeInstanceOf(HTMLElement);
@@ -60,29 +64,6 @@ describe('Thumb test', () => {
     expect(thumb.getOffset()[SECOND_OFFSET]).toBe(60);
   });
 
-  test('expect return initial stance thumb if first value less than second', () => {
-    thumb.view.setValue(FIRST_THUMB_STANCE, 60);
-    thumb.view.setValue(SECOND_THUMB_STANCE, 100);
-
-    expect(thumb.validateCollision(FIRST_THUMB_STANCE)).toBe(FIRST_THUMB_STANCE);
-  });
-
-  test('expect return reverse stance thumb if first value bigger than second', () => {
-    thumb.view.setValue(FIRST_THUMB_STANCE, 150);
-    thumb.view.setValue(SECOND_THUMB_STANCE, 100);
-
-    expect(thumb.validateCollision(FIRST_THUMB_STANCE)).toBe(SECOND_THUMB_STANCE);
-  });
-
-  test('expect return reverse stance thumb if first value bigger than second', () => {
-    thumb.view.setValue(FIRST_THUMB_STANCE, 150);
-    thumb.view.setValue(SECOND_THUMB_STANCE, 100);
-
-    expect(thumb.validateCollision(SECOND_THUMB_STANCE)).toBe(FIRST_THUMB_STANCE);
-  });
-
- 
-
   test('expect notify model before drag first thumb in horizontal/vertical direction', () => {
     const notify = jest.spyOn(thumb, 'notify');
     view.setParam(Params.direction, Directions.horizontal);
@@ -96,14 +77,5 @@ describe('Thumb test', () => {
     document.dispatchEvent(new Event('pointermove'));
 
     expect(notify).toBeCalled();
-  });
-
-  test('expect calling validateCollision when drag first thumb', () => {
-    const validateCollision = jest.spyOn(thumb, 'validateCollision');
-    view.setParam(Params.isRange, true);
-    DOMthumb.dispatchEvent(new Event('pointerdown'));
-    document.dispatchEvent(new Event('pointermove'));
-
-    expect(validateCollision).toBeCalled();
   });
 });

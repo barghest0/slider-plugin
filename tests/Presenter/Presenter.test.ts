@@ -25,22 +25,22 @@ describe('Presenter test', () => {
   const params = getValidatedParams({ isRange: true, value: [0, 100] });
   const presenter = new Presenter(params, DOMroot, DOMparent);
 
-  beforeAll(()=>{
+  beforeAll(() => {
     presenter.init();
-  })
+  });
 
-  beforeEach(()=>{
-    presenter.setParams(DEFAULT_SLIDER_PARAMS)
-  })
+  beforeEach(() => {
+    presenter.setParams(DEFAULT_SLIDER_PARAMS);
+  });
 
   test('constructor test', () => {
     expect(presenter).toHaveProperty('view');
   });
 
   test('expect horizontal modifier', () => {
-    expect(
-      presenter.DOMroot.classList
-    ).toContain(`${MAIN_CLASS}_${Directions.horizontal}`);
+    expect(presenter.DOMroot.classList).toContain(
+      `${MAIN_CLASS}_${Directions.horizontal}`,
+    );
   });
 
   test('expect change thumb offset to 80 after notify model when drag first thumb', () => {
@@ -64,7 +64,9 @@ describe('Presenter test', () => {
     presenter.model.setOffset(FIRST_THUMB_STANCE, 20);
     presenter.model.setOffset(SECOND_THUMB_STANCE, 50);
     presenter.view.trackView.setCursorOffset(90);
-    presenter.view.trackView.notify(ViewSubscribersNames.updateThumbAfterTrackClick);
+    presenter.view.trackView.notify(
+      ViewSubscribersNames.updateThumbAfterTrackClick,
+    );
 
     expect(presenter.model.getOffset()[SECOND_OFFSET]).toBe(90);
   });
@@ -74,7 +76,9 @@ describe('Presenter test', () => {
     presenter.model.setOffset(FIRST_THUMB_STANCE, 20);
     presenter.model.setOffset(SECOND_THUMB_STANCE, 50);
     presenter.view.trackView.setCursorOffset(10);
-    presenter.view.trackView.notify(ViewSubscribersNames.updateThumbAfterTrackClick);
+    presenter.view.trackView.notify(
+      ViewSubscribersNames.updateThumbAfterTrackClick,
+    );
 
     expect(presenter.model.getOffset()[FIRST_OFFSET]).toBe(10);
   });
@@ -98,25 +102,25 @@ describe('Presenter test', () => {
 
     expect(presenter.view.getValue()[SECOND_VALUE]).toBe(150);
     expect(presenter.view.thumbView.getOffset()[SECOND_OFFSET]).toBe(70);
-    expect(presenter.view.thumbView.getActiveStance()).toBe(SECOND_THUMB_STANCE);
+    expect(presenter.view.thumbView.getActiveStance()).toBe(
+      SECOND_THUMB_STANCE,
+    );
   });
 
-  test('expect change tip value to 50 and offset to 50 after notify view when drag first thumb', () => {
+  test('expect change tip value to 50 after notify view when drag first thumb', () => {
     presenter.model.setValue(FIRST_THUMB_STANCE, 50);
     presenter.model.setOffset(FIRST_THUMB_STANCE, 50);
     presenter.model.notify(ModelSubscribersNames.updateThumbView);
 
     expect(presenter.view.getValue()[FIRST_VALUE]).toBe(50);
-    expect(presenter.view.tipView.getOffset()[FIRST_OFFSET]).toBe(50);
   });
 
-  test('expect change tip value to 100 and offset to 100 after notify view when drag second thumb', () => {
+  test('expect change tip value to 100 after notify view when drag second thumb', () => {
     presenter.model.setValue(SECOND_THUMB_STANCE, 100);
     presenter.model.setOffset(SECOND_THUMB_STANCE, 100);
     presenter.model.notify(ModelSubscribersNames.updateThumbView);
 
     expect(presenter.view.getValue()[SECOND_VALUE]).toBe(100);
-    expect(presenter.view.tipView.getOffset()[SECOND_OFFSET]).toBe(100);
   });
 
   test('expect change fill size to 30 and offset to 30 after notify model when drag two thumbs', () => {
@@ -148,23 +152,25 @@ describe('Presenter test', () => {
     presenter.model.setParam(Params.direction, Directions.horizontal);
     presenter.clearHTML();
 
-    expect(
-      presenter.DOMroot.classList
-    ).not.toContain(`${MAIN_CLASS}_${Directions.vertical}`);
+    expect(presenter.DOMroot.classList).not.toContain(
+      `${MAIN_CLASS}_${Directions.vertical}`,
+    );
     presenter.model.setParam(Params.direction, Directions.vertical);
 
     presenter.clearHTML();
 
-    expect(
-      presenter.DOMroot.classList
-    ).not.toContain(`${MAIN_CLASS}_${Directions.horizontal}`);
+    expect(presenter.DOMroot.classList).not.toContain(
+      `${MAIN_CLASS}_${Directions.horizontal}`,
+    );
   });
 
   test('correct unsubscribe', () => {
     presenter.unsubscribe();
 
     expect(
-      presenter.view.thumbView.getSubscribers()[ViewSubscribersNames.updateThumb],
+      presenter.view.thumbView.getSubscribers()[
+        ViewSubscribersNames.updateThumb
+      ],
     ).toEqual([]);
   });
 
@@ -173,7 +179,11 @@ describe('Presenter test', () => {
     value: [0, 100],
     hasTips: false,
   });
-  const presenterWithoutTips = new Presenter(paramsWithoutTips, DOMroot, DOMparent);
+  const presenterWithoutTips = new Presenter(
+    paramsWithoutTips,
+    DOMroot,
+    DOMparent,
+  );
   presenterWithoutTips.init();
 
   test('correct unsubscribe without tips', () => {
@@ -182,7 +192,9 @@ describe('Presenter test', () => {
     presenterWithoutTips.unsubscribe();
 
     expect(
-      presenterWithoutTips.model.getSubscribers()[ModelSubscribersNames.updateThumbView],
+      presenterWithoutTips.model.getSubscribers()[
+        ModelSubscribersNames.updateThumbView
+      ],
     ).toEqual(expect.not.arrayContaining([updateTipView]));
   });
 });

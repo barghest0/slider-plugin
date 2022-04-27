@@ -1,5 +1,4 @@
 import updateThumbStyle from './utils/updateThumbStyle';
-import validateCollision from './utils/validateCollision';
 import dragAndDropThumb from './utils/dragAndDropThumb';
 import handleThumbDrag from './utils/handleThumbDrag';
 import THUMB_CLASS from './constants';
@@ -17,8 +16,6 @@ class Thumb extends Observer<ViewObserver> {
   thumbs: HTMLElement[];
 
   updateThumbStyle: (stance: number) => void;
-
-  validateCollision: (stance: number) => number;
 
   dragAndDropThumb: (stance: number) => void;
 
@@ -38,7 +35,6 @@ class Thumb extends Observer<ViewObserver> {
     this.cursorOffset = 0;
     this.thumbs = [];
     this.updateThumbStyle = updateThumbStyle.bind(this);
-    this.validateCollision = validateCollision.bind(this);
     this.dragAndDropThumb = dragAndDropThumb.bind(this);
     this.handleThumbDrag = handleThumbDrag.bind(this);
   }

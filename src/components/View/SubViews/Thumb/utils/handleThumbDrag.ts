@@ -5,7 +5,7 @@ import { Directions } from '../../../../Slider/types';
 import { ViewSubscribersNames } from '../../../../Observer/types';
 
 function handleThumbDrag(this: Thumb, event: PointerEvent, stance: number) {
-  const { direction, isRange } = this.view.getParams();
+  const { direction } = this.view.getParams();
   const { DOMroot } = this.view;
   const size = this.view.getSize();
 
@@ -19,10 +19,8 @@ function handleThumbDrag(this: Thumb, event: PointerEvent, stance: number) {
     size,
   );
 
-  const currentStance = isRange ? this.validateCollision(stance) : stance;
-
   this.setCursorOffset(cursorOffset);
-  this.setActiveStance(currentStance);
+  this.setActiveStance(stance);
 
   this.notify(ViewSubscribersNames.updateThumb);
 }

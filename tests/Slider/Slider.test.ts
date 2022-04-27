@@ -1,7 +1,6 @@
 import '../../src/plugin/plugin';
 import { DEFAULT_SLIDER_PARAMS } from '../../src/components/Slider/constants';
 
-
 describe('Slider test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;
   document.body.innerHTML += `<div id="slider-2" class="slider-2" data-first-value="10" data-min="0" data-max="200"></div>`;
@@ -9,16 +8,18 @@ describe('Slider test', () => {
   const root = '.slider-1';
   const slider = $(root).slider();
 
-  beforeEach(()=>{
-    slider.updateParams(DEFAULT_SLIDER_PARAMS)
-  })
+  beforeEach(() => {
+    slider.updateParams(DEFAULT_SLIDER_PARAMS);
+  });
 
   test('correct set/get params ', () => {
     expect(slider.getParams()).toEqual(DEFAULT_SLIDER_PARAMS);
   });
 
   test('correct get container', () => {
-    expect(slider.getContainer().classList.contains(root.slice(1))).toBeTruthy();
+    expect(
+      slider.getContainer().classList.contains(root.slice(1)),
+    ).toBeTruthy();
   });
 
   test('correct get parent', () => {

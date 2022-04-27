@@ -1,5 +1,5 @@
 import TIP_CLASS from './constants';
-import updateTipStyle from './utils/updateTipStyle';
+import updateTipText from './utils/updateTipText';
 
 import View from '../../View';
 
@@ -11,23 +11,12 @@ class Tip {
 
   tips: HTMLElement[];
 
-  updateTipStyle: (stance: number) => void;
-
-  private offset: number[];
+  updateTipText: (stance: number) => void;
 
   constructor(view: View) {
     this.view = view;
-    this.offset = [];
     this.tips = [];
-    this.updateTipStyle = updateTipStyle.bind(this);
-  }
-
-  setOffset(stance: number, offset: number) {
-    this.offset[stance] = offset;
-  }
-
-  getOffset() {
-    return this.offset;
+    this.updateTipText = updateTipText.bind(this);
   }
 
   renderTip(stance: number, direction: Direction) {
@@ -38,7 +27,7 @@ class Tip {
     tip.classList.add(`${TIP_CLASS}_${direction}`);
     this.tips.push(tip);
     this.view.thumbView.thumbs[stance].appendChild(tip);
-    this.updateTipStyle(stance);
+    this.updateTipText(stance);
   }
 }
 

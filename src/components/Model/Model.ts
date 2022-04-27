@@ -15,6 +15,7 @@ import {
   SECOND_OFFSET,
   SECOND_THUMB_STANCE,
 } from '../Slider/constants';
+import validateCollision from './ModelModules/validateCollision';
 
 class Model extends Observer<ModelObserver> {
   DOMroot: HTMLElement;
@@ -22,6 +23,8 @@ class Model extends Observer<ModelObserver> {
   validateParams: (params: SliderParams) => SliderParams;
 
   endsValidation: (stance: number) => void;
+
+  private validateCollision: () => void;
 
   private activeStance: number;
 
@@ -46,6 +49,7 @@ class Model extends Observer<ModelObserver> {
     this.endsValidation = endsValidation.bind(this);
     this.prepareOffset = prepareOffset.bind(this);
     this.validateParams = validateParams.bind(this);
+    this.validateCollision = validateCollision.bind(this);
   }
 
   setParams(params: SliderParams) {
@@ -102,6 +106,8 @@ class Model extends Observer<ModelObserver> {
   }
 
   updateThumb(stance: number, cursorOffset: number) {
+    const { isRange } = this.params;
+
     const directionalCursorOffset = Math.round(
       this.prepareOffset(cursorOffset),
     );
@@ -114,8 +120,11 @@ class Model extends Observer<ModelObserver> {
     this.setOffset(stance, this.calculateOffset(stance));
 
     this.endsValidation(stance);
-
     this.setActiveStance(stance);
+
+    if (isRange) {
+      this.validateCollision();
+    }
 
     this.notify(ModelSubscribersNames.updateThumbView);
     if (this.params.hasFill) {
