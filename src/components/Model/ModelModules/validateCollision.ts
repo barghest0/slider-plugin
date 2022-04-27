@@ -15,15 +15,15 @@ function validateCollision(this: Model) {
   const firstValue = this.getValue()[FIRST_THUMB_STANCE];
   const secondValue = this.getValue()[SECOND_THUMB_STANCE];
 
-  const isFirstThumbBiggerSecond = firstOffset > secondOffset;
-  const isSecondThumbLessFirst = secondOffset < firstOffset;
+  const isFirstValueBiggerSecond = firstValue > secondValue;
+  const isSecondValueLessFirst = secondValue < firstValue;
 
-  if (isFirstThumbBiggerSecond && isFirstStanceCurrent) {
+  if (isFirstValueBiggerSecond && isFirstStanceCurrent) {
     this.setOffset(SECOND_THUMB_STANCE, firstOffset);
     this.setValue(SECOND_THUMB_STANCE, firstValue);
   }
 
-  if (isSecondThumbLessFirst && !isFirstStanceCurrent) {
+  if (isSecondValueLessFirst && !isFirstStanceCurrent) {
     this.setOffset(FIRST_THUMB_STANCE, secondOffset);
     this.setValue(FIRST_THUMB_STANCE, secondValue);
   }
