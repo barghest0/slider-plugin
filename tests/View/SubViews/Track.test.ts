@@ -1,8 +1,7 @@
 import View from '../../../src/components/View/View';
 import Track from '../../../src/components/View/SubViews/Track/Track';
 import { Directions, Params } from '../../../src/components/Slider/types';
-import { ViewSubscribersNames, ViewObserver } from '../../../src/components/Observer/types';
-import Observer from '../../../src/components/Observer/Observer';
+import { ViewSubscribersNames } from '../../../src/components/Observer/types';
 
 describe('Track test', () => {
   document.body.innerHTML =
@@ -13,16 +12,19 @@ describe('Track test', () => {
   const track = new Track(view);
 
   const subscriberMockFunction = jest.fn();
-  beforeAll(()=>{
+  beforeAll(() => {
     track.renderTrack(Directions.horizontal);
     track.clickTrack();
-    track.subscribe(ViewSubscribersNames.updateThumbAfterTrackClick, subscriberMockFunction);
-  })
+    track.subscribe(
+      ViewSubscribersNames.updateThumbAfterTrackClick,
+      subscriberMockFunction,
+    );
+  });
 
-  beforeEach(()=>{
-    jest.clearAllMocks()
-  })
- 
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   test('is DOM track instance of HTMLElement test', () => {
     expect(track.track).toBeInstanceOf(HTMLElement);
   });

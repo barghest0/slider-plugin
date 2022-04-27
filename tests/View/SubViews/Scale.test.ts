@@ -9,10 +9,10 @@ describe('Scale test', () => {
   const root = <HTMLElement>document.querySelector(rootClass);
   const view = new View(root);
   const scale = new Scale(view);
-  
-  beforeAll(()=>{
+
+  beforeAll(() => {
     scale.renderScale(Directions.horizontal);
-  })
+  });
 
   test('is DOM scale instance of HTMLElement test', () => {
     expect(scale.scale).toBeInstanceOf(HTMLElement);

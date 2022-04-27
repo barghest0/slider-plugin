@@ -8,10 +8,10 @@ describe('Fill test', () => {
   const root = <HTMLElement>document.querySelector(rootClass);
   const view = new View(root);
   const fill = new Fill(view);
-  
-  beforeAll(()=>{
+
+  beforeAll(() => {
     fill.renderFill(Directions.horizontal);
-  })
+  });
 
   test('is DOM fill instance of HTMLElement test', () => {
     expect(fill.fill).toBeInstanceOf(HTMLElement);
