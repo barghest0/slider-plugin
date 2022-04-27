@@ -1,4 +1,5 @@
 const SCALE_CLASS = 'slider__scale';
+const LINE_CLASS = `${SCALE_CLASS}-line`;
 const MARK_CLASS = `${SCALE_CLASS}-mark`;
 const MARK_NUMBER_CLASS = `${SCALE_CLASS}-number`;
 const MAX_MULTIPLIER = 15;
@@ -14,4 +15,5 @@ export {
   SCALE_CLASS,
   MARK_CLASS,
   MARK_NUMBER_CLASS,
+  LINE_CLASS,
 };

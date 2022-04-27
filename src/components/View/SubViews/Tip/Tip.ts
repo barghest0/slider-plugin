@@ -37,7 +37,7 @@ class Tip {
     tip.classList.add(`${TIP_CLASS}-${stance}`);
     tip.classList.add(`${TIP_CLASS}_${direction}`);
     this.tips.push(tip);
-    this.view.DOMroot.appendChild(tip);
+    this.view.thumbView.thumbs[stance].appendChild(tip);
     this.updateTipStyle(stance);
   }
 }

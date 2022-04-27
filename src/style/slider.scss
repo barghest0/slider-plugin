@@ -25,7 +25,9 @@
 
   &__thumb {
     background-color: rgb(43, 177, 166);
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     position: absolute;
     top: 50%;
@@ -43,45 +45,34 @@
 
   &__tip {
     position: absolute;
-    width: auto;
-    height: 25px;
-    bottom: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border-radius: 5px;
     font-size: 16px;
-    left: 0;
-    transform: translate(-50%, 0);
 
     &_horizontal {
-      top: -40px;
+      bottom: 1.5rem;
     }
 
     &_vertical {
-      height: 0;
-      left: -30px;
+      padding: 1rem;
+      transform: translateX(-50%);
     }
   }
 
   &__scale {
-    display: flex;
     cursor: pointer;
-    position: relative;
-    bottom: 0;
+    margin-top: 5px;
 
     &-mark {
+      position: absolute;
+    }
+
+    &-line {
       background-color: rgb(43, 177, 166);
       position: absolute;
-      top: 7px;
       height: 10px;
       width: 1px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
 
       &_vertical {
-        left: 7px;
         height: 1px;
         width: 10px;
       }
@@ -94,10 +85,11 @@
       font-weight: bold;
       opacity: 0.5;
       transition: 0.1s linear;
+      left: -50%;
 
       &_vertical {
         left: 15px;
-        top: 0;
+        transform: translateY(-150%);
         margin-left: 5px;
       }
 
@@ -107,12 +99,9 @@
     }
 
     &_vertical {
-      position: absolute;
-      flex-direction: column;
       height: 100%;
-      width: 2px;
-      right: 0;
       top: 0;
+      margin-left: 10px;
     }
   }
 
