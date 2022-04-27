@@ -1,7 +1,6 @@
 import prepareOffset from './ModelModules/prepareOffset';
 import endsValidation from './ModelModules/endsValidation';
 import validateParams from './ModelModules/validateParams';
-
 import Observer from '../Observer/Observer';
 import { ModelObserver, ModelSubscribersNames } from '../Observer/types';
 
@@ -103,7 +102,10 @@ class Model extends Observer<ModelObserver> {
   }
 
   updateThumb(stance: number, cursorOffset: number) {
-    const directionalCursorOffset = this.prepareOffset(cursorOffset);
+    const directionalCursorOffset = Math.round(
+      this.prepareOffset(cursorOffset),
+    );
+
     const stepPercent = this.calculateStepPercent();
     const stepOffset =
       Math.round(directionalCursorOffset / stepPercent) * stepPercent;
