@@ -138,8 +138,8 @@ class Model extends Observer<ModelObserver> {
 
     let stance = FIRST_THUMB_STANCE;
 
-    const halfTrack = fillSize / 2;
-    const isSecondThumbNearest = cursorOffset > halfTrack + fillOffset;
+    const halfFill = fillSize / 2;
+    const isSecondThumbNearest = cursorOffset > halfFill + fillOffset;
 
     if (isSecondThumbNearest) stance = SECOND_THUMB_STANCE;
 
@@ -170,13 +170,15 @@ class Model extends Observer<ModelObserver> {
 
   private chooseCorrectStance(stance: number) {
     const { isRange, direction } = this.getParams();
+    if (!isRange) {
+      return FIRST_THUMB_STANCE;
+    }
+
     if (direction === Directions.vertical) {
       const reversedStance = Number(!stance);
       return reversedStance;
     }
-    if (!isRange) {
-      return FIRST_THUMB_STANCE;
-    }
+
     return stance;
   }
 
