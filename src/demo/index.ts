@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import Panel from './Panel/Panel';
 import './components/components';
+import './pages/index/index';
 import './assets/style/index.scss';
 
 const initSlider = () => {
@@ -32,6 +33,7 @@ const initSlider = () => {
     hasTips: true,
     hasScale: true,
   });
+
   const panel3 = new Panel(slider3);
 
   const slider4 = $('.js-slider-4').slider({
@@ -45,6 +47,7 @@ const initSlider = () => {
     hasTips: true,
     hasScale: true,
   });
+
   const panel4 = new Panel(slider4);
 };
 

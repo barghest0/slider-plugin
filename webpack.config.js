@@ -115,7 +115,7 @@ const config = {
     }),
 
     new HtmlWebpackPlugin({
-      template: `${PATHS.demo}/index.pug`,
+      template: `${PATHS.demo}/pages/index/index.pug`,
       filename: `./index.html`,
     }),
 

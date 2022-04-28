@@ -1,0 +1,12 @@
+.index {
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__sliders {
+    display: flex;
+    flex-direction: column;
+    row-gap: 100px;
+  }
+}
