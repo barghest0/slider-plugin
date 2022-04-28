@@ -14,7 +14,7 @@ const initSlider = () => {
     step: 1.5,
     value: [-3, 3],
     isRange: true,
-    direction: 'horizontal',
+    direction: 'vertical',
     hasFill: true,
     hasTips: true,
     hasScale: true,
