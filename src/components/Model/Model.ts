@@ -3,7 +3,6 @@ import endsValidation from './ModelModules/endsValidation';
 import validateParams from './ModelModules/validateParams';
 import Observer from '../Observer/Observer';
 import { ModelObserver, ModelSubscribersNames } from '../Observer/types';
-
 import { Directions, SliderFillState, SliderParams } from '../Slider/types';
 import {
   DEFAULT_SLIDER_PARAMS,
@@ -15,6 +14,7 @@ import {
   SECOND_OFFSET,
   SECOND_THUMB_STANCE,
 } from '../Slider/constants';
+
 import validateCollision from './ModelModules/validateCollision';
 
 class Model extends Observer<ModelObserver> {
@@ -108,8 +108,8 @@ class Model extends Observer<ModelObserver> {
   updateThumb(stance: number, cursorOffset: number) {
     const { isRange } = this.params;
 
-    const directionalCursorOffset = Math.round(
-      this.prepareOffset(cursorOffset),
+    const directionalCursorOffset = Number(
+      this.prepareOffset(cursorOffset).toFixed(MAX_DECIMAL_PLACES),
     );
 
     const stepPercent = this.calculateStepPercent();

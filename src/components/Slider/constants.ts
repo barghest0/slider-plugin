@@ -23,7 +23,7 @@ const MAX_OFFSET = 100;
 const MIN_OFFSET = 0;
 const MIN_STEP = 1;
 const INVALID_STEP = 0;
-const MAX_DECIMAL_PLACES = 3;
+const MAX_DECIMAL_PLACES = 5;
 const MIN_DECIMAL_PLACES = 0;
 
 const PARENT_CLASS = 'slider-parent';
