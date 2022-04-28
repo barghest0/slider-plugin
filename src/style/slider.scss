@@ -4,6 +4,7 @@
   align-self: center;
   justify-self: center;
   height: 5px;
+  border-radius: 30px;
 
   &_vertical {
     height: 100%;
@@ -14,9 +15,9 @@
     background-color: rgb(70, 70, 70);
     width: 100%;
     height: inherit;
-    border-radius: 50px;
-    border-radius: 20px;
+    border-radius: inherit;
     cursor: pointer;
+
     &_vertical {
       height: 100%;
       width: inherit;
@@ -32,20 +33,17 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-55%, -50%);
     width: 15px;
     height: 15px;
     border: 2px solid rgb(243, 243, 243);
     border-radius: 50%;
     z-index: 20;
     user-select: none;
-    -webkit-user-drag: none;
-    -webkit-app-region: no-drag;
   }
 
   &__tip {
     position: absolute;
-    border-radius: 5px;
     font-size: 16px;
 
     &_horizontal {
@@ -60,6 +58,7 @@
 
   &__scale {
     cursor: pointer;
+    position: relative;
     margin-top: 5px;
 
     &-mark {
@@ -100,8 +99,10 @@
 
     &_vertical {
       height: 100%;
-      top: 0;
+      margin-top: 0;
+      top: -100%;
       margin-left: 10px;
+      right: -100%;
     }
   }
 
@@ -111,7 +112,7 @@
     position: absolute;
     top: 0;
     height: inherit;
-    border-radius: 50px;
+    border-radius: inherit;
     cursor: pointer;
     transition: all 0.2s ease;
 
