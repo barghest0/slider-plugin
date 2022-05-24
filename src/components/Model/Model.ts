@@ -11,6 +11,7 @@ import {
   MAX_DECIMAL_PLACES,
   MAX_PERCENTS,
   MIN_OFFSET,
+  MAX_OFFSET,
   SECOND_OFFSET,
   SECOND_THUMB_STANCE,
 } from '../Slider/constants';
@@ -116,11 +117,15 @@ class Model extends Observer<ModelObserver> {
     const stepOffset =
       Math.round(directionalCursorOffset / stepPercent) * stepPercent;
 
-    this.setValue(stance, this.calculateValue(stepOffset, stepPercent));
-    this.setOffset(stance, this.calculateOffset(stance));
+    this.setActiveStance(stance);
+
+    this.setValidatedEndValues(
+      directionalCursorOffset,
+      stepOffset,
+      stepPercent,
+    );
 
     this.endsValidation(stance);
-    this.setActiveStance(stance);
 
     if (isRange) {
       this.validateCollision();
@@ -166,6 +171,33 @@ class Model extends Observer<ModelObserver> {
       fillOffset: this.calculateFillOffset(),
       fillSize: this.calculateFillSize(),
     };
+  }
+
+  private setValidatedEndValues(
+    cursorOffset: number,
+    stepOffset: number,
+    stepPercent: number,
+  ) {
+    const lastPartialGap = MAX_OFFSET - (MAX_OFFSET - stepOffset) / 2;
+
+    if (cursorOffset < lastPartialGap) {
+      this.setValue(
+        this.activeStance,
+        this.calculateValue(stepOffset, stepPercent),
+      );
+      this.setOffset(
+        this.activeStance,
+        this.calculateOffset(this.activeStance),
+      );
+    } else {
+      this.setValue(this.activeStance, this.params.max);
+
+      const directionalMaxOffset =
+        this.params.direction === Directions.horizontal
+          ? MAX_OFFSET
+          : MIN_OFFSET;
+      this.setOffset(this.activeStance, directionalMaxOffset);
+    }
   }
 
   private chooseCorrectStance(stance: number) {
