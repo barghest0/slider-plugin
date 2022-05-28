@@ -13,6 +13,7 @@ const HAS_SCALE_SELECTOR = '.js-has-scale';
 const HAS_FILL_SELECTOR = '.js-has-fill';
 const HAS_TIPS_SELECTOR = '.js-has-tips';
 const IS_DECIMAL_SELECTOR = '.js-is-decimal';
+const CAN_THUMB_PUSH_SELECTOR = '.js-can-thumb-push';
 const CHECKBOX_TYPE = 'checkbox';
 const NUMBER_TYPE = 'number';
 
@@ -38,4 +39,5 @@ export {
   IS_DECIMAL_SELECTOR,
   HAS_TIPS_SELECTOR,
   CHECKBOX_PANEL_SELECTOR,
+  CAN_THUMB_PUSH_SELECTOR,
 };

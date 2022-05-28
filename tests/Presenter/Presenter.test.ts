@@ -155,13 +155,6 @@ describe('Presenter test', () => {
     expect(presenter.DOMroot.classList).not.toContain(
       `${MAIN_CLASS}_${Directions.vertical}`,
     );
-    presenter.model.setParam(Params.direction, Directions.vertical);
-
-    presenter.clearHTML();
-
-    expect(presenter.DOMroot.classList).not.toContain(
-      `${MAIN_CLASS}_${Directions.horizontal}`,
-    );
   });
 
   test('correct unsubscribe', () => {

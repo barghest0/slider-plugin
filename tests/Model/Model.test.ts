@@ -92,6 +92,7 @@ describe('Model test', () => {
 
   test('check ends validation when first value little than min in horizontal/vertical direction', () => {
     model.setParam(Params.direction, Directions.horizontal);
+
     model.setOffset(FIRST_THUMB_STANCE, -20);
     model.endsValidation(FIRST_THUMB_STANCE);
 
@@ -107,22 +108,47 @@ describe('Model test', () => {
 
   test('expect set second offset equal first offset after validate collision', () => {
     model.setParam(Params.isRange, true);
+    model.setParam(Params.canThumbPush, true);
+    model.setValue(SECOND_THUMB_STANCE, 30);
+
     model.setOffset(SECOND_THUMB_STANCE, 50);
+
     model.updateThumb(FIRST_THUMB_STANCE, 100);
 
-    expect(model.getOffset()[FIRST_THUMB_STANCE]).toBe(
-      model.getOffset()[SECOND_THUMB_STANCE],
-    );
+    expect(model.getOffset()[FIRST_THUMB_STANCE]).toBe(100);
   });
 
-  test('expect set first offset equal seconf offset after validate collision', () => {
+  test('expect set second offset equal first offset after validate collision', () => {
     model.setParam(Params.isRange, true);
+    model.setValue(SECOND_THUMB_STANCE, 30);
+
+    model.setOffset(SECOND_THUMB_STANCE, 50);
+
+    model.updateThumb(FIRST_THUMB_STANCE, 100);
+
+    expect(model.getOffset()[FIRST_THUMB_STANCE]).toBe(50);
+  });
+
+  test('expect set first offset equal second offset after validate collision', () => {
+    model.setParam(Params.isRange, true);
+    model.setParam(Params.canThumbPush, true);
+    model.setValue(SECOND_THUMB_STANCE, 30);
+
     model.setOffset(FIRST_THUMB_STANCE, 80);
     model.updateThumb(SECOND_THUMB_STANCE, 10);
 
-    expect(model.getOffset()[SECOND_THUMB_STANCE]).toBe(
-      model.getOffset()[FIRST_THUMB_STANCE],
-    );
+    expect(model.getOffset()[SECOND_THUMB_STANCE]).toBe(10);
+  });
+
+  test('expect set first offset equal second offset after validate collision', () => {
+    model.setParam(Params.isRange, true);
+
+    model.setValue(SECOND_THUMB_STANCE, 30);
+
+    model.setOffset(FIRST_THUMB_STANCE, 80);
+    model.updateThumb(SECOND_THUMB_STANCE, 10);
+
+    expect(model.getOffset()[SECOND_THUMB_STANCE]).toBe(80);
   });
 
   test('check calculate fill state with value equal 20-40 in horizontal/vertical direction', () => {

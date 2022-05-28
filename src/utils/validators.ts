@@ -42,6 +42,8 @@ function getParamsFromDataset(element: JQuery, params: SliderParams) {
   const hasTips = Boolean(element.data(Params.hasTips)) || params.hasTips;
   const hasScale = Boolean(element.data(Params.hasScale)) || params.hasScale;
   const isDecimal = Boolean(element.data(Params.isDecimal)) || params.isDecimal;
+  const canThumbPush =
+    Boolean(element.data(Params.canThumbPush)) || params.canThumbPush;
 
   return {
     min,
@@ -53,6 +55,7 @@ function getParamsFromDataset(element: JQuery, params: SliderParams) {
     direction,
     hasFill,
     hasTips,
+    canThumbPush,
     hasScale,
     isDecimal,
   };
@@ -68,6 +71,7 @@ function getValidatedParams({
   hasFill,
   hasTips,
   hasScale,
+  canThumbPush,
 }: UserSliderParams) {
   const validatedMin = min ?? DEFAULT_SLIDER_PARAMS.min;
   const validatedMax = max ?? DEFAULT_SLIDER_PARAMS.max;
@@ -77,6 +81,8 @@ function getValidatedParams({
   const validatedHasFill = hasFill ?? DEFAULT_SLIDER_PARAMS.hasFill;
   const validatedHasTips = hasTips ?? DEFAULT_SLIDER_PARAMS.hasTips;
   const validatedHasScale = hasScale ?? DEFAULT_SLIDER_PARAMS.hasScale;
+  const validatedCanThumbPush =
+    canThumbPush ?? DEFAULT_SLIDER_PARAMS.canThumbPush;
 
   let validatedValue = value ?? DEFAULT_SLIDER_PARAMS.value;
 
@@ -98,6 +104,7 @@ function getValidatedParams({
     hasFill: validatedHasFill,
     hasTips: validatedHasTips,
     hasScale: validatedHasScale,
+    canThumbPush: validatedCanThumbPush,
   };
 }
 

@@ -25,11 +25,11 @@ class Model extends Observer<ModelObserver> {
 
   endsValidation: (stance: number) => void;
 
+  public prepareOffset: (offset: number) => number;
+
   private validateCollision: () => void;
 
   private activeStance: number;
-
-  private prepareOffset: (offset: number) => number;
 
   private thumbsOffset: number[];
 

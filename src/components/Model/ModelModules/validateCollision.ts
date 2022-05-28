@@ -15,17 +15,29 @@ function validateCollision(this: Model) {
   const firstValue = this.getValue()[FIRST_THUMB_STANCE];
   const secondValue = this.getValue()[SECOND_THUMB_STANCE];
 
-  const isFirstValueBiggerSecond = firstValue > secondValue;
-  const isSecondValueLessFirst = secondValue < firstValue;
+  const isFirstValueBiggerSecond =
+    this.prepareOffset(firstOffset) > this.prepareOffset(secondOffset);
+  const isSecondValueLessFirst =
+    this.prepareOffset(secondOffset) < this.prepareOffset(firstOffset);
 
   if (isFirstValueBiggerSecond && isFirstStanceCurrent) {
-    this.setOffset(SECOND_THUMB_STANCE, firstOffset);
-    this.setValue(SECOND_THUMB_STANCE, firstValue);
+    if (this.getParams().canThumbPush) {
+      this.setOffset(SECOND_THUMB_STANCE, firstOffset);
+      this.setValue(SECOND_THUMB_STANCE, firstValue);
+    } else {
+      this.setOffset(FIRST_THUMB_STANCE, secondOffset);
+      this.setValue(FIRST_THUMB_STANCE, secondValue);
+    }
   }
 
   if (isSecondValueLessFirst && !isFirstStanceCurrent) {
-    this.setOffset(FIRST_THUMB_STANCE, secondOffset);
-    this.setValue(FIRST_THUMB_STANCE, secondValue);
+    if (this.getParams().canThumbPush) {
+      this.setOffset(FIRST_THUMB_STANCE, secondOffset);
+      this.setValue(FIRST_THUMB_STANCE, secondValue);
+    } else {
+      this.setOffset(SECOND_THUMB_STANCE, firstOffset);
+      this.setValue(SECOND_THUMB_STANCE, firstValue);
+    }
   }
 }
 

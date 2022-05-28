@@ -10,6 +10,7 @@ const DEFAULT_SLIDER_PARAMS: SliderParams = {
   hasFill: true,
   hasTips: true,
   hasScale: true,
+  canThumbPush: false,
 };
 
 const FIRST_THUMB_STANCE = 0;

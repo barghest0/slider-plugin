@@ -13,6 +13,7 @@ type SliderParams = {
   hasFill: boolean;
   hasTips: boolean;
   hasScale: boolean;
+  canThumbPush: boolean;
 };
 
 type UserSliderParams = {
@@ -25,6 +26,7 @@ type UserSliderParams = {
   hasFill?: boolean;
   hasTips?: boolean;
   hasScale?: boolean;
+  canThumbPush?: boolean;
 };
 
 type SliderFillState = {
@@ -49,6 +51,7 @@ enum Params {
   hasScale = 'hasScale',
   isDecimal = 'isDecimal',
   decimalPlaces = 'decimalPlaces',
+  canThumbPush = 'canThumbPush',
   dataFirstValue = 'firstValue',
   dataSecondValue = 'secondValue',
 }

@@ -7,7 +7,9 @@ import Model from '../Model';
 
 import {
   FIRST_THUMB_STANCE,
+  FIRST_VALUE,
   SECOND_THUMB_STANCE,
+  SINGLE_THUMB,
 } from '../../Slider/constants';
 import { SliderParams } from '../../Slider/types';
 
@@ -24,6 +26,7 @@ function validateParams(
     hasTips,
     hasScale,
     panel,
+    canThumbPush,
   }: SliderParams,
 ) {
   const validatedValue = value;
@@ -55,6 +58,7 @@ function validateParams(
     hasTips,
     hasScale,
     panel,
+    canThumbPush,
   };
 
   return validatedParams;

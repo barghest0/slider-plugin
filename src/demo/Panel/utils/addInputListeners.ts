@@ -32,6 +32,11 @@ function addInputListeners(this: Panel) {
     makeHandleCommonParamChange(Params.min),
   );
 
+  this.inputs.canThumbPush.addEventListener(
+    'change',
+    makeHandleCommonParamChange(Params.canThumbPush),
+  );
+
   this.inputs.maxValueInput.addEventListener(
     'change',
     makeHandleCommonParamChange(Params.max),
