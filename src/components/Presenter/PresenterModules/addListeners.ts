@@ -1,4 +1,4 @@
-import Presenter from 'components/Presenter';
+import Presenter from 'components/Presenter/Presenter';
 import {
   FIRST_THUMB_STANCE,
   SECOND_THUMB_STANCE,

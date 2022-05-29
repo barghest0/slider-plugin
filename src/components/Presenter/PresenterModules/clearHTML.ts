@@ -1,4 +1,4 @@
-import Presenter from 'components/Presenter';
+import Presenter from 'components/Presenter/Presenter';
 
 import { MAIN_CLASS, PARENT_CLASS, PREFIX } from 'components/Slider/constants';
 import { Directions } from 'components/Slider/types';

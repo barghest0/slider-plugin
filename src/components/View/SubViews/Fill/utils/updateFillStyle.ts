@@ -1,4 +1,4 @@
-import Fill from 'components/Fill';
+import Fill from '../Fill';
 
 function updateFill(this: Fill) {
   if (this.view.getParams().isRange) {

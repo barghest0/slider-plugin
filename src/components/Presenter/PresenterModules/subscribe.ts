@@ -1,4 +1,4 @@
-import Presenter from 'components/Presenter';
+import Presenter from 'components/Presenter/Presenter';
 import {
   ModelSubscribersNames,
   ViewSubscribersNames,

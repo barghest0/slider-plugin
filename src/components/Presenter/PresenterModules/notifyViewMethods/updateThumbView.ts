@@ -2,7 +2,7 @@ import {
   FIRST_THUMB_STANCE,
   SECOND_THUMB_STANCE,
 } from 'components/Slider/constants';
-import Presenter from 'components/Presenter';
+import Presenter from 'components/Presenter/Presenter';
 
 function updateThumbView(this: Presenter) {
   const stance = this.model.getActiveStance();

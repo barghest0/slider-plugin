@@ -1,4 +1,4 @@
-import Model from 'components/Model';
+import Model from 'components/Model/Model';
 import {
   FIRST_THUMB_STANCE,
   SECOND_THUMB_STANCE,

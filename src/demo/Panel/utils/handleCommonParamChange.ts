@@ -1,5 +1,4 @@
-import Panel from 'demo/Panel';
-
+import Panel from '../Panel';
 import { NUMBER_TYPE } from '../constants';
 
 function handleCommonParamChange(this: Panel, event: Event, param: string) {

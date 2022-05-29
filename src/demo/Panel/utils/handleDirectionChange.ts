@@ -1,5 +1,6 @@
 import { Directions } from 'components/Slider/types';
-import Panel from 'demo/Panel';
+
+import Panel from '../Panel';
 
 function handleDirectionChange(this: Panel, event: Event) {
   const target = <HTMLInputElement>event.target;

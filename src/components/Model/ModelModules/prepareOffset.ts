@@ -1,4 +1,4 @@
-import Model from 'components/Model';
+import Model from 'components/Model/Model';
 import { MAX_OFFSET } from 'components/Slider/constants';
 import { Directions } from 'components/Slider/types';
 
