@@ -1,4 +1,4 @@
-import Presenter from '../../Presenter';
+import Presenter from 'components/Presenter';
 
 function updateThumbAfterTrackClick(this: Presenter) {
   const cursorOffset = this.view.trackView.getCursorOffset();

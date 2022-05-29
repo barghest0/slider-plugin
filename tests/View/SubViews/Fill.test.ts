@@ -1,6 +1,6 @@
-import View from '../../../src/components/View/View';
-import Fill from '../../../src/components/View/SubViews/Fill/Fill';
-import { Directions } from '../../../src/components/Slider/types';
+import View from 'components/View/View';
+import Fill from 'components/View/SubViews/Fill/Fill';
+import { Directions } from 'components/Slider/types';
 
 describe('Fill test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;

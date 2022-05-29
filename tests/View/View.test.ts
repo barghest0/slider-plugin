@@ -1,12 +1,12 @@
-import View from '../../src/components/View/View';
-import { Directions, Params } from '../../src/components/Slider/types';
+import View from 'components/View/View';
+import { Directions, Params } from 'components/Slider/types';
 import {
   DEFAULT_SLIDER_PARAMS,
   FIRST_THUMB_STANCE,
   FIRST_VALUE,
   SECOND_THUMB_STANCE,
   SECOND_VALUE,
-} from '../../src/components/Slider/constants';
+} from 'components/Slider/constants';
 
 describe('View test', () => {
   document.body.innerHTML = `<div id="slider-1" data-testid="slider-1" class="slider-1"></div>`;

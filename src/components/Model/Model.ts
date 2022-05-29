@@ -1,9 +1,16 @@
 import prepareOffset from './ModelModules/prepareOffset';
 import endsValidation from './ModelModules/endsValidation';
 import validateParams from './ModelModules/validateParams';
-import Observer from '../Observer/Observer';
-import { ModelObserver, ModelSubscribersNames } from '../Observer/types';
-import { Directions, SliderFillState, SliderParams } from '../Slider/types';
+import Observer from 'components/Observer/Observer';
+import {
+  ModelObserver,
+  ModelSubscribersNames,
+} from 'components/Observer/types';
+import {
+  Directions,
+  SliderFillState,
+  SliderParams,
+} from 'components/Slider/types';
 import {
   DEFAULT_SLIDER_PARAMS,
   FIRST_OFFSET,
@@ -14,7 +21,7 @@ import {
   MAX_OFFSET,
   SECOND_OFFSET,
   SECOND_THUMB_STANCE,
-} from '../Slider/constants';
+} from 'components/Slider/constants';
 
 import validateCollision from './ModelModules/validateCollision';
 

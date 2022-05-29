@@ -1,7 +1,7 @@
-import Slider from '../components/Slider/Slider';
-import { getParamsFromDataset, getValidatedParams } from '../utils/validators';
-import { UserSliderParams } from '../components/Slider/types';
-import { SINGLE_SLIDER } from '../components/Slider/constants';
+import Slider from 'components/Slider/Slider';
+import { getParamsFromDataset, getValidatedParams } from 'utils/validators';
+import { UserSliderParams } from 'components/Slider/types';
+import { SINGLE_SLIDER } from 'components/Slider/constants';
 
 function slider(this: JQuery, params?: UserSliderParams) {
   const sliderItem = this[SINGLE_SLIDER];

@@ -3,8 +3,8 @@ import {
   FIRST_THUMB_STANCE,
   SECOND_OFFSET,
   SECOND_THUMB_STANCE,
-} from '../../Slider/constants';
-import Model from '../Model';
+} from 'components/Slider/constants';
+import Model from 'components/Model';
 
 function validateCollision(this: Model) {
   const isFirstStanceCurrent = this.getActiveStance() === FIRST_THUMB_STANCE;

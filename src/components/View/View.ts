@@ -13,8 +13,8 @@ import {
   OffsetDirection,
   OffsetDirections,
   SliderParams,
-} from '../Slider/types';
-import { DEFAULT_SLIDER_PARAMS } from '../Slider/constants';
+} from 'components/Slider/types';
+import { DEFAULT_SLIDER_PARAMS } from 'components/Slider/constants';
 
 class View {
   thumbView: Thumb;

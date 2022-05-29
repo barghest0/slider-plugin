@@ -1,9 +1,9 @@
-import Presenter from '../Presenter';
+import Presenter from 'components/Presenter';
 
 import {
   ModelSubscribersNames,
   ViewSubscribersNames,
-} from '../../Observer/types';
+} from 'components/Observer/types';
 
 function unsubscribe(this: Presenter) {
   this.view.thumbView.unsubscribe(

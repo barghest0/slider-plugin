@@ -1,7 +1,7 @@
-import Model from '../Model';
+import Model from 'components/Model';
 
-import { MAX_OFFSET } from '../../Slider/constants';
-import { Directions } from '../../Slider/types';
+import { MAX_OFFSET } from 'components/Slider/constants';
+import { Directions } from 'components/Slider/types';
 
 function prepareOffset(this: Model, offset: number): number {
   const { direction } = this.getParams();

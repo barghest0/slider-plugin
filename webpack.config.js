@@ -11,6 +11,8 @@ const PATHS = {
 };
 
 const config = {
+  context: path.resolve(__dirname, 'src'),
+
   externals: {
     path: PATHS,
     jquery: 'jQuery',
@@ -19,6 +21,12 @@ const config = {
   entry: {
     index: `${PATHS.src}/demo/index.ts`,
     slider: `${PATHS.src}/plugin/plugin.ts`,
+  },
+
+  output: {
+    path: PATHS.dist,
+    filename: `${PATHS.assets}/js/[name].js`,
+    clean: true,
   },
 
   optimization: {
@@ -44,12 +52,6 @@ const config = {
     },
   },
 
-  output: {
-    path: PATHS.dist,
-    filename: `${PATHS.assets}/js/[name].js`,
-    clean: true,
-  },
-
   module: {
     rules: [
       {
@@ -59,7 +61,7 @@ const config = {
       },
       {
         test: /\.ts$/,
-        use: 'ts-loader',
+        use: 'babel-loader',
         exclude: /node_modules/,
       },
       {

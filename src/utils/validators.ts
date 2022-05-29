@@ -2,12 +2,12 @@ import {
   DEFAULT_SLIDER_PARAMS,
   FIRST_VALUE,
   SINGLE_THUMB,
-} from '../components/Slider/constants';
+} from 'components/Slider/constants';
 import {
   Params,
   SliderParams,
   UserSliderParams,
-} from '../components/Slider/types';
+} from 'components/Slider/types';
 
 function getParamsFromDataset(element: JQuery, params: SliderParams) {
   let dataValue;

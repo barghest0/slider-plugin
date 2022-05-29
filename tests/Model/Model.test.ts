@@ -1,17 +1,17 @@
-import Model from '../../src/components/Model/Model';
-import validateStep from '../../src/components/Model/ModelModules/validationParamsMethods/validateStep';
-import validateMin from '../../src/components/Model/ModelModules/validationParamsMethods/validateMin';
+import Model from 'components/Model/Model';
+import validateStep from 'components/Model/ModelModules/validationParamsMethods/validateStep';
+import validateMin from 'components/Model/ModelModules/validationParamsMethods/validateMin';
 import {
   DEFAULT_SLIDER_PARAMS,
   FIRST_THUMB_STANCE,
   MAX_OFFSET,
   MIN_OFFSET,
   SECOND_THUMB_STANCE,
-} from '../../src/components/Slider/constants';
-import { Directions, Params } from '../../src/components/Slider/types';
-import validateFirstThumb from '../../src/components/Model/ModelModules/validationParamsMethods/validateFirstThumb';
-import { getValidatedParams } from '../../src/utils/validators';
-import { ModelSubscribersNames } from '../../src/components/Observer/types';
+} from 'components/Slider/constants';
+import { Directions, Params } from 'components/Slider/types';
+import validateFirstThumb from 'components/Model/ModelModules/validationParamsMethods/validateFirstThumb';
+import { getValidatedParams } from 'utils/validators';
+import { ModelSubscribersNames } from 'components/Observer/types';
 
 describe('Model test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1" ></div>`;

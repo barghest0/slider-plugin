@@ -5,8 +5,8 @@ import {
   SCALE_NUMBER_DECIMAL_PLACES,
 } from '../constants';
 
-import { MAX_PERCENTS } from '../../../../Slider/constants';
-import { Direction, Directions } from '../../../../Slider/types';
+import { MAX_PERCENTS } from 'components/Slider/constants';
+import { Direction, Directions } from 'components/Slider/types';
 
 function getDelimiter(dividend: number, delimiters: number[]): number {
   for (const delimiter of delimiters) {

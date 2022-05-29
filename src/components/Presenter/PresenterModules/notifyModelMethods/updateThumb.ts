@@ -1,4 +1,4 @@
-import Presenter from '../../Presenter';
+import Presenter from 'components/Presenter';
 
 function updateThumb(this: Presenter) {
   const stance = this.view.thumbView.getActiveStance();

@@ -1,4 +1,4 @@
-import Presenter from '../../Presenter';
+import Presenter from 'components/Presenter';
 
 function updateFillView(this: Presenter) {
   const state = this.model.getFillState();

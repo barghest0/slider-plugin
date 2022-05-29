@@ -1,24 +1,24 @@
 import panelTemplate from './constants';
 
-import Slider from '../../src/components/Slider/Slider';
+import Slider from 'components/Slider/Slider';
 import {
   FIRST_VALUE,
   DEFAULT_SLIDER_PARAMS,
-} from '../../src/components/Slider/constants';
-import { Directions, Params } from '../../src/components/Slider/types';
-import Panel from '../../src/demo/Panel/Panel';
+} from 'components/Slider/constants';
+import { Directions, Params } from 'components/Slider/types';
+import Panel from 'demo/Panel/Panel';
 import {
   CHECKBOX_PARENT_CLASS,
   CHECKBOX_TYPE,
   FIRST_VALUE_SELECTOR,
   IS_RANGE_SELECTOR,
   NUMBER_TYPE,
-} from '../../src/demo/Panel/constants';
-import handleDirectionChange from '../../src/demo/Panel/utils/handleDirectionChange';
-import handleCommonParamChange from '../../src/demo/Panel/utils/handleCommonParamChange';
-import handleValueChange from '../../src/demo/Panel/utils/handleValueChange';
-import { getValidatedParams } from '../../src/utils/validators';
-import '../../src/plugin/plugin';
+} from 'demo/Panel/constants';
+import handleDirectionChange from 'demo/Panel/utils/handleDirectionChange';
+import handleCommonParamChange from 'demo/Panel/utils/handleCommonParamChange';
+import handleValueChange from 'demo/Panel/utils/handleValueChange';
+import { getValidatedParams } from 'utils/validators';
+import 'plugin/plugin';
 
 describe('Panel test', () => {
   document.body.innerHTML = panelTemplate;

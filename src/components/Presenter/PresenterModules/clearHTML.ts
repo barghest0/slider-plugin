@@ -1,7 +1,7 @@
-import Presenter from '../Presenter';
+import Presenter from 'components/Presenter';
 
-import { MAIN_CLASS, PARENT_CLASS, PREFIX } from '../../Slider/constants';
-import { Directions } from '../../Slider/types';
+import { MAIN_CLASS, PARENT_CLASS, PREFIX } from 'components/Slider/constants';
+import { Directions } from 'components/Slider/types';
 
 function clearHTML(this: Presenter) {
   const { direction } = this.getParams();

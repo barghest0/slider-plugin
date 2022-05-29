@@ -1,11 +1,11 @@
-import View from '../View';
+import View from 'components/View/View';
 
 import {
   Direction,
   Directions,
   FillDirections,
   OffsetDirections,
-} from '../../Slider/types';
+} from 'components/Slider/types';
 
 function prepareDirectionForInteraction(this: View, direction: Direction) {
   this.offsetDirection =

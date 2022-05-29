@@ -10,21 +10,21 @@ import updateThumbView from './PresenterModules/notifyViewMethods/updateThumbVie
 import unsubscribe from './PresenterModules/unsubscribe';
 import getSliderParams from './PresenterModules/getSliderParams';
 
-import View from '../View/View';
-import Model from '../Model/Model';
+import View from 'components/View/View';
+import Model from 'components/Model/Model';
 
 import {
   Direction,
   Directions,
   SliderFillState,
   SliderParams,
-} from '../Slider/types';
+} from 'components/Slider/types';
 import {
   FIRST_THUMB_STANCE,
   MAIN_CLASS,
   PARENT_CLASS,
   SECOND_THUMB_STANCE,
-} from '../Slider/constants';
+} from 'components/Slider/constants';
 
 class Presenter {
   DOMroot: HTMLElement;

@@ -3,8 +3,8 @@ import prepareScaleData from './prepareScaleData';
 import Scale from '../Scale';
 import { LINE_CLASS, MARK_CLASS, MARK_NUMBER_CLASS } from '../constants';
 
-import { Direction } from '../../../../Slider/types';
-import { PREFIX } from '../../../../Slider/constants';
+import { Direction } from 'components/Slider/types';
+import { PREFIX } from 'components/Slider/constants';
 
 function renderScaleMarks(
   this: Scale,

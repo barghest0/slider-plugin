@@ -1,6 +1,6 @@
-import Presenter from '../Presenter';
+import Presenter from 'components/Presenter';
 
-import { SliderParams } from '../../Slider/types';
+import { SliderParams } from 'components/Slider/types';
 
 function getSliderParams(this: Presenter, params: SliderParams) {
   return params;

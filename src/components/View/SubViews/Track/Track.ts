@@ -2,13 +2,13 @@ import clickTrack from './utils/clickTrack';
 import handleTrackClick from './utils/handleTrackClick';
 import TRACK_CLASS from './constants';
 
-import View from '../../View';
+import View from 'components/View/View';
 
-import { PREFIX } from '../../../Slider/constants';
-import { Direction } from '../../../Slider/types';
+import { PREFIX } from 'components/Slider/constants';
+import { Direction } from 'components/Slider/types';
 
-import Observer from '../../../Observer/Observer';
-import { ViewObserver } from '../../../Observer/types';
+import Observer from 'components/Observer/Observer';
+import { ViewObserver } from 'components/Observer/types';
 
 class Track extends Observer<ViewObserver> {
   view: View;
