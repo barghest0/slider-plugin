@@ -1,10 +1,9 @@
-import FILL_CLASS from './constants';
-import updateFillStyle from './utils/updateFillStyle';
-
 import View from 'components/View/View';
-
 import { Direction, SliderFillState } from 'components/Slider/types';
 import { PREFIX } from 'components/Slider/constants';
+
+import updateFillStyle from './utils/updateFillStyle';
+import FILL_CLASS from './constants';
 
 class Fill {
   view: View;

@@ -1,10 +1,9 @@
-import { SCALE_CLASS } from './constants';
-import renderScaleMarks from './utils/renderScaleMarks';
-
 import View from 'components/View/View';
-
 import { Direction } from 'components/Slider/types';
 import { PREFIX } from 'components/Slider/constants';
+
+import renderScaleMarks from './utils/renderScaleMarks';
+import { SCALE_CLASS } from './constants';
 
 class Scale {
   scale!: HTMLElement;

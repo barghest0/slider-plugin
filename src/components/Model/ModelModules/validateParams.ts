@@ -1,15 +1,14 @@
-import validateFirstThumb from './validationParamsMethods/validateFirstThumb';
-import validateMin from './validationParamsMethods/validateMin';
-import validateSecondThumb from './validationParamsMethods/validateSecondThumb';
-import validateStep from './validationParamsMethods/validateStep';
-
 import Model from 'components/Model';
-
 import {
   FIRST_THUMB_STANCE,
   SECOND_THUMB_STANCE,
 } from 'components/Slider/constants';
 import { SliderParams } from 'components/Slider/types';
+
+import validateFirstThumb from './validationParamsMethods/validateFirstThumb';
+import validateMin from './validationParamsMethods/validateMin';
+import validateSecondThumb from './validationParamsMethods/validateSecondThumb';
+import validateStep from './validationParamsMethods/validateStep';
 
 function validateParams(
   this: Model,

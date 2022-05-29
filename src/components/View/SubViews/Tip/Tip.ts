@@ -1,10 +1,9 @@
-import TIP_CLASS from './constants';
-import updateTipText from './utils/updateTipText';
-
 import View from 'components/View/View';
-
 import { Direction } from 'components/Slider/types';
 import { PREFIX } from 'components/Slider/constants';
+
+import updateTipText from './utils/updateTipText';
+import TIP_CLASS from './constants';
 
 class Tip {
   view: View;

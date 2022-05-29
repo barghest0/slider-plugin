@@ -1,18 +1,5 @@
-import clearHTML from './PresenterModules/clearHTML';
-import removeListeners from './PresenterModules/removeListeners';
-import subscribe from './PresenterModules/subscribe';
-import updateTipView from './PresenterModules/notifyViewMethods/updateTipView';
-import updateFillView from './PresenterModules/notifyViewMethods/updateFillView';
-import addListeners from './PresenterModules/addListeners';
-import updateThumbAfterTrackClick from './PresenterModules/notifyModelMethods/updateThumbAfterTrackClick';
-import updateThumb from './PresenterModules/notifyModelMethods/updateThumb';
-import updateThumbView from './PresenterModules/notifyViewMethods/updateThumbView';
-import unsubscribe from './PresenterModules/unsubscribe';
-import getSliderParams from './PresenterModules/getSliderParams';
-
 import View from 'components/View/View';
 import Model from 'components/Model/Model';
-
 import {
   Direction,
   Directions,
@@ -25,6 +12,18 @@ import {
   PARENT_CLASS,
   SECOND_THUMB_STANCE,
 } from 'components/Slider/constants';
+
+import clearHTML from './PresenterModules/clearHTML';
+import removeListeners from './PresenterModules/removeListeners';
+import subscribe from './PresenterModules/subscribe';
+import updateTipView from './PresenterModules/notifyViewMethods/updateTipView';
+import updateFillView from './PresenterModules/notifyViewMethods/updateFillView';
+import addListeners from './PresenterModules/addListeners';
+import updateThumbAfterTrackClick from './PresenterModules/notifyModelMethods/updateThumbAfterTrackClick';
+import updateThumb from './PresenterModules/notifyModelMethods/updateThumb';
+import updateThumbView from './PresenterModules/notifyViewMethods/updateThumbView';
+import unsubscribe from './PresenterModules/unsubscribe';
+import getSliderParams from './PresenterModules/getSliderParams';
 
 class Presenter {
   DOMroot: HTMLElement;

@@ -1,5 +1,3 @@
-import panelTemplate from './constants';
-
 import Slider from 'components/Slider/Slider';
 import {
   FIRST_VALUE,
@@ -19,6 +17,8 @@ import handleCommonParamChange from 'demo/Panel/utils/handleCommonParamChange';
 import handleValueChange from 'demo/Panel/utils/handleValueChange';
 import { getValidatedParams } from 'utils/validators';
 import 'plugin/plugin';
+
+import panelTemplate from './constants';
 
 describe('Panel test', () => {
   document.body.innerHTML = panelTemplate;

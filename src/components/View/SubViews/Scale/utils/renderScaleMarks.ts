@@ -1,10 +1,9 @@
-import prepareScaleData from './prepareScaleData';
+import { Direction } from 'components/Slider/types';
+import { PREFIX } from 'components/Slider/constants';
 
 import Scale from '../Scale';
 import { LINE_CLASS, MARK_CLASS, MARK_NUMBER_CLASS } from '../constants';
-
-import { Direction } from 'components/Slider/types';
-import { PREFIX } from 'components/Slider/constants';
+import prepareScaleData from './prepareScaleData';
 
 function renderScaleMarks(
   this: Scale,

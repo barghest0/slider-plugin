@@ -1,7 +1,5 @@
-import slider from './slider';
-
 import '../style/slider.scss';
-
+import slider from './slider';
 import DEFAULT_SELECTOR from './constants';
 
 $.fn.extend({

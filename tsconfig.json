@@ -8,10 +8,8 @@
     "alwaysStrict": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "paths": {
-      "*": ["./src/*"]
-    },
-    "baseUrl": "./src"
+    "baseUrl": "./"
   },
+  "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }

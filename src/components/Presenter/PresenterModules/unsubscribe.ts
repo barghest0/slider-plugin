@@ -1,5 +1,4 @@
 import Presenter from 'components/Presenter';
-
 import {
   ModelSubscribersNames,
   ViewSubscribersNames,

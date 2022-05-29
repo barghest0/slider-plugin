@@ -1,10 +1,6 @@
-import Panel from '../Panel';
-
-import {
-  FIRST_VALUE,
-  SECOND_VALUE,
-} from '../../../components/Slider/constants';
-import { Directions, SliderParams } from '../../../components/Slider/types';
+import { FIRST_VALUE, SECOND_VALUE } from 'components/Slider/constants';
+import { Directions, SliderParams } from 'components/Slider/types';
+import Panel from 'demo/Panel';
 
 function initializePanelsParams(this: Panel) {
   const {

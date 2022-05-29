@@ -1,4 +1,4 @@
-import { SliderParams } from '../Slider/types';
+import { SliderParams } from 'components/Slider/types';
 
 type SubscriberFn = (params: SliderParams) => void;
 

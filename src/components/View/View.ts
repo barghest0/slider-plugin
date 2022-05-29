@@ -1,11 +1,3 @@
-import Thumb from './SubViews/Thumb/Thumb';
-import Scale from './SubViews/Scale/Scale';
-import Fill from './SubViews/Fill/Fill';
-import Track from './SubViews/Track/Track';
-import Tip from './SubViews/Tip/Tip';
-import prepareDirectionForInteraction from './ViewModules/prepareDirectionForInteraction';
-import calculateCursorOffset from './ViewModules/calculateCursorOffset';
-
 import {
   Direction,
   FillDirection,
@@ -15,6 +7,14 @@ import {
   SliderParams,
 } from 'components/Slider/types';
 import { DEFAULT_SLIDER_PARAMS } from 'components/Slider/constants';
+
+import Thumb from './SubViews/Thumb/Thumb';
+import Scale from './SubViews/Scale/Scale';
+import Fill from './SubViews/Fill/Fill';
+import Track from './SubViews/Track/Track';
+import Tip from './SubViews/Tip/Tip';
+import prepareDirectionForInteraction from './ViewModules/prepareDirectionForInteraction';
+import calculateCursorOffset from './ViewModules/calculateCursorOffset';
 
 class View {
   thumbView: Thumb;

@@ -1,6 +1,3 @@
-import prepareOffset from './ModelModules/prepareOffset';
-import endsValidation from './ModelModules/endsValidation';
-import validateParams from './ModelModules/validateParams';
 import Observer from 'components/Observer/Observer';
 import {
   ModelObserver,
@@ -23,6 +20,9 @@ import {
   SECOND_THUMB_STANCE,
 } from 'components/Slider/constants';
 
+import validateParams from './ModelModules/validateParams';
+import endsValidation from './ModelModules/endsValidation';
+import prepareOffset from './ModelModules/prepareOffset';
 import validateCollision from './ModelModules/validateCollision';
 
 class Model extends Observer<ModelObserver> {

@@ -1,8 +1,7 @@
-import Thumb from '../Thumb';
-
 import { Directions } from 'components/Slider/types';
-
 import { ViewSubscribersNames } from 'components/Observer/types';
+
+import Thumb from '../Thumb';
 
 function handleThumbDrag(this: Thumb, event: PointerEvent, stance: number) {
   const { direction } = this.view.getParams();

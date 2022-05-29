@@ -1,14 +1,12 @@
+import View from 'components/View/View';
+import Observer from 'components/Observer/Observer';
+import { ViewObserver } from 'components/Observer/types';
+import { PREFIX } from 'components/Slider/constants';
+
 import updateThumbStyle from './utils/updateThumbStyle';
 import dragAndDropThumb from './utils/dragAndDropThumb';
 import handleThumbDrag from './utils/handleThumbDrag';
 import THUMB_CLASS from './constants';
-
-import View from 'components/View/View';
-
-import Observer from 'components/Observer/Observer';
-import { ViewObserver } from 'components/Observer/types';
-
-import { PREFIX } from 'components/Slider/constants';
 
 class Thumb extends Observer<ViewObserver> {
   view: View;

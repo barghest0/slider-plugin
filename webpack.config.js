@@ -29,6 +29,14 @@ const config = {
     clean: true,
   },
 
+  resolve: {
+    extensions: ['.js', '.ts'],
+    modules: ['node_modules'],
+    alias: {
+      components: path.resolve(__dirname, './src/components'),
+    },
+  },
+
   optimization: {
     splitChunks: {
       cacheGroups: {

@@ -1,4 +1,4 @@
-import Panel from '../Panel';
+import Panel from 'demo/Panel';
 
 function handleValueChange(this: Panel, event: Event, valueIndex: number) {
   const target = <HTMLInputElement>event.target;

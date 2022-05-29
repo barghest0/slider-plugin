@@ -1,6 +1,7 @@
 import Model from 'components/Model/Model';
 import validateStep from 'components/Model/ModelModules/validationParamsMethods/validateStep';
 import validateMin from 'components/Model/ModelModules/validationParamsMethods/validateMin';
+import validateFirstThumb from 'components/Model/ModelModules/validationParamsMethods/validateFirstThumb';
 import {
   DEFAULT_SLIDER_PARAMS,
   FIRST_THUMB_STANCE,
@@ -9,9 +10,8 @@ import {
   SECOND_THUMB_STANCE,
 } from 'components/Slider/constants';
 import { Directions, Params } from 'components/Slider/types';
-import validateFirstThumb from 'components/Model/ModelModules/validationParamsMethods/validateFirstThumb';
-import { getValidatedParams } from 'utils/validators';
 import { ModelSubscribersNames } from 'components/Observer/types';
+import { getValidatedParams } from 'utils/validators';
 
 describe('Model test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1" ></div>`;

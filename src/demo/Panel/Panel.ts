@@ -1,14 +1,14 @@
-import PanelInputs from './types';
-import addInputListeners from './utils/addInputListeners';
-import getInputs from './utils/getInputs';
-import initializePanelsParams from './utils/initializePanelParams';
-
 import {
   FIRST_THUMB_STANCE,
   SECOND_THUMB_STANCE,
-} from '../../components/Slider/constants';
-import Slider from '../../components/Slider/Slider';
-import { SliderParams, UserSliderParams } from '../../components/Slider/types';
+} from 'components/Slider/constants';
+import Slider from 'components/Slider/Slider';
+import { SliderParams, UserSliderParams } from 'components/Slider/types';
+
+import addInputListeners from './utils/addInputListeners';
+import getInputs from './utils/getInputs';
+import initializePanelsParams from './utils/initializePanelParams';
+import PanelInputs from './types';
 
 class Panel {
   slider: Slider;

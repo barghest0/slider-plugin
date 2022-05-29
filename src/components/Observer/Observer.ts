@@ -1,12 +1,12 @@
+import { SliderParams } from 'components/Slider/types';
+import { DEFAULT_SLIDER_PARAMS } from 'components/Slider/constants';
+
 import {
   ModelObserver,
   SubscriberFn,
   Subscribers,
   ViewObserver,
 } from './types';
-
-import { SliderParams } from 'components/Slider/types';
-import { DEFAULT_SLIDER_PARAMS } from 'components/Slider/constants';
 
 class Observer<T extends ViewObserver | ModelObserver> {
   private subscribers: Subscribers<T>;

@@ -10,10 +10,10 @@
         "root": ["./src"],
         "alias": {
           "src": "./src",
-          "components":"./src/components",
-          "demo":"./src/demo",
-          "utils":"./src/utils",
-          "plugin":"./src/plugin"
+          "components": "./src/components",
+          "demo": "./src/demo",
+          "utils": "./src/utils",
+          "plugin": "./src/plugin"
         }
       }
     ]
