@@ -2,7 +2,6 @@ import { FIRST_VALUE, SECOND_VALUE } from 'components/Slider/constants';
 import { Params } from 'components/Slider/types';
 
 import Panel from '../Panel';
-
 import handleDirectionChange from './handleDirectionChange';
 import handleCommonParamChange from './handleCommonParamChange';
 import handleValueChange from './handleValueChange';

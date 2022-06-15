@@ -34,6 +34,9 @@ const config = {
     modules: ['node_modules'],
     alias: {
       components: path.resolve(__dirname, './src/components'),
+      demo: path.resolve(__dirname, './src/demo'),
+      utils: path.resolve(__dirname, './src/utils'),
+      plugin: path.resolve(__dirname, './src/plugin'),
     },
   },
 
@@ -63,14 +66,9 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(t|j)s$/,
         use: ['babel-loader'],
         exclude: '/node_modules/',
-      },
-      {
-        test: /\.ts$/,
-        use: 'babel-loader',
-        exclude: /node_modules/,
       },
       {
         test: /\.pug$/,
@@ -112,10 +110,6 @@ const config = {
         },
       },
     ],
-  },
-
-  resolve: {
-    extensions: ['.ts', '.js'],
   },
 
   plugins: [
