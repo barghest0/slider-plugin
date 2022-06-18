@@ -18,6 +18,7 @@ import {
   MAX_OFFSET,
   SECOND_OFFSET,
   SECOND_THUMB_STANCE,
+  MIN_DECIMAL_PLACES,
 } from 'components/Slider/constants';
 
 import validateParams from './ModelModules/validateParams';
@@ -114,10 +115,13 @@ class Model extends Observer<ModelObserver> {
   }
 
   updateThumb(stance: number, cursorOffset: number) {
-    const { isRange } = this.params;
+    const { isRange, step } = this.params;
+    const isDecimalStep = !Number.isInteger(step);
 
     const directionalCursorOffset = Number(
-      this.prepareOffset(cursorOffset).toFixed(MAX_DECIMAL_PLACES),
+      this.prepareOffset(cursorOffset).toFixed(
+        isDecimalStep ? MAX_DECIMAL_PLACES : MIN_DECIMAL_PLACES,
+      ),
     );
 
     const stepPercent = this.calculateStepPercent();
