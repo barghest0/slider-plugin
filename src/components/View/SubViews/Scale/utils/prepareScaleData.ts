@@ -10,7 +10,7 @@ import {
 
 function getDelimiter(dividend: number, delimiters: number[]): number {
   for (const delimiter of delimiters) {
-    if (dividend % delimiter === 0) {
+    if (dividend % delimiter <= 1) {
       return delimiter;
     }
   }
