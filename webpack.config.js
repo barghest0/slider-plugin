@@ -34,6 +34,7 @@ const config = {
     modules: ['node_modules'],
     alias: {
       components: path.resolve(__dirname, './src/components'),
+      'pug-components': path.resolve(__dirname, './src/demo/components'),
       demo: path.resolve(__dirname, './src/demo'),
       utils: path.resolve(__dirname, './src/utils'),
       plugin: path.resolve(__dirname, './src/plugin'),
