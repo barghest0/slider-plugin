@@ -72,7 +72,7 @@ const config = {
       },
       {
         test: /\.pug$/,
-        use: ['pug-loader'],
+        use: ['@webdiscus/pug-loader'],
       },
       {
         test: /\.(woff(2)?|ttf|eot)$/,
