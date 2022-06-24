@@ -1,1 +1,2 @@
-import './panel.scss';
+// import styles in SCSS
+//import './panel.scss';

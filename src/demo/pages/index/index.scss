@@ -1,3 +1,12 @@
+// Use SCSS in SCSS, don't load in TS
+// note: `@import` is deprecated
+@use 'pug-components/panel/panel';
+@use 'pug-components/slider-panel/slider-panel';
+@use 'pug-components/slider-example/slider-example';
+@use 'pug-components/checkbox/checkbox';
+@use 'pug-components/text-field/text-field';
+@use 'demo/assets/style/index';
+
 .index {
   &__container {
     max-width: 1200px;

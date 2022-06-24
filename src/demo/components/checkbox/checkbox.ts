@@ -1,1 +1,2 @@
-import './checkbox.scss';
+// import styles in SCSS
+//import './checkbox.scss';

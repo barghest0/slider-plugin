@@ -1,6 +1,7 @@
+// note: `fonts` is alias
 @font-face {
   font-family: Montserrat;
-  src: url('../fonts/montserrat/montserrat-regular.woff2'),
-    url('../fonts/montserrat/montserrat-regular.woff');
+  src: url('fonts/montserrat/montserrat-regular.woff2'),
+    url('fonts/montserrat/montserrat-regular.woff');
   font-weight: normal;
 }

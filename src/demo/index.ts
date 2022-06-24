@@ -2,7 +2,9 @@
 import Panel from './Panel/Panel';
 import './components/components';
 import './pages/index/index';
-import './assets/style/index.scss';
+
+// import styles in SCSS
+//import './assets/style/index.scss';
 
 const initSlider = () => {
   const slider1 = $('.js-slider-1').slider();

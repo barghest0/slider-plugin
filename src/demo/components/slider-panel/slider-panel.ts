@@ -1,1 +1,2 @@
-import './slider-panel.scss';
+// import styles in SCSS
+//import './slider-panel.scss';

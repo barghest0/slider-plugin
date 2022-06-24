@@ -1,4 +1,5 @@
-import '../style/slider.scss';
+// load style source files directly in Pug
+//import '../style/slider.scss';
 import slider from './slider';
 import DEFAULT_SELECTOR from './constants';
 
