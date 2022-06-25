@@ -9,8 +9,14 @@ function unsubscribe(this: Presenter) {
     ViewSubscribersNames.updateThumb,
     this.updateThumb,
   );
+
   this.view.trackView.unsubscribe(
     ViewSubscribersNames.updateThumbAfterTrackClick,
+    this.updateThumbAfterTrackClick,
+  );
+
+  this.view.scaleView.unsubscribe(
+    ViewSubscribersNames.updateThumbAfterScaleMarkClick,
     this.updateThumbAfterTrackClick,
   );
 

@@ -220,7 +220,7 @@ describe('Model test', () => {
   test('expect updateThumb called after calling updateThumbAfterTrackClick ', () => {
     const updateThumb = jest.fn();
     model.updateThumb = updateThumb;
-    model.updateThumbAfterTrackClick(20);
+    model.updateThumbAfterClick(20);
 
     expect(updateThumb).toBeCalled();
   });

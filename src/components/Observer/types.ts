@@ -15,6 +15,7 @@ enum ModelSubscribersNames {
 enum ViewSubscribersNames {
   updateThumb = 'UpdateThumb',
   updateThumbAfterTrackClick = 'UpdateThumbAfterTrackClick',
+  updateThumbAfterScaleMarkClick = 'UpdateThumbAfterScaleMarkClick',
 }
 
 type ViewObserver = ViewSubscribersNames;

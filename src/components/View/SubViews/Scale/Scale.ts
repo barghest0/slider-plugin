@@ -1,12 +1,14 @@
 import View from 'components/View/View';
 import { Direction } from 'components/Slider/types';
 import { PREFIX } from 'components/Slider/constants';
+import Observer from 'components/Observer/Observer';
+import { ViewObserver } from 'components/Observer/types';
 
 import renderScaleMarks from './utils/renderScaleMarks';
 import { SCALE_CLASS } from './constants';
 import handleScaleMarkClick from './utils/handleScaleMarkClick';
 
-class Scale {
+class Scale extends Observer<ViewObserver> {
   scale!: HTMLElement;
 
   view: View;
@@ -20,10 +22,22 @@ class Scale {
 
   handleScaleMarkClick: (event: PointerEvent) => void;
 
+  private cursorOffset: number;
+
   constructor(view: View) {
+    super();
     this.view = view;
     this.renderScaleMarks = renderScaleMarks.bind(this);
     this.handleScaleMarkClick = handleScaleMarkClick.bind(this);
+    this.cursorOffset = 0;
+  }
+
+  setCursorOffset(cursorOffset: number) {
+    this.cursorOffset = cursorOffset;
+  }
+
+  getCursorOffset() {
+    return this.cursorOffset;
   }
 
   renderScale(direction: Direction) {

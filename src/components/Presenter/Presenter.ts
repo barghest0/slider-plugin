@@ -24,6 +24,7 @@ import updateThumb from './PresenterModules/notifyModelMethods/updateThumb';
 import updateThumbView from './PresenterModules/notifyViewMethods/updateThumbView';
 import unsubscribe from './PresenterModules/unsubscribe';
 import getSliderParams from './PresenterModules/getSliderParams';
+import updateThumbAfterScaleMarkClick from './PresenterModules/notifyModelMethods/updateThumbAfterScaleMarkClick';
 
 class Presenter {
   DOMroot: HTMLElement;
@@ -37,6 +38,8 @@ class Presenter {
   updateThumb: () => void;
 
   updateThumbAfterTrackClick: () => void;
+
+  updateThumbAfterScaleMarkClick: () => void;
 
   updateThumbView: () => void;
 
@@ -73,6 +76,8 @@ class Presenter {
     this.subscribe = subscribe.bind(this);
     this.unsubscribe = unsubscribe.bind(this);
     this.updateThumbAfterTrackClick = updateThumbAfterTrackClick.bind(this);
+    this.updateThumbAfterScaleMarkClick =
+      updateThumbAfterScaleMarkClick.bind(this);
     this.updateThumb = updateThumb.bind(this);
     this.updateThumbView = updateThumbView.bind(this);
     this.updateTipView = updateTipView.bind(this);

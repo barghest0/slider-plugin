@@ -83,6 +83,30 @@ describe('Presenter test', () => {
     expect(presenter.model.getOffset()[FIRST_OFFSET]).toBe(10);
   });
 
+  test('expect change thumb offset to 90 after notify model when click scale mark closer to first thumb', () => {
+    presenter.model.setFillState({ fillOffset: 30, fillSize: 30 });
+    presenter.model.setOffset(FIRST_THUMB_STANCE, 20);
+    presenter.model.setOffset(SECOND_THUMB_STANCE, 50);
+    presenter.view.scaleView.setCursorOffset(90);
+    presenter.view.scaleView.notify(
+      ViewSubscribersNames.updateThumbAfterScaleMarkClick,
+    );
+
+    expect(presenter.model.getOffset()[SECOND_OFFSET]).toBe(90);
+  });
+
+  test('expect change thumb offset to 90 after notify model when click scale mark closer to second thumb', () => {
+    presenter.model.setFillState({ fillOffset: 30, fillSize: 30 });
+    presenter.model.setOffset(FIRST_THUMB_STANCE, 20);
+    presenter.model.setOffset(SECOND_THUMB_STANCE, 50);
+    presenter.view.scaleView.setCursorOffset(10);
+    presenter.view.scaleView.notify(
+      ViewSubscribersNames.updateThumbAfterScaleMarkClick,
+    );
+
+    expect(presenter.model.getOffset()[FIRST_OFFSET]).toBe(10);
+  });
+
   test('expect change thumb value to 100 and offset to 50 after notify view when drag first thumb', () => {
     presenter.model.setValue(FIRST_THUMB_STANCE, 100);
     presenter.model.setOffset(FIRST_THUMB_STANCE, 50);

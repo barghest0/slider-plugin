@@ -9,9 +9,15 @@ function subscribe(this: Presenter) {
     ViewSubscribersNames.updateThumb,
     this.updateThumb,
   );
+
   this.view.trackView.subscribe(
     ViewSubscribersNames.updateThumbAfterTrackClick,
     this.updateThumbAfterTrackClick,
+  );
+
+  this.view.scaleView.subscribe(
+    ViewSubscribersNames.updateThumbAfterScaleMarkClick,
+    this.updateThumbAfterScaleMarkClick,
   );
 
   this.model.subscribe(

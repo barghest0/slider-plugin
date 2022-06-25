@@ -4,8 +4,7 @@ import { Directions, Params } from 'components/Slider/types';
 import { ViewSubscribersNames } from 'components/Observer/types';
 
 describe('Track test', () => {
-  document.body.innerHTML =
-    '<div id="slider-1" data-testid="slider-1" class="slider-1"></div>';
+  document.body.innerHTML = '<div id="slider-1" class="slider-1"></div>';
   const rootClass = '.slider-1';
   const DOMroot = <HTMLElement>document.querySelector(rootClass);
   const view = new View(DOMroot);

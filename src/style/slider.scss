@@ -57,7 +57,6 @@
   }
 
   &__scale {
-    cursor: pointer;
     position: relative;
     margin-top: 5px;
 
@@ -85,6 +84,7 @@
       opacity: 0.5;
       transition: 0.1s linear;
       left: -50%;
+      cursor: pointer;
 
       &_vertical {
         left: 15px;

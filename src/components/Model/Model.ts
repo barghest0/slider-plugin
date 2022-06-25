@@ -149,7 +149,7 @@ class Model extends Observer<ModelObserver> {
     this.notify(ModelSubscribersNames.getSliderParams, this.getParams());
   }
 
-  updateThumbAfterTrackClick(cursorOffset: number) {
+  updateThumbAfterClick(cursorOffset: number) {
     const { fillOffset, fillSize } = this.getFillState();
 
     let stance = FIRST_THUMB_STANCE;
