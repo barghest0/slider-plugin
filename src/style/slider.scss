@@ -115,6 +115,7 @@
     border-radius: inherit;
     cursor: pointer;
     transition: all 0.2s ease;
+    pointer-events: none;
 
     &_vertical {
       height: 100%;
