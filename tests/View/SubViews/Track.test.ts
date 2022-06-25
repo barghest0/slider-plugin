@@ -32,12 +32,12 @@ describe('Track test', () => {
   test('expect notify model after click track in horizontal/vertical direction', () => {
     jest.spyOn(track, 'notify');
     view.setParam(Params.direction, Directions.horizontal);
-    DOMroot.dispatchEvent(new MouseEvent('pointerdown'));
+    track.track.dispatchEvent(new MouseEvent('pointerdown'));
 
     expect(track.notify).toBeCalled();
 
     view.setParam(Params.direction, Directions.vertical);
-    DOMroot.dispatchEvent(new MouseEvent('pointerdown'));
+    track.track.dispatchEvent(new MouseEvent('pointerdown'));
 
     expect(track.notify).toBeCalled();
   });

@@ -29,14 +29,16 @@ function renderScaleMarks(
 
     mark.style[this.view.offsetDirection] = `${offset}%`;
 
-    const number = document.createElement('div');
-    number.classList.add(MARK_NUMBER_CLASS);
-    number.classList.add(`${MARK_NUMBER_CLASS}_${direction}`);
-    number.classList.add(`${PREFIX}-${MARK_NUMBER_CLASS}_${direction}`);
-    number.innerHTML = scaleData.values[i].toString();
+    const markNumber = document.createElement('div');
+    markNumber.classList.add(MARK_NUMBER_CLASS);
+    markNumber.classList.add(`${MARK_NUMBER_CLASS}_${direction}`);
+    markNumber.classList.add(`${PREFIX}-${MARK_NUMBER_CLASS}_${direction}`);
+    markNumber.innerHTML = scaleData.values[i].toString();
+
+    markNumber.addEventListener('pointerdown', this.handleScaleMarkClick);
 
     mark.appendChild(line);
-    mark.appendChild(number);
+    mark.appendChild(markNumber);
     this.scale.appendChild(mark);
   }
 }

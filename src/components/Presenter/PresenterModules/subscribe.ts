@@ -18,6 +18,7 @@ function subscribe(this: Presenter) {
     ModelSubscribersNames.getSliderParams,
     this.getSliderParams,
   );
+
   this.model.subscribe(
     ModelSubscribersNames.updateThumbView,
     this.updateThumbView,

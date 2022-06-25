@@ -4,6 +4,7 @@ import { PREFIX } from 'components/Slider/constants';
 
 import renderScaleMarks from './utils/renderScaleMarks';
 import { SCALE_CLASS } from './constants';
+import handleScaleMarkClick from './utils/handleScaleMarkClick';
 
 class Scale {
   scale!: HTMLElement;
@@ -17,9 +18,12 @@ class Scale {
     direction: Direction,
   ) => void;
 
+  handleScaleMarkClick: (event: PointerEvent) => void;
+
   constructor(view: View) {
     this.view = view;
     this.renderScaleMarks = renderScaleMarks.bind(this);
+    this.handleScaleMarkClick = handleScaleMarkClick.bind(this);
   }
 
   renderScale(direction: Direction) {
