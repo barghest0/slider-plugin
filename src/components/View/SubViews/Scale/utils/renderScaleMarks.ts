@@ -13,6 +13,10 @@ function renderScaleMarks(
   direction: Direction,
 ) {
   const scaleData = prepareScaleData(min, max, step, direction);
+  const makeHandleClickCursorOffset =
+    (offset: number) => (event: PointerEvent) => {
+      this.handleScaleMarkClick(event, offset);
+    };
 
   for (let i = 0; i < scaleData.values.length; i += 1) {
     const mark = document.createElement('div');
@@ -24,8 +28,8 @@ function renderScaleMarks(
     line.classList.add(LINE_CLASS);
     line.classList.add(`${LINE_CLASS}_${direction}`);
     line.classList.add(`${PREFIX}-${LINE_CLASS}_${direction}`);
-
-    const offset = scaleData.offsets[i];
+    const offsetValue = scaleData.offsets[i];
+    const offset = offsetValue;
 
     mark.style[this.view.offsetDirection] = `${offset}%`;
 
@@ -33,9 +37,12 @@ function renderScaleMarks(
     markNumber.classList.add(MARK_NUMBER_CLASS);
     markNumber.classList.add(`${MARK_NUMBER_CLASS}_${direction}`);
     markNumber.classList.add(`${PREFIX}-${MARK_NUMBER_CLASS}_${direction}`);
-    markNumber.innerHTML = scaleData.values[i].toString();
-
-    markNumber.addEventListener('pointerdown', this.handleScaleMarkClick);
+    const markNumberValue = scaleData.values[i];
+    markNumber.innerHTML = markNumberValue.toString();
+    markNumber.addEventListener(
+      'pointerdown',
+      makeHandleClickCursorOffset(offsetValue),
+    );
 
     mark.appendChild(line);
     mark.appendChild(markNumber);

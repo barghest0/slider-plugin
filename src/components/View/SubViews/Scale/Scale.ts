@@ -20,7 +20,7 @@ class Scale extends Observer<ViewObserver> {
     direction: Direction,
   ) => void;
 
-  handleScaleMarkClick: (event: PointerEvent) => void;
+  handleScaleMarkClick: (event: PointerEvent, offset: number) => void;
 
   private cursorOffset: number;
 
