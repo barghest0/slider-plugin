@@ -10,11 +10,11 @@ import {
 
 function getDelimiter(dividend: number, delimiters: number[]): number {
   for (const delimiter of delimiters) {
-    if (dividend % delimiter <= 1) {
-      return delimiter;
-    }
+    const remainder = Math.round((dividend % delimiter) / 2) * 2;
+    if (remainder === 0) return delimiter;
+    if (remainder >= 0) return delimiter + remainder;
   }
-  return getDelimiter(dividend - 1, delimiters);
+  return 1;
 }
 
 function prepareScaleData(
@@ -39,12 +39,14 @@ function prepareScaleData(
   const lastMark = marksCount - 1;
 
   const areGapsBiggerMarksCount = Math.floor(range / step) > marksCount;
+
   const gapSize = areGapsBiggerMarksCount
     ? Math.round(Math.round(range / step) / lastMark) * step
     : step;
 
   const values = new Array(marksCount).fill(null).map((_, index) => {
     let value = min + gapSize * index;
+
     value = Math.min(value, max);
     if (index === lastMark) value = max;
     return Number(value.toFixed(SCALE_NUMBER_DECIMAL_PLACES));
