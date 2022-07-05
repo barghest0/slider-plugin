@@ -32,7 +32,6 @@ const initSlider = () => {
     hasFill: true,
     hasTips: true,
     hasScale: true,
-    canThumbPush: true,
   });
 
   const panel3 = new Panel(slider3);
