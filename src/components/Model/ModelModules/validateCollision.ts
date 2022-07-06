@@ -5,8 +5,10 @@ import {
   SECOND_THUMB_STANCE,
 } from 'components/Slider/constants';
 import Model from 'components/Model/Model';
+import prepareOffset from 'utils/prepareOffset';
 
 function validateCollision(this: Model) {
+  const { direction } = this.getParams();
   const isFirstStanceCurrent = this.getActiveStance() === FIRST_THUMB_STANCE;
 
   const firstOffset = this.getOffset()[FIRST_OFFSET];
@@ -16,9 +18,11 @@ function validateCollision(this: Model) {
   const secondValue = this.getValue()[SECOND_THUMB_STANCE];
 
   const isFirstValueBiggerSecond =
-    this.prepareOffset(firstOffset) > this.prepareOffset(secondOffset);
+    prepareOffset(firstOffset, direction) >
+    prepareOffset(secondOffset, direction);
   const isSecondValueLessFirst =
-    this.prepareOffset(secondOffset) < this.prepareOffset(firstOffset);
+    prepareOffset(secondOffset, direction) <
+    prepareOffset(firstOffset, direction);
 
   if (isFirstValueBiggerSecond && isFirstStanceCurrent) {
     if (this.getParams().canThumbPush) {

@@ -23,8 +23,8 @@ import {
 
 import validateParams from './ModelModules/validateParams';
 import endsValidation from './ModelModules/endsValidation';
-import prepareOffset from './ModelModules/prepareOffset';
 import validateCollision from './ModelModules/validateCollision';
+import prepareOffset from 'utils/prepareOffset';
 
 class Model extends Observer<ModelObserver> {
   DOMroot: HTMLElement;
@@ -32,8 +32,6 @@ class Model extends Observer<ModelObserver> {
   validateParams: (params: SliderParams) => SliderParams;
 
   endsValidation: (stance: number) => void;
-
-  public prepareOffset: (offset: number) => number;
 
   private validateCollision: () => void;
 
@@ -56,7 +54,6 @@ class Model extends Observer<ModelObserver> {
     this.size = 0;
     this.activeStance = 0;
     this.endsValidation = endsValidation.bind(this);
-    this.prepareOffset = prepareOffset.bind(this);
     this.validateParams = validateParams.bind(this);
     this.validateCollision = validateCollision.bind(this);
   }
@@ -107,19 +104,20 @@ class Model extends Observer<ModelObserver> {
   }
 
   calculateOffset(stance: number) {
-    const { min, max, value } = this.params;
+    const { min, max, value, direction } = this.params;
 
-    return this.prepareOffset(
+    return prepareOffset(
       (value[stance] - min) / ((max - min) / MAX_PERCENTS),
+      direction,
     );
   }
 
   updateThumb(stance: number, cursorOffset: number) {
-    const { isRange, step } = this.params;
+    const { isRange, step, direction } = this.params;
     const isDecimalStep = !Number.isInteger(step);
 
     const directionalCursorOffset = Number(
-      this.prepareOffset(cursorOffset).toFixed(
+      prepareOffset(cursorOffset, direction).toFixed(
         isDecimalStep ? MAX_DECIMAL_PLACES : MIN_DECIMAL_PLACES,
       ),
     );
@@ -226,14 +224,14 @@ class Model extends Observer<ModelObserver> {
   }
 
   private calculateFillSize() {
-    const { isRange } = this.params;
+    const { isRange, direction } = this.params;
     if (isRange) {
       return this.calculateBasedOnDirection(
         this.thumbsOffset[FIRST_OFFSET],
         this.thumbsOffset[SECOND_OFFSET],
       );
     }
-    return this.prepareOffset(this.thumbsOffset[FIRST_OFFSET]);
+    return prepareOffset(this.thumbsOffset[FIRST_OFFSET], direction);
   }
 
   private calculateBasedOnDirection(firstValue: number, secondValue: number) {

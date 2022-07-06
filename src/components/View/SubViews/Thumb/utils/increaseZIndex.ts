@@ -1,12 +1,12 @@
 import { UPPER_Z_INDEX } from '../constants';
 import Thumb from '../Thumb';
 
-function increaseZIedex(this: Thumb) {
+function increaseZIndex(this: Thumb, activeStance: number) {
   this.thumbs.forEach((thumb, stance) => {
-    if (stance === this.getActiveStance()) {
+    if (stance === activeStance) {
       thumb.style.zIndex = UPPER_Z_INDEX;
     }
   });
 }
 
-export default increaseZIedex;
+export default increaseZIndex;

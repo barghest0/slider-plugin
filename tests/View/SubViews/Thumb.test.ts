@@ -1,9 +1,11 @@
+import prepareOffset from 'utils/prepareOffset';
 import View from 'components/View/View';
 import Thumb from 'components/View/SubViews/Thumb/Thumb';
 import { Directions, Params } from 'components/Slider/types';
 import {
   FIRST_OFFSET,
   FIRST_THUMB_STANCE,
+  MAX_OFFSET,
   SECOND_OFFSET,
   SECOND_THUMB_STANCE,
 } from 'components/Slider/constants';
@@ -12,6 +14,10 @@ import {
   ModelSubscribersNames,
   ViewSubscribersNames,
 } from 'components/Observer/types';
+import {
+  DEFAULT_Z_INDEX,
+  UPPER_Z_INDEX,
+} from 'components/View/SubViews/Thumb/constants';
 
 describe('Thumb test', () => {
   document.body.innerHTML =
@@ -77,5 +83,32 @@ describe('Thumb test', () => {
     document.dispatchEvent(new Event('pointermove'));
 
     expect(notify).toBeCalled();
+  });
+
+  test('expect increase first thumb z-index after pointerdown', () => {
+    thumb.increaseZIndex(FIRST_THUMB_STANCE);
+
+    expect(thumb.thumbs[FIRST_THUMB_STANCE].style.zIndex).toEqual(
+      UPPER_Z_INDEX,
+    );
+  });
+
+  test('expect decrease first thumb z-index after pointerup', () => {
+    thumb.decreaseInactiveZIndex(SECOND_THUMB_STANCE);
+
+    expect(thumb.thumbs[FIRST_THUMB_STANCE].style.zIndex).toEqual(
+      DEFAULT_Z_INDEX,
+    );
+  });
+
+  test('expect increase first thumb z-index if thumb on max', () => {
+    const { direction } = view.getParams();
+    thumb.setOffset(FIRST_THUMB_STANCE, prepareOffset(MAX_OFFSET, direction));
+    thumb.setOffset(SECOND_THUMB_STANCE, prepareOffset(MAX_OFFSET, direction));
+    thumb.increaseZIndexOnMax();
+
+    expect(thumb.thumbs[FIRST_THUMB_STANCE].style.zIndex).toEqual(
+      UPPER_Z_INDEX,
+    );
   });
 });

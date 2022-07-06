@@ -8,7 +8,7 @@ function dragAndDropThumb(this: Thumb, stance: number) {
   };
 
   const handlePointerUp = () => {
-    this.decreaseZIndex();
+    this.decreaseInactiveZIndex(this.getActiveStance());
     document.removeEventListener('pointermove', handlePointerMove);
   };
 
@@ -16,7 +16,7 @@ function dragAndDropThumb(this: Thumb, stance: number) {
     event.preventDefault();
     event.stopPropagation();
     this.setActiveStance(stance);
-    this.increaseZIndex();
+    this.increaseZIndex(this.getActiveStance());
     document.addEventListener('pointermove', handlePointerMove);
   };
 

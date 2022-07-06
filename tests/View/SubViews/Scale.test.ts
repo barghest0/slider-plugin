@@ -34,8 +34,8 @@ describe('Scale test', () => {
 
   test('expect correct scale marks values with default params', () => {
     expect(prepareScaleData(0, 100, 10, Directions.horizontal)).toEqual({
-      offsets: [0, 30, 60, 100],
-      values: [0, 30, 60, 100],
+      offsets: [0, 20, 40, 60, 80, 100],
+      values: [0, 20, 40, 60, 80, 100],
     });
   });
 

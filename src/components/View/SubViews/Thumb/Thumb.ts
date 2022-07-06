@@ -8,7 +8,8 @@ import dragAndDropThumb from './utils/dragAndDropThumb';
 import handleThumbDrag from './utils/handleThumbDrag';
 import { THUMB_CLASS } from './constants';
 import increaseZIndex from './utils/increaseZIndex';
-import decreaseZIndex from './utils/decreaseZIndex';
+import decreaseInactiveZIndex from './utils/decreaseInactiveZIndex';
+import increaseZIndexOnMax from './utils/increaseZIndexOnMax';
 
 class Thumb extends Observer<ViewObserver> {
   view: View;
@@ -21,9 +22,11 @@ class Thumb extends Observer<ViewObserver> {
 
   handleThumbDrag: (event: PointerEvent, stance: number) => void;
 
-  increaseZIndex: () => void;
+  increaseZIndexOnMax: () => void;
 
-  decreaseZIndex: () => void;
+  increaseZIndex: (activeStance: number) => void;
+
+  decreaseInactiveZIndex: (activeStance: number) => void;
 
   private cursorOffset: number;
 
@@ -42,7 +45,8 @@ class Thumb extends Observer<ViewObserver> {
     this.dragAndDropThumb = dragAndDropThumb.bind(this);
     this.handleThumbDrag = handleThumbDrag.bind(this);
     this.increaseZIndex = increaseZIndex.bind(this);
-    this.decreaseZIndex = decreaseZIndex.bind(this);
+    this.decreaseInactiveZIndex = decreaseInactiveZIndex.bind(this);
+    this.increaseZIndexOnMax = increaseZIndexOnMax.bind(this);
   }
 
   setOffset(stance: number, offset: number) {
@@ -76,6 +80,7 @@ class Thumb extends Observer<ViewObserver> {
     thumb.classList.add(`${THUMB_CLASS}-${stance}`);
     this.thumbs.push(thumb);
     this.view.DOMroot.appendChild(thumb);
+    this.increaseZIndexOnMax();
     this.updateThumbStyle(stance);
   }
 }
