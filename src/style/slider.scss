@@ -45,14 +45,16 @@
   &__tip {
     position: absolute;
     font-size: 16px;
+    border-radius: 5px;
+    padding: 1px 3px;
+    background-color: rgb(43, 177, 166);
 
     &_horizontal {
       bottom: 1.5rem;
     }
 
     &_vertical {
-      padding: 1rem;
-      transform: translateX(-50%);
+      right: 150%;
     }
   }
 
