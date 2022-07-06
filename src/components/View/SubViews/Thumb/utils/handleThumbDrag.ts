@@ -19,7 +19,6 @@ function handleThumbDrag(this: Thumb, event: PointerEvent, stance: number) {
   );
 
   this.setCursorOffset(cursorOffset);
-  this.setActiveStance(stance);
 
   this.notify(ViewSubscribersNames.updateThumb);
 }

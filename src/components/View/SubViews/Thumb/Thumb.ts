@@ -6,7 +6,9 @@ import { PREFIX } from 'components/Slider/constants';
 import updateThumbStyle from './utils/updateThumbStyle';
 import dragAndDropThumb from './utils/dragAndDropThumb';
 import handleThumbDrag from './utils/handleThumbDrag';
-import THUMB_CLASS from './constants';
+import { THUMB_CLASS } from './constants';
+import increaseZIndex from './utils/increaseZIndex';
+import decreaseZIndex from './utils/decreaseZIndex';
 
 class Thumb extends Observer<ViewObserver> {
   view: View;
@@ -18,6 +20,10 @@ class Thumb extends Observer<ViewObserver> {
   dragAndDropThumb: (stance: number) => void;
 
   handleThumbDrag: (event: PointerEvent, stance: number) => void;
+
+  increaseZIndex: () => void;
+
+  decreaseZIndex: () => void;
 
   private cursorOffset: number;
 
@@ -35,6 +41,8 @@ class Thumb extends Observer<ViewObserver> {
     this.updateThumbStyle = updateThumbStyle.bind(this);
     this.dragAndDropThumb = dragAndDropThumb.bind(this);
     this.handleThumbDrag = handleThumbDrag.bind(this);
+    this.increaseZIndex = increaseZIndex.bind(this);
+    this.decreaseZIndex = decreaseZIndex.bind(this);
   }
 
   setOffset(stance: number, offset: number) {

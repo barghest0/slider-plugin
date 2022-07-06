@@ -8,12 +8,15 @@ function dragAndDropThumb(this: Thumb, stance: number) {
   };
 
   const handlePointerUp = () => {
+    this.decreaseZIndex();
     document.removeEventListener('pointermove', handlePointerMove);
   };
 
   const handlePointerDown = (event: PointerEvent | TouchEvent) => {
     event.preventDefault();
     event.stopPropagation();
+    this.setActiveStance(stance);
+    this.increaseZIndex();
     document.addEventListener('pointermove', handlePointerMove);
   };
 

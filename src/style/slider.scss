@@ -38,7 +38,7 @@
     height: 15px;
     border: 2px solid rgb(243, 243, 243);
     border-radius: 50%;
-    z-index: 20;
+    z-index: 10;
     user-select: none;
   }
 
@@ -108,7 +108,7 @@
 
   &__fill {
     background-color: rgb(43, 177, 166);
-    z-index: 10;
+    z-index: 5;
     position: absolute;
     top: 0;
     height: inherit;
