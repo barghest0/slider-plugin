@@ -3,7 +3,7 @@ import { ViewSubscribersNames } from 'components/Observer/types';
 
 import Thumb from '../Thumb';
 
-function handleThumbDrag(this: Thumb, event: PointerEvent, stance: number) {
+function handleThumbDrag(this: Thumb, event: PointerEvent) {
   const { direction } = this.view.getParams();
   const { DOMroot } = this.view;
   const size = this.view.getSize();

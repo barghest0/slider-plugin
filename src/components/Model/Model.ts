@@ -20,11 +20,11 @@ import {
   SECOND_THUMB_STANCE,
   MIN_DECIMAL_PLACES,
 } from 'components/Slider/constants';
+import prepareOffset from 'utils/prepareOffset';
 
 import validateParams from './ModelModules/validateParams';
 import endsValidation from './ModelModules/endsValidation';
 import validateCollision from './ModelModules/validateCollision';
-import prepareOffset from 'utils/prepareOffset';
 
 class Model extends Observer<ModelObserver> {
   DOMroot: HTMLElement;

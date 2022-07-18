@@ -50,6 +50,7 @@
       "LabeledStatement",
       "WithStatement"
     ],
+    "no-param-reassign": [2, { "props": false }],
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": ["error"],
     "@typescript-eslint/no-var-requires": 0
