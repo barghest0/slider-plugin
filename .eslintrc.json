@@ -21,6 +21,7 @@
           ["src", "./src/"],
           ["components", "./src/components/"],
           ["utils", "./src/utils/"],
+          ["services", "./src/services/"],
           ["demo", "./src/demo/"],
           ["plugin", "./src/plugin/"]
         ],

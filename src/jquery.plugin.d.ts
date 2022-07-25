@@ -6,7 +6,7 @@ import { APINames } from 'plugin/types';
 declare global {
   interface JQuery {
     slider(params?: UserSliderParams): void;
-    slider(method?: UserSliderParams): HTMLElement | Slider;
+    slider(method?: UserSliderParams): HTMLElement | Slider | void;
     slider(
       method?: APINames,
       params?: UserSliderParams,
