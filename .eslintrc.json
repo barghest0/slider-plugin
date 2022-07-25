@@ -21,7 +21,8 @@
           ["src", "./src/"],
           ["components", "./src/components/"],
           ["utils", "./src/utils/"],
-          ["demo", "./src/demo/"]
+          ["demo", "./src/demo/"],
+          ["plugin", "./src/plugin/"]
         ],
         "extensions": [".ts", ".js", ".tsx"]
       }

@@ -16,7 +16,7 @@ import handleDirectionChange from 'demo/Panel/utils/handleDirectionChange';
 import handleCommonParamChange from 'demo/Panel/utils/handleCommonParamChange';
 import handleValueChange from 'demo/Panel/utils/handleValueChange';
 import { getValidatedParams } from 'utils/validators';
-import 'plugin/plugin';
+import 'plugin';
 
 import panelTemplate from './constants';
 

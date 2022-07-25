@@ -19,8 +19,8 @@ const config = {
   },
 
   entry: {
-    index: `${PATHS.src}/demo/index.ts`,
-    slider: `${PATHS.src}/plugin/plugin.ts`,
+    index: `${PATHS.src}/demo`,
+    slider: `${PATHS.src}/plugin`,
   },
 
   output: {

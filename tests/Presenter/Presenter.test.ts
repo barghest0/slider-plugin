@@ -15,7 +15,7 @@ import {
   ViewSubscribersNames,
 } from 'components/Observer/types';
 import { getValidatedParams } from 'utils/validators';
-import 'plugin/plugin';
+import 'plugin';
 
 describe('Presenter test', () => {
   document.body.innerHTML = `<div id="slider-1" class="slider-1"></div>`;

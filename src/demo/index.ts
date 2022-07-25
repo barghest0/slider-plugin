@@ -1,14 +1,26 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+import Slider from 'components/Slider/Slider';
+import { APINames } from 'plugin/types';
+
 import Panel from './Panel/Panel';
 import './components';
 import './pages/index';
 import './assets/style/index.scss';
+import {
+  FIRST_SLIDER_SELECTOR,
+  FOURTH_SLIDER_SELECTOR,
+  SECOND_SLIDER_SELECTOR,
+  THIRD_SLIDER_SELECTOR,
+} from './constants';
+
+const sliders: Slider[] = [];
 
 const initSlider = () => {
-  const slider1 = $('.js-slider-1').slider();
-  const panel1 = new Panel(slider1);
+  $(FIRST_SLIDER_SELECTOR).slider();
+  sliders.push(
+    $(FIRST_SLIDER_SELECTOR).slider(APINames.getSliderInstance) as Slider,
+  );
 
-  const slider2 = $('.js-slider-2').slider({
+  $(SECOND_SLIDER_SELECTOR).slider({
     min: -6,
     max: 6,
     step: 1.5,
@@ -20,9 +32,11 @@ const initSlider = () => {
     hasScale: true,
   });
 
-  const panel2 = new Panel(slider2);
+  sliders.push(
+    $(SECOND_SLIDER_SELECTOR).slider(APINames.getSliderInstance) as Slider,
+  );
 
-  const slider3 = $('.js-slider-3').slider({
+  $(THIRD_SLIDER_SELECTOR).slider({
     min: -15000,
     max: 15000,
     step: 500,
@@ -34,9 +48,11 @@ const initSlider = () => {
     hasScale: true,
   });
 
-  const panel3 = new Panel(slider3);
+  sliders.push(
+    $(THIRD_SLIDER_SELECTOR).slider(APINames.getSliderInstance) as Slider,
+  );
 
-  const slider4 = $('.js-slider-4').slider({
+  $(FOURTH_SLIDER_SELECTOR).slider({
     min: -10000000000000,
     max: 10000000000000,
     step: 10000000,
@@ -48,7 +64,10 @@ const initSlider = () => {
     hasScale: true,
   });
 
-  const panel4 = new Panel(slider4);
-};
+  sliders.push(
+    $(FOURTH_SLIDER_SELECTOR).slider(APINames.getSliderInstance) as Slider,
+  );
 
-window.addEventListener('load', initSlider);
+  sliders.forEach(slider => new Panel(slider));
+};
+window.addEventListener('DOMContentLoaded', initSlider);
