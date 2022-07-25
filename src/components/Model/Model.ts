@@ -60,6 +60,7 @@ class Model extends Observer<ModelObserver> {
 
   setParams(params: SliderParams) {
     this.params = this.validateParams(params);
+    this.notify(ModelSubscribersNames.getSliderParams, this.getParams());
   }
 
   setParam<K extends keyof SliderParams>(param: K, value: SliderParams[K]) {

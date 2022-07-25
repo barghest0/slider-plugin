@@ -10,5 +10,6 @@ module.exports = {
     '^demo(.*)$': '<rootDir>/src/demo/$1',
     '^utils(.*)$': '<rootDir>/src/utils/$1',
     '^plugin(.*)$': '<rootDir>/src/plugin',
+    '^services(.*)$': '<rootDir>/src/services/$1',
   },
 };

@@ -17,13 +17,15 @@ import handleCommonParamChange from 'demo/Panel/utils/handleCommonParamChange';
 import handleValueChange from 'demo/Panel/utils/handleValueChange';
 import { getValidatedParams } from 'utils/validators';
 import 'plugin';
+import { APINames } from 'plugin/types';
 
 import panelTemplate from './constants';
 
 describe('Panel test', () => {
   document.body.innerHTML = panelTemplate;
   const root = '.slider-1';
-  const slider = $(root).slider({});
+  $(root).slider({});
+  const slider = $(root).slider(APINames.getSliderInstance) as Slider;
   const panel = new Panel(slider);
 
   beforeEach(() => {

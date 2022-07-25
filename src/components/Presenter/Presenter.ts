@@ -87,10 +87,11 @@ class Presenter {
   }
 
   init() {
+    this.subscribe();
+
     this.setParams(this.params);
 
     this.createSlider();
-    this.subscribe();
     this.addListeners();
   }
 
@@ -103,8 +104,8 @@ class Presenter {
     this.clearHTML();
     this.removeListeners();
 
-    this.createSlider();
     this.subscribe();
+    this.createSlider();
     this.addListeners();
   }
 

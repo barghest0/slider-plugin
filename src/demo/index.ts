@@ -16,6 +16,7 @@ const sliders: Slider[] = [];
 
 const initSlider = () => {
   $(FIRST_SLIDER_SELECTOR).slider();
+
   sliders.push(
     $(FIRST_SLIDER_SELECTOR).slider(APINames.getSliderInstance) as Slider,
   );

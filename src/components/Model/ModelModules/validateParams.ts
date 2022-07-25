@@ -22,7 +22,6 @@ function validateParams(
     hasFill,
     hasTips,
     hasScale,
-    panel,
     canThumbPush,
   }: SliderParams,
 ) {
@@ -54,7 +53,6 @@ function validateParams(
     hasFill,
     hasTips,
     hasScale,
-    panel,
     canThumbPush,
   };
 
