@@ -1,5 +1,4 @@
 import Slider from 'components/Slider/Slider';
-import { APINames } from 'plugin/types';
 
 import Panel from './Panel/Panel';
 import './components';
@@ -17,9 +16,7 @@ const sliders: Slider[] = [];
 const initSlider = () => {
   $(FIRST_SLIDER_SELECTOR).slider();
 
-  sliders.push(
-    $(FIRST_SLIDER_SELECTOR).slider(APINames.getSliderInstance) as Slider,
-  );
+  sliders.push($(FIRST_SLIDER_SELECTOR).slider('getSliderInstance') as Slider);
 
   $(SECOND_SLIDER_SELECTOR).slider({
     min: -6,
@@ -33,9 +30,7 @@ const initSlider = () => {
     hasScale: true,
   });
 
-  sliders.push(
-    $(SECOND_SLIDER_SELECTOR).slider(APINames.getSliderInstance) as Slider,
-  );
+  sliders.push($(SECOND_SLIDER_SELECTOR).slider('getSliderInstance') as Slider);
 
   $(THIRD_SLIDER_SELECTOR).slider({
     min: -15000,
@@ -49,9 +44,7 @@ const initSlider = () => {
     hasScale: true,
   });
 
-  sliders.push(
-    $(THIRD_SLIDER_SELECTOR).slider(APINames.getSliderInstance) as Slider,
-  );
+  sliders.push($(THIRD_SLIDER_SELECTOR).slider('getSliderInstance') as Slider);
 
   $(FOURTH_SLIDER_SELECTOR).slider({
     min: -10000000000000,
@@ -65,9 +58,7 @@ const initSlider = () => {
     hasScale: true,
   });
 
-  sliders.push(
-    $(FOURTH_SLIDER_SELECTOR).slider(APINames.getSliderInstance) as Slider,
-  );
+  sliders.push($(FOURTH_SLIDER_SELECTOR).slider('getSliderInstance') as Slider);
 
   sliders.forEach(slider => new Panel(slider));
 };

@@ -1,7 +1,7 @@
 import Slider from 'components/Slider/Slider';
 import { UserSliderParams } from 'components/Slider/types';
 import { APINames, SubscribeCallback } from 'plugin/types';
-import DEFAULT_SLIDER_SELECTOR from 'plugin/constants';
+import { DEFAULT_SLIDER_SELECTOR } from 'plugin/constants';
 import api from 'services/api';
 
 import { getParamsFromDataset, getValidatedParams } from './validators';
@@ -22,13 +22,13 @@ function getSliderInstance(
   return new Slider(element, paramsFromDataset);
 }
 
-function slider<T extends UserSliderParams | APINames | SubscribeCallback>(
+function slider<T extends UserSliderParams & SubscribeCallback & APINames>(
   this: JQuery,
   ...args: T[]
 ) {
   const [method, params] = args;
 
-  const isPassedMethod = method in APINames;
+  const isPassedMethod = method && typeof method === 'string';
 
   const isPassedParamsInsteadOfMethod =
     !isPassedMethod || typeof method === 'object';
@@ -59,4 +59,4 @@ function createInlineSliders() {
   });
 }
 
-export { createInlineSliders, slider };
+export { createInlineSliders, slider, getSliderInstance };

@@ -14,7 +14,7 @@ const config = {
   context: path.resolve(__dirname, 'src'),
 
   externals: {
-    path: PATHS,
+    paths: PATHS,
     jquery: 'jQuery',
   },
 

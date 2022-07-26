@@ -3,7 +3,7 @@ import {
   SECOND_THUMB_STANCE,
 } from 'components/Slider/constants';
 import Slider from 'components/Slider/Slider';
-import { SliderParams, UserSliderParams } from 'components/Slider/types';
+import { UserSliderParams } from 'components/Slider/types';
 
 import addInputListeners from './utils/addInputListeners';
 import getInputs from './utils/getInputs';

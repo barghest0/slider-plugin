@@ -1,15 +1,14 @@
 import { SliderParams } from 'components/Slider/types';
 
-enum APINames {
-  getParams = 'getParams',
-  getContainer = 'getContainer',
-  getParent = 'getParent',
-  getSliderInstance = 'getSliderInstance',
-  updateParams = 'updateParams',
-  subscribe = 'subscribe',
-  unsubscribe = 'unsubscribe',
-}
+type APINames =
+  | 'getParams'
+  | 'getContainer'
+  | 'getParent'
+  | 'getSliderInstance'
+  | 'updateParams'
+  | 'subscribe'
+  | 'unsubscribe';
 
-type SubscribeCallback = (params: SliderParams) => void;
+type SubscribeCallback = (values: number[], params: SliderParams) => void;
 
 export { APINames, SubscribeCallback };

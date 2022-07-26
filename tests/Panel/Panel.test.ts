@@ -15,17 +15,16 @@ import {
 import handleDirectionChange from 'demo/Panel/utils/handleDirectionChange';
 import handleCommonParamChange from 'demo/Panel/utils/handleCommonParamChange';
 import handleValueChange from 'demo/Panel/utils/handleValueChange';
-import { getValidatedParams } from 'utils/validators';
 import 'plugin';
-import { APINames } from 'plugin/types';
 
 import panelTemplate from './constants';
 
 describe('Panel test', () => {
   document.body.innerHTML = panelTemplate;
   const root = '.slider-1';
-  $(root).slider({});
-  const slider = $(root).slider(APINames.getSliderInstance) as Slider;
+  $(root).slider();
+
+  const slider = $(root).slider('getSliderInstance') as Slider;
   const panel = new Panel(slider);
 
   beforeEach(() => {
@@ -124,15 +123,13 @@ describe('Panel test', () => {
   });
 
   test('expect set first value input to 30', () => {
-    const params = getValidatedParams({ value: [30] });
-    panel.updatePanelValue(params);
+    panel.updatePanelValue([30]);
 
     expect(panel.inputs.firstValueInput.value).toBe('30');
   });
 
   test('expect set second value input to 40', () => {
-    const params = getValidatedParams({ value: [10, 40] });
-    panel.updatePanelValue(params);
+    panel.updatePanelValue([10, 40]);
 
     expect(panel.inputs.secondValueInput.value).toBe('40');
   });

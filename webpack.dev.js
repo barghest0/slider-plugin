@@ -5,7 +5,7 @@ const devConfig = merge(config, {
   mode: 'development',
   devServer: {
     static: {
-      directory: config.externals.path.dist,
+      directory: config.externals.paths.dist,
       watch: true,
     },
     hot: true,
