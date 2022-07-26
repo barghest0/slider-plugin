@@ -84,31 +84,4 @@ describe('Thumb test', () => {
 
     expect(notify).toBeCalled();
   });
-
-  test('expect increase first thumb z-index after pointerdown', () => {
-    thumb.increaseZIndex(FIRST_THUMB_STANCE);
-
-    expect(thumb.thumbs[FIRST_THUMB_STANCE].style.zIndex).toEqual(
-      UPPER_Z_INDEX,
-    );
-  });
-
-  test('expect decrease first thumb z-index after pointerup', () => {
-    thumb.decreaseInactiveZIndex(SECOND_THUMB_STANCE);
-
-    expect(thumb.thumbs[FIRST_THUMB_STANCE].style.zIndex).toEqual(
-      DEFAULT_Z_INDEX,
-    );
-  });
-
-  test('expect increase first thumb z-index if thumb on max', () => {
-    const { direction } = view.getParams();
-    thumb.setOffset(FIRST_THUMB_STANCE, prepareOffset(MAX_OFFSET, direction));
-    thumb.setOffset(SECOND_THUMB_STANCE, prepareOffset(MAX_OFFSET, direction));
-    thumb.increaseZIndexOnMax();
-
-    expect(thumb.thumbs[FIRST_THUMB_STANCE].style.zIndex).toEqual(
-      UPPER_Z_INDEX,
-    );
-  });
 });

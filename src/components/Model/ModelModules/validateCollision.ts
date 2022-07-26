@@ -31,6 +31,7 @@ function validateCollision(this: Model) {
     } else {
       this.setOffset(FIRST_THUMB_STANCE, secondOffset);
       this.setValue(FIRST_THUMB_STANCE, secondValue);
+      this.setActiveStance(SECOND_THUMB_STANCE);
     }
   }
 
@@ -41,6 +42,7 @@ function validateCollision(this: Model) {
     } else {
       this.setOffset(SECOND_THUMB_STANCE, firstOffset);
       this.setValue(SECOND_THUMB_STANCE, firstValue);
+      this.setActiveStance(FIRST_THUMB_STANCE);
     }
   }
 }
