@@ -53,19 +53,18 @@ $('#slider').slider(params);
 
 Пользовательские параметры:
 
-| Параметр      | Тип                     | Значение по умолчанию | Описание                                           |
-| ------------- | ----------------------- | --------------------- | -------------------------------------------------- |
-| min           | number                  | 0                     | Минимальное значение                               |
-| max           | number                  | 100                   | Максимальное значение                              |
-| step          | number                  | 1                     | Шаг бегунка                                        |
-| value         | number / number[]       | 0                     | Значение бегунков                                  |
-| isRange       | boolean                 | false                 | Создание 2 бегунка                                 |
-| idDecimal     | boolean                 | false                 | Добавление к значению десятичной части             |
-| decimalPlaces | number                  | 0                     | Количество цифр после запятой                      |
-| direction     | 'horizontal'/'vertical' | 'horizontal'          | Направление слайдера (горизонтальное/вертикальное) |
-| hasScale      | boolean                 | true                  | Отображение шкалы                                  |
-| hasTips       | boolean                 | true                  | Отображение подсказок над бегунками                |
-| hasFill       | boolean                 | true                  | Отображение прогресс бара                          |
+| Параметр     | Тип                     | Значение по умолчанию | Описание                                           |
+| ------------ | ----------------------- | --------------------- | -------------------------------------------------- |
+| min          | number                  | 0                     | Минимальное значение                               |
+| max          | number                  | 100                   | Максимальное значение                              |
+| step         | number                  | 1                     | Шаг бегунка                                        |
+| value        | number / number[]       | 0                     | Значение бегунков                                  |
+| isRange      | boolean                 | false                 | Создание 2 бегунка                                 |
+| direction    | 'horizontal'/'vertical' | 'horizontal'          | Направление слайдера (горизонтальное/вертикальное) |
+| hasScale     | boolean                 | true                  | Отображение шкалы                                  |
+| hasTips      | boolean                 | true                  | Отображение подсказок над бегунками                |
+| hasFill      | boolean                 | true                  | Отображение прогресс бара                          |
+| canThumbPush | boolean                 | false                 | Позволяет бегункам перемещать друг друга           |
 
 Альтернативный вариант установки параметров через `data` атрибуты:
 
@@ -82,50 +81,61 @@ $('#slider').slider(params);
 
 ## API
 
-После инициализации слайдера с заданными параметрами возвращается инстанс, с котором можно взаимодйствовать
+После инициализации слайдера можно передать метод для взаимодействия со слайдером
 
 ```javascript
-const $slider = $('#slider').slider(params);
+$('#slider').slider(params);
 ```
 
-`$slider.getParams()` - возвращает текущие параметры
+`$('#slider').slider('getParams')` - возвращает текущие параметры
 
 ```javascript
-$slider.getParams();
+$('#slider').slider('getParams');
 ```
 
-`$slider.getContainer()` - возвращает элемент, на котором использован слайдер
+`$('#slider').slider('getContainer')` - возвращает элемент, на котором использован слайдер
 
 ```javascript
-$slider.getContainer();
+$('#slider').slider('getContainer');
 ```
 
-`$slider.getParent()` - возвращает родительский элемент контейнера, указанного выше
+`$('#slider').slider('getParent')` - возвращает родительский элемент контейнера, указанного выше
 
 ```javascript
-$slider.getParent();
+$('#slider').slider('getParent');
 ```
 
-`$slider.updateParams()` - позволяет обновить текущие настройки слайдера
+`$('#slider').slider('updateParams', params)` - позволяет обновить текущие настройки слайдера
 
 ```javascript
-$slider.updateParams();
+$('#slider').slider('updateParams', params);
 ```
 
-`$slider.subscribe(params)` - позволяет подписаться на изменение бегунка, возвращает параметры `params` в текущем положении
+`$('#slider').slider('subscribe', someFunc)` - позволяет подписаться на изменение бегунка, возвращает значения бегунков `values` и параметры `params` в текущем положении
 
 ```javascript
-const someFunc = params => {
-  someAction(params);
+const someFunc = (values, params) => {
+  someAction(values);
 };
 
-$slider.subscribe(someFunc);
+$('#slider').slider('subscribe', someFunc);
 ```
 
-`$slider.unsubscribe()` - позволяет отписываться от событий слайдера
+`$('#slider').slider('unsubscribe')` - позволяет отписываться от событий слайдера
 
 ```javascript
-$slider.unsubscribe();
+$('#slider').slider('unsubscribe');
+```
+
+`$('#slider').slider('getSliderInstance')` - позволяет получить инстанс класса и взаимодействовать с плагином более удобным способом
+
+```javascript
+const $slider = $('#slider').slider('getSliderInstance');
+
+$slider.getContainer();
+$slider.getParams();
+
+// ...
 ```
 
 ## Архитектура

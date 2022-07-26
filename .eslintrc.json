@@ -52,8 +52,9 @@
       "LabeledStatement",
       "WithStatement"
     ],
-    "no-param-reassign": [2, { "props": false }],
     "no-shadow": "off",
+    "no-param-reassign": [2, { "props": false }],
+    "import/prefer-default-export": "off",
     "@typescript-eslint/no-shadow": ["error"],
     "@typescript-eslint/no-var-requires": 0
   }
