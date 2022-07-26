@@ -60,7 +60,11 @@ class Model extends Observer<ModelObserver> {
 
   setParams(params: SliderParams) {
     this.params = this.validateParams(params);
-    this.notify(ModelSubscribersNames.getSliderParams, this.getParams());
+    this.notify(
+      ModelSubscribersNames.getSliderParams,
+      this.getValue(),
+      this.getParams(),
+    );
   }
 
   setParam<K extends keyof SliderParams>(param: K, value: SliderParams[K]) {
@@ -145,7 +149,11 @@ class Model extends Observer<ModelObserver> {
     if (this.params.hasFill) {
       this.updateFill();
     }
-    this.notify(ModelSubscribersNames.getSliderParams, this.getParams());
+    this.notify(
+      ModelSubscribersNames.getSliderParams,
+      this.getValue(),
+      this.getParams(),
+    );
   }
 
   updateThumbAfterClick(cursorOffset: number) {

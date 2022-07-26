@@ -1,6 +1,6 @@
 import { SliderParams } from 'components/Slider/types';
 
-type SubscriberFn = (params: SliderParams) => void;
+type SubscriberFn = (values: number[], params: SliderParams) => void;
 
 type Subscribers<T extends string> = Record<T, SubscriberFn[]>;
 

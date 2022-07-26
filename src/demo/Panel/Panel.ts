@@ -37,10 +37,10 @@ class Panel {
     this.initializePanelsParams();
   }
 
-  updatePanelValue({ value }: SliderParams) {
-    this.inputs.firstValueInput.value = String(value[FIRST_THUMB_STANCE]);
-    if (value[SECOND_THUMB_STANCE]) {
-      this.inputs.secondValueInput.value = String(value[SECOND_THUMB_STANCE]);
+  updatePanelValue(values: number[]) {
+    this.inputs.firstValueInput.value = String(values[FIRST_THUMB_STANCE]);
+    if (values[SECOND_THUMB_STANCE]) {
+      this.inputs.secondValueInput.value = String(values[SECOND_THUMB_STANCE]);
     }
   }
 

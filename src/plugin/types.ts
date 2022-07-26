@@ -1,3 +1,5 @@
+import { SliderParams } from 'components/Slider/types';
+
 enum APINames {
   getParams = 'getParams',
   getContainer = 'getContainer',
@@ -8,6 +10,6 @@ enum APINames {
   unsubscribe = 'unsubscribe',
 }
 
-type SubscribeCallback = () => void;
+type SubscribeCallback = (params: SliderParams) => void;
 
 export { APINames, SubscribeCallback };
