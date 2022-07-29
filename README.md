@@ -13,7 +13,7 @@
 - Pug - 3.0.2
 - Jest - 27.4.7
 - Jsdom - 19.0.0
-- ESlint(air-bnb, fsd) - 7.32.0
+- ESlint(air-bnb) - 8.20.0
 
 ## Команды
 

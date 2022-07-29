@@ -7,8 +7,7 @@
     "airbnb-base",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
-    "prettier",
-    "plugin:fsd/all"
+    "prettier"
   ],
 
   "settings": {
@@ -35,7 +34,7 @@
     "ecmaVersion": 13,
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "prettier", "fsd"],
+  "plugins": ["@typescript-eslint", "prettier"],
   "rules": {
     "prettier/prettier": ["error"],
     "import/extensions": [
